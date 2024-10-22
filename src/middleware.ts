@@ -427,7 +427,6 @@ async function fetchUserLocation(req: NextRequest) {
   console.log("Fetching client IP address...");
   const myip = "106.219.68.189"; // For development
   const isDevelopment = false;
-
   // Detect the client IP address
   const clientIP =
     req.headers.get("x-forwarded-for")?.split(",")[0] ||
@@ -442,6 +441,7 @@ async function fetchUserLocation(req: NextRequest) {
 
   // Define the services to fetch from
   const services = [
+    `https://countrygeoapi.nesscoindustries.com/geoip/${newClientIp}/`,
     `https://ipapi.co/${newClientIp}/json/`,
     `https://ipinfo.io/${newClientIp}/json/`,
     `https://ipwhois.app/json/${newClientIp}`,
