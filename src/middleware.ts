@@ -453,8 +453,7 @@ async function fetchUserLocation(req: NextRequest) {
       if (res.ok) {
         const data = await res.json();
         return {
-          countryCode:
-            data.country_code?.toLowerCase() || data.country?.toLowerCase(),
+          countryCode: data.country?.toLowerCase() || data.country_code?.toLowerCase(),
         };
       } else {
         console.warn(`Service ${service} failed:`, res.status);
