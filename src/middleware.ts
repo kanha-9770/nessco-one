@@ -448,7 +448,7 @@ async function fetchUserLocation(req: NextRequest) {
     console.log("Location data received:", data);
 
     return {
-      country: data.country_code?.toLowerCase() || "us", // Default to 'us' if country code is unavailable
+      country: data.country?.toLowerCase() || "us", // Default to 'us' if country code is unavailable
       language: "en", // Default to 'en' (ipwhois.app doesn't provide language info)
     };
   } catch (error) {
