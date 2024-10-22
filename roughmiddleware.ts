@@ -424,38 +424,63 @@ const validCountryISOs = [
 // const defaultLocale = "en";
 // Function to fetch user location based on client IP address using ipwhois.app
 async function fetchUserLocation(req: NextRequest) {
-  try {
-    console.log("Fetching client IP address...");
+  console.log("Fetching client IP address...");
+  const myip = "106.219.68.189"; // For development
+  const isDevelopment = false;
+  // Detect the client IP address
+  const clientIP =
+    req.headers.get("x-forwarded-for")?.split(",")[0] ||
+    req.headers.get("x-real-ip");
+  const newClientIp = isDevelopment ? myip : clientIP;
 
-    // Attempt to get the client's IP address from request headers
-    const clientIP =
-      req.headers.get("x-forwarded-for")?.split(",")[0] ||
-      req.headers.get("x-real-ip");
-
-    if (!clientIP) {
-      throw new Error("Unable to detect client IP address.");
-    }
-    console.log("Detected client IP address:", clientIP);
-
-    // Fetch location data based on the detected client IP address
-    const country = req.geo?.country?.toLowerCase() || ''
-     console.log("getting country using geo.country",country);
-    const res = await fetch(`https://countrygeoapi.nesscoindustries.com/geoip/${clientIP}`);
-    if (!res.ok) {
-      throw new Error("Failed to fetch location data for client IP.");
-    }
-    const data = await res.json();
-    console.log("Location data received:", data);
-
-    return {
-      country: data.country_code?.toLowerCase() || "us", // Default to 'us' if country code is unavailable
-      language: "en", // Default to 'en' (ipwhois.app doesn't provide language info)
-    };
-  } catch (error) {
-    console.error("Error fetching user location:", error);
-    // Default to a fallback country and language in case of an error
+  if (!newClientIp) {
+    console.error("Unable to detect client IP address.");
     return { country: "us", language: "en" };
   }
+  console.log("Detected client IP address:", newClientIp);
+
+  // Define the services to fetch from
+  const services = [
+    `https://countrygeoapi.nesscoindustries.com/geoip/${newClientIp}/`,
+    `https://ipapi.co/${newClientIp}/json/`,
+    `https://ipinfo.io/${newClientIp}/json/`,
+    `https://ipwhois.app/json/${newClientIp}`,
+  ];
+
+  // Use Promise.all to fetch data concurrently
+  const fetchPromises = services.map((service) =>
+    fetch(service).then(async (res) => {
+      if (res.ok) {
+        const data = await res.json();
+        console.log("i am using this service api",service);
+        return {
+          countryCode: data.country?.toLowerCase() || data.country_code?.toLowerCase(),
+        };
+       
+      } else {
+        console.warn(`Service ${service} failed:`, res.status);
+        return null; // Return null for failed requests
+      }
+    })
+  );
+
+  try {
+    const results = await Promise.all(fetchPromises);
+    // Filter out null results and get the first valid country code
+    const validCountry = results
+      .map((result) => result?.countryCode)
+      .find((code) => code); // Find the first non-null country code
+
+    if (validCountry) {
+      return { country: validCountry, language: "en" };
+    }
+  } catch (error) {
+    console.error("Error fetching location data:", error);
+  }
+
+  // Default to 'us' and 'en' if all services fail
+  console.error("All IP services failed, using default location.");
+  return { country: "us", language: "en" };
 }
 
 // Middleware logic to handle redirection and validation
@@ -481,7 +506,7 @@ export async function middleware(req: NextRequest) {
 
   // Fetch the user's actual location (country and language) based on IP
   const userLocation = await fetchUserLocation(req);
-  const { country: detectedCountry } = userLocation;
+  const {country:detectedCountry } = userLocation;
 
   // Get browser's preferred language from accept-language header
   const browserLanguage = getBrowserLanguage(req);
