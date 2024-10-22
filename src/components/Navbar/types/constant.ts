@@ -131,6 +131,7 @@ export interface NavLeftData {
   // Parent interface that includes all data types
   export interface NavbarData {
     navbar: Array<{
+      category: any;
       data: data;
       aboutData: AboutData;
       productData: ProductData;

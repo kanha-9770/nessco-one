@@ -453,7 +453,8 @@ async function fetchUserLocation(req: NextRequest) {
       if (res.ok) {
         const data = await res.json();
         return {
-          countryCode: data.country_code?.toLowerCase() || data.country?.toLowerCase(),
+          countryCode:
+            data.country_code?.toLowerCase() || data.country?.toLowerCase(),
         };
       } else {
         console.warn(`Service ${service} failed:`, res.status);
@@ -467,13 +468,12 @@ async function fetchUserLocation(req: NextRequest) {
 
     // Filter out null results and get the first valid country code
     const validCountry = results
-      .map(result => result?.countryCode)
-      .find(code => code); // Find the first non-null country code
+      .map((result) => result?.countryCode)
+      .find((code) => code); // Find the first non-null country code
 
     if (validCountry) {
       return { country: validCountry, language: "en" };
     }
-
   } catch (error) {
     console.error("Error fetching location data:", error);
   }

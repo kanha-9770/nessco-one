@@ -59,12 +59,12 @@ function Navbar({ className, navData }: NavbarProps) {
     setSearchValue(e.target.value);
   const navbarItems: NavbarItem[] = [
     {
-      name: "About Us",
+      name:`${navData?.navbar[0]?.category}`,
       link: "about",
       component: <AboutLayout navData={navData} />,
     },
     {
-      name: "Products",
+      name:`${navData?.navbar[1]?.category}`,
       link: "product",
       component: (
         <ProductLayout
@@ -75,27 +75,27 @@ function Navbar({ className, navData }: NavbarProps) {
       ),
     },
     {
-      name: "Application",
+      name:`${navData?.navbar[2]?.category}`,
       link: "application",
       component: <ApplicationLayout navData={navData} />,
     },
     {
-      name: "Support",
+      name:`${navData?.navbar[3]?.category}`,
       link: "support",
       component: <SupportGrid navData={navData} />,
     },
     {
-      name: "Resources",
+      name:`${navData?.navbar[4]?.category}`,
       link: "resources",
       component: <ResourceGrid navData={navData} />,
     },
     {
-      name: "Video",
+      name:`${navData?.navbar[5]?.category}`,
       link: "videos",
       component: <VideoGrid navData={navData} />,
     },
     {
-      name: "Contact",
+      name:`${navData?.navbar[6]?.category}`,
       link: "contact",
     },
   ];

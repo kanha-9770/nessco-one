@@ -1,6 +1,6 @@
 import NavbarDemo from "./Navbar";
 import { NavbarData } from "./types/constant";
-import {  unstable_setRequestLocale } from "next-intl/server";
+import { unstable_setRequestLocale } from "next-intl/server";
 
 const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
 const locales = ["en", "fr", "nl", "de", "es", "hi", "ta"] as const;
@@ -29,7 +29,7 @@ async function fetchNavData(locale: string): Promise<NavbarData | null> {
     return data;
   } catch (error) {
     console.error(`Error fetching navbar data for locale ${locale}:`, error);
-    
+
     // Fallback to English in case of any error
     const fallbackRes = await fetch(`${apiUrl}en/navbar.json`, {
       cache: "no-store",
@@ -55,7 +55,6 @@ export default async function NavLayout({ params: { locale } }: Props) {
 
   return (
     <>
-    
       <NavbarDemo navData={navData} />
     </>
   );
