@@ -452,6 +452,8 @@ async function fetchUserLocation(req: NextRequest) {
     fetch(service).then(async (res) => {
       if (res.ok) {
         const data = await res.json();
+        console.log("i am using this service api",service);
+        
         return {
           countryCode: data.country?.toLowerCase() || data.country_code?.toLowerCase(),
         };
