@@ -440,15 +440,9 @@ async function fetchUserLocation(req: NextRequest) {
     // Fetch location data based on the detected client IP address
     const country = req.geo?.country?.toLowerCase() || ''
      console.log("getting country using geo.country",country);
-    const res = await fetch(`https://countrygeoapi.nesscoindustries.com/geoip/${clientIP}`);
-    if (!res.ok) {
-      throw new Error("Failed to fetch location data for client IP.");
-    }
-    const data = await res.json();
-    console.log("Location data received:", data);
-
+   
     return {
-      country: data.country?.toLowerCase() || "us", // Default to 'us' if country code is unavailable
+      country:country || "us", // Default to 'us' if country code is unavailable
       language: "en", // Default to 'en' (ipwhois.app doesn't provide language info)
     };
   } catch (error) {
