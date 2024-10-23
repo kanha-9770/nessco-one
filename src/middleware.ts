@@ -424,40 +424,68 @@ const validCountryISOs = [
 // const defaultLocale = "en";
 // Function to fetch user location based on client IP address using ipwhois.app
 async function fetchUserLocation(req: NextRequest) {
-  try {
     console.log("Fetching client IP address...");
-
-    // Attempt to get the client's IP address from request headers
+    const myip = "106.219.68.189"; // For development
+    const isDevelopment = false;
+  
+    // Detect the client IP address
     const clientIP =
       req.headers.get("x-forwarded-for")?.split(",")[0] ||
       req.headers.get("x-real-ip");
-
-    if (!clientIP) {
-      throw new Error("Unable to detect client IP address.");
+    const newClientIp = isDevelopment ? myip : clientIP;
+  
+    if (!newClientIp) {
+      console.error("Unable to detect client IP address.");
+      return { country: "us", language: "en" };
     }
-    console.log("Detected client IP address:", clientIP);
-
-    // Fetch location data based on the detected client IP address
-    const country = req.geo?.country?.toLowerCase() || ''
-     console.log("getting country using geo.country",country);
-    const res = await fetch(`https://countrygeoapi.nesscoindustries.com/geoip/${clientIP}`);
-    if (!res.ok) {
-      throw new Error("Failed to fetch location data for client IP.");
+    console.log("Detected client IP address:", newClientIp);
+  
+    // Nessco Industries API
+    const nesscoUrl = `https://countrygeoapi.nesscoindustries.com/geoip/${newClientIp}/`;
+    
+    try {
+      // Attempt to fetch from Nessco Industries API
+      const nesscoResponse = await fetch(nesscoUrl);
+      if (nesscoResponse.ok) {
+        const data = await nesscoResponse.json();
+        console.log("Using Nessco Industries API", nesscoUrl);
+        return {
+          country: data.country?.toLowerCase() || data.country_code?.toLowerCase(),
+          language: "en"
+        };
+      }
+    } catch (error) {
+      console.error("Nessco Industries API failed:", error);
     }
-    const data = await res.json();
-    console.log("Location data received:", data);
-
-    return {
-      country: data.country?.toLowerCase() || "us", // Default to 'us' if country code is unavailable
-      language: "en", // Default to 'en' (ipwhois.app doesn't provide language info)
-    };
-  } catch (error) {
-    console.error("Error fetching user location:", error);
-    // Default to a fallback country and language in case of an error
+  
+    // Fallback to other services if Nessco fails
+    const fallbackServices = [
+      `https://ipapi.co/${newClientIp}/json/`,
+      `https://ipinfo.io/${newClientIp}/json/`,
+      `https://ipwhois.app/json/${newClientIp}`
+    ];
+  
+    for (const service of fallbackServices) {
+      try {
+        const response = await fetch(service);
+        if (response.ok) {
+          const data = await response.json();
+          console.log("Using fallback service", service);
+          return {
+            country: data.country?.toLowerCase() || data.country_code?.toLowerCase(),
+            language: "en"
+          };
+        }
+      } catch (error) {
+        console.warn(`Service ${service} failed:`, error);
+      }
+    }
+  
+    // Default to 'us' and 'en' if all services fail
+    console.error("All IP services failed, using default location.");
     return { country: "us", language: "en" };
   }
-}
-
+  
 // Middleware logic to handle redirection and validation
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;

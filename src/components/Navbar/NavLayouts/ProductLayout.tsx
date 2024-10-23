@@ -172,10 +172,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
             : "hover:text-[#483d78] hover:font-semibold"
         } `}
       >
-        <Link
-          className="flex w-full gap-2 flex-row"
-          href="#"
-        >
+        <Link className="flex w-full gap-2 flex-row" href="#">
           <div className="flex items-center justify-center cursor-pointer">
             <BlurImage
               className="rounded-full h-6 w-6 transform transition-transform duration-200 object-cover"
@@ -209,8 +206,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
               }`}
               style={{ top: "50%", transform: "translateY(-50%)" }}
               disabled={currentIndex === 0}
-            >
-            </button>
+            ></button>
           )}
 
           <div className="flex flex-wrap justify-start pl-14 items-start overflow-hidden w-full">
@@ -231,8 +227,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
               }`}
               style={{ top: "50%", transform: "translateY(-50%)" }}
               disabled={currentIndex + totalVisible >= filteredMachines.length}
-            >
-            </button>
+            ></button>
           )}
         </div>
         <div className="w-full border-l lg:w-80 h-full flex flex-col items-center relative">
@@ -242,9 +237,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                 className="absolute top-0 left-0 right-0 mx-auto z-10 text-2xl rounded-full  p-0 transition-all transform hover:scale-125 "
                 style={{ width: "40px", height: "40px" }}
                 onClick={handleSidebarPrev}
-              >
-                
-              </button>
+              ></button>
             )}
 
             <div className="overflow-hidden flex flex-col space-y-5 items-center justify-start w-full py-10 h-full">
@@ -258,8 +251,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                 className="absolute left-0 right-0 mx-auto bottom-0 text-2xl rounded-full  p-0 transition-all transform hover:scale-125 "
                 style={{ width: "40px", height: "40px" }}
                 onClick={handleSidebarNext}
-              >
-              </button>
+              ></button>
             )}
           </div>
         </div>
@@ -368,8 +360,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                                           : "opacity-100"
                                       }`}
                                       disabled={currentIndex === 0}
-                                    >
-                                    </button>
+                                    ></button>
                                     <button
                                       onClick={handleNext}
                                       className={`invert-0 z-30 text-3xl transition-all ${
@@ -382,8 +373,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                                         currentIndex + mobileVisibleItems >=
                                         filteredMachines.length
                                       }
-                                    >
-                                    </button>
+                                    ></button>
                                   </>
                                 )}
                               </div>
