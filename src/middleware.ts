@@ -424,113 +424,119 @@ const validCountryISOs = [
 // const defaultLocale = "en";
 // Function to fetch user location based on client IP address using ipwhois.app
 async function fetchUserLocation(req: NextRequest) {
-    console.log("Fetching client IP address...");
-    const myip = "106.219.68.189"; // For development
-    const isDevelopment = false;
-    
-    // Detect the client IP address
-    const clientIP =
-      req.headers.get("x-forwarded-for")?.split(",")[0] ||
-      req.headers.get("x-real-ip");
-    const newClientIp = isDevelopment ? myip : clientIP;
-  
-    if (!newClientIp) {
-      console.error("Unable to detect client IP address.");
-      return { country: "us", language: "en" };
+  console.log("Fetching client IP address...");
+  const myip = "106.219.68.189"; // For development
+  const isDevelopment = false;
+
+  // Detect the client IP address
+  const clientIP =
+    req.headers.get("x-forwarded-for")?.split(",")[0] ||
+    req.headers.get("x-real-ip");
+  const newClientIp = isDevelopment ? myip : clientIP;
+
+  if (!newClientIp) {
+    console.error("Unable to detect client IP address.");
+    return { country: "us", language: "en" };
+  }
+  console.log("Detected client IP address:", newClientIp);
+
+  // Nessco Industries API
+  const nesscoUrl = `https://countrygeoapi.nesscoindustries.com/geoip/${newClientIp}/`;
+
+  try {
+    // Attempt to fetch from Nessco Industries API
+    const nesscoResponse = await fetch(nesscoUrl);
+    if (nesscoResponse.ok) {
+      const data = await nesscoResponse.json();
+      console.log("Using Nessco Industries API", nesscoUrl);
+      return {
+        country:
+          data.country?.toLowerCase() || data.country_code?.toLowerCase(),
+        language: "en",
+      };
     }
-    console.log("Detected client IP address:", newClientIp);
-  
-    // Nessco Industries API
-    const nesscoUrl = `https://countrygeoapi.nesscoindustries.com/geoip/${newClientIp}/`;
-    
+  } catch (error) {
+    console.error("Nessco Industries API failed:", error);
+  }
+
+  // Fallback to other services if Nessco fails
+  const fallbackServices = [
+    `https://ipinfo.io/${newClientIp}/json/`,
+    `https://ipinfo.io/${newClientIp}/json/`,
+    `https://ipwhois.app/json/${newClientIp}`,
+  ];
+
+  for (const service of fallbackServices) {
     try {
-      // Attempt to fetch from Nessco Industries API
-      const nesscoResponse = await fetch(nesscoUrl);
-      if (nesscoResponse.ok) {
-        const data = await nesscoResponse.json();
-        console.log("Using Nessco Industries API", nesscoUrl);
+      const response = await fetch(service);
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Using fallback service", service);
         return {
-          country: data.country?.toLowerCase() || data.country_code?.toLowerCase(),
-          language: "en"
+          country:
+            data.country?.toLowerCase() || data.country_code?.toLowerCase(),
+          language: "en",
         };
       }
     } catch (error) {
-      console.error("Nessco Industries API failed:", error);
+      console.warn(`Service ${service} failed:`, error);
     }
-  
-    // Fallback to other services if Nessco fails
-    const fallbackServices = [
-        `https://ipinfo.io/${newClientIp}/json/`,
-      `https://ipinfo.io/${newClientIp}/json/`,
-      `https://ipwhois.app/json/${newClientIp}`
-    ];
-  
-    for (const service of fallbackServices) {
-      try {
-        const response = await fetch(service);
-        if (response.ok) {
-          const data = await response.json();
-          console.log("Using fallback service", service);
-          return {
-            country: data.country?.toLowerCase() || data.country_code?.toLowerCase(),
-            language: "en"
-          };
-        }
-      } catch (error) {
-        console.warn(`Service ${service} failed:`, error);
-      }
-    }
-  
-    // Default to 'us' and 'en' if all services fail
-    console.error("All IP services failed, using default location.");
-    return { country: "us", language: "en" };
   }
-  
+
+  // Default to 'us' and 'en' if all services fail
+  console.error("All IP services failed, using default location.");
+  return { country: "us", language: "en" };
+}
+
 // Middleware logic to handle redirection and validation
 export async function middleware(req: NextRequest) {
-  const { pathname } = req.nextUrl;
-  console.log("Current path:", pathname);
-
-  const pathParts = pathname.split("/").filter(Boolean); // Get all parts of the path
-  const userCountryISO = pathParts[0]?.toLowerCase(); // First part is country
-  const userLanguage = pathParts[1]?.toLowerCase(); // Second part is language
-
-  console.log("User country ISO from URL:", userCountryISO);
-  console.log("User language from URL:", userLanguage);
-
-  // Check if the country and language are valid
-  const isCountryValid = validCountryISOs.includes(userCountryISO);
-  const isLanguageValid = validLocales.includes(userLanguage);
-
-  if (isCountryValid && isLanguageValid) {
-    console.log("Valid country and language, proceeding...");
-    return NextResponse.next(); // No redirection needed
+    const { pathname } = req.nextUrl;
+    console.log("Current path:", pathname);
+  
+    const pathParts = pathname.split("/").filter(Boolean); // Get all parts of the path
+    const userCountryISO = pathParts[0]?.toLowerCase(); // First part is country
+    const userLanguage = pathParts[1]?.toLowerCase(); // Second part is language
+  
+    console.log("User country ISO from URL:", userCountryISO);
+    console.log("User language from URL:", userLanguage);
+  
+    // Check if the country and language are valid
+    const isCountryValid = validCountryISOs.includes(userCountryISO);
+    const isLanguageValid = validLocales.includes(userLanguage);
+  
+    // If both are valid, no redirection needed
+    if (isCountryValid && isLanguageValid) {
+      console.log("Valid country and language, proceeding...");
+      return NextResponse.next();
+    }
+  
+    // Fetch the user's actual location (country and language) based on IP
+    const userLocation = await fetchUserLocation(req);
+    const { country: detectedCountry } = userLocation;
+  
+    // Get browser's preferred language from accept-language header
+    const browserLanguage = getBrowserLanguage(req);
+  
+    console.log("Detected user country:", detectedCountry);
+    console.log("Browser language:", browserLanguage);
+  
+    // Construct a clean, base URL starting from "/{country}/{language}"
+    const baseURL = `/${detectedCountry}/${browserLanguage}`;
+  
+    // Avoid appending or duplicating URL segments
+    const currentBaseURL = `/${userCountryISO}/${userLanguage}`;
+    if (baseURL === currentBaseURL) {
+      console.log("User is already on the correct URL, proceeding...");
+      return NextResponse.next();
+    }
+  
+    // Replace the current URL with the clean base path (detected country and language)
+    const url = req.nextUrl.clone();
+    url.pathname = baseURL;
+  
+    return NextResponse.redirect(url);
   }
-
-  // Fetch the user's actual location (country and language) based on IP
-  const userLocation = await fetchUserLocation(req);
-  const { country: detectedCountry } = userLocation;
-
-  // Get browser's preferred language from accept-language header
-  const browserLanguage = getBrowserLanguage(req);
-
-  console.log("Detected user country:", detectedCountry);
-  console.log("Browser language:", browserLanguage);
-
-  // If the user is already on the correct URL, don't redirect
-  if (userCountryISO === detectedCountry && userLanguage === browserLanguage) {
-    console.log("User is already on the correct URL, proceeding...");
-    return NextResponse.next(); // No redirection needed
-  }
-
-  // Construct the new valid URL using detected country and browser language
-  const url = req.nextUrl.clone();
-  url.pathname = `/${detectedCountry}/${browserLanguage}${pathname.replace(
-    `/${userCountryISO}/${userLanguage}/`,
-    ""
-  )}`;
-  return NextResponse.redirect(url);
-}
+  
 
 // Define the matcher for the middleware to run only on specific routes
 export const config = {
