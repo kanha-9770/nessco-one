@@ -3,7 +3,8 @@ import React, { useState, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import Hero from "@/components/Home/Home";
 import { HomeData } from "./types/constant";
-const AboutUs =dynamic(()=>import("./AboutSection"),{ssr:false})
+const IOT =dynamic(()=>import("./Iot"))
+const AboutUs = dynamic(() => import("./AboutSection"), { ssr: false });
 const NavLinksDemo = dynamic(() => import("@/components/Home/NavLinks"), {
   ssr: true,
 });
@@ -86,21 +87,27 @@ export default function MainLayout({ homeData }: MainLayoutProps) {
   }, [loadedSections]);
 
   return (
-    <main className="relative bg-[#f2f2f2] top-14 gap-2 h-full">
+    <main className="relative bg-[#f2f2f2] top-14 gap-2 h-full overflow-hidden">
       <div className="top-2 relative">
         <Hero heroData={homeData} />
       </div>
       <ContactIcons />
       <NavLinksDemo navItems={navItems} />
-      <div className="h-full font-poppins py-20">
+      <div className="h-full font-poppins">
+        {loadedSections.includes(1) && (
+          <div className="h-auto max-w-screen-2xl pl-14 mx-auto">
+            <AnnouncementSection />
+          </div>
+        )}
+
         {loadedSections.includes(0) && (
           <div
             id="machines"
-            className="flex space-y-6 flex-col"
+            className="flex space-y-6 flex-col mt-20"
             ref={sectionRefs.homeMachineRef}
           >
             <div className="flex justify-center text-3xl items-center space-x-2">
-              <h2 className="bg-gradient-to-r text-3xl from-[#483d73] to-red-700 bg-clip-text text-transparent font-medium">
+              <h2 className="text-[#483d73] font-semibold">
                 {homeData.home[0].homeMachineSection?.title
                   .trim()
                   .replace(/\s+\S+$/, "")}
@@ -120,12 +127,7 @@ export default function MainLayout({ homeData }: MainLayoutProps) {
           </div>
         )}
 
-        {loadedSections.includes(1) && (
-          <div className="h-auto max-w-screen-2xl mx-auto lg:py-8">
-            <AnnouncementSection />
-          </div>
-        )}
-        <div className="h-auto max-w-screen-2xl mx-auto lg:py-8">
+        <div className="h-auto max-w-screen-2xl mx-auto">
           <AboutUs heroData={homeData} />
         </div>
 
@@ -138,6 +140,10 @@ export default function MainLayout({ homeData }: MainLayoutProps) {
             <MarqueeSection heroData={homeData} />
           </div>
         )}
+
+        <div>
+          <IOT />
+        </div>
 
         {loadedSections.includes(3) && (
           <div id="knowMore" className="h-auto" ref={sectionRefs.knowMoreRef}>

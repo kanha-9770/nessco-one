@@ -5,7 +5,8 @@ import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import NavLayout from "@/components/Navbar/NavLayout";
 import { CountryCode, countryNames, defaultLocale } from "@/components/Constants/Navbar/config";
-
+import dynamic from "next/dynamic";
+const FooterLayout=dynamic(()=>import("@/components/Footer/FooterLayout"))
 const inter = Inter({
   subsets: ["latin"],
   variable: "--inter",
@@ -105,6 +106,7 @@ export default async function RootLayout({
 
           {/* Page content */}
           {children}
+          <div className="mt-20"><FooterLayout/></div>
         </NextIntlClientProvider>
 
         {/* External scripts */}

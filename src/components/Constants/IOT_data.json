@@ -1,0 +1,31 @@
+{
+    "IOTData": {
+        "title": "IOT Systems",
+        "machineImg": "https://res.cloudinary.com/dj4jijw2a/image/upload/v1729683280/MachineImg_pv9vhx.png",
+        "desktopImg": "https://res.cloudinary.com/dj4jijw2a/image/upload/v1729683279/DesktopImg_sifxqd.png",
+        "globeVideo": "https://res.cloudinary.com/dj4jijw2a/video/upload/v1729683295/GlobeVideo_ro4zxy.mp4",
+        "subTitle": "INDUSTRY 4.0",
+        "cards": [
+            {
+                "title": "Connected Machine",
+                "description": "In the realm of the Internet of Things (IoT), connected machines represent a revolutionary shift in how devices and systems interact, share data, and function autonomously.",
+                "video": "https://res.cloudinary.com/dj4jijw2a/video/upload/v1729683352/HomePage_jvgbia.mp4"
+            },
+            {
+                "title": "Realtime  Dashboards",
+                "description": "In the realm of the Internet of Things (IoT), connected machines represent a revolutionary shift in how devices and systems interact, share data, and function autonomously.",
+                "video": "https://res.cloudinary.com/dj4jijw2a/video/upload/v1729683352/HomePage_jvgbia.mp4"
+            },
+            {
+                "title": "Connected Machine",
+                "description": "In the realm of the Internet of Things (IoT), connected machines represent a revolutionary shift in how devices and systems interact, share data, and function autonomously.",
+                "video": "https://res.cloudinary.com/dj4jijw2a/video/upload/v1729683352/HomePage_jvgbia.mp4"
+            },
+            {
+                "title": "Realtime  Dashboards",
+                "description": "In the realm of the Internet of Things (IoT), connected machines represent a revolutionary shift in how devices and systems interact, share data, and function autonomously.",
+                "video": "https://res.cloudinary.com/dj4jijw2a/video/upload/v1729683352/HomePage_jvgbia.mp4"
+            }
+        ]
+    }
+}

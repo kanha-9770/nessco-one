@@ -42,11 +42,11 @@ const HomeMachine: React.FC<HomeMachineLayoutProps> = ({ heroData }) => {
         );
 
   return (
-    <div className="h-full w-screen max-w-screen-2xl mx-auto">
+    <div className="h-full w-full max-w-screen-2xl mx-auto ">
       {/* Stepper to switch between categories */}
       <Stepper onStepChange={setActiveStep} />
       {/* Carousel displaying the filtered products */}
-      <div className="h-[90%] mt-4 lg:ml-0">
+      <div className="h-[90%] mt-4">
         <HomeMachineCarousel filteredCardsData={filteredCardsData} />
       </div>
     </div>

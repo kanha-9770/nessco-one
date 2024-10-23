@@ -1,5 +1,5 @@
 // FooterLayout.tsx (Server-Side Fetching in Next.js App Router)
-import Footer from "./Footer"; // Import the Footer component
+import FooterNew from "./FooterNews";
 
 // Revalidate every 60 seconds (or any time period you prefer)
 export const revalidate = 60;
@@ -31,7 +31,7 @@ export default async function FooterLayout() {
   return (
     <div>
       {/* Pass the fetched footerData to the Footer component */}
-      <Footer footerData={footerData} />
+      <FooterNew footerData={footerData} />
     </div>
   );
 }

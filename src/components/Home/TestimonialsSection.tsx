@@ -13,8 +13,8 @@ const HomeTestimonial: React.FC<TestinomialLayoutProps> = ({heroData}) => {
   const testimonialItems = testinomialData?.testinomial || [];
   return (
     <div className="flex flex-col lg:flex-row py-4 h-screen z-20 max-w-7xl mx-auto relative overflow-hidden">
-      <div className="px-2 w-full h-[45%] lg:h-full lg:w-1/3 lg:flex lg:flex-col lg:items-end lg:justify-end flex flex-col">
-        <h2 className="text-xl text-[#dc0e2a] text-center lg:text-justify border-white pb-3 lg:pb-0 border-b-[1px] lg:border-none lg:ml-6 lg:text-2xl font-montserrat lg:leading-tight font-bold">
+      <div className="px-2 w-full h-[45%] lg:h-full lg:w-1/3 lg:flex lg:flex-col lg:items-start lg:justify-end flex flex-col">
+        <h2 className="text-xl text-[#483d73] text-center lg:text-justify border-white pb-3 lg:pb-0 border-b-[1px] lg:border-none lg:ml-6 lg:text-3xl font-montserrat lg:leading-tight font-semibold">
           {testinomialData?.heading}
         </h2>
         <div className="hidden lg:flex flex-col">
@@ -31,7 +31,7 @@ const HomeTestimonial: React.FC<TestinomialLayoutProps> = ({heroData}) => {
               />
             </span>
           </h2>
-          <h3 className="mt-20 text-lg text-center font-poppins">
+          <h3 className="mt-10 text-lg text-center font-poppins text-[#483d73]">
             {testinomialData?.description}
           </h3>
         </div>
