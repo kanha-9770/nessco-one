@@ -441,7 +441,7 @@ async function fetchUserLocation(req: NextRequest) {
     console.log("Detected client IP address:", newClientIp);
   
     // Nessco Industries API
-    const nesscoUrl = `https://ipinfo.io/${newClientIp}/json/`;
+    const nesscoUrl = `https://countrygeoapi.nesscoindustries.com/geoip/${newClientIp}/`;
     
     try {
       // Attempt to fetch from Nessco Industries API
@@ -460,7 +460,7 @@ async function fetchUserLocation(req: NextRequest) {
   
     // Fallback to other services if Nessco fails
     const fallbackServices = [
-      `https://ipapi.co/${newClientIp}/json/`,
+        `https://ipinfo.io/${newClientIp}/json/`,
       `https://ipinfo.io/${newClientIp}/json/`,
       `https://ipwhois.app/json/${newClientIp}`
     ];
