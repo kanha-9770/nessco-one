@@ -2,9 +2,9 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const withNextIntl = createNextIntlPlugin();
 // Import the bundle analyzer using the ES module syntax
-import withBundleAnalyzer from "@next/bundle-analyzer";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+
   images: {
     remotePatterns: [
       {
