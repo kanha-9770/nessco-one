@@ -427,7 +427,7 @@ async function fetchUserLocation(req: NextRequest) {
     console.log("Fetching client IP address...");
     const myip = "106.219.68.189"; // For development
     const isDevelopment = false;
-  
+    
     // Detect the client IP address
     const clientIP =
       req.headers.get("x-forwarded-for")?.split(",")[0] ||
@@ -441,7 +441,7 @@ async function fetchUserLocation(req: NextRequest) {
     console.log("Detected client IP address:", newClientIp);
   
     // Nessco Industries API
-    const nesscoUrl = `https://countryapi-seven.vercel.app/api/country/${req}`;
+    const nesscoUrl = `https://countrygeoapi.nesscoindustries.com/geoip/${newClientIp}/`;
     
     try {
       // Attempt to fetch from Nessco Industries API
