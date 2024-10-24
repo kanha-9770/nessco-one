@@ -426,13 +426,13 @@ const validCountryISOs = [
 async function fetchUserLocation(req: NextRequest) {
   console.log("Fetching client IP address...");
   const myip = "106.219.68.189"; // For development
-  const isDevelopment = false;
+  const isDevelopment = true;
 
   // Detect the client IP address
   const clientIP =
     req.headers.get("x-forwarded-for")?.split(",")[0] ||
     req.headers.get("x-real-ip");
-    const newClientIp = isDevelopment ? myip : clientIP;
+  const newClientIp = isDevelopment ? myip : clientIP;
 
   if (!newClientIp) {
     console.error("Unable to detect client IP address.");
