@@ -432,7 +432,7 @@ async function fetchUserLocation(req: NextRequest) {
     const clientIP =
       req.headers.get("x-forwarded-for")?.split(",")[0] ||
       req.headers.get("x-real-ip");
-    const newClientIp = isDevelopment ? myip : clientIP;
+      const newClientIp = isDevelopment ? myip : clientIP;
   
     if (!newClientIp) {
       console.error("Unable to detect client IP address.");
@@ -497,19 +497,18 @@ async function fetchUserLocation(req: NextRequest) {
     const userCountryISO = pathParts[0]?.toLowerCase(); // First part is country
     const userLanguage = pathParts[1]?.toLowerCase(); // Second part is language
   
-    const isCountryValid = validCountryISOs.includes(userCountryISO);
-    const isLanguageValid = validLocales.includes(userLanguage);
+    const isCountryValid =userCountryISO;
+    const isLanguageValid = userLanguage;
   
     const res = NextResponse.next();
   
     // If both country and language are in the URL and valid, set them in cookies
     if (isCountryValid && isLanguageValid) {
-      console.log("Valid country and language in URL, setting cookies...");
-  
+      console.log("Valid country and language in URL, setting cookies... start");
       // Set country and language in cookies
       setCookie('country', userCountryISO, { res, path: '/' });
       setCookie('language', userLanguage, { res, path: '/' });
-  
+      console.log("Valid country and language in URL, setting cookies... end");
       return res;
     }
   
