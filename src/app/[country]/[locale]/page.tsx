@@ -89,9 +89,9 @@ export async function generateMetadata({
   const seoData = homeData.home[0].homeSeoData;
 
   return {
-    title: `${seoData?.title} - ${countryName} `,
-    description: seoData?.description,
-    keywords: seoData?.keywords,
+    title: `${seoData?.title} - ${countryName} `|| "defaulti title",
+    description: seoData?.description || "defaultio description",
+    keywords: seoData?.keywords || "default keyowrds",
     openGraph: {
       title: seoData?.openGraph?.title,
       description: seoData?.openGraph?.description,
