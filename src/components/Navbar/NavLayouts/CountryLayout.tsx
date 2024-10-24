@@ -30,7 +30,7 @@ export default function LocaleSwitcher() {
       const currentLocale = Array.isArray(params.locale) ? params.locale[0] : params.locale;
   
       // Split the pathname into segments
-      let pathSegments = pathname.split("/").filter(Boolean);
+      const pathSegments = pathname.split("/").filter(Boolean);
   
       // Ensure we correctly replace the locale part of the URL
       if (pathSegments[0] === currentLocale) {
