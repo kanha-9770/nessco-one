@@ -36,18 +36,17 @@ async function fetchCountryData(locale: string): Promise<string> {
   try {
     const res = await fetch(`${countryUrl}${country}.json`);
     const countryData: CountryNames = await res.json();
-    
+
     // Return the country name for the provided locale
     return countryData[locale] || countryData["en"]; // Fallback to English if the locale isn't available
   } catch (error) {
     const fallbackRes = await fetch(`${countryUrl}in.json`);
     const fallbackData: CountryNames = await fallbackRes.json();
-    
+
     // Handle fallback case, also fallback to English if locale not available
     return fallbackData[locale] || fallbackData["en"];
   }
 }
-
 
 // Dynamically generate metadata using the fetched SEO data
 export async function generateMetadata({
@@ -58,7 +57,7 @@ export async function generateMetadata({
     locale = "en";
   }
   const homeData = await fetchHomeData(locale);
-  const countryName=await fetchCountryData(locale);
+  const countryName = await fetchCountryData(locale);
   if (!homeData && !countryName) {
     return {
       title: "Default Title",
@@ -88,7 +87,7 @@ export async function generateMetadata({
   }
 
   const seoData = homeData.home[0].homeSeoData;
-  
+
   return {
     title: `${seoData?.title} - ${countryName}`,
     description: seoData?.description,
