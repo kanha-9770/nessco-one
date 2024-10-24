@@ -72,255 +72,255 @@
 import { NextResponse, NextRequest } from "next/server";
 
 // List of valid ISO country codes (ISO 3166-1 alpha-2)
-// const validCountryISOs = [
-//   "af",
-//   "ax",
-//   "al",
-//   "dz",
-//   "as",
-//   "ad",
-//   "ao",
-//   "ai",
-//   "aq",
-//   "ag",
-//   "ar",
-//   "am",
-//   "aw",
-//   "au",
-//   "at",
-//   "az",
-//   "bs",
-//   "bh",
-//   "bd",
-//   "bb",
-//   "by",
-//   "be",
-//   "bz",
-//   "bj",
-//   "bm",
-//   "bt",
-//   "bo",
-//   "bq",
-//   "ba",
-//   "bw",
-//   "bv",
-//   "br",
-//   "io",
-//   "bn",
-//   "bg",
-//   "bf",
-//   "bi",
-//   "cv",
-//   "kh",
-//   "cm",
-//   "ca",
-//   "ky",
-//   "cf",
-//   "td",
-//   "cl",
-//   "cn",
-//   "cx",
-//   "cc",
-//   "co",
-//   "km",
-//   "cd",
-//   "cg",
-//   "ck",
-//   "cr",
-//   "hr",
-//   "cu",
-//   "cw",
-//   "cy",
-//   "cz",
-//   "dk",
-//   "dj",
-//   "dm",
-//   "do",
-//   "ec",
-//   "eg",
-//   "sv",
-//   "gq",
-//   "er",
-//   "ee",
-//   "sz",
-//   "et",
-//   "fk",
-//   "fo",
-//   "fj",
-//   "fi",
-//   "fr",
-//   "gf",
-//   "pf",
-//   "tf",
-//   "ga",
-//   "gm",
-//   "ge",
-//   "de",
-//   "gh",
-//   "gi",
-//   "gr",
-//   "gl",
-//   "gd",
-//   "gp",
-//   "gu",
-//   "gt",
-//   "gg",
-//   "gn",
-//   "gw",
-//   "gy",
-//   "ht",
-//   "hm",
-//   "va",
-//   "hn",
-//   "hk",
-//   "hu",
-//   "is",
-//   "in",
-//   "id",
-//   "ir",
-//   "iq",
-//   "ie",
-//   "im",
-//   "il",
-//   "it",
-//   "jm",
-//   "jp",
-//   "je",
-//   "jo",
-//   "kz",
-//   "ke",
-//   "ki",
-//   "kp",
-//   "kr",
-//   "kw",
-//   "kg",
-//   "la",
-//   "lv",
-//   "lb",
-//   "ls",
-//   "lr",
-//   "ly",
-//   "li",
-//   "lt",
-//   "lu",
-//   "mo",
-//   "mg",
-//   "mw",
-//   "my",
-//   "mv",
-//   "ml",
-//   "mt",
-//   "mh",
-//   "mq",
-//   "mr",
-//   "mu",
-//   "yt",
-//   "mx",
-//   "fm",
-//   "md",
-//   "mc",
-//   "mn",
-//   "me",
-//   "ms",
-//   "ma",
-//   "mz",
-//   "mm",
-//   "na",
-//   "nr",
-//   "np",
-//   "nl",
-//   "nc",
-//   "nz",
-//   "ni",
-//   "ne",
-//   "ng",
-//   "nu",
-//   "nf",
-//   "mp",
-//   "no",
-//   "om",
-//   "pk",
-//   "pw",
-//   "ps",
-//   "pa",
-//   "pg",
-//   "py",
-//   "pe",
-//   "ph",
-//   "pn",
-//   "pl",
-//   "pt",
-//   "pr",
-//   "qa",
-//   "re",
-//   "ro",
-//   "ru",
-//   "rw",
-//   "bl",
-//   "sh",
-//   "kn",
-//   "lc",
-//   "mf",
-//   "pm",
-//   "vc",
-//   "ws",
-//   "sm",
-//   "st",
-//   "sa",
-//   "sn",
-//   "rs",
-//   "sc",
-//   "sl",
-//   "sg",
-//   "sx",
-//   "sk",
-//   "si",
-//   "sb",
-//   "so",
-//   "za",
-//   "gs",
-//   "ss",
-//   "es",
-//   "lk",
-//   "sd",
-//   "sr",
-//   "sj",
-//   "se",
-//   "ch",
-//   "sy",
-//   "tw",
-//   "tj",
-//   "tz",
-//   "th",
-//   "tl",
-//   "tg",
-//   "tk",
-//   "to",
-//   "tt",
-//   "tn",
-//   "tr",
-//   "tm",
-//   "tc",
-//   "tv",
-//   "ug",
-//   "ua",
-//   "ae",
-//   "gb",
-//   "us",
-//   "um",
-//   "uy",
-//   "uz",
-//   "vu",
-//   "ve",
-//   "vn",
-//   "vg",
-//   "vi",
-//   "wf",
-//   "eh",
-//   "ye",
-//   "zm",
-//   "zw",
-// ];
+const validCountryISOs = [
+  "af",
+  "ax",
+  "al",
+  "dz",
+  "as",
+  "ad",
+  "ao",
+  "ai",
+  "aq",
+  "ag",
+  "ar",
+  "am",
+  "aw",
+  "au",
+  "at",
+  "az",
+  "bs",
+  "bh",
+  "bd",
+  "bb",
+  "by",
+  "be",
+  "bz",
+  "bj",
+  "bm",
+  "bt",
+  "bo",
+  "bq",
+  "ba",
+  "bw",
+  "bv",
+  "br",
+  "io",
+  "bn",
+  "bg",
+  "bf",
+  "bi",
+  "cv",
+  "kh",
+  "cm",
+  "ca",
+  "ky",
+  "cf",
+  "td",
+  "cl",
+  "cn",
+  "cx",
+  "cc",
+  "co",
+  "km",
+  "cd",
+  "cg",
+  "ck",
+  "cr",
+  "hr",
+  "cu",
+  "cw",
+  "cy",
+  "cz",
+  "dk",
+  "dj",
+  "dm",
+  "do",
+  "ec",
+  "eg",
+  "sv",
+  "gq",
+  "er",
+  "ee",
+  "sz",
+  "et",
+  "fk",
+  "fo",
+  "fj",
+  "fi",
+  "fr",
+  "gf",
+  "pf",
+  "tf",
+  "ga",
+  "gm",
+  "ge",
+  "de",
+  "gh",
+  "gi",
+  "gr",
+  "gl",
+  "gd",
+  "gp",
+  "gu",
+  "gt",
+  "gg",
+  "gn",
+  "gw",
+  "gy",
+  "ht",
+  "hm",
+  "va",
+  "hn",
+  "hk",
+  "hu",
+  "is",
+  "in",
+  "id",
+  "ir",
+  "iq",
+  "ie",
+  "im",
+  "il",
+  "it",
+  "jm",
+  "jp",
+  "je",
+  "jo",
+  "kz",
+  "ke",
+  "ki",
+  "kp",
+  "kr",
+  "kw",
+  "kg",
+  "la",
+  "lv",
+  "lb",
+  "ls",
+  "lr",
+  "ly",
+  "li",
+  "lt",
+  "lu",
+  "mo",
+  "mg",
+  "mw",
+  "my",
+  "mv",
+  "ml",
+  "mt",
+  "mh",
+  "mq",
+  "mr",
+  "mu",
+  "yt",
+  "mx",
+  "fm",
+  "md",
+  "mc",
+  "mn",
+  "me",
+  "ms",
+  "ma",
+  "mz",
+  "mm",
+  "na",
+  "nr",
+  "np",
+  "nl",
+  "nc",
+  "nz",
+  "ni",
+  "ne",
+  "ng",
+  "nu",
+  "nf",
+  "mp",
+  "no",
+  "om",
+  "pk",
+  "pw",
+  "ps",
+  "pa",
+  "pg",
+  "py",
+  "pe",
+  "ph",
+  "pn",
+  "pl",
+  "pt",
+  "pr",
+  "qa",
+  "re",
+  "ro",
+  "ru",
+  "rw",
+  "bl",
+  "sh",
+  "kn",
+  "lc",
+  "mf",
+  "pm",
+  "vc",
+  "ws",
+  "sm",
+  "st",
+  "sa",
+  "sn",
+  "rs",
+  "sc",
+  "sl",
+  "sg",
+  "sx",
+  "sk",
+  "si",
+  "sb",
+  "so",
+  "za",
+  "gs",
+  "ss",
+  "es",
+  "lk",
+  "sd",
+  "sr",
+  "sj",
+  "se",
+  "ch",
+  "sy",
+  "tw",
+  "tj",
+  "tz",
+  "th",
+  "tl",
+  "tg",
+  "tk",
+  "to",
+  "tt",
+  "tn",
+  "tr",
+  "tm",
+  "tc",
+  "tv",
+  "ug",
+  "ua",
+  "ae",
+  "gb",
+  "us",
+  "um",
+  "uy",
+  "uz",
+  "vu",
+  "ve",
+  "vn",
+  "vg",
+  "vi",
+  "wf",
+  "eh",
+  "ye",
+  "zm",
+  "zw",
+];
 
 // // Function to fetch user location based on client IP address
 // async function fetchUserLocation(req: NextRequest) {
@@ -424,31 +424,54 @@ import { NextResponse, NextRequest } from "next/server";
 // const defaultLocale = "en";
 // Function to fetch user location based on client IP address using ipwhois.app
 async function fetchUserLocation(req: NextRequest) {
-    console.log("Fetching client IP address...");
-    const myip = "106.219.68.189"; // For development
-    const isDevelopment = false;
-  
-    // Detect the client IP address
-    const clientIP =
-      req.headers.get("x-forwarded-for")?.split(",")[0] ||
-      req.headers.get("x-real-ip");
-      const newClientIp = isDevelopment ? myip : clientIP;
-  
-    if (!newClientIp) {
-      console.error("Unable to detect client IP address.");
-      return { country: "us", language: "en" };
+  console.log("Fetching client IP address...");
+  const myip = "106.219.68.189"; // For development
+  const isDevelopment = false;
+
+  // Detect the client IP address
+  const clientIP =
+    req.headers.get("x-forwarded-for")?.split(",")[0] ||
+    req.headers.get("x-real-ip");
+  const newClientIp = isDevelopment ? myip : clientIP;
+
+  if (!newClientIp) {
+    console.error("Unable to detect client IP address.");
+    return { country: "us", language: "en" };
+  }
+  console.log("Detected client IP address:", newClientIp);
+
+  // Nessco Industries API
+  const nesscoUrl = `https://countrygeoapi.nesscoindustries.com/geoip/${newClientIp}/`;
+
+  try {
+    // Attempt to fetch from Nessco Industries API
+    const nesscoResponse = await fetch(nesscoUrl);
+    if (nesscoResponse.ok) {
+      const data = await nesscoResponse.json();
+      console.log("Using Nessco Industries API", nesscoUrl);
+      return {
+        country:
+          data.country?.toLowerCase() || data.country_code?.toLowerCase(),
+        language: "en",
+      };
     }
-    console.log("Detected client IP address:", newClientIp);
-  
-    // Nessco Industries API
-    const nesscoUrl = `https://countrygeoapi.nesscoindustries.com/geoip/${newClientIp}/`;
-  
+  } catch (error) {
+    console.error("Nessco Industries API failed:", error);
+  }
+
+  // Fallback to other services if Nessco fails
+  const fallbackServices = [
+    `https://ipinfo.io/${newClientIp}/json/`,
+    `https://ipinfo.io/${newClientIp}/json/`,
+    `https://ipwhois.app/json/${newClientIp}`,
+  ];
+
+  for (const service of fallbackServices) {
     try {
-      // Attempt to fetch from Nessco Industries API
-      const nesscoResponse = await fetch(nesscoUrl);
-      if (nesscoResponse.ok) {
-        const data = await nesscoResponse.json();
-        console.log("Using Nessco Industries API", nesscoUrl);
+      const response = await fetch(service);
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Using fallback service", service);
         return {
           country:
             data.country?.toLowerCase() || data.country_code?.toLowerCase(),
@@ -456,108 +479,86 @@ async function fetchUserLocation(req: NextRequest) {
         };
       }
     } catch (error) {
-      console.error("Nessco Industries API failed:", error);
+      console.warn(`Service ${service} failed:`, error);
     }
-  
-    // Fallback to other services if Nessco fails
-    const fallbackServices = [
-      `https://ipinfo.io/${newClientIp}/json/`,
-      `https://ipinfo.io/${newClientIp}/json/`,
-      `https://ipwhois.app/json/${newClientIp}`,
-    ];
-  
-    for (const service of fallbackServices) {
-      try {
-        const response = await fetch(service);
-        if (response.ok) {
-          const data = await response.json();
-          console.log("Using fallback service", service);
-          return {
-            country:
-              data.country?.toLowerCase() || data.country_code?.toLowerCase(),
-            language: "en",
-          };
-        }
-      } catch (error) {
-        console.warn(`Service ${service} failed:`, error);
-      }
-    }
-  
-    // Default to 'us' and 'en' if all services fail
-    console.error("All IP services failed, using default location.");
-    return { country: "us", language: "en" };
   }
-  
-  // Middleware to handle redirection and validation
-  export async function middleware(req: NextRequest) {
-    const { pathname } = req.nextUrl;
-    console.log("Current path:", pathname);
-  
-    const pathParts = pathname.split("/").filter(Boolean); // Get all parts of the path
-    const userCountryISO = pathParts[0]?.toLowerCase(); // First part is country
-    const userLanguage = pathParts[1]?.toLowerCase(); // Second part is language
-  
-    const isCountryValid =userCountryISO;
-    const isLanguageValid = userLanguage;
-  
-    const res = NextResponse.next();
-  
-    // If both country and language are in the URL and valid, set them in cookies
-    if (isCountryValid && isLanguageValid) {
-      console.log("Valid country and language in URL, setting cookies... start");
-      // Set country and language in cookies
-      setCookie('country', userCountryISO, { res, path: '/' });
-      setCookie('language', userLanguage, { res, path: '/' });
-      console.log("Valid country and language in URL, setting cookies... end");
-      return res;
-    }
-  
-    // If URL doesn't contain valid country/language, fetch the user's location and browser language
-    const userLocation = await fetchUserLocation(req);
-    const { country: detectedCountry } = userLocation;
-  
-    const browserLanguage = getBrowserLanguage(req);
-  
-    console.log("Detected user country:", detectedCountry);
-    console.log("Browser language:", browserLanguage);
-  
-    // Set detected country and browser language in cookies
-    setCookie('country', detectedCountry, { res, path: '/' });
-    setCookie('language', browserLanguage, { res, path: '/' });
-  
-    // Redirect to the correct URL based on detected country/language
-    const redirectURL = `/${detectedCountry}/${browserLanguage}`;
-    const url = req.nextUrl.clone();
-    url.pathname = redirectURL;
-  
-    return NextResponse.redirect(url);
+
+  // Default to 'us' and 'en' if all services fail
+  console.error("All IP services failed, using default location.");
+  return { country: "us", language: "en" };
+}
+
+// Middleware to handle redirection and validation
+export async function middleware(req: NextRequest) {
+  const { pathname } = req.nextUrl;
+  console.log("Current path:", pathname);
+
+  const pathParts = pathname.split("/").filter(Boolean); // Get all parts of the path
+  const userCountryISO = pathParts[0]?.toLowerCase(); // First part is country
+  const userLanguage = pathParts[1]?.toLowerCase(); // Second part is language
+
+  const isCountryValid = validCountryISOs.includes(userCountryISO);
+  const isLanguageValid = validLocales.includes(userLanguage);
+  const res = NextResponse.next();
+  // If both country and language are in the URL and valid, set them in cookies
+  if (isCountryValid && isLanguageValid) {
+    console.log("Valid country and language in URL, setting cookies...");
+    // Set country and language in cookies
+    setCookie("country", userCountryISO, { res, path: "/" });
+    setCookie("language", userLanguage, { res, path: "/" });
+    return res;
   }
-  
-  // Helper function to set cookies
-  function setCookie(name: string, value: string, options: { res: NextResponse, path?: string }) {
-    const { res, path = '/' } = options;
-    res.cookies.set(name, value, { path });
-  }
-  
-  // Helper function to get the browser language from the 'accept-language' header
-  function getBrowserLanguage(req: NextRequest) {
-    const acceptLanguageHeader = req.headers.get("accept-language");
-    if (!acceptLanguageHeader) return defaultLocale;
-    // Extract the first preferred language from the 'accept-language' header
-    const browserLanguage = acceptLanguageHeader.split(",")[0]?.split("-")[0]; // Just the language code
-    console.log("Browser language detected:", browserLanguage);
-    return validLocales.includes(browserLanguage)
-      ? browserLanguage
-      : defaultLocale;
-  }
-  
-  // Define the matcher for the middleware to run only on specific routes
-  export const config = {
-    matcher: [
-      "/((?!_next/static|_next/image|favicon.ico|api).*)", // Exclude static assets, image optimization, favicon, and API routes
-    ],
-  };
-  
-  const validLocales = ["en", "fr", "nl", "de", "es", "ta", "hi"];
-  const defaultLocale = "en";
-  
+
+  // If URL doesn't contain valid country/language, fetch the user's location and browser language
+  const userLocation = await fetchUserLocation(req);
+  const { country: detectedCountry } = userLocation;
+
+  const browserLanguage = getBrowserLanguage(req);
+
+  console.log("Detected user country:", detectedCountry);
+  console.log("Browser language:", browserLanguage);
+
+  // Set detected country and browser language in cookies
+  setCookie("country", detectedCountry, { res, path: "/" });
+  setCookie("language", browserLanguage, { res, path: "/" });
+
+  // Redirect to the correct URL based on detected country/language
+  const redirectURL = `/${detectedCountry}/${browserLanguage}`;
+  const url = req.nextUrl.clone();
+  url.pathname = redirectURL;
+
+  return NextResponse.redirect(url);
+}
+
+// Helper function to set cookies
+async function setCookie(
+  name: string,
+  value: string,
+  options: { res: NextResponse; path?: string }
+) {
+  const { res, path = "/" } = options;
+  // Asynchronous operations could be added here if needed
+  res.cookies.set(name, value, { path });
+}
+
+// Helper function to get the browser language from the 'accept-language' header
+function getBrowserLanguage(req: NextRequest) {
+  const acceptLanguageHeader = req.headers.get("accept-language");
+  if (!acceptLanguageHeader) return defaultLocale;
+  // Extract the first preferred language from the 'accept-language' header
+  const browserLanguage = acceptLanguageHeader.split(",")[0]?.split("-")[0]; // Just the language code
+  console.log("Browser language detected:", browserLanguage);
+  return validLocales.includes(browserLanguage)
+    ? browserLanguage
+    : defaultLocale;
+}
+
+// Define the matcher for the middleware to run only on specific routes
+export const config = {
+  matcher: [
+    "/((?!_next/static|_next/image|favicon.ico|api).*)", // Exclude static assets, image optimization, favicon, and API routes
+  ],
+};
+
+const validLocales = ["en", "fr", "nl", "de", "es", "ta", "hi"];
+const defaultLocale = "en";
