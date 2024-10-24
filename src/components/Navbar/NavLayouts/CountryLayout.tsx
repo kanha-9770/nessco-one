@@ -27,15 +27,28 @@ export default function LocaleSwitcher() {
 
   const onSelectChange = (nextLocale: string) => {
     startTransition(() => {
-      const country = Array.isArray(params.country) ? params.country[0] : params.country
-      const currentLocale = Array.isArray(params.locale) ? params.locale[0] : params.locale
-      const newPathname = `/${country}/${nextLocale}${pathname.substring(pathname.indexOf(currentLocale) + currentLocale.length)}`
-      router.replace(newPathname)
-    })
-    setIsOpen(false)
-  }
+      const country = Array.isArray(params.country) ? params.country[0] : params.country;
+      const currentLocale = Array.isArray(params.locale) ? params.locale[0] : params.locale;
+  
+      // Ensure that we're replacing only the locale in the URL and not appending extra segments
+      let newPathname = pathname;
+      
+      // Replace the current locale in the pathname with the new one
+      if (newPathname.includes(`/${currentLocale}`)) {
+        newPathname = newPathname.replace(`/${currentLocale}`, `/${nextLocale}`);
+      }
+  
+      // Construct the new path ensuring proper format with the country and the nextLocale
+      const newUrl = `/${country}/${nextLocale}${newPathname.substring(newPathname.indexOf(nextLocale) + nextLocale.length)}`;
+      
+      router.replace(newUrl);
+    });
+    
+    setIsOpen(false);
+  };
+  
 
-  const filteredLocales = locales.filter(loc => 
+  const filteredLocales = locales.filter(loc =>
     loc.toLowerCase().includes(searchQuery.toLowerCase())
   )
 

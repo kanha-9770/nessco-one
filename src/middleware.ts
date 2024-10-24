@@ -426,7 +426,7 @@ const validCountryISOs = [
 async function fetchUserLocation(req: NextRequest) {
   console.log("Fetching client IP address...");
   const myip = "106.219.68.189"; // For development
-  const isDevelopment = false;
+  const isDevelopment = true;
 
   // Detect the client IP address
   const clientIP =
@@ -499,6 +499,7 @@ export async function middleware(req: NextRequest) {
 
   const isCountryValid = validCountryISOs.includes(userCountryISO);
   const isLanguageValid = validLocales.includes(userLanguage);
+
   const res = NextResponse.next();
   // If both country and language are in the URL and valid, set them in cookies
   if (isCountryValid && isLanguageValid) {
@@ -512,16 +513,12 @@ export async function middleware(req: NextRequest) {
   // If URL doesn't contain valid country/language, fetch the user's location and browser language
   const userLocation = await fetchUserLocation(req);
   const { country: detectedCountry } = userLocation;
-
   const browserLanguage = getBrowserLanguage(req);
-
   console.log("Detected user country:", detectedCountry);
   console.log("Browser language:", browserLanguage);
-
   // Set detected country and browser language in cookies
   setCookie("country", detectedCountry, { res, path: "/" });
   setCookie("language", browserLanguage, { res, path: "/" });
-
   // Redirect to the correct URL based on detected country/language
   const redirectURL = `/${detectedCountry}/${browserLanguage}`;
   const url = req.nextUrl.clone();
