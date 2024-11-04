@@ -423,109 +423,77 @@ const validCountryISOs = [
 // const validLocales = ["en", "fr", "nl", "de", "es", "ta", "hi"];
 // const defaultLocale = "en";
 // Function to fetch user location based on client IP address using ipwhois.app
+
+// Example of cached locations for demonstration. Replace with actual caching.
+const locationCache = new Map<string, { country: string; language: string }>();
+
 async function fetchUserLocation(req: NextRequest) {
-  console.log("Fetching client IP address...");
-  const myip = "106.219.68.189"; // For development
-  const isDevelopment = false;
+  const clientIP = req.headers.get('x-forwarded-for')?.split(',')[0] || req.headers.get('x-real-ip');
 
-  // Detect the client IP address
-  const clientIP =
-    req.headers.get("x-forwarded-for")?.split(",")[0] ||
-    req.headers.get("x-real-ip");
-  const newClientIp = isDevelopment ? myip : clientIP;
-
-  if (!newClientIp) {
-    console.error("Unable to detect client IP address.");
-    return { country: "us", language: "en" };
-  }
-  console.log("Detected client IP address:", newClientIp);
-
-  // Nessco Industries API
-  const nesscoUrl = `https://countrygeoapi.nesscoindustries.com/geoip/${newClientIp}/`;
-
-  try {
-    // Attempt to fetch from Nessco Industries API
-    const nesscoResponse = await fetch(nesscoUrl);
-    if (nesscoResponse.ok) {
-      const data = await nesscoResponse.json();
-      console.log("Using Nessco Industries API", nesscoUrl);
-      return {
-        country:
-          data.country?.toLowerCase() || data.country_code?.toLowerCase(),
-        language: "en",
-      };
-    }
-  } catch (error) {
-    console.error("Nessco Industries API failed:", error);
+  if (!clientIP) {
+    return { country: 'us', language: 'en' };
   }
 
-  // Fallback to other services if Nessco fails
-  const fallbackServices = [
-    `https://ipinfo.io/${newClientIp}/json/`,
-    `https://ipinfo.io/${newClientIp}/json/`,
-    `https://ipwhois.app/json/${newClientIp}`,
+  // Check cache first
+  if (locationCache.has(clientIP)) {
+    return locationCache.get(clientIP)!;
+  }
+
+  // API requests
+  const geoServices = [
+    `https://countrygeoapi.nesscoindustries.com/geoip/${clientIP}/`,
+    `https://ipinfo.io/${clientIP}/json/`,
+    `https://ipwhois.app/json/${clientIP}`,
   ];
 
-  for (const service of fallbackServices) {
-    try {
-      const response = await fetch(service);
-      if (response.ok) {
-        const data = await response.json();
-        console.log("Using fallback service", service);
-        return {
-          country:
-            data.country?.toLowerCase() || data.country_code?.toLowerCase(),
-          language: "en",
-        };
-      }
-    } catch (error) {
-      console.warn(`Service ${service} failed:`, error);
-    }
-  }
+  // Send requests in parallel
+  const geoRequests = geoServices.map(service => fetch(service).then(res => res.ok ? res.json() : null).catch(() => null));
+  const geoData = await Promise.all(geoRequests);
 
-  // Default to 'us' and 'en' if all services fail
-  console.error("All IP services failed, using default location.");
-  return { country: "us", language: "en" };
+  // Filter successful responses
+  const validData = geoData.find(data => data && (data.country || data.country_code));
+  const country = validData?.country?.toLowerCase() || validData?.country_code?.toLowerCase() || 'us';
+  const language = 'en';
+
+  // Cache result
+  locationCache.set(clientIP, { country, language });
+
+  return { country, language };
 }
 
-// Middleware to handle redirection and validation
+// Middleware function
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
-  console.log("Current path:", pathname);
-
-  const pathParts = pathname.split("/").filter(Boolean); // Get all parts of the path
-  const userCountryISO = pathParts[0]?.toLowerCase(); // First part is country
-  const userLanguage = pathParts[1]?.toLowerCase(); // Second part is language
+  const pathParts = pathname.split('/').filter(Boolean);
+  const userCountryISO = pathParts[0]?.toLowerCase();
+  const userLanguage = pathParts[1]?.toLowerCase();
 
   const isCountryValid = validCountryISOs.includes(userCountryISO);
   const isLanguageValid = validLocales.includes(userLanguage);
 
   const res = NextResponse.next();
-  // If both country and language are in the URL and valid, set them in cookies
+
   if (isCountryValid && isLanguageValid) {
-    console.log("Valid country and language in URL, setting cookies...");
-    // Set country and language in cookies
-    setCookie("country", userCountryISO, { res, path: "/" });
-    setCookie("language", userLanguage, { res, path: "/" });
+    setCookie('country', userCountryISO, { res, path: '/' });
+    setCookie('language', userLanguage, { res, path: '/' });
     return res;
   }
 
-  // If URL doesn't contain valid country/language, fetch the user's location and browser language
+  // Fetch user location
   const userLocation = await fetchUserLocation(req);
-  const { country: detectedCountry } = userLocation;
+  const { country } = userLocation;
   const browserLanguage = getBrowserLanguage(req);
-  console.log("Detected user country:", detectedCountry);
-  console.log("Browser language:", browserLanguage);
-  // Set detected country and browser language in cookies
-  setCookie("country", detectedCountry, { res, path: "/" });
-  setCookie("language", browserLanguage, { res, path: "/" });
-  // Redirect to the correct URL based on detected country/language
-  const redirectURL = `/${detectedCountry}/${browserLanguage}`;
+  setCookie('country', country, { res, path: '/' });
+  setCookie('language', browserLanguage, { res, path: '/' });
+
+  // Redirect
+  const redirectURL = `/${country}/${browserLanguage}`;
   const url = req.nextUrl.clone();
   url.pathname = redirectURL;
 
   return NextResponse.redirect(url);
 }
+
 
 // Helper function to set cookies
 async function setCookie(
