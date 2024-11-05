@@ -3,10 +3,9 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-
 import BlurImage from "../../ui/BlurImage";
-import data from "../../Constants/Navbar/index.json";
 import Link from "next/link";
+import { NavbarData } from "../types/constant";
 
 interface Machine {
   name: string;
@@ -24,14 +23,16 @@ interface ProductLayoutProps {
   setHoveredItem: (item: string | null) => void;
   setHeading: (heading: string | null) => void;
   setIsVisible: (visible: boolean) => void;
+  navData:NavbarData
 }
 
 const ProductLayout: React.FC<ProductLayoutProps> = ({
   setHoveredItem,
   setHeading,
   setIsVisible,
+  navData
 }) => {
-  const productData = data.find((item) => item.category === "Product")?.data;
+  const productData =navData?.navbar[1]?.data;
   const navLeftData: Machine[] = productData?.Machines || [];
   const navRightData: Link[] = productData?.SidebarLinks || [];
 

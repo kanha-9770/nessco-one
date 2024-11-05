@@ -89,6 +89,31 @@
     }
   },
   {
+    "category": "Announcement",
+    "data": {
+      "announcements": [
+        {
+          "category": "Join us at printing tech expo.",
+          "title": "Drupa Germany.",
+          "date": "May 28 to June 7, 2024",
+          "src": "drupa"
+        },
+        {
+          "category": "Join us at printing tech expo.",
+          "title": "Drupa Germany.",
+          "date": "May 28 to June 7, 2024",
+          "src": "drupa"
+        },
+        {
+          "category": "Join us at printing tech expo.",
+          "title": "Drupa Germany.",
+          "date": "May 28 to June 7, 2024",
+          "src": "drupa"
+        }
+      ]
+    }
+  },
+  {
     "category": "ProductSection",
     "data": {
       "products": [

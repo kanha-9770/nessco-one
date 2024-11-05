@@ -21,6 +21,8 @@ export interface NavLeftData {
     };
   }
   export interface data {
+    SidebarLinks: any[];
+    Machines: any[];
     videoDataItem: VideoDataItem[];
     DataBankItem:DataBankItem[];
     supportItem: SupportItem[];
