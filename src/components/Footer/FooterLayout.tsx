@@ -1,7 +1,6 @@
 // FooterLayout.tsx (Server-Side Fetching in Next.js App Router)
 import FooterNew from "./FooterNews";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server"; // For translations
-import { Metadata } from "next"; // Importing metadata if needed
 
 // Revalidate every 60 seconds
 export const revalidate = 60;
