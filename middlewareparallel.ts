@@ -424,96 +424,47 @@ const validCountryISOs = [
 // const defaultLocale = "en";
 // Function to fetch user location based on client IP address using ipwhois.app
 
+// Example of cached locations for demonstration. Replace with actual caching.
+const locationCache = new Map<string, { country: string; language: string }>();
 
-const validLocales = ["en", "fr", "nl", "de", "es", "ta", "hi"];
-const defaultLocale = "en";
-
-// Helper function to set cookies
-function setCookie(
-  name: string,
-  value: string,
-  options: { res: NextResponse; path?: string }
-) {
-  const { res, path = "/" } = options;
-  res.cookies.set(name, value, { path });
-}
-
-// Helper function to get the browser language from the 'accept-language' header
-function getBrowserLanguage(req: NextRequest) {
-  const acceptLanguageHeader = req.headers.get("accept-language");
-  if (!acceptLanguageHeader) return defaultLocale;
-
-  // Extract the first preferred language from the 'accept-language' header
-  const browserLanguage = acceptLanguageHeader.split(",")[0]?.split("-")[0];
-  console.log("Browser language detected:", browserLanguage);
-
-  return validLocales.includes(browserLanguage) ? browserLanguage : defaultLocale;
-}
-
-// Fetch the user's location based on IP
 async function fetchUserLocation(req: NextRequest) {
-  console.log("Fetching client IP address...");
-  const myip = "106.219.68.189"; // For development
-  const isDevelopment = false;
+  const clientIP = req.headers.get('x-forwarded-for')?.split(',')[0] || req.headers.get('x-real-ip');
 
-  const clientIP =
-    req.headers.get("x-forwarded-for")?.split(",")[0] ||
-    req.headers.get("x-real-ip");
-  const newClientIp = isDevelopment ? myip : clientIP;
-
-  if (!newClientIp) {
-    console.error("Unable to detect client IP address.");
-    return { country: "us", language: "en" };
-  }
-  console.log("Detected client IP address:", newClientIp);
-  const nesscoUrl = `https://countrygeoapi.nesscoindustries.com/geoip/${newClientIp}/`;
-  try {
-    const nesscoResponse = await fetch(nesscoUrl);
-    if (nesscoResponse.ok) {
-      const data = await nesscoResponse.json();
-      console.log("Using Nessco Industries API", nesscoUrl);
-      return {
-        country:
-          data.country?.toLowerCase() || data.country_code?.toLowerCase(),
-        language: "en",
-      };
-    }
-  } catch (error) {
-    console.error("Nessco Industries API failed:", error);
+  if (!clientIP) {
+    return { country: 'us', language: 'en' };
   }
 
-  const fallbackServices = [
-    `https://ipinfo.io/${newClientIp}/json/`,
-    `https://ipwhois.app/json/${newClientIp}`,
+  // Check cache first
+  if (locationCache.has(clientIP)) {
+    return locationCache.get(clientIP)!;
+  }
+
+  // API requests
+  const geoServices = [
+    `https://countrygeoapi.nesscoindustries.com/geoip/${clientIP}/`,
+    `https://ipinfo.io/${clientIP}/json/`,
+    `https://ipwhois.app/json/${clientIP}`,
   ];
 
-  for (const service of fallbackServices) {
-    try {
-      const response = await fetch(service);
-      if (response.ok) {
-        const data = await response.json();
-        console.log("Using fallback service", service);
-        return {
-          country:
-            data.country?.toLowerCase() || data.country_code?.toLowerCase(),
-          language: "en",
-        };
-      }
-    } catch (error) {
-      console.warn(`Service ${service} failed:`, error);
-    }
-  }
+  // Send requests in parallel
+  const geoRequests = geoServices.map(service => fetch(service).then(res => res.ok ? res.json() : null).catch(() => null));
+  const geoData = await Promise.all(geoRequests);
 
-  console.error("All IP services failed, using default location.");
-  return { country: "us", language: "en" };
+  // Filter successful responses
+  const validData = geoData.find(data => data && (data.country || data.country_code));
+  const country = validData?.country?.toLowerCase() || validData?.country_code?.toLowerCase() || 'us';
+  const language = 'en';
+
+  // Cache result
+  locationCache.set(clientIP, { country, language });
+
+  return { country, language };
 }
 
-// Middleware to handle redirection and validation
+// Middleware function
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
-  console.log("Current path:", pathname);
-
-  const pathParts = pathname.split("/").filter(Boolean);
+  const pathParts = pathname.split('/').filter(Boolean);
   const userCountryISO = pathParts[0]?.toLowerCase();
   const userLanguage = pathParts[1]?.toLowerCase();
 
@@ -523,31 +474,56 @@ export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
 
   if (isCountryValid && isLanguageValid) {
-    console.log("Valid country and language in URL, setting cookies...");
-    setCookie("country", userCountryISO, { res, path: "/" });
-    setCookie("language", userLanguage, { res, path: "/" });
+    setCookie('country', userCountryISO, { res, path: '/' });
+    setCookie('language', userLanguage, { res, path: '/' });
     return res;
   }
 
+  // Fetch user location
   const userLocation = await fetchUserLocation(req);
-  const { country: detectedCountry } = userLocation;
+  const { country } = userLocation;
   const browserLanguage = getBrowserLanguage(req);
-  console.log("Detected user country:", detectedCountry);
-  console.log("Browser language:", browserLanguage);
+  setCookie('country', country, { res, path: '/' });
+  setCookie('language', browserLanguage, { res, path: '/' });
 
-  setCookie("country", detectedCountry, { res, path: "/" });
-  setCookie("language", browserLanguage, { res, path: "/" });
-
-  const redirectURL = `/${detectedCountry}/${browserLanguage}`;
+  // Redirect
+  const redirectURL = `/${country}/${browserLanguage}`;
   const url = req.nextUrl.clone();
   url.pathname = redirectURL;
 
   return NextResponse.redirect(url);
 }
 
+
+// Helper function to set cookies
+async function setCookie(
+  name: string,
+  value: string,
+  options: { res: NextResponse; path?: string }
+) {
+  const { res, path = "/" } = options;
+  // Asynchronous operations could be added here if needed
+  res.cookies.set(name, value, { path });
+}
+
+// Helper function to get the browser language from the 'accept-language' header
+function getBrowserLanguage(req: NextRequest) {
+  const acceptLanguageHeader = req.headers.get("accept-language");
+  if (!acceptLanguageHeader) return defaultLocale;
+  // Extract the first preferred language from the 'accept-language' header
+  const browserLanguage = acceptLanguageHeader.split(",")[0]?.split("-")[0]; // Just the language code
+  console.log("Browser language detected:", browserLanguage);
+  return validLocales.includes(browserLanguage)
+    ? browserLanguage
+    : defaultLocale;
+}
+
 // Define the matcher for the middleware to run only on specific routes
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|api).*)",
+    "/((?!_next/static|_next/image|favicon.ico|api).*)", // Exclude static assets, image optimization, favicon, and API routes
   ],
 };
+
+const validLocales = ["en", "fr", "nl", "de", "es", "ta", "hi"];
+const defaultLocale = "en";
