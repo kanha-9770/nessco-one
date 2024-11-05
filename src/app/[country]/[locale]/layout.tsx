@@ -58,11 +58,12 @@ export async function generateMetadata({
   };
 }
 
-// Generate hreflang links for SEO
+// Generate hreflang links with absolute URLs
 const generateHreflangLinks = (country: CountryCode) => {
+  const baseUrl = "https://nessco-services.vercel.app"; // Replace with your actual base URL or use a dynamic solution if needed
   const supportedLocales = ["en", "fr", "nl", "de", "es", "hi", "ta"];
   const hreflangLinks = supportedLocales.map((locale) => {
-    const url = `/${country}/${locale}`;
+    const url = `${baseUrl}/${country}/${locale}`;
     return <link key={locale} rel="alternate" hrefLang={locale} href={url} />;
   });
 
@@ -71,7 +72,7 @@ const generateHreflangLinks = (country: CountryCode) => {
       key="x-default"
       rel="alternate"
       hrefLang="x-default"
-      href={`/${country}/${defaultLocale}`}
+      href={`${baseUrl}/${country}/${defaultLocale}`}
     />
   );
 
