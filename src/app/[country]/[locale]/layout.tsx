@@ -114,7 +114,7 @@ export default async function RootLayout({
           {/* Page content */}
           {children}
           <div className="mt-20">
-            <FooterLayout />
+            <FooterLayout params={{ locale }} />
           </div>
         </NextIntlClientProvider>
 

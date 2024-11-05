@@ -442,11 +442,9 @@ function setCookie(
 function getBrowserLanguage(req: NextRequest) {
   const acceptLanguageHeader = req.headers.get("accept-language");
   if (!acceptLanguageHeader) return defaultLocale;
-
   // Extract the first preferred language from the 'accept-language' header
   const browserLanguage = acceptLanguageHeader.split(",")[0]?.split("-")[0];
   console.log("Browser language detected:", browserLanguage);
-
   return validLocales.includes(browserLanguage) ? browserLanguage : defaultLocale;
 }
 
@@ -454,13 +452,11 @@ function getBrowserLanguage(req: NextRequest) {
 async function fetchUserLocation(req: NextRequest) {
   console.log("Fetching client IP address...");
   const myip = "106.219.68.189"; // For development
-  const isDevelopment = false;
-
+  const isDevelopment = true;
   const clientIP =
     req.headers.get("x-forwarded-for")?.split(",")[0] ||
     req.headers.get("x-real-ip");
   const newClientIp = isDevelopment ? myip : clientIP;
-
   if (!newClientIp) {
     console.error("Unable to detect client IP address.");
     return { country: "us", language: "en" };
