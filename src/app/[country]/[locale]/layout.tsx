@@ -4,9 +4,13 @@ import Script from "next/script";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import NavLayout from "@/components/Navbar/NavLayout";
-import { CountryCode, countryNames, defaultLocale } from "@/components/Constants/Navbar/config";
+import {
+  CountryCode,
+  countryNames,
+  defaultLocale,
+} from "@/components/Constants/Navbar/config";
 import dynamic from "next/dynamic";
-const FooterLayout=dynamic(()=>import("@/components/Footer/FooterLayout"))
+const FooterLayout = dynamic(() => import("@/components/Footer/FooterLayout"));
 const inter = Inter({
   subsets: ["latin"],
   variable: "--inter",
@@ -43,8 +47,10 @@ export async function generateMetadata({
     heroData = await fallbackRes.json();
   }
 
-  const metaTitle = heroData?.home?.[0]?.homeSeoData?.title || t("meta.home.title");
-  const metaDescription = heroData?.home?.[0]?.homeSeoData?.description || t("meta.home.description");
+  const metaTitle =
+    heroData?.home?.[0]?.homeSeoData?.title || t("meta.home.title");
+  const metaDescription =
+    heroData?.home?.[0]?.homeSeoData?.description || t("meta.home.description");
 
   return {
     title: `${metaTitle} - ${countryName}`,
@@ -106,7 +112,9 @@ export default async function RootLayout({
 
           {/* Page content */}
           {children}
-          <div className="mt-20"><FooterLayout/></div>
+          <div className="mt-20">
+            <FooterLayout />
+          </div>
         </NextIntlClientProvider>
 
         {/* External scripts */}

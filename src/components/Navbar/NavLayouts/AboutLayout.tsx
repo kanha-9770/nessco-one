@@ -62,7 +62,7 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData }) => {
             key={index}
             className="border-2 p-2 rounded-3xl lg:rounded-none lg:p-0 lg:border-none flex flex-col justify-start items-center lg:mt-4"
           >
-            <a href='#'>
+            <a href="#">
               <Image
                 src={item.image || "/path/to/fallback-image.jpg"} // Add a fallback image if `item.image` is undefined
                 alt={item.alt || "Fallback alt text"} // Provide a fallback alt text if `item.alt` is undefined
