@@ -113,7 +113,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <head>{generateHreflangLinks(country,"en")}</head>
+      <head>{generateHreflangLinks(country,defaultLocale)}</head>
       <body className={`${inter.variable} ${poppins.variable}`}>
         {/* NextIntlClientProvider wraps the children with messages and locale */}
         <NextIntlClientProvider locale={locale} messages={messages}>
