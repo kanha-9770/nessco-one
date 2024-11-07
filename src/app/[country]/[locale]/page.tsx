@@ -97,12 +97,12 @@ export async function generateMetadata({
   }
 
   const seoData = homeData.home[0].homeSeoData;
+  const country = cookies().get("country")?.value || "in";
 
   return {
-    title: `${seoData?.title} - ${countryName} `,
+    title:`${seoData?.title} - ${countryName} `,
     description: seoData?.description,
     keywords: seoData?.keywords,
-
     openGraph: {
       title: seoData.openGraph.title,
       description: seoData.openGraph.description,
@@ -114,7 +114,7 @@ export async function generateMetadata({
     },
     robots: seoData?.robots,
     alternates: {
-      canonical: seoData?.alternates?.canonical,
+      canonical:`https://nessco-services.vercel.app/${country}/${locale}`,
     },
     twitter: {
       card: seoData.twitter.card as TwitterCardType, // Explicitly cast to TwitterCardType
