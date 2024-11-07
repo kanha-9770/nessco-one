@@ -112,22 +112,19 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang={locale}>
+    <html lang={locale} >
       <head>{generateHreflangLinks(country,defaultLocale)}</head>
       <body className={`${inter.variable} ${poppins.variable}`}>
         {/* NextIntlClientProvider wraps the children with messages and locale */}
         <NextIntlClientProvider locale={locale} messages={messages}>
           {/* Navbar with internationalization */}
           <NavLayout params={{ locale }} />
-
           {/* Page content */}
           {children}
           <div className="mt-20">
             <FooterLayout params={{ locale }} />
           </div>
         </NextIntlClientProvider>
-
-        {/* External scripts */}
         <Script
           src="https://cdn.pagesense.io/js/nesscoindia/ff3c25fdacd845338fcb5edd343fcde6.js"
           strategy="lazyOnload"
