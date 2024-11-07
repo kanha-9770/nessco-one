@@ -18,6 +18,9 @@ export interface HomeSeoData {
   description: string;
   keywords: string;
   openGraph: {
+    siteName: string;
+    url: string;
+    type: string;
     title: string;
     description: string;
     images: OpenGraphImage[];

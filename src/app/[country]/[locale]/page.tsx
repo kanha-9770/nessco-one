@@ -1,17 +1,24 @@
 import MainLayout from "@/components/Home/MainLayout";
 import { HomeData } from "@/components/Home/types/constant";
 import { Metadata } from "next";
-import { cookies } from "next/headers"; // Server-side (Next.js app directory
+import { cookies } from "next/headers"; // Server-side (Next.js app directory)
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import React from "react";
+
 const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
 const countryUrl = "https://countryjson.nesscoindustries.com/";
 const locales = ["en", "fr", "nl", "de", "es", "hi", "ta"] as const;
+
+// Define the allowed Twitter card types
+type TwitterCardType = "summary" | "summary_large_image" | "player" | "app" ;
+
 type Props = {
   params: { locale: string };
 };
+
 // Revalidate every 60 seconds (or any time period you prefer)
 export const revalidate = 60;
+
 // Fetch home data based on the locale
 async function fetchHomeData(locale: string): Promise<HomeData | null> {
   try {
@@ -26,9 +33,11 @@ async function fetchHomeData(locale: string): Promise<HomeData | null> {
     return data;
   }
 }
+
 type CountryNames = {
   [locale: string]: string; // Each locale key maps directly to the country name
 };
+
 async function fetchCountryData(locale: string): Promise<string> {
   const country = cookies().get("country")?.value || "in";
   console.log("countryname", country);
@@ -58,6 +67,7 @@ export async function generateMetadata({
   }
   const homeData = await fetchHomeData(locale);
   const countryName = await fetchCountryData(locale);
+
   if (!homeData && !countryName) {
     return {
       title: "Default Title",
@@ -92,19 +102,30 @@ export async function generateMetadata({
     title: `${seoData?.title} - ${countryName} `,
     description: seoData?.description,
     keywords: seoData?.keywords,
+
     openGraph: {
-      title: seoData?.openGraph?.title,
-      description: seoData?.openGraph?.description,
-      images: seoData?.openGraph?.images?.map(
-        (image: { url: string; alt: string }) => ({
-          url: image.url,
-          alt: image.alt,
-        })
-      ),
+      title: seoData.openGraph.title,
+      description: seoData.openGraph.description,
+      url: seoData.alternates.canonical,
+      images: seoData.openGraph.images.map((image) => ({
+        url: image.url,
+        alt: image.alt,
+      })),
     },
     robots: seoData?.robots,
     alternates: {
       canonical: seoData?.alternates?.canonical,
+    },
+    twitter: {
+      card: seoData.twitter.card as TwitterCardType, // Explicitly cast to TwitterCardType
+      site: seoData.twitter.site,
+      title: seoData.twitter.title,
+      description: seoData.twitter.description,
+      images: [
+        {
+          url: seoData.twitter.image,
+        },
+      ],
     },
   };
 }
