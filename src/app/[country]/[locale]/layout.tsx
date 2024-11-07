@@ -57,16 +57,24 @@ export async function generateMetadata({
     description: `${metaDescription} (${countryName})`,
   };
 }
-
 // Generate hreflang links with absolute URLs
-const generateHreflangLinks = (country: CountryCode) => {
+const generateHreflangLinks = (country: CountryCode, defaultLocale: string) => {
   const baseUrl = "https://nessco-services.vercel.app"; // Replace with your actual base URL or use a dynamic solution if needed
   const supportedLocales = ["en", "fr", "nl", "de", "es", "hi", "ta"];
+  
   const hreflangLinks = supportedLocales.map((locale) => {
     const url = `${baseUrl}/${country}/${locale}`;
-    return <link key={locale} rel="alternate" hrefLang={locale} href={url} />;
+    return (
+      <link 
+        key={locale} 
+        rel="alternate" 
+        hrefLang={`${locale}-${country}`} 
+        href={url} 
+      />
+    );
   });
 
+  // Add the x-default link
   hreflangLinks.push(
     <link
       key="x-default"
@@ -78,6 +86,7 @@ const generateHreflangLinks = (country: CountryCode) => {
 
   return hreflangLinks;
 };
+
 
 // Root layout component with internationalization
 export default async function RootLayout({
@@ -104,7 +113,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <head>{generateHreflangLinks(country)}</head>
+      <head>{generateHreflangLinks(country,"en")}</head>
       <body className={`${inter.variable} ${poppins.variable}`}>
         {/* NextIntlClientProvider wraps the children with messages and locale */}
         <NextIntlClientProvider locale={locale} messages={messages}>
