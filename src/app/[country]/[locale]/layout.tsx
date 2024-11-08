@@ -28,7 +28,7 @@ const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
 const locales = ["en", "fr", "nl", "de", "es", "hi", "ta"] as const;
 
 export async function generateMetadata({
-  params:{ country, locale },
+  params: { country, locale },
 }: {
   params: { country: CountryCode; locale: string };
 }) {
@@ -62,15 +62,15 @@ export async function generateMetadata({
 const generateHreflangLinks = (country: CountryCode, defaultLocale: string) => {
   const baseUrl = "https://nessco-services.vercel.app"; // Replace with your actual base URL or use a dynamic solution if needed
   const supportedLocales = ["en", "fr", "nl", "de", "es", "hi", "ta"];
-  
+
   const hreflangLinks = supportedLocales.map((locale) => {
     const url = `${baseUrl}/${country}/${locale}`;
     return (
-      <link 
-        key={locale} 
-        rel="alternate" 
-        hrefLang={`${locale}-${country}`} 
-        href={url} 
+      <link
+        key={locale}
+        rel="alternate"
+        hrefLang={`${locale}-${country.toUpperCase()}`}
+        href={url}
       />
     );
   });
@@ -81,13 +81,12 @@ const generateHreflangLinks = (country: CountryCode, defaultLocale: string) => {
       key="x-default"
       rel="alternate"
       hrefLang="x-default"
-      href={`${baseUrl}/${country}/${defaultLocale}`}
+      href={`${baseUrl}/${country.toUpperCase()}/${defaultLocale}`}
     />
   );
 
   return hreflangLinks;
 };
-
 
 // Root layout component with internationalization
 export default async function RootLayout({
@@ -101,7 +100,7 @@ export default async function RootLayout({
   if (!locales.includes(locale as any)) {
     locale = "en";
   }
-  locale = locales.includes(locale as any ) ? locale : "en"; 
+  locale = locales.includes(locale as any) ? locale : "en";
 
   // Ensure locale is correctly set here for debugging
   console.log("Rendering with locale:", locale);
@@ -116,8 +115,8 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang={locale}  >
-      <head>{generateHreflangLinks(country,defaultLocale)}</head>
+    <html lang={`${locale}-${country.toUpperCase()}`}>
+      <head>{generateHreflangLinks(country, defaultLocale)}</head>
       <body className={`${inter.variable} ${poppins.variable}`}>
         {/* NextIntlClientProvider wraps the children with messages and locale */}
         <NextIntlClientProvider locale={locale} messages={messages}>
