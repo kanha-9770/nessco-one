@@ -47,12 +47,10 @@ export async function generateMetadata({
     const fallbackRes = await fetch(`${apiUrl}en/hero.json`);
     heroData = await fallbackRes.json();
   }
-
   const metaTitle =
     heroData?.home?.[0]?.homeSeoData?.title || t("meta.home.title");
   const metaDescription =
     heroData?.home?.[0]?.homeSeoData?.description || t("meta.home.description");
-
   return {
     title: `${metaTitle} - ${countryName}`,
     description: `${metaDescription} (${countryName})`,
@@ -81,7 +79,7 @@ const generateHreflangLinks = (country: CountryCode, defaultLocale: string) => {
       key="x-default"
       rel="alternate"
       hrefLang="x-default"
-      href={`${baseUrl}/${country.toUpperCase()}/${defaultLocale}`}
+      href={`${baseUrl}/${country}/${defaultLocale}`}
     />
   );
 

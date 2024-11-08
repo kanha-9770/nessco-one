@@ -114,7 +114,7 @@ export async function generateMetadata({
     },
     robots: seoData?.robots,
     alternates: {
-      canonical:`https://nessco-services.vercel.app/${country.toUpperCase()}/${locale}`,
+      canonical:`https://nessco-services.vercel.app/${country}/${locale}`,
     },
     twitter: {
       card: seoData.twitter.card as TwitterCardType, // Explicitly cast to TwitterCardType
