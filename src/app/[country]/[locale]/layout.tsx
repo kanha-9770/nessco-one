@@ -4,6 +4,7 @@ import Script from "next/script";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import NavLayout from "@/components/Navbar/NavLayout";
+
 import {
   CountryCode,
   countryNames,
@@ -27,7 +28,7 @@ const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
 const locales = ["en", "fr", "nl", "de", "es", "hi", "ta"] as const;
 
 export async function generateMetadata({
-  params: { country, locale },
+  params:{ country, locale },
 }: {
   params: { country: CountryCode; locale: string };
 }) {
@@ -100,7 +101,10 @@ export default async function RootLayout({
   if (!locales.includes(locale as any)) {
     locale = "en";
   }
+  locale = locales.includes(locale as any ) ? locale : "en"; 
 
+  // Ensure locale is correctly set here for debugging
+  console.log("Rendering with locale:", locale);
   unstable_setRequestLocale(locale);
 
   // Fetch translations for the locale
@@ -112,7 +116,7 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang={locale} >
+    <html lang={locale}  >
       <head>{generateHreflangLinks(country,defaultLocale)}</head>
       <body className={`${inter.variable} ${poppins.variable}`}>
         {/* NextIntlClientProvider wraps the children with messages and locale */}
