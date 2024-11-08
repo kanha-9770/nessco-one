@@ -57,7 +57,7 @@ export async function generateMetadata({
   };
 }
 // Generate hreflang links with absolute URLs
-const generateHreflangLinks = (country: CountryCode, defaultLocale: string) => {
+const generateHreflangLinks = (country: CountryCode) => {
   const baseUrl = "https://nessco-services.vercel.app"; // Replace with your actual base URL or use a dynamic solution if needed
   const supportedLocales = ["en", "fr", "nl", "de", "es", "hi", "ta"];
 
@@ -114,7 +114,7 @@ export default async function RootLayout({
 
   return (
     <html lang={`${locale}-${country.toUpperCase()}`}>
-      <head>{generateHreflangLinks(country, defaultLocale)}</head>
+      <head>{generateHreflangLinks(country)}</head>
       <body className={`${inter.variable} ${poppins.variable}`}>
         {/* NextIntlClientProvider wraps the children with messages and locale */}
         <NextIntlClientProvider locale={locale} messages={messages}>
