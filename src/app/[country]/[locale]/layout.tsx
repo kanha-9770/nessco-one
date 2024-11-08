@@ -79,7 +79,7 @@ const generateHreflangLinks = (country: CountryCode, defaultLocale: string) => {
       key="x-default"
       rel="alternate"
       hrefLang="x-default"
-      href={`${baseUrl}/${country}/${defaultLocale}`}
+      href={`${baseUrl}/in/en`} // x-default URL as your main English page
     />
   );
 
