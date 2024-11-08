@@ -1,10 +1,8 @@
 import createNextIntlPlugin from "next-intl/plugin";
-
 const withNextIntl = createNextIntlPlugin();
 // Import the bundle analyzer using the ES module syntax
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-
   images: {
     remotePatterns: [
       {
@@ -13,11 +11,11 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "https://tinypng.com",
+        hostname: "tinypng.com", // Removed 'https://' here to make it match without 'www.'
       },
       {
         protocol: "https",
-        hostname: "www.youtube.com",
+        hostname: "www.youtube.com", // This is fine, 'www.' is already included.
       },
       {
         protocol: "https",
@@ -33,11 +31,16 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "www.nesscoindia.com",
+        hostname: "www.nesscoindia.com", // This is fine, 'www.' is already included.
       },
       {
         protocol: "https",
         hostname: "res.cloudinary.com",
+      },
+      // Allow for any 'www.' hostnames
+      {
+        protocol: "https",
+        hostname: "www.*", // This will allow all 'www.' subdomains under 'https://'
       },
     ],
   },
@@ -50,6 +53,5 @@ const nextConfig = {
   //   ],  // List any additional packages you'd like to optimize
   // }
 };
-
 // Export the configuration with the bundle analyzer applied
 export default withNextIntl(nextConfig);

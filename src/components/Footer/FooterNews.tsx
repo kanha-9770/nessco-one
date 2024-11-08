@@ -5,6 +5,7 @@ import styles from "./footer.module.css";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { localeNames } from "@/lib/localesData";
+import LocaleSwitcher from "../Navbar/NavLayouts/CountryLayout";
 
 interface FooterProps {
   footerData: {
@@ -91,11 +92,11 @@ const FooterNew: React.FC<FooterProps> = ({ footerData ,country,langauge}) => {
                 >
                   {footerData.languageTitle}
                 </h1>
-                <p
+                <div
                   className={`mt-3 font-light text-xs lg:text-xs md:text-lg font-poppins hover:text-red-600 cursor-pointer lg:w-[7rem] md:w-[10rem] w-[7rem] ${textColor}`}
                 >
-                  {country} | {langageName}
-                </p>
+                  <LocaleSwitcher type="footer"/>
+                </div>
                 <h3 className={`${styles.footerdesctitle} font-semibold font-poppins invert-0 text-sm md:text-xl lg:text-sm mt-6 lg:w-[14rem] md:w-[20rem] w-[15rem] `}>
                   {footerData.awarTitle}
                 </h3>

@@ -1,9 +1,9 @@
+import { locales } from "@/i18n";
 import NavbarDemo from "./Navbar";
 import { NavbarData } from "./types/constant";
 import { unstable_setRequestLocale } from "next-intl/server";
 
 const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
-const locales = ["en", "fr", "nl", "de", "es", "hi", "ta"] as const;
 
 type Props = {
   params: { locale: string };

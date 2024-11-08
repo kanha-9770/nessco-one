@@ -4,10 +4,10 @@ import { Metadata } from "next";
 import { cookies } from "next/headers"; // Server-side (Next.js app directory)
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import React from "react";
+import { locales } from "@/i18n";
 
 const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
 const countryUrl = "https://countryjson.nesscoindustries.com/";
-const locales = ["en", "fr", "nl", "de", "es", "hi", "ta"] as const;
 
 // Define the allowed Twitter card types
 type TwitterCardType = "summary" | "summary_large_image" | "player" | "app" ;

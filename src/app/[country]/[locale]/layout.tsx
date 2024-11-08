@@ -10,6 +10,7 @@ import {
   countryNames,
 } from "@/components/Constants/Navbar/config";
 import dynamic from "next/dynamic";
+import { locales } from "@/i18n";
 const FooterLayout = dynamic(() => import("@/components/Footer/FooterLayout"));
 const inter = Inter({
   subsets: ["latin"],
@@ -24,7 +25,6 @@ const poppins = Poppins({
 });
 
 const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
-const locales = ["en", "fr", "nl", "de", "es", "hi", "ta"] as const;
 
 export async function generateMetadata({
   params: { country, locale },
@@ -58,7 +58,7 @@ export async function generateMetadata({
 // Generate hreflang links with absolute URLs
 const generateHreflangLinks = (country: CountryCode) => {
   const baseUrl = "https://nessco-services.vercel.app"; // Replace with your actual base URL or use a dynamic solution if needed
-  const supportedLocales = ["en", "fr", "nl", "de", "es", "hi", "ta"];
+  const supportedLocales = locales;
 
   const hreflangLinks = supportedLocales.map((locale) => {
     const url = `${baseUrl}/${country}/${locale}`;
