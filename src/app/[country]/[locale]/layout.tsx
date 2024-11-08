@@ -8,7 +8,6 @@ import NavLayout from "@/components/Navbar/NavLayout";
 import {
   CountryCode,
   countryNames,
-  defaultLocale,
 } from "@/components/Constants/Navbar/config";
 import dynamic from "next/dynamic";
 const FooterLayout = dynamic(() => import("@/components/Footer/FooterLayout"));
