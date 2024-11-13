@@ -1,12 +1,20 @@
 import React from "react";
+import { ContactItem } from "./types/constant";
 
-const Reach: React.FC = () => {
+interface MainLayoutProps{
+  contactData:ContactItem;
+}
+
+const Reach: React.FC <MainLayoutProps> =({contactData}) => {
+  const reachtitle=contactData?.contact[0].heading[0]?.reachtitle;
+  const reachhighlight=contactData?.contact[0].heading[0]?.reachhighlight;
+
   return (
     <>
       <section className="bg-gray-100 lg:py-10 lg:h-full h-screen flex flex-row ">
         <div className="container  h-full w-[90%] bg-white rounded-[2rem] p-5">
           <h2 className="text-3xl font-medium font-poppins text-center mb-2">
-            How To <span className="text-[#f70000]">Reach </span>
+            {reachtitle} <span className="text-[#f70000]">{reachhighlight}</span>
           </h2>
           <div className=" flex flex-row ">
             <iframe

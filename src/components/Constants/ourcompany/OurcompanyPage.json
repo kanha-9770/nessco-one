@@ -1,0 +1,199 @@
+{
+  "companySeoData": {
+    "title": "Ourcompany Manufacturer and Supplier - Nessco India",
+    "description": "Trusted About Manufacturer since 1978. Nessco offers a wide range of paper cup making machine pairing with the latest technology. Enquire now!",
+    "keywords": "Nessco India",
+    "openGraph": {
+      "title": "About Manufacturer and Supplier - Nessco India",
+      "description": "Trusted About Manufacturer since 1978. Nessco offers a wide range of paper cup making machine pairing with the latest technology. Enquire now!",
+      "images": [
+        {
+          "url": "https://www.nesscoindia.com/Assets/images/resource/fully-automatic-paper-cup-making-machine.webp",
+          "alt": "Fully Automatic Paper Cup Making Machine"
+        }
+      ]
+    },
+    "robots": "index, follow",
+
+    "alternates": {
+      "canonical": "https://www.nesscoindia.com"
+    },
+    "twitter": {
+      "card": "summary_large_image",
+      "site": "@NesscoIndia",
+      "title": "About Manufacturer - Nessco India",
+      "description": "Nessco India provides top-quality paper cup making machines paired with the latest technology. Enquire today!",
+      "image": "https://www.nesscoindia.com/Assets/images/resource/fully-automatic-paper-cup-making-machine.webp"
+    }
+  },
+  "Page1Data": {
+    "video": "https://res.cloudinary.com/dlti4o10e/video/upload/v1729076822/yzenzpjxbp6ct0dnqmul.mp4",
+    "title": "Our Company",
+    "getaQuote": "Get a Quote",
+    "mainImg": "/assets/about/ourcompany/company2.svg",
+    "leftBorderImg": "/assets/about/LeftBorderImg.svg",
+    "rightBorderImg": "/assets/about/RightBorderImg.svg",
+    "description": "Our mission is to provide innovative, high-quality paper cup machines that enable efficient, eco-friendly production. We envision leading the industry in sustainable manufacturing, setting the standard for environmentally responsible packaging solutions.",
+    "image": [
+      {
+        "img": "/assets/about/ourcompany/icon2.svg",
+        "title": "Food Packaging Machinery"
+      },
+      {
+        "img": "/assets/about/ourcompany/icon2.svg",
+        "title": "40+ Years of experience"
+      },
+      {
+        "img": "/assets/about/ourcompany/company2.svg"
+      },
+      {
+        "img": "/assets/about/ourcompany/icon2.svg",
+        "title": "40+ Years of experience"
+      },
+      {
+        "img": "/assets/about/ourcompany/icon2.svg",
+        "title": "40+ Years of experience"
+      }
+    ]
+  },
+  "sustainableContent": {
+    "heading": "The Future is",
+    "highlight": "Sustainable",
+    "description": "Our food packaging machines are designed for efficiency and sustainability, utilizing eco-friendly materials to minimize waste. We help businesses adopt greener practices, ensuring top-quality packaging with reduced environmental impact.",
+    "buttonText": "Explore Solutions",
+    "image": "https://res.cloudinary.com/dlti4o10e/image/upload/v1729077017/vqdquwikkv6vvmuwtnio.webp"
+  },
+
+  "ourStoryContent": {
+    "title": "Our ",
+    "highlight": "Story",
+    "paragraphs": [
+      "Nessco India, established with a vision of excellence and innovation, has grown into a leading name in the manufacturing sector. Founded in [Year], the company began as a modest venture, focusing on high-quality machinery and equipment. Over the years, Nessco India has expanded its product range and services, adapting to the latest technological advancements and industry demands. With a commitment to quality, customer satisfaction, and continuous improvement, Nessco India has built a reputation for reliability and expertise. Today, it stands as a testament to hard work and dedication, serving clients across various sectors with state-of-the-art solutions and unparalleled service."
+    ],
+    "highlightedText": "Nessco India",
+    "image": {
+      "src": "https://res.cloudinary.com/dlti4o10e/image/upload/v1729077256/sptpbe9w74osipkmqk3n.webp",
+      "alt": "Our Story Image",
+      "width": 820,
+      "height": 410
+    }
+  },
+
+  "ourfounderheading": {
+    "title": "Our ",
+    "highlight": "Founders",
+    "caption": "The work we do reflect who we are"
+  },
+  "founders": [
+    {
+      "name": "Mr Harshit Agarwal",
+      "title": "Director and CEO",
+      "description": "We innovate with sustainability at our core, transforming challenges into eco-friendly solutions for a better future.",
+      "imageSrc": "/assets/about/nessco-team.webp",
+      "linkedInUrl": "#"
+    },
+    {
+      "name": "Mr Gopal Lal Gupta",
+      "title": "Director and CEO",
+      "description": "We innovate with sustainability at our core, transforming challenges into eco-friendly solutions for a better future.",
+      "imageSrc": "/assets/about/nessco-team.webp",
+      "linkedInUrl": "#"
+    },
+    {
+      "name": "Mr Yogesh Agarwal",
+      "title": "Director and CEO",
+      "description": "We innovate with sustainability at our core, transforming challenges into eco-friendly solutions for a better future.",
+      "imageSrc": "/assets/about/nessco-team.webp",
+      "linkedInUrl": "#"
+    }
+  ],
+  "viewgallery": "View Gallery",
+  "images": [
+    {
+      "src": "/assets/about/oldmen.webp",
+      "alt": "Image 1",
+      "styles": "lg:top-36 top-36 lg:left-[35%] left-[15%] lg:w-[10%] lg:h-[20%] h-[13%] w-[23%]"
+    },
+    {
+      "src": "/assets/about/oldwomen.jpg",
+      "alt": "Image 2",
+      "styles": "lg:top-[35%] top-[37%] lg:left-[87%] left-[80%] lg:w-[6%] lg:h-[12%] h-[11%] w-[16%]"
+    },
+    {
+      "src": "/assets/about/palace.jpeg",
+      "alt": "Image 3",
+      "styles": "lg:visible invisible lg:top-[58%] top-[52%] left-2 lg:w-[7%] w-[25%] h-[11%]"
+    },
+    {
+      "src": "/assets/about/wheel.jpg",
+      "alt": "Image 4",
+      "styles": "lg:top-[30%] top-[34%] lg:left-16 left-2 lg:w-[20%] lg:h-[25%] h-[13%] w-[45%]"
+    },
+    {
+      "src": "/assets/about/palace.jpeg",
+      "alt": "Image 5",
+      "styles": "lg:top-[50%] top-[50%] lg:left-[24%] left-[4%] lg:w-[28%] lg:h-[36%] h-[25%] w-[50%] image-scale-up"
+    },
+    {
+      "src": "/assets/about/oldwomen.jpg",
+      "alt": "Image 6",
+      "styles": "lg:visible invisible lg:top-[70%] top-[79%] lg:left-[8%] left-[10%] lg:w-[6%] lg:h-[19%] w-[19%] h-[11%]"
+    },
+    {
+      "src": "/assets/about/palace.jpeg",
+      "alt": "Image 7",
+      "styles": "lg:top-[57%] top-[75%] left-[56%] lg:w-[15%] lg:h-[15%] w-[33%] h-[12%] image-translate-up"
+    },
+    {
+      "src": "/assets/about/wheel.jpg",
+      "alt": "Image 8",
+      "styles": "lg:top-[75%] lg:left-[68%] lg:w-[7%] lg:h-[12%] h-[7%] w-[20%] top-[82%] left-[24%]"
+    },
+    {
+      "src": "/assets/about/banner3.jpg",
+      "alt": "Image 9",
+      "styles": "lg:w-[26%] lg:h-[23%] w-[50%] h-[15%] lg:left-[55%] left-[45%] lg:top-40 top-36"
+    },
+    {
+      "src": "/assets/about/palace2.webp",
+      "alt": "Image 10",
+      "styles": "top-[55%] lg:left-[83%] left-[70%] lg:w-[13%] lg:h-[25%] h-[16%] w-[26%] image-translate-up"
+    }
+  ],
+
+  "Data": [
+    {
+      "title": "1998",
+      "description": "Nessco India, founded in 1980, has evolved into a prominent leader in the manufacturing industry. Starting as a small enterprise, the company focused on producing high-quality packaging machinery and equipment. Over the decades, Nessco India has expanded its operations, embracing technological advancements and diversifying its product portfolio to meet the changing needs of the market",
+      "image": "/assets/about/nessco-team.webp"
+    },
+    {
+      "title": "1999",
+      "description": "Nessco India, founded in 1980, has evolved into a prominent leader in the manufacturing industry. Starting as a small enterprise, the company focused on producing high-quality packaging machinery and equipment. Over the decades, Nessco India has expanded its operations, embracing technological advancements and diversifying its product portfolio to meet the changing needs of the market",
+      "image": "/assets/about/nessco-team.webp"
+    },
+    {
+      "title": "2000",
+      "description": "Nessco India, founded in 1980, has evolved into a prominent leader in the manufacturing industry. Starting as a small enterprise, the company focused on producing high-quality packaging machinery and equipment. Over the decades, Nessco India has expanded its operations, embracing technological advancements and diversifying its product portfolio to meet the changing needs of the market",
+      "image": "/assets/about/nessco-team.webp"
+    },
+    {
+      "title": "2001",
+      "description": "Nessco India, founded in 1980, has evolved into a prominent leader in the manufacturing industry. Starting as a small enterprise, the company focused on producing high-quality packaging machinery and equipment. Over the decades, Nessco India has expanded its operations, embracing technological advancements and diversifying its product portfolio to meet the changing needs of the market",
+      "image": "/assets/about/nessco-team.webp"
+    },
+    {
+      "title": "2002",
+      "description": "Nessco India, founded in 1980, has evolved into a prominent leader in the manufacturing industry. Starting as a small enterprise, the company focused on producing high-quality packaging machinery and equipment. Over the decades, Nessco India has expanded its operations, embracing technological advancements and diversifying its product portfolio to meet the changing needs of the market",
+      "image": "/assets/about/nessco-team.webp"
+    }
+  ],
+
+  "teampage": {
+    "video": "https://res.cloudinary.com/dlti4o10e/video/upload/v1729077376/f8z9q4pdi7s6hgiw0b4r.mp4",
+    "heading": "Meet The ",
+    "highlight": "Team",
+    "quote": "\"Build with Unity & Trust\"",
+    "description": "At our company, the team is built on the foundations of unity and trust, creating a cohesive and supportive work environment. Each member brings unique skills and perspectives, contributing to a culture where collaboration and mutual respect are paramount."
+  }
+}

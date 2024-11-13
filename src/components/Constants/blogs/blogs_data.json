@@ -1,0 +1,551 @@
+{
+  "blogsSeoData": {
+    "title": "Blogs Manufacturer and Supplier - Nessco India",
+    "description": "Trusted Blogs Manufacturer since 1978. Nessco offers a wide range of paper cup making machine pairing with the latest technology. Enquire now!",
+    "keywords": "Nessco India",
+    "openGraph": {
+      "title": "Blogs Manufacturer and Supplier - Nessco India",
+      "description": "Trusted Blogs Manufacturer since 1978. Nessco offers a wide range of paper cup making machine pairing with the latest technology. Enquire now!",
+      "images": [
+        {
+          "url": "https://www.nesscoindia.com/Assets/images/resource/fully-automatic-paper-cup-making-machine.webp",
+          "alt": "Fully Automatic Paper Cup Making Machine"
+        }
+      ]
+    },
+    "robots": "index, follow",
+    "alternates": {
+      "canonical": "https://www.nesscoindia.com"
+    },
+    "twitter": {
+      "card": "summary_large_image",
+      "site": "@NesscoIndia",
+      "title": "Blogs Manufacturer - Nessco India",
+      "description": "Nessco India provides top-quality paper cup making machines paired with the latest technology. Enquire today!",
+      "image": "https://www.nesscoindia.com/Assets/images/resource/fully-automatic-paper-cup-making-machine.webp"
+    }
+  },
+  "Filter": {
+    "filter": "Filters",
+    "byCategory": "By Category",
+    "placeholder": "Search...",
+    "categories": [
+      {
+        "title": "All Categories"
+      },
+      {
+        "title": "Salad Bowls"
+      },
+      {
+        "title": "Popcorn Tub"
+      },
+      {
+        "title": "Ice Cream Cup"
+      },
+      {
+        "title": "Sustainability"
+      },
+      {
+        "title": "Fries Bowls"
+      },
+      {
+        "title": "Bowls"
+      }
+    ],
+    "moreCategories": "9 More"
+  },
+  "AllBlogs": {
+    "cancel": "Cancel",
+    "apply": "Apply",
+    "blogs": {
+      "headBlogs": {
+        "allBlogs": "All Blogs",
+        "fullCoverage": "Full Coverage",
+        "machineImg": "/assets/Blogs/Machine.png",
+        "machineBg": "/assets/Blogs/MachineBg.mp4",
+        "imgTitle": "Revolutionary Speed Unveiled",
+        "imgParagraph": "Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity.",
+        "paragraphList": [
+          "25% Higher Productivity",
+          "Better Cup Strength",
+          "Double Curling Station",
+          "Class Leading Consistency with 24x7 production capacity."
+        ]
+      },
+      "subBlogs": [
+        {
+          "img": "/assets/Blogs/DialogImg.jpg",
+          "title": "Excellence Showcased at DRUPA",
+          "description": "Nessco India proudly showcased its cutting-edge innovations at the recent DRUPA exhibition.",
+          "fullCoverage": "Full Coverage"
+        },
+        {
+          "img": "/assets/Blogs/DialogImg.jpg",
+          "title": "Excellence Showcased at DRUPA",
+          "description": "Nessco India proudly showcased its cutting-edge innovations at the recent DRUPA exhibition.",
+          "fullCoverage": "Full Coverage"
+        },
+        {
+          "img": "/assets/Blogs/DialogImg.jpg",
+          "title": "Excellence Showcased at DRUPA",
+          "description": "Nessco India proudly showcased its cutting-edge innovations at the recent DRUPA exhibition.",
+          "fullCoverage": "Full Coverage"
+        },
+        {
+          "img": "/assets/Blogs/DialogImg.jpg",
+          "title": "Excellence Showcased at DRUPA",
+          "description": "Nessco India proudly showcased its cutting-edge innovations at the recent DRUPA exhibition.",
+          "fullCoverage": "Full Coverage"
+        },
+        {
+          "img": "/assets/Blogs/DialogImg.jpg",
+          "title": "Excellence Showcased at DRUPA",
+          "description": "Nessco India proudly showcased its cutting-edge innovations at the recent DRUPA exhibition.",
+          "fullCoverage": "Full Coverage"
+        }
+      ]
+    },
+  "saladBowls": {
+    "headSaladBowls": {
+      "allBlogs": "Salad Bowls",
+      "fullCoverage": "Sustainable Dining Solutions",
+      "machineImg": "/assets/Blogs/SaladBowlMachine.png",
+      "machineBg": "/assets/Blogs/SaladBowlMachineBg.mp4",
+      "imgTitle": "Eco-Friendly Salad Bowl Innovations",
+      "imgParagraph": "Discover the latest eco-friendly salad bowl options, perfect for healthy, sustainable dining on the go.",
+      "paragraphList": [
+        "Compostable Materials",
+        "Leak-Proof Design",
+        "Lightweight and Durable",
+        "Perfect for Salads and Cold Foods"
+      ]
+    },
+    "subSaladBowls": [
+      {
+        "img": "/assets/Blogs/DialogImgSalad1.jpg",
+        "title": "Compostable Salad Bowls for Green Dining",
+        "description": "These compostable salad bowls are designed to minimize waste while providing a high-quality dining experience.",
+        "fullCoverage": "Full Coverage"
+      },
+      {
+        "img": "/assets/Blogs/DialogImgSalad2.jpg",
+        "title": "Stylish Salad Bowls for Cafés",
+        "description": "Perfect for cafés, our salad bowls are both stylish and eco-conscious, suitable for any healthy meal.",
+        "fullCoverage": "Full Coverage"
+      },
+      {
+        "img": "/assets/Blogs/DialogImgSalad3.jpg",
+        "title": "Eco-Friendly Design for Freshness",
+        "description": "Our eco-friendly salad bowls keep ingredients fresh while reducing environmental impact.",
+        "fullCoverage": "Full Coverage"
+      },
+      {
+        "img": "/assets/Blogs/DialogImgSalad4.jpg",
+        "title": "Durable Bowls for Takeaway",
+        "description": "Ideal for takeaway, these durable bowls hold salads securely, making them convenient for customers on the go.",
+        "fullCoverage": "Full Coverage"
+      },
+      {
+        "img": "/assets/Blogs/DialogImgSalad5.jpg",
+        "title": "Innovative Leak-Proof Design",
+        "description": "With a leak-proof design, our salad bowls ensure a mess-free dining experience for busy consumers.",
+        "fullCoverage": "Full Coverage"
+      }
+    ]
+  },
+  "popcornTub": {
+    "headPopcornTub": {
+      "allBlogs": "Popcorn Tubs",
+      "fullCoverage": "Snack Perfectly",
+      "machineImg": "/assets/Blogs/PopcornMachine.png",
+      "machineBg": "/assets/Blogs/PopcornMachineBg.mp4",
+      "imgTitle": "Innovative Popcorn Tub Designs",
+      "imgParagraph": "Explore our durable and stylish popcorn tubs, designed for theaters, events, and snacking on the go.",
+      "paragraphList": [
+        "Spill-Proof Design",
+        "Comfortable Grip",
+        "Environmentally Friendly Materials",
+        "Perfect for Movie Nights"
+      ]
+    },
+    "subPopcornTub": [
+      {
+        "img": "/assets/Blogs/DialogImgPopcorn1.jpg",
+        "title": "Theater-Grade Popcorn Tubs",
+        "description": "Our theater-grade popcorn tubs offer a superior snacking experience with their durable design.",
+        "fullCoverage": "Full Coverage"
+      },
+      {
+        "img": "/assets/Blogs/DialogImgPopcorn2.jpg",
+        "title": "Reusable Popcorn Tubs",
+        "description": "Made with sustainability in mind, these tubs are reusable and recyclable, perfect for eco-conscious consumers.",
+        "fullCoverage": "Full Coverage"
+      },
+      {
+        "img": "/assets/Blogs/DialogImgPopcorn3.jpg",
+        "title": "Perfect Tubs for Family Movie Nights",
+        "description": "Our large-sized popcorn tubs are ideal for family gatherings, offering ample capacity and spill resistance.",
+        "fullCoverage": "Full Coverage"
+      },
+      {
+        "img": "/assets/Blogs/DialogImgPopcorn4.jpg",
+        "title": "Portable Popcorn Tubs for Events",
+        "description": "Convenient and portable, our popcorn tubs are perfect for outdoor events, carnivals, and more.",
+        "fullCoverage": "Full Coverage"
+      },
+      {
+        "img": "/assets/Blogs/DialogImgPopcorn5.jpg",
+        "title": "Stylish Popcorn Tubs for Any Occasion",
+        "description": "With a sleek design, these tubs are a great addition to any event, providing both functionality and style.",
+        "fullCoverage": "Full Coverage"
+      }
+    ]
+  },
+ "bowls": {
+    "headBowls": {
+      "allBlogs": "Bowls",
+      "fullCoverage": "Versatile Serving Solutions",
+      "machineImg": "/assets/Blogs/BowlMachine.png",
+      "machineBg": "/assets/Blogs/BowlMachineBg.mp4",
+      "imgTitle": "Sustainable and Stylish Bowls",
+      "imgParagraph": "Explore a range of eco-friendly, versatile bowls designed for every dining need, from salads to sides.",
+      "paragraphList": [
+        "Microwave and Freezer Safe",
+        "Compostable and Recyclable",
+        "Sturdy for All Food Types",
+        "Available in Various Sizes"
+      ]
+    },
+    "subBowls": [
+      {
+        "img": "/assets/Blogs/DialogImgBowl1.jpg",
+        "title": "Compostable Bowls for Eco-Friendly Dining",
+        "description": "These compostable bowls provide an eco-friendly option for dining, perfect for cafes and events.",
+        "fullCoverage": "Full Coverage"
+      },
+      {
+        "img": "/assets/Blogs/DialogImgBowl2.jpg",
+        "title": "Microwave-Safe Bowls for Convenience",
+        "description": "Our microwave-safe bowls make reheating simple while retaining their structure and durability.",
+        "fullCoverage": "Full Coverage"
+      },
+      {
+        "img": "/assets/Blogs/DialogImgBowl3.jpg",
+        "title": "Recyclable Bowls for Sustainable Meals",
+        "description": "Designed for easy recycling, these bowls are ideal for environmentally conscious customers.",
+        "fullCoverage": "Full Coverage"
+      },
+      {
+        "img": "/assets/Blogs/DialogImgBowl4.jpg",
+        "title": "Large Serving Bowls for Family Meals",
+        "description": "Our large bowls are perfect for family gatherings and events, providing ample space for sharing meals.",
+        "fullCoverage": "Full Coverage"
+      },
+      {
+        "img": "/assets/Blogs/DialogImgBowl5.jpg",
+        "title": "Compact Bowls for Side Dishes",
+        "description": "Compact and convenient, these bowls are ideal for serving side dishes, sauces, and dips.",
+        "fullCoverage": "Full Coverage"
+      }
+    ]
+  },
+  "iceCreamCup": {
+    "headIceCreamCup": {
+      "allBlogs": "Ice Cream Cups",
+      "fullCoverage": "Cool Innovations",
+      "machineImg": "/assets/Blogs/IceCreamMachine.png",
+      "machineBg": "/assets/Blogs/IceCreamMachineBg.mp4",
+      "imgTitle": "Eco-Friendly Ice Cream Cups",
+      "imgParagraph": "Keep ice cream cold and delicious with our sustainable, perfectly insulated ice cream cups.",
+      "paragraphList": [
+        "Insulated Design",
+        "Biodegradable Options",
+        "Freezer-Safe",
+        "Ideal for Frozen Treats"
+      ]
+    },
+    "subIceCreamCup": [
+      {
+        "img": "/assets/Blogs/DialogImgIceCream1.jpg",
+        "title": "Freezer-Safe Ice Cream Cups",
+        "description": "Our freezer-safe ice cream cups keep treats perfectly chilled until ready to enjoy.",
+        "fullCoverage": "Full Coverage"
+      },
+      {
+        "img": "/assets/Blogs/DialogImgIceCream2.jpg",
+        "title": "Eco-Friendly Options for Ice Cream Shops",
+        "description": "Made with biodegradable materials, these cups are perfect for environmentally friendly ice cream shops.",
+        "fullCoverage": "Full Coverage"
+      },
+      {
+        "img": "/assets/Blogs/DialogImgIceCream3.jpg",
+        "title": "Durable Cups for All Frozen Desserts",
+        "description": "From gelato to sorbet, these cups are designed to handle any frozen dessert.",
+        "fullCoverage": "Full Coverage"
+      },
+      {
+        "img": "/assets/Blogs/DialogImgIceCream4.jpg",
+        "title": "Compact Design for Easy Storage",
+        "description": "Our ice cream cups stack easily, making storage a breeze for busy shops.",
+        "fullCoverage": "Full Coverage"
+      },
+      {
+        "img": "/assets/Blogs/DialogImgIceCream5.jpg",
+        "title": "Leak-Resistant Ice Cream Cups",
+        "description": "Keep customers happy with leak-resistant cups that prevent messes and ensure a clean experience.",
+        "fullCoverage": "Full Coverage"
+      }
+    ]
+  },
+  "sustainability": {
+    "headSustainability": {
+      "allBlogs": "Sustainability",
+      "fullCoverage": "Eco-Friendly Focus",
+      "machineImg": "/assets/Blogs/SustainabilityMachine.png",
+      "machineBg": "/assets/Blogs/SustainabilityMachineBg.mp4",
+      "imgTitle": "Leading in Sustainable Packaging",
+      "imgParagraph": "Nessco India is committed to sustainable practices in all product lines, from materials to processes.",
+      "paragraphList": [
+        "Compostable Packaging",
+        "Reducing Plastic Waste",
+        "Certified Eco-Friendly",
+        "Innovation in Sustainability"
+      ]
+    },
+    "subSustainability": [
+      {
+        "img": "/assets/Blogs/DialogImgSustainability1.jpg",
+        "title": "Innovative Compostable Packaging",
+        "description": "Explore our compostable packaging options that are both durable and eco-friendly.",
+        "fullCoverage": "Full Coverage"
+      },
+      {
+        "img": "/assets/Blogs/DialogImgSustainability2.jpg",
+        "title": "Reducing Plastic Waste in Packaging",
+        "description": "Our new line of packaging materials helps reduce plastic waste significantly.",
+        "fullCoverage": "Full Coverage"
+      },
+      {
+        "img": "/assets/Blogs/DialogImgSustainability3.jpg",
+        "title": "Certified Eco-Friendly Products",
+        "description": "All of our products meet the highest standards for eco-friendliness and sustainability.",
+        "fullCoverage": "Full Coverage"
+      },
+      {
+        "img": "/assets/Blogs/DialogImgSustainability4.jpg",
+        "title": "Innovation in Sustainable Packaging",
+        "description": "We are constantly innovating to bring sustainable packaging solutions to the market.",
+        "fullCoverage": "Full Coverage"
+      },
+      {
+        "img": "/assets/Blogs/DialogImgSustainability5.jpg",
+        "title": "Biodegradable Solutions for All Industries",
+        "description": "Our biodegradable products cater to a wide range of industries, ensuring minimal environmental impact.",
+        "fullCoverage": "Full Coverage"
+      }
+    ]
+  },
+  "friesBowls": {
+    "headFriesBowls": {
+      "allBlogs": "Fries Bowls",
+      "fullCoverage": "Perfect for Fries",
+      "machineImg": "/assets/Blogs/FriesMachine.png",
+      "machineBg": "/assets/Blogs/FriesMachineBg.mp4",
+      "imgTitle": "Advanced Fry Bowls for Fast Foods",
+      "imgParagraph": "Designed to hold fries securely, our bowls are perfect for restaurants and events.",
+      "paragraphList": [
+        "Durable and Lightweight",
+        "Grease-Resistant",
+        "Recyclable Materials",
+        "Ideal for Fast Food Packaging"
+      ]
+    },
+    "subFriesBowls": [
+      {
+        "img": "/assets/Blogs/DialogImgFries1.jpg",
+        "title": "Grease-Resistant Bowls for Fries",
+        "description": "Keep fries fresh and crispy with our grease-resistant bowls.",
+        "fullCoverage": "Full Coverage"
+      },
+      {
+        "img": "/assets/Blogs/DialogImgFries2.jpg",
+        "title": "Perfect Bowls for Takeaway Fries",
+        "description": "Our bowls are designed for easy takeaway, making them ideal for fries on the go.",
+        "fullCoverage": "Full Coverage"
+      },
+      {
+        "img": "/assets/Blogs/DialogImgFries3.jpg",
+        "title": "Eco-Friendly Bowls for Fast Food",
+        "description": "Made from recyclable materials, our fry bowls are eco-conscious and convenient.",
+        "fullCoverage": "Full Coverage"
+      },
+      {
+        "img": "/assets/Blogs/DialogImgFries4.jpg",
+        "title": "Insulated Bowls for Hot Fries",
+        "description": "Keep fries hot and fresh for customers with our insulated bowl designs.",
+        "fullCoverage": "Full Coverage"
+      },
+      {
+        "img": "/assets/Blogs/DialogImgFries5.jpg",
+        "title": "Stackable Bowls for Efficient Storage",
+        "description": "Our fry bowls are easy to stack, saving space in kitchens and storage areas.",
+        "fullCoverage": "Full Coverage"
+      }
+    ]
+  }
+  },
+  "FeaturedBlogs": {
+    "featuredBlogs": "Featured Blogs",
+    "picksForYou": "Picks For You",
+    "featured": [
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "description": "Paper One Show Dubai May 26, 2025. Hall 23 / A15"
+      },
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "description": "Paper One Show Dubai May 26, 2025. Hall 23 / A15"
+      },
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "description": "Paper One Show Dubai May 26, 2025. Hall 23 / A15"
+      }
+    ]
+  },
+  "ForYou": {
+    "title": "For You",
+    "for": [
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "title": "Excellence Showcased 1",
+        "description": "Nessco India proudly showcased its cutting-edge recent DRUPA exhibition."
+      },
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "title": "Excellence Showcased 2",
+        "description": "Nessco India proudly showcased its cutting-edge recent DRUPA exhibition."
+      },
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "title": "Excellence Showcased 3",
+        "description": "Nessco India proudly showcased its cutting-edge recent DRUPA exhibition."
+      },
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "title": "Excellence Showcased 4",
+        "description": "Nessco India proudly showcased its cutting-edge recent DRUPA exhibition."
+      },
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "title": "Excellence Showcased 5",
+        "description": "Nessco India proudly showcased its cutting-edge recent DRUPA exhibition."
+      },
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "title": "Excellence Showcased 6",
+        "description": "Nessco India proudly showcased its cutting-edge recent DRUPA exhibition."
+      },
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "title": "Excellence Showcased 7",
+        "description": "Nessco India proudly showcased its cutting-edge recent DRUPA exhibition."
+      }
+    ]
+  },
+  "Sources": {
+    "title": "Sources",
+    "mainHeading": "Main Heading",
+    "mainDescription": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, quis.",
+    "allCard": [
+      {
+        "topHeadings": "Top Headings",
+        "card": [
+          {
+            "img": "/assets/Blogs/DialogImg.jpg",
+            "description": "Paper One Show Dubai May 26, 2025. Hall 23 / A15"
+          },
+          {
+            "img": "/assets/Blogs/DialogImg.jpg",
+            "description": "Paper One Show Dubai May 26, 2025. Hall 23 / A15"
+          },
+          {
+            "img": "/assets/Blogs/DialogImg.jpg",
+            "description": "Paper One Show Dubai May 26, 2025. Hall 23 / A15"
+          },
+          {
+            "img": "/assets/Blogs/DialogImg.jpg",
+            "description": "Paper One Show Dubai May 26, 2025. Hall 23 / A15"
+          }
+        ]
+      },
+      {
+        "topHeadings": "Top Headings",
+        "card": [
+          {
+            "img": "/assets/Blogs/DialogImg.jpg",
+            "description": "Paper One Show Dubai May 26, 2025. Hall 23 / A15"
+          },
+          {
+            "img": "/assets/Blogs/DialogImg.jpg",
+            "description": "Paper One Show Dubai May 26, 2025. Hall 23 / A15"
+          },
+          {
+            "img": "/assets/Blogs/DialogImg.jpg",
+            "description": "Paper One Show Dubai May 26, 2025. Hall 23 / A15"
+          }
+        ]
+      },
+      {
+        "topHeadings": "Top Headings",
+        "card": [
+          {
+            "img": "/assets/Blogs/DialogImg.jpg",
+            "description": "Paper One Show Dubai May 26, 2025. Hall 23 / A15"
+          },
+          {
+            "img": "/assets/Blogs/DialogImg.jpg",
+            "description": "Paper One Show Dubai May 26, 2025. Hall 23 / A15"
+          },
+          {
+            "img": "/assets/Blogs/DialogImg.jpg",
+            "description": "Paper One Show Dubai May 26, 2025. Hall 23 / A15"
+          }
+        ]
+      },
+      {
+        "topHeadings": "Top Headings",
+        "card": [
+          {
+            "img": "/assets/Blogs/DialogImg.jpg",
+            "description": "Paper One Show Dubai May 26, 2025. Hall 23 / A15"
+          },
+          {
+            "img": "/assets/Blogs/DialogImg.jpg",
+            "description": "Paper One Show Dubai May 26, 2025. Hall 23 / A15"
+          },
+          {
+            "img": "/assets/Blogs/DialogImg.jpg",
+            "description": "Paper One Show Dubai May 26, 2025. Hall 23 / A15"
+          }
+        ]
+      },
+      {
+        "topHeadings": "Top Headings",
+        "card": [
+          {
+            "img": "/assets/Blogs/DialogImg.jpg",
+            "description": "Paper One Show Dubai May 26, 2025. Hall 23 / A15"
+          },
+          {
+            "img": "/assets/Blogs/DialogImg.jpg",
+            "description": "Paper One Show Dubai May 26, 2025. Hall 23 / A15"
+          },
+          {
+            "img": "/assets/Blogs/DialogImg.jpg",
+            "description": "Paper One Show Dubai May 26, 2025. Hall 23 / A15"
+          }
+        ]
+      }
+    ]
+  }
+}

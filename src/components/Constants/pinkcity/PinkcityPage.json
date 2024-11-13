@@ -1,0 +1,74 @@
+{
+  "pinkcitySeoData": {
+    "title": "pinkcity Manufacturer and Supplier - Nessco India",
+    "description": "Trusted About Manufacturer since 1978. Nessco offers a wide range of paper cup making machine pairing with the latest technology. Enquire now!",
+    "keywords": "Nessco India",
+    "openGraph": {
+      "title": "About Manufacturer and Supplier - Nessco India",
+      "description": "Trusted About Manufacturer since 1978. Nessco offers a wide range of paper cup making machine pairing with the latest technology. Enquire now!",
+      "images": [
+        {
+          "url": "https://www.nesscoindia.com/Assets/images/resource/fully-automatic-paper-cup-making-machine.webp",
+          "alt": "Fully Automatic Paper Cup Making Machine"
+        }
+      ]
+    },
+    "robots": "index, follow",
+
+    "alternates": {
+      "canonical": "https://www.nesscoindia.com"
+    },
+    "twitter": {
+      "card": "summary_large_image",
+      "site": "@NesscoIndia",
+      "title": "About Manufacturer - Nessco India",
+      "description": "Nessco India provides top-quality paper cup making machines paired with the latest technology. Enquire today!",
+      "image": "https://www.nesscoindia.com/Assets/images/resource/fully-automatic-paper-cup-making-machine.webp"
+    }
+  },
+    "landingPageContent":{
+  
+    "backgroundImg": "https://res.cloudinary.com/dlti4o10e/image/upload/v1729144603/xpn3r5ilruwzgpkyf1pn.png",
+    "cornerLayerImg": "/assets/pinkcity/cornerlayer.svg",
+    "stickerImg": "/assets/pinkcity/stickerimg.png",
+    "description": "Rajasthan is a name of Hindustani origin. It means “The Land of Desert”, a reference to the wide and inhospitable Thar Desert that occupies most of its territory.",
+    "title": "The Land of",
+    "subtitle": "Maharajas.",
+"jaipur":"Jaipur"
+    },
+
+    "secondPageContent": {
+        "mandalaImg": "/assets/pinkcity/mandala/1.svg",
+         "topImg": "https://res.cloudinary.com/dlti4o10e/image/upload/v1729146374/palace_xqfh7u.jpg",
+         "strokeImg": "/assets/pinkcity/strokerimg.svg",
+        "description": "Jaipur, known as the Pink City, is the capital of Rajasthan, India. Renowned for its rich history and stunning architecture, the city boasts majestic forts, palaces, and vibrant bazaars. Iconic landmarks like the Hawa Mahal, City Palace, and Amber Fort reflect Jaipur's royal heritage. The city is also famous for its traditional arts and crafts, making it a hub for cultural enthusiasts."
+       },
+  "bluePageContent": {
+    "backgroundSvg": "/assets/pinkcity/bluemandala.svg",
+    "videoSrc": "https://res.cloudinary.com/dlti4o10e/video/upload/v1729146305/pinkhaveli_ioeeyj.mp4"
+  },
+  "pinkPageContent": {
+    "birdComponent": "true",
+    "mandalaImg": "/assets/pinkcity/mandala/2.svg",
+    "strokeImg": "/assets/pinkcity/1.svg",
+  "hawamahalImg": "https://res.cloudinary.com/dlti4o10e/image/upload/v1729146417/hawamahal_r84zjf.png",
+    "description":" Colorful rituals, enchanted palaces and ivory forts. Our company is based in Jaipur, the capital city of Rajasthan, in the North West of India. The city’s culture, architecture and ethos resonate in everything single machines we produce, making it unique."
+   },
+   "galleryContent": {
+    "topStrokeImg": "/assets/pinkcity/bottomimage.svg",
+    "bottomStrokeImg": "/assets/pinkcity/3.svg",
+    "galleryImages": [
+      "/assets/pinkcity/jalmahal.webp",
+      "/assets/pinkcity/jalmahal.webp",
+      "/assets/pinkcity/jalmahal.webp",
+      "/assets/pinkcity/jalmahal.webp",
+      "/assets/pinkcity/jalmahal.webp",
+      "/assets/pinkcity/jalmahal.webp",
+      "/assets/pinkcity/jalmahal.webp",
+      "/assets/pinkcity/jalmahal.webp"
+    ]
+  }
+
+
+  }
+  

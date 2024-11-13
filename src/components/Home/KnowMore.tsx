@@ -9,7 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
+} from "../ui/dialogHome";
 import Image from "next/image";
 import DecorativeImg1 from "../../../public/assets/OurExpertise/DecorativeImg1.svg";
 import DecorativeImg2 from "../../../public/assets/OurExpertise/DecorativeImg2.svg";

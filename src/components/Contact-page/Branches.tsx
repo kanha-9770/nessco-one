@@ -1,14 +1,22 @@
 import Image from "next/image";
 import React from "react";
-import { branchesData } from "../Constants/contact/branches";
+import { ContactItem } from "./types/constant";
 
-const Branches: React.FC = () => {
+interface MainLayoutProps{
+  contactData:ContactItem;
+}
+
+const Branches: React.FC<MainLayoutProps> = ({contactData}) => {
+
+const title=contactData?.contact[0]?.heading[0]?.title;
+const highlight=contactData?.contact[0]?.heading[0]?.highlight;
+const branchesData=contactData?.contact[0]?.branchesData;
   return (
     <>
       <section className="bg-gray-100 py-12 lg:h-screen h-full">
         <div className="container mx-auto px-10">
           <h2 className="text-4xl font-medium font-poppins text-center ">
-            Nessco India <span className="text-[#f70000]">Branches</span>
+            {title} <span className="text-[#f70000]">{highlight}</span>
           </h2>
 
           <div className="grid grid-cols-1 grid-rows-5 lg:grid-cols-5 gap-8 mt-24 justify-center">

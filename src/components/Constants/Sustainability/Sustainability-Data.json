@@ -1,0 +1,67 @@
+{
+  "Sustainability": [
+    {
+      "SustainabilitySeoData": {
+        "title": "Sustainability Manufacturer and Supplier - Nessco India",
+        "description": "Trusted About Manufacturer since 1978. Nessco offers a wide range of paper cup making machine pairing with the latest technology. Enquire now!",
+        "keywords": "Nessco India",
+        "openGraph": {
+          "title": "About Manufacturer and Supplier - Nessco India",
+          "description": "Trusted About Manufacturer since 1978. Nessco offers a wide range of paper cup making machine pairing with the latest technology. Enquire now!",
+          "images": [
+            {
+              "url": "https://www.nesscoindia.com/Assets/images/resource/fully-automatic-paper-cup-making-machine.webp",
+              "alt": "Fully Automatic Paper Cup Making Machine"
+            }
+          ]
+        },
+        "robots": "index, follow",
+        "alternates": {
+          "canonical": "https://www.nesscoindia.com"
+        },
+        "twitter": {
+          "card": "summary_large_image",
+          "site": "@NesscoIndia",
+          "title": "About Manufacturer - Nessco India",
+          "description": "Nessco India provides top-quality paper cup making machines paired with the latest technology. Enquire today!",
+          "image": "https://www.nesscoindia.com/Assets/images/resource/fully-automatic-paper-cup-making-machine.webp"
+        }
+      }
+    },
+
+    {
+      "category": "Landingpage",
+      "Data": {
+        "title": "Sustainability",
+        "description": "\"Going green is the way we roll\"",
+        "butterfly": "Butterfly",
+        "grass": "Grass",
+        "trees": "Trees"
+      }
+    },
+    {
+      "category": "secondpage",
+      "Data": {
+        "title1": "Reduced",
+        "title2": "Carbon Footprint",
+        "description": "At Nessco India, our machines are designed with advanced energy-efficient technologies that significantly reduce carbon emissions. By integrating eco-friendly materials and innovative engineering, we ensure that our machinery operates with minimal environmental impact. Our commitment to sustainability is reflected in our continuous efforts to optimize performance while conserving energy and resources.",
+        "leftFootprint": "LeftFootprint",
+        "rightFootprint": "RightFootprint",
+        "leafs": "Leafs",
+        "cup": "Cup",
+        "bgGarden": "/assets/sustainability/BgGarden.mp4"
+      }
+    },
+
+    {
+      "category": "thirdPage",
+      "Data": {
+        "titleWhite": "Sustainable",
+        "titleBlack": "Manufacturing Practices",
+        "description": "At Nessco India, our commitment to sustainable manufacturing practices is at the core of our operations. We employ cutting-edge technologies and processes that prioritize energy efficiency and waste reduction. By utilizing renewable energy sources and optimizing resource use, we minimize our environmental impact. Our manufacturing units are designed to adhere to the highest environmental standards, ensuring that emissions are kept to a minimum and recycling is maximized. Additionally, we continuously innovate our production methods to further reduce our carbon footprint and promote a circular economy. These practices not only enhance the sustainability of our products but also support our mission to contribute positively to the environment and society.",
+        "branchLeaves": "BranchLeaves",
+        "globe": "Globe"
+      }
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+    "KnowYourProduct": [
+        {
+            "knowYourProductSeoData": {
+                "title": "Know Your Product Manufacturer and Supplier - Nessco India",
+                "description": "Trusted Know Your Product Manufacturer since 1978. Nessco offers a wide range of paper cup making machine pairing with the latest technology. Enquire now!",
+                "keywords": "Nessco India",
+                "openGraph": {
+                    "title": "Know Your Product Manufacturer and Supplier - Nessco India",
+                    "description": "Trusted Know Your Product Manufacturer since 1978. Nessco offers a wide range of paper cup making machine pairing with the latest technology. Enquire now!",
+                    "images": [
+                        {
+                            "url": "https://www.nesscoindia.com/Assets/images/resource/fully-automatic-paper-cup-making-machine.webp",
+                            "alt": "Fully Automatic Paper Cup Making Machine"
+                        }
+                    ]
+                },
+                "robots": "index, follow",
+                "alternates": {
+                    "canonical": "https://www.nesscoindia.com"
+                },
+                "twitter": {
+                    "card": "summary_large_image",
+                    "site": "@NesscoIndia",
+                    "title": "Know Your Product Manufacturer - Nessco India",
+                    "description": "Nessco India provides top-quality paper cup making machines paired with the latest technology. Enquire today!",
+                    "image": "https://www.nesscoindia.com/Assets/images/resource/fully-automatic-paper-cup-making-machine.webp"
+                }
+            },
+            "Header": {
+                "title": "Know Your Product",
+                "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia ea tenetur magni?",
+                "img": "/assets/knowledgeCenter/Product.svg",
+                "cards": [
+                    {
+                        "title": "Paper Cup Guide",
+                        "img": "/assets/Support/Paper Cup Guide.svg"
+                    },
+                    {
+                        "title": "Paper Guide & Specifications",
+                        "img": "/assets/Support/Paper Guide & Specifications.svg"
+                    },
+                    {
+                        "title": "Paper Making Process",
+                        "img": "/assets/Support/Paper Making Process.svg"
+                    },
+                    {
+                        "title": "Paper Cup Making Process",
+                        "img": "/assets/Support/Paper Cup Making Process.svg"
+                    }
+                ]
+            }
+        }
+    ]
+}

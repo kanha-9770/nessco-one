@@ -4,7 +4,6 @@ import Link from "next/link";
 import styles from "./footer.module.css";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import { localeNames } from "@/lib/localesData";
 import LocaleSwitcher from "../Navbar/NavLayouts/CountryLayout";
 
 interface FooterProps {
@@ -40,10 +39,7 @@ interface FooterProps {
 
 const FooterNew: React.FC<FooterProps> = ({
   footerData,
-  country,
-  langauge,
 }) => {
-  const langageName = localeNames[langauge];
   const pathname = usePathname() || "";
   const componentCode = pathname.split("/")[2]?.toLowerCase();
   const componentCodeourCompany = pathname.split("/")[3]?.toLowerCase();

@@ -1,0 +1,252 @@
+{
+  "mediaRoomSeoData": {
+    "title": "Media Room Manufacturer and Supplier - Nessco India",
+    "description": "Trusted Media Room Manufacturer since 1978. Nessco offers a wide range of paper cup making machine pairing with the latest technology. Enquire now!",
+    "keywords": "Nessco India",
+    "openGraph": {
+      "title": "Media Room Manufacturer and Supplier - Nessco India",
+      "description": "Trusted Media Room Manufacturer since 1978. Nessco offers a wide range of paper cup making machine pairing with the latest technology. Enquire now!",
+      "images": [
+        {
+          "url": "https://www.nesscoindia.com/Assets/images/resource/fully-automatic-paper-cup-making-machine.webp",
+          "alt": "Fully Automatic Paper Cup Making Machine"
+        }
+      ]
+    },
+    "robots": "index, follow",
+    "alternates": {
+      "canonical": "https://www.nesscoindia.com"
+    },
+    "twitter": {
+      "card": "summary_large_image",
+      "site": "@NesscoIndia",
+      "title": "Media Room Manufacturer - Nessco India",
+      "description": "Nessco India provides top-quality paper cup making machines paired with the latest technology. Enquire today!",
+      "image": "https://www.nesscoindia.com/Assets/images/resource/fully-automatic-paper-cup-making-machine.webp"
+    }
+  },
+  "Header": {
+    "title": "Media Room",
+    "apply": "Apply",
+    "cancel": "Cancel",
+    "filter": "Filters",
+    "byCategory": "By Category",
+    "placeholder": "Search...",
+    "filters": [
+      {
+        "title": "All"
+      },
+      {
+        "title": "Tech"
+      },
+      {
+        "title": "Science"
+      },
+      {
+        "title": "AI"
+      },
+      {
+        "title": "Machine"
+      },
+      {
+        "title": "Video"
+      },
+      {
+        "title": "Reviews"
+      }
+    ],
+    "categories": [
+      {
+        "title": "All"
+      },
+      {
+        "title": "Salad Bowls"
+      },
+      {
+        "title": "Popcorn Tub"
+      },
+      {
+        "title": "Ice Cream Cup"
+      },
+      {
+        "title": "Sustainability"
+      },
+      {
+        "title": "Fries Bowls"
+      },
+      {
+        "title": "Paper Cup"
+      }
+    ]
+  },
+  "TrendingNews": {
+    "title": "Trending News",
+    "sections": [
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "filter": "Tech,All,Salad Bowls",
+        "header": "AI",
+        "title": "1Excellence Showcased at DRUPA",
+        "continueReading": "Continue Reading",
+        "dialogDescription": "Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity."
+      },
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "filter": "Science,All,Popcorn Tub",
+        "header": "Science",
+        "title": "2Excellence Showcased at DRUPA",
+        "continueReading": "Continue Reading",
+        "dialogDescription": "Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity."
+      },
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "filter": "Tech,All,Ice Cream Cup",
+        "header": "Tech",
+
+        "title": "3Excellence Showcased at DRUPA",
+        "continueReading": "Continue Reading",
+        "dialogDescription": "Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity."
+      },
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "filter": "Science,All,Sustainability",
+        "header": "Science",
+
+        "title": "4Excellence Showcased at DRUPA",
+        "continueReading": "Continue Reading",
+        "dialogDescription": "Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity."
+      },
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "filter": "Tech,All,Fries Bowls",
+        "header": "Tech",
+        "title": "5Excellence Showcased at DRUPA",
+        "continueReading": "Continue Reading",
+        "dialogDescription": "Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity."
+      },
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "header": "Science",
+        "filter": "Science,All,Paper Cup",
+        "title": "6Excellence Showcased at DRUPA",
+        "continueReading": "Continue Reading",
+        "dialogDescription": "Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity."
+      }
+    ]
+  },
+  "LatestNews": {
+    "mainTitle": "Latest News",
+    "img": "/assets/Blogs/DialogImg.jpg",
+    "title": "1Excellence Showcased at DRUPA",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi perspiciatis officia, tempore atque fugit rem quam, voluptates officia magni reprehenderit.",
+    "continueReading": "Continue Reading",
+    "dialogDescription": "Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity.",
+    "sections": [
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "filter": "Tech,All,Salad Bowls",
+        "header": "AI",
+        "title": "1Excellence Showcased at DRUPA",
+        "continueReading": "Continue Reading",
+        "dialogDescription": "Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity."
+      },
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "filter": "Science,All,Popcorn Tub",
+        "header": "Science",
+        "title": "2Excellence Showcased at DRUPA",
+        "continueReading": "Continue Reading",
+        "dialogDescription": "Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity."
+      },
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "filter": "Tech,All,Ice Cream Cup",
+        "header": "Tech",
+
+        "title": "3Excellence Showcased at DRUPA",
+        "continueReading": "Continue Reading",
+        "dialogDescription": "Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity."
+      },
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "filter": "Science,All,Sustainability",
+        "header": "Science",
+
+        "title": "4Excellence Showcased at DRUPA",
+        "continueReading": "Continue Reading",
+        "dialogDescription": "Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity."
+      },
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "filter": "Tech,All,Fries Bowls",
+        "header": "Tech",
+        "title": "5Excellence Showcased at DRUPA",
+        "continueReading": "Continue Reading",
+        "dialogDescription": "Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity."
+      },
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "header": "Science",
+        "filter": "Science,All,Paper Cup",
+        "title": "6Excellence Showcased at DRUPA",
+        "continueReading": "Continue Reading",
+        "dialogDescription": "Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity."
+      }
+    ]
+  },
+  "MostRead": {
+    "title": "Most Read",
+    "sections": [
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "filter": "Tech,All,Salad Bowls",
+        "header": "AI",
+        "title": "1Excellence Showcased at DRUPA",
+        "continueReading": "Continue Reading",
+        "dialogDescription": "Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity."
+      },
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "filter": "Science,All,Popcorn Tub",
+        "header": "Science",
+        "title": "2Excellence Showcased at DRUPA",
+        "continueReading": "Continue Reading",
+        "dialogDescription": "Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity."
+      },
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "filter": "Tech,All,Ice Cream Cup",
+        "header": "Tech",
+
+        "title": "3Excellence Showcased at DRUPA",
+        "continueReading": "Continue Reading",
+        "dialogDescription": "Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity."
+      },
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "filter": "Science,All,Sustainability",
+        "header": "Science",
+
+        "title": "4Excellence Showcased at DRUPA",
+        "continueReading": "Continue Reading",
+        "dialogDescription": "Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity."
+      },
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "filter": "Tech,All,Fries Bowls",
+        "header": "Tech",
+        "title": "5Excellence Showcased at DRUPA",
+        "continueReading": "Continue Reading",
+        "dialogDescription": "Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity."
+      },
+      {
+        "img": "/assets/Blogs/DialogImg.jpg",
+        "header": "Science",
+        "filter": "Science,All,Paper Cup",
+        "title": "6Excellence Showcased at DRUPA",
+        "continueReading": "Continue Reading",
+        "dialogDescription": "Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity. Nessco India launches its new 160-speed paper cup machine, setting new standards in efficiency and productivity."
+      }
+    ]
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "Maintainance": [
+    {
+      "maintainanceSeoData": {
+        "title": "Maintainance Manufacturer and Supplier - Nessco India",
+        "description": "Trusted Maintainance Manufacturer since 1978. Nessco offers a wide range of paper cup making machine pairing with the latest technology. Enquire now!",
+        "keywords": "Nessco India",
+        "openGraph": {
+          "title": "Maintainance Manufacturer and Supplier - Nessco India",
+          "description": "Trusted Maintainance Manufacturer since 1978. Nessco offers a wide range of paper cup making machine pairing with the latest technology. Enquire now!",
+          "images": [
+            {
+              "url": "https://www.nesscoindia.com/Assets/images/resource/fully-automatic-paper-cup-making-machine.webp",
+              "alt": "Fully Automatic Paper Cup Making Machine"
+            }
+          ]
+        },
+        "robots": "index, follow",
+        "alternates": {
+          "canonical": "https://www.nesscoindia.com"
+        },
+        "twitter": {
+          "card": "summary_large_image",
+          "site": "@NesscoIndia",
+          "title": "Maintainance Manufacturer - Nessco India",
+          "description": "Nessco India provides top-quality paper cup making machines paired with the latest technology. Enquire today!",
+          "image": "https://www.nesscoindia.com/Assets/images/resource/fully-automatic-paper-cup-making-machine.webp"
+        }
+      },
+      "Header": {
+        "title": "Maintainance",
+        "maintainance": "MAINTAINANCE",
+        "filter": "Filters",
+        "cancel": "Cancel",
+        "apply": "Apply",
+        "submit": "Submit",
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "formTitle": "Get Maintainance Guide",
+        "footer": "Nessco © 2024 All Right Reserved",
+        "checkListTitle": "Maintainance Check List",
+        "formDescription": "Fill the form below to get your user guide",
+        "download": "Download Maintainance Check Sheet",
+        "description": "At Nessco, we ensure top-notch machine performance by offering maintenance services with 100+ checkpoints, guaranteeing smooth and efficient operation for all your  paper product machinery.",
+        "img": "https://res.cloudinary.com/dfryvystt/image/upload/v1728992407/i6ofsqna3hvnebkqicfz.webp",
+        "points": [
+          {
+            "number": "1.",
+            "title": "Startup Guide"
+          },
+          {
+            "number": "2.",
+            "title": "Troubleshooting"
+          },
+          {
+            "number": "3.",
+            "title": "Mechanical Checkpoints"
+          },
+          {
+            "number": "4.",
+            "title": "Electrical Checkpoints"
+          },
+          {
+            "number": "5.",
+            "title": "Pneumatic Checkpoints"
+          },
+          {
+            "number": "6.",
+            "title": "Hydraulic Checkpoints"
+          }
+        ],
+        "categories": [
+          {
+            "title": "All Categories"
+          },
+          {
+            "title": "Salad Bowls"
+          },
+          {
+            "title": "Popcorn Tub"
+          },
+          {
+            "title": "Ice Cream Cup"
+          },
+          {
+            "title": "Sustainability"
+          },
+          {
+            "title": "Fries Bowls"
+          },
+          {
+            "title": "Paper Cup"
+          }
+        ],
+        "cards": [
+          {
+            "title": "Paper Cup Machine",
+            "img": "https://res.cloudinary.com/dfryvystt/image/upload/v1728992407/i6ofsqna3hvnebkqicfz.webp",
+            "button": "Download",
+            "category": "All Categories,Paper Cup"
+          },
+          {
+            "title": "Paper Roll Machine",
+            "img": "https://res.cloudinary.com/dfryvystt/image/upload/v1728992407/i6ofsqna3hvnebkqicfz.webp",
+            "button": "Download",
+            "category": "All Categories,Salad Bowls"
+          },
+          {
+            "title": "Paper Bowl Machine",
+            "img": "https://res.cloudinary.com/dfryvystt/image/upload/v1728992407/i6ofsqna3hvnebkqicfz.webp",
+            "button": "Download",
+            "category": "All Categories,Sustainability"
+          },
+          {
+            "title": "Salad Bowl Machine",
+            "img": "https://res.cloudinary.com/dfryvystt/image/upload/v1728992407/i6ofsqna3hvnebkqicfz.webp",
+            "button": "Download",
+            "category": "All Categories,Salad Bowls"
+          },
+          {
+            "title": "Eco-Friendly Salad Bowl",
+            "img": "https://res.cloudinary.com/dfryvystt/image/upload/v1728992407/i6ofsqna3hvnebkqicfz.webp",
+            "button": "Download",
+            "category": "All Categories,Sustainability"
+          },
+          {
+            "title": "Popcorn Tub Maker",
+            "img": "https://res.cloudinary.com/dfryvystt/image/upload/v1728992407/i6ofsqna3hvnebkqicfz.webp",
+            "button": "Download",
+            "category": "All Categories,Popcorn Tub"
+          },
+          {
+            "title": "Popcorn Box Folding Machine",
+            "img": "https://res.cloudinary.com/dfryvystt/image/upload/v1728992407/i6ofsqna3hvnebkqicfz.webp",
+            "button": "Download",
+            "category": "Popcorn Tub,All Categories"
+          },
+          {
+            "title": "Ice Cream Cup Sealing Machine",
+            "img": "https://res.cloudinary.com/dfryvystt/image/upload/v1728992407/i6ofsqna3hvnebkqicfz.webp",
+            "button": "Download",
+            "category": "All Categories,Ice Cream Cup"
+          },
+          {
+            "title": "Disposable Ice Cream Cups",
+            "img": "https://res.cloudinary.com/dfryvystt/image/upload/v1728992407/i6ofsqna3hvnebkqicfz.webp",
+            "button": "Download",
+            "category": "Ice Cream Cup,All Categories"
+          },
+          {
+            "title": "Fries Bowl Machine",
+            "img": "https://res.cloudinary.com/dfryvystt/image/upload/v1728992407/i6ofsqna3hvnebkqicfz.webp",
+            "button": "Download",
+            "category": "Fries Bowls"
+          },
+          {
+            "title": "Recyclable Fries Bowl",
+            "img": "https://res.cloudinary.com/dfryvystt/image/upload/v1728992407/i6ofsqna3hvnebkqicfz.webp",
+            "button": "Download",
+            "category": "Fries Bowls,All Categories"
+          },
+          {
+            "title": "Eco-Paper Cup Machine",
+            "img": "https://res.cloudinary.com/dfryvystt/image/upload/v1728992407/i6ofsqna3hvnebkqicfz.webp",
+            "button": "Download",
+            "category": "Paper Cup,All Categories"
+          },
+          {
+            "title": "Compostable Paper Cups",
+            "img": "https://res.cloudinary.com/dfryvystt/image/upload/v1728992407/i6ofsqna3hvnebkqicfz.webp",
+            "button": "Download",
+            "category": "All Categories,Sustainability"
+          },
+          {
+            "title": "Biodegradable Popcorn Tub",
+            "img": "https://res.cloudinary.com/dfryvystt/image/upload/v1728992407/i6ofsqna3hvnebkqicfz.webp",
+            "button": "Download",
+            "category": "Popcorn Tub,All Categories"
+          },
+          {
+            "title": "Sustainable Ice Cream Cups",
+            "img": "https://res.cloudinary.com/dfryvystt/image/upload/v1728992407/i6ofsqna3hvnebkqicfz.webp",
+            "button": "Download",
+            "category": "Ice Cream Cup,All Categories"
+          }
+        ]
+      }
+    }
+  ]
+}
