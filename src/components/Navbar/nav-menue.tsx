@@ -79,7 +79,6 @@ const MenuItem = ({
   const componentCodeourCompany = pathname.split("/")[3]?.toLowerCase();
   const pathSegments = pathname?.split('/') || [];
   // Assuming URL structure like /<countryCode>/<languageCode>
-  const countryCode = pathSegments[1] || '';
   const languageCode = pathSegments[2] || '';
   return (
     <div ref={ref} className="z-10 cursor-pointer px-3 font-poppins">
