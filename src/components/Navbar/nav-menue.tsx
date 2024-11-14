@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { useCountryAndLanguage } from "@/global";
+import { useCountryAndLanguage } from "../../global";
 
 export const Menu = ({ children }: { children: React.ReactNode }) => {
   const [active, setActive] = useState<string | null>(null);
