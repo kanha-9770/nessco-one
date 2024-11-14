@@ -9,7 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialogHome";
+} from "../ui/dialog";
 import Image from "next/image";
 import DecorativeImg1 from "../../../public/assets/OurExpertise/DecorativeImg1.svg";
 import DecorativeImg2 from "../../../public/assets/OurExpertise/DecorativeImg2.svg";
@@ -43,7 +43,7 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
       <Image
         alt="Decorative Image"
         src={DecorativeImg1}
-        className="w-40 absolute top-20 right-16"
+        className="w-40 absolute top-20 right-0"
       />
       <Image
         alt="Decorative Image"

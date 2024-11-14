@@ -187,10 +187,14 @@ body {
   animation-play-state: paused;
 }
 
-.bg-circular-gradient-blue {
-  background: radial-gradient(circle at 50% 50%, #24194c, #000000);
-}
-
-.bg-circular-gradient-red {
-  background: radial-gradient(circle at 50% 50%, #4c0109, #000000);
+/* border gradient */
+.custom-gradient-border {
+  border: 2px solid transparent;
+  /* full rounded */
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  background-image: linear-gradient(white, white),
+    /* Inner background */
+    linear-gradient(to right, #483d73, #B91C1C);
+  /* Border gradient */
 }
