@@ -139,8 +139,8 @@ function Navbar({ className, navData }: NavbarProps) {
       </div>
 
       {/* Mobile Menu */}
-      <div className=" lg:hidden  border-b-2 flex w-full ">
-        <div className="lg:hidden w-full flex justify-between items-center -ml-2 p-4">
+      <div className=" lg:hidden flex w-full ">
+        <div className="lg:hidden w-full flex justify-between items-center  p-4">
           <Link href={`/${countryCODE}/${languageCODE}`} className="h-14 w-14 flex items-center">
           <SVGComponent />
           </Link>

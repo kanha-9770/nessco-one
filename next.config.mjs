@@ -11,7 +11,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "tinypng.com", // Removed 'https://' here to make it match without 'www.'
+        hostname: "images.pexels.com", // Removed 'https://' here to make it match without 'www.'
       },
       {
         protocol: "https",
