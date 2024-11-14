@@ -6,8 +6,7 @@ import dynamic from "next/dynamic";
 const MenuItem = dynamic(() => import("./nav-menue"));
 const ContactForm = dynamic(() => import("../Contact/Contact"));
 import { usePathname } from "next/navigation";
-import NesscoBlackLogo from "./BlackLogo";
-import SVGComponent from "./BlueLogo";
+const SVGComponent=dynamic(()=>import("./BlueLogo"))
 const CountryLayout = dynamic(() => import("./NavLayouts/CountryLayout"), {
   ssr: false,
 });
@@ -143,7 +142,7 @@ function Navbar({ className, navData }: NavbarProps) {
       {/* Mobile Menu */}
       <div className=" lg:hidden  border-b-2 flex w-full ">
         <div className="lg:hidden w-full flex justify-between items-center -ml-2 p-4">
-          <Link href="#" className="h-6 w-6 flex items-center">
+          <Link href="#" className="h-14 w-14 flex items-center">
           <SVGComponent />
           </Link>
           <button
