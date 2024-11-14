@@ -7,3 +7,4 @@ export const localeNames: { [key: string]: string } = {
     hi: "हिन्दी",
     ta: "தமிழ்"
   };
+
