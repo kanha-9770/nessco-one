@@ -111,6 +111,7 @@ export default async function RootLayout({
   }
 
   return (
+    
     <html lang={`${locale}-${country.toUpperCase()}`}>
       <head>{generateHreflangLinks(country)}</head>
       <body className={`${inter.variable} ${poppins.variable}`}>
