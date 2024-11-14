@@ -1,5 +1,5 @@
 import Pages from "@/components/productLayout/Pages";
-import { ProductLayoutItem } from "@/components/productLayout/types/constant";
+import { ProductLayout } from "@/components/productLayout/types/constant";
 import { Metadata } from "next";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import React from "react";
@@ -13,7 +13,7 @@ export const revalidate = 60;
 // Fetch home data based on the locale
 async function fetchproductLayoutData(
   locale: string
-): Promise<ProductLayoutItem | null> {
+): Promise<ProductLayout | null> {
   try {
     const res = await fetch(`${apiUrl}${locale}/productlayout.json`);
     const data = await res.json();

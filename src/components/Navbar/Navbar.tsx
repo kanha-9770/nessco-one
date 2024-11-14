@@ -48,10 +48,7 @@ function Navbar({ className, navData }: NavbarProps) {
   const pathname = usePathname() || "";
   const componentCode = pathname.split("/")[2]?.toLowerCase();
   const componentCodeourCompany = pathname.split("/")[3]?.toLowerCase();
-  const [visibilityState, setVisibilityState] = useState({
-    isFlagOpen: false,
-    isContactFormVisible: false,
-  });
+
   const toggleMenu = () => setIsOpen(!isOpen);
   const expandItem = (item: string) =>
     setExpandedItem(expandedItem === item ? null : item);
@@ -59,12 +56,12 @@ function Navbar({ className, navData }: NavbarProps) {
     setSearchValue(e.target.value);
   const navbarItems: NavbarItem[] = [
     {
-      name:`${navData?.navbar[0]?.category}`,
+      name: `${navData?.navbar[0]?.category}`,
       link: "about",
       component: <AboutLayout navData={navData} />,
     },
     {
-      name:`${navData?.navbar[1]?.category}`,
+      name: `${navData?.navbar[1]?.category}`,
       link: "product",
       component: (
         <ProductLayout
@@ -72,32 +69,31 @@ function Navbar({ className, navData }: NavbarProps) {
           setHeading={() => {}}
           setIsVisible={() => {}}
           navData={navData}
-
         />
       ),
     },
     {
-      name:`${navData?.navbar[2]?.category}`,
+      name: `${navData?.navbar[2]?.category}`,
       link: "application",
       component: <ApplicationLayout navData={navData} />,
     },
     {
-      name:`${navData?.navbar[3]?.category}`,
+      name: `${navData?.navbar[3]?.category}`,
       link: "support",
       component: <SupportGrid navData={navData} />,
     },
     {
-      name:`${navData?.navbar[4]?.category}`,
+      name: `${navData?.navbar[4]?.category}`,
       link: "resources",
       component: <ResourceGrid navData={navData} />,
     },
     {
-      name:`${navData?.navbar[5]?.category}`,
+      name: `${navData?.navbar[5]?.category}`,
       link: "videos",
       component: <VideoGrid navData={navData} />,
     },
     {
-      name:`${navData?.navbar[6]?.category}`,
+      name: `${navData?.navbar[6]?.category}`,
       link: "contact",
     },
   ];
@@ -108,7 +104,7 @@ function Navbar({ className, navData }: NavbarProps) {
         ["our-company"].includes(componentCodeourCompany)
           ? "bg-[#222222] text-white"
           : "bg-white"
-      } h-14 font-poppins lg:mt-0 items-center inset-x-0 mx-auto z-[99999] ${className}`}
+      } h-14 font-poppins lg:mt-0 items-center inset-x-0 mx-auto z-[999] ${className}`}
     >
       {/* Desktop Menu */}
       <div className="hidden px-12 lg:flex w-full">
@@ -139,16 +135,7 @@ function Navbar({ className, navData }: NavbarProps) {
             <CountryLayout />
           </div>
           <ContactForm
-            isContactFormVisible={visibilityState.isContactFormVisible}
-            setContactFormVisible={(value) =>
-              setVisibilityState((prev) => ({
-                ...prev,
-                isContactFormVisible: value,
-              }))
-            }
-            setIsFlagOpen={(value) =>
-              setVisibilityState((prev) => ({ ...prev, isFlagOpen: value }))
-            }
+            
           />
         </div>
       </div>
@@ -190,7 +177,7 @@ function Navbar({ className, navData }: NavbarProps) {
         </div>
 
         {isOpen && (
-          <div className="lg:hidden absolute top-full left-0 w-full bg-gray-300/90 backdrop-blur-[80px] h-screen  shadow-lg z-[99999]">
+          <div className="lg:hidden absolute top-full left-0 w-full bg-gray-300/90 backdrop-blur-[80px] h-screen  shadow-lg z-50">
             <div className="flex bg-white h-2/3 p-4 flex-col space-y-3">
               {navbarItems.map((item) => (
                 <div key={item.name}>

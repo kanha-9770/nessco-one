@@ -5,45 +5,55 @@ import Image from "next/image";
 import gsap from "gsap";
 import { Label } from "@/components/ui/label";
 import EnquiryCart from "@/components/ui/EnquiryCart";
-import { ProductLayoutItem } from "./types/constant";
+interface ProductLayoutData {
+  ProductLayout: Array<{
+    ProductsGrid: {
+      all: string;
+      servoDriven: string;
+      mechanicalCam: string;
+      placeholder: string;
+      viewMachine: string;
+      inquiry: string;
+      readLess: string;
+      readMore: string;
+    };
+  }>;
+}
 
-// Define interfaces for your component
 interface MachineItem {
+  id: string;
+  name: string;
+  image: string;
+  s?: string;
+  sInformation?: string;
+  imageInformation?: string;
+  information?: string;
   h1: string;
   h2: string;
   h3: string;
-  s: string;
-  sInformation: string;
   img: string;
-  rangeTitle: string;
   range: string;
-  punchTitle: string;
+  rangeTitle: string;
   punch: string;
-  weightTitle: string;
+  punchTitle: string;
   weight: string;
-  image: string;
-  imageInformation: string;
-  information: string;
+  weightTitle: string;
+}
+
+interface Page2Machine {
+  paragraph: string;
+  heading: string;
+  all: Array<{
+    servoDriven?: MachineItem[];
+    mechanicalCam?: MachineItem[];
+  }>;
 }
 
 interface Page2Props {
-  page2machine: {
-    heading: string;
-    paragraph: string;
-    all: {
-      servoDriven: MachineItem[];
-      mechanicalCam: MachineItem[];
-    }[];
-  };
+  productLayoutData: ProductLayoutData;
+  page2machine: Page2Machine;
 }
-
-interface ProductLayoutProps {
-  productLayoutData: ProductLayoutItem;
-}
-
-type CombinedProps = ProductLayoutProps & Page2Props;
-
-const Page2: React.FC<CombinedProps> = ({
+const Page2: React.FC<Page2Props> = ({
   productLayoutData,
   page2machine,
 }) => {

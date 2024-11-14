@@ -21,22 +21,7 @@ export default function EnhancedUserGuide() {
     )
   }
 
-  const filteredCards = data.cards.filter(card => 
-    (card.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-     card.description.toLowerCase().includes(searchTerm.toLowerCase())) &&
-    (selectedCategories.length === 0 || selectedCategories.includes(card.category))
-  )
 
-  const modifiedData = {
-    ...data,
-    cards: filteredCards
-  }
-
-  const modifiedUserGuideData = {
-    UserGuide: [{
-      "user-guide": modifiedData
-    }]
-  }
 
   return (
     <div>
@@ -62,7 +47,7 @@ export default function EnhancedUserGuide() {
           </label>
         ))}
       </div>
-      <UserGuide userGuideData={modifiedUserGuideData} />
+      <UserGuide />
     </div>
   )
 }

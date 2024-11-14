@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export const Menu = ({ children }: { children: React.ReactNode }) => {
   const [active, setActive] = useState<string | null>(null);
@@ -27,7 +28,7 @@ export const Menu = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
- const MenuItem = ({
+const MenuItem = ({
   setActive,
   active,
   item,
@@ -79,24 +80,20 @@ export const Menu = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div ref={ref} className="z-10 cursor-pointer px-3 font-poppins">
-      <a
-        className="invert-0 text-base font-light"
-        href={`/${link}`}
-      >
+      <Link prefetch={true} className="invert-0 text-base font-light" href={`/${link}`}>
         {item}
-      </a>
+      </Link>
       {active === item && (
         <motion.div className="absolute  top-[calc(100%_-_1.0rem)] left-0 pt-4">
           <motion.div
             transition={{ duration: 0.3 }}
             layoutId="active"
             className={`${
-              ["knowledge-center", "clientele"].includes(
-                componentCode
-              ) || ["our-company"].includes(componentCodeourCompany)
+              ["knowledge-center", "clientele"].includes(componentCode) ||
+              ["our-company"].includes(componentCodeourCompany)
                 ? "bg-[#222222]"
                 : "bg-white"
-            } dark:bg-black overflow-hidden border border-black/[0.2]  shadow-xl`}
+            } dark:bg-black overflow-hidden `}
           >
             <motion.div layout className="w-screen mx-auto h-full px-12">
               {children}

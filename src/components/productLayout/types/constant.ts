@@ -1,57 +1,43 @@
-export interface ProductLayoutItem {
-  ProductLayout: Array<{
-    productLayoutSeoData: ProductLayoutSeoData;
-    Header: Header;
-    ProductsGrid: ProductsGrid;
-  }>;
+export interface OpenGraph {
+  title: string;
+  description: string;
+  images: {
+    url: string;
+    alt: string;
+  }[];
 }
 
-type ProductLayoutSeoData = {
-  title: string;
-  description: string;
-  keywords: string;
-  openGraph: OpenGraph;
-  robots: string;
-  alternates: Alternates;
-  twitter: Twitter;
-};
-
-type OpenGraph = {
-  title: string;
-  description: string;
-  images: OpenGraphImage[];
-};
-
-type OpenGraphImage = {
-  url: string;
-  alt: string;
-};
-
-type Alternates = {
-  canonical: string;
-};
-
-type Twitter = {
+export interface Twitter {
   card: string;
   site: string;
   title: string;
   description: string;
   image: string;
-};
+}
 
-type HeaderData = {
+export interface ProductLayoutSeoData {
+  title: string;
+  description: string;
+  keywords: string;
+  openGraph: OpenGraph;
+  robots: string;
+  alternates: {
+    canonical: string;
+  };
+  twitter: Twitter;
+}
+
+export interface HeaderData {
   title: string;
   description: string;
   image: string;
 }
 
-// Type for Header
-type Header = {
+export interface Header {
   data: HeaderData[];
 }
 
-// Type for Product Details
-type ProductDetails = {
+export interface ProductItem {
   h1: string;
   h2: string;
   h3: string;
@@ -69,22 +55,22 @@ type ProductDetails = {
   information: string;
 }
 
-// Type for Product Variations (Servo Driven and Mechanical Cam)
-type ProductVariations = {
-  servoDriven?: ProductDetails[];
-  mechanicalCam?: ProductDetails[];
+export interface ServoDriven {
+  servoDriven: ProductItem[];
 }
 
-// Type for Products Data
-type ProductsData = {
+export interface MechanicalCam {
+  mechanicalCam: ProductItem[];
+}
+
+export interface ProductData {
   title: string;
   heading: string;
   paragraph: string;
-  all: ProductVariations[];
+  all: (ServoDriven | MechanicalCam)[];
 }
 
-// Type for ProductsGrid
-type ProductsGrid = {
+export interface ProductsGrid {
   inquiry: string;
   placeholder: string;
   all: string;
@@ -93,5 +79,16 @@ type ProductsGrid = {
   readMore: string;
   readLess: string;
   viewMachine: string;
-  data: ProductsData[];
+  data: ProductData[];
+}
+
+export interface ProductLayout {
+  ProductLayout: any;
+  productLayoutSeoData: ProductLayoutSeoData;
+  Header: Header;
+  ProductsGrid: ProductsGrid;
+}
+
+export interface ProductLayoutWrapper {
+  ProductLayout: ProductLayout[];
 }

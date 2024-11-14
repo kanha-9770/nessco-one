@@ -3,10 +3,10 @@ import React from "react";
 import Page1 from "@/components/productLayout/Header";
 import Page2 from "@/components/productLayout/ProductsGrid";
 import { notFound, useParams } from "next/navigation";
-import { ProductLayoutItem } from "./types/constant";
+import { ProductLayout } from "./types/constant";
 
 interface ProductLayoutProps {
-  productLayoutData: ProductLayoutItem;
+  productLayoutData: ProductLayout;
 }
 
 const Page: React.FC<ProductLayoutProps> = ({ productLayoutData }) => {

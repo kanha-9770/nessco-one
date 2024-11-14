@@ -61,6 +61,7 @@ type DescriptionListItem = {
 }
 
 type Card = {
+  longTitle: string;
   image: string;
   title: string;
   description: string;

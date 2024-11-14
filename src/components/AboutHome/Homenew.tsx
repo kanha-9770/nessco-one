@@ -87,7 +87,7 @@ const Home:React.FC<HomeLayoutProps> = ({aboutData}) => {
             </div>
           </button>
         <div className="absolute bottom-10 flex justify-center w-full lg:space-x-0 -space-x-5 ">
-          {homeimgData.map((item, index) => (
+          {homeimgData?.map((item, index) => (
               <div
                 key={index}
                 className={`flex flex-col items-center ${imagebottoms[index]}`}
