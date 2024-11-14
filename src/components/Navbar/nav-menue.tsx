@@ -79,11 +79,11 @@ const MenuItem = ({
   const componentCodeourCompany = pathname.split("/")[3]?.toLowerCase();
   const pathSegments = pathname?.split('/') || [];
   // Assuming URL structure like /<countryCode>/<languageCode>
-  const countryCode = pathSegments[0] || '';
-  const languageCode = pathSegments[1] || '';
+  const countryCode = pathSegments[1] || '';
+  const languageCode = pathSegments[2] || '';
   return (
     <div ref={ref} className="z-10 cursor-pointer px-3 font-poppins">
-      <Link className="invert-0 text-base font-light" href={`${countryCode}/${languageCode}/${link}`}>
+      <Link className="invert-0 text-base font-light" href={`/${languageCode}/${link}`}>
         {item}
       </Link>
       {active === item && (
