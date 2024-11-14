@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useCountryAndLanguage } from "@/global";
 
 export const Menu = ({ children }: { children: React.ReactNode }) => {
   const [active, setActive] = useState<string | null>(null);
@@ -77,10 +78,11 @@ const MenuItem = ({
   const pathname = usePathname() || "";
   const componentCode = pathname.split("/")[2]?.toLowerCase();
   const componentCodeourCompany = pathname.split("/")[3]?.toLowerCase();
+  const { countryCode, languageCode } = useCountryAndLanguage();
 
   return (
     <div ref={ref} className="z-10 cursor-pointer px-3 font-poppins">
-      <Link prefetch={true} className="invert-0 text-base font-light" href={`/${link}`}>
+      <Link prefetch={true} className="invert-0 text-base font-light" href={`${countryCode}/${languageCode}/${link}`}>
         {item}
       </Link>
       {active === item && (
