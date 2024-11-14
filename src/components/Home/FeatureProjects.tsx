@@ -2,6 +2,8 @@
 import React, { useCallback, useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { HomeData } from "./types/constant";
+import Link from "next/link";
+import { countryCODE, languageCODE } from "../Navbar/nav-menue";
 
 interface FeatureProjectLayoutProps {
   heroData: HomeData;
@@ -185,7 +187,10 @@ const FeatureProjects: React.FC<FeatureProjectLayoutProps> = ({ heroData }) => {
                     </div>
 
                     {/* Product Image */}
-                    <div className="flex justify-center items-center">
+                    <Link
+                      href={`/${countryCODE}/${languageCODE}/product/${item?.h1}`}
+                      className="flex justify-center items-center"
+                    >
                       <div className="w-full px-2 hover:px-0 transition-all duration-300 lg:h-[8rem] mt-2 mb-6 flex justify-center items-center">
                         <Image
                           className="object-cover"
@@ -195,15 +200,18 @@ const FeatureProjects: React.FC<FeatureProjectLayoutProps> = ({ heroData }) => {
                           height={400}
                         />
                       </div>
-                    </div>
+                    </Link>
 
                     {/* View Machine Button */}
                     {hoveredCardIndex === idx && (
-                      <div className="flex bg-black rounded-b-full  w-full items-center justify-center absolute bottom-0">
+                      <Link
+                        className="flex bg-black rounded-b-full  w-full items-center justify-center absolute bottom-0"
+                        href={`/${countryCODE}/${languageCODE}/product/${item?.h1}`}
+                      >
                         <button className="text-sm text-white font-medium mr-1">
                           View Machine
                         </button>
-                      </div>
+                      </Link>
                     )}
                   </div>
                 ))}

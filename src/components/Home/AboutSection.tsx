@@ -6,6 +6,7 @@ import Link from "next/link";
 import AnimatedText from "../ui/AnimatedText";
 import styles from "../ui/AnimatedText.module.css";
 import { HomeData } from "./types/constant";
+import { countryCODE, languageCODE } from "../Navbar/nav-menue";
 
 interface Card {
   image: string;
@@ -84,20 +85,21 @@ const AboutUs: React.FC<AboutSectionLayoutProps> = ({ heroData }) => {
         </span>
       </h2>
 
-      {/* <h2 className="text-lg lg:text-4xl w-full text-center font-poppins lg:px-72 py-3">
-        {aboutData.heading
-          .split(" ")
-          .map((word: string, index: React.Key | null | undefined) => (
-            <span
+      <h1 className="text-lg lg:text-4xl w-full text-center font-poppins lg:px-72 py-3">
+        {aboutData.heading.split(" ").map((word, index) =>
+          word === "Machine" ? (
+            <Link
               key={index}
-              className={
-                word === "Machine" ? "text-[#483d78] cursor-pointer" : ""
-              }
+              className="text-[#483d78] cursor-pointer"
+              href={`/${countryCODE}/${languageCODE}/product`}
             >
-              {word}
-            </span>
-          ))}
-      </h2> */}
+              {word}{" "}
+            </Link>
+          ) : (
+            word + " "
+          )
+        )}
+      </h1>
 
       <div className="text-center flex flex-col w-full lg:max-w-6xl z-10">
         <p className="font-poppins flex lg:hidden text-sm lg:text-base font-light py-4 text-center w-full lg:w-3/5 leading-6">
@@ -129,7 +131,7 @@ const AboutUs: React.FC<AboutSectionLayoutProps> = ({ heroData }) => {
         </div>
 
         <Link
-          href="#"
+          href={`/${countryCODE}/${languageCODE}/about`}
           className="bg-gradient-to-r from-[#483d73]  to-red-700 to-90% bg-clip-text text-transparent  text-center font-poppins text-base hover:font-semibold mt-4"
         >
           {aboutData.readmore}

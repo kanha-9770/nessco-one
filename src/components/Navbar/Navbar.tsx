@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import { Menu } from "./nav-menue";
+import { countryCODE, languageCODE, Menu } from "./nav-menue";
 import dynamic from "next/dynamic";
 const MenuItem = dynamic(() => import("./nav-menue"));
 const ContactForm = dynamic(() => import("../Contact/Contact"));
@@ -45,9 +45,8 @@ function Navbar({ className, navData }: NavbarProps) {
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
   const [searchValue, setSearchValue] = useState<string>("");
   const pathname = usePathname() || "";
-  const componentCode = pathname.split("/")[2]?.toLowerCase();
-  const componentCodeourCompany = pathname.split("/")[3]?.toLowerCase();
-
+  const componentCode = pathname.split("/")[4]?.toLowerCase();
+  const componentCodeourCompany = pathname.split("/")[4]?.toLowerCase();
   const toggleMenu = () => setIsOpen(!isOpen);
   const expandItem = (item: string) =>
     setExpandedItem(expandedItem === item ? null : item);
@@ -108,7 +107,7 @@ function Navbar({ className, navData }: NavbarProps) {
       {/* Desktop Menu */}
       <div className="hidden px-12 lg:flex w-full">
         <div className="w-1/5  flex items-center">
-          <Link href="/" className="w-full h-full flex items-center">
+          <Link href={`/${countryCODE}/${languageCODE}`} className="w-full h-full flex items-center">
             <SVGComponent />
           </Link>
         </div>
@@ -142,7 +141,7 @@ function Navbar({ className, navData }: NavbarProps) {
       {/* Mobile Menu */}
       <div className=" lg:hidden  border-b-2 flex w-full ">
         <div className="lg:hidden w-full flex justify-between items-center -ml-2 p-4">
-          <Link href="#" className="h-14 w-14 flex items-center">
+          <Link href={`/${countryCODE}/${languageCODE}`} className="h-14 w-14 flex items-center">
           <SVGComponent />
           </Link>
           <button

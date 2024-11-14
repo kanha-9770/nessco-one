@@ -55,7 +55,7 @@ export default function MainLayout({ homeData }: MainLayoutProps) {
   ];
 
   return (
-    <main className="relative bg-[#f2f2f2] top-14 gap-2 h-full overflow-hidden">
+    <main className="relative bg-[#f2f2f2] top-14 gap-2 h-full ">
       <div className="top-2 relative">
         <Hero heroData={homeData} />
       </div>
@@ -91,7 +91,10 @@ export default function MainLayout({ homeData }: MainLayoutProps) {
           <HomeMachine heroData={homeData} />
         </div>
 
-        <div className="h-auto max-w-screen-2xl mx-auto">
+        <div
+          ref={sectionRefs.aboutUsRef}
+          className="h-auto max-w-screen-2xl mx-auto"
+        >
           <AboutUs heroData={homeData} />
         </div>
 

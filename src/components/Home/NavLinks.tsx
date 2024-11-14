@@ -185,7 +185,7 @@ const NavLinksDemo: React.FC<NavLinksDemoProps> = ({ type, navItems }) => {
       <nav
         className={`hidden ${
           scrolling ? "border-t-2" : "border-none"
-        } md:flex left-0 flex-row flex-wrap text-base  lg:h-10 font-light font-poppins px-10 lg:mt-0  space-x-2 sm:space-x-6 text-black `}
+        } md:flex  flex-row flex-wrap text-base  lg:h-10 font-light font-poppins px-20 lg:mt-0 sticky  space-x-2 sm:space-x-6 text-black `}
       >
         {navItems.map((item, index) => (
           <NavLink

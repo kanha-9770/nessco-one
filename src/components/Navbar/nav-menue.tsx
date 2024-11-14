@@ -3,7 +3,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-
+export let countryCODE='in';
+export let languageCODE='es';
 export const Menu = ({ children }: { children: React.ReactNode }) => {
   const [active, setActive] = useState<string | null>(null);
   const [position, setPosition] = useState({ left: 500, width: 0, opacity: 0 });
@@ -75,12 +76,14 @@ const MenuItem = ({
     };
   }, [ref, setActive, setPosition, item]);
   const pathname = usePathname() || "";
-  const componentCode = pathname.split("/")[2]?.toLowerCase();
-  const componentCodeourCompany = pathname.split("/")[3]?.toLowerCase();
+  const componentCode = pathname.split("/")[4]?.toLowerCase();
+  const componentCodeourCompany = pathname.split("/")[4]?.toLowerCase();
   const pathSegments = pathname?.split('/') || [];
   // Assuming URL structure like /<countryCode>/<languageCode>
   const countryCode = pathSegments[1] || 'in';
   const languageCode = pathSegments[2] || 'en';
+  countryCODE=countryCode;
+  languageCODE=languageCode;
   return (
     <div ref={ref} className="z-10 cursor-pointer px-3 font-poppins">
       <Link className="invert-0 text-base font-light" href={`/${countryCode}/${languageCode}/${link}`}>

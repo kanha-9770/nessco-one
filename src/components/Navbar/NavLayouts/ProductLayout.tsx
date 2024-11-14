@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import BlurImage from "../../ui/BlurImage";
 import Link from "next/link";
 import { NavbarData } from "../types/constant";
+import { countryCODE, languageCODE } from "../nav-menue";
 
 interface Machine {
   name: string;
@@ -15,6 +16,7 @@ interface Machine {
 }
 
 interface Link {
+  link: any;
   name: string;
   icon: string;
 }
@@ -134,7 +136,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
   const renderMachineItem = useCallback(
     (machine: Machine) => (
       <div className="text-center relative w-1/3 p-2">
-        <a href={`/${countryCode}/products/${machine.name}`}>
+        <Link href={`/${countryCODE}/${languageCODE}/products/${machine.name}`}>
           <Image
             src={machine.image}
             alt={machine.name}
@@ -152,7 +154,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
           >
             {machine.name}
           </h3>
-        </a>
+        </Link>
       </div>
     ),
     [countryCode, imageVariants]
@@ -173,7 +175,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
             : "hover:text-[#483d78] hover:font-semibold"
         } `}
       >
-        <Link className="flex w-full gap-2 flex-row" href="#">
+        <Link className="flex w-full gap-2 flex-row" href={`/${countryCODE}/${languageCODE}/product${link.link}`}>
           <div className="flex items-center justify-center cursor-pointer">
             <BlurImage
               className="rounded-full h-6 w-6 transform transition-transform duration-200 object-cover"

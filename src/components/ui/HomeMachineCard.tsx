@@ -2,6 +2,8 @@
 import React, { useRef, useState } from "react";
 import Image from "next/image"; // Import Image from next/image for optimization
 import dynamic from "next/dynamic";
+import Link from "next/link";
+import { countryCODE, languageCODE } from "../Navbar/nav-menue";
 
 const ProductModal = dynamic(() => import("./ProductModal"));
 
@@ -135,9 +137,9 @@ const Card = ({ card }: { card: Card; index: number; layout?: boolean }) => {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Serve appropriate image sizes
           />
           <div className="absolute -mb-2 font-poppins left-0 right-0 bottom-0 z-40 p-4">
-            <h3 className="text-black font-poppins text-sm md:text-base font-regular text-left">
+            <Link className="text-black font-poppins text-sm md:text-base font-regular text-left" href={`/${countryCODE}/${languageCODE}/product/${card.title}`}>
               {card.title}
-            </h3>
+            </Link>
           </div>
         </div>
       </button>

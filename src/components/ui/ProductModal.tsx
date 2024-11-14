@@ -1,6 +1,8 @@
+import Link from "next/link";
 import BlurImage from "./BlurImage";
 import Breadcrumb from "./Breadcrumb";
 import { Button } from "./button";
+import { countryCODE, languageCODE } from "../Navbar/nav-menue";
 
 interface ProductModalProps {
   image: string;
@@ -35,25 +37,47 @@ const ProductModal: React.FC<ProductModalProps> = ({
             <Breadcrumb items={breadcrumbItems} />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
               <div className="flex flex-col items-center">
-                <BlurImage
-                  src={image}
-                  alt={title}
-                  width={600}
-                  height={400}
-                  className="rounded-2xl object-fill lg:object-contain h-[350px]"
-                />
+                <Link
+                  className=""
+                  href={`/${countryCODE}/${languageCODE}/product`}
+                >
+                  <BlurImage
+                    src={image}
+                    alt={title}
+                    width={600}
+                    height={400}
+                    className="rounded-2xl object-fill lg:object-contain h-[350px]"
+                  />
+                </Link>
                 <div className="flex w-[60%] lg:-ml-14 space-x-2 lg:space-x-8 justify-center mt-8">
                   {buttons.map((button, index) => (
-                    <div key={index} className="ml-1">
-                      <Button className="rounded-full flex items-center bg-primary text-primary-foreground hover:bg-white hover:text-black border border-black px-1 py-2 text-base font-regular group">
-                        <span className="flex-grow ml-2 text-center">
-                          View All
-                        </span>
-                        <span className="ml-2 bg-white rounded-full p-1 transition-colors duration-200 group-hover:bg-black">
-                          
-                        </span>
+                    <Link
+                      key={index}
+                      className="ml-1"
+                      href={`/${countryCODE}/${languageCODE}/product`}
+                    >
+                      <Button
+                        className="rounded-full flex items-center justify-center bg-primary text-primary-foreground hover:bg-white hover:text-primary border-2 border-primary px-6 py-2 text-base font-medium transition-all duration-300 ease-in-out group"
+                        aria-label="View all items"
+                      >
+                        <span className="mr-2">View All</span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="20"
+                          height="20"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="transform transition-transform duration-300 ease-in-out -rotate-45 group-hover:rotate-0 group-hover:translate-x-1"
+                        >
+                          <line x1="5" y1="12" x2="19" y2="12"></line>
+                          <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
                       </Button>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -79,5 +103,5 @@ const ProductModal: React.FC<ProductModalProps> = ({
       </div>
     </>
   );
-}
+};
 export default ProductModal;

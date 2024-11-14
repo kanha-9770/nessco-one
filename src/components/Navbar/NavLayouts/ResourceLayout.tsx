@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { NavbarData } from "../types/constant";
+import { countryCODE, languageCODE } from "../nav-menue";
 
 type SupportItem = {
   title: string;
@@ -83,7 +84,7 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData }) => {
       >
         {DataBankItem.map((item, index) => (
           <div key={index} className="flex flex-col space-y-4">
-            <Link href="#">
+            <Link href={`/${countryCODE}/${languageCODE}/resources/${item.link}`}>
               <div
                 className="relative flex-shrink-0 w-56 h-32 rounded-3xl p-4 flex flex-col justify-center items-center"
               

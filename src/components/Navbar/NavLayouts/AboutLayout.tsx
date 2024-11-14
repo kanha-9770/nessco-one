@@ -3,6 +3,7 @@ import React, { useRef, useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { NavbarData } from "../types/constant";
+import { countryCODE, languageCODE } from "../nav-menue";
 
 interface NavItem {
   title: string;
@@ -62,7 +63,7 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData }) => {
             key={index}
             className="border-2 p-2 rounded-3xl lg:rounded-none lg:p-0 lg:border-none flex flex-col justify-start items-center lg:mt-4"
           >
-            <a href="#">
+            <Link href={`/${countryCODE}/${languageCODE}/about/${item.link}`}>
               <Image
                 src={item.image || "/path/to/fallback-image.jpg"} // Add a fallback image if `item.image` is undefined
                 alt={item.alt || "Fallback alt text"} // Provide a fallback alt text if `item.alt` is undefined
@@ -74,7 +75,7 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData }) => {
               <p className="mt-2 flex items-center justify-center space-x-2 text-center font-poppins invert-0 hover:text-[#483d78] hover:font-bold font-normal text-xs sm:text-sm md:text-base transform lg:hover:scale-80 transition-transform duration-300">
                 <span>{item.title}</span>
               </p>
-            </a>
+            </Link>
           </div>
         ))}
       </div>
@@ -84,7 +85,7 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData }) => {
         {navLeftData
           .slice(currentIndex, currentIndex + 2)
           .map((item: NavItem, index: number) => (
-            <Link key={index} href="#">
+            <Link key={index} href={`/${countryCODE}/${languageCODE}/about/${item.link}`}>
               <div
                 className={`hidden lg:flex border-t-2 h-[6.5rem] lg:border-none lg:hover:scale-80 transition-transform duration-200 items-center lg:p-4 lg:rounded-3xl lg:mb-2 ${
                   bgColors[index % bgColors.length]

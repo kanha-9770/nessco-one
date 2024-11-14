@@ -32,13 +32,12 @@ const PaperStraw = dynamic(() => import("../../Icons/PaperStraw"), {
 const PopcornTub = dynamic(() => import("../../Icons/PopcornTub"), {
   ssr: false,
 });
-const PositionAwareButton = dynamic(
-  () => import("../../ui/PositionAwareButton"),
-  { ssr: false }
-);
+
 import { Button } from "../../ui/button";
 import dynamic from "next/dynamic";
 import { NavbarData } from "../types/constant";
+import Link from "next/link";
+import { countryCODE, languageCODE } from "../nav-menue";
 interface Product {
   id: string;
   name: string;
@@ -76,10 +75,11 @@ export default function ApplicationLayout({ navData }: ApplicationLayoutProps) {
         {applicationData.map((product, index) => {
           const IconComponent = componentList[index];
           return (
-            <div
+            <Link
               key={product.id}
               className="flex flex-col items-center justify-center p-2 invert-0 cursor-pointer"
               onMouseEnter={() => setActiveProduct(product)}
+              href={`/${countryCODE}/${languageCODE}/application/${product?.name}`}
             >
               <div className=" h-20 w-20 flex items-center justify-center">
                 <IconComponent />
@@ -87,16 +87,35 @@ export default function ApplicationLayout({ navData }: ApplicationLayoutProps) {
               <span className="text-xs text-center invert-0">
                 {product.name}
               </span>
-            </div>
+            </Link>
           );
         })}
 
-        <div className="absolute bottom-4 right-4">
-          <Button className="rounded-full flex items-center bg-primary text-primary-foreground hover:bg-white hover:text-black border border-black px-1 py-2 text-base font-regular group">
-            <span className="flex-grow ml-2 text-center">View All</span>
-            <span className="ml-2 bg-white rounded-full p-1 transition-colors duration-200 group-hover:bg-black"></span>
-          </Button>
-        </div>
+        <Link href={`/${countryCODE}/${languageCODE}/application`}>
+          <div className="absolute bottom-4 right-4">
+            <Button className="rounded-full flex items-center bg-primary text-primary-foreground hover:bg-black hover:text-black border border-black px-1 py-2 text-base font-regular group">
+              <span className="flex-grow ml-2 text-center group-hover:text-white">View All</span>
+              <span className="ml-2 rounded-full p-1 transition-colors duration-200">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 64 64"
+                  className="lg:w-6 w-5 lg:h-6 h-5"
+                >
+                  <circle
+                    cx="32"
+                    cy="32"
+                    r="32"
+                    className="fill-black group-hover:fill-white cursor-pointer"
+                  />
+                  <path
+                    d="M25 20 L37 32 L25 44"
+                    className="stroke-white group-hover:stroke-black stroke-[4px] fill-none stroke-linecap-round stroke-linejoin-round "
+                  />
+                </svg>{" "}
+              </span>
+            </Button>
+          </div>
+        </Link>
       </div>
 
       <div className="md:w-[30%] border-l p-6 flex flex-col  relative">
@@ -111,18 +130,20 @@ export default function ApplicationLayout({ navData }: ApplicationLayoutProps) {
         </div>
         <div className="relative w-full  z-10">
           <h2 className="w-full text-5xl font-semibold">
-            <span className="text-[#9e9c9c]">
+            <span className="text-[#483d73]">
               {activeProduct?.name.trim().replace(/\s+\S+$/, "")}
             </span>{" "}
-            <span className="text-[#dc0e2a]">
+            <span className="text-red-700">
               {activeProduct?.name.trim().match(/\S+$/)}
             </span>
           </h2>
           <p className="pt-6 invert-0 mb-4">{activeProduct.description}</p>
         </div>
-        <div className="absolute bottom-6 right-8 z-10">
-          <PositionAwareButton text={"Explore More"} icon={true} />
-        </div>
+        <Link href={`/${countryCODE}/${languageCODE}/application`}>
+          <div className="absolute bottom-6 right-8 z-20 rounded-full bg-white hover:bg-black hover:text-white">
+            <Button>Explore More</Button>
+          </div>
+        </Link>
       </div>
     </div>
   );

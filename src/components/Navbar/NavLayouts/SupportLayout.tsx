@@ -3,6 +3,7 @@ import bgPick from "../../../../public/assets/nav_support/BgMapImage.png";
 import Link from "next/link";
 import { NavbarData } from "../types/constant";
 import dynamic from "next/dynamic";
+import { countryCODE, languageCODE } from "../nav-menue";
 const SupportFirst = dynamic(() => import("../IconsComponent/SupportFirst"));
 const SupportSecond = dynamic(() => import("../IconsComponent/SupportSecond"));
 const SupportThird = dynamic(() => import("../IconsComponent/SupportThird"));
@@ -102,7 +103,7 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData }) => {
         {supportItems.map((item, index) => {
           const IconComponent = componentList[index];
           return (
-            <Link key={index} className="flex flex-col space-y-4" href="#">
+            <Link key={index} className="flex flex-col space-y-4" href={`/${countryCODE}/${languageCODE}/support/${item.link}`}>
               <div
                 className="flex-shrink-0 w-72 h-40 rounded-3xl p-4 flex flex-col justify-center items-center bg-cover bg-center"
                 style={{ backgroundImage: `url(${bgPick.src})` }}

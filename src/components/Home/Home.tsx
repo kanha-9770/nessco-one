@@ -3,6 +3,8 @@ import { Button } from "../ui/button";
 import dynamic from "next/dynamic";
 import { HomeData } from "./types/constant";
 import FeatureProjects from "./FeatureProjects";
+import Link from "next/link";
+import { countryCODE, languageCODE } from "../Navbar/nav-menue";
 const ImageSlider = dynamic(() => import("../ui/ImageSlider"));
 interface HeroLayoutProps {
   heroData: HomeData;
@@ -34,9 +36,14 @@ const Home: React.FC<HeroLayoutProps> = ({ heroData }) => {
             </svg>
           </div>
           <div className="w-full mt-4 ml-8 hidden lg:flex  justify-start">
-            <div className="absolute bottom-1 right-[4rem]">
+            <Link
+              className="absolute bottom-1 right-[4rem]"
+              href={`/${countryCODE}/${languageCODE}/contact`}
+            >
               <Button className="rounded-full flex items-center text-primary-foreground border-2  border-white h-16 w-60 text-lg bg-clip-border relative group custom-gradient-border transition-all duration-300">
-                <span className="text-2xl font-medium group-hover:bg-gradient-to-r group-hover:from-[#483d73] group-hover:to-red-700 group-hover:text-transparent group-hover:bg-clip-text -ml-8 transition-all duration-300">Enquire</span>
+                <span className="text-2xl font-medium text-black group-hover:bg-gradient-to-r group-hover:from-[#483d73] group-hover:to-red-700 group-hover:text-transparent group-hover:bg-clip-text -ml-8 transition-all duration-300">
+                  Enquire
+                </span>
                 <span className="h-12 w-12 bg-white  rounded-full flex items-center justify-center absolute right-2 group-hover:bg-gradient-to-r group-hover:from-[#483d73] group-hover:to-red-700 transition-all duration-300">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +61,7 @@ const Home: React.FC<HeroLayoutProps> = ({ heroData }) => {
                   </svg>
                 </span>
               </Button>
-            </div>
+            </Link>
           </div>
           {/* <div className=" lg:hidden mt-2 -ml-2 items-center flex justify-center">
             <div className="absolute bottom-4 right-4">
