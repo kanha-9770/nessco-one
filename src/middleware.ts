@@ -462,7 +462,7 @@ async function fetchUserLocation(req: NextRequest) {
     return { country: "us", language: "en" };
   }
   console.log("Detected client IP address:", newClientIp);
-  const nesscoUrl = `https://countrygeoapi.nesscoindustries.com/geoip/${newClientIp}/`;
+  const nesscoUrl =`https://ipinfo.io/${newClientIp}/json/`;
   try {
     const nesscoResponse = await fetch(nesscoUrl);
     if (nesscoResponse.ok) {
