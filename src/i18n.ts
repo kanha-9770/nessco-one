@@ -216,10 +216,8 @@ export const LnaguageSwitcherlocales = [
 
 export default getRequestConfig(async ({ locale }) => {
   console.log("Guard is working...");
-
   // Define the base URL for your API
   const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
-
   // If the locale isn't in the allowed list, default to English
   if (!locales.includes(locale as any)) {
     locale = "en"; // Fallback to English

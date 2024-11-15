@@ -4,16 +4,23 @@ import Image from "next/image";
 import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "@/hooks/use-outside-click";
-import userGuideData from "@/components/Constants/user-guide/user-guide_data.json";
+import { UserGuideItem } from "./types/constant";
 
-export function UserGuide() {
+interface UserGuideProps {
+  userGuideData: UserGuideItem;
+}
+export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
   const data = userGuideData.UserGuide[0]["user-guide"];
   const [cards, setCards] = useState(data.cards);
   const categories = data.categories;
-  const [activeCard, setActiveCard] = useState<(typeof cards)[number] | null>(null);
+  const [activeCard, setActiveCard] = useState<(typeof cards)[number] | null>(
+    null
+  );
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
-  const [selectedDownloadCard, setSelectedDownloadCard] = useState<(typeof cards)[number] | null>(null);
+  const [selectedDownloadCard, setSelectedDownloadCard] = useState<
+    (typeof cards)[number] | null
+  >(null);
   const ref = useRef<HTMLDivElement>(null);
   const id = useId();
 
@@ -64,22 +71,23 @@ export function UserGuide() {
   };
 
   const handleCategoryChange = (category: string) => {
-    setSelectedCategories(prev => 
+    setSelectedCategories((prev) =>
       prev.includes(category)
-        ? prev.filter(c => c !== category)
+        ? prev.filter((c) => c !== category)
         : [...prev, category]
     );
   };
 
   const filterCards = () => {
-    return data.cards.filter(card => {
-      const matchesSearch = 
+    return data.cards.filter((card) => {
+      const matchesSearch =
         card.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         card.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
         card.title2.toLowerCase().includes(searchTerm.toLowerCase()) ||
         card.description2.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesCategory = selectedCategories.length === 0 || 
-                              selectedCategories.some(cat => card.category.includes(cat));
+      const matchesCategory =
+        selectedCategories.length === 0 ||
+        selectedCategories.some((cat) => card.category.includes(cat));
       return matchesSearch && matchesCategory;
     });
   };
@@ -90,7 +98,7 @@ export function UserGuide() {
 
   return (
     <>
-      <div className="w-full font-regular font-poppins bg-white pt-4 flex flex-col">
+      <div className="w-full font-regular font-poppins bg-white pt-4 flex flex-col mt-14">
         <div className="w-full px-10 flex-col">
           <h1 className="lg:text-5xl text-3xl mb-2">
             <span className="font-medium text-[#483d73] block">
@@ -436,7 +444,9 @@ export function UserGuide() {
                   </button>
                 </div>
                 <div className="flex justify-center items-center w-[50%] mb-[0.5rem] font-poppins font-medium">
-                  <button onClick={handleCloseFilter} className="text-red-700">{data.apply}</button>
+                  <button onClick={handleCloseFilter} className="text-red-700">
+                    {data.apply}
+                  </button>
                 </div>
               </div>
 
@@ -519,10 +529,7 @@ export function UserGuide() {
                 <form className="w-full">
                   {/* Form Fields */}
                   <div className="mb-2 space-y-1">
-                    <label
-                      htmlFor="name"
-                      className="text-lg font-medium"
-                    >
+                    <label htmlFor="name" className="text-lg font-medium">
                       {data.name}
                     </label>
                     <input
@@ -533,10 +540,7 @@ export function UserGuide() {
                     />
                   </div>
                   <div className="mb-2 space-y-1">
-                    <label
-                      htmlFor="email"
-                      className="text-lg font-medium"
-                    >
+                    <label htmlFor="email" className="text-lg font-medium">
                       {data.email}
                     </label>
                     <input
@@ -547,10 +551,7 @@ export function UserGuide() {
                     />
                   </div>
                   <div className="mb-2 space-y-1">
-                    <label
-                      htmlFor="phone"
-                      className="text-lg font-medium"
-                    >
+                    <label htmlFor="phone" className="text-lg font-medium">
                       {data.phone}
                     </label>
                     <input
@@ -583,4 +584,4 @@ export function UserGuide() {
       </div>
     </>
   );
-}
+};

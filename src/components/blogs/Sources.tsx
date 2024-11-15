@@ -1,9 +1,14 @@
 "use client";
 import React, { useRef } from "react";
-import { Sources } from "@/components/Constants/blogs/blogs_data.json";
 import Image from "next/image";
+import { BlogsItem } from "./types/constant";
 
-const Page5 = () => {
+interface BlogsProps {
+  blogsData: BlogsItem;
+}
+
+const Page5: React.FC<BlogsProps> = ({ blogsData }) => {
+  const Sources = blogsData.blogs[0]?.Sources;
   const carouselRef = useRef<HTMLDivElement | null>(null);
 
   const scrollLeft = () => {

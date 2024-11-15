@@ -1,12 +1,19 @@
 "use client";
 import React, { useState } from "react";
-import { Filter } from "@/components/Constants/blogs/blogs_data.json";
+import { BlogsItem } from "./types/constant";
+
+interface BlogsProps {
+  blogsData: BlogsItem;
+}
 
 interface Page1Props {
   onCategorySelect: (categories: string[]) => void;
 }
 
-const Page1: React.FC<Page1Props> = ({ onCategorySelect }) => {
+type CombinedProps = BlogsProps & Page1Props;
+
+const Page1: React.FC<CombinedProps> = ({ blogsData, onCategorySelect }) => {
+  const Filter = blogsData.blogs[0]?.Filter;
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [showCategories, setShowCategories] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");

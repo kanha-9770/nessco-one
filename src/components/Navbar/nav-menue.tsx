@@ -85,7 +85,7 @@ const MenuItem = ({
   countryCODE=countryCode;
   languageCODE=languageCode;
   return (
-    <div ref={ref} className="z-10 cursor-pointer px-3 font-poppins">
+    <div ref={ref} className="z-[9999] cursor-pointer px-3 font-poppins">
       <Link className="invert-0 text-base font-light" href={`/${countryCode}/${languageCode}/${link}`}>
         {item}
       </Link>
@@ -101,7 +101,7 @@ const MenuItem = ({
                 : "bg-white"
             } dark:bg-black overflow-hidden `}
           >
-            <motion.div layout className="w-screen mx-auto h-full px-12">
+            <motion.div layout className="w-screen z-[99999] mx-auto h-full px-12">
               {children}
             </motion.div>
           </motion.div>

@@ -3,13 +3,18 @@ import Page1 from "@/components/genuine-parts/Header";
 const Page2 = dynamic(() => import("@/components/genuine-parts/Inventory"));
 const Page3 = dynamic(() => import("@/components/genuine-parts/Box"));
 import dynamic from "next/dynamic";
+import { GenuinePartsItem } from "./types/constant";
 
-const Pages = () => {
+interface GenuinePartsProps {
+  genuinePartsData: GenuinePartsItem;
+}
+
+const Pages: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
   return (
     <>
-      <Page1 />
-      <Page2 />
-      <Page3 />
+      <Page1 genuinePartsData={genuinePartsData} />
+      <Page2 genuinePartsData={genuinePartsData} />
+      <Page3 genuinePartsData={genuinePartsData} />
     </>
   );
 };

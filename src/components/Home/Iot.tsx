@@ -26,26 +26,26 @@ const IOT = () => {
 
   return (
     <>
-      <div className="max-w-screen-2xl mx-auto w-full h-full my-32 font-poppins font-regular overflow-hidden">
-        <h1 className="text-center mb-10 text-3xl font-semibold text-[#483d73]">
+      <div className="max-w-screen-2xl mx-auto w-full h-full my-8 md:my-16 font-poppins font-regular overflow-hidden">
+        <h1 className="text-center mb-6 md:mb-10 text-2xl md:text-3xl font-semibold text-[#483d73]">
           {IOTData.title}
         </h1>
-        <div className="flex px-14">
-          <div className="w-1/2 relative">
+        <div className="flex flex-col md:flex-row px-4 md:px-14">
+          <div className="w-full md:w-1/2 relative mb-8 md:mb-0">
             <div
-              className="w-[33rem] pb-2 overflow-x-scroll scrollbar-hide"
+              className="w-full md:w-[33rem] pb-2 overflow-x-scroll scrollbar-hide"
               ref={carouselRef}
             >
-              <div className="w-max flex space-x-8">
+              <div className="w-max flex space-x-4 md:space-x-8">
                 {IOTData.cards.map((item, idx) => (
                   <div
                     key={idx}
-                    className="bg-white h-[20rem] relative w-[15rem] rounded-2xl"
+                    className="bg-white h-[18rem] md:h-[20rem] relative w-[14rem] md:w-[15rem] rounded-2xl"
                   >
-                    <h2 className="font-medium text-center my-4 text-lg">
+                    <h2 className="font-medium text-center my-4 text-base md:text-lg">
                       {item.title}
                     </h2>
-                    <p className="text-center px-6 text-sm absolute top-14 z-10 font-normal">
+                    <p className="text-center px-4 md:px-6 text-xs md:text-sm absolute top-14 z-10 font-normal">
                       {item.description}
                     </p>
                     <video
@@ -61,7 +61,7 @@ const IOT = () => {
                       <source src={item.video} type="video/mp4" />
                     </video>
                     <svg
-                      className="h-14 w-14 bg-black border-4 border-[#f5f5f5] p-1.5 rounded-full text-white transform transition-transform duration-300 ease-in-out hover:rotate-45 hover:bg-[#483d73] absolute -bottom-1 -right-1 z-20"
+                      className="h-12 w-12 md:h-14 md:w-14 bg-black border-4 border-[#f5f5f5] p-1.5 rounded-full text-white transform transition-transform duration-300 ease-in-out hover:rotate-45 hover:bg-[#483d73] absolute -bottom-1 -right-1 z-20"
                       viewBox="0 0 24 24"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -78,7 +78,7 @@ const IOT = () => {
                 ))}
               </div>
             </div>
-            <div className="flex space-x-2 items-center justify-end mt-2 absolute left-[28rem] z-20">
+            <div className="flex space-x-2 items-center justify-end mt-2 md:absolute md:left-[28rem] z-20">
               <div className="h-6 w-6 bg-[#9e9c9c] hover:bg-black rounded-full flex items-center justify-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +114,7 @@ const IOT = () => {
                 </svg>
               </div>
             </div>
-            <div className="relative">
+            <div className="relative hidden md:block">
               <svg
                 version="1.1"
                 id="wifi"
@@ -129,9 +129,9 @@ const IOT = () => {
                 <path
                   id="wifi3"
                   fill="#483d73"
-                  fill-opacity="0.5"
+                  fillOpacity="0.5"
                   d="M9.9,5C6.8,5,4,6.4,2.2,8.7l1.1,1.1c1.6-2,4-3.2,6.7-3.2c2.7,0,5.1,1.3,6.7,3.2l1.1-1.1
-		C15.8,6.4,13,5,9.9,5z"
+                  C15.8,6.4,13,5,9.9,5z"
                 >
                   <animate
                     id="four"
@@ -145,9 +145,9 @@ const IOT = () => {
                 <path
                   id="wifi2"
                   fill="#483d73"
-                  fill-opacity="0.5"
+                  fillOpacity="0.5"
                   d="M9.9,8c-2.3,0-4.3,1.1-5.6,2.8l1.1,1.1c1-1.4,2.6-2.4,4.5-2.4c1.9,0,3.5,0.9,4.5,2.4l1.1-1.1
-		C14.2,9.1,12.2,8,9.9,8z"
+                  C14.2,9.1,12.2,8,9.9,8z"
                 >
                   <animate
                     id="three"
@@ -161,9 +161,9 @@ const IOT = () => {
                 <path
                   id="wifi1"
                   fill="#483d73"
-                  fill-opacity="0.5"
+                  fillOpacity="0.5"
                   d="M9.9,11c-1.5,0-2.7,0.8-3.4,2l1.1,1.1c0.4-0.9,1.3-1.6,2.3-1.6s2,0.7,2.3,1.6l1.1-1.1
-		C12.6,11.8,11.4,11,9.9,11z"
+                  C12.6,11.8,11.4,11,9.9,11z"
                 >
                   <animate
                     id="two"
@@ -177,7 +177,7 @@ const IOT = () => {
                 <circle
                   id="dot"
                   fill="#483d73"
-                  fill-opacity="0.5"
+                  fillOpacity="0.5"
                   cx="9.9"
                   cy="15.3"
                   r="1"
@@ -206,9 +206,9 @@ const IOT = () => {
                 <path
                   id="wifi3"
                   fill="#483d73"
-                  fill-opacity="0.5"
+                  fillOpacity="0.5"
                   d="M9.9,5C6.8,5,4,6.4,2.2,8.7l1.1,1.1c1.6-2,4-3.2,6.7-3.2c2.7,0,5.1,1.3,6.7,3.2l1.1-1.1
-		C15.8,6.4,13,5,9.9,5z"
+                  C15.8,6.4,13,5,9.9,5z"
                 >
                   <animate
                     id="four"
@@ -222,9 +222,9 @@ const IOT = () => {
                 <path
                   id="wifi2"
                   fill="#483d73"
-                  fill-opacity="0.5"
+                  fillOpacity="0.5"
                   d="M9.9,8c-2.3,0-4.3,1.1-5.6,2.8l1.1,1.1c1-1.4,2.6-2.4,4.5-2.4c1.9,0,3.5,0.9,4.5,2.4l1.1-1.1
-		C14.2,9.1,12.2,8,9.9,8z"
+                  C14.2,9.1,12.2,8,9.9,8z"
                 >
                   <animate
                     id="three"
@@ -238,9 +238,9 @@ const IOT = () => {
                 <path
                   id="wifi1"
                   fill="#483d73"
-                  fill-opacity="0.5"
+                  fillOpacity="0.5"
                   d="M9.9,11c-1.5,0-2.7,0.8-3.4,2l1.1,1.1c0.4-0.9,1.3-1.6,2.3-1.6s2,0.7,2.3,1.6l1.1-1.1
-		C12.6,11.8,11.4,11,9.9,11z"
+                  C12.6,11.8,11.4,11,9.9,11z"
                 >
                   <animate
                     id="two"
@@ -254,7 +254,7 @@ const IOT = () => {
                 <circle
                   id="dot"
                   fill="#483d73"
-                  fill-opacity="0.5"
+                  fillOpacity="0.5"
                   cx="9.9"
                   cy="15.3"
                   r="1"
@@ -283,9 +283,9 @@ const IOT = () => {
                 <path
                   id="wifi3"
                   fill="#483d73"
-                  fill-opacity="0.5"
+                  fillOpacity="0.5"
                   d="M9.9,5C6.8,5,4,6.4,2.2,8.7l1.1,1.1c1.6-2,4-3.2,6.7-3.2c2.7,0,5.1,1.3,6.7,3.2l1.1-1.1
-		C15.8,6.4,13,5,9.9,5z"
+                  C15.8,6.4,13,5,9.9,5z"
                 >
                   <animate
                     id="four"
@@ -299,9 +299,9 @@ const IOT = () => {
                 <path
                   id="wifi2"
                   fill="#483d73"
-                  fill-opacity="0.5"
+                  fillOpacity="0.5"
                   d="M9.9,8c-2.3,0-4.3,1.1-5.6,2.8l1.1,1.1c1-1.4,2.6-2.4,4.5-2.4c1.9,0,3.5,0.9,4.5,2.4l1.1-1.1
-		C14.2,9.1,12.2,8,9.9,8z"
+                  C14.2,9.1,12.2,8,9.9,8z"
                 >
                   <animate
                     id="three"
@@ -315,9 +315,9 @@ const IOT = () => {
                 <path
                   id="wifi1"
                   fill="#483d73"
-                  fill-opacity="0.5"
+                  fillOpacity="0.5"
                   d="M9.9,11c-1.5,0-2.7,0.8-3.4,2l1.1,1.1c0.4-0.9,1.3-1.6,2.3-1.6s2,0.7,2.3,1.6l1.1-1.1
-		C12.6,11.8,11.4,11,9.9,11z"
+                  C12.6,11.8,11.4,11,9.9,11z"
                 >
                   <animate
                     id="two"
@@ -331,7 +331,7 @@ const IOT = () => {
                 <circle
                   id="dot"
                   fill="#483d73"
-                  fill-opacity="0.5"
+                  fillOpacity="0.5"
                   cx="9.9"
                   cy="15.3"
                   r="1"
@@ -360,9 +360,9 @@ const IOT = () => {
                 <path
                   id="wifi3"
                   fill="#483d73"
-                  fill-opacity="0.5"
+                  fillOpacity="0.5"
                   d="M9.9,5C6.8,5,4,6.4,2.2,8.7l1.1,1.1c1.6-2,4-3.2,6.7-3.2c2.7,0,5.1,1.3,6.7,3.2l1.1-1.1
-		C15.8,6.4,13,5,9.9,5z"
+                  C15.8,6.4,13,5,9.9,5z"
                 >
                   <animate
                     id="four"
@@ -376,9 +376,9 @@ const IOT = () => {
                 <path
                   id="wifi2"
                   fill="#483d73"
-                  fill-opacity="0.5"
+                  fillOpacity="0.5"
                   d="M9.9,8c-2.3,0-4.3,1.1-5.6,2.8l1.1,1.1c1-1.4,2.6-2.4,4.5-2.4c1.9,0,3.5,0.9,4.5,2.4l1.1-1.1
-		C14.2,9.1,12.2,8,9.9,8z"
+                  C14.2,9.1,12.2,8,9.9,8z"
                 >
                   <animate
                     id="three"
@@ -392,9 +392,9 @@ const IOT = () => {
                 <path
                   id="wifi1"
                   fill="#483d73"
-                  fill-opacity="0.5"
+                  fillOpacity="0.5"
                   d="M9.9,11c-1.5,0-2.7,0.8-3.4,2l1.1,1.1c0.4-0.9,1.3-1.6,2.3-1.6s2,0.7,2.3,1.6l1.1-1.1
-		C12.6,11.8,11.4,11,9.9,11z"
+                  C12.6,11.8,11.4,11,9.9,11z"
                 >
                   <animate
                     id="two"
@@ -408,7 +408,7 @@ const IOT = () => {
                 <circle
                   id="dot"
                   fill="#483d73"
-                  fill-opacity="0.5"
+                  fillOpacity="0.5"
                   cx="9.9"
                   cy="15.3"
                   r="1"
@@ -424,7 +424,7 @@ const IOT = () => {
                 </circle>
               </svg>
               <Image
-                className="object-cover ml-2"
+                className="object-cover ml-2 hidden md:block"
                 src={IOTData.machineImg}
                 alt={IOTData.title}
                 width={400}
@@ -432,9 +432,9 @@ const IOT = () => {
               />
             </div>
           </div>
-          <div className="w-1/2 relative">
+          <div className="w-full md:w-1/2 relative">
             <video
-              className="absolute -top-20 -right-56 opacity-10"
+              className="absolute -top-20 -right-56 opacity-10 hidden md:block"
               id="background-video"
               autoPlay
               muted
@@ -443,21 +443,20 @@ const IOT = () => {
               poster={IOTData.globeVideo}
               onTimeUpdate={(e) => {
                 const video = e.target as HTMLVideoElement;
-                // Restart the video slightly before it reaches the end
                 if (video.currentTime >= video.duration - 0.2) {
-                  video.currentTime = 0; // Reset to the start
-                  video.play(); // Play again immediately
+                  video.currentTime = 0;
+                  video.play();
                 }
               }}
             >
               <source src={IOTData.globeVideo} type="video/mp4" />
             </video>
 
-            <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-[#d08ceb] to-[#483d73] text-[5.5rem] font-semibold pt-8">
+            <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-[#d08ceb] to-[#483d73] text-4xl md:text-[5.5rem] font-semibold pt-4 md:pt-8 text-center md:text-left">
               {IOTData.subTitle}
             </h1>
             <Image
-              className="w-full absolute bottom-0"
+              className="w-full absolute bottom-0 hidden md:block"
               src={IOTData.desktopImg}
               alt={IOTData.title}
               width={400}

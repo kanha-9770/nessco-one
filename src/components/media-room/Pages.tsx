@@ -1,9 +1,7 @@
 "use client";
-
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import mediaRoomData from "@/components/Constants/media-room/media-room_data.json";
-
+import { MediaRoomItem } from "./types/constant";
 
 interface ModalProps {
   isOpen: boolean;
@@ -44,6 +42,7 @@ interface FilterProps {
   selectedCategories: string[];
   categorySearch: string;
   onCategorySearchChange: (query: string) => void;
+  mediaRoomData: MediaRoomItem;
 }
 
 const Filter: React.FC<FilterProps> = ({
@@ -51,8 +50,9 @@ const Filter: React.FC<FilterProps> = ({
   selectedCategories,
   categorySearch,
   onCategorySearchChange,
+  mediaRoomData,
 }) => {
-
+  const Header = mediaRoomData?.MediaRoom[0]?.Header;
   const handleCategoryChange = (category: string) => {
     const updatedCategories = selectedCategories.includes(category)
       ? selectedCategories.filter((c) => c !== category)
@@ -60,24 +60,23 @@ const Filter: React.FC<FilterProps> = ({
     onCategoryChange(updatedCategories);
   };
 
-  const filteredCategories = mediaRoomData.Header.categories.filter(
-    (category) =>
-      category.title.toLowerCase().includes(categorySearch.toLowerCase())
+  const filteredCategories = Header.categories.filter((category) =>
+    category.title.toLowerCase().includes(categorySearch.toLowerCase())
   );
 
   return (
     <div className="font-regular font-poppins">
       <div className="w-full h-[57rem] pr-8 border-r-2">
         <p className="mb-2 font-poppins invisible lg:visible">
-          {mediaRoomData.Header.filter}
+          {Header.filter}
         </p>
-        <p className="mb-2 font-poppins">{mediaRoomData.Header.byCategory}</p>
+        <p className="mb-2 font-poppins">{Header.byCategory}</p>
 
         <div className="flex rounded-[1rem] bg-white overflow-hidden mb-4">
           <input
             aria-label="Search categories"
             type="search"
-            placeholder="Search categories"
+            placeholder="Search"
             className="w-full py-[0.3rem] px-[1rem] outline-none bg-transparent text-black font-poppins"
             value={categorySearch}
             onChange={(e) => onCategorySearchChange(e.target.value)}
@@ -133,6 +132,7 @@ interface HeaderProps {
   searchQuery: string;
   onFilterChange: (filter: string) => void;
   selectedFilter: string;
+  mediaRoomData: MediaRoomItem;
 }
 
 const Header: React.FC<HeaderProps> = ({
@@ -140,13 +140,13 @@ const Header: React.FC<HeaderProps> = ({
   searchQuery,
   onFilterChange,
   selectedFilter,
+  mediaRoomData,
 }) => {
+  const Header = mediaRoomData?.MediaRoom[0]?.Header;
   const [currentDate, setCurrentDate] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  
 
-  
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
@@ -154,8 +154,6 @@ const Header: React.FC<HeaderProps> = ({
   const handleToggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
-
-  
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onSearch(e.target.value);
@@ -173,25 +171,23 @@ const Header: React.FC<HeaderProps> = ({
 
   return (
     <div className="bg-white h-[9rem] mt-14 w-full mb-12 font-regular font-poppins lg:px-[2rem] px-[1.5rem]">
-      <h1 className="text-4xl font-medium py-[1rem]">
-        {mediaRoomData.Header.title}
-      </h1>
+      <h1 className="text-4xl font-medium py-[1rem]">{Header.title}</h1>
       <div className="flex items-center justify-center mt-[1rem]">
         <h2 className="w-[6rem] text-center lg:text-sm text-xs lg:mr-[2rem] mr-[1rem] font-normal">
           {currentDate}
         </h2>
-        <div className="lg:mt-0 lg:mr-8 mt-4">
+        <div className="lg:mt-0 lg:mr-8 mt-4 bg-[#f2f2f2] rounded-full">
           <input
             type="text"
             value={searchQuery}
             onChange={handleSearchChange}
-            placeholder="Search..."
-            className="lg:w-[14.5rem]  w-full h-[2rem]  p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#483d73]"
+            placeholder="Search"
+            className="lg:w-[14.5rem] w-full h-[2rem] p-3 bg-[#f2f2f2] rounded-full outline-none"
           />
         </div>
 
-        <div className="flex lg:space-x-8 space-x-4 lg:mr-[2rem] mr-[1rem] w-[75%] overflow-x-scroll scrollbar-hide">
-          {mediaRoomData.Header.filters.map((item, index) => (
+        <div className="flex lg:space-x-8 space-x-4 lg:mr-[2rem] mr-[1rem] w-[62%] overflow-x-scroll scrollbar-hide">
+          {Header.filters.map((item, index) => (
             <div key={index} className="">
               <button
                 className={`lg:text-lg text-sm font-normal ${
@@ -206,7 +202,7 @@ const Header: React.FC<HeaderProps> = ({
             </div>
           ))}
         </div>
-        <div className="bg-black w-7 h-7 rounded-full flex items-center justify-center">
+        <div className="bg-black w-8 h-8 rounded-full flex items-center justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -224,7 +220,7 @@ const Header: React.FC<HeaderProps> = ({
       {isDropdownOpen && (
         <div className="absolute lg:right-[3rem] right-[1rem] mt-2 bg-white shadow-xl rounded-md z-50 w-[8rem] h-[15rem] overflow-y-scroll scrollbar">
           <ul className="p-2">
-            {mediaRoomData.Header.filters.map((item, index) => (
+            {Header.filters.map((item, index) => (
               <li key={index} className="py-2 px-4 hover:bg-gray-100">
                 {item.title}
               </li>
@@ -242,19 +238,19 @@ const Header: React.FC<HeaderProps> = ({
                   aria-label="Cancel"
                   className="text-[#838282]"
                 >
-                  {mediaRoomData.Header.cancel}
+                  {Header.cancel}
                 </button>
               </div>
               <div className="flex justify-center items-center w-[50%] mb-[0.5rem] font-poppins font-medium">
                 <button aria-label="Apply" className="text-red-700">
-                  {mediaRoomData.Header.apply}
+                  {Header.apply}
                 </button>
               </div>
             </div>
 
             <div className="h-[22rem] mt-4 p-[1rem] bg-[#f5f5f5] rounded-lg">
               <div className="h-[14rem] overflow-y-scroll scrollbar-hide">
-                {mediaRoomData.Header.categories.map((item, index) => (
+                {Header.categories.map((item, index) => (
                   <div
                     key={index}
                     className="flex justify-between items-center"
@@ -286,7 +282,7 @@ interface NewsItem {
   img: string;
   filter: string;
   title: string;
-  header?:string;
+  header?: string;
   continueReading: string;
   dialogDescription: string;
 }
@@ -295,20 +291,23 @@ interface NewsProps {
   searchQuery: string;
   selectedCategories: string[];
   selectedFilter: string;
+  mediaRoomData: MediaRoomItem;
 }
 
 const TrendingNews: React.FC<NewsProps> = ({
   searchQuery,
   selectedCategories,
   selectedFilter,
+  mediaRoomData,
 }) => {
+  const TrendingNews = mediaRoomData?.MediaRoom[0]?.TrendingNews;
   const carouselRef = useRef<HTMLDivElement>(null);
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState<NewsItem>({
     img: "",
     filter: "",
     title: "",
-    header:"",
+    header: "",
     continueReading: "",
     dialogDescription: "",
   });
@@ -338,7 +337,7 @@ const TrendingNews: React.FC<NewsProps> = ({
     }
   };
 
-  const filteredNews = mediaRoomData.TrendingNews.sections.filter((item) => {
+  const filteredNews = TrendingNews.sections.filter((item) => {
     const matchesSearch = item.title
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
@@ -355,9 +354,7 @@ const TrendingNews: React.FC<NewsProps> = ({
   return (
     <>
       <div className="bg-white h-full w-full rounded-2xl font-poppins px-[1.5rem] pb-2">
-        <h2 className="text-[#483d73] text-2xl py-4">
-          {mediaRoomData.TrendingNews.title}
-        </h2>
+        <h2 className="text-[#483d73] text-2xl py-4">{TrendingNews.title}</h2>
 
         <div
           ref={carouselRef}
@@ -485,13 +482,15 @@ const LatestNews: React.FC<NewsProps> = ({
   searchQuery,
   selectedCategories,
   selectedFilter,
+  mediaRoomData,
 }) => {
+  const LatestNews = mediaRoomData?.MediaRoom[0]?.LatestNews;
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState<NewsItem>({
     img: "",
     filter: "",
     title: "",
-    header:"",
+    header: "",
     continueReading: "",
     dialogDescription: "",
   });
@@ -505,14 +504,14 @@ const LatestNews: React.FC<NewsProps> = ({
 
   const filteredNews = [
     {
-      img: mediaRoomData.LatestNews.img,
-      filter: mediaRoomData.LatestNews.mainTitle,
-      title: mediaRoomData.LatestNews.title,
-      header:mediaRoomData.LatestNews.sections[0].header,
-      continueReading: mediaRoomData.LatestNews.continueReading,
-      dialogDescription: mediaRoomData.LatestNews.dialogDescription,
+      img: LatestNews.img,
+      filter: LatestNews.mainTitle,
+      title: LatestNews.title,
+      header: LatestNews.sections[0].header,
+      continueReading: LatestNews.continueReading,
+      dialogDescription: LatestNews.dialogDescription,
     },
-    ...mediaRoomData.LatestNews.sections,
+    ...LatestNews.sections,
   ].filter((item) => {
     const matchesSearch = item.title
       .toLowerCase()
@@ -530,9 +529,7 @@ const LatestNews: React.FC<NewsProps> = ({
   return (
     <>
       <div className="bg-white h-full lg:w-[70%] lg:mb-0 mb-6 rounded-2xl font-poppins px-[1.5rem]">
-        <h2 className="text-[#483d73] text-2xl my-4">
-          {mediaRoomData.LatestNews.mainTitle}
-        </h2>
+        <h2 className="text-[#483d73] text-2xl my-4">{LatestNews.mainTitle}</h2>
         <div className="h-[37rem] overflow-hidden mb-4">
           <div className="overflow-y-auto scrollbar h-full space-y-4 pr-1">
             {filteredNews.map((item, index) => (
@@ -591,9 +588,7 @@ const LatestNews: React.FC<NewsProps> = ({
                     {item.title}
                   </h3>
                   {index === 0 && (
-                    <p className="text-sm">
-                      {mediaRoomData.LatestNews.description}
-                    </p>
+                    <p className="text-sm">{LatestNews.description}</p>
                   )}
                   <button
                     aria-label="Open"
@@ -651,13 +646,15 @@ const MostRead: React.FC<NewsProps> = ({
   searchQuery,
   selectedCategories,
   selectedFilter,
+  mediaRoomData,
 }) => {
+  const MostRead = mediaRoomData?.MediaRoom[0]?.MostRead;
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState<NewsItem>({
     img: "",
     filter: "",
     title: "",
-    header:"",
+    header: "",
     continueReading: "",
     dialogDescription: "",
   });
@@ -669,7 +666,7 @@ const MostRead: React.FC<NewsProps> = ({
 
   const closeModal = () => setModalOpen(false);
 
-  const filteredNews = mediaRoomData.MostRead.sections.filter((item) => {
+  const filteredNews = MostRead.sections.filter((item) => {
     const matchesSearch = item.title
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
@@ -686,9 +683,7 @@ const MostRead: React.FC<NewsProps> = ({
   return (
     <>
       <div className="bg-white h-full lg:w-[30%] rounded-2xl font-poppins px-[1rem]">
-        <h2 className="text-[#483d73] text-2xl my-4">
-          {mediaRoomData.MostRead.title}
-        </h2>
+        <h2 className="text-[#483d73] text-2xl my-4">{MostRead.title}</h2>
         <div className="h-[37rem] overflow-hidden mb-4">
           <div className="overflow-y-auto h-full scrollbar space-y-5 pr-1">
             {filteredNews.map((item) => (
@@ -774,7 +769,11 @@ const MostRead: React.FC<NewsProps> = ({
   );
 };
 
-export default function MediaRoom() {
+interface MediaRoomProps {
+  mediaRoomData: MediaRoomItem;
+}
+
+const Pages: React.FC<MediaRoomProps> = ({ mediaRoomData }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [categorySearch, setCategorySearch] = useState("");
@@ -803,6 +802,7 @@ export default function MediaRoom() {
         searchQuery={searchQuery}
         onFilterChange={handleFilterChange}
         selectedFilter={selectedFilter}
+        mediaRoomData={mediaRoomData}
       />
       <div className="flex lg:px-0 px-[1rem]">
         <div className="w-[20%] px-[1.5rem] lg:block hidden">
@@ -812,6 +812,7 @@ export default function MediaRoom() {
             selectedCategories={selectedCategories}
             categorySearch={categorySearch}
             onCategorySearchChange={handleCategorySearchChange}
+            mediaRoomData={mediaRoomData}
           />
         </div>
         <div className="lg:w-[80%] w-full">
@@ -820,6 +821,7 @@ export default function MediaRoom() {
               searchQuery={searchQuery}
               selectedCategories={selectedCategories}
               selectedFilter={selectedFilter}
+              mediaRoomData={mediaRoomData}
             />
           </div>
           <div className="flex lg:flex-row flex-col lg:pr-[1.5rem] lg:space-x-4 mb-6">
@@ -827,15 +829,18 @@ export default function MediaRoom() {
               searchQuery={searchQuery}
               selectedCategories={selectedCategories}
               selectedFilter={selectedFilter}
+              mediaRoomData={mediaRoomData}
             />
             <MostRead
               searchQuery={searchQuery}
               selectedCategories={selectedCategories}
               selectedFilter={selectedFilter}
+              mediaRoomData={mediaRoomData}
             />
           </div>
         </div>
       </div>
     </>
   );
-}
+};
+export default Pages;

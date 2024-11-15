@@ -1,8 +1,13 @@
 import React from "react";
-import { Box } from "@/components/Constants/genuine-parts/genuineParts_data.json";
+import { GenuinePartsItem } from "./types/constant";
 import Image from "next/image";
 
-const Page3 = () => {
+interface GenuinePartsProps {
+  genuinePartsData: GenuinePartsItem;
+}
+
+const Page3: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
+  const Box = genuinePartsData?.GenuineParts[0]?.Box;
   return (
     <>
       <div className="bg-white mt-28 w-full h-full px-8 py-10 font-regular font-poppins lg:block hidden">

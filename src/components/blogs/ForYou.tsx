@@ -1,9 +1,14 @@
 "use client";
 import React from "react";
-import { ForYou } from "@/components/Constants/blogs/blogs_data.json";
 import Image from "next/image";
+import { BlogsItem } from "./types/constant";
 
-const Page4 = () => {
+interface BlogsProps {
+  blogsData: BlogsItem;
+}
+
+const Page4: React.FC<BlogsProps> = ({ blogsData }) => {
+  const ForYou = blogsData.blogs[0]?.ForYou;
   return (
     <>
       <div className="lg:mr-[3vw] lg:ml-0 mr-[4vw] ml-[4vw] font-regular font-poppins">

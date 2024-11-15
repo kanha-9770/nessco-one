@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import data from "@/components/Constants/maintainance/maintainance_data.json";
+import { MaintainanceItem } from "./types/constant";
 import Image from "next/image";
 
 interface Category {
@@ -14,34 +14,47 @@ interface Card {
   category: string;
 }
 
-const Header = () => {
+interface MaintainanceProps {
+  maintainanceData: MaintainanceItem;
+}
+
+const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
+  const Header = maintainanceData.Maintainance[0]?.Header;
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [categorySearch, setCategorySearch] = useState("");
   const [mainSearch, setMainSearch] = useState("");
-  const [filteredCategories, setFilteredCategories] = useState<Category[]>(data.Maintainance[0]?.Header.categories || []);
-  const [filteredCards, setFilteredCards] = useState<Card[]>(data.Maintainance[0]?.Header.cards || []);
+  const [filteredCategories, setFilteredCategories] = useState<Category[]>(
+    Header.categories || []
+  );
+  const [filteredCards, setFilteredCards] = useState<Card[]>(
+    Header.cards || []
+  );
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
   useEffect(() => {
-    const filtered = data.Maintainance[0]?.Header.categories.filter(category =>
+    const filtered = Header.categories.filter((category) =>
       category.title.toLowerCase().includes(categorySearch.toLowerCase())
     );
     setFilteredCategories(filtered || []);
   }, [categorySearch]);
 
   useEffect(() => {
-    const filtered = data.Maintainance[0]?.Header.cards.filter(card =>
-      card.title.toLowerCase().includes(mainSearch.toLowerCase()) &&
-      (selectedCategories.length === 0 || card.category.split(',').some(cat => selectedCategories.includes(cat.trim())))
+    const filtered = Header.cards.filter(
+      (card) =>
+        card.title.toLowerCase().includes(mainSearch.toLowerCase()) &&
+        (selectedCategories.length === 0 ||
+          card.category
+            .split(",")
+            .some((cat) => selectedCategories.includes(cat.trim())))
     );
     setFilteredCards(filtered || []);
   }, [mainSearch, selectedCategories]);
 
   const handleCategoryToggle = (category: string) => {
-    setSelectedCategories(prev =>
+    setSelectedCategories((prev) =>
       prev.includes(category)
-        ? prev.filter(c => c !== category)
+        ? prev.filter((c) => c !== category)
         : [...prev, category]
     );
   };
@@ -67,15 +80,13 @@ const Header = () => {
       <div className="w-full h-full mt-14 py-8 px-10 flex justify-center font-poppins">
         <div className="lg:w-1/2">
           <h1 className="font-semibold lg:text-5xl text-4xl text-[#483d73] mb-4 lg:text-left text-center">
-            {data.Maintainance[0]?.Header.title}
+            {Header.title}
           </h1>
-          <p className="text-center lg:text-left">
-            {data.Maintainance[0]?.Header.description}
-          </p>
+          <p className="text-center lg:text-left">{Header.description}</p>
         </div>
         <div className="w-1/2 lg:block hidden">
           <Image
-            src={data.Maintainance[0]?.Header.img}
+            src={Header.img}
             alt={"Machine"}
             width={400}
             height={400}
@@ -97,7 +108,7 @@ const Header = () => {
             />
             <div className="w-full h-full overflow-x-hidden scrollbar-hide lg:flex lg:justify-center">
               <div className="flex lg:grid lg:grid-cols-6 lg:gap-5 lg:space-x-0 space-x-6 w-max">
-                {data.Maintainance[0]?.Header.points.map((item, idx) => (
+                {Header.points.map((item, idx) => (
                   <div key={idx} className="flex space-x-2 w-max">
                     <p className="text-lg font-medium">{item.number}</p>
                     <h3 className="text-lg font-medium text-center lg:w-[10rem]">
@@ -112,7 +123,7 @@ const Header = () => {
           <div className="flex px-4 md:space-x-4">
             <div className="md:w-[18%] p-4 md:block hidden mt-4 bg-white rounded-2xl shadow-2xl">
               <p className="mb-4 font-poppins invisible md:visible text-lg font-medium">
-                {data.Maintainance[0]?.Header.filter}
+                {Header.filter}
               </p>
 
               <div className="flex rounded-lg text-sm border border-black overflow-hidden">
@@ -171,7 +182,7 @@ const Header = () => {
             <div className="md:w-[82%] w-full mt-4">
               <div className="bg-white shadow-xl w-full rounded-xl px-4 py-2 flex lg:flex-row flex-col relative">
                 <h3 className="text-[#464545] font-medium lg:text-2xl text-[1rem] lg:mb-0 mb-4 lg:text-left text-center">
-                  {data.Maintainance[0]?.Header.download}
+                  {Header.download}
                 </h3>
                 <div className="flex items-center space-x-3">
                   <div
@@ -179,7 +190,7 @@ const Header = () => {
                     onClick={handleOpenFilter}
                   >
                     <h3 className="font-medium mr-2 text-white">
-                      {data.Maintainance[0]?.Header.filter}
+                      {Header.filter}
                     </h3>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -242,7 +253,7 @@ const Header = () => {
                     </div>
                     <div className="flex items-center justify-center min-h-[15rem] max-h-full mb-10">
                       <h4 className="text-[#483d73] font-bold -rotate-90 text-sm">
-                        {data.Maintainance[0]?.Header.maintainance}
+                        {Header.maintainance}
                       </h4>
                       <Image
                         src={item.img}
@@ -300,12 +311,12 @@ const Header = () => {
                     onClick={handleCloseFilter}
                     className="text-[#838282]"
                   >
-                    {data.Maintainance[0]?.Header.cancel}
+                    {Header.cancel}
                   </button>
                 </div>
                 <div className="flex justify-center items-center w-[50%] mb-[0.5rem] font-poppins font-medium">
                   <button onClick={handleCloseFilter} className="text-red-700">
-                    {data.Maintainance[0]?.Header.apply}
+                    {Header.apply}
                   </button>
                 </div>
               </div>
@@ -362,10 +373,10 @@ const Header = () => {
                   className="h-max w-12 mb-1"
                 />
                 <h3 className="text-white font-medium text-md">
-                  {data.Maintainance[0]?.Header.cards[0].title}
+                  {Header.cards[0].title}
                 </h3>
                 <h3 className="text-white font-medium text-sm">
-                  {data.Maintainance[0]?.Header.checkListTitle}
+                  {Header.checkListTitle}
                 </h3>
                 <Image
                   src="https://res.cloudinary.com/dfryvystt/image/upload/v1731482642/FormSVG_bwmh5i.svg"
@@ -386,24 +397,21 @@ const Header = () => {
               </div>
               <div className="bg-[#483d73] w-full absolute bottom-0 py-1">
                 <h3 className="text-white text-xs text-center">
-                  {data.Maintainance[0]?.Header.footer}
+                  {Header.footer}
                 </h3>
               </div>
             </div>
             <div className="lg:w-1/2 flex flex-col items-center justify-center px-8 lg:py-0 py-8">
               <h2 className="text-2xl font-bold mb-3 text-center w-full">
-                {data.Maintainance[0]?.Header.formTitle}
+                {Header.formTitle}
               </h2>
               <p className="text-center w-full mb-4 font-regular text-sm">
-                {data.Maintainance[0]?.Header.formDescription}
+                {Header.formDescription}
               </p>
               <form className="w-full">
                 <div className="mb-2 space-y-1">
-                  <label
-                    htmlFor="name"
-                    className="text-lg font-medium"
-                  >
-                    {data.Maintainance[0]?.Header.name}
+                  <label htmlFor="name" className="text-lg font-medium">
+                    {Header.name}
                   </label>
                   <input
                     type="text"
@@ -413,11 +421,8 @@ const Header = () => {
                   />
                 </div>
                 <div className="mb-2 space-y-1">
-                  <label
-                    htmlFor="email"
-                    className="text-lg font-medium"
-                  >
-                    {data.Maintainance[0]?.Header.email}
+                  <label htmlFor="email" className="text-lg font-medium">
+                    {Header.email}
                   </label>
                   <input
                     type="email"
@@ -427,11 +432,8 @@ const Header = () => {
                   />
                 </div>
                 <div className="mb-2 space-y-1">
-                  <label
-                    htmlFor="phone"
-                    className="text-lg font-medium"
-                  >
-                    {data.Maintainance[0]?.Header.phone}
+                  <label htmlFor="phone" className="text-lg font-medium">
+                    {Header.phone}
                   </label>
                   <input
                     type="number"
@@ -446,7 +448,7 @@ const Header = () => {
                     className="text-lg font-medium bg-black lg:hover:bg-[#483d73] text-white w-full p-2 rounded-md"
                     onClick={handleCloseModal}
                   >
-                    {data.Maintainance[0]?.Header.submit}
+                    {Header.submit}
                   </button>
                 </div>
                 <div

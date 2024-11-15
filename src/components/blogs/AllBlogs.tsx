@@ -1,13 +1,18 @@
 "use client";
-
 import React, { useState } from "react";
-import { Filter, AllBlogs } from "@/components/Constants/blogs/blogs_data.json";
+import { BlogsItem } from "./types/constant";
 import Image from "next/image";
 import Page1 from "./Filter";
 
 interface Page2Props {
   selectedCategories: string[];
 }
+
+interface BlogsProps {
+  blogsData: BlogsItem;
+}
+
+type CombinedProps = BlogsProps & Page2Props;
 
 interface BlogType {
   img: string;
@@ -19,9 +24,11 @@ interface BlogType {
   dialogDescription?: string;
 }
 
-const CategoryHeading: React.FC<{ categories: string[] }> = ({
-  categories,
-}) => {
+const CategoryHeading: React.FC<{
+  categories: string[];
+  blogsData: BlogsItem;
+}> = ({ categories, blogsData }) => {
+  const AllBlogs = blogsData.blogs[0]?.AllBlogs;
   if (categories.length === 0 || categories.includes("All Categories")) {
     return <h1>{AllBlogs.blogs.headBlogs.allBlogs}</h1>;
   }
@@ -38,7 +45,9 @@ const CategoryHeading: React.FC<{ categories: string[] }> = ({
   );
 };
 
-const Page2: React.FC<Page2Props> = ({ selectedCategories }) => {
+const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
+  const AllBlogs = blogsData.blogs[0]?.AllBlogs;
+  const Filter = blogsData.blogs[0]?.Filter;
   const [isPage1Visible, setPage1Visible] = useState(false);
 
   const togglePage1Visibility = () => {
@@ -176,6 +185,7 @@ const Page2: React.FC<Page2Props> = ({ selectedCategories }) => {
                   </div>
                 </div>
                 <Page1
+                  blogsData={blogsData}
                   onCategorySelect={(categories) => console.log(categories)}
                 />
               </div>
@@ -184,7 +194,10 @@ const Page2: React.FC<Page2Props> = ({ selectedCategories }) => {
 
           {/* Heading */}
           <div className="my-[1.4rem] mx-[1.2rem] text-[1.5rem] font-poppins text-[#3a2a79] flex items-center">
-            <CategoryHeading categories={selectedCategories} />
+            <CategoryHeading
+              categories={selectedCategories}
+              blogsData={blogsData}
+            />
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -243,7 +256,7 @@ const Page2: React.FC<Page2Props> = ({ selectedCategories }) => {
                     key={index}
                     className="list-disc ml-[3rem] mr-[1rem] hidden lg:block"
                   >
-                    <li className="text-black">{item}</li>
+                    <li className="text-black">{item.title}</li>
                   </ul>
                 ))}
                 <div className="flex justify-end">

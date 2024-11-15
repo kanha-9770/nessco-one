@@ -1,18 +1,22 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Inventory } from "@/components/Constants/genuine-parts/genuineParts_data.json";
+import { GenuinePartsItem } from "./types/constant";
 import Image from "next/image";
 
 interface Part {
   title: string;
-  categoryType: string;
   description: string;
   code: string;
   img: string;
   information: string;
 }
 
-const Page2 = () => {
+interface GenuinePartsProps {
+  genuinePartsData: GenuinePartsItem;
+}
+
+const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
+  const Inventory = genuinePartsData?.GenuineParts[0]?.Inventory;
   const [enquiryState, setEnquiryState] = useState<Record<string, boolean>>({});
   const [inventoryItems, setInventoryItems] = useState<Part[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);

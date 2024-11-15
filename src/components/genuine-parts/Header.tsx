@@ -1,8 +1,13 @@
 import React from "react";
 import Image from "next/image";
-import { Header } from "@/components/Constants/genuine-parts/genuineParts_data.json";
+import { GenuinePartsItem } from "./types/constant";
 
-const Page1 = () => {
+interface GenuinePartsProps {
+  genuinePartsData: GenuinePartsItem;
+}
+
+const Page1: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
+  const Header = genuinePartsData?.GenuineParts[0]?.Header;
   return (
     <>
       <div className="mt-14 font-poppins font-regular">

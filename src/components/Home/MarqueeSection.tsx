@@ -22,14 +22,14 @@ export default function MarqueeSection({ heroData }: MarqueeLayoutProps) {
       <Image alt="Decorative Image" src={DecorativeImg1} className="w-52 rotate-12 absolute top-4 -right-14"/>
       <Image alt="Decorative Image" src={DecorativeImg2} className="w-[20rem] absolute -bottom-16 left-10"/>
       <div className="h-1/3 w-full flex flex-col justify-center items-center space-y-4">
-        <h1 className="text-[#483d73] font-semibold text-3xl">Trusted Partners & Brands</h1>
+        <h1 className="text-[#483d73] font-semibold text-center text-3xl">Trusted Partners & Brands</h1>
         <p className="text-[#483d73] font-extralight text-center w-[16rem]">“Building lasting partnerships with 
         trusted brands worldwide.”</p>
       </div>
       <div className="relative h-1/3 flex flex-col lg:flex-row ">
         {/* Heading Section */}
-        <div className="flex text-[#483d73] flex-col">
-          <h1 className="text-sm  lg:text-xl bg-[#D3CFE2] px-4 py-2 rounded-3xl font-medium mt-5 font-poppins whitespace-nowrap">
+        <div className="hidden md:flex text-[#483d73] flex-col">
+          <h1 className="text-sm absolute lg:text-xl bg-[#D3CFE2] px-4 py-2 rounded-3xl font-medium mt-5 font-poppins whitespace-nowrap">
             {heroData?.home[5]?.heading1}
           </h1>
           <h2 className="mt-28 absolute right-0 text-sm bg-[#D3CFE2] px-4 py-2 rounded-3xl lg:text-xl font-medium  font-poppins whitespace-nowrap">
@@ -39,14 +39,14 @@ export default function MarqueeSection({ heroData }: MarqueeLayoutProps) {
 
         {/* Marquee Cards */}
         <div className=" mask-gradient-marquee">
-          <div className=" ml-32 w-[90%] lg:w-[85%] lg:ml-48">
+          <div className=" w-full md:w-[85%] md:ml-48">
             <InfiniteMovingCards
               items={trusted}
               direction="left"
               className="w-full"
             />
           </div>
-          <div className="mt-2  w-[90%] lg:w-[83%]">
+          <div className="mt-2 w-full md:w-[83%]">
             <InfiniteMovingCards
               items={partners}
               direction="right"

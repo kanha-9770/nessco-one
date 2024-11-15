@@ -1,39 +1,35 @@
-export interface ApplicationItem {
-  Application: Array<{
-    applicationSeoData: ApplicationSeoData;
-    Header: Header;
-    SelectProduct: SelectProduct;
-    Technology: Technology;
-    CustomizedProjects: CustomizedProjects;
-  }>;
-}
+export interface  ApplicationItem  {
+  Application:Array<{
+  applicationSeoData: ApplicationSeoData;
+  Header: HeaderData;
+  SelectProduct: SelectProductData;
+  Technology: TechnologyData;
+  CustomizedProjects: CustomizedProjectsData;
+}>
+};
 
 type ApplicationSeoData = {
   title: string;
   description: string;
   keywords: string;
-  openGraph: OpenGraph;
+  openGraph: OpenGraphData;
   robots: string;
-  alternates: Alternates;
-  twitter: Twitter;
+  alternates: { canonical: string };
+  twitter: TwitterData;
 };
 
-type OpenGraph = {
+type OpenGraphData = {
   title: string;
   description: string;
-  images: OpenGraphImage[];
+  images: ImageData[];
 };
 
-type OpenGraphImage = {
+type ImageData = {
   url: string;
   alt: string;
 };
 
-type Alternates = {
-  canonical: string;
-};
-
-type Twitter = {
+type TwitterData = {
   card: string;
   site: string;
   title: string;
@@ -41,47 +37,56 @@ type Twitter = {
   image: string;
 };
 
-type Header = {
+type HeaderData = {
   applicaion: string;
   title: string;
   paragraph: string;
 };
 
-export type SelectProduct = {
+type SelectProductData = {
   placeholder: string;
   paperCup: string;
   viewMore: string;
   viewAll: string;
   category: string;
-  products: Product[];
+  products: ProductData[];
 };
 
-export type Product = {
+type ProductData = {
   img: string;
   title: string;
   description: string;
   image: string;
 };
 
-type Technology = {
+type TechnologyData = {
   craftsmanshipTechnology: string;
   paragraph: string;
-  container: Craftsmanship[];
+  container: CraftsmanshipContainerData[];
 };
 
-type Craftsmanship = {
+type CraftsmanshipContainerData = {
+  [key: string]: CraftsmanshipItem[];
+};
+
+type CraftsmanshipItem = {
   title: string;
   description: string;
   craftsmanshipImg: string;
 };
 
-type CustomizedProjects = {
-  title: string;
+type CustomizedProjectsData = {
+  craftsmanshipTechnology: any;
   paragraph: string;
-  container: ProjectContainer[];
+  title: string;
+  container: CustomizedProjectContainerData[];
 };
 
-type ProjectContainer = {
+type CustomizedProjectContainerData = {
+  [key: string]: CustomizedProjectItem[];
+};
+
+type CustomizedProjectItem = {
   title1: string;
   title2: string;
   description: string;

@@ -1,30 +1,43 @@
 "use client";
+
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
-import { ApplicationItem } from "./types/constant";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Product } from "./Pages";
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface Page3Props {
-  selectedProduct: Product;
+interface Product {
+  title: string;
+  description: string;
+  image: string;
 }
 
-interface ApplicationProps {
+interface ApplicationItem {
+  Application: Array<{
+    Technology: {
+      craftsmanshipTechnology: string;
+      paragraph: string;
+      container: Array<{
+        [key: string]: Array<{
+          title: string;
+          description: string;
+          craftsmanshipImg: string;
+        }>;
+      }>;
+    };
+  }>;
+}
+
+interface Page3Props {
+  selectedProduct: Product;
   applicationData: ApplicationItem;
 }
 
-type CombinedProps = ApplicationProps & Page3Props;
-
-const Page3: React.FC<CombinedProps> = ({
-  applicationData,
-  selectedProduct,
-}) => {
-  const Technology = applicationData?.Application[0]?.Technology;
-  const carouselRef = useRef<HTMLDivElement | null>(null);
-  const borderRef = useRef<HTMLDivElement | null>(null);
+const Page3: React.FC<Page3Props> = ({ applicationData, selectedProduct }) => {
+  const Technology = applicationData.Application[0].Technology;
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const borderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (borderRef.current) {
@@ -45,11 +58,7 @@ const Page3: React.FC<CombinedProps> = ({
     }
   }, []);
 
-  // Ensure selectedProduct.title is a key of Technology.container
-  const productItems =
-    Technology.container[
-      selectedProduct?.title as keyof typeof Technology.container
-    ] || [];
+  const productItems = Technology.container[0][selectedProduct.title as keyof typeof Technology.container[0]] || [];
 
   return (
     <div
@@ -75,7 +84,7 @@ const Page3: React.FC<CombinedProps> = ({
       </div>
 
       <div className="lg:space-y-3 space-y-4">
-        {Array.isArray(productItems) && productItems.length > 0 ? (
+        {productItems.length > 0 ? (
           productItems.map((item, idx) => (
             <div
               key={idx}
@@ -93,11 +102,11 @@ const Page3: React.FC<CombinedProps> = ({
               </div>
               <div className="lg:w-[20%] w-full h-full lg:rounded-[0.5rem] rounded-t-[0.5rem] overflow-hidden">
                 <Image
-                  className="lg:h-[10rem] h-full w-full"
+                  className="lg:h-[10rem] h-full w-full object-cover"
                   width={300}
                   height={300}
                   src={item.craftsmanshipImg}
-                  alt=""
+                  alt={item.title}
                 />
               </div>
             </div>

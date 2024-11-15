@@ -44,7 +44,11 @@ const Page4: React.FC<CombinedProps> = ({
   const closeModal = () => {
     setIsModalOpen(false);
   };
+useEffect(()=>{
+  console.log(selectedProduct);
+  console.log(applicationData);
 
+},[])
   useEffect(() => {
     if (borderRef.current) {
       gsap.fromTo(
@@ -116,8 +120,8 @@ const Page4: React.FC<CombinedProps> = ({
 
   const productItems =
     CustomizedProjects.container[
-      selectedProduct?.title as keyof typeof CustomizedProjects.container
-    ];
+     0
+    ][selectedProduct?.title as keyof typeof CustomizedProjects.container[0]] ||[];
 
   return (
     <>
@@ -129,10 +133,12 @@ const Page4: React.FC<CombinedProps> = ({
           <div>
             <h2 className="lg:text-[2.2rem] text-[1.5rem] font-semibold">
               <span className="text-[#483d73]">
-                {CustomizedProjects.title.trim().replace(/\s+\S+$/, "")}
+                {CustomizedProjects?.craftsmanshipTechnology?.trim().replace(/\s+\S+$/, "") ||
+                  "Default Title"}
               </span>{" "}
               <span className="text-red-700">
-                {CustomizedProjects.title.trim().match(/\S+$/)}
+                {CustomizedProjects?.craftsmanshipTechnology?.trim().match(/\S+$/) ||
+                  "Default Title"}
               </span>
             </h2>
           </div>
@@ -142,7 +148,7 @@ const Page4: React.FC<CombinedProps> = ({
           ></div>
           <div className="lg:w-[76vw] w-[98%] lg:mt-[2rem] mt-[1rem]">
             <p className="lg:text-[1rem] text-sm">
-              {CustomizedProjects.paragraph}
+              {CustomizedProjects?.paragraph}
             </p>
           </div>
         </div>

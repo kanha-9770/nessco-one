@@ -25,16 +25,16 @@ interface ProductLayoutProps {
   setHoveredItem: (item: string | null) => void;
   setHeading: (heading: string | null) => void;
   setIsVisible: (visible: boolean) => void;
-  navData:NavbarData
+  navData: NavbarData;
 }
 
 const ProductLayout: React.FC<ProductLayoutProps> = ({
   setHoveredItem,
   setHeading,
   setIsVisible,
-  navData
+  navData,
 }) => {
-  const productData =navData?.navbar[1]?.data;
+  const productData = navData?.navbar[1]?.data;
   const navLeftData: Machine[] = productData?.Machines || [];
   const navRightData: Link[] = productData?.SidebarLinks || [];
 
@@ -175,7 +175,10 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
             : "hover:text-[#483d78] hover:font-semibold"
         } `}
       >
-        <Link className="flex w-full gap-2 flex-row" href={`/${countryCODE}/${languageCODE}/product${link.link}`}>
+        <Link
+          className="flex w-full gap-2 flex-row"
+          href={`/${countryCODE}/${languageCODE}/product${link.link}`}
+        >
           <div className="flex items-center justify-center cursor-pointer">
             <BlurImage
               className="rounded-full h-6 w-6 transform transition-transform duration-200 object-cover"
@@ -196,7 +199,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
   return (
     <div
       ref={containerRef}
-      className="w-full z-30 h-full flex max-w-screen-2xl mx-auto items-start justify-center font-light"
+      className="w-full  h-full flex max-w-screen-2xl mx-auto items-start justify-center font-light"
     >
       {/* Desktop View */}
       <div className="w-full hidden lg:flex flex-col gap-10 lg:flex-row rounded-lg overflow-hidden">
@@ -204,12 +207,23 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
           {filteredMachines.length > totalVisible && (
             <button
               onClick={handlePrev}
-              className={`absolute invert-0 left-0 z-30 p-0 text-4xl border-2 rounded-full overflow-hidden transition-all ${
+              className={`absolute invert-0 left-0  h-6 w-6 sm:h-8 sm:w-8 bg-[#9e9c9c] hidden md:flex hover:bg-black rounded-full items-center justify-center ${
                 currentIndex === 0 ? "opacity-20" : "opacity-100"
               }`}
               style={{ top: "50%", transform: "translateY(-50%)" }}
               disabled={currentIndex === 0}
-            ></button>
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={3}
+                stroke="currentColor"
+                className="w-3 h-3 sm:w-4 sm:h-4 stroke-white"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
           )}
 
           <div className="flex flex-wrap justify-start pl-14 items-start overflow-hidden w-full">
@@ -223,14 +237,29 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
           {filteredMachines.length > totalVisible && (
             <button
               onClick={handleNext}
-              className={`absolute invert-0 border-2 text-3xl rounded-full right-0 z-10 h-10 w-10 animated-button-right ${
+              className={`absolute invert-0  text-3xl  right-0 z-10 h-6 w-6 sm:h-8 sm:w-8 bg-[#9e9c9c] hidden md:flex hover:bg-black rounded-full items-center justify-center ${
                 currentIndex + totalVisible >= filteredMachines.length
                   ? "opacity-20"
                   : "opacity-100"
               }`}
               style={{ top: "50%", transform: "translateY(-50%)" }}
               disabled={currentIndex + totalVisible >= filteredMachines.length}
-            ></button>
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={3}
+                stroke="currentColor"
+                className="w-3 h-3 sm:w-4 sm:h-4 stroke-white"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
           )}
         </div>
         <div className="w-full border-l lg:w-80 h-full flex flex-col items-center relative">
@@ -351,7 +380,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                                         </div>
                                       ))}
                               </div>
-                              <div className="relative w-full space-x-4 flex z-30 h-[5%] justify-center items-center">
+                              <div className="relative w-full space-x-4 flex  h-[5%] justify-center items-center">
                                 {filteredMachines.length >
                                   mobileVisibleItems && (
                                   <>
@@ -366,7 +395,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                                     ></button>
                                     <button
                                       onClick={handleNext}
-                                      className={`invert-0 z-30 text-3xl transition-all ${
+                                      className={`invert-0  text-3xl transition-all ${
                                         currentIndex + mobileVisibleItems >=
                                         filteredMachines.length
                                           ? "opacity-20"

@@ -110,7 +110,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
         </div>
       </div>
       <div
-        className="flex w-full lg:w-[80%] overflow-x-scroll py-6 lg:py-10 scroll-smooth [scrollbar-width:none] -mx-4 lg:mx-0 px-4 lg:px-0"
+        className="flex w-full lg:w-[80%] overflow-x-scroll py-6 lg:py-10 scroll-smooth [scrollbar-width:none] -mx-12 lg:mx-0 px-4 lg:px-0"
         ref={carouselRef}
         onScroll={checkScrollability}
       >

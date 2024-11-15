@@ -11,18 +11,23 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
 
   return (
     <div
-      className="bg-[#f2f2f2] bg-opacity-50 backdrop-blur fixed top-0 lg:top-14 bottom-0 right-0 left-0 flex items-center justify-center z-50 font-regular font-poppins"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm font-regular font-poppins"
       onClick={onClose}
       aria-modal="true"
       role="dialog"
     >
-      <div className="bg-white drop-shadow-lg p-[1rem] rounded-3xl relative flex lg:w-[60rem] w-full  lg:mx-0 mx-[1rem] justify-center items-center " onClick={(e) => e.stopPropagation()}>
+      <div 
+        className="relative flex w-full max-w-[90%] max-h-[90vh] overflow-y-auto justify-center items-center bg-white rounded-2xl shadow-xl p-4 sm:p-6 md:p-8 lg:p-10 m-4 sm:m-6 md:m-8 lg:m-0 lg:w-[60rem]"
+        onClick={(e) => e.stopPropagation()}
+      >
         <button
           onClick={onClose}
           aria-label="Close modal"
-          className='absolute top-[0.5rem] right-[1rem]'
+          className="absolute top-2 right-2 sm:top-4 sm:right-4 text-gray-500 hover:text-gray-700 transition-colors"
         >
-          ✖
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
         </button>
         {children}
       </div>

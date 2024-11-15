@@ -2,7 +2,7 @@ export default function ContactIcons() {
   return (
     <div className="h-full w-full">
       {/* Container for larger screens */}
-      <div className="fixed left-0 top-[55%] -translate-y-1/2 z-[9999] hidden md:block">
+      <div className="fixed left-0 top-[55%] -translate-y-1/2 z-[999] hidden md:block">
         <div className="bg-white rounded-xl shadow-lg p-[0.05rem] space-y-1">
           <IconLink href="sms:+123456789" aria-label="phone">
             <svg
