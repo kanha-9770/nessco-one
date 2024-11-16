@@ -5,12 +5,7 @@ import { HomeData } from "./types/constant";
 interface AnnouncementSectionProps{
   heroData:HomeData;
 }
-interface Event {
-  category: string;
-  title: string;
-  date: string;
-  src: string;
-}
+
 
 const AnnouncementSection: React.FC<AnnouncementSectionProps> = ({ heroData }) => {
   useEffect(()=>{

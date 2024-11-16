@@ -1,5 +1,5 @@
 "use client";
-import React, {useState } from "react";
+import React, {useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import { HomeData } from "./types/constant";
 const HomeMachineCarousel = dynamic(
@@ -24,22 +24,18 @@ interface HomeMachineLayoutProps {
 }
 const HomeMachine: React.FC<HomeMachineLayoutProps> = ({ heroData }) => {
   const [activeStep, setActiveStep] = useState(0);
-  const categories = heroData?.home[2]?.data.stepperFilter;
+  const categories = heroData?.home[2]?.data.stepperFilter || [];
+  const productData = heroData?.home[2]?.data?.products || [];
 
-  // Access the product data from the 'ProductSection'
-  const productData = heroData?.home[2]?.data?.products;
-
-  if (!productData) {
-    return <div>No products available</div>;
-  }
-
-  // Filter products based on the active step (category)
-  const filteredCardsData: CardItem[] =
-    categories[activeStep] === `${categories[0].name}`
-      ? productData
-      : productData.filter(
-          (card: CardItem) => card.category === categories[activeStep]
-        );
+  const filteredCardsData = useMemo(() => {
+    if (categories[activeStep] === "All paper Products") {
+      return productData;
+    } else {
+      return productData.filter((card: CardItem) =>
+        card.category.split(",").includes(categories[activeStep].name)
+      );
+    }
+  }, [activeStep, categories, productData]);
 
   return (
     <div className="h-full w-full max-w-screen-2xl mx-auto ">
