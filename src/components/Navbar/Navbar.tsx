@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 const MenuItem = dynamic(() => import("./nav-menue"));
 const ContactForm = dynamic(() => import("../Contact/Contact"));
 import { usePathname } from "next/navigation";
-const SVGComponent=dynamic(()=>import("./BlueLogo"))
+const SVGComponent = dynamic(() => import("./BlueLogo"));
 const CountryLayout = dynamic(() => import("./NavLayouts/CountryLayout"), {
   ssr: false,
 });
@@ -17,6 +17,8 @@ import ResourceGrid from "@/components/Navbar/NavLayouts/ResourceLayout";
 import SupportGrid from "@/components/Navbar/NavLayouts/SupportLayout";
 import VideoGrid from "@/components/Navbar/NavLayouts/VideoLayout";
 import { NavbarData } from "./types/constant";
+import MinusSvg from "../ui/MinusSvg";
+import PlusSvg from "../ui/PlusSvg";
 
 interface NavbarItem {
   name: string;
@@ -107,7 +109,10 @@ function Navbar({ className, navData }: NavbarProps) {
       {/* Desktop Menu */}
       <div className="hidden px-12 lg:flex w-full">
         <div className="w-1/5  flex items-center">
-          <Link href={`/${countryCODE}/${languageCODE}`} className="w-full h-full flex items-center">
+          <Link
+            href={`/${countryCODE}/${languageCODE}`}
+            className="w-full h-full flex items-center"
+          >
             <SVGComponent />
           </Link>
         </div>
@@ -132,16 +137,18 @@ function Navbar({ className, navData }: NavbarProps) {
           <div>
             <CountryLayout />
           </div>
-          <ContactForm
-          />
+          <ContactForm />
         </div>
       </div>
 
       {/* Mobile Menu */}
       <div className=" lg:hidden flex w-full ">
         <div className="lg:hidden w-full flex justify-between items-center  p-4">
-          <Link href={`/${countryCODE}/${languageCODE}`} className="h-14 w-14 flex items-center">
-          <SVGComponent />
+          <Link
+            href={`/${countryCODE}/${languageCODE}`}
+            className="h-14 w-14 flex items-center"
+          >
+            <SVGComponent />
           </Link>
           <button
             className="ml-2 text-gray-700 focus:outline-none"
@@ -186,7 +193,15 @@ function Navbar({ className, navData }: NavbarProps) {
                       {item.name}
                     </span>
                     <span className="text-gray-500 pr-2 text-2xl">
-                      {expandedItem === item.name ? "-" : "+"}
+                      {expandedItem === item.name ? (
+                        <>
+                          <MinusSvg />
+                        </>
+                      ) : (
+                        <>
+                          <PlusSvg />
+                        </>
+                      )}
                     </span>
                   </div>
                   {expandedItem === item.name && (
@@ -198,7 +213,9 @@ function Navbar({ className, navData }: NavbarProps) {
                         <button
                           className=" invert-0 p-4"
                           onClick={() => expandItem(item.name)}
-                        ></button>
+                        >
+                          -
+                        </button>
                       </div>
                       <div className="py-4 flex-grow">
                         <div className="text-sm text-gray-700">
@@ -229,8 +246,8 @@ function Navbar({ className, navData }: NavbarProps) {
                     </div>
                   </div>
                   <div className="flex felx-row justify-between items-center gap-2 border-t-[1px] border-b-[1px]  w-full p-2">
-                    <div className="relative ">
-                      <CountryLayout />
+                    <div className="absolute top-20">
+                      <CountryLayout/>
                     </div>
                     <div className="relative "></div>
                   </div>

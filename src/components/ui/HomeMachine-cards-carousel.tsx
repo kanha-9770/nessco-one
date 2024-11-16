@@ -85,7 +85,13 @@ const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 
   const carouselContent = useMemo(() => {
     if (items.length <= 5) {
-      return renderCarouselItems(0, items.length);
+      return (
+        <>
+          <div className="relative mt-14 lg:ml-10">
+            {renderCarouselItems(0, items.length)}
+          </div>
+        </>
+      );
     } else if (items.length <= 10) {
       return (
         <>
