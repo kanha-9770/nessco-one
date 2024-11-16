@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import dynamic from "next/dynamic";
 import { HomeData } from "./types/constant";
 const HomeMachineCarousel = dynamic(
@@ -40,9 +40,7 @@ const HomeMachine: React.FC<HomeMachineLayoutProps> = ({ heroData }) => {
       : productData.filter(
           (card: CardItem) => card.category === categories[activeStep]
         );
-        useEffect(() => {
-          console.log("categories", filteredCardsData);
-        }, []);
+
   return (
     <div className="h-full w-full max-w-screen-2xl mx-auto ">
       {/* Stepper to switch between categories */}
