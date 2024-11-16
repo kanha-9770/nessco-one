@@ -58,7 +58,10 @@ const Page3: React.FC<Page3Props> = ({ applicationData, selectedProduct }) => {
     }
   }, []);
 
-  const productItems = Technology.container[0][selectedProduct.title as keyof typeof Technology.container[0]] || [];
+  const productItems =
+    Technology.container[0][
+      selectedProduct.title as keyof (typeof Technology.container)[0]
+    ] || [];
 
   return (
     <div

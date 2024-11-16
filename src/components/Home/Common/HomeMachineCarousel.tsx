@@ -24,8 +24,8 @@ interface HomeMachineCarouselProps {
 export default function HomeMachineCarousel({
   filteredCardsData,
 }: HomeMachineCarouselProps) {
-  const cards = filteredCardsData.map((card: CardData, index: number) => (
-    <Card key={card.title} card={card} index={index} />
+  const cards = filteredCardsData.map((card: CardData) => (
+    <Card key={card.title} card={card}  />
   ));
 
   return (

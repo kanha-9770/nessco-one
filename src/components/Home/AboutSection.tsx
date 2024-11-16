@@ -17,11 +17,13 @@ interface Card {
 interface AboutSectionLayoutProps {
   heroData: HomeData;
 }
+
 const AboutUs: React.FC<AboutSectionLayoutProps> = ({ heroData }) => {
   const aboutData = heroData?.home[3]?.data;
   const [machinesSold, setMachinesSold] = useState(0);
   const [readyStockMachines, setReadyStockMachines] = useState(0);
   const statsRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (!aboutData) return;
 
@@ -146,7 +148,7 @@ const AboutUs: React.FC<AboutSectionLayoutProps> = ({ heroData }) => {
               className={`relative w-full lg:w-1/3 group flex flex-col items-center ${
                 index === 1 ? "z-10 lg:w-[40%]" : ""
               }`}
-              href="#"
+              href={card.link}
             >
               <div className="w-full">
                 <div
@@ -166,19 +168,28 @@ const AboutUs: React.FC<AboutSectionLayoutProps> = ({ heroData }) => {
                     }`}
                   />
                   <div className="absolute bottom-0 left-0 p-4 flex justify-between items-end w-full">
-                    <Link
-                      href="#"
-                      className="text-white flex items-end text-base font-regular"
-                    >
-                      <div className={styles.container}>
-                        <div className={styles.box}>
-                          <div className={styles.title}>
-                            <span className={styles.block}></span>
-                            <AnimatedText text={`${card.title}`} />
-                          </div>
+                    <div className={styles.container}>
+                      <div className={styles.box}>
+                        <div className={styles.title}>
+                          <span className={styles.block}></span>
+                          <AnimatedText text={`${card.title}`} />
                         </div>
                       </div>
-                    </Link>
+                    </div>
+                    <svg
+                      className="h-10 w-10 bg-black p-1.5 rounded-full text-white transform transition-transform duration-300 ease-in-out group-hover:rotate-45 group-hover:bg-[#483d73]"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7 17L17 7M17 7H8M17 7V16"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
                   </div>
                 </div>
               </div>

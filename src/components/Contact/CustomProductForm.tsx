@@ -1,10 +1,12 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 import { Input } from "../ui/input";
 import { cn } from "@/lib/utils";
 import CountrySelect from "../ui/CountrySelect";
+
 const products = [
   {
     id: 1,
@@ -30,11 +32,30 @@ const products = [
 ];
 
 const SignupFormDemoProduct = () => {
+  const [expanded, setExpanded] = useState(false);
+  const [countryCode, setCountryCode] = useState("in");
+  const pathname = usePathname();
+  const router = useRouter();
+
+  useEffect(() => {
+    const updateCountryCode = () => {
+      const pathParts = pathname.split("/");
+      if (pathParts.length > 1) {
+        const newCountryCode = pathParts[1].toLowerCase();
+        if (newCountryCode.length === 2) {
+          setCountryCode(newCountryCode);
+        }
+      }
+    };
+
+    updateCountryCode();
+
+  }, [pathname, router]);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Form submitted");
   };
-  const [expanded, setExpanded] = useState(false);
 
   return (
     <motion.div
@@ -66,7 +87,7 @@ const SignupFormDemoProduct = () => {
             />
           </LabelInputContainer>
           <LabelInputContainer className="mb-2">
-            <CountrySelect isoCode={"in"} />
+            <CountrySelect isoCode={countryCode} />
           </LabelInputContainer>
           <div className="w-full flex justify-center">
             <button

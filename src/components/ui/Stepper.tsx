@@ -1,84 +1,78 @@
-import React, { useState, useRef, useEffect} from "react";
-import box from "../../../public/assets/stepper/box.svg";
-import box1 from "../../../public/assets/stepper/bowl.svg";
-import box2 from "../../../public/assets/stepper/popcorn.svg";
-import box3 from "../../../public/assets/stepper/spoon.svg";
-import box4 from "../../../public/assets/stepper/lid.svg";
-import box5 from "../../../public/assets/stepper/box.svg";
-import Image from "next/image";
+'use client'
 
-const Stepper: React.FC<{ onStepChange: (index: number) => void }> = ({
-  onStepChange,
-}) => {
-  const [activeStep, setActiveStep] = useState(0);
-  const [visibleSteps, setVisibleSteps] = useState<number[]>([]); // To manage visible steps
-  const stepperRef = useRef<HTMLDivElement>(null);
+import React, { useState, useRef, useEffect } from "react"
+import Image from "next/image"
+import box from "../../../public/assets/stepper/box.svg"
+import box1 from "../../../public/assets/stepper/bowl.svg"
+import box2 from "../../../public/assets/stepper/popcorn.svg"
+import box3 from "../../../public/assets/stepper/spoon.svg"
+import box4 from "../../../public/assets/stepper/lid.svg"
+import box5 from "../../../public/assets/stepper/box.svg"
 
-  const steps = [
-    { name: "All paper Products", icon: box },
-    { name: "Paper cup machines", icon: box1 },
-    { name: "Paper bowl machines", icon: box2 },
-    { name: "Paper bag machines", icon: box3 },
-    { name: "Paper plate machines", icon: box4 },
-    { name: "Paper straw machines", icon: box5 },
-    { name: "Paper wrap machines", icon: box },
-    { name: "Napkin machines", icon: box1 },
-    { name: "Tissue machines", icon: box2 },
-    { name: "new products", icon: box3 },
-    { name: "Other products", icon: box3 },
-    { name: "Paper plate machines", icon: box4 },
-    { name: "Paper straw machines", icon: box5 },
-    { name: "Paper wrap machines", icon: box },
-    { name: "Napkin machines", icon: box1 },
-    { name: "Tissue machines", icon: box2 },
-    { name: "new products", icon: box3 },
-    { name: "Other products", icon: box3 },
-  ];
+interface Category {
+  name: string
+}
+
+interface StepperProps {
+  categories: Category[]
+  onStepChange: (index: number) => void
+}
+
+const icons = [box, box1, box2, box3, box4, box5]
+
+export default function Stepper({ onStepChange, categories }: StepperProps) {
+  const [activeStep, setActiveStep] = useState(0)
+  const [visibleSteps, setVisibleSteps] = useState<number[]>([])
+  const stepperRef = useRef<HTMLDivElement>(null)
 
   const handleClick = (index: number) => {
-    setActiveStep(index);
-    onStepChange(index);
-  };
+    setActiveStep(index)
+    onStepChange(index)
+  }
 
-  // Use IntersectionObserver to load icons lazily
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const index = parseInt(entry.target.getAttribute("data-index")!, 10);
-            setVisibleSteps((prev) => [...prev, index]);
+            const index = parseInt(entry.target.getAttribute("data-index") || "0", 10)
+            setVisibleSteps((prev) => {
+              if (!prev.includes(index)) {
+                return [...prev, index];
+              }
+              return prev;
+            });
           }
-        });
+        })
       },
       {
         root: stepperRef.current,
         threshold: 0.5,
       }
-    );
+    )
 
-    const stepElements = document.querySelectorAll(".step-icon");
+    const stepElements = document.querySelectorAll(".step-icon")
 
-    stepElements.forEach((element) => observer.observe(element));
+    stepElements.forEach((element) => observer.observe(element))
 
     return () => {
-      stepElements.forEach((element) => observer.unobserve(element));
-    };
-  }, []);
+      stepElements.forEach((element) => observer.unobserve(element))
+    }
+  }, [])
 
   return (
     <div
-      className={`sticky top-14 max-w-screen-2xl left-0 w-full z-40 ${
-        activeStep > 0 ? "bg-white border-t-[0.5px]" : "bg-[#f2f2f2]"
+      className={`sticky z-[9999] top-14 max-w-screen-2xl left-0 w-full ${
+        activeStep > 0 ? "bg-[#f2f2f2]" : "bg-[#f2f2f2]"
       }`}
     >
-      <div className="relative flex items-center justify-center w-full h-20  mx-auto lg:h-20 ">
+      <div className="relative flex items-center justify-center w-full z-[9999] h-20 mx-auto lg:h-20">
         <div className="w-screen">
           <div
-            className="relative flex items-center max-w-screen-2xl justify-start overflow-x-scroll scrollbar-hide w-full "
+            className="relative flex items-center max-w-screen-2xl justify-start overflow-x-scroll scrollbar-hide w-full"
             ref={stepperRef}
           >
-            {steps.map((step, index) => (
+            {categories?.map((category, index) => (
               <React.Fragment key={index}>
                 <div
                   className={`flex flex-col pt-1 last:pr-[6%] first:pl-[4%] items-center justify-center relative cursor-pointer step-icon ${
@@ -97,18 +91,18 @@ const Stepper: React.FC<{ onStepChange: (index: number) => void }> = ({
                     {visibleSteps.includes(index) && (
                       <Image
                         className="h-6 w-6"
-                        src={step.icon}
-                        alt={"step-icons"}
-                        height={200}
-                        width={200}
+                        src={icons[index % icons.length]}
+                        alt={`step-icon-${index}`}
+                        height={24}
+                        width={24}
                       />
                     )}
                   </div>
-                  <span className="text-xs text-black lg:text-xs font-regular  mt-2 font-poppins text-center w-20 lg:w-20">
-                    {step.name}
+                  <span className="text-xs text-black lg:text-xs font-regular mt-2 font-poppins text-center w-20 lg:w-20">
+                    {category.name}
                   </span>
                 </div>
-                {index < steps.length - 1 && (
+                {index < categories.length - 1 && (
                   <div className="flex items-center">
                     <div className="h-1 border-t-2 w-4 lg:w-10"></div>
                   </div>
@@ -119,7 +113,5 @@ const Stepper: React.FC<{ onStepChange: (index: number) => void }> = ({
         </div>
       </div>
     </div>
-  );
-};
-
-export default Stepper;
+  )
+}

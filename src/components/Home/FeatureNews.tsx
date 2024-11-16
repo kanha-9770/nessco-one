@@ -5,7 +5,7 @@ import DecorativeImg1 from "../../../public/assets/FeaturedNews/DecorativeImg1.s
 import DecorativeImg2 from "../../../public/assets/FeaturedNews/DecorativeImg2.svg";
 import { HomeData, NewsFeatureItem } from "./types/constant";
 import { Key, useState } from "react";
-import Modal from "./FeatureNewsModal";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 interface FeatureNewsLayoutProps {
   heroData: HomeData;
@@ -13,23 +13,21 @@ interface FeatureNewsLayoutProps {
 
 export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
   const newsfData = heroData?.home[7].data?.newsData;
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState({
+  const [isDialogOpen, setDialogOpen] = useState(false);
+  const [dialogContent, setDialogContent] = useState({
     img: "",
     title: "",
     description: "",
   });
 
-  const openModal = (content: {
+  const openDialog = (content: {
     img: string;
     title: string;
     description: string;
   }) => {
-    setModalContent(content);
-    setModalOpen(true);
+    setDialogContent(content);
+    setDialogOpen(true);
   };
-
-  const closeModal = () => setModalOpen(false);
 
   return (
     <div className="max-w-screen-2xl relative mx-auto py-6 sm:py-10 px-4 sm:px-6 lg:px-14 mb-8 sm:mb-12 font-poppins">
@@ -57,32 +55,36 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
               <p className="text-sm text-gray-600 mb-4 line-clamp-3">
                 {newsfData[0]?.description}
               </p>
-              <button
-                onClick={() =>
-                  openModal({
-                    img: newsfData[0]?.image,
-                    title: newsfData[0]?.title,
-                    description: newsfData[0]?.description,
-                  })
-                }
-                className="absolute top-4 right-4 bg-black text-white w-8 h-8 rounded-full text-center leading-8 text-sm flex items-center justify-center hover:bg-gray-800 transition-colors"
-                aria-label="Open article details"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={3}
-                  stroke="currentColor"
-                  className="w-5 h-5"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 4.5v15m7.5-7.5h-15"
-                  />
-                </svg>
-              </button>
+              <Dialog open={isDialogOpen} onOpenChange={setDialogOpen}>
+                <DialogTrigger asChild>
+                  <button
+                    onClick={() =>
+                      openDialog({
+                        img: newsfData[0]?.image,
+                        title: newsfData[0]?.title,
+                        description: newsfData[0]?.description,
+                      })
+                    }
+                    className="absolute top-4 right-4 bg-black text-white w-8 h-8 rounded-full text-center leading-8 text-sm flex items-center justify-center hover:bg-gray-800 transition-colors"
+                    aria-label="Open article details"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={3}
+                      stroke="currentColor"
+                      className="w-5 h-5"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12 4.5v15m7.5-7.5h-15"
+                      />
+                    </svg>
+                  </button>
+                </DialogTrigger>
+              </Dialog>
             </div>
             <div className="w-full aspect-video relative">
               <Image
@@ -107,32 +109,36 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
                 <p className="text-xs text-gray-600 line-clamp-2">
                   {news.description}
                 </p>
-                <button
-                  onClick={() =>
-                    openModal({
-                      img: news.image,
-                      title: news.title,
-                      description: news.description,
-                    })
-                  }
-                  className="absolute top-3 right-3 bg-black text-white w-6 h-6 rounded-full text-center leading-6 text-xs flex items-center justify-center hover:bg-gray-800 transition-colors"
-                  aria-label="Open article details"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={3}
-                    stroke="currentColor"
-                    className="w-4 h-4"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 4.5v15m7.5-7.5h-15"
-                    />
-                  </svg>
-                </button>
+                <Dialog open={isDialogOpen} onOpenChange={setDialogOpen}>
+                  <DialogTrigger asChild>
+                    <button
+                      onClick={() =>
+                        openDialog({
+                          img: news.image,
+                          title: news.title,
+                          description: news.description,
+                        })
+                      }
+                      className="absolute top-3 right-3 bg-black text-white w-6 h-6 rounded-full text-center leading-6 text-xs flex items-center justify-center hover:bg-gray-800 transition-colors"
+                      aria-label="Open article details"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={3}
+                        stroke="currentColor"
+                        className="w-4 h-4"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M12 4.5v15m7.5-7.5h-15"
+                        />
+                      </svg>
+                    </button>
+                  </DialogTrigger>
+                </Dialog>
               </div>
               <div className="p-3">
                 <div className="relative aspect-video rounded-xl overflow-hidden">
@@ -149,29 +155,31 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
           ))}
         </div>
       </div>
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <div className="flex flex-col lg:flex-row items-center justify-center lg:space-x-4 space-y-4 lg:space-y-0">
-          <div className="w-full lg:w-1/2 aspect-video relative rounded-xl overflow-hidden">
-            <Image
-              src={modalContent.img}
-              alt={modalContent.title}
-              layout="fill"
-              objectFit="cover"
-              className="rounded-xl"
-            />
-          </div>
-          <div className="w-full lg:w-1/2">
-            <h2 className="text-xl text-center lg:text-left mb-2 text-[#483d73] font-medium font-poppins">
-              {modalContent.title}
-            </h2>
-            <div className="h-48 lg:h-64 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
-              <p className="font-poppins text-center lg:text-left text-sm">
-                {modalContent.description}
-              </p>
+      <Dialog  open={isDialogOpen} onOpenChange={setDialogOpen}>
+        <DialogContent className="sm:max-w-[800px] bg-white ">
+          <div className="flex flex-col lg:flex-row items-center justify-center lg:space-x-4 space-y-4 lg:space-y-0">
+            <div className="w-full lg:w-1/2 aspect-video relative rounded-xl overflow-hidden">
+              <Image
+                src={dialogContent.img}
+                alt={dialogContent.title}
+                layout="fill"
+                objectFit="cover"
+                className="rounded-xl"
+              />
+            </div>
+            <div className="w-full lg:w-1/2">
+              <h2 className="text-xl text-center lg:text-left mb-2 text-[#483d73] font-medium font-poppins">
+                {dialogContent.title}
+              </h2>
+              <div className="h-48 lg:h-64 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+                <p className="font-poppins text-center lg:text-left text-sm">
+                  {dialogContent.description}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </Modal>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

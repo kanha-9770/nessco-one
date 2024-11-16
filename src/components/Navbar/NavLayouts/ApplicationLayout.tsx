@@ -44,7 +44,7 @@ interface Product {
   description: string;
 }
 
-const componentList = [
+export const componentList = [
   PaperCutlery,
   PaperCupWithSleeve,
   PaperCupWithLid,
@@ -93,8 +93,10 @@ export default function ApplicationLayout({ navData }: ApplicationLayoutProps) {
 
         <Link href={`/${countryCODE}/${languageCODE}/application`}>
           <div className="absolute bottom-4 right-4">
-            <Button className="rounded-full flex items-center bg-primary text-primary-foreground hover:bg-black hover:text-black border border-black px-1 py-2 text-base font-regular group">
-              <span className="flex-grow ml-2 text-center group-hover:text-white">View All</span>
+            <Button className="rounded-full border flex items-center bg-primary text-primary-foreground hover:bg-black hover:text-black  border-black px-1 py-2 text-base font-regular group">
+              <span className="flex-grow ml-2 text-center group-hover:text-white">
+                View All
+              </span>
               <span className="ml-2 rounded-full p-1 transition-colors duration-200">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -139,8 +141,10 @@ export default function ApplicationLayout({ navData }: ApplicationLayoutProps) {
           </h2>
           <p className="pt-6 invert-0 mb-4">{activeProduct.description}</p>
         </div>
-        <Link href={`/${countryCODE}/${languageCODE}/application`}>
-          <div className="absolute bottom-6 right-8 z-20 rounded-full bg-white hover:bg-black hover:text-white">
+        <Link
+          href={`/${countryCODE}/${languageCODE}/application/${activeProduct?.name}`}
+        >
+          <div className="absolute bottom-6 border right-8 z-20 rounded-full bg-white hover:bg-black hover:text-white">
             <Button>Explore More</Button>
           </div>
         </Link>

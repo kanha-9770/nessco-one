@@ -11,7 +11,15 @@ export interface TwitterMeta {
   description: string;
   image: string;
 }
-
+interface Event {
+  category: string;
+  title: string;
+  date: string;
+  src: string;
+}
+export interface Announcement {
+  data: Event[];
+}
 // Define types for home SEO data
 export interface HomeSeoData {
   title: string;
@@ -198,10 +206,18 @@ type TestinomialResponse = {
   category: string;
   data: TestinomialData;
 };
+export interface StepperFilterItem {
+  name: string;
+}
 
+export interface StepperFilter {
+  stepperFilter: StepperFilterItem[];
+}
 // Main HomeData type that encompasses all categories
 export interface HomeData {
   home: Array<{
+    stepperFilter: StepperFilterItem[]; // Corrected type for stepperFilter
+    navItems: any;
     description: any;
     heading2: string;
     heading1: string;
@@ -209,6 +225,7 @@ export interface HomeData {
     homeMachineSection?: HomeMachineSection;
     aboutSeCTION?: HomeAboutSectionResponse;
     data: HeroSection;
+    Announcement:Announcement;
     productData: ProductSection;
     brandSection: BrandsSection;
     knowmoreSection: KnowMoreSection;

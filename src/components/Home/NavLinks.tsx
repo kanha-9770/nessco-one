@@ -155,7 +155,7 @@ const NavLinksDemo: React.FC<NavLinksDemoProps> = ({ type, navItems }) => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: "0", opacity: 0 }}
             transition={{ duration: 0, ease: "easeInOut" }}
-            className="fixed inset-0 z-[99999] bg-[#f2f2f2] rouded-3xl flex flex-col items-start h-[45vh] w-full px-6 py-4 md:hidden"
+            className="fixed inset-0 z-[9999] bg-[#f2f2f2] rouded-3xl flex flex-col items-start h-[45vh] w-full px-6 py-4 md:hidden"
           >
             <nav className="w-full">
               <button
@@ -185,7 +185,7 @@ const NavLinksDemo: React.FC<NavLinksDemoProps> = ({ type, navItems }) => {
       <nav
         className={`hidden ${
           scrolling ? "border-t-2" : "border-none"
-        } md:flex  flex-row flex-wrap text-base  lg:h-10 font-light font-poppins px-20 lg:mt-0 sticky  space-x-2 sm:space-x-6 text-black `}
+        } md:flex  flex-row flex-wrap text-base  z-[99] lg:h-10 font-light font-poppins px-20 lg:mt-0 sticky  space-x-2 sm:space-x-6 text-black `}
       >
         {navItems.map((item, index) => (
           <NavLink

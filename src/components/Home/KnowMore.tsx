@@ -98,7 +98,7 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
                           />
                         </svg>
                       </DialogTrigger>
-                      <DialogContent>
+                      <DialogContent className="bg-green-300 z-[99999]">
                         <DialogHeader>
                           <DialogTitle>{item.title}</DialogTitle>
                         </DialogHeader>
@@ -143,7 +143,7 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
                               Read More
                             </Button>
                           </DialogTrigger>
-                          <DialogContent>
+                          <DialogContent className="bg-white">
                             <DialogHeader>
                               <DialogTitle>{item.title}</DialogTitle>
                             </DialogHeader>
@@ -175,7 +175,7 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
                             Read More
                           </Button>
                         </DialogTrigger>
-                        <DialogContent>
+                        <DialogContent className="bg-white">
                           <DialogHeader>
                             <DialogTitle>{item.title}</DialogTitle>
                           </DialogHeader>
@@ -223,7 +223,7 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
                           />
                         </svg>
                       </DialogTrigger>
-                      <DialogContent>
+                      <DialogContent className="bg-white">
                         <DialogHeader>
                           <DialogTitle>{item.title}</DialogTitle>
                         </DialogHeader>

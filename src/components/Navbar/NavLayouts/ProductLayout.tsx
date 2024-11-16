@@ -7,6 +7,8 @@ import BlurImage from "../../ui/BlurImage";
 import Link from "next/link";
 import { NavbarData } from "../types/constant";
 import { countryCODE, languageCODE } from "../nav-menue";
+import SvgDownArrow from "@/components/ui/svgDownArrow";
+import SvgUpArrow from "@/components/ui/svgUpArrow";
 
 interface Machine {
   name: string;
@@ -137,6 +139,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
     (machine: Machine) => (
       <div className="text-center relative w-1/3 p-2">
         <Link href={`/${countryCODE}/${languageCODE}/products/${machine.name}`}>
+        
           <Image
             src={machine.image}
             alt={machine.name}
@@ -199,7 +202,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
   return (
     <div
       ref={containerRef}
-      className="w-full  h-full flex max-w-screen-2xl mx-auto items-start justify-center font-light"
+      className="w-full h-full flex max-w-screen-2xl mx-auto items-start justify-center font-light"
     >
       {/* Desktop View */}
       <div className="w-full hidden lg:flex flex-col gap-10 lg:flex-row rounded-lg overflow-hidden">
@@ -221,7 +224,11 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                 stroke="currentColor"
                 className="w-3 h-3 sm:w-4 sm:h-4 stroke-white"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
             </button>
           )}
@@ -269,21 +276,25 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                 className="absolute top-0 left-0 right-0 mx-auto z-10 text-2xl rounded-full  p-0 transition-all transform hover:scale-125 "
                 style={{ width: "40px", height: "40px" }}
                 onClick={handleSidebarPrev}
-              ></button>
+              >
+                <SvgUpArrow/>
+              </button>
             )}
 
             <div className="overflow-hidden flex flex-col space-y-5 items-center justify-start w-full py-10 h-full">
               {navRightData
                 .slice(sidebarIndex, sidebarIndex + 8)
-                .map(renderSidebarItem)}
+                .map(renderSidebarItem,sidebarIndex)}
             </div>
 
             {sidebarIndex + 8 < navRightData.length && (
               <button
-                className="absolute left-0 right-0 mx-auto bottom-0 text-2xl rounded-full  p-0 transition-all transform hover:scale-125 "
+                className="absolute left-0 bottom-0 right-1.5  mx-auto  text-2xl rounded-full  p-0 transition-all transform hover:scale-125 "
                 style={{ width: "40px", height: "40px" }}
                 onClick={handleSidebarNext}
-              ></button>
+              >
+               <SvgDownArrow/>
+              </button>
             )}
           </div>
         </div>
@@ -405,7 +416,9 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                                         currentIndex + mobileVisibleItems >=
                                         filteredMachines.length
                                       }
-                                    ></button>
+                                    >
+                                     
+                                    </button>
                                   </>
                                 )}
                               </div>

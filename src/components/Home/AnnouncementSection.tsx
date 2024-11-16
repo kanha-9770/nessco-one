@@ -1,10 +1,22 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { Carousel, Card } from "./Common/AnnouncementCarousel";
-import drupa from "../../../public/assets/Announcement/drupa.png";
+import { HomeData } from "./types/constant";
+interface AnnouncementSectionProps{
+  heroData:HomeData;
+}
+interface Event {
+  category: string;
+  title: string;
+  date: string;
+  src: string;
+}
 
-function AnnouncementSection() {
-  const cards = data.map((card, index) => (
+const AnnouncementSection: React.FC<AnnouncementSectionProps> = ({ heroData }) => {
+  useEffect(()=>{
+    console.log("heroData?.home[9]?.Announcement?.data?",heroData?.home[9]?.data);
+  },[])
+  const cards = heroData?.home[9]?.data?.map((card, index) => (
     <Card
       key={index} // Using index as the key
       src={card.src}
@@ -20,43 +32,4 @@ function AnnouncementSection() {
     </div>
   );
 }
-
-const data = [
-  {
-    category: "Join us at printing tech expo.",
-    title: "Drupa Germany.",
-    date: "May 28 to June 7, 2024",
-    src: drupa,
-  },
-  {
-    category: "Join us at printing tech expo.",
-    title: "Drupa Germany.",
-    date: "May 28 to June 7, 2024",
-    src: drupa,
-  },
-  {
-    category: "Join us at printing tech expo.",
-    title: "Drupa Germany.",
-    date: "May 28 to June 7, 2024",
-    src: drupa,
-  },
-  {
-    category: "Join us at printing tech expo.",
-    title: "Drupa Germany.",
-    date: "May 28 to June 7, 2024",
-    src: drupa,
-  },
-  {
-    category: "Join us at printing tech expo.",
-    title: "Drupa Germany.",
-    date: "May 28 to June 7, 2024",
-    src: drupa,
-  },
-  {
-    category: "Join us at printing tech expo.",
-    title: "Drupa Germany.",
-    date: "May 28 to June 7, 2024",
-    src: drupa,
-  },
-];
 export default AnnouncementSection;

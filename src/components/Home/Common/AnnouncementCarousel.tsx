@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 
 interface CarouselProps {
   items: JSX.Element[];
@@ -115,7 +115,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
         onScroll={checkScrollability}
       >
         <div className="flex flex-row justify-start gap-4 lg:pl-4 max-w-7xl mx-auto">
-          {items.map((item, index) => (
+          {items?.map((item, index) => (
             <div
               key={"card" + index}
               className="last:pr-[5%] md:last:pr-[2%] rounded-3xl"
@@ -130,13 +130,17 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 };
 
 interface CardProps {
-  src: string | StaticImageData;
+  src: string ;
   title: string;
   category: string;
   date?: string;
 }
 
 export const Card = ({ src, title, category, date }: CardProps) => {
+  useEffect(()=>{
+     console.log("i am src link",src);
+     
+  },[])
   return (
     <div className="rounded-2xl bg-white shadow-lg  dark:bg-neutral-900 h-28 w-[18rem] md:h-[5rem] md:w-80 overflow-hidden flex items-center space-x-4 p-2">
       <div className="relative flex-shrink-0 h-12 w-12 md:h-16 md:w-16 rounded-2xl overflow-hidden">

@@ -480,6 +480,7 @@ async function fetchUserLocation(req: NextRequest) {
 
   const fallbackServices = [
     `https://ipinfo.io/${newClientIp}/json/`,
+    `https://ipapi.co/${newClientIp}/json/`,
     `https://ipwhois.app/json/${newClientIp}`,
   ];
 
