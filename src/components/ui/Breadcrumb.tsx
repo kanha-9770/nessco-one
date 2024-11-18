@@ -12,7 +12,7 @@ interface BreadcrumbProps {
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
   return (
-    <nav className="flex font-poppins" aria-label="Breadcrumb">
+    <nav className="flex px-16 font-poppins" aria-label="Breadcrumb">
       <ol className="inline-flex items-center space-x-0 md:space-x-2 rtl:space-x-reverse">
         {items.map((item, index) => (
           <li key={index} className="inline-flex items-center">
@@ -22,7 +22,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
                 className={`inline-flex items-center text-xs sm:text-lg font-regular ${
                   item.current
                     ? "text-gray-500"
-                    : "text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
+                    : "text-gray-700 hover:text-[#b01e23] dark:text-gray-400 dark:hover:text-white"
                 }`}
               >
                 {index === 0 ? (

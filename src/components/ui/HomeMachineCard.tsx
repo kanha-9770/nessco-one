@@ -3,14 +3,21 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Dialog, DialogContent, DialogTrigger, DialogClose } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+  DialogClose,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { X } from 'lucide-react';
+import { X } from "lucide-react";
 import { countryCODE, languageCODE } from "../Navbar/nav-menue";
 import Breadcrumb from "./Breadcrumb";
 import BlurImage from "./BlurImage";
 
 type Card = {
+  unit: string;
+  speed: number;
   description: string;
   items: { className: string; text: string }[];
   firstname: string;
@@ -22,10 +29,10 @@ type Card = {
   content?: React.ReactNode;
 };
 
-const Card = ({ card }: { card: Card}) => {
+const Card = ({ card }: { card: Card }) => {
   const breadcrumbItems = [
     { label: "Home", href: "/" },
-    { label: "Products", href: "/products" },
+    { label: "Products", href: "/product" },
     { label: card.title, current: true },
   ];
 
@@ -35,20 +42,7 @@ const Card = ({ card }: { card: Card}) => {
         <button className="h-48 rounded-3xl bg-white font-poppins p-1 lg:p-2 w-40 lg:h-[16rem] md:w-56 overflow-hidden flex flex-col items-start justify-start relative z-10">
           <div className="relative p-2 h-full w-full">
             <div className="absolute flex bg-white h-14 lg:h-16 w-24 lg:w-32 flex-row top-0 space-x-2 -mr-4 right-0 z-40 rounded-bl-xl">
-              <div className="">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="100%"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  className="h-4 w-4 -ml-4 mt-0"
-                >
-                  <path
-                    d="M20 20C20 8.95431 11.0457 0 0 0H20V20Z"
-                    fill="white"
-                  ></path>
-                </svg>
-              </div>
+             
               <div className="flex flex-row h-14 w-12 lg:w-20 items-center justify-center">
                 <div className="h-full w-16 lg:h-20 lg:w-20 flex items-center justify-center">
                   <Image
@@ -63,9 +57,9 @@ const Card = ({ card }: { card: Card}) => {
                 <div className="flex items-center justify-center">
                   <div className="relative h-8 w-8 lg:h-12 lg:w-12 -mr-4  border-2 border-[#483d78] rounded-full bg-white inset-0 flex flex-col items-center justify-center">
                     <span className="text-lg lg:text-base font-bold text-[#dc0e2a]">
-                      70
+                      {card?.speed}
                     </span>
-                    <span className="text-5 text-[#483d78]">PCM/MIN</span>
+                    <span className="text-5 text-[#483d78]">{card?.unit}</span>
                   </div>
                 </div>
               </div>
@@ -95,7 +89,10 @@ const Card = ({ card }: { card: Card}) => {
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
             <div className="absolute -mb-2 font-poppins left-0 right-0 bottom-0 z-40 p-4">
-              <Link className="text-black font-poppins text-sm md:text-base font-regular text-left" href={`/${countryCODE}/${languageCODE}/product/${card.title}`}>
+              <Link
+                className="text-black font-poppins text-sm md:text-base font-regular text-left"
+                href={`/${countryCODE}/${languageCODE}/product/${card.title}`}
+              >
                 {card.title}
               </Link>
             </div>
@@ -103,10 +100,9 @@ const Card = ({ card }: { card: Card}) => {
         </button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[78rem] h-[90vh] p-0 z-[99999]">
-        <div className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 font-poppins font-regular md:p-14 h-full rounded-3xl relative">
+        <div className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 font-poppins font-regular md:p-4 h-full rounded-3xl relative">
           <DialogClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
-            <X className="h-4 w-4" />
-            <span className="sr-only">Close</span>
+            
           </DialogClose>
           <Breadcrumb items={breadcrumbItems} />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
@@ -152,18 +148,36 @@ const Card = ({ card }: { card: Card}) => {
                 </Link>
               </div>
             </div>
-            <div>
-              <h2 className="text-xl lg:text-3xl font-semibold lg:font-bold mb-4">
-                <span className="text-red-600">{card.firstname}</span>
-                <span className="text-[#483d78] ml-2">{card.secondname}</span>
-              </h2>
-              <p className="text-gray-700 text-sm font-regular mb-4">
+            <div className="pr-16">
+              <div className="text-justify">
+                <h2 className="text-xl lg:text-3xl font-semibold lg:font-bold mb-4">
+                  <div className="bg-gradient-to-r from-[#483d73] to-red-700 bg-clip-text text-transparent">
+                    {card.firstname}
+                  </div>
+                  <span className="bg-[#483d78] bg-clip-text  text-transparent ">
+                    {card.secondname}
+                  </span>
+                </h2>
+              </div>
+              <p className="text-gray-700 text-justify  text-sm font-regular py-4">
                 {card.description}
               </p>
-              <ul className="list-none grid grid-cols-2 gap-4 text-gray-700">
+              <ul className="list-none grid grid-cols-2 gap-4 text-gray-700 py-4 rounded-lg">
                 {card.items.map((item, index) => (
                   <li key={index} className="flex items-center space-x-2">
-                    <span className="text-sm font-regular">{item.text}</span>
+                    <svg
+                      className="h-4 w-4"
+                      fill="#b01e23"
+                      viewBox="0 0 256 256"
+                      xmlns="http://www.w3.org/2000/svg"
+                      stroke="#b01e23"
+                    >
+                      <g stroke-width="0" />
+                      <g stroke-linecap="round" stroke-linejoin="round" />
+                      <path d="M236 139.313 139.313 236a16.02 16.02 0 0 1-22.627 0L20 139.313a16.02 16.02 0 0 1 0-22.627L116.687 20a16.02 16.02 0 0 1 22.627 0L236 116.687a16.02 16.02 0 0 1 0 22.626Z" />
+                    </svg>
+
+                    <span className="text-sm font-medium text-start">{item.text}</span>
                   </li>
                 ))}
               </ul>

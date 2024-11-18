@@ -5,6 +5,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { Label } from "@/components/ui/label";
 import EnquiryCart from "@/components/ui/EnquiryCart";
+import LinkUrl from "../LinkUrl";
 interface ProductLayoutData {
   ProductLayout: Array<{
     ProductsGrid: {
@@ -53,10 +54,7 @@ interface Page2Props {
   productLayoutData: ProductLayoutData;
   page2machine: Page2Machine;
 }
-const Page2: React.FC<Page2Props> = ({
-  productLayoutData,
-  page2machine,
-}) => {
+const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine }) => {
   const ProductsGrid = productLayoutData?.ProductLayout[0]?.ProductsGrid;
   const [selectedCategory, setSelectedCategory] = useState<
     "all" | "servoDriven" | "mechanicalCam"
@@ -412,7 +410,9 @@ const Page2: React.FC<Page2Props> = ({
                     onMouseEnter={() => setHoveredButtonIndex(idx)}
                     onMouseLeave={() => setHoveredButtonIndex(null)}
                   >
-                    {ProductsGrid.viewMachine}
+                    <LinkUrl href={`/products/${item.h2}`}>
+                      {ProductsGrid.viewMachine}
+                    </LinkUrl>
                   </button>
                 )}
                 <div className="flex items-center justify-center lg:hidden w-full">
@@ -420,7 +420,9 @@ const Page2: React.FC<Page2Props> = ({
                     aria-label="View Machine"
                     className={`mt-[1rem] w-[70%] h-[2rem] border-[0.1rem] border-solid font-medium rounded-lg transition-colors duration-300 border-[#9c9c9c] hover:border-black hover:bg-black hover:text-white`}
                   >
-                    {ProductsGrid.viewMachine}
+                    <LinkUrl href={`/products/${item.h2}`}>
+                      {ProductsGrid.viewMachine}
+                    </LinkUrl>
                   </button>
                 </div>
               </div>

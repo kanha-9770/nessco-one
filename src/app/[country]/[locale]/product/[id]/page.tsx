@@ -95,13 +95,12 @@ export default async function about({ params: { locale } }: Props) {
   if (!locales.includes(locale as any)) {
     locale = "en"; // Fallback to English
   }
-
   // Set the locale for the request
   unstable_setRequestLocale(locale);
 
   // Fetch home data based on the locale
   const productLayoutData = await fetchproductLayoutData(locale);
-
+  
   // Fetch translations based on the locale
   const t = await getTranslations({ locale });
 

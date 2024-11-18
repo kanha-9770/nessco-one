@@ -198,3 +198,13 @@ body {
     linear-gradient(to right, #483d73, #B91C1C);
   /* Border gradient */
 }
+.custom-gradient-border-icon {
+  border: 1px solid transparent;
+  /* full rounded */
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  background-image: linear-gradient(white, white),
+    /* Inner background */
+    linear-gradient(to right, #483d73, #B91C1C);
+  /* Border gradient */
+}

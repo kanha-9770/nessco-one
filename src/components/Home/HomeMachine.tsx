@@ -32,7 +32,7 @@ const HomeMachine: React.FC<HomeMachineLayoutProps> = ({ heroData }) => {
       return productData;
     } else {
       return productData.filter((card: CardItem) =>
-        card.category.split(",").includes(categories[activeStep].name)
+        card.category.split(",").includes(categories[activeStep]?.name)
       );
     }
   }, [activeStep, categories, productData]);

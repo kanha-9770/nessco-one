@@ -46,14 +46,14 @@ const Home: React.FC<HeroLayoutProps> = ({ heroData }) => {
                 <span className="font-medium text-black group-hover:bg-gradient-to-r group-hover:from-[#483d73] group-hover:to-red-700 group-hover:text-transparent group-hover:bg-clip-text pl-2 sm:pl-4 md:pl-6 lg:pl-8 truncate flex-grow text-left transition-all duration-300">
                   {heroData?.home[1]?.data?.buttonText}
                 </span>
-                <span className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 bg-white rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-gradient-to-r group-hover:from-[#483d73] group-hover:to-red-700 transition-all duration-300">
+                <span className="h-8 w-8 sm:h-10 sm:w-10 group custom-gradient-border-icon border-[0.5px] md:h-12 md:w-12 bg-white rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-gradient-to-r group-hover:from-[#483d73] group-hover:to-red-700 transition-all duration-300">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth={3}
                     stroke="currentColor"
-                    className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 stroke-[#483d73] group-hover:stroke-white transition-all duration-300"
+                    className="w-6 h-6 sm:w-8 sm:h-8 md:w-16 scale-150 md:h-16 stroke-[#483d73] group-hover:stroke-white transition-all duration-300"
                   >
                     <path
                       strokeLinecap="round"
@@ -65,7 +65,7 @@ const Home: React.FC<HeroLayoutProps> = ({ heroData }) => {
               </Button>
             </Link>
           </div>
-         
+
           <div className="z-50 mt-10">
             <svg
               xmlns="http://www.w3.org/2000/svg"

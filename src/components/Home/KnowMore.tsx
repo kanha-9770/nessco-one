@@ -40,21 +40,7 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
 
   return (
     <div className="relative container mx-auto py-8 px-4 lg:px-14 mb-20 sm:mb-32 md:mb-44">
-      <Image
-        alt="Decorative Image"
-        src={DecorativeImg1}
-        className="w-24 sm:w-32 md:w-40 absolute top-20 right-0"
-      />
-      <Image
-        alt="Decorative Image"
-        src={DecorativeImg2}
-        className="w-24 sm:w-32 md:w-40 absolute -bottom-24 sm:-bottom-32 md:-bottom-48 left-4 sm:left-8 md:left-12"
-      />
-      <Image
-        alt="Decorative Image"
-        src={BackgroundSvg}
-        className="w-full scale-80 opacity-10 absolute top-10 left-0 right-0"
-      />
+     
       <div className="mb-8 sm:mb-12 md:mb-16">
         <h1 className="text-2xl sm:text-3xl font-semibold text-center text-[#483d73]">
           Our Expertise

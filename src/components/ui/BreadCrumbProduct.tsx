@@ -24,7 +24,7 @@ const BreadcrumbProduct: React.FC<BreadcrumbProps> = ({ items }) => {
                 className={`inline-flex items-center md:text-lg font-bold ${
                   item.current
                     ? "text-gray-500"
-                    : "text-gray-700 hover:text-[#483d78] dark:text-gray-400 dark:hover:text-white"
+                    : "text-gray-700 hover:text-[#b01e23] dark:text-gray-400 dark:hover:text-white"
                 }`}
               >
                 {index === 0 ? (
