@@ -2,8 +2,8 @@
 
 import React, { useState, useRef, useEffect } from "react"
 import Image from "next/image"
-import box from "https://res.cloudinary.com/dfryvystt/image/upload/v1731481264/49_vtvq7r.svg"
-import box1 from "https://res.cloudinary.com/dfryvystt/image/upload/v1731481264/49_vtvq7r.svg"
+import box from "../../../public/assets/stepper/49.svg"
+import box1 from "../../../public/assets/stepper/bowl.svg"
 import box2 from "../../../public/assets/stepper/popcorn.svg"
 import box3 from "../../../public/assets/stepper/spoon.svg"
 import box4 from "../../../public/assets/stepper/lid.svg"
