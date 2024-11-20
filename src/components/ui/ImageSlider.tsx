@@ -9,7 +9,7 @@ const ImageSlider: React.FC<ImageSliderLayoutProps> = ({ heroData }) => {
     <div className="relative w-full mx-auto h-full">
       
         <video
-          src={heroData.home[1].data?.video?.sources[0]?.src}
+          src="https://assets.nesscoindustries.com/public/video/xyz.mp4"
           autoPlay
           loop
           muted
