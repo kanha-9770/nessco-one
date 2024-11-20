@@ -8,7 +8,6 @@ interface AboutLayoutProps{
 }
 
 const Grid:React.FC <AboutLayoutProps>= ({companyData}) => {
-  const homecompanyData=companyData?.Ourcompany[0]?.viewgallery;
   const grid=companyData?.Ourcompany?.[0]?.images;
 
 
@@ -23,16 +22,16 @@ const Grid:React.FC <AboutLayoutProps>= ({companyData}) => {
       </div>
       <div className='absolute w-full top-1/2 z-30'>
       <h1 className=' lg:text-6xl text-5xl z-30 lg:top-1/2 top-[23.5rem] lg:left-1/2  font-poppins justify-center text-center flex flex-col text-white font-medium '>Gallery</h1>
-      <button aria-label='view button' className="  z-30 bg-white font-poppins font-regular  lg:top-[58%] top-[24rem] text-black px-3 py-2 text-lg rounded-2xl ml-[38%] lg:ml-[45%] mt-2 hover:text-white hover:bg-black hover:font-medium">
+      {/* <button aria-label='view button' className="  z-30 bg-white font-poppins font-regular  lg:top-[58%] top-[24rem] text-black px-3 py-2 text-lg rounded-2xl ml-[38%] lg:ml-[45%] mt-2 hover:text-white hover:bg-black hover:font-medium">
          {homecompanyData?.viewgallery || 'View Gallery'}
-      </button>
+      </button> */}
       </div>
       {Array.isArray(grid) && grid.map((img, idx) => (        <div
           key={idx}
           className={`absolute ${img.style} z-20 ${img.style.includes('image-scale-up') ? Style.imageScaleUp : ''} ${img.style.includes('image-translate-up') ? Style.imageTranslateUp : ''}`}
         >
           <Image
-            src={img.src}
+            src="https://res.cloudinary.com/dlti4o10e/image/upload/v1728990173/samples/imagecon-group.jpg"
             alt={img.alt}
             layout="fill"
             objectFit="cover"

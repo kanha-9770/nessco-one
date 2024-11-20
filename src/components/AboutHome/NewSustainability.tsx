@@ -9,6 +9,7 @@ import {
   CarouselItem,
 } from "@/components/ui/about/carousel";
 import { AboutItem } from "./types/constant";
+import LinkUrl from "../LinkUrl";
 
 import dynamic from "next/dynamic";
 interface HomeLayoutProps {
@@ -211,6 +212,7 @@ const NewSustainability: React.FC<HomeLayoutProps> = ({ aboutData }) => {
           </div>
         </div>
       </div>
+    <LinkUrl href="/about/sustainability">
       <div className="flex justify-center">
         <button
           aria-label="read-more"
@@ -219,6 +221,7 @@ const NewSustainability: React.FC<HomeLayoutProps> = ({ aboutData }) => {
           {homemisionData.button}
         </button>
       </div>
+      </LinkUrl>
     </div>
   );
 };

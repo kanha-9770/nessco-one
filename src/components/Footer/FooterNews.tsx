@@ -42,20 +42,21 @@ const FooterNew: React.FC<FooterProps> = ({
 }) => {
   const pathname = usePathname() || "";
   const componentCode = pathname.split("/")[2]?.toLowerCase();
-  const componentCodeourCompany = pathname.split("/")[3]?.toLowerCase();
+  const componentCodeourCompany = pathname.split("/")[4]?.toLowerCase();
   const isDarkBackground =
     ["knowledge-center", "clientele", "our-company"].includes(componentCode) ||
-    ["our-company"].includes(componentCodeourCompany);
+    ["our-company"].includes(componentCodeourCompany) || ["knowledge-center"].includes(componentCodeourCompany) || ["clientele"].includes(componentCodeourCompany);
 
   const textColor = isDarkBackground ? "text-white" : "text-black";
+  const image=isDarkBackground ? "invert" : "";
 
   return (
     <>
-      <div className=" border-gray-50 border-2"></div>
+      <div className="  border-gray-50 border"></div>
       <footer
         className={`${isDarkBackground ? "bg-[#222222]" : "bg-white"} ${
           styles.footer
-        }`}
+        } `}
       >
         <div className={`${styles.bgimagefooter}`}>
           {isDarkBackground && <div className={`${styles.overlay} `}></div>}
@@ -115,7 +116,7 @@ const FooterNew: React.FC<FooterProps> = ({
                       width={300}
                       src={award.src}
                       alt={award.alt}
-                      className="w-full h-full"
+                      className={`w-full h-full ${image}`}
                     />
                   ))}
                 </div>
@@ -210,7 +211,7 @@ const FooterNew: React.FC<FooterProps> = ({
                 >
                   {footerData.subscribeTitle}
                 </h1>
-                <div className="flex p-1">
+                <div className="flex p-1 ">
                   <input
                     placeholder="Enter your email address"
                     className=" lg:w-[24rem] w-[22rem] md:w-[47rem]  mt-2 h-[2.3rem] rounded-xl border p-2 border-black font-poppins font-light text-xs"
@@ -252,14 +253,14 @@ const FooterNew: React.FC<FooterProps> = ({
                     >
                       {footerData.contacts.map((contact, index) => (
                         <Link key={index} href={contact.href} passHref>
-                          <p className={`${styles.footeratags}  ${textColor}`}>
+                          <p className={`${styles.footeratags}  ${textColor} `}>
                             {contact.name}
                           </p>
                         </Link>
                       ))}
                     </div>
 
-                    <div className="flex flex-row space-x-2 mt-5  ">
+                    <div className={`flex flex-row space-x-2 mt-5 ${image}`}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         x="0px"

@@ -1,13 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import bgPick from "../../../../public/assets/nav_support/BgMapImage.png";
-import Link from "next/link";
 import { NavbarData } from "../types/constant";
-import dynamic from "next/dynamic";
 import { countryCODE, languageCODE } from "../nav-menue";
-const SupportFirst = dynamic(() => import("../IconsComponent/SupportFirst"));
-const SupportSecond = dynamic(() => import("../IconsComponent/SupportSecond"));
-const SupportThird = dynamic(() => import("../IconsComponent/SupportThird"));
-const SupportFourth = dynamic(() => import("../IconsComponent/SupportFourth"));
+import Link from "next/link";
+import LottieAnimation from "@/components/ui/LottieAnimation";
 
 type SupportItem = {
   title: string;
@@ -18,12 +14,7 @@ type SupportItem = {
 interface SupportGridProps {
   navData: NavbarData;
 }
-const componentList = [
-  SupportFirst,
-  SupportSecond,
-  SupportThird,
-  SupportFourth,
-];
+
 const SupportGrid: React.FC<SupportGridProps> = ({ navData }) => {
   // Extracting support items and ensuring it's an array
   const supportData = navData?.navbar[3]?.data;
@@ -101,14 +92,17 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData }) => {
         onScroll={checkScrollability}
       >
         {supportItems.map((item, index) => {
-          const IconComponent = componentList[index];
           return (
-            <Link key={index} className="flex flex-col space-y-4" href={`/${countryCODE}/${languageCODE}/support/${item.link}`}>
+            <Link
+              key={index}
+              className="flex flex-col space-y-4"
+              href={`/${countryCODE}/${languageCODE}/support/${item.link}`}
+            >
               <div
                 className="flex-shrink-0 w-72 h-40 rounded-3xl p-4 flex flex-col justify-center items-center bg-cover bg-center"
                 style={{ backgroundImage: `url(${bgPick.src})` }}
               >
-                <IconComponent />
+                <LottieAnimation className="h-32" animationData={item.image}></LottieAnimation>
               </div>
               <p className="relative font-poppins text-center mt-4 invert-0 font-normal hover:text-[#483d78] hover:font-semibold text-base">
                 {item.title}

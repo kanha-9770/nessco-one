@@ -76,7 +76,7 @@ const AboutUs: React.FC<AboutSectionLayoutProps> = ({ heroData }) => {
   if (!aboutData) return null;
 
   return (
-    <div className="flex mt-8 pb-12 h-full max-w-screen-2xl mx-auto flex-col items-center md:px-6 lg:px-14 bg-gradient-to-b from-transparent  to-[#ece9f5] relative">
+    <div className="flex mt-8 pb-12 h-full max-w-screen-2xl mx-auto flex-col items-center px-4 lg:px-14 bg-gradient-to-b from-transparent  to-[#ece9f5] relative">
       <div className="absolute top-48 h-full w-full bg-[radial-gradient(#9e9c9c_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_100%_50%_at_50%_50%,#000_60%,transparent_100%)]"></div>
       <h2 className="text-3xl font-medium text-[#483d78] flex justify-center z-10">
         <span className="lg:text-3xl text-[1.8rem]  font-semibold">
@@ -87,13 +87,13 @@ const AboutUs: React.FC<AboutSectionLayoutProps> = ({ heroData }) => {
         </span>
       </h2>
 
-      <h1 className="text-lg lg:text-4xl w-full text-center font-poppins lg:px-72 py-3">
+      <h1 className="text-lg lg:text-2xl w-full text-center font-poppins lg:px-72 py-3">
         {aboutData.heading.split(" ").map((word, index) =>
           word === "Machine" ? (
             <Link
               key={index}
               className="text-[#483d78] cursor-pointer"
-              href={`/${countryCODE}/${languageCODE}/product`}
+              href={`/${countryCODE}/${languageCODE}/products`}
             >
               {word}{" "}
             </Link>
@@ -148,7 +148,7 @@ const AboutUs: React.FC<AboutSectionLayoutProps> = ({ heroData }) => {
               className={`relative w-full lg:w-1/3 group flex flex-col items-center ${
                 index === 1 ? "z-10 lg:w-[40%]" : ""
               }`}
-              href={card.link}
+              href={`/${countryCODE}/${languageCODE}/about/${card.link}`}
             >
               <div className="w-full">
                 <div
@@ -177,7 +177,7 @@ const AboutUs: React.FC<AboutSectionLayoutProps> = ({ heroData }) => {
                       </div>
                     </div>
                     <svg
-                      className="h-10 w-10 bg-black p-1.5 rounded-full text-white transform transition-transform duration-300 ease-in-out group-hover:rotate-45 group-hover:bg-[#483d73]"
+                      className="h-10 w-10 bg-white p-1.5 rounded-full text-black group-hover:text-white transform transition-transform duration-300 ease-in-out group-hover:rotate-45 group-hover:bg-[#483d73]"
                       viewBox="0 0 24 24"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"

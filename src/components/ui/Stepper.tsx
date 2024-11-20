@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react"
 import Image from "next/image"
-import box from "../../../public/assets/stepper/box.svg"
+import box from "../../../public/assets/stepper/49.svg"
 import box1 from "../../../public/assets/stepper/bowl.svg"
 import box2 from "../../../public/assets/stepper/popcorn.svg"
 import box3 from "../../../public/assets/stepper/spoon.svg"
@@ -62,7 +62,7 @@ export default function Stepper({ onStepChange, categories }: StepperProps) {
 
   return (
     <div
-      className={`sticky z-[9999] top-14 max-w-screen-2xl left-0 w-full ${
+      className={`lg:sticky z-[9999] lg:top-[5.8rem] max-w-screen-2xl left-0 w-full ${
         activeStep > 0 ? "bg-[#f2f2f2]" : "bg-[#f2f2f2]"
       }`}
     >
@@ -82,9 +82,9 @@ export default function Stepper({ onStepChange, categories }: StepperProps) {
                   data-index={index}
                 >
                   <div
-                    className={`relative h-8 w-8 flex items-center justify-center text-xl ${
+                    className={`relative h-9 w-9 flex items-center justify-center text-xl ${
                       index === activeStep
-                        ? "bg-[#dc0e2a] text-white rounded-full shadow-lg"
+                        ? "border-red-700 border-2 text-white rounded-full shadow-lg"
                         : "p-0"
                     }`}
                   >

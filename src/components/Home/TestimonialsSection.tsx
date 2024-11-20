@@ -1,6 +1,5 @@
 import React from "react";
 import { SwipeCarousel } from "./Common/slider";
-import AnimatedText from "../ui/AnimatedText";
 import { TestiNomialAnimation } from "../ui/testinomialAnimation";
 import { HomeData } from "./types/constant";
 interface TestinomialLayoutProps{
@@ -14,40 +13,19 @@ const HomeTestimonial: React.FC<TestinomialLayoutProps> = ({heroData}) => {
   return (
     <div className="flex flex-col lg:flex-row py-4 h-screen z-20 max-w-7xl mx-auto relative overflow-hidden">
       <div className="px-2 w-full h-[45%] lg:h-full lg:w-1/3 lg:flex lg:flex-col lg:items-start lg:justify-end flex flex-col">
-        <h2 className="text-xl text-[#483d73] text-center lg:text-justify border-white pb-3 lg:pb-0 border-b-[1px] lg:border-none lg:ml-6 lg:text-3xl font-montserrat lg:leading-tight font-semibold">
+        <h2 className="text-xl text-[#483d73] text-center lg:text-justify  pb-3 lg:pb-0 lg:ml-6 lg:text-3xl font-montserrat lg:leading-tight font-semibold">
           {testinomialData?.heading}
         </h2>
-        <div className="hidden lg:flex flex-col">
-          <h2 className="lg:text-5xl font-bold ml-4 mt-20">
+        <div className="flex flex-col">
+          <h2 className="lg:text-5xl lg:text-left text-center font-bold ml-4 lg:mt-12 mt-4">
             {testinomialData?.subheading}
           </h2>
-          <h2 className="text-5xl flex flex-row font-bold ml-4 mt-6">
+          <h2 className="text-5xl flex flex-row font-bold lg:ml-4 lg:mt-2">
             {testinomialData?.secondsubheading?.substring(0, 3)}
-            <span className="relative ml-1 ">
-              <AnimatedText
-                blockClassName="h-full rounded-lg bg-gradient-to-r from-indigo-300 to-purple-300 dark:from-indigo-500 dark:to-purple-500"
-                className="text-5xl text-black font-bold"
-                text={`${testinomialData?.secondsubheading?.substring(4)}`}
-              />
-            </span>
           </h2>
-          <h3 className="mt-10 text-lg text-center font-poppins text-[#483d73]">
+          <h3 className="hidden lg:block mt-10 text-lg text-center font-poppins text-[#483d73]">
             {testinomialData?.description}
           </h3>
-        </div>
-        <div className="flex w-full mt-2 justify-between lg:hidden flex-row">
-          <h4 className="text-sm w-1/2 text-center font-poppins">
-            {testinomialData?.description}
-          </h4>
-          <div className="h-12 border-white w-1 border-l-[1px]"></div>
-          <div className="flex text-center text-sm w-1/2 flex-col ">
-            <div className="flex text-[#483d78] text-lg items-center justify-center flex-row">
-              {" "}
-              <AnimatedText text={"1000"}></AnimatedText>
-              <span className="text-[#dc0e2a]">+</span>
-            </div>
-            {testinomialData?.thirdsubheading}
-          </div>
         </div>
         <SwipeCarousel heroData={heroData} />
       </div>

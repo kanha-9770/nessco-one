@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { toast, Toaster } from "react-hot-toast";
 import { Label } from "../ui/label";
@@ -7,6 +7,8 @@ import { Input } from "../ui/input";
 import { MessageBox } from "../ui/MessageBox";
 import { cn } from "@/lib/utils";
 import { useForm } from "@/app/[country]/[locale]/context/FormContext";
+import CountrySelect from "../ui/CountrySelect";
+import { usePathname, useRouter } from "next/navigation";
 
 const transition = {
   type: "spring",
@@ -19,6 +21,23 @@ const transition = {
 
 const SignupFormDemo = ({ formId }: { formId: string }) => {
   const { submitForm } = useForm(); // Access the context
+  const [countryCode, setCountryCode] = useState("in");
+  const pathname = usePathname();
+  const router = useRouter();
+
+  useEffect(() => {
+    const updateCountryCode = () => {
+      const pathParts = pathname.split("/");
+      if (pathParts.length > 1) {
+        const newCountryCode = pathParts[1].toLowerCase();
+        if (newCountryCode.length === 2) {
+          setCountryCode(newCountryCode);
+        }
+      }
+    };
+
+    updateCountryCode();
+  }, [pathname, router]);
   const [formValues, setFormValues] = useState({
     firstname: "",
     lastname: "",
@@ -27,7 +46,9 @@ const SignupFormDemo = ({ formId }: { formId: string }) => {
     message: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { id, value } = e.target;
     setFormValues((prevValues) => ({ ...prevValues, [id]: value }));
   };
@@ -105,14 +126,9 @@ const SignupFormDemo = ({ formId }: { formId: string }) => {
               />
             </LabelInputContainer>
             <LabelInputContainer className="mb-4">
-              <Label htmlFor="mobilenumber">Mobile Number</Label>
-              <Input
-                id="mobilenumber"
-                placeholder="123-456-7890"
-                type="tel"
-                value={formValues.mobilenumber}
-                onChange={handleChange}
-              />
+              <LabelInputContainer className="mb-2">
+                <CountrySelect isoCode={countryCode} />
+              </LabelInputContainer>
             </LabelInputContainer>
             <LabelInputContainer className="mb-8">
               <Label htmlFor="message">Your Message</Label>

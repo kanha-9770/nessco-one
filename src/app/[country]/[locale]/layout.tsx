@@ -120,7 +120,7 @@ export default async function RootLayout({
           <NavLayout params={{ locale }} />
           {/* Page content */}
           {children}
-          <div className="mt-20">
+          <div>
             <FooterLayout params={{ locale }} />
           </div>
         </NextIntlClientProvider>

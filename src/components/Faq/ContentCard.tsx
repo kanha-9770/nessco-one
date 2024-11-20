@@ -1,17 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import {searchbox} from '../Constants/faq/faq.json'
-
-interface FAQ {
-  que: string;
-  ans: string;
-}
-
-interface Category {
-  name: string;
-  faqs: FAQ[];
-}
+import { Category } from "./types/constant";
 
 interface ContentCardProps {
   categories: Category[];
@@ -23,7 +13,7 @@ const ContentCard: React.FC<ContentCardProps> = ({ categories }) => {
   );
 
   const toggleExpansion = (categoryIndex: number, faqIndex: number) => {
-    const index = categoryIndex * 1000 + faqIndex; // uniq index for faq
+    const index = categoryIndex * 1000 + faqIndex;
     setExpandedIndices((prev) => {
       const newSet = new Set(prev);
       if (newSet.has(index)) {
@@ -36,18 +26,18 @@ const ContentCard: React.FC<ContentCardProps> = ({ categories }) => {
   };
 
   return (
-    <div className="flex flex-col gap-4 px-[1vw] ">
+    <div className="flex flex-col gap-4 px-[1vw]">
       {categories.map((category, categoryIndex) => (
         <div
           key={categoryIndex}
           className="bg-white rounded-lg shadow-lg p-10 lg:h-[30.5rem] md:h-[20rem]"
         >
           <h1 className="text-2xl text-gray-600">
-           {searchbox.Questions}{" "}
+            Questions Related to{" "}
             <span className="text-red-700 font-bold">{category.name}</span>
           </h1>
           <div className="lg:border-t-[0.2rem] border-t-2 border-solid border-red-700 lg:w-[8vw] w-[18vw] mt-[0.6rem]"></div>
-          <div className="mt-[2vh] ">
+          <div className="mt-[2vh]">
             {category.faqs.map((faq, faqIndex) => {
               const index = categoryIndex * 1000 + faqIndex;
               return (
@@ -62,7 +52,7 @@ const ContentCard: React.FC<ContentCardProps> = ({ categories }) => {
                     {expandedIndices.has(index) ? (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="30" /* Size similar to BsDashLg */
+                        width="30"
                         height="30"
                         viewBox="0 0 24 24"
                         fill="none"
@@ -72,14 +62,14 @@ const ContentCard: React.FC<ContentCardProps> = ({ categories }) => {
                           x="3"
                           y="11"
                           width="18"
-                          height="2" /* Thickness for bold effect */
-                          fill="black" /* Set color to bold black */
+                          height="2"
+                          fill="black"
                         />
                       </svg>
                     ) : (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="30" /* Size similar to BsPlusLg */
+                        width="30"
                         height="30"
                         viewBox="0 0 24 24"
                         fill="none"
@@ -90,8 +80,8 @@ const ContentCard: React.FC<ContentCardProps> = ({ categories }) => {
                           y1="5"
                           x2="12"
                           y2="19"
-                          stroke="black" /* Color set to black */
-                          strokeWidth="2" /* Line thickness for bold effect */
+                          stroke="black"
+                          strokeWidth="2"
                           strokeLinecap="round"
                         />
                         <line
@@ -99,8 +89,8 @@ const ContentCard: React.FC<ContentCardProps> = ({ categories }) => {
                           y1="12"
                           x2="19"
                           y2="12"
-                          stroke="black" /* Color set to black */
-                          strokeWidth="2" /* Line thickness for bold effect */
+                          stroke="black"
+                          strokeWidth="2"
                           strokeLinecap="round"
                         />
                       </svg>
@@ -108,11 +98,10 @@ const ContentCard: React.FC<ContentCardProps> = ({ categories }) => {
                   </div>
                   <div className="lg:border-t-[0.2rem] border-[#d3d2d2] border-t-2 border-solid mt-[0.5vh] lg:w-[70%] w-[80%]"></div>
 
-                  {/* Expandable Content with Smooth Transition */}
                   <div
                     className={`overflow-hidden transition-all ease-in-out duration-500 ${
                       expandedIndices.has(index)
-                        ? "max-h-[150px] opacity-100 scale-y-10"
+                        ? "max-h-[150px] opacity-100 scale-y-100"
                         : "max-h-0 opacity-0 scale-y-0"
                     }`}
                     style={{

@@ -11,8 +11,11 @@ interface KnowledgeCenterProps {
   knowledgeCenterData: KnowledgeCenterItem;
 }
 
+
 const Pages: React.FC<KnowledgeCenterProps> = ({ knowledgeCenterData }) => {
   const Section = knowledgeCenterData?.knowledgeCenter[0]?.Section;
+
+  
   return (
     <div>
       <div className="h-full bg-black w-full overflow-hidden">

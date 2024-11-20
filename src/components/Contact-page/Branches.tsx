@@ -40,7 +40,7 @@ const branchesData=contactData?.contact[0]?.branchesData;
                   {/* Location image on the right, positioned at the top */}
                   <div className="absolute top-2 right-0">
                     <Image
-                      src={branch.location}
+                      src="https://res.cloudinary.com/dlti4o10e/image/upload/v1732005261/location_jqqcij.png"
                       width={70}
                       height={70}
                       className="w-10 h-10"

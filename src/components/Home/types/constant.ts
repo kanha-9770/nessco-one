@@ -213,9 +213,28 @@ export interface StepperFilterItem {
 export interface StepperFilter {
   stepperFilter: StepperFilterItem[];
 }
+export interface IOTData {
+  category: string;
+  data: {
+    title: string;
+    machineImg: string;
+    desktopImg: string;
+    globeVideo: string;
+    subTitle: string;
+    cards: Cards[];
+  };
+}
+
+export interface Cards {
+  title: string;
+  description: string;
+  video: string;
+}
+
 // Main HomeData type that encompasses all categories
 export interface HomeData {
   home: Array<{
+    category: string;
     stepperFilter: StepperFilterItem[]; // Corrected type for stepperFilter
     navItems: any;
     description: any;
@@ -231,5 +250,6 @@ export interface HomeData {
     knowmoreSection: KnowMoreSection;
     NewsFeatureSection: NewsFeatureSection;
     testinomialSection: TestinomialResponse;
+    iotdata:IOTData;
   }>;
 }

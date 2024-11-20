@@ -40,6 +40,7 @@ import Link from "next/link";
 import { countryCODE, languageCODE } from "../nav-menue";
 interface Product {
   id: string;
+  link:string;
   name: string;
   description: string;
 }
@@ -79,7 +80,7 @@ export default function ApplicationLayout({ navData }: ApplicationLayoutProps) {
               key={product.id}
               className="flex flex-col items-center justify-center p-2 invert-0 cursor-pointer"
               onMouseEnter={() => setActiveProduct(product)}
-              href={`/${countryCODE}/${languageCODE}/application/${product?.name}`}
+              href={`/${countryCODE}/${languageCODE}/application${product?.link}`}
             >
               <div className=" h-20 w-20 flex items-center justify-center">
                 <IconComponent />
@@ -93,27 +94,28 @@ export default function ApplicationLayout({ navData }: ApplicationLayoutProps) {
 
         <Link href={`/${countryCODE}/${languageCODE}/application`}>
           <div className="absolute bottom-4 right-4">
-            <Button className="rounded-full border flex items-center bg-primary text-primary-foreground hover:bg-black hover:text-black  border-black px-1 py-2 text-base font-regular group">
-              <span className="flex-grow ml-2 text-center group-hover:text-white">
-                View All
+            <Button
+              className="rounded-full flex items-center justify-center bg-primary text-primary-foreground hover:bg-red-700 border-2 group border-red-700 w-[12rem] space-x-4 py-1 text-base font-medium transition-all duration-300 ease-in-out group relative"
+              aria-label="View all items"
+            >
+              <span className="text-red-700 text-start group-hover:text-white">
+                View Machine
               </span>
-              <span className="ml-2 rounded-full p-1 transition-colors duration-200">
+              <span className="bg-red-700 group-hover:bg-white p-1 rounded-full absolute right-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 64 64"
-                  className="lg:w-6 w-5 lg:h-6 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={3}
+                  stroke="currentColor"
+                  className="w-4 h-4 stroke-white group-hover:stroke-red-700"
                 >
-                  <circle
-                    cx="32"
-                    cy="32"
-                    r="32"
-                    className="fill-black group-hover:fill-white cursor-pointer"
-                  />
                   <path
-                    d="M25 20 L37 32 L25 44"
-                    className="stroke-white group-hover:stroke-black stroke-[4px] fill-none stroke-linecap-round stroke-linejoin-round "
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M9 5l7 7-7 7"
                   />
-                </svg>{" "}
+                </svg>
               </span>
             </Button>
           </div>
@@ -145,7 +147,30 @@ export default function ApplicationLayout({ navData }: ApplicationLayoutProps) {
           href={`/${countryCODE}/${languageCODE}/application/${activeProduct?.name}`}
         >
           <div className="absolute bottom-6 border right-8 z-20 rounded-full bg-white hover:bg-black hover:text-white">
-            <Button>Explore More</Button>
+            <Button
+              className="rounded-full relative flex items-center justify-center bg-primary text-primary-foreground hover:bg-[#483d73] border-2 group border-[#483d73] w-[12rem] space-x-4 py-1 text-base font-medium transition-all duration-300 ease-in-out group"
+              aria-label="View all items"
+            >
+              <span className="text-[#483d73] group-hover:text-white">
+                Explore All
+              </span>
+              <span className="bg-[#483d73] group-hover:bg-white p-1 rounded-full absolute right-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={3}
+                  stroke="currentColor"
+                  className="w-4 h-4 stroke-white group-hover:stroke-[#483d73]"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </span>
+            </Button>
           </div>
         </Link>
       </div>

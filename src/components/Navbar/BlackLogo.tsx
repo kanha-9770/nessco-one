@@ -5,6 +5,7 @@ const NesscoBlackLogo = (props) => (
     xmlSpace="preserve"
     width="47.5mm"
     height="20mm"
+    className="h-20 w-20"
     style={{
       shapeRendering: "geometricPrecision",
       textRendering: "geometricPrecision",

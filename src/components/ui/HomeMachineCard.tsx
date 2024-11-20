@@ -10,12 +10,13 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { X } from "lucide-react";
 import { countryCODE, languageCODE } from "../Navbar/nav-menue";
 import Breadcrumb from "./Breadcrumb";
 import BlurImage from "./BlurImage";
 
 type Card = {
+  firstLink: string;
+  secondLink: string;
   unit: string;
   speed: number;
   description: string;
@@ -29,11 +30,24 @@ type Card = {
   content?: React.ReactNode;
 };
 
-const Card = ({ card }: { card: Card }) => {
+const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
+  function formatString(input) {
+    if (!input) return ""; // Return an empty string if input is undefined or null
+    return input
+      .replace(/-/g, " ") // Replace all '-' with spaces
+      .replace(/\b\w/g, (char) => char.toUpperCase()); // Capitalize every word's first letter
+  }
+  
   const breadcrumbItems = [
     { label: "Home", href: "/" },
-    { label: "Products", href: "/product" },
-    { label: card.title, current: true },
+    { label: "Products", href: "/products" },
+    {
+      label: activeStep === "All paper Products" ? formatString(card.secondLink)  : activeStep,
+      href: `/products/${
+        activeStep === "All paper Products" ? card.secondLink : card.secondLink
+      }`,
+    },
+    { label: card.firstname },
   ];
 
   return (
@@ -41,10 +55,9 @@ const Card = ({ card }: { card: Card }) => {
       <DialogTrigger asChild>
         <button className="h-48 rounded-3xl bg-white font-poppins p-1 lg:p-2 w-40 lg:h-[16rem] md:w-56 overflow-hidden flex flex-col items-start justify-start relative z-10">
           <div className="relative p-2 h-full w-full">
-            <div className="absolute flex bg-white h-14 lg:h-16 w-24 lg:w-32 flex-row top-0 space-x-2 -mr-4 right-0 z-40 rounded-bl-xl">
-             
-              <div className="flex flex-row h-14 w-12 lg:w-20 items-center justify-center">
-                <div className="h-full w-16 lg:h-20 lg:w-20 flex items-center justify-center">
+            <div className="absolute flex bg-white h-14 lg:h-16 w-28 lg:w-32 flex-row top-0 space-x-2 -mr-4 right-0 z-40 rounded-bl-xl">
+              <div className="flex flex-row items-center justify-center">
+                <div className="h-full ml-2 w-12 lg:h-16 lg:w-full flex items-center justify-center">
                   <Image
                     src={card.icon}
                     alt="icon"
@@ -55,11 +68,11 @@ const Card = ({ card }: { card: Card }) => {
                   />
                 </div>
                 <div className="flex items-center justify-center">
-                  <div className="relative h-8 w-8 lg:h-12 lg:w-12 -mr-4  border-2 border-[#483d78] rounded-full bg-white inset-0 flex flex-col items-center justify-center">
-                    <span className="text-lg lg:text-base font-bold text-[#dc0e2a]">
+                  <div className="relative h-10 w-10 lg:h-12 lg:w-12 -mr-4  border-2 border-[#483d78] rounded-full bg-white inset-0 flex flex-col items-center justify-center">
+                    <span className="text-xs lg:text-base font-bold text-red-700">
                       {card?.speed}
                     </span>
-                    <span className="text-5 text-[#483d78]">{card?.unit}</span>
+                    <span className="text-[0.3rem] w-[1.6rem] h-[0.8rem] bg-green-300 -mt-1 font-bold text-[#483d78] whitespace-normal break-words">pinches/min</span>
                   </div>
                 </div>
               </div>
@@ -90,8 +103,12 @@ const Card = ({ card }: { card: Card }) => {
             />
             <div className="absolute -mb-2 font-poppins left-0 right-0 bottom-0 z-40 p-4">
               <Link
-                className="text-black font-poppins text-sm md:text-base font-regular text-left"
-                href={`/${countryCODE}/${languageCODE}/product/${card.title}`}
+                className="text-black font-poppins text-sm md:text-sm  text-center line-clamp-2 font-regular "
+                href={`/${countryCODE}/${languageCODE}/products/${
+                  activeStep === "All paper Products"
+                    ? card?.secondLink
+                    : card.secondLink
+                }/${card.firstLink}`}
               >
                 {card.title}
               </Link>
@@ -99,63 +116,109 @@ const Card = ({ card }: { card: Card }) => {
           </div>
         </button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[78rem] h-[90vh] p-0 z-[99999]">
-        <div className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 font-poppins font-regular md:p-4 h-full rounded-3xl relative">
-          <DialogClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
-            
-          </DialogClose>
+      <DialogContent className="sm:max-w-[78rem] p-0 z-[99999]">
+        <div className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 font-poppins font-regular md:p-8 rounded-3xl relative">
+          <DialogClose className="absolute right-4 top-4"></DialogClose>
           <Breadcrumb items={breadcrumbItems} />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-            <div className="flex flex-col items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+            <div className="flex flex-col items-center ml-20">
               <Link
                 className=""
-                href={`/${countryCODE}/${languageCODE}/product`}
+                href={`/${countryCODE}/${languageCODE}/products/${
+                  activeStep === "All paper Products"
+                    ? card.secondLink
+                    : card.secondLink
+                }/${card.firstLink}`}
               >
                 <BlurImage
                   src={card.image}
                   alt={card.title}
                   width={600}
                   height={400}
-                  className="rounded-2xl object-fill lg:object-contain h-[350px]"
+                  className="rounded-2xl object-fill lg:object-contain h-[20rem]"
                 />
               </Link>
-              <div className="flex w-[60%] lg:-ml-14 space-x-2 lg:space-x-8 justify-center mt-8">
-                <Link
-                  className="ml-1"
-                  href={`/${countryCODE}/${languageCODE}/product`}
-                >
-                  <Button
-                    className="rounded-full flex items-center justify-center bg-primary text-primary-foreground hover:bg-white hover:text-primary border-2 border-primary px-6 py-2 text-base font-medium transition-all duration-300 ease-in-out group"
-                    aria-label="View all items"
+              <div className="flex items-center space-x-8 justify-center w-full">
+                <div className="flex w-1/2 items-center space-x-2 lg:space-x-8 justify-center mt-8">
+                  <Link
+                    className="ml-1"
+                    href={`/${countryCODE}/${languageCODE}/products/${
+                      activeStep === "All paper Products"
+                        ? card.secondLink
+                        : card.secondLink
+                    }/${card.firstLink}`}
                   >
-                    <span className="mr-2">View All</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="transform transition-transform duration-300 ease-in-out -rotate-45 group-hover:rotate-0 group-hover:translate-x-1"
+                    <Button
+                      className="rounded-full flex items-center justify-center bg-primary text-primary-foreground hover:bg-red-700 border-2 group border-red-700 w-[14rem] space-x-4 py-1 text-base font-medium transition-all duration-300 ease-in-out group relative"
+                      aria-label="View all items"
                     >
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                      <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                  </Button>
-                </Link>
+                      <span className="text-red-700 group-hover:text-white">
+                        View Machine
+                      </span>
+                      <span className="bg-red-700 group-hover:bg-white p-1 rounded-full absolute right-2">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={3}
+                          stroke="currentColor"
+                          className="w-4 h-4 stroke-white group-hover:stroke-red-700"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </span>
+                    </Button>
+                  </Link>
+                </div>
+                <div className="flex w-1/2 items-center space-x-2 lg:space-x-8 justify-center mt-8">
+                  <Link
+                    className="ml-1"
+                    href={`/${countryCODE}/${languageCODE}/products/${
+                      activeStep === "All paper Products"
+                        ? card.secondLink
+                        : card.secondLink
+                    }/`}
+                  >
+                    <Button
+                      className="rounded-full relative flex items-center justify-center bg-primary text-primary-foreground hover:bg-[#483d73] border-2 group border-[#483d73] w-[14rem] space-x-4 py-1 text-base font-medium transition-all duration-300 ease-in-out group"
+                      aria-label="View all items"
+                    >
+                      <span className="text-[#483d73] group-hover:text-white">
+                        View All
+                      </span>
+                      <span className="bg-[#483d73] group-hover:bg-white p-1 rounded-full absolute right-2">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={3}
+                          stroke="currentColor"
+                          className="w-4 h-4 stroke-white group-hover:stroke-[#483d73]"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </span>
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </div>
             <div className="pr-16">
               <div className="text-justify">
                 <h2 className="text-xl lg:text-3xl font-semibold lg:font-bold mb-4">
-                  <div className="bg-gradient-to-r from-[#483d73] to-red-700 bg-clip-text text-transparent">
-                    {card.firstname}
+                  <div className="bg-gradient-to-r from-[#483d73] to-red-700 bg-clip-text text-transparent w-max">
+                    {card.secondname}
                   </div>
                   <span className="bg-[#483d78] bg-clip-text  text-transparent ">
-                    {card.secondname}
+                    {card.firstname}
                   </span>
                 </h2>
               </div>
@@ -177,10 +240,43 @@ const Card = ({ card }: { card: Card }) => {
                       <path d="M236 139.313 139.313 236a16.02 16.02 0 0 1-22.627 0L20 139.313a16.02 16.02 0 0 1 0-22.627L116.687 20a16.02 16.02 0 0 1 22.627 0L236 116.687a16.02 16.02 0 0 1 0 22.626Z" />
                     </svg>
 
-                    <span className="text-sm font-medium text-start">{item.text}</span>
+                    <span className="text-sm font-medium text-start">
+                      {item.text}
+                    </span>
                   </li>
                 ))}
               </ul>
+              <div className="flex w-full space-x-2 lg:space-x-8 justify-end mt-2">
+                <Link
+                  className="ml-1"
+                  href={`/${countryCODE}/${languageCODE}/contact`}
+                >
+                  <Button
+                    className="rounded-full  flex items-center justify-center bg-gradient-to-r from-[#483d73] to-red-700 pl-4 py-1 text-base font-medium transition-all duration-300 ease-in-out group bg-clip-border custom-gradient-border"
+                    aria-label="View all items"
+                  >
+                    <span className="text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#483d73] group-hover:to-red-700">
+                      Get a Quote
+                    </span>
+                    <span className="bg-white group-hover:bg-gradient-to-r group-hover:from-[#483d73] group-hover:to-red-700 p-1 rounded-full">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={3}
+                        stroke="currentColor"
+                        className="w-4 h-4 group-hover:stroke-white stroke-[#483d73]"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </span>
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

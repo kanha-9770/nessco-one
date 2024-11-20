@@ -1,27 +1,39 @@
-
-
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { OurStrengthItem} from "./types/constant";
 
-
+import Image from "next/image";
 gsap.registerPlugin(ScrollTrigger);
 
-// const imageWidths = [
-//   "lg:w-[3rem] w-[2rem]",
-//   "lg:w-[3rem] w-[2rem]",
-//   "lg:w-[10rem] w-[6rem]",
-//   "lg:w-[3rem] w-[2rem]",
-//   "lg:w-[3rem] w-[2rem]",
-// ];
-// const imagebottoms = [
-//   "justify-end lg:mb-3 mb-2",
-//   "justify-end lg:mb-3 mb-2",
-//   "justify-start",
-//   "justify-end lg:mb-3 mb-2",
-//   "justify-end lg:mb-3 mb-2",
-// ];
+interface MainLayoutProps{
+  strengthData:OurStrengthItem;
+}
 
-const Home:React.FC = () => {
+const imageWidths = [
+  "lg:w-[3rem] w-[2rem]",
+  "lg:w-[3rem] w-[2rem]",
+  "lg:w-[10rem] w-[6rem]",
+  "lg:w-[3rem] w-[2rem]",
+  "lg:w-[3rem] w-[2rem]",
+];
+const imagebottoms = [
+  "justify-end lg:mb-3 mb-2",
+  "justify-end lg:mb-3 mb-2",
+  "justify-start",
+  "justify-end lg:mb-3 mb-2",
+  "justify-end lg:mb-3 mb-2",
+];
+
+
+const Home:React.FC <MainLayoutProps>= ({strengthData}) => {
+ const title=strengthData?.OurStrength[1].Data?.title
+ const description=strengthData?.OurStrength[1].Data?.description
+ const getaQuote=strengthData?.OurStrength[1].Data?.getaQuote
+ const image=strengthData?.OurStrength[1].Data?.image;
+ 
+
+  console.log("strengthdata",strengthData);
+  console.log("data");
   console.log('Running custom Webpack config');
 
   return (
@@ -44,15 +56,15 @@ const Home:React.FC = () => {
           <div className="absolute top-0 h-full w-full bg-black opacity-50"></div>
           <div className="absolute lg:top-28 top-12 space-y-4 flex flex-col  items-center w-full">
             <h1 className="text-white font-semibold lg:text-3xl text-3xl">
-              Our Strength
+             {title}
             </h1>
             <p className="font-normal lg:w-[50%] w-[85%]  text-center lg:text-[0.8rem] text-[0.7rem] text-white">
-            Our strength lies in our unwavering commitment to quality and innovation, ensuring we deliver excellence in every machine we house. We pride ourselves on creating a secure, state-of-the-art environment that supports peak performance and reliability.
+              {description}
             </p>
           </div>
           <button className="bg-white w-[8rem] h-[2rem] rounded-[1rem] flex items-center absolute bottom-40 lg:hidden">
             <p className="text-black text-[0.8rem] text-center w-full">
-             Get A quate
+             {getaQuote}
             </p>
             <div className="mr-2">
             <svg
@@ -70,17 +82,23 @@ const Home:React.FC = () => {
           </button>
           <div className="absolute bottom-10 flex justify-center w-full lg:space-x-0 -space-x-5 ">
          
-            {/* {homepage.image.map((item, index) => (
+            {image.map((item, index) => (
               <div
                 key={index}
                 className={`flex flex-col items-center ${imagebottoms[index]}`}
               >
-                 <item.img className="w-10 h-10" /> 
+                 <Image
+                  src="https://res.cloudinary.com/dlti4o10e/image/upload/v1731563544/2_gghfsu.svg"
+                  alt="Content"
+                  width={100}
+                  height={100}
+                  className={`${imageWidths[index]}`}
+                />
                 <p className="font-medium lg:text-sm text-xs text-white  w-[6rem] text-center">
                   {item.title}
                 </p>
               </div>
-            ))} */}
+            ))}
           
           </div>
         </div>

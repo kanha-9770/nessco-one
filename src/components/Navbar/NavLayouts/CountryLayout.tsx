@@ -81,7 +81,7 @@ export default function LocaleSwitcher({
   }
 
   return (
-    <div ref={switcherRef} className={`relative inline-block text-left ${type === 'footer' ? 'footer-switcher' : ''}`}>
+    <div ref={switcherRef} className={`relative inline-block text-left z-10 ${type === 'footer' ? 'footer-switcher' : ''}`}>
       <Button
         type="button"
         className={`inline-flex w-full  rounded-full border text-sm font-medium invert-0 focus:outline-none ${

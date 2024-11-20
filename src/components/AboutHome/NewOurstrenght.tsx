@@ -10,7 +10,8 @@ import { useOutsideClick } from "@/hooks/use-outside-click";
 import dynamic from "next/dynamic";
 // import { IoIosCloseCircle } from "react-icons/io";
 import { AboutItem } from "./types/constant";
-import Link from "next/link";
+import LinkUrl from "../LinkUrl";
+
 interface HomeLayoutProps {
   aboutData: AboutItem;
 }
@@ -257,7 +258,7 @@ const ExpandableCardDemo: React.FC<HomeLayoutProps> = ({ aboutData }) => {
           );
         })}
       </ul>
-      <Link href="/about/our-strength">
+      <LinkUrl href="/about/our-strength">
         <div
           aria-label="read-more"
           className="flex justify-center bg-slate-50 "
@@ -266,7 +267,7 @@ const ExpandableCardDemo: React.FC<HomeLayoutProps> = ({ aboutData }) => {
             {homemisionData.button}
           </button>
         </div>
-      </Link>
+      </LinkUrl>
     </div>
   );
 };

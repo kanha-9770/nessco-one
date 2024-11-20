@@ -3,8 +3,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-export let countryCODE='in';
-export let languageCODE='es';
+export let countryCODE = "in";
+export let languageCODE = "es";
 export const Menu = ({ children }: { children: React.ReactNode }) => {
   const [active, setActive] = useState<string | null>(null);
   const [position, setPosition] = useState({ left: 500, width: 0, opacity: 0 });
@@ -78,15 +78,18 @@ const MenuItem = ({
   const pathname = usePathname() || "";
   const componentCode = pathname.split("/")[4]?.toLowerCase();
   const componentCodeourCompany = pathname.split("/")[4]?.toLowerCase();
-  const pathSegments = pathname?.split('/') || [];
+  const pathSegments = pathname?.split("/") || [];
   // Assuming URL structure like /<countryCode>/<languageCode>
-  const countryCode = pathSegments[1] || 'in';
-  const languageCode = pathSegments[2] || 'en';
-  countryCODE=countryCode;
-  languageCODE=languageCode;
+  const countryCode = pathSegments[1] || "in";
+  const languageCode = pathSegments[2] || "en";
+  countryCODE = countryCode;
+  languageCODE = languageCode;
   return (
     <div ref={ref} className="z-[9999] cursor-pointer px-3 font-poppins">
-      <Link className="invert-0 text-base font-light" href={`/${countryCode}/${languageCode}/${link}`}>
+      <Link
+        className="invert-0 text-base font-light"
+        href={`/${countryCode}/${languageCode}/${link}`}
+      >
         {item}
       </Link>
       {active === item && (
@@ -95,13 +98,17 @@ const MenuItem = ({
             transition={{ duration: 0.3 }}
             layoutId="active"
             className={`${
-              ["knowledge-center", "clientele"].includes(componentCode) ||
-              ["our-company"].includes(componentCodeourCompany)
-                ? "bg-[#222222]"
+              ["knowledge-center", "clientele", "vision"].includes(
+                componentCode
+              ) || ["our-company"].includes(componentCodeourCompany)
+                ? "bg-black text-white"
                 : "bg-white"
-            } dark:bg-black overflow-hidden `}
+            }  overflow-hidden `}
           >
-            <motion.div layout className="w-screen z-[99999] mx-auto h-full px-12">
+            <motion.div
+              layout
+              className="w-screen z-[99999] mx-auto h-full px-12"
+            >
               {children}
             </motion.div>
           </motion.div>

@@ -49,11 +49,15 @@ const Pages: React.FC<ApplicationLayoutProps> = ({ applicationLayoutData }) => {
 
   // Helper function to normalize title for comparison
   const normalizeTitle = (title: string) =>
-    title.toLowerCase().replace(/\s+/g, " ").trim();
+    title
+      .toLowerCase()          // Convert to lowercase
+      .replace(/\s+/g, "-")    // Replace spaces (and multiple spaces) with hyphens
+      .trim();                 // Remove leading or trailing spaces
+  
 
   // Find the product by its normalized title
-  const normalizedProductname = normalizeTitle(productname);
-
+  const normalizedProductname = productname;
+  // alert(normalizedProductname);
   const page1product = Header.icons.find(
     (m) => normalizeTitle(m.title) === normalizedProductname
   );

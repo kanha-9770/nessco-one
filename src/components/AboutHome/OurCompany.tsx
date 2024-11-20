@@ -11,7 +11,7 @@ const MobileCarousel = dynamic(() => import("./Mobilecarasouel"));
 const Ourcompanybgimg =dynamic (()=>import("../Icons/about/Ourcompanybgimg"),{ssr:false})
 
 import { AboutItem } from "./types/constant";
-import Link from "next/link";
+import LinkUrl from "../LinkUrl";
 
 
 interface HomeLayoutProps{
@@ -35,7 +35,7 @@ const OurCompany:React.FC<HomeLayoutProps> = ({aboutData}) => {
   }, []);
 
   return (
-    <div className="relative lg:h-[39rem] h-[43rem] md:h-[50rem] bg-white text-white lg:flex lg:flex-col items-center lg:pt-20 ">
+    <div className="relative bg-white lg:h-[39rem] h-[43rem] md:h-[50rem]  text-white lg:flex lg:flex-col items-center lg:pt-20 ">
       {/* Background image */}
       <div className="absolute inset-0">
        <Ourcompanybgimg  />
@@ -75,13 +75,13 @@ const OurCompany:React.FC<HomeLayoutProps> = ({aboutData}) => {
           <p className=" lg:mt-0 ">{homeaboutData.description}</p>
         </div>
       </div>
-      <Link href="/about/our-company">
+      <LinkUrl href="/about/our-company">
       <div aria-label="read-more" className="flex justify-center bg-slate-50 ">
         <button className=" absolute bottom-3  w-[8rem] text-base hover:font-medium font-normal font-poppins h-[2rem] items-center justify-center text-center border border-[#6f6f6f] hover:bg-black text-[#6f6f6f] hover:text-white rounded-[0.26rem] z-10 ">
         {homemisionData.button}
         </button>
       </div>
-      </Link>
+      </LinkUrl>
     </div>
   );
 };

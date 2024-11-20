@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
 import { HomeData } from "../types/constant";
 
@@ -13,6 +13,7 @@ const SPRING_OPTIONS = {
   stiffness: 400,
   damping: 50,
 };
+
 interface ImageSliderLayoutProps {
   heroData: HomeData;
 }
@@ -27,6 +28,18 @@ export const SwipeCarousel: React.FC<ImageSliderLayoutProps> = ({
   const testimonialItems = testinomialData?.Testinomialvideos || [];
   const dragX = useMotionValue(0);
 
+  const scrollLeft = useCallback(() => {
+    if (videoIndex > 0) {
+      setVideoIndex((prevIndex) => prevIndex - 1);
+    }
+  }, [videoIndex]);
+
+  const scrollRight = useCallback(() => {
+    if (videoIndex < testimonialItems.length - 1) {
+      setVideoIndex((prevIndex) => prevIndex + 1);
+    }
+  }, [videoIndex, testimonialItems.length]);
+
   useEffect(() => {
     const intervalRef = setInterval(() => {
       const x = dragX.get();
@@ -39,7 +52,7 @@ export const SwipeCarousel: React.FC<ImageSliderLayoutProps> = ({
     }, AUTO_DELAY);
 
     return () => clearInterval(intervalRef);
-  }, [dragX]);
+  }, [dragX, testimonialItems.length]);
 
   const onDragEnd = () => {
     const x = dragX.get();
@@ -81,11 +94,46 @@ export const SwipeCarousel: React.FC<ImageSliderLayoutProps> = ({
               muted
               className="w-full h-full object-cover rounded-xl"
             />
-            <div className="absolute bottom-4 right-0 transform -translate-x-1/2"></div>
           </motion.div>
         ))}
       </motion.div>
-      {/* <Dots testinomialData={testinomialData} videoIndex={videoIndex} setVideoIndex={setVideoIndex} /> */}
+      <div className="flex space-x-2 items-center justify-end mt-2 mr-4">
+        <div className="h-6 w-6 bg-[#9e9c9c] hover:bg-black rounded-full flex items-center justify-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={3}
+            stroke="currentColor"
+            className="w-4 h-4 stroke-white"
+            onClick={scrollLeft}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+        </div>
+        <div className="h-6 w-6 bg-[#9e9c9c] hover:bg-black rounded-full flex items-center justify-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={3}
+            stroke="currentColor"
+            className="w-4 h-4 stroke-white"
+            onClick={scrollRight}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </div>
+      </div>
+
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-[9995]">
           <div className="relative bg-white rounded-xl overflow-hidden max-w-3xl w-full">

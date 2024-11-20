@@ -19,7 +19,7 @@ const Gallery = () => {
   {galleryContent.galleryImages.map((src, index) => (
     <div key={index} className="relative  rounded-2xl overflow-hidden  lg:left-0 hover:shadow-2xl">
       <Image 
-        src={src} 
+        src="https://res.cloudinary.com/dlti4o10e/image/upload/v1731734135/jalmahal_wzfcbb.webp"
         alt={`Gallery image ${index + 1}`} 
         width={300}
         height={300} 

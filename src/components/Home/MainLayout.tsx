@@ -154,12 +154,15 @@
 //     </main>
 //   );
 // }
+
+
 "use client";
 import React, { useRef } from "react";
 import dynamic from "next/dynamic";
 import { motion, useInView } from "framer-motion";
 import Hero from "@/components/Home/Home";
 import { HomeData } from "./types/constant";
+
 
 const IOT = dynamic(() => import("./Iot"));
 const AboutUs = dynamic(() => import("./AboutSection"), { ssr: false });
@@ -217,6 +220,7 @@ export default function MainLayout({ homeData }: MainLayoutProps) {
     homeMachineRef: useRef<HTMLDivElement>(null),
     newsFeatureRef: useRef<HTMLDivElement>(null),
     iotRef: useRef<HTMLDivElement>(null),
+    ourexpertiseRef: useRef<HTMLDivElement>(null),
     homeTestimonialRef: useRef<HTMLDivElement>(null),
   };
 
@@ -237,13 +241,18 @@ export default function MainLayout({ homeData }: MainLayoutProps) {
       text: `${homeData?.home[0].navItems[3]?.text}`,
       ref: sectionRefs.infiniteCardsRef,
     },
-    { text: `${homeData?.home[0].navItems[4]?.text}`, ref: sectionRefs.iotRef },
-    {
-      text: `${homeData?.home[0].navItems[5]?.text}`,
-      ref: sectionRefs.newsFeatureRef,
+    { text: `${homeData?.home[0].navItems[4]?.text}`, 
+      ref: sectionRefs.iotRef 
+    },
+    { text: `${homeData?.home[0].navItems[5]?.text}`, 
+      ref: sectionRefs.ourexpertiseRef 
     },
     {
       text: `${homeData?.home[0].navItems[6]?.text}`,
+      ref: sectionRefs.newsFeatureRef,
+    },
+    {
+      text: `${homeData?.home[0].navItems[7]?.text}`,
       ref: sectionRefs.homeTestimonialRef,
     },
   ];
@@ -254,10 +263,12 @@ export default function MainLayout({ homeData }: MainLayoutProps) {
         <Hero heroData={homeData} />
       </div>
       <ContactIcons />
+      
       <NavLinksDemo navItems={navItems} />
+      
       <div className="h-full font-poppins">
         <FadeInSection>
-          <div className="h-auto max-w-screen-2xl lg:pl-14 mx-auto">
+          <div className="h-auto max-w-screen-2xl lg:pl-14 mx-auto mt-10">
             <AnnouncementSection heroData={homeData} />
           </div>
         </FadeInSection>
@@ -309,8 +320,8 @@ export default function MainLayout({ homeData }: MainLayoutProps) {
         </FadeInSection>
 
         <FadeInSection>
-          <div ref={sectionRefs.iotRef} className="max-w-screen-2xl mx-auto">
-            <IOT />
+          <div ref={sectionRefs.iotRef} className="max-w-screen-2xl mx-auto lg:pt-0 pt-10">
+            <IOT  heroData={homeData} />
           </div>
         </FadeInSection>
 

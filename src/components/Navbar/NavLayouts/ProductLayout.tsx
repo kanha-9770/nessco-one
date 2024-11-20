@@ -39,9 +39,11 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
   const productData = navData?.navbar[1]?.data;
   const navLeftData: Machine[] = productData?.Machines || [];
   const navRightData: Link[] = productData?.SidebarLinks || [];
-
   const [hoveredCategory, setHoveredCategory] = useState<string>(
     navRightData[0]?.name || ""
+  );
+  const [machineLink, setMachineLink] = useState<string>(
+    navRightData[0]?.link || ""
   );
   const [currentIndex, setCurrentIndex] = useState(0);
   const [sidebarIndex, setSidebarIndex] = useState(0);
@@ -138,8 +140,9 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
   const renderMachineItem = useCallback(
     (machine: Machine) => (
       <div className="text-center relative w-1/3 p-2">
-        <Link href={`/${countryCODE}/${languageCODE}/products/${machine.name}`}>
-        
+        <Link
+          href={`/${countryCODE}/${languageCODE}/products${machineLink}/${machine.name}`}
+        >
           <Image
             src={machine.image}
             alt={machine.name}
@@ -169,6 +172,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
         key={link.name}
         onMouseEnter={() => {
           setHoveredCategory(link.name);
+          setMachineLink(link.link)
           setCurrentIndex(0);
         }}
         onClick={() => handleCategoryClick(link.name, link.name)}
@@ -180,7 +184,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
       >
         <Link
           className="flex w-full gap-2 flex-row"
-          href={`/${countryCODE}/${languageCODE}/product${link.link}`}
+          href={`/${countryCODE}/${languageCODE}/products${link.link}`}
         >
           <div className="flex items-center justify-center cursor-pointer">
             <BlurImage
@@ -277,14 +281,14 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                 style={{ width: "40px", height: "40px" }}
                 onClick={handleSidebarPrev}
               >
-                <SvgUpArrow/>
+                <SvgUpArrow />
               </button>
             )}
 
             <div className="overflow-hidden flex flex-col space-y-5 items-center justify-start w-full py-10 h-full">
               {navRightData
                 .slice(sidebarIndex, sidebarIndex + 8)
-                .map(renderSidebarItem,sidebarIndex)}
+                .map(renderSidebarItem, sidebarIndex)}
             </div>
 
             {sidebarIndex + 8 < navRightData.length && (
@@ -293,7 +297,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                 style={{ width: "40px", height: "40px" }}
                 onClick={handleSidebarNext}
               >
-               <SvgDownArrow/>
+                <SvgDownArrow />
               </button>
             )}
           </div>
@@ -416,9 +420,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                                         currentIndex + mobileVisibleItems >=
                                         filteredMachines.length
                                       }
-                                    >
-                                     
-                                    </button>
+                                    ></button>
                                   </>
                                 )}
                               </div>

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { countryCODE, languageCODE, Menu } from "./nav-menue";
 import dynamic from "next/dynamic";
@@ -48,6 +49,7 @@ function Navbar({ className, navData }: NavbarProps) {
   const [searchValue, setSearchValue] = useState<string>("");
   const pathname = usePathname() || "";
   const componentCode = pathname.split("/")[4]?.toLowerCase();
+  // alert(componentCode)
   const componentCodeourCompany = pathname.split("/")[4]?.toLowerCase();
   const toggleMenu = () => setIsOpen(!isOpen);
   const expandItem = (item: string) =>
@@ -62,7 +64,7 @@ function Navbar({ className, navData }: NavbarProps) {
     },
     {
       name: `${navData?.navbar[1]?.category}`,
-      link: "product",
+      link: "products",
       component: (
         <ProductLayout
           setHoveredItem={() => {}}
@@ -100,9 +102,9 @@ function Navbar({ className, navData }: NavbarProps) {
   return (
     <div
       className={`fixed flex w-full ${
-        ["knowledge-center", "clientele"].includes(componentCode) ||
+        ["knowledge-center", "clientele", "vision"].includes(componentCode) ||
         ["our-company"].includes(componentCodeourCompany)
-          ? "bg-[#222222] text-white"
+          ? "bg-black text-white"
           : "bg-white"
       } h-14 font-poppins lg:mt-0 items-center inset-x-0 mx-auto z-[999] ${className}`}
     >
@@ -113,7 +115,19 @@ function Navbar({ className, navData }: NavbarProps) {
             href={`/${countryCODE}/${languageCODE}`}
             className="w-full h-full flex items-center"
           >
-            <SVGComponent />
+            {["knowledge-center", "our-strength", "clientele"].includes(
+              componentCode
+            ) || ["our-company"].includes(componentCodeourCompany) ? (
+              <Image
+                className="w-max h-8"
+                width={400}
+                height={400}
+                src="https://res.cloudinary.com/dfryvystt/image/upload/v1731482648/WhiteLOGO_h90whl.png"
+                alt="White Logo"
+              />
+            ) : (
+              <SVGComponent />
+            )}
           </Link>
         </div>
         <div className="w-3/5  flex items-center justify-center">
@@ -247,7 +261,7 @@ function Navbar({ className, navData }: NavbarProps) {
                   </div>
                   <div className="flex felx-row justify-between items-center gap-2 border-t-[1px] border-b-[1px]  w-full p-2">
                     <div className="absolute top-20">
-                      <CountryLayout/>
+                      <CountryLayout />
                     </div>
                     <div className="relative "></div>
                   </div>

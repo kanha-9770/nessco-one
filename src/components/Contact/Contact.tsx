@@ -31,10 +31,12 @@ export default function ContactForm() {
     <FormProvider>
       <div>
         <Button
-          className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-2 px-4 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105"
+          className="bg-gradient-to-r from-[#483d73] to-red-700 bg-clip-border custom-gradient-border text-white font-medium font-poppins py-2 px-4 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 group"
           onClick={handleClick}
         >
-          Enquire
+         <span className="group-hover:bg-gradient-to-r group-hover:from-[#483d73] group-hover:to-red-700 group-hover:text-transparent group-hover:bg-clip-text font-medium">
+         Enquire
+         </span>
         </Button>
         <AnimatePresence>
           {isContactFormVisible && (

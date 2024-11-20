@@ -1,20 +1,34 @@
 "use client";
 import React, { useRef, useEffect } from "react";
-import  Page2Data  from "../Constants/Sustainability/Sustainability-Data.json";
 import gsap from "gsap";
+import { SustainabilityData,SecondPageData } from "./types/constant";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 gsap.registerPlugin(ScrollTrigger);
+interface MainLayoutProps{
+  sustainData:SustainabilityData;
+}
 
+const getCategoryData = (sustainData: SustainabilityData, category: string) => {
+  const categoryItem = sustainData?.Sustainability.find((item) => item.category === category);
+  return categoryItem?.Data as SecondPageData | null;
+};
 
-const Page2 = () => {
+const Page2:React.FC<MainLayoutProps> = ({sustainData}) => {
+  const data = getCategoryData(sustainData, "secondpage");
+
   const leftFootRef = useRef(null);
   const rightFootRef = useRef(null);
   const cupRef = useRef(null);
   const screen = useRef(null);
 
-  const data = Page2Data;
+ 
+
+
+
 
   useEffect(() => {
+   
     // Scroll animation
     gsap.to(rightFootRef.current, {
       y: 0,
@@ -171,10 +185,10 @@ const Page2 = () => {
   {/* Heading overlay */}
   <div className="absolute top-16 left-0 w-full h-full md:w-[40rem]  flex flex-col items-center justify-center text-center lg:text-left z-10 lg:invisible visible">
     <h1 className="lg:text-[3.2rem] text-4xl font-poppins font-medium text-white ">
-      {data.Sustainability[2].Data?.title1}
+      {data.title1}
     </h1>
     <h1 className="lg:text-[3.2rem] text-2xl font-poppins text-white font-medium ">
-      {data.Sustainability[2].Data?.title2}
+    {data.title2}
     </h1>
   </div>
 
@@ -188,49 +202,53 @@ const Page2 = () => {
     playsInline
     preload="metadata"
   >
-    <source src={data.Sustainability[2].Data?.bgGarden} type="video/mp4" />
+    <source src="https://res.cloudinary.com/dlti4o10e/image/upload/v1728990173/samples/landscapes/beach-boat.jpg" type="video/mp4" />
   </video>
 </div>
           <div>
-            {/* <Image
-              src={data.Sustainability[2].Data?.leftFootprint}
+            <Image
+              src="https://res.cloudinary.com/dlti4o10e/image/upload/v1728990173/samples/landscapes/beach-boat.jpg"
               alt="footprint"
               width={40}
+              height={40}
               className="absolute -top-8 -right-1 lg:visible invisible"
               ref={leftFootRef}
-            /> */}
-            {/* <Image
-              src={data.Sustainability[2].Data?.rightFootprint}
+            /> 
+            <Image
+              src="https://res.cloudinary.com/dlti4o10e/image/upload/v1728990173/samples/landscapes/beach-boat.jpg"
               alt="footprint"
               width={40}
+              height={40}
               className="absolute -top-14 -right-10 lg:visible invisible"
               ref={rightFootRef}
-            /> */}
+            />
             <div className=" lg:block hidden text-center lg:text-left">
           <h1 className="lg:text-[3.2rem] text-4xl font-poppins font-medium lg:mb-3">
-            {data.Sustainability[2].Data?.title1}
+           
           </h1>
           <h1 className="lg:text-[3.2rem] text-2xl font-poppins text-[#95C43C] font-medium">
-            {data.Sustainability[2].Data?.title2}
+         
           </h1>
         </div>
             <div className=" w-full h-[20rem] bg-[#0D340F] lg:rounded-[40px] rounded-2xl mt-5 relative ">
               <p className="text-center text-white lg:text-[1.07rem] text-sm p-8 font-[200] md:text-xl">
-                {data.Sustainability[2].Data?.description}
+                {data.description}
               </p>
-              {/* <Image
-                src={data.Sustainability[2].Data?.leafs || ""}
+            <Image
+                src="https://res.cloudinary.com/dlti4o10e/image/upload/v1728990173/samples/landscapes/beach-boat.jpg"
                 alt="leafs"
                 width={55}
+                height={55}
                 className="absolute lg:top-5 -left-6 top-1"
               />
               <Image
-                src={data.Sustainability[2].Data?.cup ||""}
+                src="https://res.cloudinary.com/dlti4o10e/image/upload/v1728990173/samples/landscapes/beach-boat.jpg"
                 alt="cup"
                 width={80}
+                height={80}
                 className="absolute -bottom-8 -right-9 lg:visible invisible"
                 ref={cupRef}
-              /> */}
+              />
             </div>
           </div>
         </div>

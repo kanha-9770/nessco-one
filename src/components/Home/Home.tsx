@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { HomeData } from "./types/constant";
 import FeatureProjects from "./FeatureProjects";
 import Link from "next/link";
-import { countryCODE, languageCODE } from "../Navbar/nav-menue";
+import { usePathname } from "next/navigation";
 
 const ImageSlider = dynamic(() => import("../ui/ImageSlider"));
 
@@ -13,16 +13,22 @@ interface HeroLayoutProps {
 }
 
 const Home: React.FC<HeroLayoutProps> = ({ heroData }) => {
+  const pathname = usePathname();
+
+  // Extract countryCode and languageCode from pathname
+  const pathSegments = pathname.split("/").filter(Boolean);
+  const countryCode = pathSegments[0] || "";
+  const languageCode = pathSegments[1] || "";
   return (
     <>
       <div className="relative max-w-screen-2xl mx-auto h-full w-full flex flex-col items-center overflow-hidden">
         <div className="relative px-4 md:px-4 lg:px-14 w-full">
-          <div className="w-full flex justify-center items-center h-[50vh] sm:h-[52vh] rounded-3xl">
+          <div className="w-full flex justify-center items-center h-[38vh] sm:h-[50vh] rounded-3xl">
             <ImageSlider heroData={heroData} />
           </div>
         </div>
         <div className="absolute flex flex-col w-1/2 sm:w-[20rem] sm:h-[5rem] sm:rounded-tl-[2rem] rounded-tl-[1.5rem] right-0 bg-[#f2f2f2] bottom-0 text-3xl font-poppins text-white text-center">
-          <div className="-mt-4 sm:-mt-6 flex mr-2  md:mr-2 lg:mr-12 justify-end">
+          <div className="-mt-[0.9rem] sm:-mt-6 flex mr-2  md:mr-2 lg:mr-12 justify-end">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="100%"
@@ -39,11 +45,11 @@ const Home: React.FC<HeroLayoutProps> = ({ heroData }) => {
           </div>
           <div className="w-full mt-4 ml-8 flex justify-start">
             <Link
-              className="absolute bottom-1 right-[4rem]"
-              href={`/${countryCODE}/${languageCODE}/contact`}
+              className="absolute bottom-1 right-5 md:right-[4rem]"
+              href={`/${countryCode}/${languageCode}/contact`}
             >
-              <Button className="rounded-full flex items-center justify-between text-primary-foreground border-2 border-white h-[3.5rem] w-36 sm:h-16 sm:w-60 md:h-16 md:w-60 lg:h-16 lg:w-60 text-xs sm:text-sm md:text-base lg:text-lg bg-clip-border relative group custom-gradient-border transition-all duration-300 overflow-hidden">
-                <span className="font-medium text-black group-hover:bg-gradient-to-r group-hover:from-[#483d73] group-hover:to-red-700 group-hover:text-transparent group-hover:bg-clip-text pl-2 sm:pl-4 md:pl-6 lg:pl-8 truncate flex-grow text-left transition-all duration-300">
+              <Button className="rounded-full flex items-center justify-between text-primary-foreground border-2 border-white h-[3.5rem] w-40 ml-40 sm:h-16 sm:w-60 md:h-16 md:w-60 lg:h-16 lg:w-60 text-xs sm:text-sm md:text-base lg:text-lg bg-clip-border relative group custom-gradient-border transition-all duration-300 overflow-hidden">
+                <span className="font-medium text-white group-hover:bg-gradient-to-r group-hover:from-[#483d73] group-hover:to-red-700 group-hover:text-transparent group-hover:bg-clip-text pl-2 sm:pl-4 md:pl-6 lg:pl-8 truncate flex-grow text-left transition-all duration-300">
                   {heroData?.home[1]?.data?.buttonText}
                 </span>
                 <span className="h-8 w-8 sm:h-10 sm:w-10 group custom-gradient-border-icon border-[0.5px] md:h-12 md:w-12 bg-white rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-gradient-to-r group-hover:from-[#483d73] group-hover:to-red-700 transition-all duration-300">
@@ -66,7 +72,7 @@ const Home: React.FC<HeroLayoutProps> = ({ heroData }) => {
             </Link>
           </div>
 
-          <div className="z-50 mt-10">
+          <div className="z-50 mt-[2.6rem]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="100%"

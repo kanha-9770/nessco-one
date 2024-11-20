@@ -20,15 +20,15 @@ export const TestiNomialAnimation = ({
   pauseOnHover?: boolean;
   className?: string;
 }) => {
-  const getAnimationDuration = (index: number) => {
-    if (speed === "fast") {
-      return index === 1 ? "25s" : "20s";
-    } else if (speed === "normal") {
-      return index === 1 ? "35s" : "30s";
-    } else {
-      return index === 1 ? "45s" : "40s";
-    }
+  // Calculate the animation duration based on the speed
+  const getAnimationDuration = () => {
+    if (speed === "fast") return "20s";
+    if (speed === "normal") return "30s";
+    return "40s"; // slow speed
   };
+
+  // Duplicate the items to make the infinite loop
+  const duplicatedItems = [...items, ...items];
 
   return (
     <div
@@ -40,10 +40,7 @@ export const TestiNomialAnimation = ({
       {[0, 1, 2].map((index) => (
         <div
           key={index}
-          className={cn(
-            "relative z-20 h-full overflow-hidden",
-            className
-          )}
+          className={cn("relative z-20 h-full overflow-hidden", className)}
         >
           <ul
             className={cn(
@@ -51,16 +48,20 @@ export const TestiNomialAnimation = ({
               "animate-scroll-testimonial",
               pauseOnHover && "hover:[animation-play-state:paused]"
             )}
-            style={{
-              '--animation-duration': getAnimationDuration(index),
-            } as React.CSSProperties}
+            // Applying dynamic animation speed
+            style={
+              {
+                '--animation-duration': getAnimationDuration(),
+              } as React.CSSProperties
+            }
           >
-            {items.map((el, idx) => (
+            {/* Loop through duplicated items to create infinite loop */}
+            {duplicatedItems.map((el, idx) => (
               <li
                 key={el.username + idx}
-                className="p-[0.2rem] rounded-3xl bg-gradient-to-t from-purple-500 to-transparent border-[1px] mt-2 w-full lg:w-[15.5rem] md:w-[12rem] sm:w-[10rem] sm:p-[0.1rem] mx-auto"
+                className="px-[0.2rem] rounded-3xl bg-[#483d73] border-[1px] mt-2 w-full lg:w-[15.5rem] md:w-[12rem] lg:h-[16rem] h-[9.8rem] sm:w-[10rem] sm:p-[0.1rem] mx-auto"
               >
-                <div className="p-1 lg:p-2 bg-white rounded-[1.2rem] flex flex-col justify-between h-[10rem] lg:h-[14.8rem] w-full lg:w-[15rem] md:h-[9rem] md:w-[11rem] sm:h-[8rem] sm:w-[10rem] mx-auto">
+                <div className="p-1 lg:p-2 mt-[0.1rem] bg-white rounded-[1.3rem] flex flex-col justify-between h-[9rem] lg:h-[14.8rem] w-full lg:w-[15rem] md:h-[9rem] md:w-[11rem] sm:h-[8rem] sm:w-[10rem] mx-auto">
                   <div>
                     <div className="flex flex-row justify-between items-center">
                       <Image

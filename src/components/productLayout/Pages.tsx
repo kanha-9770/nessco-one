@@ -9,6 +9,10 @@ interface ProductLayoutProps {
   productLayoutData: ProductLayout;
 }
 
+const formatMachineName = (name: string): string => {
+  return name.replace(/-/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase());
+};
+
 const Page: React.FC<ProductLayoutProps> = ({ productLayoutData }) => {
   const Header = productLayoutData?.ProductLayout[0]?.Header;
   const ProductsGrid = productLayoutData?.ProductLayout[0]?.ProductsGrid;
@@ -21,25 +25,24 @@ const Page: React.FC<ProductLayoutProps> = ({ productLayoutData }) => {
   let machinename = "";
 
   if (Array.isArray(params.id)) {
-    // Join array elements into a single string and normalize spaces
-    machinename = decodeURIComponent(params.id.join(" "))
-      .replace(/\+/g, " ")
-      .trim();
+    machinename = params.id.join("-");
   } else if (typeof params.id === "string") {
-    // Decode and normalize the single string
-    machinename = decodeURIComponent(params.id).replace(/\+/g, " ").trim();
+    machinename = params.id;
   }
 
   if (!machinename) {
     return notFound();
   }
 
+  // Format the machine name
+  const formattedMachineName = formatMachineName(machinename);
+
   // Helper function to normalize title for comparison
   const normalizeTitle = (title: string) =>
     title.toLowerCase().replace(/\s+/g, " ").trim();
 
   // Find the product by its normalized title
-  const normalizedMachinename = normalizeTitle(machinename);
+  const normalizedMachinename = normalizeTitle(formattedMachineName);
 
   const page1machine = Header.data.find(
     (m) => normalizeTitle(m.title) === normalizedMachinename

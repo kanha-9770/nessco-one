@@ -1,13 +1,20 @@
 "use client";
+
 import React from "react";
 import dynamic from "next/dynamic";
-const Carousel =dynamic(()=>import("@/components/ui/HomeMachine-cards-carousel"));
-const Card=dynamic(()=>import("@/components/ui/HomeMachineCard"))
+
+// Dynamically import components
+const Carousel = dynamic(() => import("@/components/ui/HomeMachine-cards-carousel"));
+const Card = dynamic(() => import("@/components/ui/HomeMachineCard"));
+
+// Define the CardData interface
 interface CardData {
   content?: React.ReactNode;
   category: string;
+  firstLink:string;
   firstname: string;
   secondname: string;
+  secondLink:string;
   description: string;
   image: string;
   title: string;
@@ -17,15 +24,18 @@ interface CardData {
   items: { className: string; text: string }[];
 }
 
+// Define the props for HomeMachineCarousel
 interface HomeMachineCarouselProps {
   filteredCardsData: CardData[];
+  activeStep: string; // activeStep is a string (category name)
 }
 
-export default function HomeMachineCarousel({
+const HomeMachineCarousel: React.FC<HomeMachineCarouselProps> = ({
   filteredCardsData,
-}: HomeMachineCarouselProps) {
-  const cards = filteredCardsData.map((card: CardData) => (
-    <Card key={card.title} card={card}  />
+  activeStep,
+}) => {
+  const cards = filteredCardsData.map((card) => (
+    <Card key={card.title} card={card} activeStep={activeStep} />
   ));
 
   return (
@@ -33,4 +43,6 @@ export default function HomeMachineCarousel({
       <Carousel items={cards} />
     </div>
   );
-}
+};
+
+export default HomeMachineCarousel;

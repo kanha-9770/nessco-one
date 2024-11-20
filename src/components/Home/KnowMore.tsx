@@ -9,7 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
+} from "../ui/dialog";
 import Image from "next/image";
 import DecorativeImg1 from "../../../public/assets/OurExpertise/DecorativeImg1.svg";
 import DecorativeImg2 from "../../../public/assets/OurExpertise/DecorativeImg2.svg";
@@ -39,30 +39,42 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
   }, []);
 
   return (
-    <div className="relative container mx-auto py-8 px-4 lg:px-14 mb-20 sm:mb-32 md:mb-44">
-     
-      <div className="mb-8 sm:mb-12 md:mb-16">
-        <h1 className="text-2xl sm:text-3xl font-semibold text-center text-[#483d73]">
-          Our Expertise
+    <div className="relative container h-full mb-60 mt-10 mx-auto py-8 px-14">
+      <Image
+        alt="Decorative Image"
+        src={DecorativeImg1}
+        className="w-40 absolute top-20 right-16"
+      />
+      <Image
+        alt="Decorative Image"
+        src={DecorativeImg2}
+        className="w-40 absolute -bottom-48 left-12"
+      />
+      <Image
+        alt="Decorative Image"
+        src={BackgroundSvg}
+        className="w-full scale-80 opacity-10 absolute top-10 left-0 right-0"
+      />
+      <div className="mb-16">
+        <h1 className="text-3xl font-semibold text-center text-[#483d73]">
+          {heroData?.home[6]?.category}
         </h1>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-6 md:gap-8 relative">
-        {knowMoreData.map((item, index) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 relative">
+        {knowMoreData?.map((item, index) => (
           <div
             key={index}
-            className={`group relative transition-transform duration-500 ease-in-out ${
-              isScrolled && index % 2 !== 0
-                ? "translate-y-10 sm:translate-y-20"
-                : ""
-            }`}
+            className={`group  relative transition-transform duration-500 ease-in-out ${
+              isScrolled && index % 2 !== 0 ? "translate-y-20" : ""
+            }`} // This will move the second component down on scroll
           >
             {index % 2 !== 0 && (
-              <div className="group-hover:shadow-2xl  w-full max-w-[300px] mx-auto bg-white p-2 rounded-[1.2rem] shadow-lg transition-all duration-300 mb-4">
-                <div className="flex justify-between items-center">
+              <div className="group-hover:shadow-2xl bg-white max-w-[300px] mx-auto  p-2 rounded-[1.2rem] shadow-lg transition-all duration-300">
+                <div className="flex justify-between  items-center">
                   <h3 className="text-sm ml-4 w-[12.5rem]">{item.title}</h3>
+
                   {item.description.split(" ").length > 20 && (
                     <Dialog
-                    
                       open={openModal === index}
                       onOpenChange={(isOpen) =>
                         setOpenModal(isOpen ? index : null)
@@ -84,13 +96,15 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
                           />
                         </svg>
                       </DialogTrigger>
-                      <DialogContent className="bg-green-300 z-[99999]">
-                        <DialogHeader>
-                          <DialogTitle>{item.title}</DialogTitle>
-                        </DialogHeader>
-                        <p className="text-sm text-gray-600">
-                          {item.description}
-                        </p>
+                      <DialogContent>
+                        <div className="rounded-2xl">
+                          <DialogHeader>
+                            <DialogTitle>{item.title}</DialogTitle>
+                          </DialogHeader>
+                          <p className="text-sm text-gray-600">
+                            {item.description}
+                          </p>
+                        </div>
                       </DialogContent>
                     </Dialog>
                   )}
@@ -98,11 +112,13 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
               </div>
             )}
             <Card
-              className={`group-hover:shadow-2xl  transition-all duration-300 bg-white rounded-3xl shadow-md w-full max-w-[300px] h-[320px] mx-auto relative`}
+              className={`group-hover:shadow-2xl  transition-all duration-300 rounded-3xl shadow-md w-full max-w-[300px] h-[320px] mx-auto relative bg-white ${
+                index % 2 !== 0 ? "mt-6" : ""
+              }`}
             >
-              <CardContent className="p-3 h-full">
+              <CardContent>
                 {index % 2 === 0 ? (
-                  <>
+                  <div className="p-3 rounded-3xl bg-white h-full lg:mt-0 mt-28">
                     <Image
                       src={item.src}
                       alt={item.title}
@@ -129,21 +145,24 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
                               Read More
                             </Button>
                           </DialogTrigger>
-                          <DialogContent className="bg-white">
+                          <DialogContent>
+                            <div className="bg-white rounded-2xl">
                             <DialogHeader>
                               <DialogTitle>{item.title}</DialogTitle>
                             </DialogHeader>
                             <p className="text-sm text-gray-600">
                               {item.description}
                             </p>
+                            </div>
+  
                           </DialogContent>
                         </Dialog>
                       )}
                     </div>
-                  </>
+                  </div>
                 ) : (
-                  <>
-                    <p className="text-sm  text-gray-600  line-clamp-6">
+                  <div className="p-3 rounded-3xl bg-white h-full">
+                    <p className="text-sm text-gray-600 line-clamp-6">
                       {item.description}
                     </p>
                     {item.description.split(" ").length > 40 && (
@@ -161,7 +180,7 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
                             Read More
                           </Button>
                         </DialogTrigger>
-                        <DialogContent className="bg-white">
+                        <DialogContent className="bg-white rounded-2xl">
                           <DialogHeader>
                             <DialogTitle>{item.title}</DialogTitle>
                           </DialogHeader>
@@ -178,14 +197,15 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
                       height={200}
                       className="w-full h-36 object-cover rounded-2xl mt-2"
                     />
-                  </>
+                  </div>
                 )}
               </CardContent>
             </Card>
             {index % 2 === 0 && (
-              <div className="mt-4 group-hover:shadow-2xl w-full max-w-[300px] mx-auto text-black rounded-[1.2rem] shadow-lg">
+              <div className="mt-6 group-hover:shadow-2xl max-w-[300px] mx-auto text-black rounded-[1.2rem] shadow-lg">
                 <div className="flex items-center justify-between p-2 bg-white rounded-[1.2rem] shadow-2xl">
                   <h3 className="text-sm w-[12.5rem] ml-4">{item.title}</h3>
+
                   {item.description.split(" ").length > 40 && (
                     <Dialog
                       open={openModal === index}
@@ -209,7 +229,7 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
                           />
                         </svg>
                       </DialogTrigger>
-                      <DialogContent className="bg-white">
+                      <DialogContent className="bg-white rounded-2xl">
                         <DialogHeader>
                           <DialogTitle>{item.title}</DialogTitle>
                         </DialogHeader>

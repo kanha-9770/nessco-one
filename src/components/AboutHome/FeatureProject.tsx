@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { AboutItem } from "./types/constant";
-import Link from "next/link";
+import LinkUrl from "../LinkUrl";
 
 interface HomeLayoutProps{
   aboutData:AboutItem;
@@ -262,13 +262,13 @@ const FeatureProject: React.FC<HomeLayoutProps> = ({aboutData}) => {
           ))}
         </div>
       </div>
-      <Link href="/projects">
+      <LinkUrl href="/about/projects">
       <div className="flex justify-center ">
         <button className="lg:mt-[20rem] mt-[10rem] mb-3 w-[8rem] h-[2rem] items-center justify-center text-center border border-[#6f6f6f] hover:bg-black bg-white text-[#6f6f6f] hover:text-white rounded-[0.26rem] z-10  cursor-pointer">
           {homemisionData.button}
         </button>
       </div>
-      </Link>
+      </LinkUrl>
     </div>
   );
 };

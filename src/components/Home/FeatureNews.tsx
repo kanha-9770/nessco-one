@@ -42,20 +42,20 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
         className="w-64 sm:w-80 md:w-96 lg:w-[40rem] absolute right-0 top-10 sm:top-20 opacity-50 sm:opacity-100"
       />
       <h2 className="text-2xl md:text-3xl text-center text-[#483d73] mb-6 sm:mb-10 font-semibold relative z-10">
-        Featured News
+        {heroData?.home[7]?.category}
       </h2>
       <div className="grid grid-cols-1 lg:py-14 lg:grid-cols-2 gap-4 sm:gap-6 relative z-10">
         {/* Left side large article */}
-        <div className="lg:col-span-1 p-2">
-          <article className="bg-white relative shadow-lg rounded-xl h-full overflow-hidden flex flex-col">
-            <div className="p-4 relative flex-grow">
-              <h2 className="text-lg md:text-xl font-medium mb-2 pr-8">
+        <div className="lg:col-span-1 bg-white shadow-lg rounded-xl lg:h-[75vh] h-full p-3">
+          <article className=" relative   h-full overflow-hidden flex flex-col">
+            <div className="h-48 relative">
+              <h2 className="text-lg md:text-xl font-medium mb-2 pr-10">
                 {newsfData[0]?.title}
               </h2>
-              <p className="text-sm text-gray-600 mb-4 line-clamp-3">
+              <p className="text-sm text-gray-600 mb-0 line-clamp-3">
                 {newsfData[0]?.description}
               </p>
-              <Dialog open={isDialogOpen} onOpenChange={setDialogOpen}>
+              <Dialog  open={isDialogOpen} onOpenChange={setDialogOpen}>
                 <DialogTrigger asChild>
                   <button
                     onClick={() =>
@@ -65,7 +65,7 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
                         description: newsfData[0]?.description,
                       })
                     }
-                    className="absolute top-4 right-4 bg-black text-white w-8 h-8 rounded-full text-center leading-8 text-sm flex items-center justify-center hover:bg-gray-800 transition-colors"
+                    className="absolute top-0 right-0 bg-black text-white w-8 h-8 rounded-full text-center leading-8 text-sm flex items-center justify-center hover:bg-gray-800 transition-colors"
                     aria-label="Open article details"
                   >
                     <svg
@@ -86,26 +86,26 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
                 </DialogTrigger>
               </Dialog>
             </div>
-            <div className="w-full aspect-video relative">
+            <div className="lg:w-[95%] lg:m-4 lg:h-[55vh] h-[26vh] relative">
               <Image
                 src={newsfData[0].image}
                 alt={newsfData[0].alt}
                 layout="fill"
                 objectFit="cover"
-                className="rounded-3xl p-4"
+                className="rounded-2xl p-0"
               />
             </div>
           </article>
         </div>
         {/* Right side smaller articles in 2x2 grid */}
-        <div className="lg:col-span-1 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+        <div className="lg:col-span-1 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
           {newsfData.slice(1).map((news: NewsFeatureItem, index: Key) => (
             <article
               key={index}
-              className="bg-white z-20 shadow-lg rounded-2xl overflow-hidden flex flex-col"
+              className="bg-white lg:h-[35vh] h-full z-20 shadow-lg rounded-2xl overflow-hidden flex flex-col"
             >
-              <div className="p-3 relative flex-grow">
-                <h3 className="text-sm font-medium mb-1 pr-6">{news.title}</h3>
+              <div className="px-4 py-2  relative ">
+                <h3 className="text-sm font-medium line-clamp-2  pr-8">{news.title}</h3>
                 <p className="text-xs text-gray-600 line-clamp-2">
                   {news.description}
                 </p>
@@ -140,8 +140,8 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
                   </DialogTrigger>
                 </Dialog>
               </div>
-              <div className="p-3">
-                <div className="relative aspect-video rounded-xl overflow-hidden">
+              <div className="px-3 pb-2">
+                <div className="relative h-[20vh] rounded-xl overflow-hidden">
                   <Image
                     src={news.image}
                     alt={news.alt}
@@ -158,7 +158,7 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
       <Dialog  open={isDialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent className="sm:max-w-[800px] bg-white ">
           <div className="flex flex-col lg:flex-row items-center justify-center lg:space-x-4 space-y-4 lg:space-y-0">
-            <div className="w-full lg:w-1/2 aspect-video relative rounded-xl overflow-hidden">
+            <div className="w-full lg:w-1/2 h-full relative rounded-xl overflow-hidden">
               <Image
                 src={dialogContent.img}
                 alt={dialogContent.title}

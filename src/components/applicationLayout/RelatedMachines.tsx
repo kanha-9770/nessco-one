@@ -1,10 +1,11 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Label } from "@radix-ui/react-label";
 import { ApplicationLayoutItem } from "./types/constant";
+import EnquiryCart from "../ui/EnquiryCart";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -38,6 +39,7 @@ const Page4: React.FC<CombinedProps> = ({
     applicationLayoutData?.ApplicationLayout[0]?.RelatedMachines;
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const borderRef = useRef<HTMLDivElement | null>(null);
+  const [enquiryItems, setEnquiryItems] = useState<Array<{ id: string; name: string; image: string }>>([]);
 
   const scrollbarLeft = () => {
     if (carouselRef.current) {
@@ -75,6 +77,23 @@ const Page4: React.FC<CombinedProps> = ({
       );
     }
   }, []);
+
+  const handleToggleEnquiry = (item: { h1: string; img: string }, index: number) => {
+    setEnquiryItems(prevItems => {
+      const existingItemIndex = prevItems.findIndex(prevItem => prevItem.id === `${index}`);
+      if (existingItemIndex > -1) {
+        // Item exists, remove it
+        return prevItems.filter(prevItem => prevItem.id !== `${index}`);
+      } else {
+        // Item doesn't exist, add it
+        return [...prevItems, { id: `${index}`, name: item.h1, image: item.img }];
+      }
+    });
+  };
+
+  const handleRemoveFromEnquiry = (id: string) => {
+    setEnquiryItems(prevItems => prevItems.filter(item => item.id !== id));
+  };
 
   return (
     <>
@@ -182,9 +201,9 @@ const Page4: React.FC<CombinedProps> = ({
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="black"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                           className="feather feather-info w-4 h-4 hover:stroke-red-700"
                         >
                           <circle cx="12" cy="12" r="10"></circle>
@@ -237,9 +256,15 @@ const Page4: React.FC<CombinedProps> = ({
                     {/* Checkbox */}
                     <div className="my-4 flex items-center justify-center">
                       <div className="flex items-center space-x-2">
-                        <input type="checkbox" aria-label="Checkbox" />
+                        <input 
+                          type="checkbox" 
+                          id={`addToEnquiry-${idx}`}
+                          checked={enquiryItems.some(enquiryItem => enquiryItem.id === `${idx}`)}
+                          onChange={() => handleToggleEnquiry(item, idx)}
+                          aria-label={`Add ${item.h1} to enquiry`}
+                        />
                         <Label
-                          htmlFor="addToEnquiry"
+                          htmlFor={`addToEnquiry-${idx}`}
                           className="text-sm whitespace-nowrap"
                         >
                           {RelatedMachines.inquiry}
@@ -253,6 +278,11 @@ const Page4: React.FC<CombinedProps> = ({
           </div>
         </div>
       </div>
+      <EnquiryCart 
+        items={enquiryItems}
+        onRemoveItem={handleRemoveFromEnquiry}
+        maxItems={10}
+      />
     </>
   );
 };

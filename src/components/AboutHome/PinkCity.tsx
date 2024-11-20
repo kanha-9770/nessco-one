@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 // import { GoArrowRight } from "react-icons/go";
 import { AboutItem } from "./types/constant";
-import Link from "next/link";
+import LinkUrl from "../LinkUrl";
 
 const truncateText = (text: string, maxWords: number) => {
   const wordsArray = text.split(" ");
@@ -57,7 +57,7 @@ const PinkCity:React.FC <HomeLayoutProps> =({aboutData}) => {
                   <div className="lg:visible invisible absolute inset-0 bg-black transition-transform duration-300 transform translate-y-full group-hover:translate-y-0 group-hover:bg-gradient-to-t from-black to-transparent bg-opacity-0"></div>
                   <div className=" absolute left-0 inset-0 flex flex-col items-center justify-center lg:transition-transform lg:duration-300 lg:transform lg:translate-y-full lg:group-hover:translate-y-0">
                     <Image
-                      src="/assets/about/flower.svg"
+                      src="https://res.cloudinary.com/dlti4o10e/image/upload/v1731561436/flower_lcqfpb.svg"
                       alt="Overlay Icon"
                       width={100}
                       height={50}
@@ -67,7 +67,7 @@ const PinkCity:React.FC <HomeLayoutProps> =({aboutData}) => {
                       {item.paragraph}
                     </p>
                     <Image
-                      src="/assets/about/Bottomlayer.svg"
+                      src="https://res.cloudinary.com/dlti4o10e/image/upload/v1731561503/bottomlayer_uq6egh.svg"
                       alt="Overlay Icon"
                       width={100}
                       height={50}
@@ -90,7 +90,7 @@ const PinkCity:React.FC <HomeLayoutProps> =({aboutData}) => {
                     </div>
                     <div className="w-1/2 flex flex-col items-center p-1 relative">
                       <Image
-                        src="/assets/about/Bottomlayer.svg"
+                        src="https://res.cloudinary.com/dlti4o10e/image/upload/v1731562132/2_kkggie.svg"
                         alt="Overlay Icon"
                         width={100}
                         height={50}
@@ -101,11 +101,11 @@ const PinkCity:React.FC <HomeLayoutProps> =({aboutData}) => {
                         {/* Adjust maxWords as needed */}
                       </p>
                       <Image
-                        src="/assets/about/bottomimg.svg"
+                        src="https://res.cloudinary.com/dlti4o10e/image/upload/v1731562270/24_inch_9_gioc9p.svg"
                         alt="Overlay Icon"
                         width={100}
                         height={50}
-                        className=" absolute -bottom-4 md:bottom-5"
+                        className=" absolute -bottom-16 md:bottom-5"
                       />
                     </div>
                   </div>
@@ -117,13 +117,13 @@ const PinkCity:React.FC <HomeLayoutProps> =({aboutData}) => {
             </div>
           ))}
         </div>
-        <Link href="/about/the-pink-city " className="bg-slate-50 absolute bottom-3 rounded-md">
+        <LinkUrl href="/about/the-pink-city " className="bg-slate-50 absolute bottom-3 rounded-md">
         <div>
           <button aria-label="read-more" className="text-base hover:font-medium font-normal font-poppins w-[8rem] h-[2rem] items-center justify-center text-center border border-[#6f6f6f] hover:bg-black text-[#6f6f6f] hover:text-white  rounded-[0.26rem] z-10 ">
             {homemisionData.button}
           </button>
         </div>
-        </Link>
+        </LinkUrl>
       </div>
     </div>
   );

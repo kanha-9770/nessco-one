@@ -78,7 +78,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
 
   return (
     <div ref={containerRef} className="relative flex flex-col justify-center w-auto overflow-hidden">
-      <div className="relative flex items-center justify-center w-full h-auto">
+      <div className="relative flex items-center justify-center w-full h-auto text-white font-bold font-poppins">
         <span 
           ref={blockRef}
           className={`block absolute ${blockClassName}`}

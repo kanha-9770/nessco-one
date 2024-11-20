@@ -57,6 +57,7 @@ export interface NavLeftData {
   }
   
   export interface Application {
+    link: string;
     id: string;
     name: string;
     description: string;
@@ -106,6 +107,7 @@ export interface NavLeftData {
   
   // Define the type for individual video data items
   export interface VideoDataItem {
+    link: string;
     title: string;
     image: string;
     bgPic: string;

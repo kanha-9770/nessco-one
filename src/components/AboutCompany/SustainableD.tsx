@@ -5,6 +5,7 @@ import styles from '../AboutCompany/about.module.css';
 import style  from './Sustainable.module.css'
 import { OurCompanyItem } from "./types/constant";
 import React from 'react';
+import LinkUrl from "../LinkUrl";
 
 interface AboutLayoutProps{
   companyData:OurCompanyItem;
@@ -41,12 +42,14 @@ const SustainableD:React.FC<AboutLayoutProps>= ({companyData}) => {
           <p className="mt-10 text-sm font-poppins font-regular px-4 md:px-32 text-center">
             {homecompanyData.description}
           </p>
+          <LinkUrl href="/about/sustainability">
           <div className={`${styles.container}`}>
             <button aria-label='view button' className={styles.button}>
               {homecompanyData.buttonText}
               {/* <SlArrowRight className={styles.icon} />  */}
             </button>
           </div>
+          </LinkUrl>
         </div>
       </div>
     </>

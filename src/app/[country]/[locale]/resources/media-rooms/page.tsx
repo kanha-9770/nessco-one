@@ -1,5 +1,5 @@
-import Pages from "@/components/media-room/Pages";
-import { MediaRoomItem } from "@/components/media-room/types/constant";
+import Pages from "@/components/media-rooms/Pages";
+import { MediaRoomItem } from "@/components/media-rooms/types/constant";
 import { Metadata } from "next";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import React from "react";

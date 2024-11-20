@@ -38,7 +38,7 @@ const LandingPage:React.FC <AboutLayoutProps>= ({pinkcityData}) => {
         {/* Corner Image */}
         <div className="absolute -left-20 -top-8 lg:visible invisible  ">
           <Image
-            src={homepinkcity.cornerLayerImg}
+            src="https://res.cloudinary.com/dlti4o10e/image/upload/v1731733864/cornerlayer_pcuw7p.svg"
             alt="Stroke"
             width={300}
             height={300}
@@ -59,7 +59,7 @@ const LandingPage:React.FC <AboutLayoutProps>= ({pinkcityData}) => {
   <div className="flex-shrink-0 p-0 lg:p-0 lg:-bottom-12 md:bottom-6 bottom-20 absolute lg:flex lg:justify-center lg:items-center lg:w-1/3 lg:h-1/3 mx-auto">
     <div className="w-[150px] h-[150px] lg:w-[300px] lg:h-[300px] md:w-[300px] md:h-[300px] flex items-center justify-center">
       <Image
-        src={homepinkcity.stickerImg}
+        src="https://res.cloudinary.com/dlti4o10e/image/upload/v1731733896/stickerimg_ijlenh.png"
         alt="The Pink City"
         width={300}
         height={300}

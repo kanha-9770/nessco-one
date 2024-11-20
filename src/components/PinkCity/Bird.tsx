@@ -73,8 +73,8 @@ const Bird = () => {
         className={`opacity-0  w-[15rem] h-[15rem] relative `}
       >
         <Image
-          src="/assets/pinkcity/bird.svg"
-            alt="bird"
+          src="https://res.cloudinary.com/dlti4o10e/image/upload/v1731734106/bird_bqfjwe.svg"
+          alt="bird"
             ref={svgImageRef}
           layout="intrinsic" 
           width={508} 

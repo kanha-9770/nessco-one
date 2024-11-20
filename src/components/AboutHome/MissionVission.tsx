@@ -14,34 +14,34 @@ import {
 import dynamic from "next/dynamic";
 import { AboutItem } from "./types/constant";
 import Image from "next/image";
-import Link from "next/link";
+import LinkUrl from "../LinkUrl";
 
-// const SustainIcon = dynamic(() => import("../Icons/about/SustainIcon"), {
-//   ssr: false,
-// });
+
 const Pillar = dynamic(() => import("../Icons/about/Pillar"), { ssr: false });
-const Line = dynamic(() => import("../Icons/about/Line"), { ssr: false });
-const Eyeicon = dynamic(() => import("../Icons/about/Eyeicon"), { ssr: false });
+const Line =dynamic(()=>import("../Icons/about/Line"),{ssr:false});
+const Eyeicon =dynamic(()=>import("../Icons/about/Eyeicon"),{ssr:false});
+const tower =dynamic(()=>import("../Icons/about/Tower"),{ssr:false});
 
 
 const pillar = [Pillar, Pillar, Pillar, Pillar];
-const sideicon = [Line, Eyeicon, Eyeicon];
+const sideicon =[Line,Eyeicon,tower];
 
-interface HomeLayoutProps {
-  aboutData: AboutItem;
+interface HomeLayoutProps{
+  aboutData:AboutItem;
 }
 
-const Missionvission: React.FC<HomeLayoutProps> = ({ aboutData }) => {
+const Missionvission:React.FC<HomeLayoutProps>=({aboutData})=> {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
-  const homeaboutData = aboutData?.About[0]?.missionvissionContent;
-  // const iconlist = [MissionIcon1, VisionIcon2, CultureIcon3];
+const homeaboutData=aboutData?.About[0]?.missionvissionContent
 
   const images = [
     "/assets/about/mission/line.svg", // Image for the first slide
     "/assets/about/mission/2.svg", // Image for the second slide
     "/assets/about/mission/3.svg", // Image for the third slide
   ];
+
+
 
   const handleNext = () => {
     setCurrentSlide((prev) => (prev + 1) % images.length);
@@ -97,12 +97,12 @@ const Missionvission: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                             <div className="lg:flex lg:flex-row  flex flex-col  items-center justify-center lg:space-x-20 lg:mr-10  w-full lg:mt-0 -mt-5">
                               <div className="flex-shrink-0 relative lg:left-0 flex justify-center lg:justify-start lg:bottom-0  ">
                                 <Image
-                                  src={slide.imageSrc}
-                                  alt={slide.title}
-                                  height={100}
-                                  width={100}
-                                  className="w-48 h-48 object-cover lg:mb-2 "
-                                  style={{ height: "15rem", width: "15rem" }}
+                                src={slide.imageSrc}
+                                alt={slide.title}
+                                height={100}
+                                width={100}
+                                className="w-48 h-48 object-cover lg:mb-2 "
+                            style={{ height: "15rem", width: "15rem" }}
                                 />
                               </div>
                               <p className="lg:text-sm text-xs font-semi-medium text-center lg:w-[26rem] font-poppins lg:mb-3 lg:right-10 relative  lg:bottom-0 w-[18rem]          ">
@@ -131,13 +131,14 @@ const Missionvission: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                             {slide.values && (
                               <div className="lg:flex lg:flex-row grid grid-cols-2 gap-5 lg:gap-0 text-sm lg:w-full lg:font-bold  text-left lg:p-3 justify-center  w-full lg:h-[4rem]  p-2  z-10  ">
                                 {slide.values.map((value, valueIndex) => {
-                                  const List = pillar[valueIndex];
+
+                                  const List=pillar[valueIndex]
                                   return (
                                     <div
                                       key={valueIndex}
                                       className="flex  gap-2 lg:gap-0 "
                                     >
-                                      <List />
+                                     <List/>
                                       <p className=" w-[8rem] text-left text-xs  lg:text-[#6f6f6f] font-medium  font-poppins lg:font-medium  relative">
                                         {value.text}
                                       </p>
@@ -163,17 +164,17 @@ const Missionvission: React.FC<HomeLayoutProps> = ({ aboutData }) => {
           {renderDots()}
 
           <div className=" overflow-hidden lg:block hidden w-[30%] absolute right-0 top-0 p-5 ">
-            {sideicon[currentSlide] && (
-              <div
-                className={` h-full w-full transition-transform duration-1000 ease-in-out opacity-100 transform`}
-              >
-                {React.createElement(sideicon[currentSlide])}
-              </div>
-            )}
+          {sideicon[currentSlide] && (
+  <div className={` h-full w-full transition-transform duration-1000 ease-in-out opacity-100 transform`}>
+    {React.createElement(sideicon[currentSlide])}
+  </div>
+)}
+
           </div>
         </div>
       </div>
-      <Link href="/about/vision">
+
+      <LinkUrl href="/about/vision">
         <div
           aria-label="read-more"
           className="flex justify-center bg-slate-50 "
@@ -182,8 +183,8 @@ const Missionvission: React.FC<HomeLayoutProps> = ({ aboutData }) => {
             {homeaboutData.button}
           </button>
         </div>
-      </Link>
+      </LinkUrl>
     </div>
   );
-};
+}
 export default Missionvission;

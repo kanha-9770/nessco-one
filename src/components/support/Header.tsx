@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import Arrow from "../../../public/assets/Support/RedirectionArrowImg.svg";
+import LinkUrl from "@/components/LinkUrl";
+
 
 interface CardsProps {
   title: string;
@@ -12,6 +14,7 @@ interface CardsProps {
 
 interface Card {
   title: string;
+  
   img: string;
 }
 
@@ -66,6 +69,7 @@ const Header: React.FC<CardsProps> = ({
               height={400}
               className="w-[8rem] lg:group-hover:scale-90 transition-all duration-300"
             />
+            <LinkUrl href={`/support/${item.title}`}>
             <div className="absolute bottom-2 right-2 lg:group-hover:bg-[#483d7359] p-2 rounded-full transition-all duration-300">
               <Image
                 src={Arrow}
@@ -75,6 +79,7 @@ const Header: React.FC<CardsProps> = ({
                 className="w-[1.5rem]"
               />
             </div>
+            </LinkUrl>
           </div>
         ))}
       </div>

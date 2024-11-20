@@ -45,7 +45,7 @@ const PinkPage:React.FC <AboutLayoutProps> =({pinkcityData}) => {
         {homepinkcity.birdComponent && <Bird />}
         <div className="absolute lg:-bottom-20 z-10 h-full lg:w-[35rem] w-[20rem] md:w-[46rem] -bottom-44 md:-bottom-16">
           <Image
-            src={homepinkcity.strokeImg}
+            src="https://res.cloudinary.com/dlti4o10e/image/upload/v1731734091/1_iwvwwl.svg"
             alt="Stroke"  
             width={400}
             height={400}
@@ -73,7 +73,7 @@ const PinkPage:React.FC <AboutLayoutProps> =({pinkcityData}) => {
           className="rounded-full lg:w-[17rem] lg:h-[17rem] w-[13rem] h-[13rem] md:w-[17rem] md:h-[17rem]  absolute object-cover"
         />
         <Image
-          src={homepinkcity.mandalaImg}
+          src="https://res.cloudinary.com/dlti4o10e/image/upload/v1731733968/2_dkdvba.svg"
           alt="Mandala Design"
           width={400}
           height={400}

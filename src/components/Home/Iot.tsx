@@ -1,6 +1,6 @@
 // "use client";
 // import React, { useRef } from "react";
-// import { IOTData } from "@/components/Constants/IOT_data.json";
+// import { IotData } from "@/components/Constants/IOT_data.json";
 // import Image from "next/image";
 
 // const IOT = () => {
@@ -28,7 +28,7 @@
 //     <>
 //       <div className="max-w-screen-2xl mx-auto w-full h-full my-8 md:my-16 font-poppins font-regular overflow-hidden">
 //         <h1 className="text-center mb-6 md:mb-10 text-2xl md:text-3xl font-semibold text-[#483d73]">
-//           {IOTData.title}
+//           {IotData.title}
 //         </h1>
 //         <div className="flex flex-col md:flex-row px-4 md:px-14">
 //           <div className="w-full md:w-1/2 relative mb-8 md:mb-0">
@@ -37,7 +37,7 @@
 //               ref={carouselRef}
 //             >
 //               <div className="w-max flex space-x-4 md:space-x-8">
-//                 {IOTData.cards.map((item, idx) => (
+//                 {IotData.cards.map((item, idx) => (
 //                   <div
 //                     key={idx}
 //                     className="bg-white h-[18rem] md:h-[20rem] relative w-[14rem] md:w-[15rem] rounded-2xl"
@@ -425,8 +425,8 @@
 //               </svg>
 //               <Image
 //                 className="object-cover ml-2 hidden md:block"
-//                 src={IOTData.machineImg}
-//                 alt={IOTData.title}
+//                 src={IotData.machineImg}
+//                 alt={IotData.title}
 //                 width={400}
 //                 height={400}
 //               />
@@ -440,7 +440,7 @@
 //               muted
 //               playsInline
 //               preload="auto"
-//               poster={IOTData.globeVideo}
+//               poster={IotData.globeVideo}
 //               onTimeUpdate={(e) => {
 //                 const video = e.target as HTMLVideoElement;
 //                 if (video.currentTime >= video.duration - 0.2) {
@@ -449,16 +449,16 @@
 //                 }
 //               }}
 //             >
-//               <source src={IOTData.globeVideo} type="video/mp4" />
+//               <source src={IotData.globeVideo} type="video/mp4" />
 //             </video>
 
 //             <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-[#d08ceb] to-[#483d73] text-4xl md:text-[5.5rem] font-semibold pt-4 md:pt-8 text-center md:text-left">
-//               {IOTData.subTitle}
+//               {IotData.subTitle}
 //             </h1>
 //             <Image
 //               className="w-full absolute bottom-0 hidden md:block"
-//               src={IOTData.desktopImg}
-//               alt={IOTData.title}
+//               src={IotData.desktopImg}
+//               alt={IotData.title}
 //               width={400}
 //               height={400}
 //             />
@@ -471,16 +471,27 @@
 
 // export default IOT;
 "use client";
-import React, { useRef } from "react";
-import { IOTData } from "@/components/Constants/IOT_data.json";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
+import { HomeData } from "./types/constant";
 
-export default function IOT() {
+interface KnowMoreLayoutProps {
+  heroData: HomeData;
+}
+
+export default function IOT({ heroData }: KnowMoreLayoutProps) {
   const carouselRef = useRef<HTMLDivElement | null>(null);
 
-  const scrollCarousel = (direction: 'left' | 'right') => {
+  const IotData = heroData?.home[10]?.data;
+
+
+
+  const scrollCarousel = (direction: "left" | "right") => {
     if (carouselRef.current) {
-      const scrollAmount = direction === 'left' ? -carouselRef.current.offsetWidth : carouselRef.current.offsetWidth;
+      const scrollAmount =
+        direction === "left"
+          ? -carouselRef.current.offsetWidth
+          : carouselRef.current.offsetWidth;
       carouselRef.current.scrollBy({
         left: scrollAmount,
         behavior: "smooth",
@@ -491,19 +502,19 @@ export default function IOT() {
   return (
     <div className="max-w-screen-2xl mx-auto w-full h-full my-8 md:my-16 font-poppins font-regular overflow-hidden">
       <h1 className="text-center mb-6 md:mb-10 text-2xl md:text-3xl font-semibold text-[#483d73]">
-        {IOTData.title}
+        {IotData?.title}
       </h1>
-      <div className="flex flex-col lg:flex-row px-4 md:px-14">
+      <div className="flex flex-col-reverse lg:flex-row px-4 md:px-14">
         <div className="w-full lg:w-1/2 relative mb-8 lg:mb-0">
           <div
             className="w-full lg:w-[33rem] pb-2 overflow-x-scroll scrollbar-hide"
             ref={carouselRef}
           >
             <div className="w-max flex space-x-4 md:space-x-8">
-              {IOTData.cards.map((item, idx) => (
+              {IotData?.cards?.map((item, idx) => (
                 <div
                   key={idx}
-                  className="bg-white h-[18rem] md:h-[20rem] relative w-[80vw] sm:w-[40vw] md:w-[30vw] lg:w-[15rem] rounded-2xl"
+                  className="bg-white h-[18rem] md:h-[20rem] relative w-[60vw] md:w-[30vw] lg:w-[15rem] rounded-2xl"
                 >
                   <h2 className="font-medium text-center my-4 text-base md:text-lg">
                     {item.title}
@@ -542,7 +553,7 @@ export default function IOT() {
           </div>
           <div className="flex space-x-2 items-center justify-end mt-2 lg:absolute lg:left-[28rem] z-20">
             <button
-              onClick={() => scrollCarousel('left')}
+              onClick={() => scrollCarousel("left")}
               className="h-6 w-6 bg-[#9e9c9c] hover:bg-black rounded-full flex items-center justify-center"
               aria-label="Scroll left"
             >
@@ -562,7 +573,7 @@ export default function IOT() {
               </svg>
             </button>
             <button
-              onClick={() => scrollCarousel('right')}
+              onClick={() => scrollCarousel("right")}
               className="h-6 w-6 bg-[#9e9c9c] hover:bg-black rounded-full flex items-center justify-center"
               aria-label="Scroll right"
             >
@@ -670,8 +681,8 @@ export default function IOT() {
             ))}
             <Image
               className="object-cover ml-2 hidden lg:block"
-              src={IOTData.machineImg}
-              alt={IOTData.title}
+              src={IotData.machineImg}
+              alt={IotData.title}
               width={400}
               height={400}
             />
@@ -679,13 +690,13 @@ export default function IOT() {
         </div>
         <div className="w-full lg:w-1/2 relative">
           <video
-            className="absolute -top-20 -right-56 opacity-10 hidden lg:block"
+            className="absolute -top-20 -right-56 opacity-10 -z-10"
             id="background-video"
             autoPlay
             muted
             playsInline
             preload="auto"
-            poster={IOTData.globeVideo}
+            poster={IotData.globeVideo}
             onTimeUpdate={(e) => {
               const video = e.target as HTMLVideoElement;
               if (video.currentTime >= video.duration - 0.2) {
@@ -694,16 +705,16 @@ export default function IOT() {
               }
             }}
           >
-            <source src={IOTData.globeVideo} type="video/mp4" />
+            <source src={IotData.globeVideo} type="video/mp4" />
           </video>
 
           <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-[#d08ceb] to-[#483d73] text-4xl md:text-5xl lg:text-[5.5rem] font-semibold pt-4 md:pt-8 text-center lg:text-left">
-            {IOTData.subTitle}
+            {IotData.subTitle}
           </h1>
           <Image
-            className="w-full mt-8 lg:absolute lg:bottom-0 lg:mt-0"
-            src={IOTData.desktopImg}
-            alt={IOTData.title}
+            className="w-full my-8 lg:absolute lg:bottom-0 lg:my-0 "
+            src={IotData.desktopImg}
+            alt={IotData.title}
             width={400}
             height={400}
           />

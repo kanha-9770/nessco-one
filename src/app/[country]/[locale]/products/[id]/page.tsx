@@ -1,114 +1,116 @@
-"use client";
-import React, { useRef } from "react";
-import NavLinksDemo from "@/components/Home/NavLinks";
-import { notFound, useParams } from "next/navigation";
-import Machine from "@/components/Products/machine/MachineHome";
-import ProductDescription from "@/components/Products/ProductDescription";
-import CupFormactionProcess from "@/components/Products/CupFormactionProcess";
-import { TechnicalSpecifications } from "@/components/Products/TechnicalSpecification";
-import { SignupFormDemoProduct } from "@/components/Contact/CustomProductForm";
-import machineData from "../../../../../components/Products/machine.json"; // Import the machine.json file
-import { ProductApplication } from "@/components/Products/ProductApplication";
-import RelatedProducts from "@/components/Products/RelatedProducts";
-import ProcessFlow from "@/components/Products/ProcessFlow";
-import FaqSection from "@/components/Products/FaqSection";
+import Pages from "@/components/productLayout/Pages";
+import { ProductLayout } from "@/components/productLayout/types/constant";
+import { Metadata } from "next";
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import React from "react";
+const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
+const locales = ["en", "fr", "nl", "de", "es", "hi", "ta"] as const;
+type Props = {
+  params: { locale: string };
+};
+// Revalidate every 60 seconds (or any time period you prefer)
+export const revalidate = 60;
+// Fetch home data based on the locale
+async function fetchproductLayoutData(
+  locale: string
+): Promise<ProductLayout | null> {
+  try {
+    const res = await fetch(`${apiUrl}${locale}/productlayout.json`);
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    const fallbackRes = await fetch(`${apiUrl}en/productlayout.json`, {
+      cache: "no-store", // Ensures no caching for the fallback as well
+    });
+    const data = await fallbackRes.json();
+    return data;
+  }
+}
 
-export default function Home() {
-  const params = useParams();
-
-  const machinename =
-    typeof params?.id === "string" ? decodeURIComponent(params.id) : "";
-
-  const product = machineData.find((m) => m.category === "Product");
-  // Optional chaining to safely access Machines array
-  const machine = product?.data?.Machines?.find((m) => m.name === machinename);
-
-  const overviewRef = useRef<HTMLDivElement>(null);
-  const productDescriptionRef = useRef<HTMLDivElement>(null);
-  const processRef = useRef<HTMLDivElement>(null);
-  const applicationRef = useRef<HTMLDivElement>(null);
-  const technicalSpecificationsRef = useRef<HTMLDivElement>(null);
-  const faqsRef = useRef<HTMLDivElement>(null);
-  const relatedProductsRef = useRef<HTMLDivElement>(null);
-
-  if (!machinename || !machine) {
-    return notFound();
+// Dynamically generate metadata using the fetched SEO data
+export async function generateMetadata({
+  params: { locale },
+}: Props): Promise<Metadata> {
+  // Fallback to "en" if the locale isn't supported
+  if (!locales.includes(locale as any)) {
+    locale = "en";
   }
 
-  const navLinks = [
-    { text: "Overview", ref: overviewRef },
-    { text: "Product Description", ref: productDescriptionRef },
-    { text: "Process", ref: processRef },
-    { text: "Application", ref: applicationRef },
-    { text: "Technical Specifications", ref: technicalSpecificationsRef },
-    // { text: "Optional Add-Ons", ref: optionalAddOnsRef },
-    { text: "FAQs", ref: faqsRef },
-    { text: "Related Products", ref: relatedProductsRef },
-  ];
+  const productLayoutData = await fetchproductLayoutData(locale);
+
+  if (!productLayoutData) {
+    return {
+      title: "Default Title",
+      description: "Default Description",
+      keywords: "default, keywords",
+      openGraph: {
+        title: "Default OG Title",
+        description: "Default OG Description",
+        images: [
+          {
+            url: "/default-image.webp",
+            alt: "Default Image Alt",
+          },
+        ],
+      },
+      robots: "index, follow",
+      alternates: {
+        canonical: "https://www.default.com",
+      },
+      twitter: {
+        card: "summary_large_image",
+        site: "@DefaultTwitter",
+        title: "Default Twitter Title",
+        description: "Default Twitter Description",
+      },
+    };
+  }
+
+  const seoData = productLayoutData?.ProductLayout[0]?.productLayoutSeoData;
+
+  return {
+    title: seoData?.title,
+    description: seoData?.description,
+    keywords: seoData?.keywords,
+    openGraph: {
+      title: seoData?.openGraph?.title,
+      description: seoData?.openGraph?.description,
+      images: seoData?.openGraph?.images?.map(
+        (image: { url: string; alt: string }) => ({
+          url: image.url,
+          alt: image.alt,
+        })
+      ),
+    },
+    robots: seoData?.robots,
+    alternates: {
+      canonical: seoData?.alternates?.canonical,
+    },
+  };
+}
+
+// Home component rendering the MainLayout with fetched data
+export default async function about({ params: { locale } }: Props) {
+  // Set default locale if not in supported list
+  if (!locales.includes(locale as any)) {
+    locale = "en"; // Fallback to English
+  }
+  // Set the locale for the request
+  unstable_setRequestLocale(locale);
+
+  // Fetch home data based on the locale
+  const productLayoutData = await fetchproductLayoutData(locale);
+  
+  // Fetch translations based on the locale
+  const t = await getTranslations({ locale });
+
+  if (!productLayoutData) {
+    return <p>{t("failedToLoadData")}</p>;
+  }
 
   return (
-    <main className="bg-[#f2f2f2] w-full h-full">
-      <Machine
-        name={machine.name}
-        image={machine.image}
-        application={machine.application}
-        mimage={machine.mimage}
-        product_heading={machine.product_heading}
-        first_name={machine.first_name}
-        second_name={machine.second_name}
-        description={machine.product_description}
-        specification_image={machine.specification_image}
-        advantages={machine.advantages}
-        category={""}
-        icon={""}
-        introduction={machine.introduction}
-        parameters={""}
-        product_description={""}
-        status={""}
-        optional_add_ons={""}
-        faqs={""}
-        related_product={""}
-        rating={undefined}
-        technicalSpecifications={undefined}
-        paperTypes={undefined}
-        lottieAnimations={undefined}
-        productDetails={undefined}
-      />
-      <NavLinksDemo type="product" navItems={navLinks} />
-
-      <div className="h-full lg:px-10 px-4 mt-16 gap-4 flex lg:flex-row flex-col-reverse w-full">
-        <div className="lg:w-[66.2%] ">
-          <div className=" " ref={productDescriptionRef}>
-            <ProductDescription machine={machine} />
-          </div>
-          <div className="h-auto  mt-10" ref={processRef}>
-            <CupFormactionProcess />
-            <ProcessFlow page4Data={machine.Page4Data} />
-          </div>
-          <div className="mt-10" ref={applicationRef}>
-            <ProductApplication />
-          </div>
-          <div
-            className="mt-10 lg:block hidden"
-            ref={technicalSpecificationsRef}
-          >
-            <TechnicalSpecifications />
-          </div>
-          <div className="mt-10" ref={faqsRef}>
-            <FaqSection />
-          </div>
-        </div>
-        <div className="lg:w-[33%] sticky">
-          <SignupFormDemoProduct />
-        </div>
-      </div>
-
-      <div className="lg:hidden px-4 pt-10">
-        <SignupFormDemoProduct />
-      </div>
-      <div className="lg:mt-24 -mt-44" ref={relatedProductsRef}>
-        <RelatedProducts page4product={machine.related_product} />
-      </div>
+    <main>
+      <Pages productLayoutData={productLayoutData} />
     </main>
   );
 }

@@ -222,11 +222,11 @@ const CarouselPrevious = React.forwardRef<
           cx="32"
           cy="32"
           r="32"
-          className="fill-gray-400 transition-colors duration-300 hover:fill-black "
+          className="fill-gray-400 transition-colors duration-300 hover:fill-black"
         />
         <path
           d="M39 20 L27 32 L39 44"
-          className="stroke-white stroke-[4px] fill-none stroke-linecap-round stroke-linejoin-round "
+          className="stroke-white stroke-[4px] fill-none stroke-linecap-round stroke-linejoin-round"
         />
       </svg>
 
@@ -267,11 +267,11 @@ const CarouselNext = React.forwardRef<
           cx="32"
           cy="32"
           r="32"
-          className="fill-gray-400 transition-colors duration-300 hover:fill-black group"
+          className="fill-gray-400 transition-colors duration-300 hover:fill-black"
         />
         <path
           d="M25 20 L37 32 L25 44"
-          className="stroke-white stroke-[4px] fill-none stroke-linecap-round stroke-linejoin-round "
+          className="stroke-white stroke-[4px] fill-none stroke-linecap-round stroke-linejoin-round"
         />
       </svg>
 

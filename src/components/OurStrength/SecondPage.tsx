@@ -1,16 +1,26 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { OurStrengthFeature } from "../Constants/OurStrength/OurStrength-Data.json";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, EffectCoverflow } from "swiper/modules";
+import { OurStrengthItem } from "./types/constant";
+
+interface MainLayoutProps{
+  strengthData:OurStrengthItem;
+
+}
 
 const baseTop = 15;
 const spacing = 11;
 
-const SecondPage = () => {
+const SecondPage:React.FC <MainLayoutProps>= ({strengthData}) => {
+
+  const title=strengthData?.OurStrength[2]?.OurStrengthFeature?.strengthItems;
+  const component=strengthData?.OurStrength[2]?.OurStrengthFeature?.StrengthComponent;
+
+
   const containerRefs = useRef([]);
   const [activeIndex, setActiveIndex] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -108,7 +118,7 @@ const SecondPage = () => {
               background: `linear-gradient(to bottom, #76479C ${scrollPercent}%, white ${scrollPercent}%)`,
             }}
           ></div>
-          {OurStrengthFeature.strengthItems.map((item, index) => (
+          {title.map((item, index) => (
             <div
               key={index}
               className="absolute scale-75 font-poppins"
@@ -121,7 +131,7 @@ const SecondPage = () => {
                       activeIndex == index ? "font-black text-[2vw]" : ""
                     }`}
                   >
-                    {item}
+                    {item.title}
                   </h1>
                 )}
                 <div
@@ -135,7 +145,7 @@ const SecondPage = () => {
                       activeIndex == index ? "font-black scale-75" : ""
                     }`}
                   >
-                    {item}
+                    {item.title}
                   </span>
                 )}
               </div>
@@ -143,7 +153,7 @@ const SecondPage = () => {
           ))}
         </div>
 
-        {OurStrengthFeature.StrengthComponent.map((item, index) => (
+        {component.map((item, index) => (
           <div
             key={index}
             ref={(el) => {
@@ -227,8 +237,8 @@ const SecondPage = () => {
                           prevEl: prevRef.current,
                           nextEl: nextRef.current,
                         };
-                        swiper.navigation.init();
-                        swiper.navigation.update();
+                        swiper.navigation?.init();
+                        swiper.navigation?.update();
                       }
                     }}
                     modules={[EffectCoverflow, Navigation]}

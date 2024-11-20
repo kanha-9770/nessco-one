@@ -35,7 +35,7 @@ const generateSquares = (data: Square[] , isFadingOut: boolean) => {
       >
         <div className={`absolute inset-0 flex items-center justify-center lg:p-0 p-3 ${animationClass}`}>
           <Image
-            src={sq.src}
+            src="https://res.cloudinary.com/dlti4o10e/image/upload/v1732004975/11_b2yedo.svg"
             alt={`image-${sq.id}`}
             width={110}
             height={110}

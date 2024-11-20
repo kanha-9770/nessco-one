@@ -7,22 +7,22 @@ import AboutOurcompany from "@/components/AboutCompany/AboutOurcompany";
 import { Timeline } from "../ui/timeline";
 import { OurCompanyItem } from "./types/constant";
 
-interface MainLayoutProps{
-  companyData:OurCompanyItem
+interface MainLayoutProps {
+  companyData: OurCompanyItem;
 }
 
-
-export default function MainLayout({companyData}:MainLayoutProps) {
+export default function MainLayout({ companyData }: MainLayoutProps) {
   return (
     <main className="bg-black  ">
-      <AboutOurcompany companyData={companyData}/>
-      <SustainableD companyData={companyData}/>
-      <OurStoryD companyData={companyData}/>
-      <Founders />
-     <Timeline  companyData={companyData}/>
-        <Grid  companyData={companyData}/>    
-      <TeamPage  companyData={companyData}/>
-    
+      <AboutOurcompany companyData={companyData} />
+      <SustainableD companyData={companyData} />
+      <OurStoryD companyData={companyData} />
+      <Founders companyData={companyData} />
+      <Timeline companyData={companyData} />
+      <Grid companyData={companyData} />
+      <div className="bg-black">
+      <TeamPage companyData={companyData} />
+      </div>
     </main>
   );
 }

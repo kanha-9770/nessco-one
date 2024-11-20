@@ -410,7 +410,7 @@ const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine }) => {
                     onMouseEnter={() => setHoveredButtonIndex(idx)}
                     onMouseLeave={() => setHoveredButtonIndex(null)}
                   >
-                    <LinkUrl href={`/products/${item.h2}`}>
+                    <LinkUrl href={`/products/${item.h1}/${item.h2}`}>
                       {ProductsGrid.viewMachine}
                     </LinkUrl>
                   </button>

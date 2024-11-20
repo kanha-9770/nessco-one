@@ -18,25 +18,59 @@ const NewSignupFormDemo = () => {
         <form className="my-4" onSubmit={handleSubmit}>
           <div className="flex flex-col md:flex-row space-y-1 md:space-y-0 md:space-x-1 mb-2">
             <LabelInputContainer>
-              <Label htmlFor="firstname" className="text-sm">First name</Label>
-              <Input id="firstname" placeholder="Tyler" type="text" className="h-8 text-sm px-2" />
+              <Label htmlFor="firstname" className="text-sm">
+                First name
+              </Label>
+              <Input
+                id="firstname"
+                placeholder="Tyler"
+                type="text"
+                className="h-8 text-sm px-2"
+              />
             </LabelInputContainer>
             <LabelInputContainer>
-              <Label htmlFor="lastname" className="text-sm">Last name</Label>
-              <Input id="lastname" placeholder="Durden" type="text" className="h-8 text-sm px-2" />
+              <Label htmlFor="lastname" className="text-sm">
+                Last name
+              </Label>
+              <Input
+                id="lastname"
+                placeholder="Durden"
+                type="text"
+                className="h-8 text-sm px-2"
+              />
             </LabelInputContainer>
           </div>
           <LabelInputContainer className="mb-2">
-            <Label htmlFor="email" className="text-sm">Email Address</Label>
-            <Input id="email" placeholder="projectmayhem@fc.com" type="email" className="h-8 text-sm px-2" />
+            <Label htmlFor="email" className="text-sm">
+              Email Address
+            </Label>
+            <Input
+              id="email"
+              placeholder="projectmayhem@fc.com"
+              type="email"
+              className="h-8 text-sm px-2"
+            />
           </LabelInputContainer>
           <LabelInputContainer className="mb-2">
-            <Label htmlFor="mobilenumber" className="text-sm">Mobile Number</Label>
-            <Input id="mobilenumber" placeholder="123-456-7890" type="tel" className="h-8 text-sm px-2" />
+            <Label htmlFor="mobilenumber" className="text-sm">
+              Mobile Number
+            </Label>
+            <Input
+              id="mobilenumber"
+              placeholder="123-456-7890"
+              type="tel"
+              className="h-8 text-sm px-2"
+            />
           </LabelInputContainer>
           <LabelInputContainer className="mb-4">
-            <Label htmlFor="message" className="text-sm">Your Message</Label>
-            <MessageBox id="message" placeholder="Type your message here..." className="h-20 text-sm px-2" />
+            <Label htmlFor="message" className="text-sm">
+              Your Message
+            </Label>
+            <MessageBox
+              id="message"
+              placeholder="Type your message here..."
+              className="h-20 text-sm px-2"
+            />
           </LabelInputContainer>
 
           <button
