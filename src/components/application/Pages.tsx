@@ -32,7 +32,7 @@ const Pages: React.FC<ApplicationProps> = ({ applicationData }) => {
   return (
     <>
       <Page1 applicationData={applicationData} />
-      <Page2 selectedProduct={selectedProduct} updateData={updateData} />
+      <Page2 selectedProduct={selectedProduct} updateData={updateData} applicationData={applicationData} />
       <Page3
         selectedProduct={selectedProduct}
         applicationData={applicationData}

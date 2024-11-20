@@ -1,14 +1,22 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { SelectProduct } from "@/components/Constants/application/application_data.json";
+import { ApplicationItem } from "./types/constant";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Modal from "./Modal";
 import { Product } from "./Pages";
 gsap.registerPlugin(ScrollTrigger);
-
-const Page2 = ({selectedProduct, updateData }: { selectedProduct: Product; updateData: (newData: Product) => void }) => {
+const Page2 = ({
+  applicationData,
+  selectedProduct,
+  updateData,
+}: {
+  applicationData: ApplicationItem;
+  selectedProduct: Product;
+  updateData: (newData: Product) => void;
+}) => {
+  const SelectProduct = applicationData?.Application[0]?.SelectProduct;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -295,6 +303,7 @@ const Page2 = ({selectedProduct, updateData }: { selectedProduct: Product; updat
           setIsModalOpen={setIsModalOpen}
           setSelectedProduct={updateData}
           selectedProduct={selectedProduct}
+          applicationData={applicationData}
         />
       )}
     </>

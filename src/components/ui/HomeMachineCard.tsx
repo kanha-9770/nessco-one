@@ -72,7 +72,7 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
                     <span className="text-xs lg:text-base font-bold text-red-700">
                       {card?.speed}
                     </span>
-                    <span className="text-[0.3rem] w-[1.6rem] h-[0.8rem] bg-green-300 -mt-1 font-bold text-[#483d78] whitespace-normal break-words">pinches/min</span>
+                    <span className="text-[0.3rem] lg:text-[0.4rem] lg:-mt-2 lg:w-[2rem] w-[1.6rem] h-[0.8rem] lg:h-[1.2rem] font-bold text-[#483d78] whitespace-normal break-words">{card?.unit}</span>
                   </div>
                 </div>
               </div>

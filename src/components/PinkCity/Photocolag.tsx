@@ -1,14 +1,20 @@
 // components/Gallery.tsx
 
 import Image from 'next/image';
-import { galleryContent } from '../Constants/pinkcity/PinkcityPage.json';
 import dynamic from 'next/dynamic';
+import { PinkCityData } from './types/constant';
 
 const Flowerlayer=dynamic(()=>import("../Icons/about/Flowerlayer"),{ssr:false})
 const Flowerlayerbottom=dynamic(()=>import("../Icons/about/Flowerlayerbottom"),{ssr:false},)
 
 
-const Gallery = () => {
+interface AboutLayoutProps{
+  pinkcityData:PinkCityData
+}
+
+
+const Gallery:React.FC<AboutLayoutProps> = ({pinkcityData}) => {
+  const image=pinkcityData?.pinkcity[0]?.galleryContent;
   return (
     <div className="relative justify-center  flex flex-col  lg:h-full w-full  ">
       <div className="flex justify-center" >
@@ -16,7 +22,7 @@ const Gallery = () => {
       </div>
 
       <div className="grid lg:grid-cols-4 grid-cols-2  gap-6 md:gap-5 p-10 justify-center items-center ">
-  {galleryContent.galleryImages.map((src, index) => (
+  {image.galleryImages.map((src, index) => (
     <div key={index} className="relative  rounded-2xl overflow-hidden  lg:left-0 hover:shadow-2xl">
       <Image 
         src="https://res.cloudinary.com/dlti4o10e/image/upload/v1731734135/jalmahal_wzfcbb.webp"

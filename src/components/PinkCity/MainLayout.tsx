@@ -20,7 +20,7 @@ export default function MainLayout ({pinkcityData}:MainLayoutProps) {
    
       <PinkPage pinkcityData={pinkcityData}/>
           
-      <Photocolag/>
+      <Photocolag pinkcityData={pinkcityData}/>
         </main>
     )
 
