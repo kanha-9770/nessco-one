@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import BreadcrumbProduct from "@/components/ui/BreadCrumbProduct";
 import InfoCard from "@/components/Products/InfoCard";
 import ZigzagLine from "../ZigzagLine";
+import { usePathname } from "next/navigation";
 
 gsap.registerPlugin(TextPlugin);
 
@@ -86,7 +87,9 @@ const Machine: React.FC<MachineProps> = ({
   const carouselRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
-
+  const pathname = usePathname() || "";
+  const countryCode = pathname.split("/")[1]?.toLowerCase();
+  const languageCode = pathname.split("/")[2]?.toLowerCase();
   useEffect(() => {
     const calculateFontSize = () => {
       const charCount = introduction && introduction.length;
@@ -185,7 +188,7 @@ const Machine: React.FC<MachineProps> = ({
   const breadcrumbItems = [
     { label: "Home", href: "/" },
     { label: "Products", href: "/products" },
-    { label: first_name, href: `/products/${link}` },
+    { label: first_name, href: `${countryCode}/${languageCode}/products/${link}` },
     { label: name, current: true },
   ];
 
