@@ -188,7 +188,7 @@ const Machine: React.FC<MachineProps> = ({
   const breadcrumbItems = [
     { label: "Home", href: "/" },
     { label: "Products", href: "/products" },
-    { label: first_name, href: `${countryCode}/${languageCode}/products/${link}` },
+    { label: first_name, href: `/${countryCode}/${languageCode}/products/${link}` },
     { label: name, current: true },
   ];
 
