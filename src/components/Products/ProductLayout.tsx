@@ -9,9 +9,9 @@ import { SignupFormDemoProduct } from "@/components/Contact/CustomProductForm";
 import ProductApplication from "@/components/Products/ProductApplication";
 import RelatedProducts from "@/components/Products/RelatedProducts";
 import ProcessFlow from "@/components/Products/ProcessFlow";
-import FaqSection from "@/components/Products/FaqSection";
 import { IndividualProductsData } from "./types/constant";
 import TechnicalSpecifications from "./TechnicalSpecification";
+import FaqProducts from "./FaqSection";
 
 interface IndividualProductsDataProps {
   IndividualProductsData: IndividualProductsData;
@@ -77,6 +77,7 @@ const ProductLayout: React.FC<IndividualProductsDataProps> = ({
         product_description={machine.product_description}
         status={""}
         stars={""}
+        link={machine?.link}
         reviews={""}
         TechnicalSpecificationComponentData={{
           title: "",
@@ -120,7 +121,7 @@ const ProductLayout: React.FC<IndividualProductsDataProps> = ({
             />
           </div>
           <div className="mt-10" ref={faqsRef}>
-            <FaqSection faqData={machine?.FAQ} />
+            <FaqProducts faqData={machine?.FAQ}/>
           </div>
         </div>
         <div className="lg:w-[33%] sticky">

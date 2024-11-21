@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { X, ShoppingCart, Trash2 } from "lucide-react";
 import Image from "next/image";
 import {
@@ -32,22 +32,52 @@ export default function Component({
 }: EnquiryCartProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const cartRef = useRef<HTMLDivElement>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const toggleCart = () => {
+    setIsOpen(!isOpen);
+    if (!isOpen) {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    } else {
+      startCloseTimer();
+    }
+  };
+
+  const startCloseTimer = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    timeoutRef.current = setTimeout(() => {
+      setIsOpen(false);
+    }, 10000);
+  };
+
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (isOpen) {
+      startCloseTimer();
+    }
+  };
 
   useEffect(() => {
-    let timer: NodeJS.Timeout;
-    if (isOpen) {
-      timer = setTimeout(() => {
-        setIsOpen(false);
-      }, 10000);
-    }
-    return () => clearTimeout(timer);
-  }, [isOpen]);
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
-  const toggleCart = () => setIsOpen(!isOpen);
   const clearCart = () => items.forEach((item) => onRemoveItem(item.id));
   const openModal = () => setIsModalOpen(true);
 
-  // If there are no items, don't render anything
   if (items.length === 0) {
     return null;
   }
@@ -55,6 +85,9 @@ export default function Component({
   return (
     <>
       <div
+        ref={cartRef}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         className={`fixed left-4 z-50 transition-all duration-300 ${
           isOpen ? "bottom-0 w-auto max-w-[90vw]" : "bottom-32 w-16 h-16"
         }`}
@@ -90,7 +123,7 @@ export default function Component({
                       variant="destructive"
                       className="text-xs px-2 py-1 h-auto"
                     >
-                      Contact Supplier
+                      Enquire Now
                     </Button>
                     <button
                       onClick={clearCart}
@@ -150,7 +183,7 @@ export default function Component({
         <DialogContent className="sm:max-w-[900px]">
           <div className="bg-gray-50 rounded-2xl p-4">
             <DialogHeader>
-              <DialogTitle>Contact Supplier</DialogTitle>
+              <DialogTitle> Enquire Now</DialogTitle>
               <DialogDescription>
                 Fill out the form to contact the supplier about the items in
                 your cart.

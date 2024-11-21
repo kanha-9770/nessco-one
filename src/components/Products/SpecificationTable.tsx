@@ -18,11 +18,11 @@ const SpecificationTable: React.FC<TechnicalSpecificationProps> = ({technicalSpe
             <tr key={key} className="group">
               {/* Left column (Feature) with a specific background color */}
               <td className="border-t border-gray-300 p-1 text-sm font-normal text-center bg-[#efecf8] group-hover:bg-[#bfb9d6] ">
-                {row.feature}
+                {row?.feature}
               </td>
               {/* Right column (Specification) with a different background color */}
               <td className="border-t p-1 text-sm font-regular text-center bg-white group-hover:bg-[#bfb9d6]">
-                {row.spec}
+                {row?.spec}
               </td>
             </tr>
           ))}

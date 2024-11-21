@@ -85,6 +85,7 @@
   };
   
   export type TechnicalSpecificationComponentDataType = {
+    src: string ;
     title: string;
     image: {
       src: string;

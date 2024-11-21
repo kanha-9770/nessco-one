@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 export let countryCODE = "in";
-export let languageCODE = "es";
+export let languageCODE = "en";
 export const Menu = ({ children }: { children: React.ReactNode }) => {
   const [active, setActive] = useState<string | null>(null);
   const [position, setPosition] = useState({ left: 500, width: 0, opacity: 0 });

@@ -441,7 +441,6 @@ async function fetchUserLocation(req: NextRequest) {
 
   // API requests
   const geoServices = [
-    `https://countrygeoapi.nesscoindustries.com/geoip/${clientIP}/`,
     `https://ipinfo.io/${clientIP}/json/`,
     `https://ipwhois.app/json/${clientIP}`,
   ];
@@ -510,9 +509,7 @@ async function setCookie(
 function getBrowserLanguage(req: NextRequest) {
   const acceptLanguageHeader = req.headers.get("accept-language");
   if (!acceptLanguageHeader) return defaultLocale;
-  // Extract the first preferred language from the 'accept-language' header
   const browserLanguage = acceptLanguageHeader.split(",")[0]?.split("-")[0]; // Just the language code
-  console.log("Browser language detected:", browserLanguage);
   return validLocales.includes(browserLanguage)
     ? browserLanguage
     : defaultLocale;

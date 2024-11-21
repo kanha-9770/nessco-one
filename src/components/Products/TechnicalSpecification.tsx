@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SpecificationTable from "./SpecificationTable";
 import Image from "next/image";
 import { TechnicalSpecificationComponentDataType } from "./types/constant";
-interface TechnicalSpecificationProps{
-  technicalSpecification:TechnicalSpecificationComponentDataType
+interface TechnicalSpecificationProps {
+  technicalSpecification: TechnicalSpecificationComponentDataType;
 }
 const TechnicalSpecifications: React.FC<TechnicalSpecificationProps> = ({
   technicalSpecification,
-}) => {  return (
+}) => {
+
+  useEffect(()=>{
+   console.log("I AM IMAG ONE ",technicalSpecification);
+   
+  },[])
+  return (
     <div className="w-full h-full flex flex-row font-poppins">
       {/* Left Side: Specification and Image */}
       <div className="flex-grow bg-white p-8 rounded-2xl flex flex-col justify-between">
@@ -20,7 +26,7 @@ const TechnicalSpecifications: React.FC<TechnicalSpecificationProps> = ({
           <SpecificationTable technicalSpecification={technicalSpecification} />
           <div className="w-[50%] h-full flex items-center justify-center">
             <Image
-              src={technicalSpecification?.image?.src}
+              src={technicalSpecification?.src}
               width={400}
               height={400}
               alt="Specification Glass"
@@ -31,5 +37,5 @@ const TechnicalSpecifications: React.FC<TechnicalSpecificationProps> = ({
       </div>
     </div>
   );
-}
+};
 export default TechnicalSpecifications;

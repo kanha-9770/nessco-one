@@ -38,6 +38,7 @@ interface MachineProps {
   category: string;
   icon: string;
   introduction: string;
+  link?:string;
   parameters: string;
   application: string;
   product_description: string;
@@ -75,6 +76,7 @@ const Machine: React.FC<MachineProps> = ({
   first_name,
   introduction,
   advantages,
+  link
 }) => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const listItemRefs = useRef<(HTMLLIElement | null)[]>([]);
@@ -87,7 +89,7 @@ const Machine: React.FC<MachineProps> = ({
 
   useEffect(() => {
     const calculateFontSize = () => {
-      const charCount = introduction.length;
+      const charCount = introduction && introduction.length;
       let newFontSize = "0.1rem";
       if (charCount < 50) newFontSize = "2rem";
       else if (charCount < 100) newFontSize = "1.5rem";
@@ -183,7 +185,7 @@ const Machine: React.FC<MachineProps> = ({
   const breadcrumbItems = [
     { label: "Home", href: "/" },
     { label: "Products", href: "/products" },
-    { label: first_name, href: "/products/first_name" },
+    { label: first_name, href: `/products/${link}` },
     { label: name, current: true },
   ];
 

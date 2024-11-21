@@ -325,7 +325,7 @@ const FeatureProjects: React.FC<FeatureProjectLayoutProps> = ({ heroData }) => {
 
         {/* Carousel Section */}
         <div
-          className="w-full h-[11rem] md:h-[13rem] flex items-center overflow-hidden"
+          className="w-full h-[11rem] md:h-[13.2rem] flex items-center overflow-hidden"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >

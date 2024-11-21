@@ -102,7 +102,7 @@ function Navbar({ className, navData }: NavbarProps) {
   return (
     <div
       className={`fixed flex w-full ${
-        ["knowledge-center", "clientele", "vision"].includes(componentCode) ||
+        ["knowledge-center", "clientele"].includes(componentCode) ||
         ["our-company"].includes(componentCodeourCompany)
           ? "bg-black text-white"
           : "bg-white"

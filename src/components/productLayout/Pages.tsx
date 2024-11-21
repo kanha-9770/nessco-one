@@ -10,7 +10,7 @@ interface ProductLayoutProps {
 }
 
 const formatMachineName = (name: string): string => {
-  return name.replace(/-/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase());
+  return name.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase());
 };
 
 const Page: React.FC<ProductLayoutProps> = ({ productLayoutData }) => {
@@ -58,7 +58,10 @@ const Page: React.FC<ProductLayoutProps> = ({ productLayoutData }) => {
   return (
     <>
       <Page1 page1machine={page1machine} />
-      <Page2 page2machine={page2machine} productLayoutData={productLayoutData} />
+      <Page2
+        page2machine={page2machine}
+        productLayoutData={productLayoutData}
+      />
     </>
   );
 };

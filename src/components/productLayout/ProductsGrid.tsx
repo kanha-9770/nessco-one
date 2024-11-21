@@ -32,6 +32,7 @@ interface MachineItem {
   h1: string;
   h2: string;
   h3: string;
+  link:string;
   img: string;
   range: string;
   rangeTitle: string;
@@ -410,7 +411,7 @@ const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine }) => {
                     onMouseEnter={() => setHoveredButtonIndex(idx)}
                     onMouseLeave={() => setHoveredButtonIndex(null)}
                   >
-                    <LinkUrl href={`/products/${item.h1}/${item.h2}`}>
+                    <LinkUrl href={`/products/${item.link}/${item.h2}`}>
                       {ProductsGrid.viewMachine}
                     </LinkUrl>
                   </button>

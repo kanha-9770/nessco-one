@@ -30,12 +30,12 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
   };
   const formatToSlug = (title) => {
     return title
-      .toLowerCase() // Convert to lowercase
-      .replace(/[^a-z0-9\s]/g, '') // Remove special characters
+      .toLowerCase()||title.t // Convert to lowercase
+      .replace(/[^a-z0-9\s]/g, "") // Remove special characters
       .trim() // Trim leading/trailing spaces
-      .replace(/\s+/g, '-'); // Replace spaces with dashes
+      .replace(/\s+/g, "-"); // Replace spaces with dashes
   };
-  
+
   const scrollbarLeft = () => {
     if (carouselRef.current) {
       carouselRef.current.scrollBy({
@@ -211,17 +211,21 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
                       : "group-hover:border-red-700 lg:ml-[1rem] ml-[0.5rem]"
                   }`}
                 ></div>
-               <Link href={`/${countryCODE}/${languageCODE}/products/${formatToSlug(item.title)}`}>
-               <h2
-                  className={` ${
-                    expandedIndex === idx
-                      ? "lg:text-[1.8rem] text-[1.2rem] font-semibold lg:ml-[3rem] ml-[1rem]"
-                      : "lg:text-[1.2rem] text-[0.9rem] lg:ml-[1rem] ml-[0.5rem]"
-                  }`}
+                <Link
+                  href={`/${countryCODE}/${languageCODE}/products/${formatToSlug(
+                    item.title
+                  )}`}
                 >
-                  {item.title}
-                </h2>
-               </Link>
+                  <h2
+                    className={` ${
+                      expandedIndex === idx
+                        ? "lg:text-[1.8rem] text-[1.2rem] font-semibold lg:ml-[3rem] ml-[1rem]"
+                        : "lg:text-[1.2rem] text-[0.9rem] lg:ml-[1rem] ml-[0.5rem]"
+                    }`}
+                  >
+                    {item.title}
+                  </h2>
+                </Link>
                 {expandedIndex === idx ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -355,14 +359,18 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
                                   </div>
 
                                   <div className="pt-4 px-4">
-                                  <Link href={`/${countryCODE}/${languageCODE}/products/${formatToSlug(containerItem.h1)}/${formatToSlug(containerItem.h2)}`}>
-                                  <h2 className="lg:text-[1rem] text-[0.9rem] font-semibold lg:w-[10rem] w-[7rem]">
-                                      {containerItem.h1}
-                                    </h2>
-                                    <h3 className="lg:text-[0.9rem] text-[0.8rem] font-medium">
-                                      {containerItem.h2}
-                                    </h3>
-                                  </Link>
+                                    <Link
+                                      href={`/${countryCODE}/${languageCODE}/products/${formatToSlug(
+                                        containerItem.h1
+                                      )}/${formatToSlug(containerItem.h2)}`}
+                                    >
+                                      <h2 className="lg:text-[1rem] text-[0.9rem] font-semibold lg:w-[10rem] w-[7rem]">
+                                        {containerItem.h1}
+                                      </h2>
+                                      <h3 className="lg:text-[0.9rem] text-[0.8rem] font-medium">
+                                        {containerItem.h2}
+                                      </h3>
+                                    </Link>
                                     <p className="lg:text-[0.8rem] text-[0.7rem] text-gray-600">
                                       {containerItem.h3}
                                     </p>
@@ -381,8 +389,12 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
 
                                   <div className="my-[0.5rem] flex lg:flex-rows flex-col items-center justify-center lg:h-[2.5rem]">
                                     <button className="lg:text-[0.9rem] text-[0.8rem] w-[65%] h-[2rem] border-[0.1rem] border-solid font-medium rounded-lg transition-colors duration-300 border-[#9c9c9c] hover:border-black hover:bg-black hover:text-white">
-                                    <Link href={`/${countryCODE}/${languageCODE}/products/${formatToSlug(containerItem.h1)}/${formatToSlug(containerItem.h2)}`}>
-                                    {ProductCatalouge.viewMachine}
+                                      <Link
+                                        href={`/${countryCODE}/${languageCODE}/products/${formatToSlug(
+                                          containerItem.h1
+                                        )}/${formatToSlug(containerItem.h2)}`}
+                                      >
+                                        {ProductCatalouge.viewMachine}
                                       </Link>
                                     </button>
                                   </div>

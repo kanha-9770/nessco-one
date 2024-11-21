@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import "swiper/css";
@@ -7,19 +9,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, EffectCoverflow } from "swiper/modules";
 import { OurStrengthItem } from "./types/constant";
 
-interface MainLayoutProps{
-  strengthData:OurStrengthItem;
-
+interface MainLayoutProps {
+  strengthData: OurStrengthItem;
 }
 
 const baseTop = 15;
 const spacing = 11;
 
-const SecondPage:React.FC <MainLayoutProps>= ({strengthData}) => {
-
-  const title=strengthData?.OurStrength[2]?.OurStrengthFeature?.strengthItems;
-  const component=strengthData?.OurStrength[2]?.OurStrengthFeature?.StrengthComponent;
-
+const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
+  const title = strengthData?.OurStrength[2]?.OurStrengthFeature?.strengthItems;
+  const component = strengthData?.OurStrength[2]?.OurStrengthFeature?.StrengthComponent;
 
   const containerRefs = useRef([]);
   const [activeIndex, setActiveIndex] = useState(null);
@@ -29,14 +28,14 @@ const SecondPage:React.FC <MainLayoutProps>= ({strengthData}) => {
 
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const swiperRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       const windowHeight = window.innerHeight;
       const secondPageStart = windowHeight;
-      const documentHeight =
-        document.documentElement.scrollHeight - windowHeight;
+      const documentHeight = document.documentElement.scrollHeight - windowHeight;
       const scrollableHeight = documentHeight - secondPageStart;
 
       if (scrollTop > secondPageStart) {
@@ -230,18 +229,16 @@ const SecondPage:React.FC <MainLayoutProps>= ({strengthData}) => {
                       modifier: 2,
                       slideShadows: true,
                     }}
-                    navigation={true} // Enable navigation without specifying prevEl and nextEl here
-                    onBeforeInit={(swiper) => {
-                      if (prevRef.current && nextRef.current) {
-                        swiper.params.navigation = {
-                          prevEl: prevRef.current,
-                          nextEl: nextRef.current,
-                        };
-                        swiper.navigation?.init();
-                        swiper.navigation?.update();
-                      }
+                    navigation={{
+                      prevEl: prevRef.current,
+                      nextEl: nextRef.current,
                     }}
                     modules={[EffectCoverflow, Navigation]}
+                    onSwiper={(swiper) => {
+                      swiperRef.current = swiper;
+                      swiper.navigation.init();
+                      swiper.navigation.update();
+                    }}
                     className="mySwiper"
                   >
                     {componentData.modalContent.images.map((img, index) => (
@@ -251,7 +248,7 @@ const SecondPage:React.FC <MainLayoutProps>= ({strengthData}) => {
                     ))}
                   </Swiper>
                 </div>
-                <div ref={prevRef} className="absolute left-[10rem] ">
+                <div ref={prevRef} className="absolute left-[10rem] cursor-pointer">
                   <svg
                     viewBox="0 0 24 24"
                     height={30}
@@ -259,24 +256,23 @@ const SecondPage:React.FC <MainLayoutProps>= ({strengthData}) => {
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                     <g
                       id="SVGRepo_tracerCarrier"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     ></g>
                     <g id="SVGRepo_iconCarrier">
-                      {" "}
                       <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
                         d="M15.7071 4.29289C16.0976 4.68342 16.0976 5.31658 15.7071 5.70711L9.41421 12L15.7071 18.2929C16.0976 18.6834 16.0976 19.3166 15.7071 19.7071C15.3166 20.0976 14.6834 20.0976 14.2929 19.7071L7.29289 12.7071C7.10536 12.5196 7 12.2652 7 12C7 11.7348 7.10536 11.4804 7.29289 11.2929L14.2929 4.29289C14.6834 3.90237 15.3166 3.90237 15.7071 4.29289Z"
                         fill="#000000"
-                      ></path>{" "}
+                      ></path>
                     </g>
                   </svg>
                 </div>
-                <div ref={nextRef} className="absolute right-[10rem]">
+                <div ref={nextRef} className="absolute right-[10rem] cursor-pointer">
                   <svg
                     viewBox="0 0 24 24"
                     height={30}
@@ -284,22 +280,21 @@ const SecondPage:React.FC <MainLayoutProps>= ({strengthData}) => {
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                     <g
                       id="SVGRepo_tracerCarrier"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     ></g>
                     <g id="SVGRepo_iconCarrier">
-                      {" "}
                       <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
                         d="M8.29289 4.29289C8.68342 3.90237 9.31658 3.90237 9.70711 4.29289L16.7071 11.2929C17.0976 11.6834 17.0976 12.3166 16.7071 12.7071L9.70711 19.7071C9.31658 20.0976 8.68342 20.0976 8.29289 19.7071C7.90237 19.3166 7.90237 18.6834 8.29289 18.2929L14.5858 12L8.29289 5.70711C7.90237 5.31658 7.90237 4.68342 8.29289 4.29289Z"
                         fill="#000000"
-                      ></path>{" "}
+                      ></path>
                     </g>
-                  </svg>{" "}
+                  </svg>
                 </div>
               </div>
               <button
@@ -314,18 +309,17 @@ const SecondPage:React.FC <MainLayoutProps>= ({strengthData}) => {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                   <g
                     id="SVGRepo_tracerCarrier"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   ></g>
                   <g id="SVGRepo_iconCarrier">
-                    {" "}
                     <path
                       d="M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM15.36 14.3C15.65 14.59 15.65 15.07 15.36 15.36C15.21 15.51 15.02 15.58 14.83 15.58C14.64 15.58 14.45 15.51 14.3 15.36L12 13.06L9.7 15.36C9.55 15.51 9.36 15.58 9.17 15.58C8.98 15.58 8.79 15.51 8.64 15.36C8.35 15.07 8.35 14.59 8.64 14.3L10.94 12L8.64 9.7C8.35 9.41 8.35 8.93 8.64 8.64C8.93 8.35 9.41 8.35 9.7 8.64L12 10.94L14.3 8.64C14.59 8.35 15.07 8.35 15.36 8.64C15.65 8.93 15.65 9.41 15.36 9.7L13.06 12L15.36 14.3Z"
                       fill="#292D32"
-                    ></path>{" "}
+                    ></path>
                   </g>
                 </svg>
               </button>

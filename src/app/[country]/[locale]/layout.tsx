@@ -24,7 +24,6 @@ const poppins = Poppins({
 });
 
 const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
-
 export async function generateMetadata({
   params: { country, locale },
 }: {
@@ -92,14 +91,13 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { country: CountryCode; locale: string };
 }) {
+
   // Fallback to English if locale is not supported
   if (!locales.includes(locale as any)) {
     locale = "en";
   }
   locale = locales.includes(locale as any) ? locale : "en";
-
   // Ensure locale is correctly set here for debugging
-  console.log("Rendering with locale:", locale);
   unstable_setRequestLocale(locale);
 
   // Fetch translations for the locale

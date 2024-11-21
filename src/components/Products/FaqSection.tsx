@@ -1,80 +1,110 @@
-import { useEffect, useState, useRef } from "react";
-import gsap from "gsap";
+"use client";
+
+import React, { useState, useRef } from "react";
+import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import "./style.css";
-import { FAQType } from "./types/constant";
 
+gsap.registerPlugin(ScrollTrigger);
 
-interface FaqSectionProps{
-  faqData:FAQType
+interface questions {
+  que: string;
+  ans: string;
 }
-const FaqSection: React.FC<FaqSectionProps> = ({faqData}) => {
-  const [activeIndex, setActiveIndex] = useState<number | null>(0);
-  const faqListRef = useRef<HTMLDivElement>(null);
+interface FaqProductsData {
+  questions:questions[];
+  title?: string;
+  subTitle?: string;
+}
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+interface FaqProductsProps {
+  faqData: FaqProductsData;
+}
 
-    if (faqListRef.current) {
-      gsap.to(faqListRef.current, {
-        yPercent: -100,
-        ease: "none",
-        scrollTrigger: {
-          trigger: faqListRef.current,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: true,
-        },
-      });
-    }
-  }, []);
+const FaqProducts: React.FC<FaqProductsProps> = ({ faqData }) => {
+  const carouselRef = useRef<HTMLDivElement | null>(null);
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
-  const handleFaqClick = (index: number) => {
-    setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
+ 
+  const toggleExpansion = (index: number) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
   };
 
   return (
-    <div className="flex overflow-hidden h-max flex-col w-full lg:flex-row lg:space-x-8 p-6  mx-auto bg-white rounded-xl">
-      {/* Questions Section */}
-      <div className="w-full bg-white mx-[1rem] border-4 border-solid border-[#e8e5e5] h-full rounded-[2rem] flex items-center justify-center py-[0.5rem]">
-        <div className="w-[50%] h-[27rem] mr-[0.5rem] overflow-hidden rounded-[1.5rem]">
-          <div className="overflow-auto h-full scrollbar-hide" ref={faqListRef}>
-            {faqData?.questions?.map((item, idx) => (
-              <div
-                key={idx}
-                onClick={() => handleFaqClick(idx)}
-                className={`h-max py-[1rem] border-b-2 border-solid border-[#e8e5e5] flex items-center cursor-pointer ${
-                  activeIndex === idx
-                    ? "text-red-700 font-semibold"
-                    : "text-[#575555]"
-                }`}
-              >
-                <p className="text-[1.2rem] font-poppins w-[75%] mx-[1.5rem]">
-                  {item.que}
-                </p>
-                <p className="text-[2rem] font-poppins ml-[3rem] mr-[1rem]">
-                  {activeIndex === idx ? "−" : "+"}
-                </p>
-              </div>
-            ))}
+    <div className="w-full h-full bg-white rounded-2xl font-poppins">
+      <div className="flex p-8">
+        <h1 className="font-poppins lg:text-3xl text-2xl">
+          <span className="text-[#483d73] font-medium">
+            {(faqData?.title && faqData.title.split(" ").slice(0, -1).join(" ")) ||"Frequently Asked Questions"}
+          </span>{" "}
+          <span className="text-red-700 font-semibold">
+            {(faqData?.title && faqData?.title.split(" ").slice(-1) ||"FAQs")}
+          </span>
+        </h1>
+      </div>
+      <div
+        className="w-full flex justify-center items-center px-8"
+        ref={carouselRef}
+      >
+        <div className="lg:w-full bg-white lg:p-0 p-4">
+          <div>
+            <h2 className="font-semibold lg:text-[1.5rem] lg:mt-6 text-[1.2rem]">
+              {faqData?.subTitle}
+            </h2>
+            <div className="lg:border-t-[2px] border-t-2 border-solid border-[#dc0e2a] lg:w-[6vw] w-[18vw] mt-[0.6rem]"></div>
           </div>
-        </div>
+          <div className="lg:h-[22.5rem] h-[18rem] lg:my-6 my-2 w-full overflow-hidden">
+            <div className="h-full overflow-auto scrollbar-hide">
+              {faqData?.questions?.map((item, idx) => (
+                <div key={idx} className="w-full lg:pt-[3vh] pt-[1vh]">
+                  <div
+                    className="flex justify-between items-center cursor-pointer"
+                    onClick={() => toggleExpansion(idx)}
+                  >
+                    <h2 className="lg:text-[1.1rem] w-[70%] text-[0.9rem] font-medium font-poppins">
+                      {item.que}
+                    </h2>
+                    {expandedIndex === idx ? (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        className="w-6 h-6 stroke-red-700"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M20 12H4"
+                        />
+                      </svg>
+                    ) : (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        className="w-6 h-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M12 4v16m8-8H4"
+                        />
+                      </svg>
+                    )}
+                  </div>
+                  <div className="lg:border-t-[1px] border-[#d3d2d2] border-t-[1px] border-solid mt-[0.5vh] lg:w-[70%] w-[80%]"></div>
 
-        {/* Answers Section */}
-        <div className="w-[50%] h-[27rem] mx-[0.5rem] rounded-[1.5rem] border-2 border-solid border-[#e8e5e5] overflow-hidden">
-          <div className="overflow-auto h-full scrollbar-hide">
-            {faqData?.questions.map((item, idx) => (
-              <div
-                key={idx}
-                className={`flex justify-center transition-all duration-300 ${
-                  activeIndex === idx ? "block" : "hidden"
-                }`}
-              >
-                <p className="my-[2.5rem] w-[16vw] text-[1.2rem] text-center text-[#575555]">
-                  {item.ans}
-                </p>
-              </div>
-            ))}
+                  {expandedIndex === idx && (
+                    <div className="ml-[2vw] text-[#9e9c9c] py-[1vh] lg:text-[1rem] text-[0.8rem] w-[90%]">
+                      <p>{item.ans}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -82,4 +112,4 @@ const FaqSection: React.FC<FaqSectionProps> = ({faqData}) => {
   );
 };
 
-export default FaqSection;
+export default FaqProducts;

@@ -1,6 +1,7 @@
 import React from "react";
 import Page1 from "@/components/product/Header";
 import { ProductItem } from "./types/constant";
+// import dynamic from "next/dynamic";
 // const Page2 = dynamic(() => import("@/components/product/ProductCatalouge"));
 
 interface ProductProps {
