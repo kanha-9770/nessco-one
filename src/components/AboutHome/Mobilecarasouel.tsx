@@ -56,7 +56,7 @@ const MobileCarousel:FC <HomeLayoutProps>= ({aboutData}) => {
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
       >
-        {homeaboutDataz?.imageWithDescription?.map((image, index) => (
+        {homeaboutData?.imageWithDescription?.map((image, index) => (
           <div
             key={index}
             className={`absolute inset-0 transition-transform duration-500 ease-in-out ${

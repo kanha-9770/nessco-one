@@ -31,7 +31,6 @@ interface OpenGraph {
   
   // landingPageContent type
   interface LandingPageContent {
-    backgroundImg: string | StaticImport;
     backgroundImg: string;
     cornerLayerImg: string;
     stickerImg: string;

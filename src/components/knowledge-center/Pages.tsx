@@ -34,7 +34,7 @@ const Pages: React.FC<KnowledgeCenterProps> = ({ knowledgeCenterData }) => {
                 description={item?.description}
                 img={item?.img}
                 button={Section?.button}
-                link={item.link}
+                link={item?.link}
               />
             ))}
           </div>

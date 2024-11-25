@@ -44,6 +44,7 @@ type Section = {
 };
 
 type SectionItem = {
+  link: string;
   number: number;
   title: string;
   description: string;
