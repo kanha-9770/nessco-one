@@ -1,4 +1,4 @@
-import Header from "@/components/support/Header";
+// import Header from "@/components/support/Header";
 import { KnowYourBussinessItem } from "@/components/support/types/constantBussiness";
 import { Metadata } from "next";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
@@ -114,7 +114,7 @@ export default async function about({ params: { locale } }: Props) {
     return <p>{t("failedToLoadData")}</p>;
   }
 
-  const headerData = knowYourBussinessData.KnowYourBussiness[0].Header;
+  // const headerData = knowYourBussinessData.KnowYourBussiness[0].Header;
 
   return (
     <main>
