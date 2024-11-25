@@ -12,6 +12,7 @@ interface KnowledgeCenterProps {
 }
 
 
+
 const Pages: React.FC<KnowledgeCenterProps> = ({ knowledgeCenterData }) => {
   const Section = knowledgeCenterData?.knowledgeCenter[0]?.Section;
 
@@ -28,11 +29,12 @@ const Pages: React.FC<KnowledgeCenterProps> = ({ knowledgeCenterData }) => {
             {Section.sections.map((item, idx) => (
               <SectionComponent
                 key={idx}
-                number={item.number}
-                title={item.title}
-                description={item.description}
-                img={item.img}
-                button={Section.button}
+                number={item?.number}
+                title={item?.title}
+                description={item?.description}
+                img={item?.img}
+                button={Section?.button}
+                link={item.link}
               />
             ))}
           </div>

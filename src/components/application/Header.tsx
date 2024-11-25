@@ -87,7 +87,7 @@ const Page1: React.FC<ApplicationProps> = ({ applicationData }) => {
       <div className="font-regular font-poppins">
         <div className="lg:h-[8.5rem] h-[7rem] w-full bg-white lg:fixed relative z-10 page1-div font-bold">
           <h1 className="absolute lg:bottom-0 -bottom-[0.3rem] left-3 lg:text-[4rem] text-[2.5rem] page1-h1 bg-gradient-to-r from-[#483d73] to-red-700  bg-clip-text text-transparent">
-            {Header.applicaion}
+            {Header?.applicaion}
           </h1>
         </div>
         <div
@@ -96,18 +96,18 @@ const Page1: React.FC<ApplicationProps> = ({ applicationData }) => {
         >
           <div className="lg:mb-[2rem] mb-[1rem]">
             <h2 className="lg:text-[2.8rem] text-[1.4rem] font-medium text-[#483d73]">
-              {Header.title.split(" ").slice(0, -3).join(" ")}{" "}
+              {Header?.title?.split(" ").slice(0, -3).join(" ")}{" "}
               <span
                 ref={gradientRef}
                 className="bg-gradient-to-r from-transparent to-[#a397d3] text-[#483d73] px-1 rounded-[0.5rem] bg-[length:0%_100%] bg-left bg-no-repeat"
               >
-                {Header.title.split(" ").slice(-3).join(" ")}
+                {Header?.title?.split(" ").slice(-3).join(" ")}
               </span>
             </h2>
           </div>
           <div className="w-[88%]">
             <p className="text-center lg:text-[1rem] text-sm">
-              {Header.paragraph}
+              {Header?.paragraph}
             </p>
           </div>
           <div

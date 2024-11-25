@@ -24,8 +24,8 @@ const SearchBox: React.FC<SearchBoxProps> = ({
 
   const handleCategoryChange = (category: string) => {
     setSelectedCategories((prevSelected) =>
-      prevSelected.includes(category)
-        ? prevSelected.filter((c) => c !== category)
+      prevSelected?.includes(category)
+        ? prevSelected?.filter((c) => c !== category)
         : [...prevSelected, category]
     );
   };
@@ -113,21 +113,21 @@ const SearchBox: React.FC<SearchBoxProps> = ({
         <div className="border relative top-4 border-gray-300"></div>
 
         <div className="mt-6">
-          {categories.map((category, index) => (
+          {categories?.map((category, index) => (
             <div key={index} className="flex justify-between items-center">
               <label
                 className="font-poppins text-[#575555] my-[0.2rem]"
-                htmlFor={category.name}
+                htmlFor={category?.name}
               >
-                {category.name}
+                {category?.name}
               </label>
               <input
                 type="checkbox"
-                id={category.name}
-                name={category.name}
-                value={category.name}
-                checked={selectedCategories.includes(category.name)}
-                onChange={() => handleCategoryChange(category.name)}
+                id={category?.name}
+                name={category?.name}
+                value={category?.name}
+                checked={selectedCategories?.includes(category?.name)}
+                onChange={() => handleCategoryChange(category?.name)}
               />
             </div>
           ))}

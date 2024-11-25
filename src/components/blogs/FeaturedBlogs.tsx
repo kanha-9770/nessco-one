@@ -8,13 +8,13 @@ interface BlogsProps {
 }
 
 const Page3: React.FC<BlogsProps> = ({ blogsData }) => {
-  const FeaturedBlogs = blogsData.blogs[0]?.FeaturedBlogs;
+  const FeaturedBlogs = blogsData?.blogs[0]?.FeaturedBlogs;
   return (
     <>
       <div className="lg:mr-[3vw] lg:ml-0 mr-[4vw] ml-[4vw] font-regular font-poppins">
         <div className="bg-white w-full h-max lg:mt-[5.2rem] mt-[2rem] rounded-[1rem] overflow-hidden">
           <div className="pt-[1.4rem] mx-[1rem] text-[1.5rem] font-poppins text-[#3a2a79] flex">
-            <h1>{FeaturedBlogs.featuredBlogs}</h1>
+            <h1>{FeaturedBlogs?.featuredBlogs}</h1>
             <p className="mt-[0.1rem]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +32,7 @@ const Page3: React.FC<BlogsProps> = ({ blogsData }) => {
               </svg>
             </p>
           </div>
-          {FeaturedBlogs.featured.map((item, idx) => (
+          {FeaturedBlogs?.featured?.map((item, idx) => (
             <div
               key={idx}
               className="flex mx-[1rem] my-[1.5rem] border-solid border-b-2 border-[#E6E7E6] pb-[0.1rem]"
@@ -51,12 +51,12 @@ const Page3: React.FC<BlogsProps> = ({ blogsData }) => {
                   </svg>
                 </div>
                 <p className="text-black text-[1rem] w-full pr-[1rem] font-poppins">
-                  {item.description}
+                  {item?.description}
                 </p>
               </div>
               <div className="flex flex-col">
                 <Image
-                  src={item.img}
+                  src={item?.img}
                   alt={"Blogs Image"}
                   width={400}
                   height={400}
@@ -141,7 +141,7 @@ const Page3: React.FC<BlogsProps> = ({ blogsData }) => {
         </div>
         <div className="bg-white w-full h-max mt-[1rem] rounded-[1rem] hidden lg:block overflow-hidden">
           <div className="pt-[1.4rem] mx-[1rem] text-[1.5rem] font-poppins text-[#3a2a79] flex">
-            <h1>{FeaturedBlogs.featuredBlogs}</h1>
+            <h1>{FeaturedBlogs?.featuredBlogs}</h1>
             <p className="mt-[0.1rem]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -160,7 +160,7 @@ const Page3: React.FC<BlogsProps> = ({ blogsData }) => {
             </p>
           </div>
 
-          {FeaturedBlogs.featured.map((item, idx) => (
+          {FeaturedBlogs?.featured?.map((item, idx) => (
             <div
               key={idx}
               className="flex mx-[1rem] my-[1.5rem] border-solid border-b-2 border-[#E6E7E6] pb-[0.1rem]"
@@ -179,12 +179,12 @@ const Page3: React.FC<BlogsProps> = ({ blogsData }) => {
                   </svg>
                 </div>
                 <p className="text-black text-[1rem] w-full pr-[1rem] font-poppins">
-                  {item.description}
+                  {item?.description}
                 </p>
               </div>
               <div className="flex flex-col">
                 <Image
-                  src={item.img}
+                  src={item?.img}
                   alt={"Blogs Image"}
                   width={400}
                   height={400}

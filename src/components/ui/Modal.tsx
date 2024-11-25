@@ -118,13 +118,13 @@ const Modal: React.FC<ModalProps> = ({
               {description}
             </p>
             <ul className="list-none grid grid-cols-2 gap-4 text-gray-700">
-              {items.map((item, index) => (
+              {items?.map((item, index) => (
                 <li
                   key={index}
                   className="flex text-base font-regular items-center space-x-2"
                 >
-                  {item.icon}
-                  <span>{item.text}</span>
+                  {item?.icon}
+                  <span>{item?.text}</span>
                 </li>
               ))}
             </ul>

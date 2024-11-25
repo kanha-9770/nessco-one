@@ -35,7 +35,7 @@ const CategoryHeading: React.FC<{
 
   return (
     <h1>
-      {categories.map((category, index) => (
+      {categories?.map((category, index) => (
         <React.Fragment key={category}>
           {index > 0 && <span className="text-gray-400 mx-2">&gt;</span>}
           {category}
@@ -61,22 +61,22 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
     if (selectedCategories.length === 1) {
       switch (selectedCategories[0]) {
         case "Salad Bowls":
-          return AllBlogs.saladBowls.headSaladBowls;
+          return AllBlogs?.saladBowls?.headSaladBowls;
         case "Popcorn Tub":
-          return AllBlogs.popcornTub.headPopcornTub;
+          return AllBlogs?.popcornTub?.headPopcornTub;
         case "Ice Cream Cup":
-          return AllBlogs.iceCreamCup.headIceCreamCup;
+          return AllBlogs?.iceCreamCup?.headIceCreamCup;
         case "Sustainability":
-          return AllBlogs.sustainability.headSustainability;
+          return AllBlogs?.sustainability?.headSustainability;
         case "Fries Bowls":
-          return AllBlogs.friesBowls.headFriesBowls;
+          return AllBlogs?.friesBowls?.headFriesBowls;
         case "Bowls":
-          return AllBlogs.bowls.headBowls;
+          return AllBlogs?.bowls?.headBowls;
         default:
-          return AllBlogs.blogs.headBlogs;
+          return AllBlogs?.blogs?.headBlogs;
       }
     }
-    return AllBlogs.blogs.headBlogs; // Default if multiple categories or none are selected
+    return AllBlogs?.blogs?.headBlogs; // Default if multiple categories or none are selected
   };
 
   // Filter data based on selectedCategories
@@ -84,10 +84,10 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
     let filteredData: BlogType[] = [];
 
     if (
-      selectedCategories.length === 0 ||
-      selectedCategories.includes("All Categories")
+      selectedCategories?.length === 0 ||
+      selectedCategories?.includes("All Categories")
     ) {
-      return AllBlogs.blogs.subBlogs;
+      return AllBlogs?.blogs?.subBlogs;
     }
 
     selectedCategories.forEach((category) => {
@@ -95,38 +95,38 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
         case "Salad Bowls":
           filteredData = [
             ...filteredData,
-            ...AllBlogs.saladBowls.subSaladBowls,
+            ...AllBlogs?.saladBowls?.subSaladBowls,
           ];
           break;
         case "Popcorn Tub":
           filteredData = [
             ...filteredData,
-            ...AllBlogs.popcornTub.subPopcornTub,
+            ...AllBlogs?.popcornTub?.subPopcornTub,
           ];
           break;
         case "Ice Cream Cup":
           filteredData = [
             ...filteredData,
-            ...AllBlogs.iceCreamCup.subIceCreamCup,
+            ...AllBlogs?.iceCreamCup?.subIceCreamCup,
           ];
           break;
         case "Sustainability":
           filteredData = [
             ...filteredData,
-            ...AllBlogs.sustainability.subSustainability,
+            ...AllBlogs?.sustainability?.subSustainability,
           ];
           break;
         case "Fries Bowls":
           filteredData = [
             ...filteredData,
-            ...AllBlogs.friesBowls.subFriesBowls,
+            ...AllBlogs?.friesBowls?.subFriesBowls,
           ];
           break;
         case "Bowls":
-          filteredData = [...filteredData, ...AllBlogs.bowls.subBowls];
+          filteredData = [...filteredData, ...AllBlogs?.bowls?.subBowls];
           break;
         default:
-          filteredData = [...filteredData, ...AllBlogs.blogs.subBlogs];
+          filteredData = [...filteredData, ...AllBlogs?.blogs?.subBlogs];
           break;
       }
     });
@@ -146,7 +146,7 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
             onClick={togglePage1Visibility}
           >
             <p className="font-poppins text-[1.3rem] absolute left-2">
-              {Filter.filter}
+              {Filter?.filter}
             </p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -177,11 +177,11 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
                       onClick={() => setPage1Visible(false)}
                       className="text-[#838282]"
                     >
-                      {AllBlogs.cancel}
+                      {AllBlogs?.cancel}
                     </button>
                   </div>
                   <div className="flex justify-center items-center w-[50%] mb-[0.5rem] font-poppins font-medium">
-                    <button className="text-[#dc0e2a]">{AllBlogs.apply}</button>
+                    <button className="text-[#dc0e2a]">{AllBlogs?.apply}</button>
                   </div>
                 </div>
                 <Page1
@@ -219,10 +219,10 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
             <div className="mx-[1rem] relative flex lg:flex-row flex-col border-solid border-b-2 border-[#E6E7E6] mb-[0.8rem]">
               <div className="lg:w-[40%] w-full relative flex items-center justify-center">
                 <video className="w-full h-[13rem] lg:mb-0 mb-[0.5rem] rounded-[0.5rem] object-cover lg:top-0 lg:absolute">
-                  <source src={headingData.machineBg} type="video/mp4" />
+                  <source src={headingData?.machineBg} type="video/mp4" />
                 </video>
                 <Image
-                  src={headingData.machineImg}
+                  src={headingData?.machineImg}
                   alt={"MachineImg"}
                   width={200}
                   height={200}
@@ -233,10 +233,10 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
               <div className="font-poppins text-[0.9rem] lg:w-[60%]">
                 <div className="flex flex-col items-start">
                   <p className="text-black text-[1.1rem] ml-[1rem] mr-[1rem] font-poppins font-bold">
-                    {headingData.imgTitle}
+                    {headingData?.imgTitle}
                   </p>
                   <p className="mb-[0.5rem] ml-[1rem] mr-[1.5rem]">
-                    {headingData.imgParagraph}
+                    {headingData?.imgParagraph}
                   </p>
                   <button className="text-lg absolute right-1 hover:bg-[#E6E7E6] rounded-full p-1">
                     <svg
@@ -251,12 +251,12 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
                     </svg>
                   </button>
                 </div>
-                {headingData.paragraphList?.map((item, index) => (
+                {headingData?.paragraphList?.map((item, index) => (
                   <ul
                     key={index}
                     className="list-disc ml-[3rem] mr-[1rem] hidden lg:block"
                   >
-                    <li className="text-black">{item.title}</li>
+                    <li className="text-black">{item?.title}</li>
                   </ul>
                 ))}
                 <div className="flex justify-end">
@@ -331,7 +331,7 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
                       />
                     </svg>
                     <p className="text-[0.7rem] ml-2">
-                      {headingData.fullCoverage}
+                      {headingData?.fullCoverage}
                     </p>
                   </button>
                 </div>
@@ -347,7 +347,7 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
                     className="flex w-full my-[1.5vh] border-solid border-b-2 border-[#E6E7E6] pb-[0.5rem]"
                   >
                     <Image
-                      src={item.img}
+                      src={item?.img}
                       alt="Blogs Image"
                       width={400}
                       height={400}
@@ -368,10 +368,10 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
                       </div>
                       <div className="flex flex-col lg:my-[0.5rem] ml-[1rem] lg:w-full w-[13.2rem]">
                         <h2 className="text-black lg:mb-[0.5rem] lg:font-bold font-semibold lg:text-[1.2rem] text-[1rem] font-poppins w-[94%]">
-                          {item.title}
+                          {item?.title}
                         </h2>
                         <p className="text-black lg:text-[0.9rem] text-[0.8rem] lg:mb-0 mb-[0.5rem] font-poppins">
-                          {item.description}
+                          {item?.description}
                         </p>
                       </div>
                       <div className="flex justify-end">
@@ -446,7 +446,7 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
                             />
                           </svg>
                           <p className="text-[0.7rem] ml-2">
-                            {item.fullCoverage}
+                            {item?.fullCoverage}
                           </p>
                         </button>
                       </div>

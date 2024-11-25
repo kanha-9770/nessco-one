@@ -103,7 +103,7 @@ export default function LocaleSwitcher({
         </div>
         <div className="flex ml-2 font-light flex-col space-y-0">
           <p className="font-poppins invert-0 hidden lg:flex text-16 m-0 p-0 leading-tight">
-            {languageCode.toUpperCase()}
+            {languageCode?.toUpperCase()}
           </p>
           <p className="flex lg:hidden font-poppins invert-0 text-xs m-0 p-0 leading-tight">
             {getFullLanguageName(languageCode)}
@@ -126,7 +126,7 @@ export default function LocaleSwitcher({
             />
           </div>
           <div className="max-h-60 grid grid-cols-2 overflow-y-auto scrollbar-custom">
-            {filteredLocales.slice(0, visibleCount).map((loc) => (
+            {filteredLocales?.slice(0, visibleCount).map((loc) => (
               <button
                 key={loc}
                 className="w-full text-left px-4 py-0 text-sm invert-0 flex items-center"
@@ -137,7 +137,7 @@ export default function LocaleSwitcher({
                 </p>
               </button>
             ))}
-            {visibleCount < filteredLocales.length && (
+            {visibleCount < filteredLocales?.length && (
               <p
                 className="text-[#dc0e2a] cursor-pointer pl-4 p-2"
                 onClick={handleShowMore}

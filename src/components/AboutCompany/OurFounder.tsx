@@ -32,7 +32,7 @@ const FounderCard: React.FC<{
     {/* Content */}
     <div className="relative justify-center lg:h-[30%] lg:w-full w-[50%] h-full lg:p-4 items-center flex flex-col flex-none lg:items-start pl-3">
       <h3
-        className={`${styles.nameTitle} md:text-xl lg:text-sm font-poppins font-regular text-center lg:text-left`}
+        className={`${styles?.nameTitle} md:text-xl lg:text-sm font-poppins font-regular text-center lg:text-left`}
       >
         {name}
         <a
@@ -59,7 +59,7 @@ const FounderCard: React.FC<{
 
       {/* Hidden box for description */}
       <div
-        className={`${styles.descriptionContainer} lg:visible invisible p-4`}
+        className={`${styles?.descriptionContainer} lg:visible invisible p-4`}
       >
         <h3 className="font-bold font-montserrat text-lg mt-1">{name}</h3>
         <p className="font-montserrat">{title}</p>

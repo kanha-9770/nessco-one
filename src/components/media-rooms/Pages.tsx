@@ -54,23 +54,23 @@ const Filter: React.FC<FilterProps> = ({
 }) => {
   const Header = mediaRoomData?.MediaRoom[0]?.Header;
   const handleCategoryChange = (category: string) => {
-    const updatedCategories = selectedCategories.includes(category)
-      ? selectedCategories.filter((c) => c !== category)
+    const updatedCategories = selectedCategories?.includes(category)
+      ? selectedCategories?.filter((c) => c !== category)
       : [...selectedCategories, category];
     onCategoryChange(updatedCategories);
   };
 
-  const filteredCategories = Header.categories.filter((category) =>
-    category.title.toLowerCase().includes(categorySearch.toLowerCase())
+  const filteredCategories = Header?.categories?.filter((category) =>
+    category?.title?.toLowerCase().includes(categorySearch?.toLowerCase())
   );
 
   return (
     <div className="font-regular font-poppins">
       <div className="w-full h-[57rem] pr-8 border-r-2">
         <p className="mb-2 font-poppins invisible lg:visible">
-          {Header.filter}
+          {Header?.filter}
         </p>
-        <p className="mb-2 font-poppins">{Header.byCategory}</p>
+        <p className="mb-2 font-poppins">{Header?.byCategory}</p>
 
         <div className="flex rounded-[1rem] bg-white overflow-hidden mb-4">
           <input
@@ -104,20 +104,20 @@ const Filter: React.FC<FilterProps> = ({
         </div>
 
         <div className="mt-3 lg:h-full h-[14rem] lg:overflow-auto overflow-y-scroll scrollbar-custom scrollbar">
-          {filteredCategories.map((item, index) => (
+          {filteredCategories?.map((item, index) => (
             <div key={index} className="flex justify-between items-center">
-              <label className="font-poppins my-[0.2rem]" htmlFor={item.title}>
-                {item.title}
+              <label className="font-poppins my-[0.2rem]" htmlFor={item?.title}>
+                {item?.title}
               </label>
               <input
                 aria-label="Checkbox"
                 type="checkbox"
-                id={item.title}
-                name={item.title}
-                value={item.title}
+                id={item?.title}
+                name={item?.title}
+                value={item?.title}
                 className="mr-1"
-                checked={selectedCategories.includes(item.title)}
-                onChange={() => handleCategoryChange(item.title)}
+                checked={selectedCategories?.includes(item?.title)}
+                onChange={() => handleCategoryChange(item?.title)}
               />
             </div>
           ))}
@@ -161,17 +161,17 @@ const Header: React.FC<HeaderProps> = ({
 
   useEffect(() => {
     const date = new Date();
-    const dayName = date.toLocaleDateString("en-US", { weekday: "long" });
-    const day = String(date.getDate()).padStart(2, "0");
-    const month = date.toLocaleString("en-US", { month: "short" });
-    const year = date.getFullYear();
+    const dayName = date?.toLocaleDateString("en-US", { weekday: "long" });
+    const day = String(date?.getDate()).padStart(2, "0");
+    const month = date?.toLocaleString("en-US", { month: "short" });
+    const year = date?.getFullYear();
     const formattedDate = `${day}/${month}/${year}`;
     setCurrentDate(`${dayName} ${formattedDate}`);
   }, []);
 
   return (
     <div className="bg-white h-[9rem] mt-14 w-full mb-12 font-regular font-poppins lg:px-[2rem] px-[1.5rem]">
-      <h1 className="text-4xl font-medium py-[1rem]">{Header.title}</h1>
+      <h1 className="text-4xl font-medium py-[1rem]">{Header?.title}</h1>
       <div className="flex items-center justify-center mt-[1rem]">
         <h2 className="w-[6rem] text-center lg:text-sm text-xs lg:mr-[2rem] mr-[1rem] font-normal">
           {currentDate}
@@ -187,17 +187,17 @@ const Header: React.FC<HeaderProps> = ({
         </div>
 
         <div className="flex lg:space-x-8 space-x-4 lg:mr-[2rem] mr-[1rem] w-[62%] overflow-x-scroll scrollbar-hide">
-          {Header.filters.map((item, index) => (
+          {Header?.filters?.map((item, index) => (
             <div key={index} className="">
               <button
                 className={`lg:text-lg text-sm font-normal ${
-                  selectedFilter === item.title
+                  selectedFilter === item?.title
                     ? "text-[#483d73] font-semibold"
                     : ""
                 }`}
-                onClick={() => onFilterChange(item.title)}
+                onClick={() => onFilterChange(item?.title)}
               >
-                {item.title}
+                {item?.title}
               </button>
             </div>
           ))}
@@ -220,9 +220,9 @@ const Header: React.FC<HeaderProps> = ({
       {isDropdownOpen && (
         <div className="absolute lg:right-[3rem] right-[1rem] mt-2 bg-white shadow-xl rounded-md z-50 w-[8rem] h-[15rem] overflow-y-scroll scrollbar">
           <ul className="p-2">
-            {Header.filters.map((item, index) => (
+            {Header?.filters?.map((item, index) => (
               <li key={index} className="py-2 px-4 hover:bg-gray-100">
-                {item.title}
+                {item?.title}
               </li>
             ))}
           </ul>
@@ -238,34 +238,34 @@ const Header: React.FC<HeaderProps> = ({
                   aria-label="Cancel"
                   className="text-[#838282]"
                 >
-                  {Header.cancel}
+                  {Header?.cancel}
                 </button>
               </div>
               <div className="flex justify-center items-center w-[50%] mb-[0.5rem] font-poppins font-medium">
                 <button aria-label="Apply" className="text-red-700">
-                  {Header.apply}
+                  {Header?.apply}
                 </button>
               </div>
             </div>
 
             <div className="h-[22rem] mt-4 p-[1rem] bg-[#f5f5f5] rounded-lg">
               <div className="h-[14rem] overflow-y-scroll scrollbar-hide">
-                {Header.categories.map((item, index) => (
+                {Header?.categories?.map((item, index) => (
                   <div
                     key={index}
                     className="flex justify-between items-center"
                   >
                     <label
                       className="font-poppins my-[0.2rem]"
-                      htmlFor={item.title}
+                      htmlFor={item?.title}
                     >
-                      {item.title}
+                      {item?.title}
                     </label>
                     <input
                       type="checkbox"
-                      id={item.title}
-                      name={item.title}
-                      value={item.title}
+                      id={item?.title}
+                      name={item?.title}
+                      value={item?.title}
                     />
                   </div>
                 ))}
@@ -337,30 +337,30 @@ const TrendingNews: React.FC<NewsProps> = ({
     }
   };
 
-  const filteredNews = TrendingNews.sections.filter((item) => {
-    const matchesSearch = item.title
+  const filteredNews = TrendingNews?.sections?.filter((item) => {
+    const matchesSearch = item?.title
       .toLowerCase()
-      .includes(searchQuery.toLowerCase());
+      .includes(searchQuery?.toLowerCase());
     const matchesCategory =
-      selectedCategories.length === 0 ||
+      selectedCategories?.length === 0 ||
       item.filter
         .split(",")
-        .some((cat) => selectedCategories.includes(cat.trim()));
+        .some((cat) => selectedCategories?.includes(cat?.trim()));
     const matchesFilter =
-      selectedFilter === "All" || item.filter.includes(selectedFilter);
+      selectedFilter === "All" || item?.filter?.includes(selectedFilter);
     return matchesSearch && matchesCategory && matchesFilter;
   });
 
   return (
     <>
       <div className="bg-white h-full w-full rounded-2xl font-poppins px-[1.5rem] pb-2">
-        <h2 className="text-[#483d73] text-2xl py-4">{TrendingNews.title}</h2>
+        <h2 className="text-[#483d73] text-2xl py-4">{TrendingNews?.title}</h2>
 
         <div
           ref={carouselRef}
           className="flex overflow-x-scroll space-x-4 scrollbar pb-2"
         >
-          {filteredNews.map((item, index) => (
+          {filteredNews?.map((item, index) => (
             <div
               key={index}
               className="flex items-center space-x-4 border-r-2 pr-1"
@@ -370,7 +370,7 @@ const TrendingNews: React.FC<NewsProps> = ({
                   className="rounded-xl"
                   width={400}
                   height={400}
-                  src={item.img}
+                  src={item?.img}
                   alt={""}
                 />
               </div>
@@ -388,15 +388,15 @@ const TrendingNews: React.FC<NewsProps> = ({
                   </svg>
                 </div>
                 <p className="border border-black rounded-md text-center w-max px-2 lg:text-md text-sm">
-                  {item.header}
+                  {item?.header}
                 </p>
-                <h3 className="font-medium lg:text-lg text-md">{item.title}</h3>
+                <h3 className="font-medium lg:text-lg text-md">{item?.title}</h3>
                 <button
                   aria-label="Open"
                   onClick={() => openModal(item)}
                   className="flex items-center text-[#483d73] text-sm group bg-[#E6E7E6] hover:bg-black hover:text-white rounded-full pl-2 pr-1"
                 >
-                  {item.continueReading}
+                  {item?.continueReading}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -457,17 +457,17 @@ const TrendingNews: React.FC<NewsProps> = ({
             className="lg:w-[50%] rounded-3xl lg:mt-0 mt-6"
             width={400}
             height={400}
-            src={modalContent.img}
-            alt={modalContent.title}
+            src={modalContent?.img}
+            alt={modalContent?.title}
           />
           <div className="lg:w-[50%] w-full">
             <h2 className="text-xl lg:text-left text-center lg:mt-0 mt-[0.5rem] mb-[0.5rem] text-[#483d73] font-medium font-poppins">
-              {modalContent.title}
+              {modalContent?.title}
             </h2>
             <div className="overflow-hidden lg:h-[12rem] lg:pr-4 w-full h-[11rem]">
               <div className="overflow-auto h-full scrollbar-custom scrollbar">
                 <p className="font-poppins lg:text-left text-center text-sm">
-                  {modalContent.dialogDescription}
+                  {modalContent?.dialogDescription}
                 </p>
               </div>
             </div>
@@ -504,35 +504,35 @@ const LatestNews: React.FC<NewsProps> = ({
 
   const filteredNews = [
     {
-      img: LatestNews.img,
-      filter: LatestNews.mainTitle,
-      title: LatestNews.title,
-      header: LatestNews.sections[0].header,
-      continueReading: LatestNews.continueReading,
-      dialogDescription: LatestNews.dialogDescription,
+      img: LatestNews?.img,
+      filter: LatestNews?.mainTitle,
+      title: LatestNews?.title,
+      header: LatestNews.sections[0]?.header,
+      continueReading: LatestNews?.continueReading,
+      dialogDescription: LatestNews?.dialogDescription,
     },
-    ...LatestNews.sections,
+    ...LatestNews?.sections,
   ].filter((item) => {
-    const matchesSearch = item.title
+    const matchesSearch = item?.title
       .toLowerCase()
-      .includes(searchQuery.toLowerCase());
+      .includes(searchQuery?.toLowerCase());
     const matchesCategory =
-      selectedCategories.length === 0 ||
-      item.filter
+      selectedCategories?.length === 0 ||
+      item?.filter
         .split(",")
-        .some((cat) => selectedCategories.includes(cat.trim()));
+        .some((cat) => selectedCategories?.includes(cat?.trim()));
     const matchesFilter =
-      selectedFilter === "All" || item.filter.includes(selectedFilter);
+      selectedFilter === "All" || item?.filter?.includes(selectedFilter);
     return matchesSearch && matchesCategory && matchesFilter;
   });
 
   return (
     <>
       <div className="bg-white h-full lg:w-[70%] lg:mb-0 mb-6 rounded-2xl font-poppins px-[1.5rem]">
-        <h2 className="text-[#483d73] text-2xl my-4">{LatestNews.mainTitle}</h2>
+        <h2 className="text-[#483d73] text-2xl my-4">{LatestNews?.mainTitle}</h2>
         <div className="h-[37rem] overflow-hidden mb-4">
           <div className="overflow-y-auto scrollbar h-full space-y-4 pr-1">
-            {filteredNews.map((item, index) => (
+            {filteredNews?.map((item, index) => (
               <div
                 key={index}
                 className={`flex ${
@@ -552,7 +552,7 @@ const LatestNews: React.FC<NewsProps> = ({
                     className="rounded-xl"
                     width={400}
                     height={400}
-                    src={item.img}
+                    src={item?.img}
                     alt={""}
                   />
                 </div>
@@ -585,7 +585,7 @@ const LatestNews: React.FC<NewsProps> = ({
                         : "font-medium text-lg"
                     }
                   >
-                    {item.title}
+                    {item?.title}
                   </h3>
                   {index === 0 && (
                     <p className="text-sm">{LatestNews.description}</p>
@@ -595,7 +595,7 @@ const LatestNews: React.FC<NewsProps> = ({
                     onClick={() => openModal(item)}
                     className="flex items-center text-[#483d73] text-sm group bg-[#E6E7E6] hover:bg-black hover:text-white rounded-full pl-2 pr-1"
                   >
-                    {item.continueReading}
+                    {item?.continueReading}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -621,17 +621,17 @@ const LatestNews: React.FC<NewsProps> = ({
             className="lg:w-[50%] rounded-3xl lg:mt-0 mt-6"
             width={400}
             height={400}
-            src={modalContent.img}
-            alt={modalContent.title}
+            src={modalContent?.img}
+            alt={modalContent?.title}
           />
           <div className="lg:w-[50%] w-full">
             <h2 className="text-xl lg:text-left text-center lg:mt-0 mt-[0.5rem] mb-[0.5rem] text-[#483d73] font-medium font-poppins">
-              {modalContent.title}
+              {modalContent?.title}
             </h2>
             <div className="overflow-hidden lg:h-[12rem] lg:pr-4 w-full h-[11rem]">
               <div className="overflow-auto h-full scrollbar-custom scrollbar">
                 <p className="font-poppins lg:text-left text-center text-sm">
-                  {modalContent.dialogDescription}
+                  {modalContent?.dialogDescription}
                 </p>
               </div>
             </div>
@@ -666,29 +666,29 @@ const MostRead: React.FC<NewsProps> = ({
 
   const closeModal = () => setModalOpen(false);
 
-  const filteredNews = MostRead.sections.filter((item) => {
-    const matchesSearch = item.title
+  const filteredNews = MostRead?.sections?.filter((item) => {
+    const matchesSearch = item?.title
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
     const matchesCategory =
-      selectedCategories.length === 0 ||
-      item.filter
+      selectedCategories?.length === 0 ||
+      item?.filter
         .split(",")
-        .some((cat) => selectedCategories.includes(cat.trim()));
+        .some((cat) => selectedCategories?.includes(cat?.trim()));
     const matchesFilter =
-      selectedFilter === "All" || item.filter.includes(selectedFilter);
+      selectedFilter === "All" || item?.filter?.includes(selectedFilter);
     return matchesSearch && matchesCategory && matchesFilter;
   });
 
   return (
     <>
       <div className="bg-white h-full lg:w-[30%] rounded-2xl font-poppins px-[1rem]">
-        <h2 className="text-[#483d73] text-2xl my-4">{MostRead.title}</h2>
+        <h2 className="text-[#483d73] text-2xl my-4">{MostRead?.title}</h2>
         <div className="h-[37rem] overflow-hidden mb-4">
           <div className="overflow-y-auto h-full scrollbar space-y-5 pr-1">
-            {filteredNews.map((item) => (
+            {filteredNews?.map((item) => (
               <div
-                key={item.title}
+                key={item?.title}
                 className="flex items-center border-b-2 pb-[1.1rem] space-x-1"
               >
                 <div className="w-[65%] relative">
@@ -705,15 +705,15 @@ const MostRead: React.FC<NewsProps> = ({
                     </svg>
                   </div>
                   <p className="border border-black rounded-md text-center text-sm w-max px-2">
-                    {item.header}
+                    {item?.header}
                   </p>
-                  <h3 className="font-medium">{item.title}</h3>
+                  <h3 className="font-medium">{item?.title}</h3>
                   <button
                     aria-label="Open"
                     onClick={() => openModal(item)}
                     className="flex items-center text-[#483d73] text-sm group bg-[#E6E7E6] hover:bg-black hover:text-white rounded-full pl-2 pr-1"
                   >
-                    {item.continueReading}
+                    {item?.continueReading}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -733,7 +733,7 @@ const MostRead: React.FC<NewsProps> = ({
                     className="rounded-xl"
                     width={400}
                     height={400}
-                    src={item.img}
+                    src={item?.img}
                     alt={""}
                   />
                 </div>
@@ -748,17 +748,17 @@ const MostRead: React.FC<NewsProps> = ({
             className="lg:w-[50%] rounded-3xl lg:mt-0 mt-6"
             width={400}
             height={400}
-            src={modalContent.img}
-            alt={modalContent.title}
+            src={modalContent?.img}
+            alt={modalContent?.title}
           />
           <div className="lg:w-[50%] w-full">
             <h2 className="text-xl lg:text-left text-center lg:mt-0 mt-[0.5rem] mb-[0.5rem] text-[#483d73] font-medium font-poppins">
-              {modalContent.title}
+              {modalContent?.title}
             </h2>
             <div className="overflow-hidden lg:h-[12rem] lg:pr-4 w-full h-[11rem]">
               <div className="overflow-auto h-full scrollbar-custom scrollbar">
                 <p className="font-poppins lg:text-left text-center text-sm">
-                  {modalContent.dialogDescription}
+                  {modalContent?.dialogDescription}
                 </p>
               </div>
             </div>

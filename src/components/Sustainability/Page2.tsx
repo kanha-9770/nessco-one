@@ -10,7 +10,7 @@ interface MainLayoutProps{
 }
 
 const getCategoryData = (sustainData: SustainabilityData, category: string) => {
-  const categoryItem = sustainData?.Sustainability.find((item) => item.category === category);
+  const categoryItem = sustainData?.Sustainability?.find((item) => item?.category === category);
   return categoryItem?.Data as SecondPageData | null;
 };
 
@@ -185,10 +185,10 @@ const Page2:React.FC<MainLayoutProps> = ({sustainData}) => {
   {/* Heading overlay */}
   <div className="absolute top-16 left-0 w-full h-full md:w-[40rem]  flex flex-col items-center justify-center text-center lg:text-left z-10 lg:invisible visible">
     <h1 className="lg:text-[3.2rem] text-4xl font-poppins font-medium text-white ">
-      {data.title1}
+      {data?.title1}
     </h1>
     <h1 className="lg:text-[3.2rem] text-2xl font-poppins text-white font-medium ">
-    {data.title2}
+    {data?.title2}
     </h1>
   </div>
 
@@ -232,7 +232,7 @@ const Page2:React.FC<MainLayoutProps> = ({sustainData}) => {
         </div>
             <div className=" w-full h-[20rem] bg-[#0D340F] lg:rounded-[40px] rounded-2xl mt-5 relative ">
               <p className="text-center text-white lg:text-[1.07rem] text-sm p-8 font-[200] md:text-xl">
-                {data.description}
+                {data?.description}
               </p>
             <Image
                 src="https://res.cloudinary.com/dlti4o10e/image/upload/v1728990173/samples/landscapes/beach-boat.jpg"

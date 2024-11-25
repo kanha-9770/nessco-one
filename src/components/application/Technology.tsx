@@ -71,10 +71,10 @@ const Page3: React.FC<Page3Props> = ({ applicationData, selectedProduct }) => {
       <div className="lg:px-[1rem] lg:mb-[3rem] mb-[2rem]">
         <h2 className="lg:text-[2.2rem] text-[1.5rem] font-semibold">
           <span className="text-[#483d73]">
-            {Technology.craftsmanshipTechnology.trim().replace(/\s+\S+$/, "")}
+            {Technology?.craftsmanshipTechnology?.trim().replace(/\s+\S+$/, "")}
           </span>{" "}
           <span className="text-red-700">
-            {Technology.craftsmanshipTechnology.trim().match(/\S+$/)}
+            {Technology?.craftsmanshipTechnology?.trim().match(/\S+$/)}
           </span>
         </h2>
         <div
@@ -82,24 +82,24 @@ const Page3: React.FC<Page3Props> = ({ applicationData, selectedProduct }) => {
           ref={borderRef}
         ></div>
         <div className="lg:w-[45rem] lg:mt-[2rem] mt-[1rem]">
-          <p className="lg:text-[1rem] text-sm">{Technology.paragraph}</p>
+          <p className="lg:text-[1rem] text-sm">{Technology?.paragraph}</p>
         </div>
       </div>
 
       <div className="lg:space-y-3 space-y-4">
-        {productItems.length > 0 ? (
-          productItems.map((item, idx) => (
+        {productItems?.length > 0 ? (
+          productItems?.map((item, idx) => (
             <div
               key={idx}
               className="w-full lg:h-[10rem] h-full lg:space-x-3 flex lg:flex-row flex-col-reverse"
             >
               <div className="lg:w-[80%] w-full h-full bg-white lg:rounded-[0.5rem] rounded-b-[0.5rem] p-[0.5rem] lg:p-[1rem]">
                 <h2 className="text-[#483d73] font-medium lg:text-[1.6rem] text-[1rem]">
-                  {item.title}
+                  {item?.title}
                 </h2>
                 <div className="h-max w-full lg:pl-[2rem] lg:mt-[0.5rem] mt-[0.2rem]">
                   <p className="lg:text-[1rem] text-sm w-[98%]">
-                    {item.description}
+                    {item?.description}
                   </p>
                 </div>
               </div>
@@ -108,8 +108,8 @@ const Page3: React.FC<Page3Props> = ({ applicationData, selectedProduct }) => {
                   className="lg:h-[10rem] h-full w-full object-cover"
                   width={300}
                   height={300}
-                  src={item.craftsmanshipImg}
-                  alt={item.title}
+                  src={item?.craftsmanshipImg}
+                  alt={item?.title}
                 />
               </div>
             </div>

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import { HomeData } from "./types/constant";
 
@@ -32,22 +32,18 @@ const HomeMachine: React.FC<HomeMachineLayoutProps> = ({ heroData }) => {
 
   const categories = heroData?.home[2]?.data.stepperFilter || [];
   const productData = heroData?.home[2]?.data?.products || [];
-  
+
   const filteredCardsData = useMemo(() => {
     const activeCategory = categories[activeStep] || "";
     if (activeCategory === "All paper Products") {
       return productData;
     } else {
-      return productData.filter((card: CardItem) =>
-        card.category.split(",").includes(activeCategory?.name)
+      return productData?.filter((card: CardItem) =>
+        card?.category?.split(",").includes(activeCategory?.name)
       );
     }
   }, [activeStep, categories, productData]);
-  useEffect(() => {
-    console.log("filteredcard my data", filteredCardsData);
-    console.log("my active step",categories[activeStep]?.name);
-    
-  }, [activeStep]);
+
   return (
     <div className="h-full w-full max-w-screen-2xl mx-auto">
       {/* Stepper to switch between categories */}

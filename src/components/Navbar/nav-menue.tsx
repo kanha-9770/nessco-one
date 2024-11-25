@@ -17,8 +17,8 @@ export const Menu = ({ children }: { children: React.ReactNode }) => {
       }}
       className="mx-auto px-4 flex w-fit rounded-full border-1"
     >
-      {React.Children.map(children, (child) =>
-        React.cloneElement(child as React.ReactElement, {
+      {React?.Children?.map(children, (child) =>
+        React?.cloneElement(child as React.ReactElement, {
           setActive,
           active,
           setPosition,
@@ -76,8 +76,7 @@ const MenuItem = ({
     };
   }, [ref, setActive, setPosition, item]);
   const pathname = usePathname() || "";
-  const componentCode = pathname.split("/")[4]?.toLowerCase();
-  const componentCodeourCompany = pathname.split("/")[4]?.toLowerCase();
+  
   const pathSegments = pathname?.split("/") || [];
   // Assuming URL structure like /<countryCode>/<languageCode>
   const countryCode = pathSegments[1] || "in";
@@ -97,13 +96,7 @@ const MenuItem = ({
           <motion.div
             transition={{ duration: 0.3 }}
             layoutId="active"
-            className={`${
-              ["knowledge-center", "clientele", "vision"].includes(
-                componentCode
-              ) || ["our-company"].includes(componentCodeourCompany)
-                ? "bg-black text-white"
-                : "bg-white"
-            }  overflow-hidden `}
+            className={`bg-white text-black overflow-hidden `}
           >
             <motion.div
               layout
@@ -123,9 +116,7 @@ const Cursor = ({
 }: {
   position: { left: number; width: number; opacity: number };
 }) => {
-  const pathname = usePathname() || "";
-  const componentCodeourCompany = pathname.split("/")[3]?.toLowerCase();
-  const componentCode = pathname.split("/")[2]?.toLowerCase();
+ 
   return (
     <motion.div
       animate={{
@@ -138,13 +129,7 @@ const Cursor = ({
         stiffness: 1000,
         damping: 50,
       }}
-      className={`${
-        ["knowledge-center", "clientele", "ourcompany"].includes(
-          componentCode
-        ) || ["ourcompany"].includes(componentCodeourCompany)
-          ? "bg-[#525252]"
-          : "bg-[#eaeaea]"
-      } absolute z-0 h-6 rounded-full md:h-6`}
+      className={`bg-[#eaeaea] absolute z-0 h-6 rounded-full md:h-6`}
     />
   );
 };

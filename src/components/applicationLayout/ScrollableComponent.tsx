@@ -17,7 +17,7 @@ const Page2: React.FC<Page2Props> = ({ page2product }) => {
         <div className="lg:w-[50%] w-full h-full bg-white mr-[3rem] rounded-[1rem] flex items-center justify-center  py-[1.5rem] px-[2rem]">
           <div className="h-full lg:h-[16rem] relative w-full overflow-auto scroll-wrapper style-1 ">
             <p className="font-poppins lg:text-[1rem] text-justify text-[0.8rem] lg:ml-[1.5rem] ml-[1rem]">
-              {page2product.description}
+              {page2product?.description}
             </p>
           </div>
         </div>
@@ -27,7 +27,7 @@ const Page2: React.FC<Page2Props> = ({ page2product }) => {
           width={600}
           height={600}
           priority
-          src={page2product.image}
+          src={page2product?.image}
           alt="Product"
         />
       </div>

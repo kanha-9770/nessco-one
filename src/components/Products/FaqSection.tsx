@@ -34,10 +34,10 @@ const FaqProducts: React.FC<FaqProductsProps> = ({ faqData }) => {
       <div className="flex p-8">
         <h1 className="font-poppins lg:text-3xl text-2xl">
           <span className="text-[#483d73] font-medium">
-            {(faqData?.title && faqData.title.split(" ").slice(0, -1).join(" ")) ||"Frequently Asked Questions"}
+            {(faqData?.title && faqData?.title?.split(" ").slice(0, -1).join(" ")) ||"Frequently Asked Questions"}
           </span>{" "}
           <span className="text-red-700 font-semibold">
-            {(faqData?.title && faqData?.title.split(" ").slice(-1) ||"FAQs")}
+            {(faqData?.title && faqData?.title?.split(" ").slice(-1) ||"FAQs")}
           </span>
         </h1>
       </div>
@@ -61,7 +61,7 @@ const FaqProducts: React.FC<FaqProductsProps> = ({ faqData }) => {
                     onClick={() => toggleExpansion(idx)}
                   >
                     <h2 className="lg:text-[1.1rem] w-[70%] text-[0.9rem] font-medium font-poppins">
-                      {item.que}
+                      {item?.que}
                     </h2>
                     {expandedIndex === idx ? (
                       <svg
@@ -99,7 +99,7 @@ const FaqProducts: React.FC<FaqProductsProps> = ({ faqData }) => {
 
                   {expandedIndex === idx && (
                     <div className="ml-[2vw] text-[#9e9c9c] py-[1vh] lg:text-[1rem] text-[0.8rem] w-[90%]">
-                      <p>{item.ans}</p>
+                      <p>{item?.ans}</p>
                     </div>
                   )}
                 </div>

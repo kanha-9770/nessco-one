@@ -2,7 +2,6 @@ import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
-import { NextIntlClientProvider } from "next-intl";
 import NavLayout from "@/components/Navbar/NavLayout";
 import {
   CountryCode,
@@ -91,7 +90,6 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { country: CountryCode; locale: string };
 }) {
-
   // Fallback to English if locale is not supported
   if (!locales.includes(locale as any)) {
     locale = "en";
@@ -101,27 +99,18 @@ export default async function RootLayout({
   unstable_setRequestLocale(locale);
 
   // Fetch translations for the locale
-  let messages;
-  try {
-    messages = (await import(`../../messages/${locale}.json`)).default;
-  } catch (error) {
-    console.error(`Error loading messages for locale ${locale}:`, error);
-  }
+ 
 
   return (
     <html lang={`${locale}-${country.toUpperCase()}`}>
       <head>{generateHreflangLinks(country)}</head>
       <body className={`${inter.variable} ${poppins.variable}`}>
         {/* NextIntlClientProvider wraps the children with messages and locale */}
-        <NextIntlClientProvider locale={locale} messages={messages}>
           {/* Navbar with internationalization */}
           <NavLayout params={{ locale }} />
           {/* Page content */}
           {children}
-          <div>
-            <FooterLayout params={{ locale }} />
-          </div>
-        </NextIntlClientProvider>
+          <div><FooterLayout params={{ locale }} /></div>
         <Script
           src="https://cdn.pagesense.io/js/nesscoindia/ff3c25fdacd845338fcb5edd343fcde6.js"
           strategy="lazyOnload"

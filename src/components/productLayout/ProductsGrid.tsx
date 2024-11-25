@@ -32,7 +32,7 @@ interface MachineItem {
   h1: string;
   h2: string;
   h3: string;
-  link:string;
+  link: string;
   img: string;
   range: string;
   rangeTitle: string;
@@ -93,37 +93,37 @@ const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine }) => {
   };
 
   const truncateText = (text: string, wordLimit: number) => {
-    const words = text.split(" ");
-    return words.length > wordLimit
-      ? words.slice(0, wordLimit).join(" ") + "..."
+    const words = text?.split(" ");
+    return words?.length > wordLimit
+      ? words?.slice(0, wordLimit).join(" ") + "..."
       : text;
   };
 
   const wordLimit = isDesktop ? 80 : 20;
 
   const displayedParagraph = isExpanded
-    ? page2machine.paragraph
-    : truncateText(page2machine.paragraph, wordLimit);
+    ? page2machine?.paragraph
+    : truncateText(page2machine?.paragraph, wordLimit);
 
   const filteredData =
     selectedCategory === "all"
-      ? page2machine.all.flatMap((item) => [
-          ...(Array.isArray(item.servoDriven) ? item.servoDriven : []),
-          ...(Array.isArray(item.mechanicalCam) ? item.mechanicalCam : []),
+      ? page2machine?.all?.flatMap((item) => [
+          ...(Array?.isArray(item?.servoDriven) ? item?.servoDriven : []),
+          ...(Array?.isArray(item?.mechanicalCam) ? item?.mechanicalCam : []),
         ])
       : selectedCategory === "servoDriven"
-      ? page2machine.all.flatMap((item) =>
-          Array.isArray(item.servoDriven) ? item.servoDriven : []
+      ? page2machine?.all?.flatMap((item) =>
+          Array.isArray(item?.servoDriven) ? item?.servoDriven : []
         )
       : page2machine.all.flatMap((item) =>
-          Array.isArray(item.mechanicalCam) ? item.mechanicalCam : []
+          Array.isArray(item?.mechanicalCam) ? item?.mechanicalCam : []
         );
 
   const searchFilteredData = filteredData.filter((item) =>
-    Object.values(item).some(
+    Object?.values(item).some(
       (value) =>
         typeof value === "string" &&
-        value.toLowerCase().includes(searchTerm.toLowerCase())
+        value?.toLowerCase().includes(searchTerm.toLowerCase())
     )
   );
 
@@ -134,15 +134,15 @@ const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine }) => {
   ) => {
     setSelectedItems((prevSelected) => {
       const newSelected = new Set(prevSelected);
-      if (newSelected.has(itemId)) {
-        newSelected.delete(itemId);
+      if (newSelected?.has(itemId)) {
+        newSelected?.delete(itemId);
         setEnquiryItems((prevItems) =>
-          prevItems.filter((item) => item.id !== itemId)
+          prevItems?.filter((item) => item?.id !== itemId)
         );
       } else {
-        newSelected.add(itemId);
+        newSelected?.add(itemId);
         setEnquiryItems((prevItems) => {
-          const itemExists = prevItems.some((item) => item.id === itemId);
+          const itemExists = prevItems?.some((item) => item?.id === itemId);
           if (!itemExists) {
             return [
               ...prevItems,
@@ -159,16 +159,16 @@ const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine }) => {
   const removeEnquiryItem = (itemId: string) => {
     setSelectedItems((prevSelected) => {
       const newSelected = new Set(prevSelected);
-      newSelected.delete(itemId);
+      newSelected?.delete(itemId);
       return newSelected;
     });
     setEnquiryItems((prevItems) =>
-      prevItems.filter((item) => item.id !== itemId)
+      prevItems?.filter((item) => item?.id !== itemId)
     );
   };
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(min-width: 1024px)");
+    const mediaQuery = window?.matchMedia("(min-width: 1024px)");
 
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -189,10 +189,10 @@ const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine }) => {
     };
 
     const checkAndAddScroll = () => {
-      if (mediaQuery.matches) {
-        window.addEventListener("scroll", handleScroll);
+      if (mediaQuery?.matches) {
+        window?.addEventListener("scroll", handleScroll);
       } else {
-        window.removeEventListener("scroll", handleScroll);
+        window?.removeEventListener("scroll", handleScroll);
       }
     };
 
@@ -223,7 +223,7 @@ const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine }) => {
                 aria-label="All"
                 onClick={() => handleCategoryChange("all")}
               >
-                <button>{ProductsGrid.all}</button>
+                <button>{ProductsGrid?.all}</button>
               </div>
               <div
                 className={`lg:border-2 border-[0.1rem] border-solid lg:w-[12rem] w-[7rem] h-[1.5rem] lg:h-[2rem] lg:rounded-full rounded-lg flex items-center lg:mx-[0.3rem] mx-[0.2rem] lg:text-[1rem] text-[0.7rem] font-medium ${
@@ -244,7 +244,7 @@ const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine }) => {
                   S
                 </div>
                 <button className="lg:ml-[1.4rem] ml-[0.3rem]">
-                  {ProductsGrid.servoDriven}
+                  {ProductsGrid?.servoDriven}
                 </button>
               </div>
               <div
@@ -266,7 +266,7 @@ const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine }) => {
                   M
                 </div>
                 <button className="lg:ml-[1.4rem] ml-[0.3rem]">
-                  {ProductsGrid.mechanicalCam}
+                  {ProductsGrid?.mechanicalCam}
                 </button>
               </div>
             </div>
@@ -291,7 +291,7 @@ const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine }) => {
 
                   <input
                     type="search"
-                    placeholder={ProductsGrid.placeholder}
+                    placeholder={ProductsGrid?.placeholder}
                     className="w-full text-[0.7rem] lg:text-[1rem] outline-none bg-transparent text-black font-poppins lg:mx-[0.4rem] mx-[0.2rem]"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
@@ -303,7 +303,7 @@ const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine }) => {
         </div>
 
         <div className="w-full grid lg:grid-cols-3 grid-cols-1 gap-[2.8rem] lg:px-20 px-4 lg:mt-[4rem]">
-          {searchFilteredData.map((item, idx) => (
+          {searchFilteredData?.map((item, idx) => (
             <div
               key={idx}
               className={`relative w-full h-full bg-gradient-to-b from-[#fefefe] to-[#f5f5f5] rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 ${
@@ -314,18 +314,18 @@ const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine }) => {
             >
               <div className="absolute top-6 right-4 flex space-x-2">
                 <div className="w-6 h-6 p-[0.2rem] bg-[#f5f5f5] border-solid border-[0.1rem] border-[#f5f5f5] hover:border-red-700 rounded-full flex items-center justify-center relative group">
-                  <Image src={item.image} alt="" width={400} height={400} />
+                  <Image src={item?.image} alt="" width={400} height={400} />
                   <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-md shadow-md p-3 h-max w-max z-20">
                     <p className="text-sm text-black">
-                      {item.imageInformation}
+                      {item?.imageInformation}
                     </p>
                   </div>
                 </div>
                 <div className="w-6 h-6 bg-[#f5f5f5] rounded-full flex items-center justify-center font-medium cursor-pointer relative group hover:text-red-700">
-                  {item.s}
+                  {item?.s}
                   <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-md shadow-md p-3 h-max w-max z-20">
                     <p className="text-sm text-black font-normal">
-                      {item.sInformation}
+                      {item?.sInformation}
                     </p>
                   </div>
                 </div>
@@ -347,21 +347,21 @@ const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine }) => {
                     <line x1="12" y1="8" x2="12" y2="8"></line>
                   </svg>
                   <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-md shadow-md p-3 h-max w-max z-20">
-                    <p className="text-sm text-black">{item.information}</p>
+                    <p className="text-sm text-black">{item?.information}</p>
                   </div>
                 </div>
               </div>
 
               <div className="pt-6 pl-6">
-                <h2 className="text-xl font-bold w-[65%]">{item.h1}</h2>
-                <h3 className="text-lg font-semibold">{item.h2}</h3>
-                <p className="text-sm text-gray-600">{item.h3}</p>
+                <h2 className="text-xl font-bold w-[65%]">{item?.h1}</h2>
+                <h3 className="text-lg font-semibold">{item?.h2}</h3>
+                <p className="text-sm text-gray-600">{item?.h3}</p>
               </div>
 
               <div className="flex justify-center items-center overflow-hidden">
                 <div className="mt-[1rem] lg:p-6 p-4 lg:h-[16rem] flex justify-center items-center">
                   <Image
-                    src={item.img}
+                    src={item?.img}
                     alt=""
                     priority
                     width={400}
@@ -375,35 +375,35 @@ const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine }) => {
                   <div className="flex w-full items-center justify-center px-2">
                     <div className="text-center w-[33%]">
                       <p className="font-semibold lg:text-md text-[0.9rem]">
-                        {item.range}
+                        {item?.range}
                       </p>
                       <p className="text-gray-600 lg:text-md text-[0.8rem]">
-                        {item.rangeTitle}
+                        {item?.rangeTitle}
                       </p>
                     </div>
                     <div className="h-8 w-px bg-[#9c9c9c]"></div>
                     <div className="text-center  w-[33%]">
                       <p className="font-semibold lg:text-md text-[0.9rem]">
-                        {item.punch}
+                        {item?.punch}
                       </p>
                       <p className="text-gray-600 lg:text-md text-[0.8rem]">
-                        {item.punchTitle}
+                        {item?.punchTitle}
                       </p>
                     </div>
                     <div className="h-8 w-px bg-[#9c9c9c]"></div>
                     <div className="text-center  w-[33%]">
                       <p className="font-semibold lg:text-md text-[0.9rem]">
-                        {item.weight}
+                        {item?.weight}
                       </p>
                       <p className="lg:text-md text-[0.8rem] text-gray-600">
-                        {item.weightTitle}
+                        {item?.weightTitle}
                       </p>
                     </div>
                   </div>
                 ) : (
                   <button
                     aria-label="View Machine"
-                    className={`mt-[0.2rem] w-[70%] h-[2.5rem] border-[0.1rem] border-solid ${
+                    className={`mt-[0.2rem] w-[70%] h-[2.5rem] border-[0.1rem] border-solid  ${
                       hoveredButtonIndex === idx
                         ? "border-black bg-black text-white"
                         : "border-[#9c9c9c] bg-transparent text-black"
@@ -411,8 +411,8 @@ const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine }) => {
                     onMouseEnter={() => setHoveredButtonIndex(idx)}
                     onMouseLeave={() => setHoveredButtonIndex(null)}
                   >
-                    <LinkUrl href={`/products/${item.link}/${item.h2}`}>
-                      {ProductsGrid.viewMachine}
+                    <LinkUrl href={`/products/${item.link}/${item.link}`}>
+                      {ProductsGrid?.viewMachine}
                     </LinkUrl>
                   </button>
                 )}
@@ -421,8 +421,8 @@ const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine }) => {
                     aria-label="View Machine"
                     className={`mt-[1rem] w-[70%] h-[2rem] border-[0.1rem] border-solid font-medium rounded-lg transition-colors duration-300 border-[#9c9c9c] hover:border-black hover:bg-black hover:text-white`}
                   >
-                    <LinkUrl href={`/products/${item.h2}`}>
-                      {ProductsGrid.viewMachine}
+                    <LinkUrl href={`/products/${item.link}/${item.link}`}>
+                      {ProductsGrid?.viewMachine}
                     </LinkUrl>
                   </button>
                 </div>
@@ -436,16 +436,16 @@ const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine }) => {
                     type="checkbox"
                     id={`addToEnquiry-${idx}`}
                     className="h-4 w-4 accent-red-700"
-                    checked={selectedItems.has(`${idx}`)}
+                    checked={selectedItems?.has(`${idx}`)}
                     onChange={() =>
-                      handleItemSelection(`${idx}`, item.h1, item.img)
+                      handleItemSelection(`${idx}`, item?.h1, item?.img)
                     }
                   />
                   <Label
                     htmlFor={`addToEnquiry-${idx}`}
                     className="text-sm whitespace-nowrap"
                   >
-                    {ProductsGrid.inquiry}
+                    {ProductsGrid?.inquiry}
                   </Label>
                 </div>
               </div>
@@ -454,14 +454,14 @@ const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine }) => {
         </div>
       </div>
       <div className="w-full border-solid border-t-2 border-[#eeeded] bg-[#fcfcfc] px-[1rem] lg:px-[2rem] mt-[4rem] z-30">
-        <h2 className="text-[0.9rem] my-[0.5rem]">{page2machine.heading}</h2>
+        <h2 className="text-[0.9rem] my-[0.5rem]">{page2machine?.heading}</h2>
         <p className="text-[0.7rem] font-light">{displayedParagraph}</p>
         <button
           onClick={toggleReadMore}
           aria-label="Read More"
           className="underline italic text-[0.7rem] hover:text-red-700 hover:not-italic my-[1rem]"
         >
-          {isExpanded ? ProductsGrid.readLess : ProductsGrid.readMore}
+          {isExpanded ? ProductsGrid?.readLess : ProductsGrid?.readMore}
         </button>
       </div>
       <EnquiryCart items={enquiryItems} onRemoveItem={removeEnquiryItem} />

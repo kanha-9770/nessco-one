@@ -9,6 +9,7 @@ import BreadcrumbProduct from "@/components/ui/BreadCrumbProduct";
 import InfoCard from "@/components/Products/InfoCard";
 import ZigzagLine from "../ZigzagLine";
 import { usePathname } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 gsap.registerPlugin(TextPlugin);
 
@@ -39,7 +40,7 @@ interface MachineProps {
   category: string;
   icon: string;
   introduction: string;
-  link?:string;
+  link?: string;
   parameters: string;
   application: string;
   product_description: string;
@@ -77,7 +78,7 @@ const Machine: React.FC<MachineProps> = ({
   first_name,
   introduction,
   advantages,
-  link
+  link,
 }) => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const listItemRefs = useRef<(HTMLLIElement | null)[]>([]);
@@ -90,6 +91,7 @@ const Machine: React.FC<MachineProps> = ({
   const pathname = usePathname() || "";
   const countryCode = pathname.split("/")[1]?.toLowerCase();
   const languageCode = pathname.split("/")[2]?.toLowerCase();
+  const fallBackLink = pathname.split("/")[4]?.toLocaleLowerCase();
   useEffect(() => {
     const calculateFontSize = () => {
       const charCount = introduction && introduction.length;
@@ -116,7 +118,7 @@ const Machine: React.FC<MachineProps> = ({
       }
     );
 
-    advantages.items.forEach((item, index) => {
+    advantages?.items?.forEach((item, index) => {
       tl.fromTo(
         listItemRefs.current[index],
         { opacity: 0, text: "", "--dot-opacity": 0 },
@@ -152,8 +154,8 @@ const Machine: React.FC<MachineProps> = ({
 
   useEffect(() => {
     checkScrollability();
-    window.addEventListener('resize', checkScrollability);
-    return () => window.removeEventListener('resize', checkScrollability);
+    window.addEventListener("resize", checkScrollability);
+    return () => window.removeEventListener("resize", checkScrollability);
   }, []);
 
   const checkScrollability = () => {
@@ -186,9 +188,12 @@ const Machine: React.FC<MachineProps> = ({
   const shouldShowArrows = images.length > 4;
 
   const breadcrumbItems = [
-    { label: "Home", href: "/" },
-    { label: "Products", href: "/products" },
-    { label: first_name, href: `/${countryCode}/${languageCode}/products/${link}` },
+    { label: "Home", href: `/${countryCode}/${languageCode}/` },
+    { label: "Products", href: `/${countryCode}/${languageCode}/products` },
+    {
+      label: first_name,
+      href: `/${countryCode}/${languageCode}/products/${link || fallBackLink}`,
+    },
     { label: name, current: true },
   ];
 
@@ -197,11 +202,11 @@ const Machine: React.FC<MachineProps> = ({
       <div className="bg-white w-full py-2 lg:px-10 px-4">
         <BreadcrumbProduct items={breadcrumbItems} />
       </div>
-      <div className="lg:h-[68%] h-full lg:px-10 px-4 z-30 lg:flex bg-white">
+      <div className="lg:h-[68%] h-full lg:px-10 px-4 z-30 lg:flex flex-col lg:flex-row bg-white">
         <div className="font-poppins lg:w-[75%] w-full">
-          <div className="flex w-full h-full">
-            <div className="flex items-start relative">
-              <div className="lg:w-[50%] h-full flex flex-col">
+          <div className="flex flex-col lg:flex-row w-full h-full">
+            <div className="flex flex-col lg:flex-row items-start relative w-full">
+              <div className="lg:w-[50%] w-full h-full flex flex-col">
                 <h1 className="lg:text-4xl text-[1.7rem] py-2 font-poppins">
                   <span className="bg-gradient-to-r from-[#483d73] to-red-700 bg-clip-text text-transparent font-semibold block pb-1">
                     {first_name}
@@ -218,32 +223,34 @@ const Machine: React.FC<MachineProps> = ({
                     {introduction}
                   </p>
                 </div>
-                <div className="w-max rounded-full shadow-lg shadow-[#9e9c9c] hover:shadow-[#9e9c9c] hover:shadow-xl transition-all duration-300 group">
-                  <button className="bg-[#483d73] rounded-full text-white py-1 pl-6 text-lg group-hover:bg-gradient-to-r transition-all duration-300 group-hover:from-[#483d73] group-hover:to-red-700 font-medium flex items-center">
-                    Book Now
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 64 64"
-                      className="lg:w-6 w-5 lg:h-6 h-5 mx-4"
-                    >
-                      <circle
-                        cx="32"
-                        cy="32"
-                        r="32"
-                        className="fill-[#ffffff] cursor-pointer"
-                      />
-                      <path
-                        d="M25 20 L37 32 L25 44"
-                        className="stroke-[#483d73] stroke-[4px] fill-none stroke-linecap-round stroke-linejoin-round"
-                      />
-                    </svg>
-                  </button>
-                </div>
-                <div className="pl-2 lg:text-[2.8rem] mt-4 text-[2.2rem] font-bold font-poppins text-[#424242] italic">
-                  {name}
+                <div className="flex flex-row-reverse justify-between  lg:flex-col">
+                  <div className="w-max rounded-full group">
+                    <Button className="bg-[#483d73] rounded-full text-white py-1 pl-6 text-lg group-hover:bg-gradient-to-r transition-all duration-300 group-hover:from-[#483d73] group-hover:to-red-700 font-medium flex items-center">
+                      Book Now
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 64 64"
+                        className="lg:w-6 w-5 lg:h-6 h-5 mx-4"
+                      >
+                        <circle
+                          cx="32"
+                          cy="32"
+                          r="32"
+                          className="fill-[#ffffff] cursor-pointer"
+                        />
+                        <path
+                          d="M25 20 L37 32 L25 44"
+                          className="stroke-[#483d73] stroke-[4px] fill-none stroke-linecap-round stroke-linejoin-round"
+                        />
+                      </svg>
+                    </Button>
+                  </div>
+                  <div className="lg:pl-2 lg:text-[2.8rem] lg:mt-4 text-[1.8rem] font-bold font-poppins text-[#424242] text-left italic">
+                    {name}
+                  </div>
                 </div>
               </div>
-              <div className="lg:w-[50%] w-full h-full flex relative">
+              <div className="lg:w-[50%] w-full h-full flex relative mt-4 lg:mt-0">
                 <div className="lg:block hidden">
                   <ZigzagLine />
                 </div>
@@ -270,13 +277,13 @@ const Machine: React.FC<MachineProps> = ({
             </div>
           </div>
         </div>
-        <div className="w-[25%] hidden lg:flex justify-end flex-col items-start">
+        <div className="w-full hidden lg:flex lg:w-[25%]  lg:justify-end flex-col items-start mt-4 lg:mt-0">
           <div className="text-black mb-4">
             <h3 ref={titleRef} className="font-bold text-md mb-2">
-              {advantages.title}
+              {advantages?.title}
             </h3>
             <ul className="text-sm font-regular list-none">
-              {advantages.items.map((advantage, index) => (
+              {advantages?.items?.map((advantage, index) => (
                 <li
                   key={index}
                   ref={(el) => {
@@ -284,15 +291,15 @@ const Machine: React.FC<MachineProps> = ({
                   }}
                   className="relative pl-4 before:content-['•'] before:absolute before:left-0 before:text-black"
                 >
-                  {advantage.title}
+                  {advantage?.title}
                 </li>
               ))}
             </ul>
           </div>
         </div>
       </div>
-      <div className="relative h-[32%] border-t-2 border-gray-300 flex lg:flex-row flex-col-reverse items-center">
-        <div className="text-left text-xs font-medium text-gray-500 uppercase lg:w-[55%]">
+      <div className="relative h-auto lg:h-[32%] border-t-2 border-gray-300 flex flex-col-reverse lg:flex-row items-center">
+        <div className="text-left text-xs font-medium text-gray-500 uppercase lg:w-[55%] w-full mt-4 lg:mt-0">
           <InfoCard
             sizeRange="3 oz to 32 oz"
             speedRoundShapes="up to 180 cups/min."
@@ -301,8 +308,8 @@ const Machine: React.FC<MachineProps> = ({
             bmp100Super="BMP 100 SUPER"
           />
         </div>
-        <div className="flex lg:w-[45%] h-full items-center justify-center lg:my-0 my-4">
-          <div className="bg-white rounded-2xl lg:w-[33.5rem] w-[23rem] z-40 flex flex-row items-center justify-center p-4">
+        <div className="flex lg:w-[45%] w-full h-full items-center justify-center lg:my-0 my-4">
+          <div className="bg-white rounded-2xl lg:w-[33.5rem] w-full max-w-[23rem] z-40 flex flex-row items-center justify-center p-4">
             {shouldShowArrows && (
               <button
                 className="w-6 h-6 bg-[#9e9c9c] hidden md:flex hover:bg-black rounded-full items-center justify-center mr-2 flex-shrink-0"
@@ -332,7 +339,7 @@ const Machine: React.FC<MachineProps> = ({
               ref={carouselRef}
               onScroll={checkScrollability}
             >
-              {images.map((image, index) => (
+              {images?.map((image, index) => (
                 <div key={index} className="flex flex-col">
                   <motion.div
                     className={`relative flex-shrink-0 w-[8.4rem] h-24 border-2 rounded-2xl p-1 flex flex-col ${
@@ -370,7 +377,11 @@ const Machine: React.FC<MachineProps> = ({
                   stroke="currentColor"
                   className="w-6 h-6 stroke-white"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M9 5l7 7-7 7"
+                  />
                 </svg>
               </button>
             )}

@@ -23,7 +23,9 @@ const icons = [
   "https://assets.nesscoindustries.com/public/assets/homepage/flexo-printing(2).webp",
   "https://assets.nesscoindustries.com/public/assets/homepage/paper-lid(2).webp",
   "https://assets.nesscoindustries.com/public/assets/homepage/paper-container.webp",
-  "https://assets.nesscoindustries.com/public/assets/homepage/other-products.webp",
+  "https://assets.nesscoindustries.com/public/assets/homepage/coating-icon.webp",
+  "https://assets.nesscoindustries.com/public/assets/homepage/insulating-cup-icon.webp",
+  "https://assets.nesscoindustries.com/public/assets/homepage/cutlery-icon.webp",
 ];
 
 export default function Stepper({ onStepChange, categories }: StepperProps) {
@@ -71,11 +73,11 @@ export default function Stepper({ onStepChange, categories }: StepperProps) {
 
   return (
     <div
-      className={`lg:sticky z-[9999] lg:top-[5.8rem] max-w-screen-2xl left-0 w-full ${
+      className={`lg:sticky z-[9999] lg:top-[5.8rem] max-w-screen-2xl left-0 w-full overflow-hidden ${
         activeStep > 0 ? "bg-[#f2f2f2]" : "bg-[#f2f2f2]"
       }`}
     >
-      <div className="relative flex items-center justify-center w-full z-[9999] h-20 mx-auto lg:h-20">
+      <div className="relative flex items-center justify-center w-full z-[9999] h-20 mx-auto lg:h-24 pb-2">
         <div className="w-screen">
           <div
             className="relative flex items-center max-w-screen-2xl justify-start overflow-x-scroll scrollbar-hide w-full"
@@ -110,7 +112,7 @@ export default function Stepper({ onStepChange, categories }: StepperProps) {
                       )}
                     </div>
                     <span className="text-xs text-black lg:text-xs font-regular mt-2 font-poppins text-center w-20 lg:w-20">
-                      {category.name}
+                      {category?.name}
                     </span>
                   </div>
                   {index < categories.length - 1 && (

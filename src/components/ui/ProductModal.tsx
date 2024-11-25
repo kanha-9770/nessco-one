@@ -90,9 +90,9 @@ const ProductModal: React.FC<ProductModalProps> = ({
                   {description}
                 </p>
                 <ul className="list-none grid grid-cols-2 gap-4 text-gray-700">
-                  {items.map((item, index) => (
+                  {items?.map((item, index) => (
                     <li key={index} className="flex items-center space-x-2">
-                      <span className="text-sm font-regular">{item.text}</span>
+                      <span className="text-sm font-regular">{item?.text}</span>
                     </li>
                   ))}
                 </ul>

@@ -132,17 +132,17 @@ const SignupFormDemoProduct = () => {
           >
             <div className="p-4 w-full max-w-md">
               {products
-                .slice(0, expanded ? products.length : 3)
+                .slice(0, expanded ? products?.length : 3)
                 .map((product) => (
                   <div
-                    key={product.id}
+                    key={product?.id}
                     className="flex border-b-[2px] items-start mb-4"
                   >
                     {/* Product Image */}
                     <div className="w-16 h-16 rounded-md overflow-hidden">
                       <Image
-                        src={product.image}
-                        alt={product.title}
+                        src={product?.image}
+                        alt={product?.title}
                         width={64}
                         height={64}
                         className="object-cover"
@@ -151,9 +151,9 @@ const SignupFormDemoProduct = () => {
 
                     {/* Product Info */}
                     <div className="ml-4 flex-1">
-                      <h3 className="font-semibold text-sm">{product.title}</h3>
+                      <h3 className="font-semibold text-sm">{product?.title}</h3>
                       <p className="text-xs text-gray-600">
-                        {product.description}
+                        {product?.description}
                       </p>
                     </div>
 

@@ -18,9 +18,9 @@ const homepinkcity=pinkcityData?.pinkcity[0]?.bluePageContent;
           muted
           playsInline
           preload="metadata"
-          poster ={homepinkcity.videoSrc}
+          poster ={homepinkcity?.videoSrc}
         >
-          <source src={homepinkcity.videoSrc} type="video/mp4" />
+          <source src={homepinkcity?.videoSrc} type="video/mp4" />
         </video>
       </div>
     </div>

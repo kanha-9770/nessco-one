@@ -182,7 +182,7 @@ const Page2 = ({
             <div className="lg:w-full w-[86vw] mt-[1rem] overflow-hidden">
               <div className="h-full overflow-auto pt-1 lg:px-3 scrollbar-custom scrollbar">
                 <div className="lg:grid lg:grid-cols-3 lg:gap-x-5 gap-x-2 flex">
-                  {filteredProducts.map((item, idx) => (
+                  {filteredProducts?.map((item, idx) => (
                     <div
                       key={idx}
                       className="cursor-pointer group"
@@ -199,8 +199,8 @@ const Page2 = ({
                           className="lg:h-[5.5rem] h-[3rem]"
                           width={100}
                           height={100}
-                          src={item.img}
-                          alt={item.title}
+                          src={item?.img}
+                          alt={item?.title}
                         />
                       </div>
                       <div className="lg:h-[3.2rem] lg:mt-[0.4rem]">
@@ -211,7 +211,7 @@ const Page2 = ({
                               : "text-black"
                           } `}
                         >
-                          {item.title}
+                          {item?.title}
                         </p>
                       </div>
                     </div>
@@ -225,7 +225,7 @@ const Page2 = ({
                 onClick={handleViewAllClick}
                 className="bg-[#f2f2f2] text-[#6f6f6f] py-1 px-2 rounded-[0.5rem] text-sm"
               >
-                {SelectProduct.viewAll}
+                {SelectProduct?.viewAll}
               </button>
             </div>
           </div>
@@ -240,10 +240,10 @@ const Page2 = ({
             <div>
               <h2 className="lg:text-[2.2rem] text-[1.5rem] font-semibold">
                 <span className="text-[#483d73]">
-                  {selectedProduct.title.trim().replace(/\s+\S+$/, "")}
+                  {selectedProduct?.title?.trim().replace(/\s+\S+$/, "")}
                 </span>{" "}
                 <span className="text-red-700">
-                  {selectedProduct.title.trim().match(/\S+$/)}
+                  {selectedProduct?.title?.trim().match(/\S+$/)}
                 </span>
               </h2>
             </div>
@@ -258,13 +258,13 @@ const Page2 = ({
               width={400}
               height={400}
               priority
-              src={selectedProduct.image}
-              alt={selectedProduct.title}
+              src={selectedProduct?.image}
+              alt={selectedProduct?.title}
             />
           </div>
           <div className="lg:h-[8rem] flex items-center">
             <p className="lg:text-[1rem] text-sm w-[33rem]">
-              {selectedProduct.description}
+              {selectedProduct?.description}
             </p>
           </div>
 
@@ -273,7 +273,7 @@ const Page2 = ({
               aria-label="View More"
               className="text-white lg:text-[1.2rem] absolute left-5 whitespace-nowrap group-hover:text-[#483d73]"
             >
-              {SelectProduct.viewMore}
+              {SelectProduct?.viewMore}
             </button>
             <button aria-label="Right" className="absolute right-0 group">
               <svg

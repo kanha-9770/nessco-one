@@ -34,8 +34,8 @@ const HomeMachineCarousel: React.FC<HomeMachineCarouselProps> = ({
   filteredCardsData,
   activeStep,
 }) => {
-  const cards = filteredCardsData.map((card) => (
-    <Card key={card.title} card={card} activeStep={activeStep} />
+  const cards = filteredCardsData?.map((card) => (
+    <Card key={card?.title} card={card} activeStep={activeStep} />
   ));
 
   return (

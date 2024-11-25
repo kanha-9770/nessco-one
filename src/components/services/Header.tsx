@@ -15,14 +15,14 @@ const Page1: React.FC<ServicesProps> = ({ servicesData }) => {
         <div className="lg:w-[50%] bg-white px-[2rem] lg:pt-10 pt-5 lg:h-screen h-full">
           <h1 className="mt-[4rem] lg:text-[3rem] text-3xl lg:leading-[3.2rem] w-[12rem]">
             <span className="text-[#483d73] font-semibold lg:block">
-              {Header.title.split(" ").slice(0, -2).join(" ")}
+              {Header?.title?.split(" ").slice(0, -2).join(" ")}
             </span>{" "}
             <span className="text-black font-bold w-4">
-              {Header.title.split(" ").slice(-2).join(" ")}
+              {Header?.title?.split(" ").slice(-2).join(" ")}
             </span>
           </h1>
           <p className="text-[#5d5d5e] lg:text-[1.2rem] lg:my-[2.5rem] my-5 lg:pr-[2rem]">
-            {Header.paragraph}
+            {Header?.paragraph}
           </p>
           <div className="flex items-center space-x-10">
             <Image

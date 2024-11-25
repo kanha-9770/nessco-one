@@ -1,14 +1,29 @@
-import Image from 'next/image';
-import Style from './about.module.css';
+"use client";
+import Image from "next/image";
+import Style from "./about.module.css";
 import { OurCompanyItem } from "./types/constant";
-import React from 'react';
+import React from "react";
 
-interface AboutLayoutProps{
-  companyData:OurCompanyItem;
+interface AboutLayoutProps {
+  companyData: OurCompanyItem;
 }
 
-const Grid:React.FC <AboutLayoutProps>= ({companyData}) => {
-  const grid=companyData?.Ourcompany?.[0]?.images;
+const Grid: React.FC<AboutLayoutProps> = ({ companyData }) => {
+  const grid = companyData?.Ourcompany?.[0]?.images;
+
+  const imageStyles = [
+    "lg:top-36 top-36 lg:left-[35%] left-[15%] lg:w-[10%] lg:h-[20%] h-[13%] w-[23%]",
+    "lg:top-[35%] top-[37%] lg:left-[87%] left-[80%] lg:w-[6%] lg:h-[12%] h-[11%] w-[16%]",
+    "lg:visible invisible lg:top-[58%] top-[52%] left-2 lg:w-[7%] w-[25%] h-[11%]",
+    "lg:top-[30%] top-[34%] lg:left-16 left-2 lg:w-[20%] lg:h-[25%] h-[13%] w-[45%]",
+    "lg:top-[50%] top-[50%] lg:left-[24%] left-[4%] lg:w-[28%] lg:h-[36%] h-[25%] w-[50%] image-scale-up",
+    "lg:visible invisible lg:top-[70%] top-[79%] lg:left-[8%] left-[10%] lg:w-[6%] lg:h-[19%] w-[19%] h-[11%]",
+    "lg:top-[57%] top-[75%] left-[56%] lg:w-[15%] lg:h-[15%] w-[33%] h-[12%] image-translate-up",
+    "lg:top-[75%] lg:left-[68%] lg:w-[7%] lg:h-[12%] h-[7%] w-[20%] top-[82%] left-[24%]",
+    "lg:w-[26%] lg:h-[23%] w-[50%] h-[15%] lg:left-[55%] left-[45%] lg:top-40 top-36",
+    "top-[55%] lg:left-[83%] left-[70%] lg:w-[13%] lg:h-[25%] h-[16%] w-[26%] image-translate-up"
+  ];
+
 
 
   return (
@@ -20,19 +35,25 @@ const Grid:React.FC <AboutLayoutProps>= ({companyData}) => {
         <div className="border border-gray-400 mt-16 col-span-2 -mr-10"></div>
         <div className="border border-gray-400 mt-16 ml-10 lg:-mr-[47%] -mr-[4rem]"></div>
       </div>
-      <div className='absolute w-full top-1/2 z-30'>
-      <h1 className=' lg:text-6xl text-5xl z-30 lg:top-1/2 top-[23.5rem] lg:left-1/2  font-poppins justify-center text-center flex flex-col text-white font-medium '>Gallery</h1>
-      {/* <button aria-label='view button' className="  z-30 bg-white font-poppins font-regular  lg:top-[58%] top-[24rem] text-black px-3 py-2 text-lg rounded-2xl ml-[38%] lg:ml-[45%] mt-2 hover:text-white hover:bg-black hover:font-medium">
-         {homecompanyData?.viewgallery || 'View Gallery'}
-      </button> */}
+      <div className="absolute w-full top-1/2 z-30">
+        <h1 className="lg:text-6xl text-5xl z-30 lg:top-1/2 top-[23.5rem] lg:left-1/2 font-poppins justify-center text-center flex flex-col text-white font-medium">
+          Gallery
+        </h1>
       </div>
-      {Array.isArray(grid) && grid.map((img, idx) => (        <div
+      {grid?.map((img, idx) => (
+        <div
           key={idx}
-          className={`absolute ${img.style} z-20 ${img.style.includes('image-scale-up') ? Style.imageScaleUp : ''} ${img.style.includes('image-translate-up') ? Style.imageTranslateUp : ''}`}
+          className={`absolute ${imageStyles[idx]} z-20 ${
+            imageStyles[idx].includes("image-scale-up") ? Style.imageScaleUp : ""
+          } ${
+            imageStyles[idx].includes("image-translate-up")
+              ? Style.imageTranslateUp
+              : ""
+          }`}
         >
           <Image
-            src="https://res.cloudinary.com/dlti4o10e/image/upload/v1728990173/samples/imagecon-group.jpg"
-            alt={img.alt}
+            src={img?.src}
+            alt={img?.alt}
             layout="fill"
             objectFit="cover"
             className="duration-100 rounded-2xl"
@@ -41,6 +62,7 @@ const Grid:React.FC <AboutLayoutProps>= ({companyData}) => {
       ))}
     </div>
   );
-}
+};
 
 export default Grid;
+

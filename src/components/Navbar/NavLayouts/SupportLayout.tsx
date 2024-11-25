@@ -19,7 +19,7 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData }) => {
   // Extracting support items and ensuring it's an array
   const supportData = navData?.navbar[3]?.data;
   const supportItems = Array.isArray(supportData?.supportItem)
-    ? supportData.supportItem
+    ? supportData?.supportItem
     : [];
   const mobileItem = supportData?.SupportMobile || {
     mobileFirst: "",
@@ -91,7 +91,7 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData }) => {
         ref={carouselRef}
         onScroll={checkScrollability}
       >
-        {supportItems.map((item, index) => {
+        {supportItems?.map((item, index) => {
           return (
             <Link
               key={index}
@@ -102,10 +102,10 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData }) => {
                 className="flex-shrink-0 w-72 h-40 rounded-3xl p-4 flex flex-col justify-center items-center bg-cover bg-center"
                 style={{ backgroundImage: `url(${bgPick.src})` }}
               >
-                <LottieAnimation className="h-32" animationData={item.image}></LottieAnimation>
+                <LottieAnimation className="h-32" animationData={item?.image}></LottieAnimation>
               </div>
               <p className="relative font-poppins text-center mt-4 invert-0 font-normal hover:text-[#483d78] hover:font-semibold text-base">
-                {item.title}
+                {item?.title}
               </p>
             </Link>
           );
@@ -127,19 +127,19 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData }) => {
           onScroll={checkScrollability}
         >
           <div className="flex flex-row gap-2">
-            {paginatedItems.map((group, groupIndex) => (
+            {paginatedItems?.map((group, groupIndex) => (
               <div
                 key={`slide-${groupIndex}`}
                 className="min-w-full p-1 grid grid-cols-2 grid-rows-2 gap-4"
               >
-                {group.map((item, itemIndex) => (
+                {group?.map((item, itemIndex) => (
                   <div
                     key={itemIndex}
                     className="relative w-40 h-36 border-[1px] bg-white rounded-xl  flex flex-col justify-start items-center p-2"
                   >
                     <div className="relative w-32 bg-white rounded-xl border-[1px] h-16 flex justify-center items-center"></div>
                     <p className="relative font-poppins text-center mt-4 invert-0 font-medium hover:text-[#483d78] hover:font-bold text-16">
-                      {item.title}
+                      {item?.title}
                     </p>
                   </div>
                 ))}
@@ -177,7 +177,7 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData }) => {
                 padding: "5px 10px",
               }}
             >
-              {mobileItem.mobileFirst}
+              {mobileItem?.mobileFirst}
             </p>
             <div className="w-1 h-20 border-l-2"></div>
             <p
@@ -191,7 +191,7 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData }) => {
                 padding: "5px 10px",
               }}
             >
-              {mobileItem.mobileSecond}
+              {mobileItem?.mobileSecond}
             </p>
           </div>
         </div>

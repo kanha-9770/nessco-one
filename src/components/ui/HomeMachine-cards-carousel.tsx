@@ -1,6 +1,12 @@
 "use client";
 
-import React, { useEffect, useState, createContext, useCallback, useMemo } from "react";
+import React, {
+  useEffect,
+  useState,
+  createContext,
+  useCallback,
+  useMemo,
+} from "react";
 import { cn } from "@/lib/utils";
 
 interface CarouselProps {
@@ -58,36 +64,48 @@ const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
     }
   }, []);
 
-  const handleCardClose = useCallback((index: number) => {
-    if (carouselRef.current) {
-      const cardWidth = isMobile ? 230 : 384;
-      const gap = isMobile ? 4 : 8;
-      const scrollPosition = (cardWidth + gap) * (index + 1);
-      carouselRef.current.scrollTo({
-        left: scrollPosition,
-        behavior: "smooth",
-      });
-      setCurrentIndex(index);
-    }
-  }, [isMobile]);
+  const handleCardClose = useCallback(
+    (index: number) => {
+      if (carouselRef.current) {
+        const cardWidth = isMobile ? 230 : 384;
+        const gap = isMobile ? 4 : 8;
+        const scrollPosition = (cardWidth + gap) * (index + 1);
+        carouselRef.current.scrollTo({
+          left: scrollPosition,
+          behavior: "smooth",
+        });
+        setCurrentIndex(index);
+      }
+    },
+    [isMobile]
+  );
 
-  const contextValue = useMemo(() => ({ onCardClose: handleCardClose, currentIndex }), [handleCardClose, currentIndex]);
+  const contextValue = useMemo(
+    () => ({ onCardClose: handleCardClose, currentIndex }),
+    [handleCardClose, currentIndex]
+  );
 
-  const renderCarouselItems = useCallback((start: number, end: number) => (
-    <div className={cn("flex flex-row gap-4 pl-[2%]", "max-w-7xl mx-auto")}>
-      {items.slice(start, end).map((item, index) => (
-        <div key={`card-${start + index}`} className="last:pr-[5%] md:last:pr-[4%] rounded-3xl">
-          {item}
-        </div>
-      ))}
-    </div>
-  ), [items]);
+  const renderCarouselItems = useCallback(
+    (start: number, end: number) => (
+      <div className={cn("flex flex-row gap-4 pl-[2%]", "max-w-7xl mx-auto")}>
+        {items.slice(start, end).map((item, index) => (
+          <div
+            key={`card-${start + index}`}
+            className="last:pr-[5%] md:last:pr-[4%] rounded-3xl"
+          >
+            {item}
+          </div>
+        ))}
+      </div>
+    ),
+    [items]
+  );
 
   const carouselContent = useMemo(() => {
     if (items.length <= 5) {
       return (
         <>
-          <div className="relative mt-14 lg:ml-10">
+          <div className="relative mt-14 lg:ml-14">
             {renderCarouselItems(0, items.length)}
           </div>
         </>
@@ -95,15 +113,26 @@ const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
     } else if (items.length <= 10) {
       return (
         <>
-          <div className="relative mt-12 w-full">{renderCarouselItems(0, Math.ceil(items.length / 2))}</div>
-          <div className="relative w-full mt-4">{renderCarouselItems(Math.ceil(items.length / 2), items.length)}</div>
+          <div className="relative mt-12 w-full">
+            {renderCarouselItems(
+              0,
+              Math.ceil(items.length / 2) + (5 - Math.ceil(items.length / 2))
+            )}
+          </div>
+          <div className="relative w-full mt-4">
+            {renderCarouselItems(Math.ceil(items.length / 2), items.length)}
+          </div>
         </>
       );
     } else {
       return (
         <>
-          <div className="relative mt-12 w-full">{renderCarouselItems(0, items.length / 2)}</div>
-          <div className="relative w-full mt-4">{renderCarouselItems(items.length / 2, items.length - 1)}</div>
+          <div className="relative mt-12 w-full">
+            {renderCarouselItems(0, items.length / 2)}
+          </div>
+          <div className="relative w-full mt-4">
+            {renderCarouselItems(items.length / 2, items.length - 1)}
+          </div>
         </>
       );
     }
@@ -114,14 +143,14 @@ const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
       <div
         className={cn(
           "w-full overflow-x-scroll overscroll-x-auto py-4 md:py-4 scroll-smooth [scrollbar-width:none]",
-          items.length > 5 ? "grid grid-rows-2" : "flex"
+          items?.length > 5 ? "grid grid-rows-2" : "flex"
         )}
         ref={carouselRef}
         onScroll={checkScrollability}
       >
         {carouselContent}
       </div>
-      {items.length > 10 && (
+      {items?.length > 10 && (
         <div className="flex justify-end gap-2 mr-10">
           <button
             aria-label="scrollLeft"

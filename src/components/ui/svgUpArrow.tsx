@@ -7,7 +7,6 @@ const SvgUpArrow = (props) => (
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 330 330"
     xmlSpace="preserve"
-    transform="rotate(270)"
     {...props}
   >
     <g strokeWidth={0} />

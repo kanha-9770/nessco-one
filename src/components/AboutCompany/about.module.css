@@ -173,6 +173,22 @@
 
 
 /* Add more animations as needed */
+.imageScaleUp {
+  transition: transform 0.3s ease-in-out;
+}
+
+.imageScaleUp:hover {
+  transform: scale(1.1);
+}
+
+.imageTranslateUp {
+  transition: transform 0.3s ease-in-out;
+}
+
+.imageTranslateUp:hover {
+  transform: translateY(-10px);
+}
+
 
   
   

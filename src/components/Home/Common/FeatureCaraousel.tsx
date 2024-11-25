@@ -44,47 +44,47 @@ const FeatureCaraousel = ({ type }: FeatureCaraouselProps) => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, [items.length]);
+  }, [items?.length]);
 
   return (
-    <div className={styles.FeatureCaraousel}>
-      {items.map((item, index) => (
+    <div className={styles?.FeatureCaraousel}>
+      {items?.map((item, index) => (
         <div
-          key={item.id}
-          className={`${styles.card} ${
-            currentIndex === index ? styles.active : styles.notactive
-          } ${currentIndex === (index + 1) % items.length ? styles.next : ""}`}
+          key={item?.id}
+          className={`${styles?.card} ${
+            currentIndex === index ? styles?.active : styles?.notactive
+          } ${currentIndex === (index + 1) % items?.length ? styles?.next : ""}`}
         >
-          <div className={styles.icon}>
+          <div className={styles?.icon}>
             <BlurImage
-              src={item.icon}
+              src={item?.icon}
               className="h-28 w-full py-1 rounded-3xl"
               height={200}
               width={200}
               alt={"image"}
             />
           </div>
-          <div className={styles.content}>
+          <div className={styles?.content}>
             <div className="pt-0 flex flex-col">
               {type === "newsFeature" && (
                 <h1 className="text-xl text-black text-justify font-bold">
-                  {item.heading}
+                  {item?.heading}
                 </h1>
               )}
-              <h2 className="font-montserrat bottom-0  text-base leading-5">{item.title}</h2>
+              <h2 className="font-montserrat bottom-0  text-base leading-5">{item?.title}</h2>
             </div>
           </div>
         </div>
       ))}
-      <div className={styles.indicators}>
-        {items.map((_, index) => (
+      <div className={styles?.indicators}>
+        {items?.map((_, index) => (
           <span
             key={index}
-            className={`${styles.indicator} ${
-              currentIndex === index ? styles.active : ""
+            className={`${styles?.indicator} ${
+              currentIndex === index ? styles?.active : ""
             }`}
           >
-            <span className={styles.progress}></span>
+            <span className={styles?.progress}></span>
           </span>
         ))}
       </div>

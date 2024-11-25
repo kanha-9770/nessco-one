@@ -98,10 +98,10 @@ const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
           <div className="pt-[1.5rem]">
             <h2 className="lg:text-[2.2rem] text-[1.5rem] font-semibold">
               <span className="text-[#483d73]">
-                {RelatedMachines?.title.trim().replace(/\s+\S+$/, "")}
+                {RelatedMachines?.title?.trim().replace(/\s+\S+$/, "")}
               </span>{" "}
               <span className="text-red-700">
-                {RelatedMachines?.title.trim().match(/\S+$/)}
+                {RelatedMachines?.title?.trim().match(/\S+$/)}
               </span>
             </h2>
             <button
@@ -157,7 +157,7 @@ const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
               ref={carouselRef}
             >
               <div className="w-max flex items-center justify-center space-x-8">
-                {related_product?.imageWithDescription.map((item, idx) => (
+                {related_product?.imageWithDescription?.map((item, idx) => (
                   <div
                     key={idx}
                     className="relative lg:mb-20 mb-16 lg:w-[20rem] w-[17rem] bg-gradient-to-b from-[#f5f5f5] to-[#f2f2f2] rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300"
@@ -166,22 +166,22 @@ const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
                     <div className="absolute top-6 right-4 flex space-x-2">
                       <div className="w-6 h-6 p-[0.2rem] bg-white border-solid border-[0.1rem] border-[#f5f5f5] hover:border-red-700 rounded-full flex items-center justify-center relative group">
                         <Image
-                          src={item.image}
+                          src={item?.image}
                           alt=""
                           width={400}
                           height={400}
                         />
                         <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-md shadow-md px-2 py-1 h-max w-max z-20">
                           <p className="lg:text-[0.8rem] text-[0.7rem] text-black">
-                            {item.imageInformation}
+                            {item?.imageInformation}
                           </p>
                         </div>
                       </div>
                       <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center font-medium cursor-pointer relative group hover:text-red-700">
-                        {item.s}
+                        {item?.s}
                         <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-md shadow-md px-2 py-1 h-max w-max z-20">
                           <p className="lg:text-[0.8rem] text-[0.7rem] text-black font-normal">
-                            {item.sInformation}
+                            {item?.sInformation}
                           </p>
                         </div>
                       </div>
@@ -204,7 +204,7 @@ const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
                         </svg>
                         <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-md shadow-md px-2 py-1 h-max w-max z-20">
                           <p className="lg:text-[0.8rem] text-[0.7rem] text-black">
-                            {item.information}
+                            {item?.information}
                           </p>
                         </div>
                       </div>
@@ -213,13 +213,13 @@ const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
                     {/* Title */}
                     <div className="pt-6 pl-6">
                       <h2 className="lg:text-[1.1rem] text-[1rem] font-semibold w-[65%]">
-                        {item.h1}
+                        {item?.h1}
                       </h2>
                       <h3 className="lg:text-lg text-[0.9rem] font-medium">
-                        {item.h2}
+                        {item?.h2}
                       </h3>
                       <p className="lg:text-sm text-[0.8rem] text-gray-600">
-                        {item.h3}
+                        {item?.h3}
                       </p>
                     </div>
 
@@ -227,7 +227,7 @@ const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
                     <div className="flex justify-center items-center">
                       <div className="mt-[0.8rem] w-[70%] lg:h-[10rem] flex justify-center items-center">
                         <Image
-                          src={item.img}
+                          src={item?.img}
                           alt="Machine"
                           width={400}
                           height={400}
@@ -255,7 +255,7 @@ const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
                             (enquiryItem) => enquiryItem.id === `${idx}`
                           )}
                           onChange={() => handleToggleEnquiry(item, idx)}
-                          aria-label={`Add ${item.h1} to enquiry`}
+                          aria-label={`Add ${item?.h1} to enquiry`}
                         />
                         <Label
                           htmlFor={`addToEnquiry-${idx}`}

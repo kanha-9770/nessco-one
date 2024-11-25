@@ -45,7 +45,7 @@ const HeroSection: React.FC<KnowledgeCenterProps> = ({ knowledgeCenterData }) =>
     <div className="flex pt-24 bg-black h-screen w-full flex-col font-regular font-poppins">
       <div className="h-[10%]">
         <p className="text-5xl px-10 font-poppins font-semibold  text-white">
-          {Hero.title}
+          {Hero?.title}
         </p>
       </div>
       <div className="h-[90%] flex w-full">
@@ -63,16 +63,16 @@ const HeroSection: React.FC<KnowledgeCenterProps> = ({ knowledgeCenterData }) =>
           {/* start */}
           <div className="text-white py-20 w-[95%]">
             <p className="text-left text-3xl font-medium mb-10">
-              {Hero.subtitle
+              {Hero?.subtitle
                 .split(" ")
                 .slice(0, -1)
                 .join(" ")}{" "}
               <span className="text-[#8c52ff]">
-                {Hero.subtitle.split(" ").slice(-1)}
+                {Hero?.subtitle?.split(" ").slice(-1)}
               </span>
             </p>
             <div className="flex justify-center gap-10">
-              {Hero.section.map((item, idx) => (
+              {Hero?.section?.map((item, idx) => (
                 <div key={idx} className="text-center">
                   <div className="relative  flex flex-col items-center justify-center">
                     {/* SVG Bulb Icon with Glow */}
@@ -97,13 +97,13 @@ const HeroSection: React.FC<KnowledgeCenterProps> = ({ knowledgeCenterData }) =>
                     />
                     <div className="flex flex-col items-center justify-center mt-20 gap-2">
                       <Image
-                        src={item.img}
+                        src={item?.img}
                         className="w-16"
                         alt={""}
                         width={400}
                         height={400}
                       />
-                      <h2 className="text-2xl font-normal">{item.title}</h2>
+                      <h2 className="text-2xl font-normal">{item?.title}</h2>
                     </div>
                   </div>
                 </div>

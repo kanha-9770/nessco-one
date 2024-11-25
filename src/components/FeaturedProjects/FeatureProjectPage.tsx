@@ -150,10 +150,10 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
               <div className="w-2/5 h-full">
                 <Image
                   src={
-                    selectedMachine.mainImage ||
+                    selectedMachine?.mainImage ||
                     "https://www.nesscoindia.com/Assets/images/resource/fully-automatic-paper-cup-making-machine.webp"
                   }
-                  alt={selectedMachine.title}
+                  alt={selectedMachine?.title}
                   width={300}
                   height={300}
                   priority
@@ -163,15 +163,15 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
               <div className="flex flex-col w-3/5 p-2">
                 <div className="relative pl-2">
                   <h2 className="text-xl font-bold relative  text-black italic  font-poppins">
-                    {selectedMachine.title}
+                    {selectedMachine?.title}
                   </h2>
                 </div>
 
                 <div className="px-2">
                   <p className="text-xs text-gray-500 mt-2 text-left font-poppins">
                     {isMobile
-                      ? truncateText(selectedMachine.description, wordLimit)
-                      : selectedMachine.description}
+                      ? truncateText(selectedMachine?.description, wordLimit)
+                      : selectedMachine?.description}
                   </p>
                 </div>
               </div>
@@ -182,15 +182,15 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                 <div
                   key={index}
                   className={`border border-gray-300 rounded-lg overflow-hidden cursor-pointer 
-      ${selectedMachine.id === machine.id ? "border-2 border-black" : ""}`}
+      ${selectedMachine?.id === machine?.id ? "border-2 border-black" : ""}`}
                   onClick={() => handleMachineClick(machine)}
                 >
                   <Image
                     src={
-                      selectedMachine.mainImage ||
+                      selectedMachine?.mainImage ||
                       "https://www.nesscoindia.com/Assets/images/resource/fully-automatic-paper-cup-making-machine.webp"
                     }
-                    alt={machine.title}
+                    alt={machine?.title}
                     width={100}
                     height={100}
                     priority
@@ -205,17 +205,17 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
           <div className="flex flex-col lg:flex-row items-center lg:items-start  h-[18rem] relative lg:space-x-8 ">
             {/* Left: Heading */}
             <h1 className="text-4xl sm:text-6xl lg:text-4xl font-regular italic text-gray-600 lg:ml-0 lg:mr-auto lg:w-1/3 mb-6 lg:mb-0 relative top-0 pl-10">
-              {selectedMachine.title}
+              {selectedMachine?.title}
             </h1>
 
             {/* Center: Image */}
             <div className="relative flex justify-center lg:justify-center lg:w-1/3 lg:mx-0 -top-28">
               <Image
                 src={
-                  selectedMachine.mainImage ||
+                  selectedMachine?.mainImage ||
                   "https://www.nesscoindia.com/Assets/images/resource/fully-automatic-paper-cup-making-machine.webp"
                 }
-                alt={selectedMachine.title}
+                alt={selectedMachine?.title}
                 width={300}
                 height={300}
                 priority
@@ -226,7 +226,7 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
             {/* Right: Description */}
             <div className="lg:w-1/3 z-10 lg:text-right font-poppins justify-center text-center pr-5 ml -top-10 relative">
               <p className="text-sm lg:text-xs font-regular text-gray-600">
-                {selectedMachine.description}
+                {selectedMachine?.description}
               </p>
             </div>
           </div>
@@ -240,7 +240,7 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
           {/* Vertical Lines */}
           <div className="relative w-full flex justify-around ">
             {homeaboutData2?.map((machine, index) => (
-              <div key={machine.id} className="relative flex justify-center ">
+              <div key={machine?.id} className="relative flex justify-center ">
                 <div
                   ref={(el) => {
                     verticalLinesRef.current[index] = el;
@@ -281,8 +281,8 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                   onClick={() => handleMachineClick(machine)}
                 >
                   <Image
-                    src={machine.mainImage}
-                    alt={machine.title}
+                    src={machine?.mainImage}
+                    alt={machine?.title}
                     width={300}
                     height={300}
                     priority
@@ -315,10 +315,10 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
               <div className="w-full h-full overflow-hidden rounded-2xl">
                 <Image
                   src={
-                    selectedGrid.mainImage ||
+                    selectedGrid?.mainImage ||
                     "https://www.nesscoindia.com/Assets/images/resource/fully-automatic-paper-cup-making-machine.webp"
                   } // Assuming selectedGrid contains an image source
-                  alt={selectedGrid.title}
+                  alt={selectedGrid?.title}
                   height={300}
                   width={300}
                   className="rounded-2xl h-[40rem] w-[30rem] -mt-24"
@@ -330,10 +330,10 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
             <div className="lg:w-1/2 w-full h-1/2 lg:h-full flex flex-col justify-between relative lg:p-0 p-3 ">
               <div className="p-4 ">
                 <h1 className="text-sm mb-2 font-poppins font-semibold text-black w-[18rem]">
-                  {selectedGrid.title}
+                  {selectedGrid?.title}
                 </h1>
-                <p className="font-poppins font-regular text-[0.66rem] w-[15rem] mt-5 h-[13rem]  overflow-hidden text-ellipsis break-words">
-                  {selectedGrid.description}
+                <p className="font-poppins font-regular text-[0?.66rem] w-[15rem] mt-5 h-[13rem]  overflow-hidden text-ellipsis break-words">
+                  {selectedGrid?.description}
                 </p>
               </div>
 
@@ -411,22 +411,22 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
           >
             <Image
               src={
-                item.mainImage ||
+                item?.mainImage ||
                 "https://www.nesscoindia.com/Assets/images/resource/fully-automatic-paper-cup-making-machine.webp"
               }
-              alt={item.title || "Image description"}
+              alt={item?.title || "Image description"}
               width={100}
               height={100}
               className="w-full h-44 object-cover rounded-t-md"
             />
 
             <h1 className="mt-2 text-sm font-medium text-gray-800 lg:w-[15rem] ml-2 md:w-[16rem]">
-              {item.title}
+              {item?.title}
             </h1>
             <div className="flex-col flex space-y-4 first-letter: p-2  relative -ml-7">
               <p className="text-gray-600 text-xs font-poppins font-regular mt-3 px-7 h-[5rem] ">
                 {truncateTextdesktop(
-                  selectedMachine.description,
+                  selectedMachine?.description,
                   wordLimitdesktop
                 )}
               </p>

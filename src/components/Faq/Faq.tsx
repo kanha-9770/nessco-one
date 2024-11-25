@@ -10,10 +10,10 @@ interface MainLayoutProps {
 }
 
 const FAQ: React.FC<MainLayoutProps> = ({ faqData }) => {
-  const faqsearchdata = faqData.faq[0].searchbox;
+  const faqsearchdata = faqData?.faq[0]?.searchbox;
 
   const [filteredQuestions, setFilteredQuestions] = useState(
-    faqsearchdata.categories
+    faqsearchdata?.categories
   );
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -63,10 +63,10 @@ const FAQ: React.FC<MainLayoutProps> = ({ faqData }) => {
           <SearchBox
             onCategorySelect={handleCategorySelect}
             onSearch={handleSearch}
-            filter={faqsearchdata.filter}
-            byCategory={faqsearchdata.byCategory}
-            placeholder={faqsearchdata.placeholder}
-            categories={faqsearchdata.categories}
+            filter={faqsearchdata?.filter}
+            byCategory={faqsearchdata?.byCategory}
+            placeholder={faqsearchdata?.placeholder}
+            categories={faqsearchdata?.categories}
           />
         </div>
         <div className="lg:w-[80%] w-full lg:h-[30.5rem] h-[calc(100vh-150px)] md:h-[50rem] overflow-auto relative lg:top-4 no-scrollbar -top-[18rem]">

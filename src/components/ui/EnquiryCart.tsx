@@ -100,7 +100,7 @@ export default function Component({
           >
             <ShoppingCart size={24} />
             <span className="absolute top-0 right-0 bg-white text-red-600 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
-              {items.length}
+              {items?.length}
             </span>
           </button>
         ) : (
@@ -111,11 +111,11 @@ export default function Component({
                   Enquiry Cart
                 </h3>
                 <span className="text-sm text-gray-500">
-                  ({items.length}/{maxItems})
+                  ({items?.length}/{maxItems})
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                {items.length > 0 && (
+                {items?.length > 0 && (
                   <>
                     <Button
                       onClick={openModal}
@@ -145,27 +145,27 @@ export default function Component({
             </div>
             <div className="p-2 overflow-x-auto">
               <div className="flex gap-2">
-                {items.map((item) => (
+                {items?.map((item) => (
                   <div
-                    key={item.id}
+                    key={item?.id}
                     className="relative flex items-center bg-white border rounded-md p-2 w-[260px] hover:bg-gray-50 transition-colors duration-200"
                   >
                     <div className="absolute top-2 left-2 w-1.5 h-1.5 bg-red-500 rounded-full" />
                     <div className="w-16 h-16 relative mr-3 flex-shrink-0">
                       <Image
-                        src={item.image}
-                        alt={item.name}
+                        src={item?.image}
+                        alt={item?.name}
                         fill
                         className="object-cover rounded-md"
                       />
                     </div>
                     <div className="flex flex-col min-w-0 flex-grow pr-6">
                       <h3 className="text-xs font-medium text-gray-900 line-clamp-2">
-                        {item.name}
+                        {item?.name}
                       </h3>
                     </div>
                     <button
-                      onClick={() => onRemoveItem(item.id)}
+                      onClick={() => onRemoveItem(item?.id)}
                       className="absolute top-2 right-2 text-gray-400 hover:text-gray-600"
                       aria-label="Remove item"
                     >

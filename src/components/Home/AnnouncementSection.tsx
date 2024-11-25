@@ -18,10 +18,10 @@ const AnnouncementSection: React.FC<AnnouncementSectionProps> = ({
   const cards = heroData?.home[9]?.data?.map((card, index) => (
     <Card
       key={index} // Using index as the key
-      src={card.src}
-      title={card.title}
-      description={card.description}
-      date={card.date}
+      src={card?.src}
+      title={card?.title}
+      description={card?.description}
+      date={card?.date}
     />
   ));
 

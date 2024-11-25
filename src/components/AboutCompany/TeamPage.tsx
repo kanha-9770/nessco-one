@@ -48,24 +48,24 @@ const TeamPage:React.FC<AboutLayoutProps> =({companyData})=> {
     >
       <div className="absolute top-12 w-full text-center z-10 ">
         <h1 className="lg:text-3xl text-2xl font-medium  font-poppins text-white">
-         {homecompanyData.heading} <span className="text-red-600">{homecompanyData.highlight}</span>
+         {homecompanyData?.heading} <span className="text-red-600">{homecompanyData?.highlight}</span>
         </h1>
         <h1 className="lg:text-lg text-2xl font-regular font-poppins text-white">
-         {homecompanyData.quote}
+         {homecompanyData?.quote}
         </h1>
       </div>
       <video
       id="background-video"
         ref={videoRef}
         className="absolute lg:top-0 top-24 left-0 lg:w-full lg:h-[40rem]  object-cover w-full "
-        src={homecompanyData.video}
+        src={homecompanyData?.video}
         muted
         playsInline
       />
       
       <div className=" items text-center text-white  absolute bottom-14  lg:hidden ">
        
-        <p className="text-center font-poppins  ">{homecompanyData.description} </p>
+        <p className="text-center font-poppins  ">{homecompanyData?.description} </p>
         </div>
      
     </div>

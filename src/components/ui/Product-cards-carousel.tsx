@@ -82,7 +82,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
     <CarouselContext.Provider
       value={{ onCardClose: handleCardClose, currentIndex }}
     >
-      {items.length <= 10 ? (
+      {items?.length <= 10 ? (
         <>
           <div
             className=" cursor-grab grid grid-rows-2  w-full overflow-x-scroll overscroll-x-auto py-2 scroll-smooth [scrollbar-width:none]"
@@ -90,7 +90,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
             onScroll={checkScrollability}
           ></div>
 
-          {items.length > 5 ? (
+          {items?.length > 5 ? (
             <div
               className="grid grid-rows-2 w-full overflow-x-scroll overscroll-x-auto py-2 scroll-smooth [scrollbar-width:none]"
               ref={carouselRef}
@@ -112,9 +112,9 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
                   {items
                     .slice(
                       0,
-                      items.length % 2 === 0
-                        ? items.length / 2
-                        : Math.ceil(items.length / 2)
+                      items?.length % 2 === 0
+                        ? items?.length / 2
+                        : Math?.ceil(items?.length / 2)
                     )
                     .map((item, index) => (
                       <div
@@ -140,7 +140,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
                   )}
                 >
                   {items
-                    .slice(items.length / 2, items.length - 1)
+                    .slice(items?.length / 2, items?.length - 1)
                     .map((item, index) => (
                       <div
                         key={"card" + index}
@@ -171,7 +171,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
                     "max-w-7xl mx-auto"
                   )}
                 >
-                  {items.slice(0, items.length).map((item, index) => (
+                  {items?.slice(0, items?.length).map((item, index) => (
                     <div
                       key={"card" + index}
                       className="last:pr-[5%] md:last:pr-[0%] rounded-3xl"
@@ -191,7 +191,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
             ref={carouselRef}
             onScroll={checkScrollability}
           >
-            {items.length >= 10 && (
+            {items?.length >= 10 && (
               <div className="">
                 <div className="relative mt-12 w-full">
                   <div
@@ -206,7 +206,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
                       "max-w-7xl mx-auto"
                     )}
                   >
-                    {items.slice(0, items.length / 2).map((item, index) => (
+                    {items?.slice(0, items?.length / 2).map((item, index) => (
                       <div
                         key={"card" + index}
                         className="last:pr-[5%] md:last:pr-[0%]  rounded-3xl"
@@ -230,7 +230,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
                     )}
                   >
                     {items
-                      .slice(items.length / 2, items.length - 1)
+                      .slice(items?.length / 2, items?.length - 1)
                       .map((item, index) => (
                         <div
                           key={"card" + index}
@@ -277,21 +277,21 @@ export const Card = ({
   return (
     <>
     <motion.button
-      layoutId={layout ? `card-${card.title}` : undefined}
+      layoutId={layout ? `card-${card?.title}` : undefined}
       className="relative rounded-3xl bg-gray-100  h-52 w-48 md:h-[15rem] md:w-[12rem] overflow-hidden flex flex-col items-start justify-end z-10"
     >
       <div className="absolute inset-0 cursor-grab bg-gradient-to-t from-black/90 via-black/70 to-transparent z-30 " />
       <BlurImage
-        src={card.src}
-        alt={card.title}
+        src={card?.src}
+        alt={card?.title}
         fill
         className="object-cover absolute z-10 inset-0"
       />
       <motion.p
-        layoutId={layout ? `title-${card.title}` : undefined}
+        layoutId={layout ? `title-${card?.title}` : undefined}
         className="text-white md:text-base font-semibold max-w-xs text-left font-sans absolute bottom-4 left-4 z-40"
       >
-        {card.title}
+        {card?.title}
       </motion.p>
     </motion.button>
   </>  

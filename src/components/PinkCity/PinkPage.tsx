@@ -42,7 +42,7 @@ const PinkPage:React.FC <AboutLayoutProps> =({pinkcityData}) => {
   return (
     <div className="lg:h-[30rem] h-[50rem] md:h-[70rem] w-full flex lg:flex-row flex-col-reverse font-regular font-poppins my-32">
       <div className="lg:w-[50%] lg:h-full w-full h-[50%] relative flex lg:flex-col flex-col-reverse  items-center">
-        {homepinkcity.birdComponent && <Bird />}
+        {homepinkcity?.birdComponent && <Bird />}
         <div className="absolute lg:-bottom-20 z-10 h-full lg:w-[35rem] w-[20rem] md:w-[46rem] -bottom-44 md:-bottom-16">
           <Image
             src="https://res.cloudinary.com/dlti4o10e/image/upload/v1731734091/1_iwvwwl.svg"
@@ -51,8 +51,10 @@ const PinkPage:React.FC <AboutLayoutProps> =({pinkcityData}) => {
             height={400}
             className="object-contain opacity-35 w-full"
           />
-          <p className="text-gray-700 absolute lg:top-60  lg:left-16 lg:text-sm md:text-lg lg:w-[30rem] md:w-[40rem] text-xs top-32 text-center lg:text-left md:top-[18rem] md:left-24">
-            {homepinkcity.description.split(" ").map((word, index) =>
+          <p className="text-gray-700 absolute lg:top-60  lg:left-16 lg:text-sm md:text-lg lg:w-[30rem] md:w-[40rem] text-xs top-32 text-center lg:text-left md:top-[18rem] md:left-24"
+             style={{ fontFamily: 'Georgia, serif' }}
+          >
+            {homepinkcity?.description?.split(" ").map((word, index) =>
               word === "ivory" || word === "machines" ? (
                 <span key={index} className="text-[#bd6165]">
                   {word}{" "}
@@ -66,7 +68,7 @@ const PinkPage:React.FC <AboutLayoutProps> =({pinkcityData}) => {
       </div>
       <div className="lg:w-[50%] w-full lg:h-full h-[50%] md:w-full relative flex items-center justify-center ">
         <Image
-          src={homepinkcity.hawamahalImg}
+          src={homepinkcity?.hawamahalImg}
           alt="Jaipur"
           width={400}
           height={400}

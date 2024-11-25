@@ -40,7 +40,7 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
 
       if (scrollTop > secondPageStart) {
         const scrolledFromSecondPage = scrollTop - secondPageStart;
-        const scrolled = (scrolledFromSecondPage / scrollableHeight) * 70;
+        const scrolled = (scrolledFromSecondPage / scrollableHeight) * 80;
         setScrollPercent(scrolled);
       } else {
         setScrollPercent(0);
@@ -117,7 +117,7 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
               background: `linear-gradient(to bottom, #76479C ${scrollPercent}%, white ${scrollPercent}%)`,
             }}
           ></div>
-          {title.map((item, index) => (
+          {title?.map((item, index) => (
             <div
               key={index}
               className="absolute scale-75 font-poppins"
@@ -127,10 +127,10 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
                 {index % 2 === 0 && (
                   <h1
                     className={`absolute left-[2rem] text-black text-center italic text-[1rem] transition-all duration-500 ${
-                      activeIndex == index ? "font-black text-[2vw]" : ""
+                      activeIndex == index ? "font-black text-[2vw] scale-75" : ""
                     }`}
                   >
-                    {item.title}
+                    {item?.title}
                   </h1>
                 )}
                 <div
@@ -144,7 +144,7 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
                       activeIndex == index ? "font-black scale-75" : ""
                     }`}
                   >
-                    {item.title}
+                    {item?.title}
                   </span>
                 )}
               </div>
@@ -152,7 +152,7 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
           ))}
         </div>
 
-        {component.map((item, index) => (
+        {component?.map((item, index) => (
           <div
             key={index}
             ref={(el) => {
@@ -169,10 +169,10 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
             <div className="grid lg:grid-cols-2 lg:gap-4 lg:mx-8 mx-3 mt-5">
               <div className="grid justify-items-center order-last lg:order-none">
                 <h1 className="lg:text-2xl text-lg lg:mt-6 font-normal font-poppins text-center">
-                  {item.title1}
+                  {item?.title1}
                 </h1>
                 <h1 className="font-poppins font-semibold lg:text-lg text-xs text-center text-[#76479C]">
-                  {item.title2}
+                  {item?.title2}
                 </h1>
               </div>
               <video
@@ -184,13 +184,13 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
                 playsInline
                 preload="metadata"
               >
-                <source src={item.video} type="video/mp4" />
+                <source src="https://res.cloudinary.com/dlti4o10e/video/upload/v1728990175/samples/cld-sample-video.mp4" type="video/mp4" />
               </video>
             </div>
             <p className="lg:mx-8 mx-3 lg:mt-10 mt-3 font-poppins lg:text-sm text-xs text-center lg:text-left">
               {window.innerWidth <= 1024
-                ? item.description.split(" ").slice(0, 16).join(" ") + "..."
-                : item.description}
+                ? item?.description.split(" ").slice(0, 16).join(" ") + "..."
+                : item?.description}
             </p>
             <button
               aria-label="open-button"
@@ -241,9 +241,9 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
                     }}
                     className="mySwiper"
                   >
-                    {componentData.modalContent.images.map((img, index) => (
+                    {componentData?.modalContent?.images?.map((img, index) => (
                       <SwiperSlide key={index}>
-                        <Image src={img} width={100} height={100} alt="img" />
+                        <Image src="https://res.cloudinary.com/dlti4o10e/image/upload/v1728990173/samples/ecommerce/leather-bag-gray.jpg" width={100} height={100} alt="img" />
                       </SwiperSlide>
                     ))}
                   </Swiper>
@@ -324,10 +324,10 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
                 </svg>
               </button>
               <h1 className="text-[#76479C] font-bold text-2xl">
-                {componentData.modalContent.title}
+                {componentData?.modalContent?.title}
               </h1>
               <p className="font-poppins text-[#76479C] font-semibold text-xs px-10 text-center">
-                {componentData.modalContent.description}
+                {componentData?.modalContent?.description}
               </p>
             </div>
           </div>

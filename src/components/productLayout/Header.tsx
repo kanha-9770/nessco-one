@@ -102,10 +102,10 @@ const Page1: React.FC<Page1Props> = ({ page1machine }) => {
           className="lg:text-[2.8rem] text-[1.5rem] lg:mb-[1rem] mb-[0.5rem] lg:leading-[3rem] leading-[2rem] bg-gradient-to-r from-[#483d73] from-5% via-red-700 via-20% to-red-700  bg-clip-text text-transparent"
         >
           <span ref={span1Ref} className="lg:font-semibold font-bold block">
-            {page1machine.title.split(" ").slice(0, -2).join(" ")}
+            {page1machine?.title?.split(" ").slice(0, -2).join(" ")}
           </span>{" "}
           <span ref={span2Ref} className="font-bold block">
-            {page1machine.title.split(" ").slice(-2).join(" ")}
+            {page1machine?.title?.split(" ").slice(-2).join(" ")}
           </span>
         </h1>
 
@@ -118,7 +118,7 @@ const Page1: React.FC<Page1Props> = ({ page1machine }) => {
           className="p-2 h-full w-full"
           width={400}
           height={400}
-          src={page1machine.image}
+          src={page1machine?.image}
           alt={page1machine?.title || "No title available"}
         />
       </div>

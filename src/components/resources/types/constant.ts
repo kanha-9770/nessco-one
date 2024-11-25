@@ -58,6 +58,7 @@
   
   interface Card {
     title: string;
+    link:any;
     image: CardImage; // Use a specific interface for card images
   }
   

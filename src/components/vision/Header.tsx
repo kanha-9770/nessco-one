@@ -40,17 +40,17 @@ const Page1: React.FC<VisionProps> = ({ visionData }) => {
             muted
             playsInline
             preload="metadata"
-            poster={Header.video}
+            poster={Header?.video}
           >
-            <source src={Header.video} type="video/mp4" />
+            <source src={Header?.video} type="video/mp4" />
           </video>
           <div className="absolute top-0 h-full w-full bg-black opacity-50"></div>
           <div className="absolute lg:top-28 top-12 space-y-4 flex flex-col  items-center w-full">
             <h1 className="text-white font-semibold lg:text-4xl text-4xl">
-              {Header.title}
+              {Header?.title}
             </h1>
             <p className="font-normal lg:w-[50%] w-[85%]  text-center lg:text-[0.8rem] text-[0.7rem] text-white">
-              {Header.description}
+              {Header?.description}
             </p>
           </div>
           <button
@@ -58,7 +58,7 @@ const Page1: React.FC<VisionProps> = ({ visionData }) => {
             aria-label="Right"
           >
             <p className="text-black text-[0.8rem] text-center w-full">
-              {Header.getaQuote}
+              {Header?.getaQuote}
             </p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -78,20 +78,20 @@ const Page1: React.FC<VisionProps> = ({ visionData }) => {
             </svg>
           </button>
           <div className="absolute bottom-10 flex justify-center w-full lg:space-x-6 space-x-2">
-            {Header.image.map((item, index) => (
+            {Header?.image?.map((item, index) => (
               <div
                 key={index}
                 className={`flex flex-col items-center ${imagebottoms[index]}`}
               >
                 <Image
-                  src={item.img}
+                  src={item?.img}
                   alt="Content"
                   width={100}
                   height={100}
                   className={`${imageWidths[index]}`}
                 />
                 <p className="font-medium lg:text-sm text-xs text-white">
-                  {item.title}
+                  {item?.title}
                 </p>
               </div>
             ))}

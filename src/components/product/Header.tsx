@@ -20,7 +20,7 @@ const Page1: React.FC<ProductProps> = ({ productData }) => {
   const Header = productData?.Product[0]?.Header;
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef<HTMLDivElement>(null);
-  const totalSlides = Header.products.length;
+  const totalSlides = Header?.products?.length;
 
   
   // Function to scroll to a specific slide
@@ -75,14 +75,14 @@ const Page1: React.FC<ProductProps> = ({ productData }) => {
       <div className="lg:w-[40%] lg:px-8 px-[1.5rem]">
         <h1 className="lg:text-5xl text-[1.8rem] lg:leading-[3.5rem] lg:my-[1.2rem] my-[0.5rem] bg-gradient-to-r from-[#483d73] from-5% via-red-700 via-20% to-red-700  bg-clip-text text-transparent">
           <span className=" font-medium block">
-            {Header.ourProduct.trim().replace(/\s+\S+$/, "")}
+            {Header?.ourProduct?.trim().replace(/\s+\S+$/, "")}
           </span>{" "}
           <span className=" font-semibold">
-            {Header.ourProduct.trim().match(/\S+$/)}
+            {Header?.ourProduct?.trim().match(/\S+$/)}
           </span>
         </h1>
-        <p className="lg:w-[23rem]  bg-green lg:text-[0.9rem] text-black text-[0.8rem]">
-          {Header.description}
+        <p className="lg:w-[23rem]  bg-green line-clamp-3 lg:text-[0.9rem] text-black text-[0.8rem]">
+          {Header?.description}
         </p>
       </div>
       {/* Decorative Elements */}
@@ -92,7 +92,7 @@ const Page1: React.FC<ProductProps> = ({ productData }) => {
       {/* Slides Container */}
       <div className="lg:w-[60%] lg:my-0 my-[1rem] lg:px-0 px-[1.5rem]">
         <h2 className="lg:text-2xl text-[1.2rem] font-medium text-red-700 my-[0.4rem] lg:pl-[1rem]">
-          {Header.featuredProducts}
+          {Header?.featuredProducts}
         </h2>
         <Carousal productData={productData} />
       </div>

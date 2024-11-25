@@ -34,12 +34,12 @@ const PinkCity:React.FC <HomeLayoutProps> =({aboutData}) => {
 
   return (
     <div className="relative mx-auto lg:h-[35rem] h-[65rem] bg-white w-full md:h-full lg:pt-10 pt-5">
-      <h1 className="lg:text-3xl text-2xl font-medium text-left font-poppins text-[#312465] lg:pl-10 pl-8 ">
-        {homepinkcityData.heading}
-      </h1>
+      <h2 className="lg:text-3xl text-2xl font-medium text-left font-poppins text-[#312465] lg:pl-10 pl-8 ">
+        {homepinkcityData?.heading}
+      </h2>
       <div className="flex flex-col items-center">
         <div className="lg:grid lg:grid-cols-4 lg:gap-x-6 gap-y-6 lg:px-11 px-8 md:px-9 p-1 w-full h-full  my-10 flex flex-col items-center ">
-          {homepinkcityData.galleryImages.map((item, index) => (
+          {homepinkcityData?.galleryImages?.map((item, index) => (
             <div
               key={index}
               className="relative lg:h-[22rem] lg:w-full lg:px-0  w-full"
@@ -47,7 +47,7 @@ const PinkCity:React.FC <HomeLayoutProps> =({aboutData}) => {
               {!isMobile ? (
                 <div className="group relative h-full w-full overflow-hidden">
                   <Image
-                    src={item.src}
+                    src={item?.src}
                     alt={`Gallery image ${index + 1}`}
                     height={200}
                     width={200}
@@ -64,7 +64,7 @@ const PinkCity:React.FC <HomeLayoutProps> =({aboutData}) => {
                       className="w-[16rem] h[5rem] -mt-10"
                     />
                     <p className="text-white -mt-20 lg:text-sm font-regular lg:w-[15rem] text-xs w-35vw] text-center font-poppins">
-                      {item.paragraph}
+                      {item?.paragraph}
                     </p>
                     <Image
                       src="https://res.cloudinary.com/dlti4o10e/image/upload/v1731561503/bottomlayer_uq6egh.svg"
@@ -81,7 +81,7 @@ const PinkCity:React.FC <HomeLayoutProps> =({aboutData}) => {
                   <div className="flex">
                     <div className="w-1/2 p-1">
                       <Image
-                        src={item.src}
+                        src={item?.src}
                         alt={`Gallery image ${index + 1}`}
                         width={300}
                         height={300}
@@ -97,7 +97,7 @@ const PinkCity:React.FC <HomeLayoutProps> =({aboutData}) => {
                         className=""
                       />
                       <p className="text-black text-xs font-bold text-center font-poppins md:text-lg w-[85%] absolute bottom-12 md:bottom-24">
-                        {truncateText(item.paragraph, 17)}{" "}
+                        {truncateText(item?.paragraph, 11.5)}{" "}
                         {/* Adjust maxWords as needed */}
                       </p>
                       <Image
@@ -111,7 +111,7 @@ const PinkCity:React.FC <HomeLayoutProps> =({aboutData}) => {
                   </div>
                 </div>
               )}
-              {index >= 0 && index < homepinkcityData.galleryImages.length - 1 && (
+              {index >= 0 && index < homepinkcityData?.galleryImages?.length - 1 && (
                 <div className="absolute right-[-0.700rem] top-3 h-[21rem] w-[2px] bg-[#2d1f66] lg:visible invisible"></div>
               )}
             </div>
@@ -120,7 +120,7 @@ const PinkCity:React.FC <HomeLayoutProps> =({aboutData}) => {
         <LinkUrl href="/about/the-pink-city " className="bg-slate-50 absolute bottom-3 rounded-md">
         <div>
           <button aria-label="read-more" className="text-base hover:font-medium font-normal font-poppins w-[8rem] h-[2rem] items-center justify-center text-center border border-[#6f6f6f] hover:bg-black text-[#6f6f6f] hover:text-white  rounded-[0.26rem] z-10 ">
-            {homemisionData.button}
+            {homemisionData?.button}
           </button>
         </div>
         </LinkUrl>

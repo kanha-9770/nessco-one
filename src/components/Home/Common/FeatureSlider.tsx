@@ -46,7 +46,7 @@ export const FeatureSlider: React.FC = () => {
     const intervalRef = setInterval(() => {
       const x = dragX.get();
       if (x === 0) {
-        setItemIndex((pv) => (pv === items.length - 1 ? 0 : pv + 1));
+        setItemIndex((pv) => (pv === items?.length - 1 ? 0 : pv + 1));
       }
     }, AUTO_DELAY);
 
@@ -55,7 +55,7 @@ export const FeatureSlider: React.FC = () => {
 
   const onDragEnd = () => {
     const x = dragX.get();
-    if (x <= -DRAG_BUFFER && itemIndex < items.length - 1) {
+    if (x <= -DRAG_BUFFER && itemIndex < items?.length - 1) {
       setItemIndex((pv) => pv + 1);
     } else if (x >= DRAG_BUFFER && itemIndex > 0) {
       setItemIndex((pv) => pv - 1);
@@ -73,24 +73,24 @@ export const FeatureSlider: React.FC = () => {
         onDragEnd={onDragEnd}
         className="flex  cursor-grab items-center active:cursor-grabbing"
       >
-        {items.map((item, idx) => (
+        {items?.map((item, idx) => (
           <motion.div
             key={idx}
             animate={{ scale: itemIndex === idx ? 0.95 : 0.85 }}
             transition={SPRING_OPTIONS}
-            className={`${styles.card} bg-gradient-to-t from-black to-transparent`}
+            className={`${styles?.card} bg-gradient-to-t from-black to-transparent`}
           
           >
             <Image
               height={100}
               width={100}
-              src={item.imageSrc}
-              alt={item.title}
+              src={item?.imageSrc}
+              alt={item?.title}
               className="object-cover w-52 h-32 bg-white lg:mr-4 rounded-lg "
             />
             <div className="flex flex-col py-16 lg:py-0">
-              <h3 className={`${styles.title} text-sm font-semibold lg:text-lg`}>{item.title}</h3>
-              <p className="text-base font-regular text-gray-500 lg:mt-2">{item.description}</p>
+              <h3 className={`${styles?.title} text-sm font-semibold lg:text-lg`}>{item?.title}</h3>
+              <p className="text-base font-regular text-gray-500 lg:mt-2">{item?.description}</p>
             </div>
           </motion.div>
         ))}
@@ -108,18 +108,18 @@ type DotsProps = {
 
 const Dots: React.FC<DotsProps> = ({ itemIndex, setItemIndex }) => {
   return (
-    <div className={styles.indicators}>
-      {items.map((_, idx) => (
+    <div className={styles?.indicators}>
+      {items?.map((_, idx) => (
         <button
           key={idx}
           onClick={() => setItemIndex(idx)}
-          className={`${styles.indicator} ${
-            idx === itemIndex ? styles.activeIndicator : ""
+          className={`${styles?.indicator} ${
+            idx === itemIndex ? styles?.activeIndicator : ""
           }`}
         >
           <span
-            className={`${styles.progress} ${
-              idx === itemIndex ? styles.activeProgress : ""
+            className={`${styles?.progress} ${
+              idx === itemIndex ? styles?.activeProgress : ""
             }`}
           ></span>
         </button>

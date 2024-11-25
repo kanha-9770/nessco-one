@@ -72,7 +72,7 @@ const Page2: React.FC<VisionProps> = ({ visionData }) => {
   return (
     <div className="lg:mx-[3rem] flex items-center justify-center font-regular font-poppins">
       <div className="lg:mb-[4rem] lg:mt-[2rem] mb-[4rem] w-[94vw] lg:h-[70vh] flex lg:flex-row flex-col lg:relative">
-        {Cards.cards.map((card, index) => (
+        {Cards?.cards?.map((card, index) => (
           <div
             key={index}
             className={`bg-white flex lg:flex-col flex-row justify-center items-center lg:rounded-[2rem] rounded-[1rem] lg:px-[2rem] lg:py-[3.2rem] px-[4vw] relative lg:absolute lg:my-0 my-[0.5rem] transition-all duration-300 ${
@@ -125,7 +125,7 @@ const Page2: React.FC<VisionProps> = ({ visionData }) => {
               } transition-all duration-300 ease-in-out`}
             >
               <h2>
-                {expanded === 3 && index === 3 ? card.longTitle : card.title}
+                {expanded === 3 && index === 3 ? card?.longTitle : card?.title}
               </h2>
             </div>
             <p
@@ -139,36 +139,36 @@ const Page2: React.FC<VisionProps> = ({ visionData }) => {
                 expanded === index ? "" : "hidden lg:block" // Hide on mobile unless expanded
               }`}
             >
-              {expanded === index ? card.largeDescription : card.description}
+              {expanded === index ? card?.largeDescription : card?.description}
             </p>
 
-            {card.descriptionList && expanded === index && (
+            {card?.descriptionList && expanded === index && (
               <div
                 className={`absolute lg:text-[1rem] text-[0.8rem] lg:left-[4vw] lg:bottom-[6vh] bottom-[12rem] flex lg:w-[58vw] w-[75vw] transition-all duration-300 ease-in-out ${
                   blurringIndex === index ? "blur-sm" : ""
                 }`}
               >
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
-                  {card.descriptionList.map((item, idx) => (
+                  {card?.descriptionList?.map((item, idx) => (
                     <div key={idx} className="flex mx-[0.5vw]">
                       {index === 1 && (
                         <div className="flex">
                           <p className="text-[#483d73] mr-[0.5vw] font-bold lg:text-[1.2rem]">
-                            {item.listImg}
+                            {item?.listImg}
                           </p>
-                          <p>{item.point}</p>
+                          <p>{item?.point}</p>
                         </div>
                       )}
                       {index === 2 && (
                         <div className="flex">
                           <Image
-                            src={item.listImg}
-                            alt={item.point}
+                            src={item?.listImg}
+                            alt={item?.point}
                             width={100}
                             height={100}
                             className="lg:w-[3vw] lg:h-[6vh] w-[8vw] h-[4vh]"
                           />
-                          <p>{item.point}</p>
+                          <p>{item?.point}</p>
                         </div>
                       )}
                     </div>
@@ -178,7 +178,7 @@ const Page2: React.FC<VisionProps> = ({ visionData }) => {
             )}
 
             <Image
-              src={card.image}
+              src={card?.image}
               alt="Content"
               width={100}
               height={100}

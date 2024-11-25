@@ -1,12 +1,11 @@
 "use client";
+
 import React, { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { countryCODE, languageCODE, Menu } from "./nav-menue";
 import dynamic from "next/dynamic";
 const MenuItem = dynamic(() => import("./nav-menue"));
 const ContactForm = dynamic(() => import("../Contact/Contact"));
-import { usePathname } from "next/navigation";
 const SVGComponent = dynamic(() => import("./BlueLogo"));
 const CountryLayout = dynamic(() => import("./NavLayouts/CountryLayout"), {
   ssr: false,
@@ -27,9 +26,11 @@ interface NavbarItem {
   component?: React.ReactNode;
   type?: string;
 }
+
 interface navLayoutProps {
   navData: NavbarData;
 }
+
 export default function NavbarDemo({ navData }: navLayoutProps) {
   return (
     <div className="relative lg:h-auto lg:mt-0 flex items-center justify-between lg:justify-center">
@@ -37,6 +38,7 @@ export default function NavbarDemo({ navData }: navLayoutProps) {
     </div>
   );
 }
+
 interface NavbarProps {
   className?: string;
   navData: NavbarData;
@@ -47,15 +49,20 @@ function Navbar({ className, navData }: NavbarProps) {
   const [active, setActive] = useState("");
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
   const [searchValue, setSearchValue] = useState<string>("");
-  const pathname = usePathname() || "";
-  const componentCode = pathname.split("/")[4]?.toLowerCase();
-  // alert(componentCode)
-  const componentCodeourCompany = pathname.split("/")[4]?.toLowerCase();
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+    if (isOpen) {
+      // Reset expanded item when closing the menu
+      setExpandedItem(null);
+    }
+  };
+
   const expandItem = (item: string) =>
     setExpandedItem(expandedItem === item ? null : item);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setSearchValue(e.target.value);
+
   const navbarItems: NavbarItem[] = [
     {
       name: `${navData?.navbar[0]?.category}`,
@@ -99,54 +106,37 @@ function Navbar({ className, navData }: NavbarProps) {
       link: "contact",
     },
   ];
+
   return (
     <div
-      className={`fixed flex w-full ${
-        ["knowledge-center", "clientele"].includes(componentCode) ||
-        ["our-company"].includes(componentCodeourCompany)
-          ? "bg-black text-white"
-          : "bg-white"
-      } h-14 font-poppins lg:mt-0 items-center inset-x-0 mx-auto z-[999] ${className}`}
+      className={`fixed flex w-full bg-white text-black h-14 font-poppins lg:mt-0 items-center inset-x-0 mx-auto z-[999] ${className}`}
     >
       {/* Desktop Menu */}
       <div className="hidden px-12 lg:flex w-full">
-        <div className="w-1/5  flex items-center">
+        <div className="w-1/5 flex items-center">
           <Link
             href={`/${countryCODE}/${languageCODE}`}
-            className="w-full h-full flex items-center"
+            className="w-20 h-full flex items-center"
           >
-            {["knowledge-center", "our-strength", "clientele"].includes(
-              componentCode
-            ) || ["our-company"].includes(componentCodeourCompany) ? (
-              <Image
-                className="w-max h-8"
-                width={400}
-                height={400}
-                src="https://res.cloudinary.com/dfryvystt/image/upload/v1731482648/WhiteLOGO_h90whl.png"
-                alt="White Logo"
-              />
-            ) : (
-              <SVGComponent />
-            )}
+            <SVGComponent />
           </Link>
         </div>
-        <div className="w-3/5  flex items-center justify-center">
+        <div className="w-3/5 flex items-center justify-center">
           <Menu>
-            {navbarItems.map((item) => (
+            {navbarItems?.map((item) => (
               <MenuItem
-                key={item.name}
+                key={item?.name}
                 setActive={setActive}
                 active={active}
-                item={item.name}
+                item={item?.name}
                 setPosition={() => {}}
-                link={item.link}
+                link={item?.link}
               >
-                {item.component}
+                {item?.component}
               </MenuItem>
             ))}
           </Menu>
         </div>
-
         <div className="w-1/5 flex justify-end items-center gap-4">
           <div>
             <CountryLayout />
@@ -156,11 +146,11 @@ function Navbar({ className, navData }: NavbarProps) {
       </div>
 
       {/* Mobile Menu */}
-      <div className=" lg:hidden flex w-full ">
-        <div className="lg:hidden w-full flex justify-between items-center  p-4">
+      <div className="lg:hidden flex w-full">
+        <div className="lg:hidden w-full flex justify-between items-center p-4">
           <Link
             href={`/${countryCODE}/${languageCODE}`}
-            className="h-14 w-14 flex items-center"
+            className="h-14 w-14  flex items-center"
           >
             <SVGComponent />
           </Link>
@@ -195,45 +185,37 @@ function Navbar({ className, navData }: NavbarProps) {
         </div>
 
         {isOpen && (
-          <div className="lg:hidden absolute top-full left-0 w-full bg-gray-300/90 backdrop-blur-[80px] h-screen  shadow-lg z-50">
+          <div className="lg:hidden absolute top-full left-0 w-full bg-gray-300/90 backdrop-blur-[80px] h-screen shadow-lg z-50">
             <div className="flex bg-white h-2/3 p-4 flex-col space-y-3">
-              {navbarItems.map((item) => (
-                <div key={item.name}>
+              {navbarItems?.map((item) => (
+                <div key={item?.name}>
                   <div
                     className="flex -mt-3 justify-between items-center py-2 border-b"
-                    onClick={() => expandItem(item.name)}
+                    onClick={() => expandItem(item?.name)}
                   >
                     <span className="text-lg font-semimedium text-black">
-                      {item.name}
+                      {item?.name}
                     </span>
                     <span className="text-gray-500 pr-2 text-2xl">
-                      {expandedItem === item.name ? (
-                        <>
-                          <MinusSvg />
-                        </>
-                      ) : (
-                        <>
-                          <PlusSvg />
-                        </>
-                      )}
+                      {expandedItem === item?.name ? <MinusSvg /> : <PlusSvg />}
                     </span>
                   </div>
-                  {expandedItem === item.name && (
+                  {expandedItem === item?.name && (
                     <div className="absolute h-screen inset-0 bg-white z-50 flex flex-col">
                       <div className="flex border-b-2 bg-[#f2f2f2] justify-between items-center">
-                        <span className="text-lg pl-4  text-[#483d73] font-semibold ">
-                          {item.name}
+                        <span className="text-lg pl-4 text-[#483d73] font-semibold">
+                          {item?.name}
                         </span>
                         <button
-                          className=" invert-0 p-4"
-                          onClick={() => expandItem(item.name)}
+                          className="invert-0 p-4"
+                          onClick={() => expandItem(item?.name)}
                         >
                           -
                         </button>
                       </div>
                       <div className="py-4 flex-grow">
                         <div className="text-sm text-gray-700">
-                          {item.component}
+                          {item?.component}
                         </div>
                       </div>
                     </div>
@@ -241,10 +223,10 @@ function Navbar({ className, navData }: NavbarProps) {
                 </div>
               ))}
               <div className="w-full">
-                <div className="relative -mt-3 h-full flex flex-col w-full  lg:hidden">
+                <div className="relative -mt-3 h-full flex flex-col w-full lg:hidden">
                   <div className="relative max-w-screen-2xl p-1 flex w-full mx-auto">
                     <div className="justify-center items-center w-full rounded-xl">
-                      <form className="flex justify-start  ">
+                      <form className="flex justify-start">
                         <div className="relative w-full border-gray-300">
                           <input
                             type="text"
@@ -259,11 +241,11 @@ function Navbar({ className, navData }: NavbarProps) {
                       </form>
                     </div>
                   </div>
-                  <div className="flex felx-row justify-between items-center gap-2 border-t-[1px] border-b-[1px]  w-full p-2">
+                  <div className="flex flex-row justify-between items-center gap-2 border-t-[1px] border-b-[1px] w-full p-2">
                     <div className="absolute top-20">
                       <CountryLayout />
                     </div>
-                    <div className="relative "></div>
+                    <div className="relative"></div>
                   </div>
                 </div>
               </div>

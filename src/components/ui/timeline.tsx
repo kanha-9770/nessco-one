@@ -45,25 +45,25 @@ export const Timeline:React.FC<AboutLayoutProps> = ({companyData}) => {
         </div>
 
         <div ref={ref} className="relative max-w-8xl mx-auto lg:pb-20 md:px-10">
-          {homecompanyData.map((item, index) => (
+          {homecompanyData?.map((item, index) => (
             <div key={index} className="flex justify-start pt-10 md:pt-40 md:gap-10">
               <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 lg:w-[30rem] h-[5rem] lg:h-[10rem] md:w-[18rem] lg:pl-[1rem] pl-[1.2rem] lg:-ml-9 md:-ml-10">
                 <div className="h-7 relative lg:left- w-7 rounded-full bg-black dark:bg-black flex items-center justify-center">
                   <div className="h-5 w-5 rounded-full bg-neutral-200 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700" />
                 </div>
                 <h3 className="hidden md:block text-xl lg:pl-5 md:pl-6 md:text-5xl font-bold text-white dark:text-neutral-500">
-                  {item.title}
+                  {item?.title}
                 </h3>
               </div>
 
               <div className="pl-20 pr-4 md:pl-4 w-full h-full">
                 <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-neutral-500 dark:text-neutral-500">
-                  {item.title}
+                  {item?.title}
                 </h3>
                 <div className="lg:flex lg:flex-row flex flex-col relative h-[25rem]">
                   <div className="lg:w-2/5 w-2/3 md:w-1/2 h-full absolute lg:left-0">
                     <Image
-                      src={item.image}
+                      src={item?.image}
                       alt="banner"
                       height={290}
                       width={290}
@@ -71,7 +71,7 @@ export const Timeline:React.FC<AboutLayoutProps> = ({companyData}) => {
                     />
                   </div>
                   <div className="lg:w-3/5 md:w-1/2 text-xs lg:text-sm text-justify md:text-xs md:p-0 md:px-7 absolute md:top-0 md:right-0 lg:right-0 bottom-0 lg:top-0 px-6 text-white font-regular font-poppins">
-                    <p className="-ml-4">{item.description}</p>
+                    <p className="-ml-4">{item?.description}</p>
                   </div>
                 </div>
               </div>

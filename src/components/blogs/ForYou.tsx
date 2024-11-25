@@ -8,13 +8,13 @@ interface BlogsProps {
 }
 
 const Page4: React.FC<BlogsProps> = ({ blogsData }) => {
-  const ForYou = blogsData.blogs[0]?.ForYou;
+  const ForYou = blogsData?.blogs[0]?.ForYou;
   return (
     <>
       <div className="lg:mr-[3vw] lg:ml-0 mr-[4vw] ml-[4vw] font-regular font-poppins">
         <div className="bg-white w-full lg:h-[30.5rem] h-[14rem] mt-[2rem] rounded-[1rem] overflow-hidden">
           <div className="mt-[1.4rem] mb-[0.5rem] mx-[1.2rem] text-[1.5rem] font-poppins text-[#3a2a79] flex">
-            <h1>{ForYou.title}</h1>
+            <h1>{ForYou?.title}</h1>
             <p className="mt-[0.3rem]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +34,7 @@ const Page4: React.FC<BlogsProps> = ({ blogsData }) => {
           </div>
           <div className="lg:h-[25.3rem] w-full overflow-hidden">
             <div className="lg:grid lg:grid-cols-2 lg:grid-rows-[auto] flex h-full w-full lg:overflow-y-auto overflow-x-auto scrollbar-custom scrollbar">
-              {ForYou.for.map((item, idx) => (
+              {ForYou?.for?.map((item, idx) => (
                 <div
                   key={idx}
                   className="flex mx-[1rem] mt-[1rem] h-max border-solid border-b-2 border-[#E6E7E6] pb-[0.1rem]"
@@ -53,15 +53,15 @@ const Page4: React.FC<BlogsProps> = ({ blogsData }) => {
                       </svg>
                     </div>
                     <h2 className="text-black mb-[0.5rem] lg:font-bold font-semibold lg:text-[1.2rem] text-[1rem] font-poppins">
-                      {item.title}
+                      {item?.title}
                     </h2>
                     <p className="text-black lg:text-[0.9rem] text-[0.8rem] w-full font-poppins">
-                      {item.description}
+                      {item?.description}
                     </p>
                   </div>
                   <div className="flex flex-col">
                     <Image
-                      src={item.img}
+                      src={item?.img}
                       alt={"Blogs Image"}
                       width={400}
                       height={400}

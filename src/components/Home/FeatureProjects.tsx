@@ -340,34 +340,34 @@ const FeatureProjects: React.FC<FeatureProjectLayoutProps> = ({ heroData }) => {
                   onMouseEnter={() => setHoveredCardIndex(idx)}
                   onMouseLeave={() => setHoveredCardIndex(null)}
                 >
-                  <div className="absolute top-0 right-1 sm:right-2 flex space-x-1 sm:space-x-2">
+                  <div className="absolute top-1 right-1 sm:right-2 flex space-x-1 sm:space-x-2">
                     <div className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center relative group">
                       <Image
-                        src={item.image}
-                        alt={item.h1}
+                        src={item?.image}
+                        alt={item?.h1}
                         width={400}
                         height={400}
                         className="hover:scale-90 transition-all duration-300"
                       />
                       <div className="hidden group-hover:flex absolute top-8 left-4  bg-white border border-gray-300 shadow-md px-2 py-1 z-20 w-max">
-                        <p className="text-[0.6rem] sm:text-[0.7rem] text-black">{item.information}</p>
+                        <p className="text-[0.6rem] sm:text-[0.7rem] text-black">{item?.information}</p>
                       </div>
                     </div>
                   </div>
 
                   <div className="p-2 h-14 font-poppins">
-                    <h3 className="text-[0.6rem] sm:text-xs font-semibold w-[65%]">{item.h1}</h3>
+                    <h3 className="text-[0.6rem] sm:text-xs font-semibold w-[65%]">{item?.h1}</h3>
                   </div>
 
                   <Link
-                    href={`/${countryCODE}/${languageCODE}/products/${item?.link}`}
+                    href={`/${countryCODE}/${languageCODE}/products/${item.link}`}
                     className="flex justify-center items-center"
                   >
                     <div className="w-full px-1 sm:px-2 hover:px-0 transition-all duration-300 h-[6rem] sm:h-[7rem] md:h-[8rem] flex justify-center items-center">
                       <Image
                         className="object-cover"
-                        src={item.img}
-                        alt={item.h1}
+                        src={item?.img}
+                        alt={item?.h1}
                         width={400}
                         height={400}
                       />
@@ -377,7 +377,7 @@ const FeatureProjects: React.FC<FeatureProjectLayoutProps> = ({ heroData }) => {
                   {hoveredCardIndex === idx && (
                     <Link
                       className="flex bg-black rounded-b-full w-full items-center justify-center absolute bottom-0"
-                      href={`/${countryCODE}/${languageCODE}/products/${item?.link}`}
+                      href={`/${countryCODE}/${languageCODE}/products/${item.link}`}
                     >
                       <button className="text-[0.6rem] sm:text-xs text-white font-medium mr-1">View Machine</button>
                     </Link>

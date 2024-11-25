@@ -82,7 +82,7 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData }) => {
         ref={carouselRef}
         onScroll={checkScrollability}
       >
-        {DataBankItem.map((item, index) => (
+        {DataBankItem?.map((item, index) => (
           <div key={index} className="flex flex-col space-y-4">
             <Link href={`/${countryCODE}/${languageCODE}/resources/${item.link}`}>
               <div
@@ -102,8 +102,8 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData }) => {
 
                 <div className="relative w-full h-full flex justify-center items-center">
                   <Image
-                    src={item.image}
-                    alt={item.title}
+                    src={item?.image}
+                    alt={item?.title}
                     width={96}
                     height={96}
                     className="object-contain"
@@ -112,7 +112,7 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData }) => {
                 </div>
               </div>
               <p className="relative font-poppins text-center mt-4 invert-0 font-normal hover:text-[#483d78] hover:font-semibold text-base">
-                {item.title}
+                {item?.title}
               </p>
             </Link>
           </div>
@@ -127,12 +127,12 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData }) => {
           onScroll={checkScrollability}
         >
           <div className="flex flex-row gap-2">
-            {paginatedItems.map((group, groupIndex) => (
+            {paginatedItems?.map((group, groupIndex) => (
               <div
                 key={`slide-${groupIndex}`}
                 className="min-w-full p-1 grid grid-cols-2 grid-rows-2 gap-4"
               >
-                {group.map((item, itemIndex) => (
+                {group?.map((item, itemIndex) => (
                   <div
                     key={itemIndex}
                     className="relative w-40 h-36 border-[1px] bg-white rounded-xl  flex flex-col justify-start items-center p-2"
@@ -140,15 +140,15 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData }) => {
                   >
                     <div className="relative w-32 bg-white rounded-xl border-[1px] h-16 flex justify-center items-center">
                       <Image
-                        src={item.image}
-                        alt={item.title}
+                        src={item?.image}
+                        alt={item?.title}
                         width={96}
                         height={96}
                         className="object-contain h-16 w-32"
                       />
                     </div>
                     <p className="relative font-poppins text-center mt-4 invert-0 font-medium hover:text-[#483d78] hover:font-bold text-16">
-                      {item.title}
+                      {item?.title}
                     </p>
                   </div>
                 ))}
@@ -175,7 +175,7 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData }) => {
         )}
         <div className="h-[50%] w-full">
           <div className="h-full pb-40 overflow-y-auto w-full">
-            {DataBankItem.map((item, index) => (
+            {DataBankItem?.map((item, index) => (
               <div key={index} className="flex flex-col space-y-4">
                 <Link
                   href="#"
@@ -187,11 +187,11 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData }) => {
                         className="h-6 w-6"
                         width={10}
                         height={10}
-                        src={item.bgPic}
-                        alt={item.title}
+                        src={item?.bgPic}
+                        alt={item?.title}
                       />
                     </div>
-                    <p className="text-base">{item.title}</p>
+                    <p className="text-base">{item?.title}</p>
                   </div>
                 </Link>
               </div>

@@ -74,10 +74,10 @@ const NavLinksDemo: React.FC<NavLinksDemoProps> = ({ type, navItems }) => {
 
   useEffect(() => {
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const index = navItems.findIndex(
-            (item) => item.ref.current === entry.target
+      entries?.forEach((entry) => {
+        if (entry?.isIntersecting) {
+          const index = navItems?.findIndex(
+            (item) => item?.ref.current === entry?.target
           );
           setActiveLink(index);
           setActiveLinkText(navItems[index].text);
@@ -165,15 +165,15 @@ const NavLinksDemo: React.FC<NavLinksDemoProps> = ({ type, navItems }) => {
                 {activeLinkText} ▲
               </button>
               <ul>
-                {navItems.map((item, index) => (
+                {navItems?.map((item, index) => (
                   <li key={index} className="mb-4">
                     <NavLink
-                      text={item.text}
+                      text={item?.text}
                       index={index}
                       activeLink={activeLink}
                       handleMouseEnter={handleMouseEnter}
                       handleMouseLeave={handleMouseLeave}
-                      handleClick={handleClick(item.ref)}
+                      handleClick={handleClick(item?.ref)}
                     />
                   </li>
                 ))}
@@ -190,12 +190,12 @@ const NavLinksDemo: React.FC<NavLinksDemoProps> = ({ type, navItems }) => {
         {navItems.map((item, index) => (
           <NavLink
             key={index}
-            text={item.text}
+            text={item?.text}
             index={index}
             activeLink={activeLink}
             handleMouseEnter={handleMouseEnter}
             handleMouseLeave={handleMouseLeave}
-            handleClick={handleClick(item.ref)}
+            handleClick={handleClick(item?.ref)}
           />
         ))}
       </nav>

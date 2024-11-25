@@ -10,7 +10,7 @@ const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
 const countryUrl = "https://countryjson.nesscoindustries.com/";
 
 // Define the allowed Twitter card types
-type TwitterCardType = "summary" | "summary_large_image" | "player" | "app" ;
+type TwitterCardType = "summary" | "summary_large_image" | "player" | "app";
 
 type Props = {
   params: { locale: string };
@@ -76,12 +76,6 @@ export async function generateMetadata({
       openGraph: {
         title: "Default OG Title",
         description: "Default OG Description",
-        images: [
-          {
-            url: "/default-image.webp",
-            alt: "Default Image Alt",
-          },
-        ],
       },
       robots: "index, follow",
       alternates: {
@@ -97,35 +91,20 @@ export async function generateMetadata({
   }
 
   const seoData = homeData.home[0].homeSeoData;
-  const country = cookies().get("country")?.value || "in";
 
   return {
-    title:`${seoData?.title} - ${countryName} `,
+    title: `${seoData?.title} - ${countryName} `,
     description: seoData?.description,
     keywords: seoData?.keywords,
     openGraph: {
       title: seoData.openGraph.title,
       description: seoData.openGraph.description,
-      url: seoData.alternates.canonical,
-      images: seoData.openGraph.images.map((image) => ({
-        url: image.url,
-        alt: image.alt,
-      })),
-    },
-    robots: seoData?.robots,
-    alternates: {
-      canonical:`https://nessco-services.vercel.app/${country}/${locale}`,
     },
     twitter: {
       card: seoData.twitter.card as TwitterCardType, // Explicitly cast to TwitterCardType
       site: seoData.twitter.site,
       title: seoData.twitter.title,
       description: seoData.twitter.description,
-      images: [
-        {
-          url: seoData.twitter.image,
-        },
-      ],
     },
   };
 }

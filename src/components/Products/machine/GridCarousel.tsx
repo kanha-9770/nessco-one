@@ -88,7 +88,7 @@ const MachineGrid: React.FC<MachineGridProps> = ({ supporItem }) => {
         ref={carouselRef}
         onScroll={checkScrollability}
       >
-        {supporItem.map((item, index) => (
+        {supporItem?.map((item, index) => (
           <div key={index} className="flex flex-col space-y-4">
             <motion.div
               className="relative flex-shrink-0 w-[11rem] h-32 border-2  rounded-3xl p-4 flex flex-col justify-center items-center"
@@ -99,8 +99,8 @@ const MachineGrid: React.FC<MachineGridProps> = ({ supporItem }) => {
             >
               <div className="relative w-full h-full flex justify-center items-center">
                 <Image
-                  src={item.image.src}
-                  alt={item.title}
+                  src={item?.image?.src}
+                  alt={item?.title}
                   width={96}
                   height={96}
                   className="object-contain"

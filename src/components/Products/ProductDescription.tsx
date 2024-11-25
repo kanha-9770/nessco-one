@@ -23,7 +23,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ machine }) => {
             {machine?.descriptionSubHeading}
           </span>
           <div className="text-sm text-black font-poppins mt-4">
-            {machine.product_description}
+            {machine?.product_description}
           </div>
         </div>
         <div className="relative items-center p-4 flex flex-row justify-center">
@@ -32,10 +32,10 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ machine }) => {
               className="lg:h-20 lg:w-20 h-16 w-16"
               animationData={speed}
             />
-            <p className="text-[#483d78] text-center lg:text-2xl text-lg">
+            <p className="text-[#483d78] text-center lg:text-xl text-lg">
               {machine?.descriptionSpeed}
             </p>
-            <p className="lg:text-base text-xs justify-center px-6 lg:mt-8 mt-2 text-center font-regular">
+            <p className="lg:text-base text-xs justify-center px-6 lg:mt-4 mt-2 text-center font-regular">
               {machine?.technicalSpecifications?.specifications[0]?.title ||
                 "N/A"}
             </p>
@@ -45,10 +45,10 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ machine }) => {
               className="lg:h-20 lg:w-20 h-16 w-16 -rotate-45"
               animationData={size}
             />
-            <p className="text-[#483d78] text-center lg:text-2xl text-lg">
+            <p className="text-[#483d78] text-center lg:text-xl text-lg">
               {machine?.descriptionSize}
             </p>
-            <p className="lg:text-base text-xs lg:mt-8 mt-2 px-6 text-center font-regular">
+            <p className="lg:text-base text-xs lg:mt-4 mt-2 px-6 text-center font-regular">
               {machine?.technicalSpecifications?.specifications[1]?.title ||
                 "N/A"}
             </p>
@@ -58,10 +58,10 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ machine }) => {
               className="lg:h-20 lg:w-20 h-16 w-16"
               animationData={speed}
             />
-            <p className="text-[#483d78] text-center lg:text-2xl text-lg">
+            <p className="text-[#483d78] text-center lg:text-xl text-lg">
               {machine?.descriptionRange}
             </p>
-            <p className="lg:text-base text-xs lg:mt-8 mt-2 px-6 text-center font-regular">
+            <p className="lg:text-base text-xs lg:mt-4 mt-2 px-6 text-center font-regular">
               {machine?.technicalSpecifications?.specifications[2]?.title ||
                 "N/A"}
             </p>

@@ -8,7 +8,7 @@ interface BlogsProps {
 }
 
 const Page5: React.FC<BlogsProps> = ({ blogsData }) => {
-  const Sources = blogsData.blogs[0]?.Sources;
+  const Sources = blogsData?.blogs[0]?.Sources;
   const carouselRef = useRef<HTMLDivElement | null>(null);
 
   const scrollLeft = () => {
@@ -34,7 +34,7 @@ const Page5: React.FC<BlogsProps> = ({ blogsData }) => {
       <div className="lg:mr-[3vw] lg:ml-0 mr-[4vw] ml-[4vw] relative font-regular font-poppins">
         <div className="bg-white w-full h-[38rem] mt-[2rem] rounded-[1rem] overflow-hidden mb-[2rem] pb-[1.5rem]">
           <div className="my-[1.4rem] mx-[1.2rem] text-[1.5rem] font-poppins text-[#3a2a79] flex z-0">
-            <h1>{Sources.title}</h1>
+            <h1>{Sources?.title}</h1>
             <p className="mt-[0.3rem]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -99,23 +99,23 @@ const Page5: React.FC<BlogsProps> = ({ blogsData }) => {
             <div className="flex w-max px-[0.5rem]">
               <div className="flex flex-col items-center justify-center h-[31.9rem] w-[18.8rem] mx-[0.5rem] overflow-hidden">
                 <h1 className="text-[2rem] text-[#3a2a79]">
-                  {Sources.mainHeading}
+                  {Sources?.mainHeading}
                 </h1>
                 <p className="w-[12rem] text-center">
-                  {Sources.mainDescription}
+                  {Sources?.mainDescription}
                 </p>
               </div>
-              {Sources.allCard.map((item, idx) => (
+              {Sources?.allCard?.map((item, idx) => (
                 <div
                   key={idx}
                   className="border-solid border-[0.1rem] border-[#a5a5a5] rounded-[1rem] mx-[0.5rem] w-[18.8rem] overflow-hidden h-[31.9rem]"
                 >
                   <h1 className="pt-[1.2rem] border-solid border-b-[0.1rem] border-[#E6E7E6] pb-2 mx-[1rem] text-[1.5rem] font-poppins text-[#3a2a79]">
-                    {item.topHeadings}
+                    {item?.topHeadings}
                   </h1>
                   <div className="overflow-auto scrollbar-custom scrollbar h-[28.1rem]">
-                    {item.card &&
-                      item.card.map((cardItem, cardIdx) => (
+                    {item?.card &&
+                      item?.card?.map((cardItem, cardIdx) => (
                         <div
                           key={cardIdx}
                           className="flex justify-between mx-[1rem] my-[1.5rem] border-solid border-b-[0.1rem] border-[#E6E7E6] pb-[0.1rem]"
@@ -134,12 +134,12 @@ const Page5: React.FC<BlogsProps> = ({ blogsData }) => {
                               </svg>
                             </div>
                             <p className="text-black text-[0.9rem] font-poppins w-[10rem]">
-                              {cardItem.description}
+                              {cardItem?.description}
                             </p>
                           </div>
                           <div className="flex flex-col">
                             <Image
-                              src={cardItem.img}
+                              src={cardItem?.img}
                               alt={"Blogs Image"}
                               width={400}
                               height={400}

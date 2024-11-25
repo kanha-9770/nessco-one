@@ -89,7 +89,7 @@ const Page4:React.FC<HomeLayoutProps> = ({aboutData}) => {
             ref={carouselRef}
           >
             <div className="flex lg:justify-start  items-center lg:w-max">
-              {homeaboutData.imageWithDescription.map((item, idx) => (
+              {homeaboutData?.imageWithDescription?.map((item, idx) => (
                 <div
                   key={idx}
                   className="mx-[0.6vw]  lg:w-[20rem] w-full lg:h-[20rem] h-[20rem] bg-[#f2f2f2] flex flex-col items-center justify-center rounded-[1rem] overflow-hidden  hover:shadow-2xl cursor-pointer "
@@ -98,7 +98,7 @@ const Page4:React.FC<HomeLayoutProps> = ({aboutData}) => {
                     className="w-[20rem] h-[20rem] object-cover"
                     width={200}
                     height={200}
-                    src={item.img}
+                    src={item?.img}
                     priority
                     alt="image"
                   />

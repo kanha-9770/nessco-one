@@ -37,29 +37,51 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
       .replace(/-/g, " ") // Replace all '-' with spaces
       .replace(/\b\w/g, (char) => char.toUpperCase()); // Capitalize every word's first letter
   }
-  
+
   const breadcrumbItems = [
     { label: "Home", href: "/" },
     { label: "Products", href: "/products" },
     {
-      label: activeStep === "All paper Products" ? formatString(card.secondLink)  : activeStep,
+      label:
+        activeStep === "All paper Products"
+          ? formatString(card?.secondLink)
+          : activeStep,
       href: `/products/${
-        activeStep === "All paper Products" ? card.secondLink : card.secondLink
+        activeStep === "All paper Products" ? card?.secondLink : card?.secondLink
       }`,
     },
-    { label: card.firstname },
+    { label: card?.firstname },
   ];
 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button className="h-48 rounded-3xl bg-white font-poppins p-1 lg:p-2 w-40 lg:h-[16rem] md:w-56 overflow-hidden flex flex-col items-start justify-start relative z-10">
+        <button className="h-48 rounded-3xl bg-white font-poppins  w-40 lg:h-[16rem] md:w-56 overflow-hidden flex flex-col items-start justify-start relative z-10">
           <div className="relative p-2 h-full w-full">
-            <div className="absolute flex bg-white h-14 lg:h-16 w-28 lg:w-32 flex-row top-0 space-x-2 -mr-4 right-0 z-40 rounded-bl-xl">
+            <div className="absolute flex bg-white h-14 lg:h-16 w-28 lg:w-32 flex-row top-2 space-x-2 -mr-4 right-0 z-40 rounded-bl-2xl">
+              <div className="">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="100%"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  className="h-4 w-4 absolute top-0 -left-[0.95rem]"
+                >
+                  <path
+                    d="M20 20C20 8.95431 11.0457 0 0 0H20V20Z"
+                    fill="white"
+                  ></path>
+                </svg>
+              </div>
               <div className="flex flex-row items-center justify-center">
-                <div className="h-full ml-2 w-12 lg:h-16 lg:w-full flex items-center justify-center">
+                {/* Icon Section */}
+                <div
+                  className={`h-full w-full lg:h-8 flex items-center justify-center ${
+                    !card?.speed && !card?.unit ? "ml-4" : "ml-0"
+                  }`}
+                >
                   <Image
-                    src={card.icon}
+                    src={card?.icon}
                     alt="icon"
                     height={100}
                     width={100}
@@ -67,22 +89,33 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
                     quality={75}
                   />
                 </div>
-                <div className="flex items-center justify-center">
-                  <div className="relative h-10 w-10 lg:h-12 lg:w-12 -mr-4  border-2 border-[#483d78] rounded-full bg-white inset-0 flex flex-col items-center justify-center">
-                    <span className="text-xs lg:text-base font-bold text-red-700">
-                      {card?.speed}
-                    </span>
-                    <span className="text-[0.3rem] lg:text-[0.4rem] lg:-mt-2 lg:w-[2rem] w-[1.6rem] h-[0.8rem] lg:h-[1.2rem] font-bold text-[#483d78] whitespace-normal break-words">{card?.unit}</span>
+
+                {/* Speed and Title Section */}
+                {(card?.speed || card?.unit) && (
+                  <div className="flex items-center justify-center">
+                    <div className="relative h-10 w-10 lg:h-12 lg:w-12 -mr-4 border-2 border-[#483d78] rounded-full bg-white inset-0 flex flex-col items-center justify-center">
+                      {card?.speed && (
+                        <span className="text-xs lg:text-base font-bold text-red-700 lg:mt-1">
+                          {card?.speed}
+                        </span>
+                      )}
+                      {card?.unit && (
+                        <span className="text-[0.3rem] lg:text-[0.4rem] lg:w-[2rem] w-[1.6rem] h-[0.8rem] lg:h-[1.2rem] font-bold text-[#483d78] whitespace-normal break-words">
+                          {card?.unit}
+                        </span>
+                      )}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
+
               <div className="">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="100%"
                   viewBox="0 0 20 20"
                   fill="none"
-                  className="h-4 w-4 mt-14 lg:mt-16 mr-4"
+                  className="h-4 w-4 mt-14 lg:mt-16 mr-[1.45rem]"
                 >
                   <path
                     d="M20 20C20 8.95431 11.0457 0 0 0H20V20Z"
@@ -92,36 +125,39 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
               </div>
             </div>
 
-            <Image
-              src={card.image}
-              alt={card.title}
-              height={640}
-              width={480}
-              className="border-2 bg-[#f2f2f2] rounded-[1.5rem] absolute h-full object-contain z-10 inset-0"
-              quality={75}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-            <div className="absolute -mb-2 font-poppins left-0 right-0 bottom-0 z-40 p-4">
-              <Link
-                className="text-black font-poppins text-sm md:text-sm  text-center line-clamp-2 font-regular "
-                href={`/${countryCODE}/${languageCODE}/products/${
-                  activeStep === "All paper Products"
-                    ? card?.secondLink
-                    : card.secondLink
-                }/${card.firstLink}`}
-              >
-                {card.title}
-              </Link>
+            <div className="bg-[#f2f2f2] overflow-hidden w-full h-full rounded-2xl flex flex-col items-center">
+              <Image
+                src={card?.image}
+                alt={card?.title}
+                height={640}
+                width={480}
+                className="lg:h-44 h-32 w-auto rounded-xl lg:mt-10 mt-9 hover:scale-90 transition-all duration-300"
+                quality={75}
+              />
+              <div className="font-poppins bg-gradient-to-t from-white from-30% to-transparent py-1 lg:px-4 px-2 -mt-5 h-full w-full">
+                <Link
+                  className="text-black font-poppins lg:text-sm text-xs text-center line-clamp-2 font-regular"
+                  href={`/${countryCODE}/${languageCODE}/products/${
+                    activeStep === "All paper Products"
+                      ? card.secondLink
+                      : card.secondLink
+                  }/${card.firstLink}`}
+                >
+                  {card?.title}
+                </Link>
+              </div>
             </div>
           </div>
         </button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[78rem] p-0 z-[99999]">
+      <DialogContent className="sm:max-w-[78rem] h-max w-full p-4 lg:p-0 z-[99999]">
         <div className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 font-poppins font-regular md:p-8 rounded-3xl relative">
           <DialogClose className="absolute right-4 top-4"></DialogClose>
-          <Breadcrumb items={breadcrumbItems} />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-            <div className="flex flex-col items-center ml-20">
+          <div className="lg:block hidden">
+            <Breadcrumb items={breadcrumbItems} />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:mt-6">
+            <div className="flex flex-col items-center lg:ml-20">
               <Link
                 className=""
                 href={`/${countryCODE}/${languageCODE}/products/${
@@ -131,15 +167,15 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
                 }/${card.firstLink}`}
               >
                 <BlurImage
-                  src={card.image}
-                  alt={card.title}
+                  src={card?.image}
+                  alt={card?.title}
                   width={600}
                   height={400}
-                  className="rounded-2xl object-fill lg:object-contain h-[20rem]"
+                  className="rounded-2xl object-fill lg:object-contain lg:h-[20rem]"
                 />
               </Link>
-              <div className="flex items-center space-x-8 justify-center w-full">
-                <div className="flex w-1/2 items-center space-x-2 lg:space-x-8 justify-center mt-8">
+              <div className="flex items-center lg:space-x-8 space-x-4 justify-center w-full">
+                <div className="flex lg:w-1/2 items-center space-x-2 lg:space-x-8 justify-center lg:mt-8">
                   <Link
                     className="ml-1"
                     href={`/${countryCODE}/${languageCODE}/products/${
@@ -149,10 +185,10 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
                     }/${card.firstLink}`}
                   >
                     <Button
-                      className="rounded-full flex items-center justify-center bg-primary text-primary-foreground hover:bg-red-700 border-2 group border-red-700 w-[14rem] space-x-4 py-1 text-base font-medium transition-all duration-300 ease-in-out group relative"
+                      className="rounded-full flex items-center justify-center bg-primary text-primary-foreground hover:bg-red-700 border-2 group border-red-700 lg:w-[14rem] space-x-4 py-1 text-base font-medium transition-all duration-300 ease-in-out group relative"
                       aria-label="View all items"
                     >
-                      <span className="text-red-700 group-hover:text-white">
+                      <span className="text-red-700 group-hover:text-white lg:mr-0 mr-6 lg:text-lg text-sm">
                         View Machine
                       </span>
                       <span className="bg-red-700 group-hover:bg-white p-1 rounded-full absolute right-2">
@@ -174,7 +210,7 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
                     </Button>
                   </Link>
                 </div>
-                <div className="flex w-1/2 items-center space-x-2 lg:space-x-8 justify-center mt-8">
+                <div className="flex lg:w-1/2 items-center space-x-2 lg:space-x-8 justify-center lg:mt-8">
                   <Link
                     className="ml-1"
                     href={`/${countryCODE}/${languageCODE}/products/${
@@ -184,10 +220,10 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
                     }/`}
                   >
                     <Button
-                      className="rounded-full relative flex items-center justify-center bg-primary text-primary-foreground hover:bg-[#483d73] border-2 group border-[#483d73] w-[14rem] space-x-4 py-1 text-base font-medium transition-all duration-300 ease-in-out group"
+                      className="rounded-full relative flex items-center justify-center bg-primary text-primary-foreground hover:bg-[#483d73] border-2 group border-[#483d73] lg:w-[14rem] space-x-4 py-1 text-base font-medium transition-all duration-300 ease-in-out group"
                       aria-label="View all items"
                     >
-                      <span className="text-[#483d73] group-hover:text-white">
+                      <span className="text-[#483d73] group-hover:text-white lg:mr-0 mr-6 lg:text-lg text-sm">
                         View All
                       </span>
                       <span className="bg-[#483d73] group-hover:bg-white p-1 rounded-full absolute right-2">
@@ -211,22 +247,22 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
                 </div>
               </div>
             </div>
-            <div className="pr-16">
+            <div className="lg:pr-16">
               <div className="text-justify">
-                <h2 className="text-xl lg:text-3xl font-semibold lg:font-bold mb-4">
-                  <div className="bg-gradient-to-r from-[#483d73] to-red-700 bg-clip-text text-transparent w-max">
-                    {card.secondname}
+                <h2 className="text-xl lg:text-3xl font-semibold lg:font-bold mb-4 flex flex-col items-center lg:items-start">
+                  <div className="bg-gradient-to-r from-[#483d73] to-red-700 bg-clip-text text-transparent lg:w-max w-full lg:text-left text-center">
+                    {card?.secondname}
                   </div>
-                  <span className="bg-[#483d78] bg-clip-text  text-transparent ">
-                    {card.firstname}
+                  <span className="text-[#483d78] w-full lg:text-left text-center">
+                    {card?.firstname}
                   </span>
                 </h2>
               </div>
-              <p className="text-gray-700 text-justify  text-sm font-regular py-4">
-                {card.description}
+              <p className="text-gray-700 text-justify text-sm font-regular lg:py-4 ">
+                {card?.description}
               </p>
-              <ul className="list-none grid grid-cols-2 gap-4 text-gray-700 py-4 rounded-lg">
-                {card.items.map((item, index) => (
+              <ul className="list-none lg:grid grid-cols-2 gap-4 text-gray-700 lg:py-4 py-2 rounded-lg hidden">
+                {card?.items?.map((item, index) => (
                   <li key={index} className="flex items-center space-x-2">
                     <svg
                       className="h-4 w-4"
@@ -241,12 +277,12 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
                     </svg>
 
                     <span className="text-sm font-medium text-start">
-                      {item.text}
+                      {item?.text}
                     </span>
                   </li>
                 ))}
               </ul>
-              <div className="flex w-full space-x-2 lg:space-x-8 justify-end mt-2">
+              <div className="flex w-full space-x-2 lg:space-x-8 lg:justify-end justify-center mt-2">
                 <Link
                   className="ml-1"
                   href={`/${countryCODE}/${languageCODE}/contact`}

@@ -16,19 +16,19 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
   return (
     <nav className="flex px-4 sm:px-16 font-poppins" aria-label="Breadcrumb">
       <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
-        {items.map((item, index) => (
+        {items?.map((item, index) => (
           <li key={index} className="inline-flex items-center">
-            {item.href ? (
+            {item?.href ? (
               <a
-                href={item.href}
+                href={item?.href}
                 className={`inline-flex items-center text-xs sm:text-lg font-regular ${
-                  item.current
+                  item?.current
                     ? "text-gray-500"
                     : "text-gray-700 hover:text-[#b01e23] dark:text-gray-400 dark:hover:text-white"
                 }`}
               >
                 {index === 0 ? (
-                  <>{item.label}</>
+                  <>{item?.label}</>
                 ) : (
                   <>
                     <Image
@@ -38,14 +38,14 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
                       alt="Arrow"
                       className="h-6 w-max pr-2"
                     />
-                    {item.label}
+                    {item?.label}
                   </>
                 )}
               </a>
             ) : (
               <span
                 className={`inline-flex items-center text-xs sm:text-lg font-regular ${
-                  item.current ? "text-gray-500" : "text-gray-700"
+                  item?.current ? "text-gray-500" : "text-gray-700"
                 }`}
               >
                 {index !== 0 && (
@@ -57,7 +57,7 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
                     className="h-6 w-max pr-2"
                   />
                 )}
-                {item.label}
+                {item?.label}
               </span>
             )}
           </li>

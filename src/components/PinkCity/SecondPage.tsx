@@ -46,11 +46,11 @@ const SecondPage:React.FC<AboutLayoutProps> = ({pinkcityData}) => {
     <div className="lg:h-[30rem] h-[50rem] md:h-[70rem] w-full flex lg:flex-row flex-col font-regular font-poppins my-32">
       <div className="lg:w-[50%] lg:h-full h-[50%] w-full md:w-full relative flex items-center justify-center ">
         <Image
-          src={homepinkcity.topImg}
+          src={homepinkcity?.topImg}
           alt="Jaipur"
           width={400}
           height={400}
-          className="rounded-lg z-10 lg:w-[21rem] lg:h-[20rem] w-[11rem] h-[11rem] md:w-[20rem] md:h-[20rem] absolute object-cover"
+          className="rounded-2xl z-10 lg:w-[21rem] lg:h-[20rem] w-[11rem] h-[11rem] md:w-[20rem] md:h-[20rem] absolute object-cover"
         />
         <Image
           src="https://res.cloudinary.com/dlti4o10e/image/upload/v1731733958/1_jiqg7e.svg"
@@ -71,8 +71,10 @@ const SecondPage:React.FC<AboutLayoutProps> = ({pinkcityData}) => {
             height={400}
             className="object-contain opacity-35 w-full mt-5"
           />
-          <p className="text-gray-700 absolute lg:top-56  lg:left-16 lg:text-sm md:text-lg lg:w-[30rem] md:w-[40rem] text-xs top-32 text-center lg:text-left md:top-[18rem] md:left-[4rem]">
-            {homepinkcity.description.split(" ").map((word, index) =>
+          <p className="text-gray-700 absolute lg:top-56  lg:left-16 lg:text-sm md:text-lg lg:w-[30rem] md:w-[40rem] text-xs top-32 text-center lg:text-left md:top-[18rem] md:left-[4rem]"
+             style={{ fontFamily: 'Georgia, serif' }}
+          >
+            {homepinkcity?.description?.split(" ").map((word, index) =>
               word === "ivory" || word === "machines" ? (
                 <span key={index} className="text-[#bd6165]">
                   {word}{" "}

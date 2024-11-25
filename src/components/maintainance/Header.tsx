@@ -19,7 +19,7 @@ interface MaintainanceProps {
 }
 
 const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
-  const Header = maintainanceData.Maintainance[0]?.Header;
+  const Header = maintainanceData?.Maintainance[0]?.Header;
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [categorySearch, setCategorySearch] = useState("");
@@ -43,10 +43,10 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
     const filtered = Header.cards.filter(
       (card) =>
         card.title.toLowerCase().includes(mainSearch.toLowerCase()) &&
-        (selectedCategories.length === 0 ||
-          card.category
+        (selectedCategories?.length === 0 ||
+          card?.category
             .split(",")
-            .some((cat) => selectedCategories.includes(cat.trim())))
+            .some((cat) => selectedCategories?.includes(cat?.trim())))
     );
     setFilteredCards(filtered || []);
   }, [mainSearch, selectedCategories]);
@@ -80,18 +80,18 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
       <div className="w-full h-full mt-14 py-8 px-10 flex justify-center font-poppins">
         <div className="lg:w-1/2">
           <h1 className="font-semibold lg:text-5xl text-4xl text-[#483d73] mb-4 lg:text-left text-center">
-            {Header.title}
+            {Header?.title}
           </h1>
-          <p className="text-center lg:text-left">{Header.description}</p>
+          <p className="text-center lg:text-left">{Header?.description}</p>
         </div>
         <div className="w-1/2 lg:block hidden">
           <Image
-            src={Header.img}
+            src={Header?.img}
             alt={"Machine"}
             width={400}
             height={400}
             priority
-            className="float-right w-[16rem]"
+            className="float-right w-[10rem]"
           />
         </div>
       </div>
@@ -108,11 +108,11 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
             />
             <div className="w-full h-full overflow-x-hidden scrollbar-hide lg:flex lg:justify-center">
               <div className="flex lg:grid lg:grid-cols-6 lg:gap-5 lg:space-x-0 space-x-6 w-max">
-                {Header.points.map((item, idx) => (
+                {Header?.points?.map((item, idx) => (
                   <div key={idx} className="flex space-x-2 w-max">
-                    <p className="text-lg font-medium">{item.number}</p>
+                    <p className="text-lg font-medium">{item?.number}</p>
                     <h3 className="text-lg font-medium text-center lg:w-[10rem]">
-                      {item.title}
+                      {item?.title}
                     </h3>
                   </div>
                 ))}
@@ -123,7 +123,7 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
           <div className="flex px-4 md:space-x-4">
             <div className="md:w-[18%] p-4 md:block hidden mt-4 bg-white rounded-2xl shadow-2xl">
               <p className="mb-4 font-poppins invisible md:visible text-lg font-medium">
-                {Header.filter}
+                {Header?.filter}
               </p>
 
               <div className="flex rounded-lg text-sm border border-black overflow-hidden">
@@ -154,24 +154,24 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
               </div>
 
               <div className="mt-3 md:h-full h-[14rem] md:overflow-auto overflow-y-scroll scrollbar-custom scrollbar">
-                {filteredCategories.map((item, index) => (
+                {filteredCategories?.map((item, index) => (
                   <div
                     key={index}
                     className="flex justify-between items-center"
                   >
                     <label
                       className="font-poppins my-[0.2rem]"
-                      htmlFor={item.title}
+                      htmlFor={item?.title}
                     >
-                      {item.title}
+                      {item?.title}
                     </label>
                     <input
                       type="checkbox"
-                      id={item.title}
-                      name={item.title}
-                      value={item.title}
-                      checked={selectedCategories.includes(item.title)}
-                      onChange={() => handleCategoryToggle(item.title)}
+                      id={item?.title}
+                      name={item?.title}
+                      value={item?.title}
+                      checked={selectedCategories?.includes(item?.title)}
+                      onChange={() => handleCategoryToggle(item?.title)}
                       className="mr-1 accent-[#483d73]"
                     />
                   </div>
@@ -182,7 +182,7 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
             <div className="md:w-[82%] w-full mt-4">
               <div className="bg-white shadow-xl w-full rounded-xl px-4 py-2 flex lg:flex-row flex-col relative">
                 <h3 className="text-[#464545] font-medium lg:text-2xl text-[1rem] lg:mb-0 mb-4 lg:text-left text-center">
-                  {Header.download}
+                  {Header?.download}
                 </h3>
                 <div className="flex items-center space-x-3">
                   <div
@@ -190,7 +190,7 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
                     onClick={handleOpenFilter}
                   >
                     <h3 className="font-medium mr-2 text-white">
-                      {Header.filter}
+                      {Header?.filter}
                     </h3>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -239,7 +239,7 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
                 </div>
               </div>
               <div className="grid lg:grid-cols-3 md:grid-cols-2 mt-4 lg:gap-x-24 md:gap-x-16 gap-y-4 px-6">
-                {filteredCards.map((item, idx) => (
+                {filteredCards?.map((item, idx) => (
                   <div
                     key={idx}
                     className="bg-gradient-to-t from-[#f5f5f5] group hover:shadow-2xl transition-all duration-300 to-white rounded-t-xl rounded-b-3xl pt-6 relative shadow-xl"
@@ -247,16 +247,16 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
                     <div className="h-[6rem] overflow-y-hidden">
                       <div className="h-full overflow-y-auto scrollbar">
                         <h3 className="text-md font-medium text-white bg-[#9e9c9c] p-3 w-[75%]">
-                          {item.title}
+                          {item?.title}
                         </h3>
                       </div>
                     </div>
                     <div className="flex items-center justify-center min-h-[15rem] max-h-full mb-10">
                       <h4 className="text-[#483d73] font-bold -rotate-90 text-sm">
-                        {Header.maintainance}
+                        {Header?.maintainance}
                       </h4>
                       <Image
-                        src={item.img}
+                        src={item?.img}
                         alt={"SVG"}
                         width={400}
                         height={400}
@@ -269,7 +269,7 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
                       className="border border-black transition-all duration-300 lg:group-hover:bg-black lg:bg-white bg-black py-1 rounded-full w-full absolute bottom-0"
                     >
                       <p className="text-lg font-medium lg:text-black text-white transition-all duration-300 lg:group-hover:text-white text-center w-full">
-                        {item.button}
+                        {item?.button}
                       </p>
                       <div className="absolute -bottom-[0.3rem] -right-2 border-2 w-12 h-12 lg:bg-white bg-[#483d73] lg:border-black border-white rounded-full flex items-center justify-center lg:group-hover:border-white lg:group-hover:bg-[#483d73] transition-all duration-300">
                         <svg
@@ -311,12 +311,12 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
                     onClick={handleCloseFilter}
                     className="text-[#838282]"
                   >
-                    {Header.cancel}
+                    {Header?.cancel}
                   </button>
                 </div>
                 <div className="flex justify-center items-center w-[50%] mb-[0.5rem] font-poppins font-medium">
                   <button onClick={handleCloseFilter} className="text-red-700">
-                    {Header.apply}
+                    {Header?.apply}
                   </button>
                 </div>
               </div>
@@ -332,24 +332,24 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
                   />
                 </div>
                 <div className="h-[14rem] overflow-y-scroll scrollbar-hide">
-                  {filteredCategories.map((item, index) => (
+                  {filteredCategories?.map((item, index) => (
                     <div
                       key={index}
                       className="flex justify-between items-center"
                     >
                       <label
                         className="font-poppins my-[0.2rem]"
-                        htmlFor={`mobile-${item.title}`}
+                        htmlFor={`mobile-${item?.title}`}
                       >
-                        {item.title}
+                        {item?.title}
                       </label>
                       <input
                         type="checkbox"
-                        id={`mobile-${item.title}`}
-                        name={item.title}
-                        value={item.title}
-                        checked={selectedCategories.includes(item.title)}
-                        onChange={() => handleCategoryToggle(item.title)}
+                        id={`mobile-${item?.title}`}
+                        name={item?.title}
+                        value={item?.title}
+                        checked={selectedCategories?.includes(item?.title)}
+                        onChange={() => handleCategoryToggle(item?.title)}
                         className="mr-1 accent-[#483d73]"
                       />
                     </div>
@@ -373,10 +373,10 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
                   className="h-max w-12 mb-1"
                 />
                 <h3 className="text-white font-medium text-md">
-                  {Header.cards[0].title}
+                  {Header?.cards[0]?.title}
                 </h3>
                 <h3 className="text-white font-medium text-sm">
-                  {Header.checkListTitle}
+                  {Header?.checkListTitle}
                 </h3>
                 <Image
                   src="https://res.cloudinary.com/dfryvystt/image/upload/v1731482642/FormSVG_bwmh5i.svg"
@@ -397,21 +397,21 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
               </div>
               <div className="bg-[#483d73] w-full absolute bottom-0 py-1">
                 <h3 className="text-white text-xs text-center">
-                  {Header.footer}
+                  {Header?.footer}
                 </h3>
               </div>
             </div>
             <div className="lg:w-1/2 flex flex-col items-center justify-center px-8 lg:py-0 py-8">
               <h2 className="text-2xl font-bold mb-3 text-center w-full">
-                {Header.formTitle}
+                {Header?.formTitle}
               </h2>
               <p className="text-center w-full mb-4 font-regular text-sm">
-                {Header.formDescription}
+                {Header?.formDescription}
               </p>
               <form className="w-full">
                 <div className="mb-2 space-y-1">
                   <label htmlFor="name" className="text-lg font-medium">
-                    {Header.name}
+                    {Header?.name}
                   </label>
                   <input
                     type="text"
@@ -422,7 +422,7 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
                 </div>
                 <div className="mb-2 space-y-1">
                   <label htmlFor="email" className="text-lg font-medium">
-                    {Header.email}
+                    {Header?.email}
                   </label>
                   <input
                     type="email"
@@ -433,7 +433,7 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
                 </div>
                 <div className="mb-2 space-y-1">
                   <label htmlFor="phone" className="text-lg font-medium">
-                    {Header.phone}
+                    {Header?.phone}
                   </label>
                   <input
                     type="number"
@@ -448,7 +448,7 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
                     className="text-lg font-medium bg-black lg:hover:bg-[#483d73] text-white w-full p-2 rounded-md"
                     onClick={handleCloseModal}
                   >
-                    {Header.submit}
+                    {Header?.submit}
                   </button>
                 </div>
                 <div

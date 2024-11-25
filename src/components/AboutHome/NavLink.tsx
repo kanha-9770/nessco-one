@@ -139,15 +139,15 @@ const NavLinksDemo: React.FC<NavLinksDemoProps> = ({ navItems }) => {
                 Overview ▲
               </button>
               <ul>
-                {navItems.map((item, index) => (
+                {navItems?.map((item, index) => (
                   <li key={index} className="mb-4">
                     <NavLink
-                      text={item.text}
+                      text={item?.text}
                       index={index}
                       activeLink={activeLink}
                       handleMouseEnter={handleMouseEnter}
                       handleMouseLeave={handleMouseLeave}
-                      handleClick={handleClick(item.ref)}
+                      handleClick={handleClick(item?.ref)}
                     />
                   </li>
                 ))}
@@ -158,15 +158,15 @@ const NavLinksDemo: React.FC<NavLinksDemoProps> = ({ navItems }) => {
       </AnimatePresence>
 
       <nav className="hidden bg-white md:flex left-0 mb-[4rem] mt-0 md:-mt-10 flex-row flex-wrap text-16 font-poppins space-x-2 sm:space-x-6 text-black px-1 sm:px-2">
-        {navItems.map((item, index) => (
+        {navItems?.map((item, index) => (
           <NavLink
             key={index}
-            text={item.text}
+            text={item?.text}
             index={index}
             activeLink={activeLink}
             handleMouseEnter={handleMouseEnter}
             handleMouseLeave={handleMouseLeave}
-            handleClick={handleClick(item.ref)}
+            handleClick={handleClick(item?.ref)}
           />
         ))}
       </nav>

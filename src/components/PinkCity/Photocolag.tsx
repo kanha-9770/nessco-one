@@ -22,10 +22,10 @@ const Gallery:React.FC<AboutLayoutProps> = ({pinkcityData}) => {
       </div>
 
       <div className="grid lg:grid-cols-4 grid-cols-2  gap-6 md:gap-5 p-10 justify-center items-center ">
-  {image.galleryImages.map((src, index) => (
+  {image?.galleryImages?.map((src, index) => (
     <div key={index} className="relative  rounded-2xl overflow-hidden  lg:left-0 hover:shadow-2xl">
       <Image 
-        src="https://res.cloudinary.com/dlti4o10e/image/upload/v1731734135/jalmahal_wzfcbb.webp"
+        src="https://res.cloudinary.com/dlti4o10e/image/upload/v1729146374/palace_xqfh7u.jpg"
         alt={`Gallery image ${index + 1}`} 
         width={300}
         height={300} 

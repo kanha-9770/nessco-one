@@ -21,11 +21,18 @@ const ProductLayout: React.FC<IndividualProductsDataProps> = ({
   IndividualProductsData,
 }) => {
   const params = useParams();
-
+  
   // Extract the last two slugs from the params
   const slugs = Object.values(params).filter(Boolean);
-  const machineName = slugs.length > 1 ? decodeURIComponent(slugs[slugs.length - 2] as string) : '';
-  const machineId = slugs.length > 0 ? decodeURIComponent(slugs[slugs.length - 1] as string) : '';
+  const machineName =
+    slugs.length > 1
+      ? decodeURIComponent(slugs[slugs.length - 2] as string)
+      : "";
+  const machineId =
+    slugs.length > 0
+      ? decodeURIComponent(slugs[slugs.length - 1] as string)
+      : "";
+      // alert(machineId)
 
   // Use machineId for finding the machine in the data
   const machine =
@@ -45,8 +52,6 @@ const ProductLayout: React.FC<IndividualProductsDataProps> = ({
     return notFound();
   }
 
-
-
   const navLinks = [
     { text: "Overview", ref: overviewRef },
     { text: "Product Description", ref: productDescriptionRef },
@@ -60,21 +65,21 @@ const ProductLayout: React.FC<IndividualProductsDataProps> = ({
   return (
     <main className="bg-[#f2f2f2] w-full h-full">
       <Machine
-        name={machine.name}
-        image={machine.image}
-        application={machine.application}
-        mimage={machine.mimage}
-        product_heading={machine.product_heading}
-        first_name={machine.first_name}
-        second_name={machine.second_name}
-        specification_image={machine.specification_image}
-        advantages={machine.advantages}
+        name={machine?.name}
+        image={machine?.image}
+        application={machine?.application}
+        mimage={machine?.mimage}
+        product_heading={machine?.product_heading}
+        first_name={machine?.first_name}
+        second_name={machine?.second_name}
+        specification_image={machine?.specification_image}
+        advantages={machine?.advantages}
         applicationData={[]}
         category={""}
         icon={""}
         introduction={machine?.introduction}
         parameters={""}
-        product_description={machine.product_description}
+        product_description={machine?.product_description}
         status={""}
         stars={""}
         link={machine?.link}
@@ -105,7 +110,7 @@ const ProductLayout: React.FC<IndividualProductsDataProps> = ({
           </div>
           <div className="h-auto  mt-10" ref={processRef}>
             <CupFormactionProcess />
-            <ProcessFlow page4Data={machine.Page4Data} />
+            <ProcessFlow page4Data={machine?.Page4Data} />
           </div>
           <div className="mt-10" ref={applicationRef}>
             <ProductApplication applicationData={machine?.applicationData} />
@@ -121,7 +126,7 @@ const ProductLayout: React.FC<IndividualProductsDataProps> = ({
             />
           </div>
           <div className="mt-10" ref={faqsRef}>
-            <FaqProducts faqData={machine?.FAQ}/>
+            <FaqProducts faqData={machine?.FAQ} />
           </div>
         </div>
         <div className="lg:w-[33%] sticky">
@@ -133,7 +138,7 @@ const ProductLayout: React.FC<IndividualProductsDataProps> = ({
         <SignupFormDemoProduct />
       </div>
       <div className="lg:mt-24 -mt-44" ref={relatedProductsRef}>
-        <RelatedProducts related_product={machine.related_product} />
+        <RelatedProducts related_product={machine?.related_product} />
       </div>
     </main>
   );

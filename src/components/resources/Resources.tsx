@@ -1,6 +1,9 @@
+"use client";
 import React from "react";
 import Image from "next/image";
+import Arrow from "../../../public/assets/Support/RedirectionArrowImg.svg";
 import { resourceItem } from "./types/constant";
+import LinkUrl from "../LinkUrl";
 
 interface AboutLayoutProps{
   resourceData:resourceItem;
@@ -49,23 +52,17 @@ const Resources: React.FC <AboutLayoutProps>= ({resourceData}) => {
                 height={100}
                 className=" bottom-10 absolute"
               />
-            <svg
-  xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 24 24"
-  fill="none"
-  width="25"
-  height="25"
-  className="absolute bottom-4 right-2 hover:fill-black transition-all duration-700 ease-in-out" /* Optional hover effect */
->
-  <path
-    d="M14 3h7v7m-1.879-8.121L10.121 13.879M17 17H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h4"
-    stroke="black"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  />
-</svg>
-
+              <LinkUrl href={`/resources/${card.link}`}>
+              <div className="absolute bottom-2 right-2 group-hover:bg-[#483d7359] rounded-full p-2 transition duration-300">
+                <Image
+                  src={Arrow}
+                  alt="ReDirection Arrow"
+                  width={400}
+                  height={400}
+                  className="w-[1.5rem]  "
+                />
+                </div>
+              </LinkUrl>
             </div>
           ))}
         </div>

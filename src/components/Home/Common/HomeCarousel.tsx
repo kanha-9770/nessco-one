@@ -39,45 +39,45 @@ const Carousel = ( ) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % items?.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, [items.length]);
+  }, [items?.length]);
 
   return (
-    <div className={styles.carousel}>
-      {items.map((item, index) => (
+    <div className={styles?.carousel}>
+      {items?.map((item, index) => (
         <div
-          key={item.id}
-          className={`${styles.card} ${
-            currentIndex === index ? styles.active : styles.notactive
-          } ${currentIndex === (index + 1) % items.length ? styles.next : ""}`}
+          key={item?.id}
+          className={`${styles?.card} ${
+            currentIndex === index ? styles?.active : styles?.notactive
+          } ${currentIndex === (index + 1) % items?.length ? styles?.next : ""}`}
         >
-          <div className={styles.icon}>
+          <div className={styles?.icon}>
             <Image
-              src={item.icon}
+              src={item?.icon}
               className="h-28 w-full rounded-2xl"
               height={200}
               width={200}
               alt={"image"}
             />
           </div>
-          <div className={styles.content}>
+          <div className={styles?.content}>
             <div className="flex flex-col">
-              <h2 className="font-montserrat mt-1 text-base">{item.title}</h2>
+              <h2 className="font-montserrat mt-1 text-base">{item?.title}</h2>
             </div>
           </div>
         </div>
       ))}
-      <div className={styles.indicators}>
-        {items.map((_, index) => (
+      <div className={styles?.indicators}>
+        {items?.map((_, index) => (
           <span
             key={index}
-            className={`${styles.indicator} ${
-              currentIndex === index ? styles.active : ""
+            className={`${styles?.indicator} ${
+              currentIndex === index ? styles?.active : ""
             }`}
           >
-            <span className={styles.progress}></span>
+            <span className={styles?.progress}></span>
           </span>
         ))}
       </div>

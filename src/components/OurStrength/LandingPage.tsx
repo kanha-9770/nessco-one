@@ -26,10 +26,10 @@ const imagebottoms = [
 
 
 const Home:React.FC <MainLayoutProps>= ({strengthData}) => {
- const title=strengthData?.OurStrength[1].Data?.title
- const description=strengthData?.OurStrength[1].Data?.description
- const getaQuote=strengthData?.OurStrength[1].Data?.getaQuote
- const image=strengthData?.OurStrength[1].Data?.image;
+ const title=strengthData?.OurStrength[1]?.Data?.title
+ const description=strengthData?.OurStrength[1]?.Data?.description
+ const getaQuote=strengthData?.OurStrength[1]?.Data?.getaQuote
+ const image=strengthData?.OurStrength[1]?.Data?.image;
  
 
   console.log("strengthdata",strengthData);
@@ -95,7 +95,7 @@ const Home:React.FC <MainLayoutProps>= ({strengthData}) => {
                   className={`${imageWidths[index]}`}
                 />
                 <p className="font-medium lg:text-sm text-xs text-white  w-[6rem] text-center">
-                  {item.title}
+                  {item?.title}
                 </p>
               </div>
             ))}

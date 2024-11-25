@@ -14,7 +14,7 @@ const LandingPage:React.FC <AboutLayoutProps>= ({pinkcityData}) => {
       {/* Background Image Container */}
       <div className="relative w-full lg:h-[27rem]  lg:mt-10 mt-16 lg:left-0 h-[36rem] bg-gray-50">
         <Image
-          src={homepinkcity.backgroundImg}
+          src={homepinkcity?.backgroundImg}
           alt="Jaipur"
           height={600}
           width={600}
@@ -28,8 +28,10 @@ const LandingPage:React.FC <AboutLayoutProps>= ({pinkcityData}) => {
 
       {/* Title */}
       <div className='w-full absolute top-[15rem] justify-center text-center right-0 lg:relative lg:-top-16 lg:w-0  lg:-mt-52 lg:left-12'>
-      <h2 className="    font-poppins text-white text-8xl lg:text-9xl ">
-        {homepinkcity.jaipur}
+      <h2 className="   font-regular text-white text-8xl lg:text-9xl "
+       style={{ fontFamily: 'Georgia, serif' }}
+      >
+        {homepinkcity?.jaipur}
       </h2>
       </div>
 
@@ -50,8 +52,10 @@ const LandingPage:React.FC <AboutLayoutProps>= ({pinkcityData}) => {
         <div className="flex flex-col lg:flex-row items-center justify-center w-full lg:w-screen relative py-10 lg:py-0">
   {/* Description */}
   <div className="flex-1 text-center lg:text-left lg:absolute lg:left-14 lg:top-20 absolute md:-top-[22rem] -top-[20rem]  p-2">
-    <p className="text-white lg:text-black font-poppins lg:text-sm text-xs md:text-xl font-regular lg:w-[29vw] w-[80vw] mx-auto lg:mx-0">
-      {homepinkcity.description}
+    <p className="text-white lg:text-black  lg:text-sm text-xs md:text-xl font-regular lg:w-[29vw] w-[80vw] mx-auto lg:mx-0"
+       style={{ fontFamily: 'Georgia, serif' }}
+    >
+      {homepinkcity?.description}
     </p>
   </div>
 
@@ -71,10 +75,14 @@ const LandingPage:React.FC <AboutLayoutProps>= ({pinkcityData}) => {
 
   {/* Title & Subtitle */}
   <div className=" flex-1 lg:absolute lg:right-7 lg:top-14 -top-28 absolute text-center lg:text-center mt-10 lg:mt-0 bg-red-200n w-full">
-    <h2 className="font-poppins font-regular text-lg md:text-4xl lg:text-5xl flex lg:flex-col justify-between  items-center lg:items-end text-left">
-      {homepinkcity.title}
-      <span className="font-poppins font-regular text-red-800 text-xl lg:text-6xl text-right md:text-5xl ">
-        {homepinkcity.subtitle}
+    <h2 className=" font-regular text-lg md:text-4xl lg:text-5xl flex lg:flex-col justify-between  items-center lg:items-end text-left"
+       style={{ fontFamily: 'Georgia, serif' }}
+    >
+      {homepinkcity?.title} &nbsp;
+      <span className=" font-regular text-red-800 text-xl lg:text-6xl text-right md:text-5xl "
+         style={{ fontFamily: 'Georgia, serif' }}
+      >
+        {homepinkcity?.subtitle}
       </span>
     </h2>
   </div>

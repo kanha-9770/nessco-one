@@ -55,22 +55,22 @@ const Home:React.FC<HomeLayoutProps> = ({aboutData}) => {
             muted
             playsInline
             preload="metadata"
-            poster ={homeaboutData.video}
+            poster ={homeaboutData?.video}
           >
-            <source src={homeaboutData.video} type="video/mp4" />
+            <source src={homeaboutData?.video} type="video/mp4" />
           </video>
           <div className="absolute top-0 h-full w-full bg-black opacity-50"></div>
           <div className="absolute lg:top-28 top-12 space-y-4 flex flex-col  items-center w-full">
             <h1 className="text-white font-semibold lg:text-3xl text-3xl">
-              {homeaboutData.title}
+              {homeaboutData?.title}
             </h1>
             <p className="font-normal lg:w-[50%] w-[85%]  text-center lg:text-[0.8rem] text-[0.7rem] text-white">
-              {homeaboutData.description}
+              {homeaboutData?.description}
             </p>
           </div>
           <button className="bg-white w-[8rem] h-[2rem] rounded-[1rem] flex items-center absolute bottom-40 lg:hidden">
             <p className="text-black text-[0.8rem] text-center w-full">
-              {homeaboutData.getaQuote}
+              {homeaboutData?.getaQuote}
             </p>
             <div className="mr-2">
             <svg
@@ -93,14 +93,14 @@ const Home:React.FC<HomeLayoutProps> = ({aboutData}) => {
                 className={`flex flex-col items-center ${imagebottoms[index]}`}
               >
                 <Image
-                  src={item.img}
+                  src={item?.img}
                   alt="Content"
                   width={100}
                   height={100}
                   className={`${imageWidths[index]}`}
                 />
                 <p className="font-medium lg:text-sm text-xs text-white lg:w-[10rem] w-[7rem] text-center">
-                  {item.title}
+                  {item?.title}
                 </p>
               </div>
             ))}

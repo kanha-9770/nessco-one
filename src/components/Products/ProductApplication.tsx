@@ -8,8 +8,8 @@ interface ApplicationDataTypeProps {
 }
 
 const ProductApplication: React.FC<ApplicationDataTypeProps> = ({ applicationData }) => {
-  const cards = applicationData.map((card, index) => (
-    <Card key={card.src} card={card} index={index} />
+  const cards = applicationData?.map((card, index) => (
+    <Card key={card?.src} card={card} index={index} />
   ));
 
   return (

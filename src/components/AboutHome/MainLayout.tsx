@@ -43,6 +43,7 @@ export default function MainLayout({ aboutData }: MainLayoutProps) {
       <div id="mission and vission" className="" ref={missionRef}>
         <Missionvission aboutData={aboutData} />
       </div>
+      
 
       <div
         id="Our Company"

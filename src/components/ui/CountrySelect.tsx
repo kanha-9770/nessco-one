@@ -92,11 +92,11 @@ export default function CountrySelect({ isoCode }: CountrySelectProps) {
                       <img
                         src={`https://flagcdn.com/w40/${selectedCountry.code.toLowerCase()}.png`}
                         width="40"
-                        alt={`${selectedCountry.name} flag`}
+                        alt={`${selectedCountry?.name} flag`}
                         className="h-full w-full object-cover"
                       />
                     </span>
-                    <span className="font-medium">{selectedCountry.phone}</span>
+                    <span className="font-medium">{selectedCountry?.phone}</span>
                   </span>
                   <ChevronDown className="h-4 w-4 opacity-50 group-hover:opacity-100 transition-opacity duration-200" />
                 </>
@@ -127,9 +127,9 @@ export default function CountrySelect({ isoCode }: CountrySelectProps) {
               <ScrollArea className="h-[300px] sm:max-w-[390px] rounded-md border border-gray-200 dark:border-gray-700">
                 <motion.div layout className="p-2 grid gap-1">
                   <AnimatePresence>
-                    {filteredCountries.map((country) => (
+                    {filteredCountries?.map((country) => (
                       <motion.div
-                        key={country.code}
+                        key={country?.code}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -142,17 +142,17 @@ export default function CountrySelect({ isoCode }: CountrySelectProps) {
                         >
                           <span className="mr-3 h-5 w-7 overflow-hidden rounded-sm">
                             <img
-                              src={`https://flagcdn.com/w40/${country.code.toLowerCase()}.png`}
+                              src={`https://flagcdn.com/w40/${country?.code.toLowerCase()}.png`}
                               width="40"
-                              alt={`${country.name} flag`}
+                              alt={`${country?.name} flag`}
                               className="h-full w-full object-cover"
                             />
                           </span>
                           <span className="flex-1 truncate text-left">
-                            {country.name}
+                            {country?.name}
                           </span>
                           <span className="ml-auto text-sm text-gray-500 dark:text-gray-400">
-                            {country.phone}
+                            {country?.phone}
                           </span>
                         </Button>
                       </motion.div>

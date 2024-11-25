@@ -247,12 +247,12 @@ export default function DetaillProcess() {
                   <div className="text-center h-48 bg-white  relative flex flex-col  items-center">
                     <div>
                       <p className="mt-4 top-0 text-sm font-poppins">
-                        {item.label}
+                        {item?.label}
                       </p>
                       <div className="flex justify-center items-center">
                         <Image
-                          src={item.src}
-                          alt={item.alt}
+                          src={item?.src}
+                          alt={item?.alt}
                           width={100}
                           height={200}
                           className="mt-4"

@@ -71,32 +71,32 @@ const OurStoryD:React.FC<AboutLayoutProps> = ({companyData}) => {
   return (
     <>
       <Head>
-        <title>{homecompanyData.title}</title>
+        <title>{homecompanyData?.title}</title>
       </Head>
       <div className="relative h-full text-white px-4 mb-36 lg:mt-32  mt-44 ">
       
         <div className="relative z-10 flex flex-col items-center justify-center h-screen text-center">
           <h1 className="lg:text-3xl text-2xl font-poppins font-medium text-white mt-20">
-            {homecompanyData.title}
-            <span className='text-red-600'> {homecompanyData.highlight}</span>
+            {homecompanyData?.title}
+            <span className='text-red-600'> {homecompanyData?.highlight}</span>
           </h1>
           <div className="mb-10 max-w-4xl mx-auto mt-6 font-poppins text-sm font-regular">
-            {homecompanyData.paragraphs[0].paragraph}
+            {homecompanyData?.paragraphs[0]?.paragraph}
           </div>
           <div className="flex justify-center w-full h-auto mt-14 overflow-x-clip">
             <div
               ref={imageRef}
-              className={styles.scaleup}
+              className={styles?.scaleup}
               style={{
                 overflow: 'hidden',
                 transition: 'transform 2s ease, border-radius 0.9s ease', // Adjusted transition time
               }}
             >
               <Image
-                src={homecompanyData.image.src}
-                width={homecompanyData.image.width}
-                height={homecompanyData.image.height}
-                alt={homecompanyData.image.alt}
+                src={homecompanyData?.image?.src}
+                width={homecompanyData?.image?.width}
+                height={homecompanyData?.image?.height}
+                alt={homecompanyData?.image?.alt}
                 className="w-full h-full object-cover"
               />
             </div>

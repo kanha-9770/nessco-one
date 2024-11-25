@@ -56,7 +56,7 @@ const MobileCarousel:FC <HomeLayoutProps>= ({aboutData}) => {
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
       >
-        {homeaboutData.imageWithDescription.map((image, index) => (
+        {homeaboutDataz?.imageWithDescription?.map((image, index) => (
           <div
             key={index}
             className={`absolute inset-0 transition-transform duration-500 ease-in-out ${
@@ -68,7 +68,7 @@ const MobileCarousel:FC <HomeLayoutProps>= ({aboutData}) => {
             }`}
           >
             <Image
-              src={image.img}
+              src={image?.img}
               alt={`Slide ${index}`}
               height={200}
               width={200}
@@ -80,7 +80,7 @@ const MobileCarousel:FC <HomeLayoutProps>= ({aboutData}) => {
 
       {/* Dots Indicator */}
       <div className="flex justify-center mt-3 -mb-2">
-        {homeaboutData.imageWithDescription.map((_, index) => (
+        {homeaboutData?.imageWithDescription?.map((_, index) => (
           <div
             key={index}
             className={`w-2 h-2 mx-1 rounded-full transition-colors duration-300 ${

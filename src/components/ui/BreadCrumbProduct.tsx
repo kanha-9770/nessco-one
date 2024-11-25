@@ -14,50 +14,50 @@ interface BreadcrumbProps {
 
 const BreadcrumbProduct: React.FC<BreadcrumbProps> = ({ items }) => {
   return (
-    <nav className="flex" aria-label="Breadcrumb">
-      <ol className="inline-flex items-center font-poppins space-x-1 md:space-x-2 rtl:space-x-reverse">
-        {items.map((item, index) => (
-          <li key={index} className="inline-flex items-center">
-            {item.href ? (
+    <nav className="flex flex-wrap" aria-label="Breadcrumb">
+      <ol className="inline-flex flex-wrap items-center font-poppins space-x-1 md:space-x-2 rtl:space-x-reverse">
+        {items?.map((item, index) => (
+          <li key={index} className="inline-flex items-center mb-2">
+            {item?.href ? (
               <a
-                href={item.href}
-                className={`inline-flex items-center md:text-lg font-bold ${
-                  item.current
+                href={item?.href}
+                className={`inline-flex items-center text-sm md:text-lg font-bold ${
+                  item?.current
                     ? "text-gray-500"
                     : "text-gray-700 hover:text-[#b01e23] dark:text-gray-400 dark:hover:text-white"
                 }`}
               >
                 {index === 0 ? (
-                  <>{item.label}</>
+                  <>{item?.label}</>
                 ) : (
                   <>
                     <Image
                       src={Arrow}
-                      height={800}
-                      width={400}
+                      height={24}
+                      width={24}
                       alt="Arrow"
-                      className="h-6 w-max pr-2"
+                      className="h-4 w-4 md:h-6 md:w-6 mr-1 md:mr-2 flex-shrink-0"
                     />
-                    {item.label}
+                    <span className="break-all">{item?.label}</span>
                   </>
                 )}
               </a>
             ) : (
               <span
-                className={`inline-flex items-center font-poppins font-medium md:text-lg ${
-                  item.current ? "text-gray-500" : "text-gray-500"
+                className={`inline-flex items-center font-poppins font-medium text-sm md:text-lg ${
+                  item?.current ? "text-gray-500" : "text-gray-500"
                 }`}
               >
                 {index !== 0 && (
                   <Image
                     src={Arrow}
-                    height={800}
-                    width={400}
+                    height={24}
+                    width={24}
                     alt="Arrow"
-                    className="h-6 w-max pr-2"
+                    className="h-4 w-4 md:h-6 md:w-6 mr-1 md:mr-2 flex-shrink-0"
                   />
                 )}
-                {item.label}
+                <span className="break-all">{item?.label}</span>
               </span>
             )}
           </li>
@@ -68,3 +68,4 @@ const BreadcrumbProduct: React.FC<BreadcrumbProps> = ({ items }) => {
 };
 
 export default BreadcrumbProduct;
+

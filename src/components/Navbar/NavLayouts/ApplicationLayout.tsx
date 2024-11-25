@@ -63,7 +63,7 @@ interface ApplicationLayoutProps {
   navData: NavbarData;
 }
 export default function ApplicationLayout({ navData }: ApplicationLayoutProps) {
-  const applicationData = navData?.navbar[2].data?.applications;
+  const applicationData = navData?.navbar[2]?.data?.applications;
   useEffect(() => {
     console.log("i am inside applciation alyout", applicationData);
   });
@@ -73,20 +73,20 @@ export default function ApplicationLayout({ navData }: ApplicationLayoutProps) {
   return (
     <div className="flex flex-col md:flex-row w-full h-full p-4">
       <div className="relative md:w-[70%] grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-4 mb-4 md:mb-0 md:mr-4">
-        {applicationData.map((product, index) => {
+        {applicationData?.map((product, index) => {
           const IconComponent = componentList[index];
           return (
             <Link
-              key={product.id}
+              key={product?.id}
               className="flex flex-col items-center justify-center p-2 invert-0 cursor-pointer"
               onMouseEnter={() => setActiveProduct(product)}
-              href={`/${countryCODE}/${languageCODE}/application${product?.link}`}
+              href={`/${countryCODE}/${languageCODE}/application${product.link}`}
             >
               <div className=" h-20 w-20 flex items-center justify-center">
                 <IconComponent />
               </div>
               <span className="text-xs text-center invert-0">
-                {product.name}
+                {product?.name}
               </span>
             </Link>
           );
@@ -127,7 +127,7 @@ export default function ApplicationLayout({ navData }: ApplicationLayoutProps) {
           {(() => {
             const ActiveIconComponent =
               componentList[
-                applicationData.findIndex((p) => p.id === activeProduct.id)
+                applicationData?.findIndex((p) => p?.id === activeProduct?.id)
               ];
             return <ActiveIconComponent width={"100%"} />;
           })()}
@@ -141,7 +141,7 @@ export default function ApplicationLayout({ navData }: ApplicationLayoutProps) {
               {activeProduct?.name.trim().match(/\S+$/)}
             </span>
           </h2>
-          <p className="pt-6 invert-0 mb-4">{activeProduct.description}</p>
+          <p className="pt-6 invert-0 mb-4">{activeProduct?.description}</p>
         </div>
         <Link
           href={`/${countryCODE}/${languageCODE}/application/${activeProduct?.name}`}

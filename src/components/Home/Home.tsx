@@ -5,8 +5,7 @@ import { HomeData } from "./types/constant";
 import FeatureProjects from "./FeatureProjects";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const ImageSlider = dynamic(() => import("../ui/ImageSlider"));
+const VideoCarousel = dynamic(() => import("../ui/HomeCaorusel"));
 
 interface HeroLayoutProps {
   heroData: HomeData;
@@ -24,7 +23,7 @@ const Home: React.FC<HeroLayoutProps> = ({ heroData }) => {
       <div className="relative max-w-screen-2xl mx-auto h-full w-full flex flex-col items-center overflow-hidden">
         <div className="relative px-4 md:px-4 lg:px-14 w-full">
           <div className="w-full flex justify-center items-center h-[38vh] sm:h-[50vh] rounded-3xl">
-            <ImageSlider heroData={heroData} />
+            <VideoCarousel heroData={heroData} />
           </div>
         </div>
         <div className="absolute flex flex-col w-1/2 sm:w-[20rem] sm:h-[5rem] sm:rounded-tl-[2rem] rounded-tl-[1.5rem] right-0 bg-[#f2f2f2] bottom-0 text-3xl font-poppins text-white text-center">
@@ -45,10 +44,10 @@ const Home: React.FC<HeroLayoutProps> = ({ heroData }) => {
           </div>
           <div className="w-full mt-4 ml-8 flex justify-start">
             <Link
-              className="absolute bottom-1 right-5 md:right-[4rem]"
+              className="absolute bottom-1 left-5 w-[10rem] lg:w-[15rem]"
               href={`/${countryCode}/${languageCode}/contact`}
             >
-              <Button className="rounded-full flex items-center justify-between text-primary-foreground border-2 border-white h-[3.5rem] w-40 ml-40 sm:h-16 sm:w-60 md:h-16 md:w-60 lg:h-16 lg:w-60 text-xs sm:text-sm md:text-base lg:text-lg bg-clip-border relative group custom-gradient-border transition-all duration-300 overflow-hidden">
+              <Button className="rounded-full flex items-center justify-between text-primary-foreground border-2 border-white h-[3.5rem] w-40 sm:h-16 sm:w-60 md:h-16 md:w-60 lg:h-16 lg:w-60 text-xs sm:text-sm md:text-base lg:text-lg bg-clip-border relative group custom-gradient-border transition-all duration-300 overflow-hidden">
                 <span className="font-medium text-white group-hover:bg-gradient-to-r group-hover:from-[#483d73] group-hover:to-red-700 group-hover:text-transparent group-hover:bg-clip-text pl-2 sm:pl-4 md:pl-6 lg:pl-8 truncate flex-grow text-left transition-all duration-300">
                   {heroData?.home[1]?.data?.buttonText}
                 </span>

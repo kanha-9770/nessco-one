@@ -50,30 +50,30 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData }) => {
     };
   }, [handleWheel]);
   const bgColors = [
-    "bg-[#f6ffef]",
     "bg-[#f4f4ff]",
+    "bg-[#f6ffef]",
     "bg-blue-200",
     "bg-yellow-200",
   ];
   return (
     <div className="flex w-full lg:border-none lg:pb-6 mx-auto max-w-screen-2xl flex-col lg:flex-row items-center justify-center lg:rounded-xl h-full">
       <div className="grid grid-cols-2 h-[80%]  sm:grid-cols-3 lg:grid-cols-4 w-full lg:w-[70.5vw]">
-        {navRightData.map((item: NavItem, index: number) => (
+        {navRightData?.map((item: NavItem, index: number) => (
           <div
             key={index}
             className="border-2 p-2 rounded-3xl lg:rounded-none lg:p-0 lg:border-none flex flex-col justify-start items-center lg:mt-4"
           >
             <Link href={`/${countryCODE}/${languageCODE}/about/${item.link}`}>
               <Image
-                src={item.image || "/path/to/fallback-image.jpg"} // Add a fallback image if `item.image` is undefined
-                alt={item.alt || "Fallback alt text"} // Provide a fallback alt text if `item.alt` is undefined
+                src={item?.image || "/path/to/fallback-image.jpg"} // Add a fallback image if `item.image` is undefined
+                alt={item?.alt || "Fallback alt text"} // Provide a fallback alt text if `item.alt` is undefined
                 className="rounded-xl cursor-pointer w-44 h-32 lg:w-56 lg:h-56 object-cover transform lg:hover:scale-80 transition-transform duration-200"
                 width={224}
                 height={224}
                 loading="lazy"
               />
               <p className="mt-2 flex items-center justify-center space-x-2 text-center font-poppins invert-0 hover:text-[#483d78] hover:font-bold font-normal text-xs sm:text-sm md:text-base transform lg:hover:scale-80 transition-transform duration-300">
-                <span>{item.title}</span>
+                <span>{item?.title}</span>
               </p>
             </Link>
           </div>
@@ -88,15 +88,15 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData }) => {
             <Link key={index} href={`/${countryCODE}/${languageCODE}/about/${item.link}`}>
               <div
                 className={`hidden lg:flex border-t-2 h-[6.5rem] lg:border-none lg:hover:scale-80 transition-transform duration-200 items-center lg:p-4 lg:rounded-3xl lg:mb-2 ${
-                  bgColors[index % bgColors.length]
+                  bgColors[index % bgColors?.length]
                 }`}
               >
                 <div
                   className={`h-12 w-12 mr-4 flex justify-center items-center text-2xl ${item.textcolor}`}
                 >
                   <Image
-                    src={item.icon || "/path/to/fallback-image.jpg"} // Add a fallback image if `item.image` is undefined
-                    alt={item.title}
+                    src={item?.icon || "/path/to/fallback-image.jpg"} // Add a fallback image if `item.image` is undefined
+                    alt={item?.title}
                     className="rounded-xl cursor-pointer h-8 w-8 object-cover transform lg:hover:scale-80 transition-transform duration-200"
                     width={24}
                     height={24}
@@ -106,10 +106,10 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData }) => {
                 </div>
                 <div>
                   <h3 className="text-sm sm:text-md text-black font-semibold mb-0">
-                    {item.title}
+                    {item?.title}
                   </h3>
                   <p className="text-xs hidden lg:flex font-regular text-black line-clamp-3">
-                    {item.description}
+                    {item?.description}
                   </p>
                 </div>
               </div>
@@ -125,7 +125,7 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData }) => {
           )}
         </div>
         <div className="bottom-4 hidden lg:flex w-full justify-center text-3xl">
-          {currentIndex < navLeftData.length - 2 && (
+          {currentIndex < navLeftData?.length - 2 && (
             <button
               onClick={scrollDown}
               className="absolute bg-transparent invert-0 flex justify-center items-center"

@@ -80,14 +80,14 @@ const Page3: React.FC<CombinedProps> = ({
             <div className="flex flex-col lg:items-center lg:justify-center">
               <h2 className="lg:text-[2.2rem] text-[1.5rem] lg:text-center font-semibold lg:mb-[1rem]">
                 <span className="text-[#483d73]">
-                  {ProductGallery?.title.trim().replace(/\s+\S+$/, "")}
+                  {ProductGallery?.title?.trim().replace(/\s+\S+$/, "")}
                 </span>{" "}
                 <span className="text-red-700">
-                  {ProductGallery?.title.trim().match(/\S+$/)}
+                  {ProductGallery?.title?.trim().match(/\S+$/)}
                 </span>
               </h2>
               <p className="text-black lg:w-[70%] lg:text-center mb-[1rem] lg:text-[1rem] text-[0.8rem]">
-                {ProductGallery.description}
+                {ProductGallery?.description}
               </p>
             </div>
             <button
@@ -153,7 +153,7 @@ const Page3: React.FC<CombinedProps> = ({
               ref={carouselRef}
             >
               <div className="w-max flex items-center justify-center space-x-2 lg:space-x-4">
-                {page3product.image.map((item, idx) => (
+                {page3product?.image?.map((item, idx) => (
                   <div
                     key={idx}
                     className={`bg-white lg:w-[22rem] lg:h-[22rem] lg:rounded-[1rem] rounded-[0.5rem] flex items-center justify-center overflow-hidden cursor-pointer ${
@@ -164,7 +164,7 @@ const Page3: React.FC<CombinedProps> = ({
                     onClick={() => setSelectedImage(item.img)}
                   >
                     <Image
-                      src={item.img}
+                      src={item?.img}
                       alt={`Image ${idx + 1}`}
                       width={400}
                       height={400}

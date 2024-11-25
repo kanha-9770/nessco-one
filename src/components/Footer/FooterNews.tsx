@@ -1,20 +1,21 @@
 "use client";
 import React from "react";
-import Link from "next/link";
 import styles from "./footer.module.css";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import LocaleSwitcher from "../Navbar/NavLayouts/CountryLayout";
+import LinkUrl from "../LinkUrl";
 
 interface FooterProps {
   footerData: {
-    stores: { address: string }[]; // Adjusting to match the structure
+    stores: { address: string ,link:string}[]; // Adjusting to match the structure
     businessPartners: string;
     awards: { src: string; alt: string }[];
     clients: string;
     careers: { career: string }[];
-    links: { link: string }[];
-    services: { service: string }[];
+    links: { link: string,ref:string }[];
+    linkstwo:{linksecond:string,ref:string}[];
+    services: { service: string ,ref:string}[];
     contacts: { href: string; name: string }[];
     address: string;
     copyright: string;
@@ -41,7 +42,7 @@ const FooterNew: React.FC<FooterProps> = ({
   footerData,
 }) => {
   const pathname = usePathname() || "";
-  const componentCode = pathname.split("/")[2]?.toLowerCase();
+  const componentCode = pathname?.split("/")[2]?.toLowerCase();
   const componentCodeourCompany = pathname.split("/")[4]?.toLowerCase();
   const isDarkBackground =
     ["knowledge-center", "clientele", "our-company"].includes(componentCode) ||
@@ -72,30 +73,32 @@ const FooterNew: React.FC<FooterProps> = ({
                 >
                   {footerData?.storeTitle}
                 </h1>
-                <div className="flex flex-col  -space-y-6 font-poppins w-[3rem] font-light text-xs lg:text-xs md:text-lg">
-                  {footerData.stores.map((store, index) => (
-                    <Link key={index} href="/" passHref>
+                <div className="flex flex-col  -space-y-6 font-poppins w-[6rem] font-light text-xs lg:text-xs md:text-lg">
+                  {footerData?.stores?.map((store, index) => (
+                    <LinkUrl key={index} href={`${store.link}`}>
                       <p className={`my-4 hover:text-red-600  ${textColor}`}>
-                        {store.address}
+                        {store?.address}
                       </p>
-                    </Link>
+                    </LinkUrl>
                   ))}
                 </div>
 
                 <h1
                   className={`font-poppins text-sm md:text-xl lg:text-sm font-semibold mt-4 lg:w-[10rem] w-[10rem] md:w-[13rem] ${textColor}`}
                 >
-                  {footerData.businessTitle}
+                  {footerData?.businessTitle}
                 </h1>
+               
                 <p
                   className={`mt-3 font-light text-xs lg:text-xs md:text-lg lg:w-[9rem] md:w-[12rem] w-[10rem] font-poppins hover:text-red-600 cursor-pointer ${textColor}`}
                 >
-                  {footerData.businessPartners}
+                  {footerData?.businessPartners}
                 </p>
+                
                 <h1
                   className={`font-poppins text-sm md:text-xl lg:text-sm font-semibold mt-4 lg:w-[10rem] md:w-[14rem] w-[10rem] ${textColor}`}
                 >
-                  {footerData.languageTitle}
+                  {footerData?.languageTitle}
                 </h1>
                 <div
                   className={`mt-3 font-light text-xs lg:text-xs md:text-lg font-poppins hover:text-red-600 cursor-pointer lg:w-[7rem] md:w-[10rem] w-[7rem] ${textColor}`}
@@ -105,84 +108,84 @@ const FooterNew: React.FC<FooterProps> = ({
                 <h3
                   className={`${styles.footerdesctitle} font-semibold font-poppins invert-0 text-sm md:text-xl lg:text-sm mt-6 lg:w-[14rem] md:w-[20rem] w-[15rem] `}
                 >
-                  {footerData.awarTitle}
+                  {footerData?.awarTitle}
                 </h3>
                 <div className="flex flex-row h-[3rem] w-[21rem] mb-4 -m-1 mt-3">
                   {/* Mapping awards */}
-                  {footerData.awards.map((award, index) => (
+                  {footerData?.awards?.map((award, index) => (
                     <Image
                       key={index}
                       height={300}
                       width={300}
-                      src={award.src}
-                      alt={award.alt}
+                      src={award?.src}
+                      alt={award?.alt}
                       className={`w-full h-full ${image}`}
                     />
                   ))}
                 </div>
               </div>
-              <div className="flex flex-col  w-[11%] relative left-[10rem] lg:-left-10 md:left-[18rem] lg:top-0 top-[0.65rem] md:top-16">
+              <div className="flex flex-col  w-[11%] relative left-[10rem] lg:-left-14 md:left-[18rem] lg:top-0 top-[0.65rem] md:top-16">
                 <h1
                   className={`font-semibold font-poppins text-sm md:text-xl lg:text-sm ${textColor}`}
                 >
-                  {footerData.clienteleTitle}
+                  {footerData?.clienteleTitle}
                 </h1>
                 <div className={styles.footerlistslink}>
-                  <Link href="/" passHref>
+                <LinkUrl href="/resources/clientele">
                     <p
                       className={`font-poppins text-xs lg:text-xs md:text-lg font-light mt-4 w-[5rem] md:w-[7rem] hover:text-red-600 cursor-pointer ${textColor}`}
                     >
-                      {footerData.clients}
+                      {footerData?.clients}
                     </p>
-                  </Link>
+                  </LinkUrl>
                 </div>
                 <h1
                   className={`font-semibold text-sm lg:text-xs md:text-lg font-poppins mt-5 ${textColor}`}
                 >
-                  {footerData.carrersTitle}
+                  {footerData?.carrersTitle}
                 </h1>
-                <div className="text-xs lg:text-xs md:text-lg font-light font-poppins -space-y-7 hover:text-red-600 cursor-pointer w-[3rem]">
-                  {footerData.careers.map((career, index) => (
-                    <Link key={index} href="/" passHref>
+                <div className="text-xs lg:text-xs md:text-lg font-light font-poppins -space-y-2 hover:text-red-600 cursor-pointer w-[3rem]">
+                  {footerData?.careers?.map((career, index) => (
+                    <div key={index}>
                       <p className={`${styles.footeratags} ${textColor}`}>
-                        {career.career}
+                        {career?.career}
                       </p>
-                    </Link>
+                    </div>
                   ))}
                 </div>
               </div>
 
-              <div className="flex-row  flex lg:flex-none  lg:mt-0 mt-[2rem] lg:-ml-2 -ml-[0]">
-                <div className="w-[19%] ">
+              <div className="flex-row  flex lg:flex-none  lg:mt-0 mt-[2rem] lg:-ml-12 -ml-[0]">
+                <div className="w-[27%]">
                   <h1
-                    className={`font-semibold text-sm md:text-xl lg:text-sm font-poppins  ${textColor}`}
+                    className={`font-semibold text-sm md:text-xl lg:text-sm font-poppins w-full  ${textColor}`}
                   >
-                    {footerData.linkTitle}
+                    {footerData?.linkTitle}
                   </h1>
-                  <div className="font-poppins text-xs lg:text-xs md:text-lg font-light space-y-10 hover:text-red-600   md:w-[5rem]  w-[4rem]">
-                    {footerData.links.map((link, index) => (
-                      <Link key={index} href="/" passHref>
-                        <p className={`${styles.footeratags}  ${textColor}`}>
-                          {link.link}
+                  <div className="font-poppins text-xs lg:text-xs md:text-lg font-light space-y-10 hover:text-red-600 lg:w-[6rem]  md:w-[5rem]  w-[4rem]">
+                    {footerData?.links?.map((link, index) => (
+                      <LinkUrl key={index} href={`${link.ref}`} passHref>
+                        <p className={`${styles?.footeratags}  ${textColor}`}>
+                          {link?.link}
                         </p>
-                      </Link>
+                      </LinkUrl>
                     ))}
                   </div>
                 </div>
 
-                <div className="w-[20%]  lg:ml-20 md:ml-[13rem] ml-10">
+                <div className="w-[20%]  lg:ml-16 md:ml-[13rem] ml-10 ">
                   <h1
                     className={`font-semibold text-sm md:text-xl lg:text-sm font-poppins  ${textColor}`}
                   >
-                    {footerData.linkSecond}
+                    {footerData?.linkSecond}
                   </h1>
-                  <div className="font-poppins text-xs lg:text-xs md:text-lg font-light space-y-10 hover:text-red-600 w-[4rem] md:w-[5rem] ">
-                    {footerData.links.map((link, index) => (
-                      <Link key={index} href="/" passHref>
+                  <div className="font-poppins text-xs lg:text-xs md:text-lg font-light space-y-10 hover:text-red-600 lg:w-[8rem] w-[4rem] md:w-[5rem] ">
+                    {footerData?.linkstwo?.map((link, index) => (
+                      <LinkUrl key={index} href={`${link.ref}`} passHref>
                         <p className={`${styles.footeratags}  ${textColor}`}>
-                          {link.link}
+                          {link?.linksecond}
                         </p>
-                      </Link>
+                      </LinkUrl>
                     ))}
                   </div>
                 </div>
@@ -191,15 +194,15 @@ const FooterNew: React.FC<FooterProps> = ({
                   <h1
                     className={`font-semibold font-poppins text-sm md:text-xl lg:text-sm   ${textColor}`}
                   >
-                    {footerData.serviceTitle}
+                    {footerData?.serviceTitle}
                   </h1>
-                  <div className="font-poppins hover:text-red-600 font-light text-xs lg:text-xs md:text-lg w-[8.5rem] lg:w-[8.5rem] md:w-[13rem]  cursor-pointer">
-                    {footerData.services.map((service, index) => (
-                      <Link key={index} href="/" passHref>
+                  <div className="font-poppins hover:text-red-600 font-light text-xs lg:text-xs md:text-lg w-[8.5rem] lg:w-[9rem] md:w-[13rem]  cursor-pointer">
+                    {footerData?.services?.map((service, index) => (
+                      <LinkUrl key={index} href={`${service.ref}`} passHref>
                         <p className={`${styles.footeratags}  ${textColor}`}>
-                          {service.service}
+                          {service?.service}
                         </p>
-                      </Link>
+                      </LinkUrl>
                     ))}
                   </div>
                 </div>
@@ -209,7 +212,7 @@ const FooterNew: React.FC<FooterProps> = ({
                 <h1
                   className={`${styles.footerdesctitle} font-poppins invert-0 text-sm md:text-xl lg:text-sm font-semibold text-center lg:text-left  ${textColor}`}
                 >
-                  {footerData.subscribeTitle}
+                  {footerData?.subscribeTitle}
                 </h1>
                 <div className="flex p-1 ">
                   <input
@@ -246,17 +249,17 @@ const FooterNew: React.FC<FooterProps> = ({
                     <h1
                       className={`${styles.footerdesctitle} font-semibold   text-sm md:text-xl lg:text-sm font-poppins mt-[1.6rem]  ${textColor}`}
                     >
-                      {footerData.contactusTitle}
+                      {footerData?.contactusTitle}
                     </h1>
                     <div
                       className={`${styles.footerlistslink} hover:text-red-600 cursor-pointer font-poppins text-xs lg:text-xs md:text-lg font-light  w-[7rem] md:w-[10rem] `}
                     >
-                      {footerData.contacts.map((contact, index) => (
-                        <Link key={index} href={contact.href} passHref>
+                      {footerData?.contacts?.map((contact, index) => (
+                        <div key={index} >
                           <p className={`${styles.footeratags}  ${textColor} `}>
-                            {contact.name}
+                            {contact?.name}
                           </p>
-                        </Link>
+                        </div>
                       ))}
                     </div>
 
@@ -338,13 +341,13 @@ const FooterNew: React.FC<FooterProps> = ({
                     <h1
                       className={`${styles.footerdesctitle} font-poppins  text-sm md:text-xl lg:text-sm md:ml-[20rem] lg:ml-0 font-semibold lg:mt-5 mt-7  ${textColor}`}
                     >
-                      {footerData.addressTitle}
+                      {footerData?.addressTitle}
                     </h1>
                     <div className="font-poppins hover:text-red-600 cursor-pointer text-xs lg:text-xs md:text-lg font-light mt-2 lg:ml-0  md:ml-[20rem]">
                       <p
                         className={` lg:w-[14rem] w-[12rem] md:w-[15rem] hover:text-red-600 ${textColor}`}
                       >
-                        {footerData.address}
+                        {footerData?.address}
                       </p>
                     </div>
                   </div>
@@ -364,14 +367,14 @@ const FooterNew: React.FC<FooterProps> = ({
           <p
             className={`lg:ml-14 font-poppins text-sm font-light  ${textColor}`}
           >
-            {footerData.copyright}
+            {footerData?.copyright}
           </p>
           <div className="border h-[2rem] border-gray-400 ml-5"></div>
-          <Link href="/privacy-policy/" passHref>
+          <div >
             <p className={`font-poppins text-sm font-light ml-5 ${textColor}`}>
-              {footerData.privacyPolicy}
+              {footerData?.privacyPolicy}
             </p>
-          </Link>
+          </div>
         </div>
       </div>
     </>

@@ -10,9 +10,9 @@ interface UserGuideProps {
   userGuideData: UserGuideItem;
 }
 export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
-  const data = userGuideData.UserGuide[0]["user-guide"];
-  const [cards, setCards] = useState(data.cards);
-  const categories = data.categories;
+  const data = userGuideData?.UserGuide[0]["user-guide"];
+  const [cards, setCards] = useState(data?.cards);
+  const categories = data?.categories;
   const [activeCard, setActiveCard] = useState<(typeof cards)[number] | null>(
     null
   );
@@ -79,15 +79,15 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
   };
 
   const filterCards = () => {
-    return data.cards.filter((card) => {
+    return data?.cards?.filter((card) => {
       const matchesSearch =
-        card.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        card.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        card.title2.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        card.description2.toLowerCase().includes(searchTerm.toLowerCase());
+        card?.title?.toLowerCase().includes(searchTerm?.toLowerCase()) ||
+        card?.description?.toLowerCase().includes(searchTerm?.toLowerCase()) ||
+        card?.title2?.toLowerCase().includes(searchTerm?.toLowerCase()) ||
+        card?.description2?.toLowerCase().includes(searchTerm?.toLowerCase());
       const matchesCategory =
-        selectedCategories.length === 0 ||
-        selectedCategories.some((cat) => card.category.includes(cat));
+        selectedCategories?.length === 0 ||
+        selectedCategories?.some((cat) => card?.category?.includes(cat));
       return matchesSearch && matchesCategory;
     });
   };
@@ -102,14 +102,14 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
         <div className="w-full px-10 flex-col">
           <h1 className="lg:text-5xl text-3xl mb-2">
             <span className="font-medium text-[#483d73] block">
-              {data.title.split(" ")[0]}
+              {data?.title?.split(" ")[0]}
             </span>
             <span className="font-semibold text-black">
-              {data.title.split(" ").slice(1, 3).join(" ")}
+              {data?.title?.split(" ").slice(1, 3).join(" ")}
             </span>
           </h1>
           <p className="text-base lg:w-[40%] w-full text-black mb-8">
-            {data.description}
+            {data?.description}
           </p>
         </div>
 
@@ -134,7 +134,7 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
           {activeCard && (
             <div className="fixed inset-0 lg:px-[30%] lg:mt-14 px-10 lg:py-5 py-10 grid place-items-center z-20">
               <motion.button
-                key={`${activeCard.title}-${activeCard.index}`}
+                key={`${activeCard?.title}-${activeCard?.index}`}
                 layout
                 initial={{ opacity: 0 }}
                 animate={{
@@ -151,19 +151,19 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
                 ✖
               </motion.button>
               <motion.div
-                layoutId={`card-${activeCard.title}-${activeCard.index}-${id}`}
+                layoutId={`card-${activeCard?.title}-${activeCard?.index}-${id}`}
                 ref={ref}
                 className="w-full lg:h-[80vh] flex flex-col items-center bg-white dark:bg-neutral-900 rounded-3xl overflow-hidden"
               >
                 <motion.div
-                  layoutId={`image-${activeCard.title}-${activeCard.index}-${id}`}
+                  layoutId={`image-${activeCard?.title}-${activeCard?.index}-${id}`}
                 >
                   <Image
                     priority
                     width={200}
                     height={200}
-                    src={activeCard.src}
-                    alt={activeCard.title}
+                    src={activeCard?.src}
+                    alt={activeCard?.title}
                     className="w-max lg:h-[45vh]"
                   />
                 </motion.div>
@@ -172,34 +172,34 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
                   <div className="flex justify-between items-start p-4 h-[10vh] mb-2">
                     <div>
                       <motion.h3
-                        layoutId={`title-${activeCard.title}-${activeCard.index}-${id}`}
+                        layoutId={`title-${activeCard?.title}-${activeCard?.index}-${id}`}
                         className="font-bold text-neutral-700 dark:text-neutral-200"
                         animate={{
                           transition: { duration: 0.15, ease: "easeInOut" },
                         }}
                       >
-                        {activeCard.title}
+                        {activeCard?.title}
                       </motion.h3>
                       <motion.p
-                        layoutId={`description-${activeCard.description}-${activeCard.index}-${id}`}
+                        layoutId={`description-${activeCard?.description}-${activeCard?.index}-${id}`}
                         className="text-neutral-600 dark:text-neutral-400 font-medium"
                         animate={{
                           transition: { duration: 0.15, ease: "easeInOut" },
                         }}
                       >
-                        {activeCard.description}
+                        {activeCard?.description}
                       </motion.p>
                     </div>
 
                     <motion.button
-                      layoutId={`button-${activeCard.title}-${activeCard.index}-${id}`}
+                      layoutId={`button-${activeCard?.title}-${activeCard?.index}-${id}`}
                       onClick={() => handleOpenDownloadModal(activeCard)}
                       className="flex cursor-pointer items-center lg:px-4 py-2 px-3 text-sm rounded-full lg:font-bold font-semibold bg-[#483d78] text-white"
                       animate={{
                         transition: { duration: 0.15, ease: "easeInOut" },
                       }}
                     >
-                      {activeCard.ctaText}
+                      {activeCard?.ctaText}
                       <svg
                         width="64"
                         height="64"
@@ -245,7 +245,7 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
                       }}
                       className="text-center lg:text-md text-sm"
                     >
-                      {activeCard.content}
+                      {activeCard?.content}
                     </motion.div>
                   </div>
                 </div>
@@ -259,7 +259,7 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
 
           <div className="lg:w-[20%] p-6 lg:block hidden mt-4 bg-white rounded-2xl shadow-2xl">
             <p className="mb-2 font-poppins invisible lg:visible">
-              {data.filter}
+              {data?.filter}
             </p>
 
             {/* Search Field */}
@@ -292,21 +292,21 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
 
             {/* By Category */}
             <div className="mt-3 lg:h-full h-[14rem] lg:overflow-auto overflow-y-scroll scrollbar-custom scrollbar">
-              {categories.map((item, index) => (
+              {categories?.map((item, index) => (
                 <div key={index} className="flex justify-between items-center">
                   <label
                     className="font-poppins my-[0.2rem]"
-                    htmlFor={item.title}
+                    htmlFor={item?.title}
                   >
-                    {item.title}
+                    {item?.title}
                   </label>
                   <input
                     type="checkbox"
-                    id={item.title}
-                    name={item.title}
-                    value={item.title}
-                    checked={selectedCategories.includes(item.title)}
-                    onChange={() => handleCategoryChange(item.title)}
+                    id={item?.title}
+                    name={item?.title}
+                    value={item?.title}
+                    checked={selectedCategories?.includes(item?.title)}
+                    onChange={() => handleCategoryChange(item?.title)}
                     className="mr-1 accent-[#483d73]"
                   />
                 </div>
@@ -316,7 +316,7 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
 
           <div className="lg:w-[80%] space-y-4 pl-10">
             <div className="bg-white w-full h-[3rem] lg:hidden rounded-lg flex items-center px-4 relative">
-              <p className="text-xl font-normal">{data.filter}</p>
+              <p className="text-xl font-normal">{data?.filter}</p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -337,62 +337,62 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
               </svg>
             </div>
 
-            {cards.map((card, index) => (
-              <React.Fragment key={`${card.title}-${index}`}>
+            {cards?.map((card, index) => (
+              <React.Fragment key={`${card?.title}-${index}`}>
                 <motion.div
-                  layoutId={`card-${card.title}-${index}-${id}`}
+                  layoutId={`card-${card?.title}-${index}-${id}`}
                   onClick={() => handleOpenCardDetail(card)}
                   className="p-5 flex flex-col lg:flex-row shadow-2xl bg-white justify-center items-center border-[0.1rem] border-[#f5f5f5] hover:border-[#483d73] rounded-xl cursor-pointer"
                 >
                   <div className="flex lg:w-[45%] w-full lg:border-r-2 border-[#5d5d5e] gap-4 flex-col md:flex-row items-center">
-                    <motion.div layoutId={`image-${card.title}-${index}-${id}`}>
+                    <motion.div layoutId={`image-${card?.title}-${index}-${id}`}>
                       <Image
                         width={400}
                         height={400}
-                        src={card.src}
-                        alt={card.title}
+                        src={card?.src}
+                        alt={card?.title}
                         className="h-full w-full lg:w-14 lg:h-14 rounded-lg object-cover object-top bg-[#f5f5f5]"
                       />
                     </motion.div>
                     <div className="flex flex-col justify-center">
                       <motion.h3
-                        layoutId={`title2-${card.title2}-${index}-${id}`}
+                        layoutId={`title2-${card?.title2}-${index}-${id}`}
                         className="font-normal text-[#5d5d5e] dark:text-neutral-200 text-center md:text-left"
                       >
-                        {card.title2}
+                        {card?.title2}
                       </motion.h3>
                       <motion.p
-                        layoutId={`description2-${card.description2}-${index}-${id}`}
+                        layoutId={`description2-${card?.description2}-${index}-${id}`}
                         className="text-black text-xl mb-4 md:mb-0 dark:text-neutral-400 font-semibold text-center md:text-left"
                       >
-                        {card.description2}
+                        {card?.description2}
                       </motion.p>
                     </div>
                   </div>
                   <div className="lg:w-[55%] w-full flex flex-col lg:flex-row lg:justify-start justify-center items-center relative">
                     <div className="lg:ml-10">
                       <motion.h3
-                        layoutId={`title-${card.title}-${index}-${id}`}
+                        layoutId={`title-${card?.title}-${index}-${id}`}
                         className="font-normal text-[#5d5d5e] dark:text-neutral-200 text-center md:text-left"
                       >
-                        {card.title}
+                        {card?.title}
                       </motion.h3>
                       <motion.p
-                        layoutId={`description-${card.description}-${index}-${id}`}
+                        layoutId={`description-${card?.description}-${index}-${id}`}
                         className="text-black text-xl mb-4 md:mb-0 dark:text-neutral-400 font-semibold text-center md:text-left"
                       >
-                        {card.description}
+                        {card?.description}
                       </motion.p>
                     </div>
                     <motion.button
-                      layoutId={`button-${card.title2}-${index}-${id}`}
+                      layoutId={`button-${card?.title2}-${index}-${id}`}
                       onClick={(e) => {
                         e.stopPropagation();
                         handleOpenDownloadModal(card);
                       }}
                       className="lg:absolute lg:right-2 lg:my-0 my-2 px-4 py-2 bg-[#483d78] text-white rounded-full font-bold text-sm flex items-center space-x-2"
                     >
-                      <span>{card.ctaText}</span>
+                      <span>{card?.ctaText}</span>
                       <svg
                         width="64"
                         height="64"
@@ -440,12 +440,12 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
                     onClick={handleCloseFilter}
                     className="text-[#838282]"
                   >
-                    {data.cancel}
+                    {data?.cancel}
                   </button>
                 </div>
                 <div className="flex justify-center items-center w-[50%] mb-[0.5rem] font-poppins font-medium">
                   <button onClick={handleCloseFilter} className="text-red-700">
-                    {data.apply}
+                    {data?.apply}
                   </button>
                 </div>
               </div>
@@ -464,24 +464,24 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
 
                 {/* By Category */}
                 <div className="h-[14rem] overflow-y-scroll scrollbar-hide">
-                  {categories.map((item, index) => (
+                  {categories?.map((item, index) => (
                     <div
                       key={index}
                       className="flex justify-between items-center"
                     >
                       <label
                         className="font-poppins my-[0.2rem]"
-                        htmlFor={`mobile-${item.title}`}
+                        htmlFor={`mobile-${item?.title}`}
                       >
-                        {item.title}
+                        {item?.title}
                       </label>
                       <input
                         type="checkbox"
-                        id={`mobile-${item.title}`}
-                        name={item.title}
-                        value={item.title}
-                        checked={selectedCategories.includes(item.title)}
-                        onChange={() => handleCategoryChange(item.title)}
+                        id={`mobile-${item?.title}`}
+                        name={item?.title}
+                        value={item?.title}
+                        checked={selectedCategories?.includes(item?.title)}
+                        onChange={() => handleCategoryChange(item?.title)}
                       />
                     </div>
                   ))}
@@ -504,33 +504,33 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
                   className="h-max w-16 absolute left-2 top-3"
                 />
                 <Image
-                  src={selectedDownloadCard.src}
+                  src={selectedDownloadCard?.src}
                   alt="Selected Card"
                   width={1000}
                   height={1000}
                   className="object-contain max-h-[60%] w-auto"
                 />
                 <div className="flex items-center font-normal text-xs text-black absolute bottom-7 left-2">
-                  <p className="mr-2">{selectedDownloadCard.title2}</p>
-                  <p>{selectedDownloadCard.description2}</p>
+                  <p className="mr-2">{selectedDownloadCard?.title2}</p>
+                  <p>{selectedDownloadCard?.description2}</p>
                 </div>
                 <div className="flex items-center font-normal text-xs text-black absolute bottom-2 left-2">
-                  <p className="mr-2">{selectedDownloadCard.title}</p>
-                  <p>{selectedDownloadCard.description}</p>
+                  <p className="mr-2">{selectedDownloadCard?.title}</p>
+                  <p>{selectedDownloadCard?.description}</p>
                 </div>
               </div>
               <div className="lg:w-1/2 flex flex-col items-center justify-center px-8 lg:py-0 py-8">
                 <h2 className="text-2xl font-bold mb-3 text-center w-full">
-                  {data.title}
+                  {data?.title}
                 </h2>
                 <p className="text-center w-full mb-4 font-regular text-sm">
-                  {data.formDescription}
+                  {data?.formDescription}
                 </p>
                 <form className="w-full">
                   {/* Form Fields */}
                   <div className="mb-2 space-y-1">
                     <label htmlFor="name" className="text-lg font-medium">
-                      {data.name}
+                      {data?.name}
                     </label>
                     <input
                       type="text"
@@ -541,7 +541,7 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
                   </div>
                   <div className="mb-2 space-y-1">
                     <label htmlFor="email" className="text-lg font-medium">
-                      {data.email}
+                      {data?.email}
                     </label>
                     <input
                       type="email"
@@ -552,7 +552,7 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
                   </div>
                   <div className="mb-2 space-y-1">
                     <label htmlFor="phone" className="text-lg font-medium">
-                      {data.phone}
+                      {data?.phone}
                     </label>
                     <input
                       type="number"
@@ -567,7 +567,7 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
                       className="text-lg font-medium bg-black lg:hover:bg-[#483d73] text-white w-full p-2 rounded-md"
                       onClick={handleCloseDownloadModal}
                     >
-                      {data.submit}
+                      {data?.submit}
                     </button>
                   </div>
                   <div

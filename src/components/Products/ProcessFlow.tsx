@@ -100,7 +100,7 @@ const ProcessFlow: React.FC<ProcessFlowProps> = ({ page4Data }) => {
             ref={borderImgRef}
           ></div>
 
-          {page4Data?.container.map((item, idx) => (
+          {page4Data?.container?.map((item, idx) => (
             <div key={idx} className="flex lg:my-[3rem] my-[2vh] items-center">
               <div className="lg:w-[25%] w-[40%] relative flex lg:pl-[2rem]">
                 <div className="absolute bottom-0 left-0 right-0 z-30 flex justify-center">
@@ -110,7 +110,7 @@ const ProcessFlow: React.FC<ProcessFlowProps> = ({ page4Data }) => {
                       title2Refs.current[idx] = el;
                     }}
                   >
-                    {item.title2}
+                    {item?.title2}
                   </h3>
                 </div>
                 <div
@@ -123,18 +123,18 @@ const ProcessFlow: React.FC<ProcessFlowProps> = ({ page4Data }) => {
                     className="h-full w-full"
                     width={400}
                     height={400}
-                    src={item.img}
-                    alt={item.title1}
+                    src={item?.img}
+                    alt={item?.title1}
                   />
                 </div>
               </div>
 
               <div className="lg:w-[70%] w-[60%] pl-[1rem] font-poppins">
                 <h2 className="lg:text-base text-lg font-semibold text-[#483d73] lg:mb-[0.6rem] mb-[0.8vh]">
-                  {item.title1}
+                  {item?.title1}
                 </h2>
                 <p className="text-sm font-regular">
-                  {item.description}
+                  {item?.description}
                 </p>
               </div>
             </div>

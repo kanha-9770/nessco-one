@@ -501,7 +501,7 @@ export default function IOT({ heroData }: KnowMoreLayoutProps) {
 
   return (
     <div className="max-w-screen-2xl mx-auto w-full h-full my-8 md:my-16 font-poppins font-regular overflow-hidden">
-      <h1 className="text-center mb-6 md:mb-10 text-2xl md:text-3xl font-semibold text-[#483d73]">
+      <h1 className="text-center mb-6 md:mb-10 text-3xl font-semibold text-[#483d73]">
         {IotData?.title}
       </h1>
       <div className="flex flex-col-reverse lg:flex-row px-4 md:px-14">
@@ -517,10 +517,10 @@ export default function IOT({ heroData }: KnowMoreLayoutProps) {
                   className="bg-white h-[18rem] md:h-[20rem] relative w-[60vw] md:w-[30vw] lg:w-[15rem] rounded-2xl"
                 >
                   <h2 className="font-medium text-center my-4 text-base md:text-lg">
-                    {item.title}
+                    {item?.title}
                   </h2>
                   <p className="text-center px-4 md:px-6 text-xs md:text-sm absolute top-14 z-10 font-normal">
-                    {item.description}
+                    {item?.description}
                   </p>
                   <video
                     className="absolute bottom-0 w-full h-auto opacity-30 rounded-2xl"
@@ -529,9 +529,9 @@ export default function IOT({ heroData }: KnowMoreLayoutProps) {
                     muted
                     playsInline
                     preload="metadata"
-                    poster={item.video}
+                    poster={item?.video}
                   >
-                    <source src={item.video} type="video/mp4" />
+                    <source src={item?.video} type="video/mp4" />
                   </video>
                   <svg
                     className="h-12 w-12 md:h-14 md:w-14 bg-black border-4 border-[#f5f5f5] p-1.5 rounded-full text-white transform transition-transform duration-300 ease-in-out hover:rotate-45 hover:bg-[#483d73] absolute -bottom-1 -right-1 z-20"
@@ -681,8 +681,8 @@ export default function IOT({ heroData }: KnowMoreLayoutProps) {
             ))}
             <Image
               className="object-cover ml-2 hidden lg:block"
-              src={IotData.machineImg}
-              alt={IotData.title}
+              src={IotData?.machineImg}
+              alt={IotData?.title}
               width={400}
               height={400}
             />
@@ -696,25 +696,25 @@ export default function IOT({ heroData }: KnowMoreLayoutProps) {
             muted
             playsInline
             preload="auto"
-            poster={IotData.globeVideo}
+            poster={IotData?.globeVideo}
             onTimeUpdate={(e) => {
               const video = e.target as HTMLVideoElement;
-              if (video.currentTime >= video.duration - 0.2) {
+              if (video?.currentTime >= video?.duration - 0.2) {
                 video.currentTime = 0;
-                video.play();
+                video?.play();
               }
             }}
           >
-            <source src={IotData.globeVideo} type="video/mp4" />
+            <source src={IotData?.globeVideo} type="video/mp4" />
           </video>
 
           <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-[#d08ceb] to-[#483d73] text-4xl md:text-5xl lg:text-[5.5rem] font-semibold pt-4 md:pt-8 text-center lg:text-left">
-            {IotData.subTitle}
+            {IotData?.subTitle}
           </h1>
           <Image
             className="w-full my-8 lg:absolute lg:bottom-0 lg:my-0 "
-            src={IotData.desktopImg}
-            alt={IotData.title}
+            src={IotData?.desktopImg}
+            alt={IotData?.title}
             width={400}
             height={400}
           />

@@ -33,14 +33,14 @@ const Carousal: React.FC<ProductProps> = ({ productData }) => {
   const prevSlide = (): void => {
     const isFirstSlide = currentIndex === 0;
     const newIndex = isFirstSlide
-      ? Header.products.length - 1
+      ? Header?.products?.length - 1
       : currentIndex - 1;
     setCurrentIndex(newIndex);
     animateSlide("prev");
   };
 
   const nextSlide = (): void => {
-    const isLastSlide = currentIndex === Header.products.length - 1;
+    const isLastSlide = currentIndex === Header?.products?.length - 1;
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex);
     animateSlide("next"); // Trigger GSAP animation for the next slide
@@ -90,16 +90,16 @@ const Carousal: React.FC<ProductProps> = ({ productData }) => {
         {/* Slide content */}
         <div className="lg:w-[50%] lg:pl-[1rem]">
           <h1 className="lg:text-4xl text-[1.4rem] font-bold italic text-[#483d73] mb-[0.5rem]">
-            {Header.products[currentIndex].machineName}
+            {Header?.products[currentIndex]?.machineName}
           </h1>
           <p className="lg:text-[0.9rem] text-black text-[0.7rem] lg:w-[20rem] md:w-[30rem] w-[9rem]">
-            {Header.products[currentIndex].description}
+            {Header?.products[currentIndex]?.description}
           </p>
         </div>
         <div className="lg:w-[50%] flex">
           <Image
-            src={Header.products[currentIndex].machineImg}
-            alt={Header.products[currentIndex].machineName}
+            src={Header?.products[currentIndex]?.machineImg}
+            alt={Header?.products[currentIndex]?.machineName}
             width={400}
             height={400}
             priority
@@ -107,8 +107,8 @@ const Carousal: React.FC<ProductProps> = ({ productData }) => {
           />
 
           <Image
-            src={Header.products[currentIndex].productImg}
-            alt={Header.products[currentIndex].machineName}
+            src={Header?.products[currentIndex]?.productImg}
+            alt={Header?.products[currentIndex]?.machineName}
             width={400}
             height={400}
             className="lg:w-[5rem] w-[4rem] lg:-mt-[6.5rem] -mt-[8rem] lg:-ml-2 md:ml-2 -ml-[4rem]"
@@ -153,7 +153,7 @@ const Carousal: React.FC<ProductProps> = ({ productData }) => {
         </svg>
       </div>
       <div className="absolute lg:bottom-4 bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-2">
-        {Header.products.map((_, idx) => (
+        {Header?.products?.map((_, idx) => (
           <div
             key={idx}
             className={`w-2 h-2 rounded-full ${

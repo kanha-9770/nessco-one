@@ -160,13 +160,13 @@ useEffect(()=>{
           ></div>
 
           {Array.isArray(productItems) && productItems.length > 0 ? (
-            productItems.map((item, idx) => (
+            productItems?.map((item, idx) => (
               <div key={idx} className="flex lg:my-[3rem] my-[1rem]">
                 <div className="lg:w-[65%] w-[60%] lg:pl-[1rem] pl-[0.5rem]">
                   <h2 className="lg:text-[1.6rem] text-[1.1rem] text-[#483d73] font-medium lg:mb-[0.8rem] mb-[0.4rem]">
-                    {item.title1}
+                    {item?.title1}
                   </h2>
-                  <p className="lg:text-[1rem] text-sm">{item.description}</p>
+                  <p className="lg:text-[1rem] text-sm">{item?.description}</p>
                 </div>
                 <div className="lg:w-[35%] w-[40%] flex justify-end items-center">
                   <div className="h-full flex items-end">
@@ -176,7 +176,7 @@ useEffect(()=>{
                         title2Refs.current[idx] = el;
                       }}
                     >
-                      {item.title2}
+                      {item?.title2}
                     </h3>
                   </div>
                   <div
@@ -190,8 +190,8 @@ useEffect(()=>{
                       className="object-fill h-full w-full"
                       width={300}
                       height={300}
-                      src={item.img}
-                      alt={item.title1}
+                      src={item?.img}
+                      alt={item?.title1}
                     />
                   </div>
                 </div>
@@ -210,13 +210,13 @@ useEffect(()=>{
         <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
           <div className="bg-white p-6 mx-4 rounded-lg max-w-lg w-full">
             <h2 className="text-xl font-bold mb-4 text-[#483d73]">
-              {selectedImage.title2}
+              {selectedImage?.title2}
             </h2>
             <div className="relative w-full h-64">
               <Image
                 className="object-cover w-full h-full rounded-lg"
-                src={selectedImage.img}
-                alt={selectedImage.title2}
+                src={selectedImage?.img}
+                alt={selectedImage?.title2}
                 layout="fill"
               />
             </div>

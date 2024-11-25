@@ -2,6 +2,9 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
 import { HomeData } from "../types/constant";
+import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { ExternalLink} from 'lucide-react';
 
 const ONE_SECOND = 1000;
 const AUTO_DELAY = ONE_SECOND * 10;
@@ -35,10 +38,10 @@ export const SwipeCarousel: React.FC<ImageSliderLayoutProps> = ({
   }, [videoIndex]);
 
   const scrollRight = useCallback(() => {
-    if (videoIndex < testimonialItems.length - 1) {
+    if (videoIndex < testimonialItems?.length - 1) {
       setVideoIndex((prevIndex) => prevIndex + 1);
     }
-  }, [videoIndex, testimonialItems.length]);
+  }, [videoIndex, testimonialItems?.length]);
 
   useEffect(() => {
     const intervalRef = setInterval(() => {
@@ -46,27 +49,27 @@ export const SwipeCarousel: React.FC<ImageSliderLayoutProps> = ({
 
       if (x === 0) {
         setVideoIndex((pv) =>
-          pv === testimonialItems.length - 1 ? 0 : pv + 1
+          pv === testimonialItems?.length - 1 ? 0 : pv + 1
         );
       }
     }, AUTO_DELAY);
 
     return () => clearInterval(intervalRef);
-  }, [dragX, testimonialItems.length]);
+  }, [dragX, testimonialItems?.length]);
 
   const onDragEnd = () => {
     const x = dragX.get();
 
-    if (x <= -DRAG_BUFFER && videoIndex < testimonialItems.length - 1) {
+    if (x <= -DRAG_BUFFER && videoIndex < testimonialItems?.length - 1) {
       setVideoIndex((pv) => pv + 1);
     } else if (x >= DRAG_BUFFER && videoIndex > 0) {
       setVideoIndex((pv) => pv - 1);
     }
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setCurrentVideoLink("");
+  const openModal = (videoSrc: string) => {
+    setIsModalOpen(true);
+    setCurrentVideoLink(videoSrc);
   };
 
   return (
@@ -80,7 +83,7 @@ export const SwipeCarousel: React.FC<ImageSliderLayoutProps> = ({
         onDragEnd={onDragEnd}
         className="flex cursor-grab items-center active:cursor-grabbing"
       >
-        {testimonialItems.map((video, idx) => (
+        {testimonialItems?.map((video, idx) => (
           <motion.div
             key={idx}
             animate={{ scale: videoIndex === idx ? 0.95 : 0.85 }}
@@ -94,19 +97,31 @@ export const SwipeCarousel: React.FC<ImageSliderLayoutProps> = ({
               muted
               className="w-full h-full object-cover rounded-xl"
             />
+            <Button
+              variant="outline"
+              size="icon"
+              className="absolute bottom-4 right-4 bg-white bg-opacity-50 hover:bg-opacity-100 transition-opacity rounded-full"
+              onClick={() => openModal(video.src)}
+            >
+              <ExternalLink className="h-4 w-4" />
+            </Button>
           </motion.div>
         ))}
       </motion.div>
       <div className="flex space-x-2 items-center justify-end mt-2 mr-4">
-        <div className="h-6 w-6 bg-[#9e9c9c] hover:bg-black rounded-full flex items-center justify-center">
+        <Button
+          variant="outline"
+          size="icon"
+          className="h-8 w-8 rounded-full"
+          onClick={scrollLeft}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={3}
             stroke="currentColor"
-            className="w-4 h-4 stroke-white"
-            onClick={scrollLeft}
+            className="w-4 h-4"
           >
             <path
               strokeLinecap="round"
@@ -114,16 +129,20 @@ export const SwipeCarousel: React.FC<ImageSliderLayoutProps> = ({
               d="M15 19l-7-7 7-7"
             />
           </svg>
-        </div>
-        <div className="h-6 w-6 bg-[#9e9c9c] hover:bg-black rounded-full flex items-center justify-center">
+        </Button>
+        <Button
+          variant="outline"
+          size="icon"
+          className="h-8 w-8 rounded-full"
+          onClick={scrollRight}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={3}
             stroke="currentColor"
-            className="w-4 h-4 stroke-white"
-            onClick={scrollRight}
+            className="w-4 h-4"
           >
             <path
               strokeLinecap="round"
@@ -131,29 +150,24 @@ export const SwipeCarousel: React.FC<ImageSliderLayoutProps> = ({
               d="M9 5l7 7-7 7"
             />
           </svg>
-        </div>
+        </Button>
       </div>
 
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-[9995]">
-          <div className="relative bg-white rounded-xl overflow-hidden max-w-3xl w-full">
-            <button
-              aria-label="CloseModal"
-              onClick={closeModal}
-              className="absolute top-0 right-0 bg-white p-1 rounded-full text-black z-50"
-            ></button>
-            <div className="relative w-full pt-[56.25%]">
-              <iframe
-                src={currentVideoLink}
-                className="absolute top-0 left-0 w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                title="YouTube Video"
-              ></iframe>
-            </div>
+      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <DialogContent className="sm:max-w-[720px] p-0 overflow-hidden rounded-xl">
+          <div className="relative w-full pt-[56.25%] bg-black">
+            <video
+              src={currentVideoLink}
+              controls
+              className="absolute top-0 left-0 w-full h-full"
+            />
           </div>
-        </div>
-      )}
+          <DialogClose className="absolute top-2 right-2 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
+          <span className="sr-only">Close</span>
+          </DialogClose>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
+

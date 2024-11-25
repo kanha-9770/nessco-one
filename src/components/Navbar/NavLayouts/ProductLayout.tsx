@@ -11,6 +11,7 @@ import SvgDownArrow from "@/components/ui/svgDownArrow";
 import SvgUpArrow from "@/components/ui/svgUpArrow";
 
 interface Machine {
+  link: string;
   name: string;
   image: string;
   mimage: string; // Added this field based on the error message
@@ -18,7 +19,7 @@ interface Machine {
 }
 
 interface Link {
-  link: any;
+  link: string;
   name: string;
   icon: string;
 }
@@ -139,18 +140,25 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
 
   const renderMachineItem = useCallback(
     (machine: Machine) => (
-      <div className="text-center relative w-1/3 p-2">
+      <div className="text-center relative w-1/3 p-2 bg-white">
         <Link
-          href={`/${countryCODE}/${languageCODE}/products${machineLink}/${machine.name}`}
+        className="flex flex-col items-center"
+          href={`/${countryCODE}/${languageCODE}/products${machineLink}/${machine?.link}`}
         >
+          <div className="flex ">
           <Image
             src={machine.image}
             alt={machine.name}
-            className="object-contain lg:hover:scale-80 transform transition-transform duration-200 rounded-3xl relative z-10 h-32 w-[80%]"
+            className="object-contain lg:hover:scale-80 transform transition-transform duration-200 rounded-3xl relative z-10"
             width={200}
             height={150}
             loading="lazy"
           />
+          {/* <div className="border-[0.15rem] border-red-700 h-10 w-10 rounded-full font-poppins flex flex-col justify-center items-center">
+            <p className="text-xs font-semibold text-red-700">80</p>
+            <p className="text-[0.4rem] font-semibold">pch/min</p>
+          </div> */}
+          </div>
           <h3
             className={`${
               componentCode === "knowledge-center"
@@ -169,13 +177,13 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
   const renderSidebarItem = useCallback(
     (link: Link) => (
       <div
-        key={link.name}
+        key={link?.name}
         onMouseEnter={() => {
-          setHoveredCategory(link.name);
-          setMachineLink(link.link)
+          setHoveredCategory(link?.name);
+          setMachineLink(link?.link)
           setCurrentIndex(0);
         }}
-        onClick={() => handleCategoryClick(link.name, link.name)}
+        onClick={() => handleCategoryClick(link?.name, link?.name)}
         className={`flex items-center space-x-4 text-base font-normal transition-colors duration-300 cursor-pointer ${
           componentCode === "knowledge-center"
             ? "hover:text-[#bfb3f0] hover:font-semibold"
@@ -189,14 +197,14 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
           <div className="flex items-center justify-center cursor-pointer">
             <BlurImage
               className="rounded-full h-6 w-6 transform transition-transform duration-200 object-cover"
-              src={link.icon}
-              alt={link.name}
+              src={link?.icon}
+              alt={link?.name}
               width={24}
               height={24}
               loading="lazy"
             />
           </div>
-          <p className="w-60">{link.name}</p>
+          <p className="w-60">{link?.name}</p>
         </Link>
       </div>
     ),
@@ -211,7 +219,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
       {/* Desktop View */}
       <div className="w-full hidden lg:flex flex-col gap-10 lg:flex-row rounded-lg overflow-hidden">
         <div className="flex justify-center  w-full md:w-[75%]  relative">
-          {filteredMachines.length > totalVisible && (
+          {filteredMachines?.length > totalVisible && (
             <button
               onClick={handlePrev}
               className={`absolute invert-0 left-0  h-6 w-6 sm:h-8 sm:w-8 bg-[#9e9c9c] hidden md:flex hover:bg-black rounded-full items-center justify-center ${
@@ -238,23 +246,23 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
           )}
 
           <div className="flex flex-wrap justify-start pl-14 items-start overflow-hidden w-full">
-            {filteredMachines.length <= totalVisible
-              ? filteredMachines.map(renderMachineItem)
+            {filteredMachines?.length <= totalVisible
+              ? filteredMachines?.map(renderMachineItem)
               : filteredMachines
                   .slice(currentIndex, currentIndex + totalVisible)
                   .map(renderMachineItem)}
           </div>
 
-          {filteredMachines.length > totalVisible && (
+          {filteredMachines?.length > totalVisible && (
             <button
               onClick={handleNext}
               className={`absolute invert-0  text-3xl  right-0 z-10 h-6 w-6 sm:h-8 sm:w-8 bg-[#9e9c9c] hidden md:flex hover:bg-black rounded-full items-center justify-center ${
-                currentIndex + totalVisible >= filteredMachines.length
+                currentIndex + totalVisible >= filteredMachines?.length
                   ? "opacity-20"
                   : "opacity-100"
               }`}
               style={{ top: "50%", transform: "translateY(-50%)" }}
-              disabled={currentIndex + totalVisible >= filteredMachines.length}
+              disabled={currentIndex + totalVisible >= filteredMachines?.length}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -277,7 +285,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
           <div className="w-full h-full">
             {sidebarIndex > 0 && (
               <button
-                className="absolute top-0 left-0 right-0 mx-auto z-10 text-2xl rounded-full  p-0 transition-all transform hover:scale-125 "
+                className="absolute -top-2 left-0 right-10 mx-auto z-10 text-2xl rounded-full  p-0 transition-all transform hover:scale-125 -rotate-90"
                 style={{ width: "40px", height: "40px" }}
                 onClick={handleSidebarPrev}
               >
@@ -291,9 +299,9 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                 .map(renderSidebarItem, sidebarIndex)}
             </div>
 
-            {sidebarIndex + 8 < navRightData.length && (
+            {sidebarIndex + 8 < navRightData?.length && (
               <button
-                className="absolute left-0 bottom-0 right-1.5  mx-auto  text-2xl rounded-full  p-0 transition-all transform hover:scale-125 "
+                className="absolute left-0 -bottom-2 right-10  mx-auto  text-2xl rounded-full  p-0 transition-all transform hover:scale-125 rotate-90"
                 style={{ width: "40px", height: "40px" }}
                 onClick={handleSidebarNext}
               >
@@ -311,23 +319,23 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
             <div className="w-full flex justify-start items-start overflow-y-hidden relative">
               <div className="space-y-4 pb-32 h-full stopscrollProduct overflow-y-auto w-full">
                 {navRightData
-                  .slice(sidebarIndex, navRightData.length)
+                  .slice(sidebarIndex, navRightData?.length)
                   .map((link, index) => (
                     <div
                       key={index}
-                      onClick={() => handleCategoryClick(link.name, link.name)}
+                      onClick={() => handleCategoryClick(link?.name, link?.name)}
                       className="flex flex-col border-b-[1px] justify-between text-lg transition-colors duration-300 cursor-pointer font-poppins text-[#483d78] font-semimedium overflow-hidden"
                     >
                       <div
-                        onClick={() => expandItem(link.name)}
+                        onClick={() => expandItem(link?.name)}
                         className="flex items-center justify-between"
                       >
                         <div className="flex flex-row space-x-3 cursor-pointer">
                           <div className="flex items-center justify-center">
                             <BlurImage
                               className="rounded-full h-6 w-6 ml-1 duration-200 object-cover"
-                              src={link.icon}
-                              alt={link.name}
+                              src={link?.icon}
+                              alt={link?.name}
                               width={24}
                               height={24}
                               loading="lazy"
@@ -335,39 +343,39 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                           </div>
                           <p
                             className={
-                              expandedItem === link.name
+                              expandedItem === link?.name
                                 ? "text-[#483d73]"
                                 : "text-gray-500"
                             }
                           >
-                            {link.name}
+                            {link?.name}
                           </p>
                         </div>
                         <span className={`text-gray-500 pr-[0.7rem] text-2xl`}>
-                          {expandedItem === link.name ? "-" : "+"}
+                          {expandedItem === link?.name ? "-" : "+"}
                         </span>
                       </div>
 
-                      {expandedItem === link.name && (
+                      {expandedItem === link?.name && (
                         <div className="inset-0 w-full bg-white h-full z-50 flex flex-col overflow-hidden">
                           <div className="py-4 px-2 h-full flex-grow overflow-y-auto">
                             <div className="text-sm text-gray-700">
                               <div className="grid h-[22rem] border-t-[1px] grid-cols-2 py-4 gap-4 w-full">
-                                {filteredMachines.length <= mobileVisibleItems
-                                  ? filteredMachines.map((machine, index) => (
+                                {filteredMachines?.length <= mobileVisibleItems
+                                  ? filteredMachines?.map((machine, index) => (
                                       <div
-                                        key={`${machine.name}-${index}`}
+                                        key={`${machine?.name}-${index}`}
                                         className="text-center h-40 rounded-2xl border-2 p-2"
                                       >
                                         <Image
-                                          src={machine.image}
-                                          alt={machine.name}
+                                          src={machine?.image}
+                                          alt={machine?.name}
                                           className="object-contain transform transition-transform duration-200 rounded-xl h-24 bg-white border-[1px] w-full"
                                           width={200}
                                           height={150}
                                         />
                                         <h3 className="text-sm invert-0 mt-2 w-full font-bold">
-                                          {machine.name}
+                                          {machine?.name}
                                         </h3>
                                       </div>
                                     ))
@@ -378,25 +386,25 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                                       )
                                       .map((machine, index) => (
                                         <div
-                                          key={`${machine.name}-${index}`}
+                                          key={`${machine?.name}-${index}`}
                                           className="text-center h-40 rounded-xl p-2 border-2"
                                         >
                                           <BlurImage
-                                            src={machine.image}
-                                            alt={machine.name}
+                                            src={machine?.image}
+                                            alt={machine?.name}
                                             className="object-contain transform transition-transform duration-200 border-[1px] rounded-xl h-24 w-full"
                                             width={200}
                                             height={150}
                                             loading="lazy"
                                           />
                                           <h2 className="text-sm invert-0 font-bold mt-2">
-                                            {machine.name}
+                                            {machine?.name}
                                           </h2>
                                         </div>
                                       ))}
                               </div>
                               <div className="relative w-full space-x-4 flex  h-[5%] justify-center items-center">
-                                {filteredMachines.length >
+                                {filteredMachines?.length >
                                   mobileVisibleItems && (
                                   <>
                                     <button
@@ -412,13 +420,13 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                                       onClick={handleNext}
                                       className={`invert-0  text-3xl transition-all ${
                                         currentIndex + mobileVisibleItems >=
-                                        filteredMachines.length
+                                        filteredMachines?.length
                                           ? "opacity-20"
                                           : "opacity-100"
                                       }`}
                                       disabled={
                                         currentIndex + mobileVisibleItems >=
-                                        filteredMachines.length
+                                        filteredMachines?.length
                                       }
                                     ></button>
                                   </>

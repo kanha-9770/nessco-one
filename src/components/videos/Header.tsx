@@ -30,35 +30,35 @@ const Header: React.FC<VideosProps> = ({ videosData }) => {
   };
 
   const filterItems = (items: any[], search: string) => {
-    return items.filter((item) =>
-      item.title.toLowerCase().includes(search.toLowerCase())
+    return items?.filter((item) =>
+      item?.title?.toLowerCase()?.includes(search?.toLowerCase())
     );
   };
 
   const displayApplications = filterItems(
     showApplications
-      ? Header.applications
-      : Header.applications.slice(0, 3),
+      ? Header?.applications
+      : Header?.applications?.slice(0, 3),
     applicationSearch
   );
 
   const displayCategories = filterItems(
     showCategories
-      ? Header.categories
-      : Header.categories.slice(0, 3),
+      ? Header?.categories
+      : Header?.categories?.slice(0, 3),
     categorySearch
   );
 
-  const filteredVideos = Header.VideosRef.filter((video) => {
+  const filteredVideos = Header?.VideosRef?.filter((video) => {
     const categoryMatch =
-      selectedCategories.includes("All Categories") ||
-      selectedCategories.includes(video.tag);
+      selectedCategories?.includes("All Categories") ||
+      selectedCategories?.includes(video?.tag);
     const applicationMatch =
-      selectedApplications.includes("All Categories") ||
-      selectedApplications.includes(video.tag);
-    const searchMatch = video.title
+      selectedApplications?.includes("All Categories") ||
+      selectedApplications?.includes(video?.tag);
+    const searchMatch = video?.title
       .toLowerCase()
-      .includes(searchTerm.toLowerCase());
+      .includes(searchTerm?.toLowerCase());
     return categoryMatch && applicationMatch && searchMatch;
   });
 
@@ -67,17 +67,17 @@ const Header: React.FC<VideosProps> = ({ videosData }) => {
     setSelected: React.Dispatch<React.SetStateAction<string[]>>,
     allOption: string
   ) => {
-    const { name, checked } = event.target;
+    const { name, checked } = event?.target;
     setSelected((prev) => {
       if (name === allOption) {
         return checked ? [allOption] : [];
       } else {
-        const withoutAll = prev.filter((item) => item !== allOption);
+        const withoutAll = prev?.filter((item) => item !== allOption);
         if (checked) {
           return [...withoutAll, name];
         } else {
-          const newSelection = withoutAll.filter((item) => item !== name);
-          return newSelection.length === 0 ? [allOption] : newSelection;
+          const newSelection = withoutAll?.filter((item) => item !== name);
+          return newSelection?.length === 0 ? [allOption] : newSelection;
         }
       }
     });
@@ -98,9 +98,9 @@ const Header: React.FC<VideosProps> = ({ videosData }) => {
       <div className="lg:flex lg:space-x-10">
         {/* Filter Section */}
         <div className="w-[18%] lg:block hidden h-[82vh] pr-5 border-r-2 border-[#E6E7E6] overflow-auto sticky top-[5.2rem] scrollbar-hide">
-          <p className="mb-2">{Header.filter}</p>
+          <p className="mb-2">{Header?.filter}</p>
           <p className="font-medium mb-2">
-            {Header.byCategory}
+            {Header?.byCategory}
           </p>
 
           {/* Category Search Field */}
@@ -137,15 +137,15 @@ const Header: React.FC<VideosProps> = ({ videosData }) => {
               <div key={index} className="flex justify-between items-center">
                 <label
                   className="font-montserrat my-[0.2rem]"
-                  htmlFor={item.title}
+                  htmlFor={item?.title}
                 >
-                  {item.title}
+                  {item?.title}
                 </label>
                 <input
                   type="checkbox"
-                  id={item.title}
-                  name={item.title}
-                  checked={selectedCategories.includes(item.title)}
+                  id={item?.title}
+                  name={item?.title}
+                  checked={selectedCategories?.includes(item?.title)}
                   onChange={handleCategoryChange}
                   className="ml-2"
                 />
@@ -160,7 +160,7 @@ const Header: React.FC<VideosProps> = ({ videosData }) => {
           </div>
 
           <p className="font-medium mb-2 mt-9">
-            {Header.byApplications}
+            {Header?.byApplications}
           </p>
 
           {/* Application Search Field */}
@@ -193,19 +193,19 @@ const Header: React.FC<VideosProps> = ({ videosData }) => {
 
           {/* By Application */}
           <div className="mt-5">
-            {displayApplications.map((item, index) => (
+            {displayApplications?.map((item, index) => (
               <div key={index} className="flex justify-between items-center">
                 <label
                   className="font-montserrat my-[0.2rem]"
-                  htmlFor={item.title}
+                  htmlFor={item?.title}
                 >
-                  {item.title}
+                  {item?.title}
                 </label>
                 <input
                   type="checkbox"
-                  id={item.title}
-                  name={item.title}
-                  checked={selectedApplications.includes(item.title)}
+                  id={item?.title}
+                  name={item?.title}
+                  checked={selectedApplications?.includes(item?.title)}
                   onChange={handleApplicationChange}
                   className="ml-2"
                 />
@@ -223,7 +223,7 @@ const Header: React.FC<VideosProps> = ({ videosData }) => {
         {/* Filter in mobile */}
         <div className="w-full bg-white h-[3rem] rounded-t-2xl relative flex items-center justify-center lg:hidden border-solid border-b-2 border-[#E6E7E6] text-[#483d73] cursor-pointer">
           <p className="font-poppins text-[1.3rem] absolute left-4">
-            {Header.filter}
+            {Header?.filter}
           </p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -248,7 +248,7 @@ const Header: React.FC<VideosProps> = ({ videosData }) => {
         {/* Videos Section */}
         <div className="lg:w-[82%] w-full bg-white rounded-b-2xl lg:rounded-t-2xl py-5 px-10">
           <h1 className="text-[#483d73] text-2xl font-poppins font-medium">
-            {Header.title}
+            {Header?.title}
           </h1>
           {/* <div className="my-4">
             <input
@@ -260,11 +260,11 @@ const Header: React.FC<VideosProps> = ({ videosData }) => {
             />
           </div> */}
           <div className="grid lg:grid-cols-3 md:grid-cols-2 my-4 gap-8">
-            {filteredVideos.map((item, idx) => (
+            {filteredVideos?.map((item, idx) => (
               <div key={idx} className="w-full h-full">
                 <iframe
                   className="w-full h-full rounded-lg shadow-lg"
-                  src={item.url}
+                  src={item?.url}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   referrerPolicy="strict-origin-when-cross-origin"
                   allowFullScreen
@@ -282,19 +282,19 @@ const Header: React.FC<VideosProps> = ({ videosData }) => {
             <div className="w-full h-[3rem] flex items-center border-b-2 border-solid border-[#E6E7E6]">
               <div className="flex justify-center items-center h-full w-[50%] border-r-2 border-solid border-[#E6E7E6] mb-[0.5rem] font-poppins font-medium">
                 <button onClick={handleCloseFilter} className="text-[#838282]">
-                  {Header.cancel}
+                  {Header?.cancel}
                 </button>
               </div>
               <div className="flex justify-center items-center w-[50%] mb-[0.5rem] font-poppins font-medium">
                 <button onClick={handleCloseFilter} className="text-red-700">
-                  {Header.apply}
+                  {Header?.apply}
                 </button>
               </div>
             </div>
 
             <div className="h-[22rem] mt-4 p-[1rem] bg-[#f5f5f5] rounded-lg overflow-y-auto">
               <p className="font-medium mb-2">
-                {Header.byCategory}
+                {Header?.byCategory}
               </p>
               <input
                 type="search"
@@ -304,28 +304,28 @@ const Header: React.FC<VideosProps> = ({ videosData }) => {
                 className="w-full py-2 px-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2"
               />
               {filterItems(
-                Header.categories,
+                Header?.categories,
                 categorySearch
               ).map((item, index) => (
                 <div key={index} className="flex justify-between items-center">
                   <label
                     className="font-poppins my-[0.2rem]"
-                    htmlFor={`mobile-category-${item.title}`}
+                    htmlFor={`mobile-category-${item?.title}`}
                   >
-                    {item.title}
+                    {item?.title}
                   </label>
                   <input
                     type="checkbox"
-                    id={`mobile-category-${item.title}`}
-                    name={item.title}
-                    checked={selectedCategories.includes(item.title)}
+                    id={`mobile-category-${item?.title}`}
+                    name={item?.title}
+                    checked={selectedCategories?.includes(item?.title)}
                     onChange={handleCategoryChange}
                   />
                 </div>
               ))}
 
               <p className="font-medium mb-2 mt-4">
-                {Header.byApplications}
+                {Header?.byApplications}
               </p>
               <input
                 type="search"
@@ -335,21 +335,21 @@ const Header: React.FC<VideosProps> = ({ videosData }) => {
                 className="w-full py-2 px-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2"
               />
               {filterItems(
-                Header.applications,
+                Header?.applications,
                 applicationSearch
               ).map((item, index) => (
                 <div key={index} className="flex justify-between items-center">
                   <label
                     className="font-poppins my-[0.2rem]"
-                    htmlFor={`mobile-application-${item.title}`}
+                    htmlFor={`mobile-application-${item?.title}`}
                   >
-                    {item.title}
+                    {item?.title}
                   </label>
                   <input
                     type="checkbox"
-                    id={`mobile-application-${item.title}`}
-                    name={item.title}
-                    checked={selectedApplications.includes(item.title)}
+                    id={`mobile-application-${item?.title}`}
+                    name={item?.title}
+                    checked={selectedApplications?.includes(item?.title)}
                     onChange={handleApplicationChange}
                   />
                 </div>

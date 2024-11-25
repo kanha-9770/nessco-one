@@ -56,8 +56,8 @@ const MachineCard: React.FC<{ machine: (typeof machineData)[0] }> = ({
       {/* Circular Image Container */}
       <div className="absolute top-1/2 right-0 transform -translate-y-1/2 -mr-20 flex items-center justify-center h-52 w-52 bg-white border-[0.1rem] border-[#483d78] rounded-full">
         <Image
-          src={machine.image}
-          alt={machine.title}
+          src={machine?.image}
+          alt={machine?.title}
           height={200}
           width={200}
         />
@@ -68,18 +68,18 @@ const MachineCard: React.FC<{ machine: (typeof machineData)[0] }> = ({
         <div className="flex items-center justify-center w-32 h-14 p-2 ml-4 -mt-4 bg-gray-200 border-[0.1rem] border-[#483d78] rounded-[2rem]">
           <div className="flex items-center justify-center w-1/2 h-[3.2rem] p-2 rounded-full">
             <Image
-              src={machine.icon}
-              alt={`${machine.title} Icon`}
+              src={machine?.icon}
+              alt={`${machine?.title} Icon`}
               width={20}
               height={20}
             />
           </div>
           <div className="flex flex-col items-center justify-center w-[40%] h-[2.5rem] p-6 bg-white rounded-full">
             <div className="text-sm font-bold text-red-700">
-              {machine.speed}
+              {machine?.speed}
             </div>
             <div className="text-txs text-[#483d78] -mt-1">
-              {machine.speedUnit}
+              {machine?.speedUnit}
             </div>
           </div>
         </div>
@@ -88,7 +88,7 @@ const MachineCard: React.FC<{ machine: (typeof machineData)[0] }> = ({
       {/* Red Bottom Section */}
       <div className="flex-grow w-1/2 p-4 ml-4 mt-0 font-poppins rounded-bl-[2rem]">
         <div className="mb-2 text-lg text-center text-white w-28">
-          {machine.title}
+          {machine?.title}
         </div>
         <div>
           <PositionAwareButton
@@ -114,7 +114,7 @@ const MachineGrid: React.FC = () => {
         <span className="text-red-700 font-extrabold ml-2">Products</span>
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 h-full">
-        {machineData.map((machine, index) => (
+        {machineData?.map((machine, index) => (
           <MachineCard key={index} machine={machine} />
         ))}
       </div>

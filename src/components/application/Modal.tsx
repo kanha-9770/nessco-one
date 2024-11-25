@@ -72,7 +72,7 @@ const Modal: React.FC<{
               </button>
               <input
                 type="search"
-                placeholder={SelectProduct.placeholder}
+                placeholder={SelectProduct?.placeholder}
                 className="w-full px-[0.5rem] outline-none bg-transparent text-[0.8rem] text-[#6f6f6f]"
               />
             </div>
@@ -94,7 +94,7 @@ const Modal: React.FC<{
           <div className="w-full h-[52vh] px-[0.5rem] overflow-hidden">
             <div className="h-full overflow-auto scrollbar-hide">
               <div className="grid grid-cols-3 gap-x-4">
-                {SelectProduct.products.map((item, idx) => (
+                {SelectProduct?.products?.map((item, idx) => (
                   <div
                     key={idx}
                     className="cursor-pointer mt-[0.5vh]"
@@ -111,8 +111,8 @@ const Modal: React.FC<{
                         className="h-[8vh]"
                         width={100}
                         height={100}
-                        src={item.img}
-                        alt={item.title}
+                        src={item?.img}
+                        alt={item?.title}
                       />
                     </div>
                     <div className="mt-[0.2vh]">
@@ -123,7 +123,7 @@ const Modal: React.FC<{
                             : "text-[#c6c5c5]"
                         }`}
                       >
-                        {item.title}
+                        {item?.title}
                       </p>
                     </div>
                   </div>

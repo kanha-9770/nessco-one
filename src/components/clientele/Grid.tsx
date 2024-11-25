@@ -23,13 +23,13 @@ const getSlidingDirectionClass = () => {
 
 // Generate square components
 const generateSquares = (data: Square[] , isFadingOut: boolean) => {
-  return data.map((sq) => {
+  return data?.map((sq) => {
     const animationClass = getSlidingDirectionClass();
     return (
       <div
-        key={sq.id}
+        key={sq?.id}
         className={`relative border border-[#262626] rounded-lg flex items-center justify-center overflow-hidden 
-        ${sq.bgClass} 
+        ${sq?.bgClass} 
         ${isFadingOut ? 'opacity-0' : 'opacity-100'} 
         transition-opacity duration-4000 ease-in-out`} // Fading effect
       >

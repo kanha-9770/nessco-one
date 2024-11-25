@@ -13,35 +13,35 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
   const [canScrollRight, setCanScrollRight] = useState(true);
 
   useEffect(() => {
-    if (carouselRef.current) {
+    if (carouselRef?.current) {
       carouselRef.current.scrollLeft = initialScroll;
       checkScrollability();
     }
   }, [initialScroll]);
 
   const checkScrollability = () => {
-    if (carouselRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
+    if (carouselRef?.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = carouselRef?.current;
       setCanScrollLeft(scrollLeft > 0);
       setCanScrollRight(scrollLeft < scrollWidth - clientWidth);
     }
   };
 
   const scrollLeft = () => {
-    if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: -300, behavior: "smooth" });
+    if (carouselRef?.current) {
+      carouselRef?.current?.scrollBy({ left: -300, behavior: "smooth" });
       checkScrollability();
     }
   };
 
   const scrollRight = () => {
-    if (carouselRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
+    if (carouselRef?.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = carouselRef?.current;
       if (scrollLeft + clientWidth >= scrollWidth) {
         // If we reach the end, reset to the beginning for infinite scrolling
-        carouselRef.current.scrollTo({ left: 0, behavior: "smooth" });
+        carouselRef?.current?.scrollTo({ left: 0, behavior: "smooth" });
       } else {
-        carouselRef.current.scrollBy({ left: 300, behavior: "smooth" });
+        carouselRef?.current?.scrollBy({ left: 300, behavior: "smooth" });
       }
       checkScrollability();
     }
@@ -51,7 +51,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
     <div className="relative flex flex-col lg:flex-row w-full items-center">
       <div className="flex flex-col  h-[6rem] lg:h-[5rem] w-full lg:w-[20%] gap-1 px-2 lg:px-0">
         <div className="flex flex-col items-center">
-          <h2 className="text-2xl font-semibold bg-gradient-to-r from-[#483d73] to-red-700  bg-clip-text text-transparent text-center">
+          <h2 className="text-3xl font-semibold bg-gradient-to-r from-[#483d73] to-red-700  bg-clip-text text-transparent text-center">
             Announcements
           </h2>
           <p className="text-md lg:text-lg text-center text-black font-poppins font-medium">

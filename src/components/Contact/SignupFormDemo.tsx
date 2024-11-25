@@ -100,7 +100,7 @@ const SignupFormDemo = ({ formId }: { formId: string }) => {
                   id="firstname"
                   placeholder="Tyler"
                   type="text"
-                  value={formValues.firstname}
+                  value={formValues?.firstname}
                   onChange={handleChange}
                 />
               </LabelInputContainer>
@@ -110,7 +110,7 @@ const SignupFormDemo = ({ formId }: { formId: string }) => {
                   id="lastname"
                   placeholder="Durden"
                   type="text"
-                  value={formValues.lastname}
+                  value={formValues?.lastname}
                   onChange={handleChange}
                 />
               </LabelInputContainer>
@@ -121,7 +121,7 @@ const SignupFormDemo = ({ formId }: { formId: string }) => {
                 id="email"
                 placeholder="projectmayhem@fc.com"
                 type="email"
-                value={formValues.email}
+                value={formValues?.email}
                 onChange={handleChange}
               />
             </LabelInputContainer>
@@ -135,7 +135,7 @@ const SignupFormDemo = ({ formId }: { formId: string }) => {
               <MessageBox
                 id="message"
                 placeholder="Type your message here..."
-                value={formValues.message}
+                value={formValues?.message}
                 onChange={handleChange}
               />
             </LabelInputContainer>

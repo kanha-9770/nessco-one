@@ -164,7 +164,7 @@ const Page1: React.FC<CombinedProps> = ({
                 className="h-full lg:w-[4rem] w-[2.5rem] absolute right-2 lg:top-2"
                 width={100}
                 height={100}
-                src={selectedProduct.img}
+                src={selectedProduct?.img}
                 alt={selectedProduct?.title || "No title available"}
               />
             )}
@@ -220,7 +220,7 @@ const Page1: React.FC<CombinedProps> = ({
               ref={carouselRef}
             >
               <div className="w-max lg:mt-[2rem] mt-[0.5rem] flex justify-center lg:pl-[50rem] pl-[45rem]">
-                {Header.icons.map((item, idx) => (
+                {Header?.icons?.map((item, idx) => (
                   <div
                     key={idx}
                     className="flex flex-col mx-[2vw] lg:w-[6.8rem] w-[4.8rem] items-center group"
@@ -235,8 +235,8 @@ const Page1: React.FC<CombinedProps> = ({
                       }`}
                       width={100}
                       height={100}
-                      src={item.image}
-                      alt={item.title}
+                      src={item?.image}
+                      alt={item?.title}
                     />
 
                     <p
@@ -246,7 +246,7 @@ const Page1: React.FC<CombinedProps> = ({
                           : "text-black"
                       }`}
                     >
-                      {item.title}
+                      {item?.title}
                     </p>
                   </div>
                 ))}

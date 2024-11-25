@@ -13,6 +13,7 @@ interface CardsProps {
 }
 
 interface Card {
+  link: string;
   title: string;
   
   img: string;
@@ -54,22 +55,22 @@ const Header: React.FC<CardsProps> = ({
             : "lg:grid-cols-3"
         } gap-10 lg:px-14 px-8 py-8`}
       >
-        {cards.map((item, idx) => (
+        {cards?.map((item, idx) => (
           <div
             key={idx}
             className="relative flex flex-col justify-center items-center bg-white rounded-xl py-10 px-10 lg:px-4 space-y-16 lg:hover:shadow-2xl shadow-xl lg:hover:scale-80 transition-all duration-300 group"
           >
             <h2 className="lg:group-hover:text-[#483d73] lg:text-black text-[#483d73] lg:text-2xl text-2xl font-medium text-center">
-              {item.title}
+              {item?.title}
             </h2>
             <Image
-              src={item.img}
+              src={item?.img}
               alt={"Parts"}
               width={400}
               height={400}
               className="w-[8rem] lg:group-hover:scale-90 transition-all duration-300"
             />
-            <LinkUrl href={`/support/${item.title}`}>
+            <LinkUrl href={`/support/${item.link}`}>
             <div className="absolute bottom-2 right-2 lg:group-hover:bg-[#483d7359] p-2 rounded-full transition-all duration-300">
               <Image
                 src={Arrow}

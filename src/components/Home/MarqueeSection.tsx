@@ -10,12 +10,12 @@ interface MarqueeLayoutProps {
 }
 export default function MarqueeSection({ heroData }: MarqueeLayoutProps) {
   // Memoize brand section to avoid recomputation
-  const brandSection = heroData.home[5]?.data;
+  const brandSection = heroData?.home[5]?.data;
 
   // Return early if no brand section is found or data is missing
   if (!brandSection) return null;
 
-  const { trusted, partners } = heroData.home[5]?.data;
+  const { trusted, partners } = heroData?.home[5]?.data;
 
   return (
     <div className="h-[40rem] px-14 flex flex-col justify-center gap-12 overflow-hidden bg-gradient-to-b from-[#ece9f5]  via-white via-20% to-transparent relative font-poppins font-regular">
@@ -26,13 +26,13 @@ export default function MarqueeSection({ heroData }: MarqueeLayoutProps) {
         <p className="text-[#483d73] font-extralight text-center w-[16rem]">“Building lasting partnerships with 
         trusted brands worldwide.”</p>
       </div>
-      <div className="relative h-1/3 flex flex-col lg:flex-row ">
+      <div className="relative h-1/3 flex flex-col lg:flex-row items-center">
         {/* Heading Section */}
         <div className="flex text-[#483d73] flex-col">
-          <h1 className="text-sm lg:absolute lg:text-xl bg-[#D3CFE2] px-4 py-2 rounded-3xl font-medium lg:mt-5 -mt-8  font-poppins whitespace-nowrap text-center w-max">
+          <h1 className="text-sm lg:absolute lg:top-5 lg:text-xl bg-[#D3CFE2] px-4 py-2 rounded-3xl font-medium lg:mt-0 -mt-8  font-poppins whitespace-nowrap text-center w-max">
             {heroData?.home[5]?.heading1}
           </h1>
-          <h2 className="lg:mt-28 mt-[4.3rem] absolute right-0 text-sm bg-[#D3CFE2] px-4 py-2 rounded-3xl lg:text-xl font-medium font-poppins whitespace-nowrap text-center w-max">
+          <h2 className="lg:mt-0 mt-[4.3rem] lg:absolute top-28 right-0 text-sm bg-[#D3CFE2] px-4 py-2 rounded-3xl lg:text-xl font-medium font-poppins whitespace-nowrap text-center w-max">
             {heroData?.home[5]?.heading2}
           </h2>
         </div> 
@@ -59,7 +59,7 @@ export default function MarqueeSection({ heroData }: MarqueeLayoutProps) {
       {heroData?.home[5]?.description?.text && (
         <div className="relative flex flex-col h-1/3 items-center text-center">
           <p className="text-sm text-[#483d73] lg:text-xl mx-4 w-full lg:w-[62%] font-poppins font-normal lg:leading-8">
-            {heroData?.home[5]?.description.text}
+            {heroData?.home[5]?.description?.text}
           </p>
         </div>
       )}

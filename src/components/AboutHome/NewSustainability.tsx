@@ -59,11 +59,11 @@ const NewSustainability: React.FC<HomeLayoutProps> = ({ aboutData }) => {
         <div className="lg:w-[60%] lg:h-full h-[45%]  w-full ">
           <Carousel className="lg:w-full lg:max-w-screen-sm relative lg:top-0 top-[20rem] md:top-[15rem]">
             <CarouselContent>
-              {homesustainData.map((slide, index) => {
+              {homesustainData?.map((slide, index) => {
                 const Svglist = Icons[index];
                 return (
                   <CarouselItem
-                    key={slide.id}
+                    key={slide?.id}
                     className={currentSlide === index ? "block" : "hidden"}
                   >
                     <div className="lg:p-1 p-5">
@@ -71,7 +71,7 @@ const NewSustainability: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                         <CardContent className="flex items-center justify-center  h-full relative ">
                           <div className="flex flex-col space-x-3  w-full ">
                             <h3 className="lg:text-3xl font-poppins font-normal  lg:text-black text-[#138808] absolute top-16 lg:left-14 md:left-14   md:top-[7.5rem] lg:top-10  lg:p-0 lg:text-left text-center  w-full text-2xl ">
-                              {slide.title}
+                              {slide?.title}
                             </h3>
                             <div className="flex flex-row relative w-full mb-3 top-3 md:top-24 lg:hidden">
                               <p className="lg:invisible visible relative text-[#138808] left-24">
@@ -79,7 +79,7 @@ const NewSustainability: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                                 {/* <IoArrowRedoSharp size={20} /> */}
                               </p>
                               <h4 className="lg:invisible visible  text-black relative text-sm left-24 pl-1  font-bold">
-                                {homeheadData.Approach}
+                                {homeheadData?.Approach}
                               </h4>
                             </div>
 
@@ -88,7 +88,7 @@ const NewSustainability: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                                 <Svglist />
                               </div>
                               <p className="lg:text-sm lg:font-regular md:text-sm md:font-regular lg:w-[21rem] w-[21rem] text-xs font-poppins relative text-left px-5 lg:px-0 ">
-                                {slide.description}
+                                {slide?.description}
                               </p>
                             </div>
                           </div>
@@ -153,11 +153,11 @@ const NewSustainability: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                 {homesustainData[currentSlide]?.title}
               </p>
 
-              {homesustainData.map((slide, index) => {
+              {homesustainData?.map((slide, index) => {
                 const Sideicon = Icons[index];
                 return (
                   <div
-                    key={slide.id}
+                    key={slide?.id}
                     className={`bg-white relative w-20 h-20 rounded-full ${
                       index === 0
                         ? "top-[13rem] right-[1rem]"
@@ -198,7 +198,7 @@ const NewSustainability: React.FC<HomeLayoutProps> = ({ aboutData }) => {
           </div>
 
           <div className="flex justify-center  md:mt-[16rem] mt-[23rem] lg:invisible visible">
-            {homesustainData.map((_, index) => (
+            {homesustainData?.map((_, index) => (
               <div
                 key={index}
                 onClick={() => handleDotClick(index)}
@@ -218,7 +218,7 @@ const NewSustainability: React.FC<HomeLayoutProps> = ({ aboutData }) => {
           aria-label="read-more"
           className="bottom-3 absolute text-center font-poppins border border-[#6f6f6f] hover:bg-black text-[#6f6f6f] hover:text-white rounded-[0.26rem] z-10 w-[8rem] h-[2rem]"
         >
-          {homemisionData.button}
+          {homemisionData?.button}
         </button>
       </div>
       </LinkUrl>

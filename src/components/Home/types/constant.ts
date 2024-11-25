@@ -26,6 +26,7 @@ export interface HomeSeoData {
   description: string;
   keywords: string;
   openGraph: {
+    image: any;
     siteName: string;
     url: string;
     type: string;
@@ -56,6 +57,8 @@ export interface HeroSection {
   [x: string]: any;
   video: {
     sources: {
+      subheadline: string;
+      headline: string;
       src: string;
       type: string;
     }[];
@@ -69,8 +72,9 @@ export interface HeroSection {
   buttonText: string;
 }
 
-type ProductSection = {
+export type ProductSection = {
   category: "ProductSection";
+  
   data: {
     products: Product[];
   };

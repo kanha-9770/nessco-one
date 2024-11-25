@@ -7,6 +7,7 @@ import { Label } from "@radix-ui/react-label";
 import EnquiryCart from "@/components/ui/EnquiryCart";
 import Link from "next/link";
 import { countryCODE, languageCODE } from "../Navbar/nav-menue";
+import { usePathname } from "next/navigation";
 
 interface ProductProps {
   productData: ProductItem;
@@ -24,16 +25,20 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
   const [enquiryItems, setEnquiryItems] = useState<
     Array<{ id: string; name: string; image: string }>
   >([]);
-
+  const pathname = usePathname();
+  // Extract the last parameter from the pathname
+  const lastParameter = pathname?.split("/").pop();
   const toggleExpansion = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index);
   };
   const formatToSlug = (title) => {
-    return title
-      .toLowerCase()||title.t // Convert to lowercase
-      .replace(/[^a-z0-9\s]/g, "") // Remove special characters
-      .trim() // Trim leading/trailing spaces
-      .replace(/\s+/g, "-"); // Replace spaces with dashes
+    return (
+      title.toLowerCase() ||
+      title.t // Convert to lowercase
+        .replace(/[^a-z0-9\s]/g, "") // Remove special characters
+        .trim() // Trim leading/trailing spaces
+        .replace(/\s+/g, "-")
+    ); // Replace spaces with dashes
   };
 
   const scrollbarLeft = () => {
@@ -61,16 +66,16 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
   ) => {
     setSelectedItems((prevSelected) => {
       const newSelected = new Set(prevSelected);
-      if (newSelected.has(itemId)) {
-        newSelected.delete(itemId);
+      if (newSelected?.has(itemId)) {
+        newSelected?.delete(itemId);
         setEnquiryItems((prevItems) =>
-          prevItems.filter((item) => item.id !== itemId)
+          prevItems?.filter((item) => item?.id !== itemId)
         );
       } else {
-        newSelected.add(itemId);
+        newSelected?.add(itemId);
         setEnquiryItems((prevItems) => {
           // Check if the item already exists in the cart
-          const itemExists = prevItems.some((item) => item.id === itemId);
+          const itemExists = prevItems?.some((item) => item?.id === itemId);
           if (!itemExists) {
             return [
               ...prevItems,
@@ -87,11 +92,11 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
   const removeEnquiryItem = (itemId: string) => {
     setSelectedItems((prevSelected) => {
       const newSelected = new Set(prevSelected);
-      newSelected.delete(itemId);
+      newSelected?.delete(itemId);
       return newSelected;
     });
     setEnquiryItems((prevItems) =>
-      prevItems.filter((item) => item.id !== itemId)
+      prevItems?.filter((item) => item?.id !== itemId)
     );
   };
 
@@ -187,14 +192,14 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
       <div className="w-full bgLines font-poppins bg-grid-black/[0.2] lg:px-[2rem] px-[1rem] pt-[5rem] pb-[4rem] flex items-center justify-center relative font-regular">
         <div className="absolute pointer-events-none inset-0 flex items-center justify-center  bg-[#f2f2f2] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
         <div className="bg-white w-full rounded-[0.5rem] lg:px-[2.2rem] px-[1rem] pb-[1.8rem] z-20">
-          {ProductCatalouge.card.map((item, idx) => (
+          {ProductCatalouge?.card?.map((item, idx) => (
             <div key={idx} className="w-full">
               <div
                 className="flex items-center cursor-pointer py-[0.4rem] relative group"
                 onClick={() => toggleExpansion(idx)}
               >
                 <Image
-                  src={item.img}
+                  src={item?.img}
                   alt={""}
                   width={400}
                   height={400}
@@ -223,7 +228,7 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
                         : "lg:text-[1.2rem] text-[0.9rem] lg:ml-[1rem] ml-[0.5rem]"
                     }`}
                   >
-                    {item.title}
+                    {item?.title}
                   </h2>
                 </Link>
                 {expandedIndex === idx ? (
@@ -290,8 +295,8 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
                         ref={carouselRef}
                       >
                         <div className="flex items-center justify-center lg:space-x-8 space-x-4">
-                          {item.container &&
-                            item.container.map(
+                          {item?.container &&
+                            item?.container?.map(
                               (containerItem, containerIdx) => (
                                 <div
                                   key={containerIdx}
@@ -303,22 +308,22 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
                                   <div className="absolute top-4 right-2 flex space-x-2">
                                     <div className="w-6 h-6 p-[0.2rem] bg-white border-solid border-[0.1rem] border-[#f5f5f5] hover:border-red-700 rounded-full flex items-center justify-center relative group">
                                       <Image
-                                        src={containerItem.image}
+                                        src={containerItem?.image}
                                         alt=""
                                         width={400}
                                         height={400}
                                       />
                                       <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-md shadow-md px-2 py-1 h-max w-max z-20">
                                         <p className="lg:text-[0.8rem] text-[0.7rem] text-black">
-                                          {containerItem.imageInformation}
+                                          {containerItem?.imageInformation}
                                         </p>
                                       </div>
                                     </div>
                                     <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center font-medium cursor-pointer relative group hover:text-red-700">
-                                      {containerItem.s}
+                                      {containerItem?.s}
                                       <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-md shadow-md px-2 py-1 h-max w-max z-20">
                                         <p className="lg:text-[0.8rem] text-[0.7rem] text-black font-normal">
-                                          {containerItem.sInformation}
+                                          {containerItem?.sInformation}
                                         </p>
                                       </div>
                                     </div>
@@ -352,7 +357,7 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
 
                                       <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-md shadow-md px-2 py-1 h-max w-max z-20">
                                         <p className="lg:text-[0.8rem] text-[0.7rem] text-black">
-                                          {containerItem.information}
+                                          {containerItem?.information}
                                         </p>
                                       </div>
                                     </div>
@@ -360,26 +365,26 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
 
                                   <div className="pt-4 px-4">
                                     <Link
-                                      href={`/${countryCODE}/${languageCODE}/products/${formatToSlug(
-                                        containerItem.h1
-                                      )}/${formatToSlug(containerItem.h2)}`}
+                                      href={`/${countryCODE}/${languageCODE}/products/${lastParameter}/${formatToSlug(
+                                        containerItem.h2
+                                      )}`}
                                     >
                                       <h2 className="lg:text-[1rem] text-[0.9rem] font-semibold lg:w-[10rem] w-[7rem]">
-                                        {containerItem.h1}
+                                        {containerItem?.h1}
                                       </h2>
                                       <h3 className="lg:text-[0.9rem] text-[0.8rem] font-medium">
-                                        {containerItem.h2}
+                                        {containerItem?.h2}
                                       </h3>
                                     </Link>
                                     <p className="lg:text-[0.8rem] text-[0.7rem] text-gray-600">
-                                      {containerItem.h3}
+                                      {containerItem?.h3}
                                     </p>
                                   </div>
 
                                   <div className="flex justify-center items-center">
                                     <div className="p-4 flex justify-center items-center">
                                       <Image
-                                        src={containerItem.img}
+                                        src={containerItem?.img}
                                         alt=""
                                         width={400}
                                         height={400}
@@ -390,11 +395,11 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
                                   <div className="my-[0.5rem] flex lg:flex-rows flex-col items-center justify-center lg:h-[2.5rem]">
                                     <button className="lg:text-[0.9rem] text-[0.8rem] w-[65%] h-[2rem] border-[0.1rem] border-solid font-medium rounded-lg transition-colors duration-300 border-[#9c9c9c] hover:border-black hover:bg-black hover:text-white">
                                       <Link
-                                        href={`/${countryCODE}/${languageCODE}/products/${formatToSlug(
-                                          containerItem.h1
-                                        )}/${formatToSlug(containerItem.h2)}`}
+                                        href={`/${countryCODE}/${languageCODE}/products/${lastParameter}/${formatToSlug(
+                                          containerItem.h2
+                                        )}`}
                                       >
-                                        {ProductCatalouge.viewMachine}
+                                        {ProductCatalouge?.viewMachine}
                                       </Link>
                                     </button>
                                   </div>
@@ -413,8 +418,8 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
                                         onChange={() =>
                                           handleItemSelection(
                                             `${idx}-${containerIdx}`,
-                                            containerItem.h1,
-                                            containerItem.img
+                                            containerItem?.h1,
+                                            containerItem?.img
                                           )
                                         }
                                       />
@@ -422,7 +427,7 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
                                         htmlFor={`addToEnquiry-${idx}-${containerIdx}`}
                                         className="text-sm whitespace-nowrap"
                                       >
-                                        {containerItem.inquiry}
+                                        {containerItem?.inquiry}
                                       </Label>
                                     </div>
                                   </div>
@@ -473,7 +478,7 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
                   <div className="flex items-center justify-center w-full">
                     <div className="group flex items-center justify-center w-max pl-3 pr-1 mb-4 bg-black rounded-full  text-white hover:text-black hover:bg-white border border-black space-x-2">
                       <button className="lg:text-[0.9rem] py-1 text-[0.8rem] font-medium ">
-                        {ProductCatalouge.viewAllMachines}
+                        {ProductCatalouge?.viewAllMachines}
                       </button>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

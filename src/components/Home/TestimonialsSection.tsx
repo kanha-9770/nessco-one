@@ -11,9 +11,9 @@ const HomeTestimonial: React.FC<TestinomialLayoutProps> = ({heroData}) => {
   // Provide a fallback value for `testinomialData?.testinomial`
   const testimonialItems = testinomialData?.testinomial || [];
   return (
-    <div className="flex flex-col lg:flex-row py-4 h-screen z-20 max-w-7xl mx-auto relative overflow-hidden">
+    <div className="flex flex-col lg:flex-row py-4  h-screen  z-20 max-w-7xl mx-auto relative overflow-hidden">
       <div className="px-2 w-full h-[45%] lg:h-full lg:w-1/3 lg:flex lg:flex-col lg:items-start lg:justify-end flex flex-col">
-        <h2 className="text-xl text-[#483d73] text-center lg:text-justify  pb-3 lg:pb-0 lg:ml-6 lg:text-3xl font-montserrat lg:leading-tight font-semibold">
+        <h2 className="text-[#483d73] text-center lg:text-justify  pb-3 lg:pb-0 lg:ml-6 text-3xl font-montserrat lg:leading-tight font-semibold">
           {testinomialData?.heading}
         </h2>
         <div className="flex flex-col">

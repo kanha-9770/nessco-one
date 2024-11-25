@@ -22,7 +22,7 @@ interface Machine {
 gsap.registerPlugin(ScrollTrigger);
 
 const FeatureProject: React.FC<HomeLayoutProps> = ({aboutData}) => {
-  const homemachineData=aboutData?.About[0].machines || [];
+  const homemachineData=aboutData?.About[0]?.machines || [];
 
   const [selectedMachine, setSelectedMachine] = useState<Machine>(
     homemachineData.length > 0
@@ -127,24 +127,24 @@ const FeatureProject: React.FC<HomeLayoutProps> = ({aboutData}) => {
     <div
       className={`relative flex flex-col w-full lg:h-full bg-white h-full overflow-hidden lg:pt-10 pt-5`}
     >
-      <h1
+      <h2
         className={`lg:text-3xl text-2xl font-medium text-[#33246e] font-poppins lg:pl-10 pl-8`}
       >
-        {homeheadingData.title}
-      </h1>
+        {homeheadingData?.title}
+      </h2>
       {isMobile ? (
         // Mobile view layout
         <div className="flex flex-col items-center w-full px-8 md:px-10  relative top-10">
-          {homemachineData.map((machine) => (
+          {homemachineData?.map((machine) => (
             <div
-              key={machine.id}
+              key={machine?.id}
               className="flex flex-col items-center mb-8 border h-[13rem] bg-[#ededed] rounded-2xl w-full relative justify-center"
             >
               <div className="flex flex-row items-center -mt-8">
                 <div className="w-[40%]  h-full ">
                   <Image
-                    src={machine.mobileimg}
-                    alt={machine.title}
+                    src={machine?.mobileimg}
+                    alt={machine?.title}
                     width={300}
                     height={300}
                     priority
@@ -152,19 +152,19 @@ const FeatureProject: React.FC<HomeLayoutProps> = ({aboutData}) => {
                   />
                 </div>
                 <div className="h-[70%] w-[60%]  ">
-                  <h2 className="text-xl md:text-2xl font-bold relative w-[10rem] text-[#483d73] mx-3 font-poppins">
-                    {machine.title}
-                  </h2>
+                  <h3 className="text-xl md:text-2xl font-bold relative w-[10rem] text-[#483d73] mx-3 font-poppins">
+                    {machine?.title}
+                  </h3>
                   <p className="text-xs md:text-sm font-regular text-black mt-2   mx-3 font-poppins">
                     {isMobile
-                      ? truncateText(selectedMachine.description, wordLimit)
-                      : selectedMachine.description}
+                      ? truncateText(selectedMachine?.description, wordLimit)
+                      : selectedMachine?.description}
                   </p>
                 </div>
               </div>
               <div className="flex absolute bottom-2 flex-row border border-[#6f6f6f] rounded-md bg-black  group p-1  cursor-pointer ">
                 <p className="text-white font-regular font-poppins text-xs   ">
-                  {homeheadingData.viewmachine}
+                  {homeheadingData?.viewmachine}
                 </p>
               </div>
             </div>
@@ -174,15 +174,15 @@ const FeatureProject: React.FC<HomeLayoutProps> = ({aboutData}) => {
         // desktop view
         <div className="flex flex-col lg:flex-row items-center lg:items-start mt-12 relative lg:space-x-8">
           {/* Left: Heading */}
-          <h2 className="text-4xl sm:text-6xl lg:text-5xl font-semibold italic text-gray-600 lg:ml-0 lg:mr-auto lg:w-1/3 mb-6 lg:mb-0 relative top-32 pl-10">
-            {selectedMachine.title}
-          </h2>
+          <h4 className="text-4xl sm:text-6xl lg:text-5xl font-semibold italic text-gray-600 lg:ml-0 lg:mr-auto lg:w-1/3 mb-6 lg:mb-0 relative top-32 pl-10">
+            {selectedMachine?.title}
+          </h4>
 
           {/* Center: Image */}
           <div className="relative flex justify-center lg:justify-center lg:w-1/3 lg:mx-0">
             <Image
-              src={selectedMachine.mainImage}
-              alt={selectedMachine.title}
+              src={selectedMachine?.mainImage}
+              alt={selectedMachine?.title}
               width={400}
               height={400}
               priority
@@ -193,7 +193,7 @@ const FeatureProject: React.FC<HomeLayoutProps> = ({aboutData}) => {
           {/* Right: Description */}
           <div className="lg:w-1/3 z-10 lg:text-right font-poppins  justify-center text-center pr-5 ml top-20 relative">
             <p className="text-sm font-regular  text-gray-600">
-              {selectedMachine.description}
+              {selectedMachine?.description}
             </p>
           </div>
         </div>
@@ -206,8 +206,8 @@ const FeatureProject: React.FC<HomeLayoutProps> = ({aboutData}) => {
       >
         {/* Vertical Lines */}
         <div className="relative w-full flex justify-around   ">
-          {homemachineData.map((machine, index) => (
-            <div key={machine.id} className="relative flex justify-center ">
+          {homemachineData?.map((machine, index) => (
+            <div key={machine?.id} className="relative flex justify-center ">
               <div
                 ref={(el) => {
                   verticalLinesRef.current[index] = el;
@@ -250,8 +250,8 @@ const FeatureProject: React.FC<HomeLayoutProps> = ({aboutData}) => {
   onClick={() => handleMachineClick(machine)}
 >
   <Image
-    src={machine.mainImage}
-    alt={machine.title}
+    src={machine?.mainImage}
+    alt={machine?.title}
     width={200}
     height={200}
     className="object-cover h-[9rem] w-[9rem] -mt-2"
@@ -265,7 +265,7 @@ const FeatureProject: React.FC<HomeLayoutProps> = ({aboutData}) => {
       <LinkUrl href="/about/projects">
       <div className="flex justify-center ">
         <button className="lg:mt-[20rem] mt-[10rem] mb-3 w-[8rem] h-[2rem] items-center justify-center text-center border border-[#6f6f6f] hover:bg-black bg-white text-[#6f6f6f] hover:text-white rounded-[0.26rem] z-10  cursor-pointer">
-          {homemisionData.button}
+          {homemisionData?.button}
         </button>
       </div>
       </LinkUrl>
