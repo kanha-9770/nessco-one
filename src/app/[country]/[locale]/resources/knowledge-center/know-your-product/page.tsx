@@ -1,4 +1,4 @@
-import Header from "@/components/support/Header";
+// import Header from "@/components/support/Header";
 import { KnowYourProductItem } from "@/components/support/types/constantProduct";
 import { Metadata } from "next";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
@@ -114,17 +114,17 @@ export default async function about({ params: { locale } }: Props) {
     return <p>{t("failedToLoadData")}</p>;
   }
 
-  const headerData = knowYourProductData.KnowYourProduct[0].Header;
+  // const headerData = knowYourProductData.KnowYourProduct[0].Header;
 
   return (
     <main>
-      <Header
+      {/* <Header
         title={headerData.title}
         description={headerData.description}
         img={headerData.img}
         cards={headerData.cards} // Pass cards here correctly
         type="knowyourproduct"
-      />
+      /> */}
     </main>
   );
 }
