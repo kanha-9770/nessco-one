@@ -15,7 +15,6 @@ interface CardsProps {
 interface Card {
   link: string;
   title: string;
-  
   img: string;
 }
 

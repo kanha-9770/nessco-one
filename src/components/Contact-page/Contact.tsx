@@ -8,7 +8,6 @@ interface MainLayoutProps {
 }
 
 const Contact: React.FC<MainLayoutProps> = ({ contactData }) => {
-  const caption = contactData?.contact[0]?.caption;
   const Contactcaption = contactData?.contact[0]?.Contactcaption;
   const message = contactData?.contact[0]?.message;
   const contact = contactData?.contact[0]?.contactInfo;

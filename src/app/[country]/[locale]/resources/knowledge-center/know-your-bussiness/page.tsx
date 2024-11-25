@@ -118,13 +118,13 @@ export default async function about({ params: { locale } }: Props) {
 
   return (
     <main>
-      <Header
-        title={headerData.title}
-        description={headerData.description}
-        img={headerData.img}
-        cards={headerData.cards} // Pass cards here correctly
+      {/* <Header
+        title={headerData?.title}
+        description={headerData?.description}
+        img={headerData?.img}
+        cards={headerData?.cards} // Pass cards here correctly
         type="knowyourbussiness"
-      />
+      /> */}
     </main>
   );
 }
