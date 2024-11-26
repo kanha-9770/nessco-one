@@ -120,7 +120,7 @@ const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
             )}
           </div>
           <div className="relative w-full mt-4">
-            {renderCarouselItems(Math.ceil(items.length / 2), items.length)}
+            {renderCarouselItems(5, items.length)}
           </div>
         </>
       );

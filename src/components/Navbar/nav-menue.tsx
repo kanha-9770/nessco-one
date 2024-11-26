@@ -1,31 +1,35 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { MenuProvider } from "./context/MenuContext";
 export let countryCODE = "in";
 export let languageCODE = "en";
+
 export const Menu = ({ children }: { children: React.ReactNode }) => {
   const [active, setActive] = useState<string | null>(null);
   const [position, setPosition] = useState({ left: 500, width: 0, opacity: 0 });
 
   return (
-    <nav
-      onMouseLeave={() => {
-        setActive(null);
-        setPosition({ left: 400, width: 0, opacity: 0 });
-      }}
-      className="mx-auto px-4 flex w-fit rounded-full border-1"
-    >
-      {React?.Children?.map(children, (child) =>
-        React?.cloneElement(child as React.ReactElement, {
-          setActive,
-          active,
-          setPosition,
-        })
-      )}
-      <Cursor position={position} />
-    </nav>
+    <MenuProvider>
+      <nav
+        onMouseLeave={() => {
+          setActive(null);
+          setPosition({ left: 400, width: 0, opacity: 0 });
+        }}
+        className="mx-auto px-4 flex w-fit rounded-full border-1"
+      >
+        {React?.Children?.map(children, (child) =>
+          React?.cloneElement(child as React.ReactElement, {
+            setActive,
+            active,
+            setPosition,
+          })
+        )}
+        <Cursor position={position} />
+      </nav>
+    </MenuProvider>
   );
 };
 
@@ -37,11 +41,10 @@ const MenuItem = ({
   setPosition,
   children,
 }: {
-  setActive: (item: string) => void;
+  setActive: (item: string | null) => void;
   active: string | null;
   item: string;
   link?: string;
-
   setPosition: (position: {
     left: number;
     width: number;
@@ -75,34 +78,37 @@ const MenuItem = ({
       element.removeEventListener("mouseenter", handleMouseEnter);
     };
   }, [ref, setActive, setPosition, item]);
+
   const pathname = usePathname() || "";
-  
   const pathSegments = pathname?.split("/") || [];
-  // Assuming URL structure like /<countryCode>/<languageCode>
   const countryCode = pathSegments[1] || "in";
   const languageCode = pathSegments[2] || "en";
   countryCODE = countryCode;
   languageCODE = languageCode;
+
   return (
     <div ref={ref} className="z-[9999] cursor-pointer px-3 font-poppins">
       <Link
         className="invert-0 text-base font-light"
         href={`/${countryCode}/${languageCode}/${link}`}
+        onClick={()=>setActive(null)}
       >
         {item}
       </Link>
       {active === item && (
-        <motion.div className="absolute  top-[calc(100%_-_1.0rem)] left-0 pt-4">
+        <motion.div className="absolute top-[calc(100%_-_1.0rem)] left-0 pt-4">
           <motion.div
             transition={{ duration: 0.3 }}
             layoutId="active"
-            className={`bg-white text-black overflow-hidden `}
+            className={`bg-white text-black overflow-hidden`}
           >
             <motion.div
               layout
               className="w-screen z-[99999] mx-auto h-full px-12"
             >
-              {children}
+              {React.Children.map(children, child =>
+                React.cloneElement(child as React.ReactElement, { setActive })
+              )}
             </motion.div>
           </motion.div>
         </motion.div>
@@ -116,7 +122,6 @@ const Cursor = ({
 }: {
   position: { left: number; width: number; opacity: number };
 }) => {
- 
   return (
     <motion.div
       animate={{
@@ -133,4 +138,6 @@ const Cursor = ({
     />
   );
 };
+
 export default MenuItem;
+

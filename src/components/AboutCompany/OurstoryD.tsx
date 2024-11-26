@@ -15,7 +15,7 @@ const OurStoryD:React.FC<AboutLayoutProps> = ({companyData}) => {
   const homecompanyData=companyData?.Ourcompany[0]?.ourStoryContent;
 
   useEffect(()=>{
-    console.log(homecompanyData.paragraphs[0].paragraph)
+    console.log(homecompanyData?.paragraphs?.paragraph)
   })
 
   useEffect(() => {
@@ -76,12 +76,12 @@ const OurStoryD:React.FC<AboutLayoutProps> = ({companyData}) => {
       <div className="relative h-full text-white px-4 mb-36 lg:mt-32  mt-44 ">
       
         <div className="relative z-10 flex flex-col items-center justify-center h-screen text-center">
-          <h1 className="lg:text-3xl text-2xl font-poppins font-medium text-white mt-20">
+          <h2 className="lg:text-3xl text-2xl font-poppins font-medium text-white mt-20">
             {homecompanyData?.title}
             <span className='text-red-600'> {homecompanyData?.highlight}</span>
-          </h1>
+          </h2>
           <div className="mb-10 max-w-4xl mx-auto mt-6 font-poppins text-sm font-regular">
-            {homecompanyData?.paragraphs[0]?.paragraph}
+            {homecompanyData?.paragraphs?.paragraph}
           </div>
           <div className="flex justify-center w-full h-auto mt-14 overflow-x-clip">
             <div

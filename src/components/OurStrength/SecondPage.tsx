@@ -100,16 +100,16 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
 
   return (
     <div>
-      <div className="relative h-screen items-center min-h-[600vh] mb-[38rem]">
+      <div className="relative h-screen items-center min-h-[400vh] mb-[38rem]">
         <div className="Feature sticky top-0 flex flex-col lg:items-center">
           <div className="absolute lg:-top-[6rem] text-white text-3xl">
-            <Image
+            {/* <Image
               src="/assets/ourStrength/Line.svg"
               width={850}
               height={100}
               alt="img"
               className="lg:visible invisible"
-            />
+            /> */}
           </div>
           <div
             className="absolute top-[10vh] lg:h-[40rem] h-[80rem] w-[0.15rem] lg:ml-0 ml-5"
@@ -243,7 +243,7 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
                   >
                     {componentData?.modalContent?.images?.map((img, index) => (
                       <SwiperSlide key={index}>
-                        <Image src="https://res.cloudinary.com/dlti4o10e/image/upload/v1728990173/samples/ecommerce/leather-bag-gray.jpg" width={100} height={100} alt="img" />
+                        <Image src="https://res.cloudinary.com/dlti4o10e/image/upload/v1728990173/samples/ecommerce/leather-bag-gray.jpg" width={300} height={300} alt="img" />
                       </SwiperSlide>
                     ))}
                   </Swiper>

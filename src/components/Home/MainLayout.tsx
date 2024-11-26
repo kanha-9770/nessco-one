@@ -67,32 +67,32 @@ export default function MainLayout({ homeData }: MainLayoutProps) {
 
   const navItems = [
     {
-      text: `${homeData?.home[0].navItems[0]?.text}`,
+      text: `${homeData?.home[0]?.navItems[0]?.text}`,
       ref: sectionRefs.AnnouncementRef,
     },
     {
-      text: `${homeData?.home[0].navItems[1]?.text}`,
+      text: `${homeData?.home[0]?.navItems[1]?.text}`,
       ref: sectionRefs.homeMachineRef,
     },
     {
-      text: `${homeData?.home[0].navItems[2]?.text}`,
+      text: `${homeData?.home[0]?.navItems[2]?.text}`,
       ref: sectionRefs.aboutUsRef,
     },
     {
-      text: `${homeData?.home[0].navItems[3]?.text}`,
+      text: `${homeData?.home[0]?.navItems[3]?.text}`,
       ref: sectionRefs.infiniteCardsRef,
     },
-    { text: `${homeData?.home[0].navItems[4]?.text}`, ref: sectionRefs.iotRef },
+    { text: `${homeData?.home[0]?.navItems[4]?.text}`, ref: sectionRefs.iotRef },
     {
-      text: `${homeData?.home[0].navItems[5]?.text}`,
+      text: `${homeData?.home[0]?.navItems[5]?.text}`,
       ref: sectionRefs.ourexpertiseRef,
     },
     {
-      text: `${homeData?.home[0].navItems[6]?.text}`,
+      text: `${homeData?.home[0]?.navItems[6]?.text}`,
       ref: sectionRefs.newsFeatureRef,
     },
     {
-      text: `${homeData?.home[0].navItems[7]?.text}`,
+      text: `${homeData?.home[0]?.navItems[7]?.text}`,
       ref: sectionRefs.homeTestimonialRef,
     },
   ];

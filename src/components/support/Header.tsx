@@ -1,8 +1,9 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import Arrow from "../../../public/assets/Support/RedirectionArrowImg.svg";
 import LinkUrl from "@/components/LinkUrl";
-
+import { usePathname } from "next/navigation";
 
 interface CardsProps {
   title: string;
@@ -13,7 +14,7 @@ interface CardsProps {
 }
 
 interface Card {
-  link: string;
+  link?: string;
   title: string;
   img: string;
 }
@@ -25,6 +26,26 @@ const Header: React.FC<CardsProps> = ({
   cards = [],
   type,
 }) => {
+  function convertToKebabCase(input) {
+    return input
+      .trim() // Remove leading and trailing spaces
+      .replace(/\s+/g, "-") // Replace one or more spaces with a single hyphen
+      .toLowerCase(); // Convert the string to lowercase
+  }
+  const pathname = usePathname();
+
+  // Split the pathname by '/' and filter out any empty strings
+  const segments = pathname.split("/").filter((segment) => segment !== "");
+
+  // Find the index of 'in/en' in the array
+  const indexOfInEn = segments.indexOf("in") + 1; // Assuming 'in/en' is always part of the URL
+
+  // Get the segments after 'in/en' (excluding 'in' and 'en')
+  const lastSegments = segments.slice(indexOfInEn + 1);
+
+  // Prepare the dynamic URL for the Link component
+  const href = `/${lastSegments.slice(0, 3).join("/")}`; // Ensure it joins up to 3 segments
+
   return (
     <>
       <div className="w-full h-full bg-white mt-14 py-4 px-12 flex justify-center font-poppins">
@@ -69,16 +90,16 @@ const Header: React.FC<CardsProps> = ({
               height={400}
               className="w-[8rem] lg:group-hover:scale-90 transition-all duration-300"
             />
-            <LinkUrl href={`/support/${item.link}`}>
-            <div className="absolute bottom-2 right-2 lg:group-hover:bg-[#483d7359] p-2 rounded-full transition-all duration-300">
-              <Image
-                src={Arrow}
-                alt={"ReDirection Arrow"}
-                width={400}
-                height={400}
-                className="w-[1.5rem]"
-              />
-            </div>
+            <LinkUrl href={`${href}/${convertToKebabCase(item?.title)}`}>
+              <div className="absolute bottom-2 right-2 lg:group-hover:bg-[#483d7359] p-2 rounded-full transition-all duration-300">
+                <Image
+                  src={Arrow}
+                  alt={"ReDirection Arrow"}
+                  width={400}
+                  height={400}
+                  className="w-[1.5rem]"
+                />
+              </div>
             </LinkUrl>
           </div>
         ))}

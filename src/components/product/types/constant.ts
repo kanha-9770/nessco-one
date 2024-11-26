@@ -40,9 +40,9 @@ type Twitter = {
 };
 
 interface ProductHeader {
+  Featured:string;
   ourProduct: string;
   description: string;
-  featuredProducts: string;
   products: HeaderItem[];
 }
 
@@ -58,6 +58,7 @@ interface Container {
   h2: string;
   h3: string;
   s: string;
+  link:string;
   sInformation: string;
   img: string;
   image: string;

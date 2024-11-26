@@ -1,11 +1,14 @@
-// import Header from "@/components/support/Header";
+import Header from "@/components/support/Header";
 import { KnowYourProductItem } from "@/components/support/types/constantProduct";
 import { Metadata } from "next";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import React from "react";
+import { cookies } from "next/headers"; // Server-side (Next.js app directory)
+
 
 const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
 const locales = ["en", "fr", "nl", "de", "es", "hi", "ta"] as const;
+const countryUrl = "https://countryjson.nesscoindustries.com/";
 
 type Props = {
   params: { locale: string };
@@ -31,6 +34,31 @@ async function fetchknowYourProductData(
   }
 }
 
+
+type CountryNames = {
+  [locale: string]: string; // Each locale key maps directly to the country name
+};
+
+async function fetchCountryData(locale: string): Promise<string> {
+  const country = cookies().get("country")?.value || "in";
+  console.log("countryname", country);
+
+  try {
+    const res = await fetch(`${countryUrl}${country}.json`);
+    const countryData: CountryNames = await res.json();
+
+    // Return the country name for the provided locale
+    return countryData[locale] || countryData["en"]; // Fallback to English if the locale isn't available
+  } catch (error) {
+    const fallbackRes = await fetch(`${countryUrl}in.json`);
+    const fallbackData: CountryNames = await fallbackRes.json();
+
+    // Handle fallback case, also fallback to English if locale not available
+    return fallbackData[locale] || fallbackData["en"];
+  }
+}
+
+
 // Dynamically generate metadata using the fetched SEO data
 export async function generateMetadata({
   params: { locale },
@@ -40,9 +68,11 @@ export async function generateMetadata({
     locale = "en";
   }
 
+  const countryName = await fetchCountryData(locale);
+
   const knowYourProductData = await fetchknowYourProductData(locale);
 
-  if (!knowYourProductData) {
+  if (!knowYourProductData && !countryName) {
     return {
       title: "Default Title",
       description: "Default Description",
@@ -74,22 +104,30 @@ export async function generateMetadata({
     knowYourProductData?.KnowYourProduct[0]?.knowYourProductSeoData;
 
   return {
-    title: seoData?.title,
+    title: `${seoData?.title} - ${countryName} `,
     description: seoData?.description,
-    keywords: seoData?.keywords,
-    openGraph: {
-      title: seoData?.openGraph?.title,
-      description: seoData?.openGraph?.description,
-      images: seoData?.openGraph?.images?.map(
-        (image: { url: string; alt: string }) => ({
-          url: image.url,
-          alt: image.alt,
-        })
-      ),
-    },
-    robots: seoData?.robots,
+    viewport: "width=device-width, initial-scale=1",
     alternates: {
-      canonical: seoData?.alternates?.canonical,
+      canonical: `https://nessco-two.vercel.app/${countryName}/${locale}`,
+    },
+    openGraph: {
+      type: "website",
+      title: seoData?.openGraph?.title,
+      siteName: "Nessco Industries",
+      url: `https://nessco-two.vercel.app/${countryName}/${locale}`,
+      description: seoData?.openGraph?.description,
+      images: seoData?.openGraph?.images,
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: "@NesscoIndia",
+      title: seoData?.twitter?.title,
+      description: seoData?.twitter?.description,
+      images: seoData?.twitter?.image,
+    },
+    robots: {
+      index: true,
+      follow: true,
     },
   };
 }
@@ -114,17 +152,17 @@ export default async function about({ params: { locale } }: Props) {
     return <p>{t("failedToLoadData")}</p>;
   }
 
-  // const headerData = knowYourProductData.KnowYourProduct[0].Header;
+  const headerData = knowYourProductData.KnowYourProduct[0].Header;
 
   return (
     <main>
-      {/* <Header
+      <Header
         title={headerData.title}
         description={headerData.description}
         img={headerData.img}
         cards={headerData.cards} // Pass cards here correctly
         type="knowyourproduct"
-      /> */}
+      />
     </main>
   );
 }

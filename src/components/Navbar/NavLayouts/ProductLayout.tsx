@@ -29,6 +29,7 @@ interface ProductLayoutProps {
   setHeading: (heading: string | null) => void;
   setIsVisible: (visible: boolean) => void;
   navData: NavbarData;
+  setActive?: (item: string | null) => void;
 }
 
 const ProductLayout: React.FC<ProductLayoutProps> = ({
@@ -36,6 +37,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
   setHeading,
   setIsVisible,
   navData,
+  setActive,
 }) => {
   const productData = navData?.navbar[1]?.data;
   const navLeftData: Machine[] = productData?.Machines || [];
@@ -140,21 +142,22 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
 
   const renderMachineItem = useCallback(
     (machine: Machine) => (
-      <div className="text-center relative w-1/3 p-2 bg-white">
+      <div className="text-center relative w-1/3 p-2">
         <Link
-        className="flex flex-col items-center"
+          className="flex flex-col items-center"
           href={`/${countryCODE}/${languageCODE}/products${machineLink}/${machine?.link}`}
+          onClick={() => setActive(null)}
         >
-          <div className="flex ">
-          <Image
-            src={machine.image}
-            alt={machine.name}
-            className="object-contain lg:hover:scale-80 transform transition-transform duration-200 rounded-3xl relative z-10"
-            width={200}
-            height={150}
-            loading="lazy"
-          />
-          {/* <div className="border-[0.15rem] border-red-700 h-10 w-10 rounded-full font-poppins flex flex-col justify-center items-center">
+          <div className="flex h-[10rem] overflow-hidden">
+            <Image
+              src={machine.image}
+              alt={machine.name}
+              className="object-contain lg:hover:scale-80 transform transition-transform duration-300 rounded-3xl relative z-10 h-[14rem] -mt-10"
+              width={200}
+              height={150}
+              loading="lazy"
+            />
+            {/* <div className="border-[0.15rem] border-red-700 h-10 w-10 rounded-full font-poppins flex flex-col justify-center items-center">
             <p className="text-xs font-semibold text-red-700">80</p>
             <p className="text-[0.4rem] font-semibold">pch/min</p>
           </div> */}
@@ -180,7 +183,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
         key={link?.name}
         onMouseEnter={() => {
           setHoveredCategory(link?.name);
-          setMachineLink(link?.link)
+          setMachineLink(link?.link);
           setCurrentIndex(0);
         }}
         onClick={() => handleCategoryClick(link?.name, link?.name)}
@@ -193,10 +196,11 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
         <Link
           className="flex w-full gap-2 flex-row"
           href={`/${countryCODE}/${languageCODE}/products${link.link}`}
+          onClick={() => setActive(null)}
         >
           <div className="flex items-center justify-center cursor-pointer">
             <BlurImage
-              className="rounded-full h-6 w-6 transform transition-transform duration-200 object-cover"
+              className="h-6 w-6 transform transition-transform duration-200 object-cover"
               src={link?.icon}
               alt={link?.name}
               width={24}
@@ -323,7 +327,9 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                   .map((link, index) => (
                     <div
                       key={index}
-                      onClick={() => handleCategoryClick(link?.name, link?.name)}
+                      onClick={() =>
+                        handleCategoryClick(link?.name, link?.name)
+                      }
                       className="flex flex-col border-b-[1px] justify-between text-lg transition-colors duration-300 cursor-pointer font-poppins text-[#483d78] font-semimedium overflow-hidden"
                     >
                       <div
@@ -370,7 +376,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                                         <Image
                                           src={machine?.image}
                                           alt={machine?.name}
-                                          className="object-contain transform transition-transform duration-200 rounded-xl h-24 bg-white border-[1px] w-full"
+                                          className="object-contain transform transition-transform duration-200 bg-white rounded-xl h-24 border-[1px] w-full"
                                           width={200}
                                           height={150}
                                         />
@@ -397,9 +403,9 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                                             height={150}
                                             loading="lazy"
                                           />
-                                          <h2 className="text-sm invert-0 font-bold mt-2">
+                                          <h4 className="text-sm invert-0 font-bold mt-2">
                                             {machine?.name}
-                                          </h2>
+                                          </h4>
                                         </div>
                                       ))}
                               </div>

@@ -18,9 +18,9 @@ const TechnicalSpecifications: React.FC<TechnicalSpecificationProps> = ({
       {/* Left Side: Specification and Image */}
       <div className="flex-grow bg-white p-8 rounded-2xl flex flex-col justify-between">
         <div className="mb-6">
-          <h1 className="font-poppins text-3xl font-medium text-[#483d73]">
+          <h2 className="font-poppins text-3xl font-medium text-[#483d73]">
             {technicalSpecification?.title}
-          </h1>
+          </h2>
         </div>
         <div className=" flex flex-row items-center justify-center space-x-4">
           <SpecificationTable technicalSpecification={technicalSpecification} />

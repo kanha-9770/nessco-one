@@ -17,13 +17,11 @@ const Page: React.FC<ProductLayoutProps> = ({ productLayoutData }) => {
   const Header = productLayoutData?.ProductLayout[0]?.Header;
   const ProductsGrid = productLayoutData?.ProductLayout[0]?.ProductsGrid;
   const params = useParams() as Record<string, string | string[]> | null;
-
+  // alert(paramsUrl)
   if (!params || !params.id) {
     return notFound();
   }
-
   let machinename = "";
-
   if (Array.isArray(params.id)) {
     machinename = params.id.join("-");
   } else if (typeof params.id === "string") {
@@ -59,6 +57,7 @@ const Page: React.FC<ProductLayoutProps> = ({ productLayoutData }) => {
     <>
       <Page1 page1machine={page1machine} />
       <Page2
+        paramsthing={params?.id}
         page2machine={page2machine}
         productLayoutData={productLayoutData}
       />

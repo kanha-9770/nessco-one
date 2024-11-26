@@ -49,9 +49,9 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
         <div className="lg:col-span-1 bg-white shadow-lg rounded-3xl lg:h-[32rem] h-full p-3">
           <article className=" relative   h-full overflow-hidden flex flex-col">
             <div className="h-48 relative">
-              <h2 className="text-lg md:text-xl font-medium mb-2 pr-10">
+              <h3 className="text-lg md:text-xl font-medium mb-2 pr-10">
                 {newsfData[0]?.title}
-              </h2>
+              </h3>
               <p className="text-sm text-gray-600 mb-0 line-clamp-3">
                 {newsfData[0]?.description}
               </p>
@@ -105,7 +105,7 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
               className="bg-white h-full z-20 shadow-lg rounded-2xl overflow-hidden flex flex-col"
             >
               <div className="px-4 py-2  relative ">
-                <h3 className="text-sm font-medium line-clamp-2  pr-8">{news?.title}</h3>
+                <h4 className="text-sm font-medium line-clamp-2  pr-8">{news?.title}</h4>
                 <p className="text-xs text-gray-600 line-clamp-2">
                   {news?.description}
                 </p>
@@ -156,9 +156,9 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
         </div>
       </div>
       <Dialog  open={isDialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="sm:max-w-[800px] bg-white ">
+        <DialogContent className="sm:max-w-[1000px] bg-white ">
           <div className="flex flex-col lg:flex-row items-center justify-center lg:space-x-4 space-y-4 lg:space-y-0">
-            <div className="w-full lg:w-1/2 h-full relative rounded-xl overflow-hidden">
+            <div className="w-full h-full relative rounded-xl overflow-hidden">
               <Image
                 src={dialogContent?.img}
                 alt={dialogContent?.title}
@@ -167,10 +167,10 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
                 className="rounded-xl"
               />
             </div>
-            <div className="w-full lg:w-1/2">
-              <h2 className="text-xl text-center lg:text-left mb-2 text-[#483d73] font-medium font-poppins">
+            <div className="w-full lg:w-[70%]">
+              <h5 className="text-xl text-center lg:text-left mb-2 text-[#483d73] font-medium font-poppins">
                 {dialogContent?.title}
-              </h2>
+              </h5>
               <div className="h-48 lg:h-64 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
                 <p className="font-poppins text-center lg:text-left text-sm">
                   {dialogContent?.description}

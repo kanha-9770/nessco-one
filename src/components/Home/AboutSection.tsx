@@ -87,7 +87,7 @@ const AboutUs: React.FC<AboutSectionLayoutProps> = ({ heroData }) => {
         </span>
       </h2>
 
-      <h1 className="text-lg lg:text-2xl w-full text-center font-poppins lg:px-72 py-3">
+      <h2 className="text-lg lg:text-2xl w-full text-center font-poppins lg:px-72 py-3">
         {aboutData?.heading.split(" ").map((word, index) =>
           word === "Machine" ? (
             <Link
@@ -101,7 +101,7 @@ const AboutUs: React.FC<AboutSectionLayoutProps> = ({ heroData }) => {
             word + " "
           )
         )}
-      </h1>
+      </h2>
 
       <div className="text-center flex flex-col w-full lg:max-w-6xl z-10">
         <p className="font-poppins flex lg:hidden text-sm lg:text-base font-light py-4 text-center w-full lg:w-3/5 leading-6">
@@ -112,9 +112,9 @@ const AboutUs: React.FC<AboutSectionLayoutProps> = ({ heroData }) => {
           className="flex flex-row justify-between items-center w-full mt-4"
         >
           <div className="lg:text-center w-[50%] lg:w-1/5 md:mb-0">
-            <h2 className="text-xl lg:text-3xl font-bold bg-gradient-to-r from-[#483d73]  to-red-700 to-90% bg-clip-text text-transparent ">
+            <h3 className="text-xl lg:text-3xl font-bold bg-gradient-to-r from-[#483d73]  to-red-700 to-90% bg-clip-text text-transparent ">
               {machinesSold}
-            </h2>
+            </h3>
             <p className="text-sm lg:text-base font-regular font-poppins">
               {aboutData?.leftstats}
             </p>
@@ -123,9 +123,9 @@ const AboutUs: React.FC<AboutSectionLayoutProps> = ({ heroData }) => {
             {aboutData?.description}
           </p>
           <div className="lg:text-center flex flex-col justify-end w-[50%] lg:w-1/5 md:mt-0">
-            <h2 className="text-xl lg:text-3xl font-bold bg-gradient-to-r from-[#483d73]  to-red-700 to-90% bg-clip-text text-transparent ">
+            <h3 className="text-xl lg:text-3xl font-bold bg-gradient-to-r from-[#483d73]  to-red-700 to-90% bg-clip-text text-transparent ">
               {readyStockMachines}
-            </h2>
+            </h3>
             <p className="lg:text-base font-regular text-sm font-poppins">
               {aboutData?.rightstats}
             </p>

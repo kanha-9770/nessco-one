@@ -14,7 +14,7 @@ const ProductApplication: React.FC<ApplicationDataTypeProps> = ({ applicationDat
 
   return (
     <div className="w-full bg-white h-full p-8 flex flex-col rounded-xl font-poppins">
-      <h1 className="lg:text-3xl text-2xl text-red-700 font-semibold">Applications</h1>
+      <h2 className="lg:text-3xl text-2xl text-red-700 font-semibold">Applications</h2>
       <Carousel items={cards} />
     </div>
   );

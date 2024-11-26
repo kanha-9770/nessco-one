@@ -3,15 +3,18 @@ import { ProductLayout } from "@/components/productLayout/types/constant";
 import { Metadata } from "next";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import React from "react";
+import { cookies } from "next/headers";
+
 const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
 const locales = ["en", "fr", "nl", "de", "es", "hi", "ta"] as const;
-type Props = {
-  params: { locale: string };
-};
-// Revalidate every 60 seconds (or any time period you prefer)
+const countryUrl = "https://countryjson.nesscoindustries.com/";
+
+
+// Revalidate every 60 seconds
 export const revalidate = 60;
-// Fetch home data based on the locale
-async function fetchproductLayoutData(
+
+// Fetch product layout data based on locale
+async function fetchProductLayoutData(
   locale: string
 ): Promise<ProductLayout | null> {
   try {
@@ -20,25 +23,44 @@ async function fetchproductLayoutData(
     return data;
   } catch (error) {
     const fallbackRes = await fetch(`${apiUrl}en/productlayout.json`, {
-      cache: "no-store", // Ensures no caching for the fallback as well
+      cache: "no-store",
     });
     const data = await fallbackRes.json();
     return data;
   }
 }
 
-// Dynamically generate metadata using the fetched SEO data
+type CountryNames = {
+  [locale: string]: string; 
+};
+
+// Fetch country data based on locale
+async function fetchCountryData(locale: string): Promise<string> {
+  const country = cookies().get("country")?.value || "in";
+
+  try {
+    const res = await fetch(`${countryUrl}${country}.json`);
+    const countryData: CountryNames = await res.json();
+    return countryData[locale] || countryData["en"];
+  } catch (error) {
+    const fallbackRes = await fetch(`${countryUrl}in.json`);
+    const fallbackData: CountryNames = await fallbackRes.json();
+    return fallbackData[locale] || fallbackData["en"];
+  }
+}
+
+// Dynamically generate metadata
 export async function generateMetadata({
-  params: { locale },
-}: Props): Promise<Metadata> {
-  // Fallback to "en" if the locale isn't supported
+  params: { locale, id },
+}: { params: { locale: string; id: string } }): Promise<Metadata> {
   if (!locales.includes(locale as any)) {
     locale = "en";
   }
 
-  const productLayoutData = await fetchproductLayoutData(locale);
+  const productLayoutData = await fetchProductLayoutData(locale);
+  const countryName = await fetchCountryData(locale);
 
-  if (!productLayoutData) {
+  if (!productLayoutData && !countryName) {
     return {
       title: "Default Title",
       description: "Default Description",
@@ -69,39 +91,45 @@ export async function generateMetadata({
   const seoData = productLayoutData?.ProductLayout[0]?.productLayoutSeoData;
 
   return {
-    title: seoData?.title,
+    title: `${seoData?.title} - ${countryName} `,
     description: seoData?.description,
-    keywords: seoData?.keywords,
-    openGraph: {
-      title: seoData?.openGraph?.title,
-      description: seoData?.openGraph?.description,
-      images: seoData?.openGraph?.images?.map(
-        (image: { url: string; alt: string }) => ({
-          url: image.url,
-          alt: image.alt,
-        })
-      ),
-    },
-    robots: seoData?.robots,
+    viewport: "width=device-width, initial-scale=1",
     alternates: {
-      canonical: seoData?.alternates?.canonical,
+      canonical: `https://nessco-two.vercel.app/${countryName}/${locale}/products/${id}`,
+    },
+    openGraph: {
+      type: "website",
+      title: seoData?.openGraph?.title,
+      siteName: "Nessco Industries",
+      url: `https://nessco-two.vercel.app/${countryName}/${locale}/products/${id}`,
+      description: seoData?.openGraph?.description,
+      images: seoData?.openGraph?.images,
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: "@NesscoIndia",
+      title: seoData?.twitter?.title,
+      description: seoData?.twitter?.description,
+      images: seoData?.twitter?.image,
+    },
+    robots: {
+      index: true,
+      follow: true,
     },
   };
 }
 
-// Home component rendering the MainLayout with fetched data
-export default async function about({ params: { locale } }: Props) {
-  // Set default locale if not in supported list
+// Home component rendering
+export default async function about({
+  params: { locale},
+}: { params: { locale: string; id: string } }) {
   if (!locales.includes(locale as any)) {
-    locale = "en"; // Fallback to English
+    locale = "en";
   }
-  // Set the locale for the request
+
   unstable_setRequestLocale(locale);
 
-  // Fetch home data based on the locale
-  const productLayoutData = await fetchproductLayoutData(locale);
-  
-  // Fetch translations based on the locale
+  const productLayoutData = await fetchProductLayoutData(locale);
   const t = await getTranslations({ locale });
 
   if (!productLayoutData) {

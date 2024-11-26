@@ -81,10 +81,10 @@ const ProcessFlow: React.FC<ProcessFlowProps> = ({ page4Data }) => {
 
   return (
     <div className="h-full w-full bg-white rounded-xl font-poppins">
-      <div className="z-20 lg:text-3xl text-2xl font-poppins mt-10 pt-8 px-8">
+      <h2 className="z-20 lg:text-3xl text-2xl font-poppins mt-10 pt-8 px-8">
         <span className="z-20 text-[#483d73] font-medium">Process of</span>{" "}
         <span className="text-red-700 font-semibold">Cup Formation</span>
-      </div>
+      </h2>
       <div
         className="rounded-xl h-full bg-white  p-6 font-poppins"
         ref={carouselRef}
@@ -130,9 +130,9 @@ const ProcessFlow: React.FC<ProcessFlowProps> = ({ page4Data }) => {
               </div>
 
               <div className="lg:w-[70%] w-[60%] pl-[1rem] font-poppins">
-                <h2 className="lg:text-base text-lg font-semibold text-[#483d73] lg:mb-[0.6rem] mb-[0.8vh]">
+                <h3 className="lg:text-base text-lg font-semibold text-[#483d73] lg:mb-[0.6rem] mb-[0.8vh]">
                   {item?.title1}
-                </h2>
+                </h3>
                 <p className="text-sm font-regular">
                   {item?.description}
                 </p>

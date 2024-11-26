@@ -10,7 +10,6 @@ const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
 const countryUrl = "https://countryjson.nesscoindustries.com/";
 
 // Define the allowed Twitter card types
-type TwitterCardType = "summary" | "summary_large_image" | "player" | "app";
 
 type Props = {
   params: { locale: string };
@@ -90,21 +89,33 @@ export async function generateMetadata({
     };
   }
 
-  const seoData = homeData.home[0].homeSeoData;
+  const seoData = homeData?.home[0]?.homeSeoData;
 
   return {
     title: `${seoData?.title} - ${countryName} `,
     description: seoData?.description,
-    keywords: seoData?.keywords,
+    viewport: "width=device-width, initial-scale=1",
+    alternates: {
+      canonical: `https://nessco-two.vercel.app/${countryName}/${locale}`,
+    },
     openGraph: {
-      title: seoData.openGraph.title,
-      description: seoData.openGraph.description,
+      type: "website",
+      title: seoData?.openGraph?.title,
+      siteName: "Nessco Industries",
+      url: `https://nessco-two.vercel.app/${countryName}/${locale}`,
+      description: seoData?.openGraph?.description,
+      images: seoData?.openGraph?.images,
     },
     twitter: {
-      card: seoData.twitter.card as TwitterCardType, // Explicitly cast to TwitterCardType
-      site: seoData.twitter.site,
-      title: seoData.twitter.title,
-      description: seoData.twitter.description,
+      card: "summary_large_image",
+      site: "@NesscoIndia",
+      title: seoData?.twitter?.title,
+      description: seoData?.twitter?.description,
+      images: seoData?.twitter?.image,
+    },
+    robots: {
+      index: true,
+      follow: true,
     },
   };
 }

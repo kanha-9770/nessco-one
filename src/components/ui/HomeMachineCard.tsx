@@ -92,15 +92,15 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
 
                 {/* Speed and Title Section */}
                 {(card?.speed || card?.unit) && (
-                  <div className="flex items-center justify-center">
-                    <div className="relative h-10 w-10 lg:h-12 lg:w-12 -mr-4 border-2 border-[#483d78] rounded-full bg-white inset-0 flex flex-col items-center justify-center">
+                  <div className="flex items-center justify-center ml-2">
+                    <div className="relative h-10 w-10 lg:h-11 lg:w-11 -mr-4 border-2 border-[#483d78] rounded-full bg-white inset-0 flex flex-col items-center justify-center">
                       {card?.speed && (
                         <span className="text-xs lg:text-base font-bold text-red-700 lg:mt-1">
                           {card?.speed}
                         </span>
                       )}
                       {card?.unit && (
-                        <span className="text-[0.3rem] lg:text-[0.4rem] lg:w-[2rem] w-[1.6rem] h-[0.8rem] lg:h-[1.2rem] font-bold text-[#483d78] whitespace-normal break-words">
+                        <span className="-mt-1 text-[0.3rem] lg:text-[0.4rem] lg:w-[2rem] w-[1.6rem] h-[0.8rem] lg:h-[1.2rem] font-bold text-[#483d78] whitespace-normal break-words">
                           {card?.unit}
                         </span>
                       )}
@@ -150,16 +150,16 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
           </div>
         </button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[78rem] h-max w-full p-4 lg:p-0 z-[99999]">
+      <DialogContent className="sm:max-w-[78rem] h-auto w-full p-4 lg:p-0 z-[99999]">
         <div className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 font-poppins font-regular md:p-8 rounded-3xl relative">
           <DialogClose className="absolute right-4 top-4"></DialogClose>
           <div className="lg:block hidden">
             <Breadcrumb items={breadcrumbItems} />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:mt-6">
-            <div className="flex flex-col items-center lg:ml-20">
+            <div className="flex flex-col items-center lg:ml-20 relative">
               <Link
-                className=""
+                className="overflow-hidden h-[20rem]"
                 href={`/${countryCODE}/${languageCODE}/products/${
                   activeStep === "All paper Products"
                     ? card.secondLink
@@ -171,9 +171,43 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
                   alt={card?.title}
                   width={600}
                   height={400}
-                  className="rounded-2xl object-fill lg:object-contain lg:h-[20rem]"
+                  className="rounded-2xl object-fill lg:object-contain lg:h-[25rem] -mt-6 hover:scale-80 transition-all duration-300"
                 />
-              </Link>
+                </Link>
+                <div
+                  className={`absolute top-0 -left-4 ${
+                    !card?.speed && !card?.unit ? "ml-4" : "ml-0"
+                  }`}
+                >
+                  <Image
+                    src={card?.icon}
+                    className="h-16 w-auto"
+                    alt="icon"
+                    height={100}
+                    width={100}
+                    loading="lazy"
+                    quality={75}
+                  />
+                </div>
+
+                  {/* Speed and Title Section */}
+                {(card?.speed || card?.unit) && (
+                  <div className="flex items-center justify-center ml-2 absolute top-0 left-12">
+                    <div className="relative h-10 w-10 lg:h-14 lg:w-14 border-2 border-[#483d78] rounded-full bg-white inset-0 flex flex-col items-center justify-center">
+                      {card?.speed && (
+                        <span className="text-xs lg:text-[1.1rem] font-bold text-red-700 mt-3">
+                          {card?.speed}
+                        </span>
+                      )}
+                      {card?.unit && (
+                        <span className="mt-1 text-[0.3rem] lg:text-[0.45rem] lg:w-[2rem] w-[1.6rem] h-[0.8rem] lg:h-[1.2rem] font-bold text-[#483d78] whitespace-normal break-words">
+                          {card?.unit}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                )}
+              
               <div className="flex items-center lg:space-x-8 space-x-4 justify-center w-full">
                 <div className="flex lg:w-1/2 items-center space-x-2 lg:space-x-8 justify-center lg:mt-8">
                   <Link
@@ -249,8 +283,8 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
             </div>
             <div className="lg:pr-16">
               <div className="text-justify">
-                <h2 className="text-xl lg:text-3xl font-semibold lg:font-bold mb-4 flex flex-col items-center lg:items-start">
-                  <div className="bg-gradient-to-r from-[#483d73] to-red-700 bg-clip-text text-transparent lg:w-max w-full lg:text-left text-center">
+                <h2 className="text-xl lg:text-3xl  font-semibold lg:font-bold mb-4 flex flex-col items-center lg:items-start">
+                  <div className="bg-gradient-to-r from-[#483d73] to-red-700 bg-clip-text text-transparent w-full lg:text-left text-center whitespace-normal">
                     {card?.secondname}
                   </div>
                   <span className="text-[#483d78] w-full lg:text-left text-center">

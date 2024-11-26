@@ -22,16 +22,16 @@ export default function MarqueeSection({ heroData }: MarqueeLayoutProps) {
       <Image alt="Decorative Image" src={DecorativeImg1} className="w-52 rotate-12 absolute top-4 -right-14"/>
       <Image alt="Decorative Image" src={DecorativeImg2} className="w-[20rem] absolute -bottom-16 left-10"/>
       <div className="h-1/3 w-full flex flex-col justify-center items-center space-y-4">
-        <h1 className="text-[#483d73] font-semibold text-center text-3xl">Trusted Partners & Brands</h1>
+        <h2 className="text-[#483d73] font-semibold text-center text-3xl">Trusted Partners & Brands</h2>
         <p className="text-[#483d73] font-extralight text-center w-[16rem]">“Building lasting partnerships with 
         trusted brands worldwide.”</p>
       </div>
       <div className="relative h-1/3 flex flex-col lg:flex-row items-center">
         {/* Heading Section */}
         <div className="flex text-[#483d73] flex-col">
-          <h1 className="text-sm lg:absolute lg:top-5 lg:text-xl bg-[#D3CFE2] px-4 py-2 rounded-3xl font-medium lg:mt-0 -mt-8  font-poppins whitespace-nowrap text-center w-max">
+          <h2 className="text-sm lg:absolute lg:top-5 lg:text-xl bg-[#D3CFE2] px-4 py-2 rounded-3xl font-medium lg:mt-0 -mt-8  font-poppins whitespace-nowrap text-center w-max">
             {heroData?.home[5]?.heading1}
-          </h1>
+          </h2>
           <h2 className="lg:mt-0 mt-[4.3rem] lg:absolute top-28 right-0 text-sm bg-[#D3CFE2] px-4 py-2 rounded-3xl lg:text-xl font-medium font-poppins whitespace-nowrap text-center w-max">
             {heroData?.home[5]?.heading2}
           </h2>

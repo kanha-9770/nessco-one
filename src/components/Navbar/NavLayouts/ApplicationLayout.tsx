@@ -40,7 +40,7 @@ import Link from "next/link";
 import { countryCODE, languageCODE } from "../nav-menue";
 interface Product {
   id: string;
-  link:string;
+  link: string;
   name: string;
   description: string;
 }
@@ -61,8 +61,12 @@ export const componentList = [
 ];
 interface ApplicationLayoutProps {
   navData: NavbarData;
+  setActive?: (item: string | null) => void;
 }
-export default function ApplicationLayout({ navData }: ApplicationLayoutProps) {
+export default function ApplicationLayout(
+  { navData }: ApplicationLayoutProps,
+  setActive
+) {
   const applicationData = navData?.navbar[2]?.data?.applications;
   useEffect(() => {
     console.log("i am inside applciation alyout", applicationData);
@@ -81,6 +85,7 @@ export default function ApplicationLayout({ navData }: ApplicationLayoutProps) {
               className="flex flex-col items-center justify-center p-2 invert-0 cursor-pointer"
               onMouseEnter={() => setActiveProduct(product)}
               href={`/${countryCODE}/${languageCODE}/application${product.link}`}
+              onClick={() => setActive(null)}
             >
               <div className=" h-20 w-20 flex items-center justify-center">
                 <IconComponent />
@@ -92,7 +97,10 @@ export default function ApplicationLayout({ navData }: ApplicationLayoutProps) {
           );
         })}
 
-        <Link href={`/${countryCODE}/${languageCODE}/application`}>
+        <Link
+          onClick={() => setActive(null)}
+          href={`/${countryCODE}/${languageCODE}/application`}
+        >
           <div className="absolute bottom-4 right-4">
             <Button
               className="rounded-full flex items-center justify-center bg-primary text-primary-foreground hover:bg-red-700 border-2 group border-red-700 w-[12rem] space-x-4 py-1 text-base font-medium transition-all duration-300 ease-in-out group relative"
@@ -145,6 +153,7 @@ export default function ApplicationLayout({ navData }: ApplicationLayoutProps) {
         </div>
         <Link
           href={`/${countryCODE}/${languageCODE}/application/${activeProduct?.name}`}
+          onClick={() => setActive(null)}
         >
           <div className="absolute bottom-6 border right-8 z-20 rounded-full bg-white hover:bg-black hover:text-white">
             <Button

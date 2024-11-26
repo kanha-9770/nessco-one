@@ -99,12 +99,12 @@ const Page1: React.FC<Page1Props> = ({ page1machine }) => {
       <div>
         <h1
           ref={h1Ref}
-          className="lg:text-[2.8rem] text-[1.5rem] lg:mb-[1rem] mb-[0.5rem] lg:leading-[3rem] leading-[2rem] bg-gradient-to-r from-[#483d73] from-5% via-red-700 via-20% to-red-700  bg-clip-text text-transparent"
+          className="lg:text-5xl text-[1.5rem] lg:mb-[1rem] mb-[0.5rem] lg:leading-[3rem] leading-[2rem] bg-gradient-to-r from-[#483d73] from-5% via-red-700 via-20% to-red-700  bg-clip-text text-transparent"
         >
-          <span ref={span1Ref} className="lg:font-semibold font-bold block">
+          <span ref={span1Ref} className="lg:font-medium font-bold block">
             {page1machine?.title?.split(" ").slice(0, -2).join(" ")}
           </span>{" "}
-          <span ref={span2Ref} className="font-bold block">
+          <span ref={span2Ref} className="font-semibold block">
             {page1machine?.title?.split(" ").slice(-2).join(" ")}
           </span>
         </h1>

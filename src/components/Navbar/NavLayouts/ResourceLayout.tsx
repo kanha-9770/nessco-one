@@ -13,9 +13,10 @@ type SupportItem = {
 
 interface ResourceGridProps {
   navData: NavbarData;
+  setActive?: (item: string | null) => void;
 }
 
-const ResourceGrid: React.FC<ResourceGridProps> = ({ navData }) => {
+const ResourceGrid: React.FC<ResourceGridProps> = ({ navData, setActive }) => {
   const supportData = navData?.navbar[4]?.data;
   const DataBankItem = supportData?.DataBankItem || [];
 
@@ -55,7 +56,6 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData }) => {
     }
   };
 
-  
   const shouldShowArrows = DataBankItem.length > 5;
 
   const chunkItems = (arr: SupportItem[], size: number): SupportItem[][] =>
@@ -72,8 +72,7 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData }) => {
           className="h-12 w-16 z-30 cursor-pointer rounded-full hidden lg:flex items-center justify-center disabled:opacity-50"
           onClick={scrollLeft}
           disabled={!canScrollLeft}
-        >
-        </button>
+        ></button>
       )}
       <div
         className={`hidden lg:flex overflow-x-auto py-8 ${
@@ -84,11 +83,11 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData }) => {
       >
         {DataBankItem?.map((item, index) => (
           <div key={index} className="flex flex-col space-y-4">
-            <Link href={`/${countryCODE}/${languageCODE}/resources/${item.link}`}>
-              <div
-                className="relative flex-shrink-0 w-56 h-32 rounded-3xl p-4 flex flex-col justify-center items-center"
-              
-              >
+            <Link
+              onClick={() => setActive(null)}
+              href={`/${countryCODE}/${languageCODE}/resources/${item.link}`}
+            >
+              <div className="relative flex-shrink-0 w-56 h-32 rounded-3xl p-4 flex flex-col justify-center items-center">
                 {/* Pseudo-element for the background image */}
                 <div
                   className="absolute inset-0 rounded-xl"
@@ -136,7 +135,6 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData }) => {
                   <div
                     key={itemIndex}
                     className="relative w-40 h-36 border-[1px] bg-white rounded-xl  flex flex-col justify-start items-center p-2"
-                  
                   >
                     <div className="relative w-32 bg-white rounded-xl border-[1px] h-16 flex justify-center items-center">
                       <Image
@@ -163,14 +161,12 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData }) => {
               className="h-12 w-12 rounded-full flex items-start justify-center disabled:opacity-50"
               onClick={scrollLeft}
               disabled={!canScrollLeft}
-            >
-            </button>
+            ></button>
             <button
               className="h-12 w-12 rounded-full flex items-start justify-center disabled:opacity-50"
               onClick={scrollRight}
               disabled={!canScrollRight}
-            >
-            </button>
+            ></button>
           </div>
         )}
         <div className="h-[50%] w-full">
@@ -179,6 +175,7 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData }) => {
               <div key={index} className="flex flex-col space-y-4">
                 <Link
                   href="#"
+                  onClick={() => setActive(null)}
                   className="flex felx-row justify-between items-center border-t-[1px]  p-4"
                 >
                   <div className="flex flex-row space-x-3">

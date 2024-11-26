@@ -8,6 +8,7 @@ export interface KnowledgeCenterItem {
 }
 
 type KnowledgeCenterSeoData = {
+  twitter: any;
   robots: string;
   alternates: any;
   title: string;

@@ -32,14 +32,14 @@ const FaqProducts: React.FC<FaqProductsProps> = ({ faqData }) => {
   return (
     <div className="w-full h-full bg-white rounded-2xl font-poppins">
       <div className="flex p-8">
-        <h1 className="font-poppins lg:text-3xl text-2xl">
+        <h2 className="font-poppins lg:text-3xl text-2xl">
           <span className="text-[#483d73] font-medium">
             {(faqData?.title && faqData?.title?.split(" ").slice(0, -1).join(" ")) ||"Frequently Asked Questions"}
           </span>{" "}
           <span className="text-red-700 font-semibold">
             {(faqData?.title && faqData?.title?.split(" ").slice(-1) ||"FAQs")}
           </span>
-        </h1>
+        </h2>
       </div>
       <div
         className="w-full flex justify-center items-center px-8"
@@ -47,9 +47,9 @@ const FaqProducts: React.FC<FaqProductsProps> = ({ faqData }) => {
       >
         <div className="lg:w-full bg-white lg:p-0 p-4">
           <div>
-            <h2 className="font-semibold lg:text-[1.5rem] lg:mt-6 text-[1.2rem]">
+            <h3 className="font-semibold lg:text-[1.5rem] lg:mt-6 text-[1.2rem]">
               {faqData?.subTitle}
-            </h2>
+            </h3>
             <div className="lg:border-t-[2px] border-t-2 border-solid border-[#dc0e2a] lg:w-[6vw] w-[18vw] mt-[0.6rem]"></div>
           </div>
           <div className="lg:h-[22.5rem] h-[18rem] lg:my-6 my-2 w-full overflow-hidden">
@@ -60,9 +60,9 @@ const FaqProducts: React.FC<FaqProductsProps> = ({ faqData }) => {
                     className="flex justify-between items-center cursor-pointer"
                     onClick={() => toggleExpansion(idx)}
                   >
-                    <h2 className="lg:text-[1.1rem] w-[70%] text-[0.9rem] font-medium font-poppins">
+                    <h3 className="lg:text-[1.1rem] w-[70%] text-[0.9rem] font-medium font-poppins">
                       {item?.que}
-                    </h2>
+                    </h3>
                     {expandedIndex === idx ? (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

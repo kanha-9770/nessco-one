@@ -132,16 +132,16 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
   }, []);
 
   return (
-    <div className="h-full relative overflow-hidden">
+    <div className="h-full relative overflow-hidden font-poppins">
       <div
         className={`relative flex flex-col w-full bg-white overflow-hidden `}
       >
-        <h1
-          className={`lg:text-5xl mt-14 text-2xl bg-gradient-to-r from-[#483d73] from-2% via-red-700 via-20% to-red-700   text-transparent bg-clip-text h-[7rem] font-semibold font-poppinsmt-16 lg:ml-[2rem] ml-4`}
+        <h3
+          className={`lg:text-5xl mt-16 text-2xl bg-gradient-to-r from-[#483d73] from-2% via-red-700 via-20% to-red-700 text-transparent bg-clip-text h-[7rem] font-semibold lg:ml-[2rem] ml-4`}
         >
           <span className="block"> {homeaboutData?.featuredpage} </span>
           <span> {homeaboutData?.featuredpagehighlight} </span>
-        </h1>
+        </h3>
 
         {isMobile ? (
           // Mobile view layout
@@ -162,9 +162,9 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
               </div>
               <div className="flex flex-col w-3/5 p-2">
                 <div className="relative pl-2">
-                  <h2 className="text-xl font-bold relative  text-black italic  font-poppins">
+                  <h4 className="text-xl font-bold relative  text-black italic  font-poppins">
                     {selectedMachine?.title}
-                  </h2>
+                  </h4>
                 </div>
 
                 <div className="px-2">
@@ -204,9 +204,9 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
           // Desktop view
           <div className="flex flex-col lg:flex-row items-center lg:items-start  h-[18rem] relative lg:space-x-8 ">
             {/* Left: Heading */}
-            <h1 className="text-4xl sm:text-6xl lg:text-4xl font-regular italic text-gray-600 lg:ml-0 lg:mr-auto lg:w-1/3 mb-6 lg:mb-0 relative top-0 pl-10">
+            <h3 className="text-4xl font-bold text-gray-600 lg:w-1/3 italic mb-6 lg:mb-0 relative pl-8">
               {selectedMachine?.title}
-            </h1>
+            </h3>
 
             {/* Center: Image */}
             <div className="relative flex justify-center lg:justify-center lg:w-1/3 lg:mx-0 -top-28">
@@ -225,7 +225,7 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
 
             {/* Right: Description */}
             <div className="lg:w-1/3 z-10 lg:text-right font-poppins justify-center text-center pr-5 ml -top-10 relative">
-              <p className="text-sm lg:text-xs font-regular text-gray-600">
+              <p className="text-sm lg:text-xs font-regular text-black">
                 {selectedMachine?.description}
               </p>
             </div>
@@ -251,23 +251,23 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                   ref={(el) => {
                     imagesRef.current[index] = el;
                   }}
-                  className={`border-2 border-x-gray-200 h-[7rem] rounded-2xl  ${
+                  className={`border-2 border-x-gray-200 h-[7rem] rounded-2xl mt-${
                     machine.id === 1
-                      ? "mt-28"
+                      ? 28
                       : machine.id === 2
-                      ? "mt-10"
+                      ? 10
                       : machine.id === 3
-                      ? "mt-24"
+                      ? 24
                       : machine.id === 4
-                      ? "mt-16"
+                      ? 16
                       : machine.id === 5
-                      ? "mt-28"
-                      : "mt-5"
+                      ? 28
+                      : 5
                   } -ml-${
                     machine.id === 1
                       ? 5
                       : machine.id === 2
-                      ? 8
+                      ? 12
                       : machine.id === 3
                       ? 24
                       : machine.id === 4
@@ -295,8 +295,8 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
         </div>
       </div>
 
-      <div className="text-center mt-16 mb-12 px-6 " ref={carouselRef}>
-        <p className="text-2xl lg:text-3xl font-normal">
+      <div className="text-center mt-16 mb-12 px-6 font-poppins " ref={carouselRef}>
+        <p className="text-2xl lg:text-3xl font-medium">
           <span className="block mb-3"> {homeaboutData?.banner1}</span>{" "}
           <span
             ref={gradientRef}
@@ -329,9 +329,9 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
             {/* Right side: Title and Description */}
             <div className="lg:w-1/2 w-full h-1/2 lg:h-full flex flex-col justify-between relative lg:p-0 p-3 ">
               <div className="p-4 ">
-                <h1 className="text-sm mb-2 font-poppins font-semibold text-black w-[18rem]">
+                <h3 className="text-sm mb-2 font-poppins font-semibold text-black w-[18rem]">
                   {selectedGrid?.title}
-                </h1>
+                </h3>
                 <p className="font-poppins font-regular text-[0?.66rem] w-[15rem] mt-5 h-[13rem]  overflow-hidden text-ellipsis break-words">
                   {selectedGrid?.description}
                 </p>
@@ -407,7 +407,7 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
         {homeaboutData3?.map((item, index) => (
           <div
             key={index}
-            className="relative bg-white shadow-lg rounded-lg p-1"
+            className="relative bg-white shadow-lg rounded-[1rem] p-1"
           >
             <Image
               src={
@@ -417,12 +417,12 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
               alt={item?.title || "Image description"}
               width={100}
               height={100}
-              className="w-full h-44 object-cover rounded-t-md"
+              className="w-full h-44 object-cover rounded-[0.8rem]"
             />
 
-            <h1 className="mt-2 text-sm font-medium text-gray-800 lg:w-[15rem] ml-2 md:w-[16rem]">
+            <h4 className="mt-2 text-sm font-medium text-gray-800 lg:w-[15rem] ml-2 md:w-[16rem]">
               {item?.title}
-            </h1>
+            </h4>
             <div className="flex-col flex space-y-4 first-letter: p-2  relative -ml-7">
               <p className="text-gray-600 text-xs font-poppins font-regular mt-3 px-7 h-[5rem] ">
                 {truncateTextdesktop(

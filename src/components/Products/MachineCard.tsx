@@ -109,10 +109,10 @@ const MachineCard: React.FC<{ machine: (typeof machineData)[0] }> = ({
 const MachineGrid: React.FC = () => {
   return (
     <div className="bg-black rounded-3xl p-6">
-      <h1 className="font-poppins text-xl ">
+      <h2 className="font-poppins text-xl ">
         Related
         <span className="text-red-700 font-extrabold ml-2">Products</span>
-      </h1>
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 h-full">
         {machineData?.map((machine, index) => (
           <MachineCard key={index} machine={machine} />

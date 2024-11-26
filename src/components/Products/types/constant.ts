@@ -1,5 +1,11 @@
-
+import { Page4Data } from "../ProcessFlow";
+  export type lottieAnimations={
+    speed?:object,
+    size?:object,
+    range?:object
+  }
   export type Machine = {
+    lottieAnimations?: lottieAnimations;
     descriptionSize: string;
     descriptionRange: string;
     descriptionSpeed: string;
@@ -14,6 +20,20 @@
     title: string;
   }
   export type IndividualProductsData = {
+    name: string;
+    image: string;
+    application: string;
+    mimage: string;
+    product_heading: string;
+    first_name: string;
+    second_name: string;
+    advantages: { title: string; items: { title: string; }[]; };
+    introduction: string;
+    product_description: string;
+    link: string;
+    applicationData: ApplicationDataType[];
+    TechnicalSpecificationComponentData: TechnicalSpecificationComponentDataType;
+    related_product: RelatedProductType;
     IndividualProducts: any;
     category: string;
     data: {
@@ -21,7 +41,10 @@
     };
   };
   
-  type MachineType = {
+ export type MachineType = {
+    drawingImage:string;
+    Page4Data: Page4Data;
+    link: string;
     name: string;
     image: string;
     mimage: string;

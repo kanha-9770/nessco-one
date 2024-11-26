@@ -17,15 +17,15 @@ const HomeTestimonial: React.FC<TestinomialLayoutProps> = ({heroData}) => {
           {testinomialData?.heading}
         </h2>
         <div className="flex flex-col">
-          <h2 className="lg:text-5xl lg:text-left text-center font-bold ml-4 lg:mt-12 mt-4">
+          <h3 className="lg:text-5xl lg:text-left text-center font-bold ml-4 lg:mt-12 mt-4">
             {testinomialData?.subheading}
-          </h2>
-          <h2 className="text-5xl flex flex-row font-bold lg:ml-4 lg:mt-2">
-            {testinomialData?.secondsubheading?.substring(0, 3)}
-          </h2>
-          <h3 className="hidden lg:block mt-10 text-lg text-center font-poppins text-[#483d73]">
-            {testinomialData?.description}
           </h3>
+          <h4 className="text-5xl flex flex-row font-bold lg:ml-4 lg:mt-2">
+            {testinomialData?.secondsubheading?.substring(0, 3)}
+          </h4>
+          <h5 className="hidden lg:block mt-10 text-lg text-center font-poppins text-[#483d73]">
+            {testinomialData?.description}
+          </h5>
         </div>
         <SwipeCarousel heroData={heroData} />
       </div>

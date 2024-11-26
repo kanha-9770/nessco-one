@@ -11,8 +11,9 @@ type SupportItem = {
 };
 interface VideoLayoutGridProps {
   navData: NavbarData;
+  setActive?: (item: string | null) => void;
 }
-const VideoGrid: React.FC<VideoLayoutGridProps> = ({ navData }) => {
+const VideoGrid: React.FC<VideoLayoutGridProps> = ({ navData, setActive }) => {
   const videoData = navData?.navbar[5]?.data;
   const videoDataItem = videoData?.videoDataItem || [];
 
@@ -60,8 +61,7 @@ const VideoGrid: React.FC<VideoLayoutGridProps> = ({ navData }) => {
       : [];
 
   const paginatedItems = chunkItems(videoDataItem, 5);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
-
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
     <div className="relative flex flex-row items-center mx-auto max-w-screen-2xl justify-center lg:p-2 w-full">
@@ -73,34 +73,37 @@ const VideoGrid: React.FC<VideoLayoutGridProps> = ({ navData }) => {
         onScroll={checkScrollability}
       >
         {videoDataItem?.map((item, index) => (
-          <div key={index} className="flex cursor-grab flex-col space-y-4"  
-          onMouseEnter={() => setHoveredIndex(index)}
+          <div
+            key={index}
+            className="flex cursor-grab flex-col space-y-4"
+            onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
-          
           >
-            <Link href={`/${countryCODE}/${languageCODE}/videos`}>
+            <Link
+              onClick={() => setActive(null)}
+              href={`/${countryCODE}/${languageCODE}/videos`}
+            >
               <div className="relative flex-shrink-0 cursor-grab w-80 h-48 bg-[#f2f2f2] rounded-3xl  flex flex-col justify-center items-center">
-                <div className="relative w-full h-full flex justify-center items-center"
-               
-                >
+                <div className="relative w-full h-full flex justify-center items-center">
                   <iframe
                     src="https://www.youtube.com/embed/AE0QMNZleJs?si=XiKVWtni11M9AwXU"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     className="absolute inset-0 h-full w-full rounded-xl"
                   ></iframe>
-                   {hoveredIndex === index && (
-        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center rounded-xl transition-opacity duration-300">
-          <Link 
-            href={`/${countryCODE}/${languageCODE}/videos`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors duration-300"
-          >
-          Watch video
-          </Link>
-        </div>
-      )}
+                  {hoveredIndex === index && (
+                    <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center rounded-xl transition-opacity duration-300">
+                      <Link
+                        href={`/${countryCODE}/${languageCODE}/videos`}
+                        onClick={() => setActive(null)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors duration-300"
+                      >
+                        Watch video
+                      </Link>
+                    </div>
+                  )}
                 </div>
               </div>
               <p className="relative font-poppins text-center mt-4 invert-0 font-normal hover:text-[#483d78] hover:font-semibold text-base">
@@ -166,7 +169,8 @@ const VideoGrid: React.FC<VideoLayoutGridProps> = ({ navData }) => {
             {videoDataItem?.map((item, index) => (
               <div key={index} className="flex flex-col space-y-4">
                 <Link
-                  href="#"
+                  href={`/${countryCODE}/${languageCODE}/videos`}
+                  onClick={() => setActive(null)}
                   className="flex felx-row justify-between items-center border-t-[1px]  p-4"
                 >
                   <div className="flex flex-row space-x-3">

@@ -205,14 +205,14 @@ const Machine: React.FC<MachineProps> = ({
           <div className="flex w-full h-full">
             <div className="flex items-start relative">
               <div className="lg:w-[50%] h-full flex flex-col">
-                <h1 className="lg:text-4xl text-[1.7rem] py-2 font-poppins">
+                <h2 className="lg:text-4xl text-[1.7rem] py-2 font-poppins">
                   <span className="bg-gradient-to-r from-[#483d73] to-red-700 bg-clip-text text-transparent font-semibold block pb-1">
                     {first_name}
                   </span>
                   <span className="font-semibold bg-gradient-to-r from-[#483d73] to-red-700 bg-clip-text text-transparent">
                     {product_heading}
                   </span>
-                </h1>
+                </h2>
                 <div className="lg:h-[27%] h-full my-2 flex items-center break-words">
                   <p
                     className="text-black leading-[1.5em] font-normal"

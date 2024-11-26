@@ -16,16 +16,8 @@ gsap.registerPlugin(TextPlugin);
 interface SpecificationImage {
   [key: string]: string;
 }
-
-interface ApplicationData {
-  category: string;
+interface Specification {
   title: string;
-  src: string;
-}
-
-interface TechnicalSpecification {
-  feature: string;
-  spec: string;
 }
 
 interface MachineProps {
@@ -33,40 +25,17 @@ interface MachineProps {
   image: string;
   mimage: string;
   specification_image: SpecificationImage[];
-  applicationData: ApplicationData[];
   product_heading: string;
   first_name: string;
-  second_name: string;
-  category: string;
-  icon: string;
   introduction: string;
-  link?: string;
-  parameters: string;
-  application: string;
-  product_description: string;
-  status: string;
-  stars: string;
-  reviews: string;
-  TechnicalSpecificationComponentData: {
-    title: string;
-    TableData: TechnicalSpecification[];
-  };
   advantages: {
     title: string;
     items: { title: string }[];
   };
-  paperTypes: {
-    title: string;
-    types: { type: string; image: string }[];
+  technicalSpecifications: {
+    specifications: Specification[];
   };
-  optional_add_ons: string;
-  lottieAnimations: {
-    speed: string;
-    size: string;
-    speedDescription: string;
-    sizeDescription: string;
-    rangeDescription: string;
-  };
+  link?: string;
 }
 
 const Machine: React.FC<MachineProps> = ({
@@ -78,6 +47,7 @@ const Machine: React.FC<MachineProps> = ({
   first_name,
   introduction,
   advantages,
+  technicalSpecifications,
   link,
 }) => {
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -92,14 +62,15 @@ const Machine: React.FC<MachineProps> = ({
   const countryCode = pathname.split("/")[1]?.toLowerCase();
   const languageCode = pathname.split("/")[2]?.toLowerCase();
   const fallBackLink = pathname.split("/")[4]?.toLocaleLowerCase();
+
   useEffect(() => {
     const calculateFontSize = () => {
       const charCount = introduction && introduction.length;
       let newFontSize = "0.1rem";
-      if (charCount < 50) newFontSize = "2rem";
-      else if (charCount < 100) newFontSize = "1.5rem";
-      else if (charCount < 200) newFontSize = "1rem";
-      else newFontSize = "0.7rem";
+      if (charCount < 50) newFontSize = "1.5rem";
+      else if (charCount < 180) newFontSize = "1.1rem";
+      else if (charCount < 280) newFontSize = "1rem";
+      else newFontSize = "0.8rem";
       setFontSize(newFontSize);
     };
     calculateFontSize();
@@ -169,7 +140,7 @@ const Machine: React.FC<MachineProps> = ({
   const scrollLeft = () => {
     if (carouselRef.current) {
       carouselRef.current.scrollBy({
-        left: -carouselRef.current.clientWidth,
+        left: -carouselRef.current.offsetWidth,
         behavior: "smooth",
       });
     }
@@ -178,14 +149,14 @@ const Machine: React.FC<MachineProps> = ({
   const scrollRight = () => {
     if (carouselRef.current) {
       carouselRef.current.scrollBy({
-        left: carouselRef.current.clientWidth,
+        left: carouselRef.current.offsetWidth,
         behavior: "smooth",
       });
     }
   };
 
   const images = specification_image.flatMap((img) => Object.values(img));
-  const shouldShowArrows = images.length > 4;
+  const shouldShowArrows = images.length > 1;
 
   const breadcrumbItems = [
     { label: "Home", href: `/${countryCode}/${languageCode}/` },
@@ -211,11 +182,11 @@ const Machine: React.FC<MachineProps> = ({
                   <span className="bg-gradient-to-r from-[#483d73] to-red-700 bg-clip-text text-transparent font-semibold block pb-1">
                     {first_name}
                   </span>
-                  <span className="font-semibold bg-gradient-to-r from-[#483d73] to-red-700 bg-clip-text text-transparent">
+                  {/* <span className="font-semibold bg-gradient-to-r from-[#483d73] to-red-700 bg-clip-text text-transparent">
                     {product_heading}
-                  </span>
+                  </span> */}
                 </h1>
-                <div className="lg:h-[27%] h-full my-2 flex items-center break-words">
+                <div className="lg:h-[38%] h-full my-2 flex items-center break-words">
                   <p
                     className="text-black leading-[1.5em] font-normal"
                     style={{ fontSize }}
@@ -224,13 +195,16 @@ const Machine: React.FC<MachineProps> = ({
                   </p>
                 </div>
                 <div className="flex flex-row-reverse justify-between  lg:flex-col">
+                <h2 className="lg:pl-2 lg:text-[2.8rem] text-[1.8rem] font-bold font-poppins text-[#424242] text-left italic">
+                    {name}
+                  </h2>
                   <div className="w-max rounded-full group">
                     <Button className="bg-[#483d73] rounded-full text-white py-1 pl-6 text-lg group-hover:bg-gradient-to-r transition-all duration-300 group-hover:from-[#483d73] group-hover:to-red-700 font-medium flex items-center">
                       Book Now
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 64 64"
-                        className="lg:w-6 w-5 lg:h-6 h-5 mx-4"
+                        className="lg:w-6 w-5 lg:h-6 h-5 mx-2"
                       >
                         <circle
                           cx="32"
@@ -245,24 +219,24 @@ const Machine: React.FC<MachineProps> = ({
                       </svg>
                     </Button>
                   </div>
-                  <div className="lg:pl-2 lg:text-[2.8rem] lg:mt-4 text-[1.8rem] font-bold font-poppins text-[#424242] text-left italic">
-                    {name}
-                  </div>
+                  
                 </div>
               </div>
               <div className="lg:w-[50%] w-full h-full flex relative mt-4 lg:mt-0">
                 <div className="lg:block hidden">
                   <ZigzagLine />
                 </div>
-                <div className="w-full h-[70%] lg:mt-[10%] flex relative">
+                <div className="w-full h-[90%] flex relative">
+                  <div className="h-[18rem] overflow-hidden">
                   <Image
                     ref={smallImageRef}
                     src={selectedImage}
                     height={800}
                     width={400}
                     alt={product_heading}
-                    className="h-full object-contain w-full"
+                    className="object-contain w-full h-[24rem] -mt-10"
                   />
+                  </div>
                   <div className="absolute top-0 right-0 p-2">
                     <Image
                       src={mimage}
@@ -301,15 +275,29 @@ const Machine: React.FC<MachineProps> = ({
       <div className="relative h-auto lg:h-[32%] border-t-2 border-gray-300 flex flex-col-reverse lg:flex-row items-center">
         <div className="text-left text-xs font-medium text-gray-500 uppercase lg:w-[55%] w-full mt-4 lg:mt-0">
           <InfoCard
-            sizeRange="3 oz to 32 oz"
-            speedRoundShapes="up to 180 cups/min."
-            maxCups={180}
-            bmp100Compact="BMP 100 COMPACT"
-            bmp100Super="BMP 100 SUPER"
+            sizeRange={
+              technicalSpecifications?.specifications[2]?.title || "N/A"
+            }
+            speedRoundShapes={
+              technicalSpecifications?.specifications[0]?.title || "N/A"
+            }
+            maxCups={
+              Number(
+                technicalSpecifications?.specifications[0]?.title?.match(
+                  /\d+/
+                )?.[0]
+              ) || 0
+            }
+            bmp100Compact={
+              technicalSpecifications?.specifications[2]?.title || "N/A"
+            }
+            bmp100Super={
+              technicalSpecifications?.specifications[2]?.title || "N/A"
+            }
           />
         </div>
         <div className="flex lg:w-[45%] w-full h-full items-center justify-center lg:my-0 my-4">
-          <div className="bg-white rounded-2xl lg:w-[33.5rem] w-full max-w-[23rem] z-40 flex flex-row items-center justify-center p-4">
+          <div className="bg-white rounded-2xl lg:w-[35rem] w-full max-w-[24rem] z-40 flex flex-row items-center justify-center p-4">
             {shouldShowArrows && (
               <button
                 className="w-6 h-6 bg-[#9e9c9c] hidden md:flex hover:bg-black rounded-full items-center justify-center mr-2 flex-shrink-0"
@@ -375,7 +363,7 @@ const Machine: React.FC<MachineProps> = ({
                   viewBox="0 0 24 24"
                   strokeWidth={3}
                   stroke="currentColor"
-                  className="w-6 h-6 stroke-white"
+                  className="w-4 h-4 stroke-white"
                 >
                   <path
                     strokeLinecap="round"

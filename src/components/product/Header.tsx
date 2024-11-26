@@ -92,7 +92,7 @@ const Page1: React.FC<ProductProps> = ({ productData }) => {
       {/* Slides Container */}
       <div className="lg:w-[60%] lg:my-0 my-[1rem] lg:px-0 px-[1.5rem]">
         <h2 className="lg:text-2xl text-[1.2rem] font-medium text-red-700 my-[0.4rem] lg:pl-[1rem]">
-          {Header?.featuredProducts}
+          {Header?.Featured}
         </h2>
         <Carousal productData={productData} />
       </div>

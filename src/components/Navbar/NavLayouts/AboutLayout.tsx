@@ -14,23 +14,29 @@ interface NavItem {
   textcolor?: string;
   description?: string;
 }
+
 interface AboutDataProps {
   navData: NavbarData;
+  setActive?: (item: string | null) => void;
 }
-const AboutLayout: React.FC<AboutDataProps> = ({ navData }) => {
+
+const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const aboutData = navData?.navbar[0]?.data;
   const navLeftData = aboutData?.navleftdata || [];
   const navRightData = aboutData?.navrightdata || [];
+
   const scrollDown = useCallback(() => {
     setCurrentIndex((prev) =>
       prev < navLeftData.length - 2 ? prev + 1 : prev
     );
   }, [navLeftData]);
+
   const scrollUp = useCallback(() => {
     setCurrentIndex((prev) => (prev > 0 ? prev - 1 : prev));
   }, []);
+
   const handleWheel = useCallback(
     (e: WheelEvent) => {
       const isScrollingDown = e.deltaY > 0;
@@ -38,6 +44,7 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData }) => {
     },
     [scrollDown, scrollUp]
   );
+
   useEffect(() => {
     const carouselElement = carouselRef.current;
     if (carouselElement) {
@@ -49,24 +56,29 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData }) => {
       }
     };
   }, [handleWheel]);
+
   const bgColors = [
     "bg-[#f4f4ff]",
     "bg-[#f6ffef]",
     "bg-blue-200",
     "bg-yellow-200",
   ];
+
   return (
     <div className="flex w-full lg:border-none lg:pb-6 mx-auto max-w-screen-2xl flex-col lg:flex-row items-center justify-center lg:rounded-xl h-full">
-      <div className="grid grid-cols-2 h-[80%]  sm:grid-cols-3 lg:grid-cols-4 w-full lg:w-[70.5vw]">
+      <div className="grid grid-cols-2 h-[80%] sm:grid-cols-3 lg:grid-cols-4 w-full lg:w-[70.5vw]">
         {navRightData?.map((item: NavItem, index: number) => (
           <div
             key={index}
             className="border-2 p-2 rounded-3xl lg:rounded-none lg:p-0 lg:border-none flex flex-col justify-start items-center lg:mt-4"
           >
-            <Link href={`/${countryCODE}/${languageCODE}/about/${item.link}`}>
+            <Link
+              href={`/${countryCODE}/${languageCODE}/about/${item.link}`}
+              onClick={() => setActive(null)}
+            >
               <Image
-                src={item?.image || "/path/to/fallback-image.jpg"} // Add a fallback image if `item.image` is undefined
-                alt={item?.alt || "Fallback alt text"} // Provide a fallback alt text if `item.alt` is undefined
+                src={item?.image || "/path/to/fallback-image.jpg"}
+                alt={item?.alt || "Fallback alt text"}
                 className="rounded-xl cursor-pointer w-44 h-32 lg:w-56 lg:h-56 object-cover transform lg:hover:scale-80 transition-transform duration-200"
                 width={224}
                 height={224}
@@ -85,7 +97,11 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData }) => {
         {navLeftData
           .slice(currentIndex, currentIndex + 2)
           .map((item: NavItem, index: number) => (
-            <Link key={index} href={`/${countryCODE}/${languageCODE}/about/${item.link}`}>
+            <Link
+              key={index}
+              href={`/${countryCODE}/${languageCODE}/about/${item.link}`}
+              onClick={() => setActive(null)}
+            >
               <div
                 className={`hidden lg:flex border-t-2 h-[6.5rem] lg:border-none lg:hover:scale-80 transition-transform duration-200 items-center lg:p-4 lg:rounded-3xl lg:mb-2 ${
                   bgColors[index % bgColors?.length]
@@ -95,7 +111,7 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData }) => {
                   className={`h-12 w-12 mr-4 flex justify-center items-center text-2xl ${item.textcolor}`}
                 >
                   <Image
-                    src={item?.icon || "/path/to/fallback-image.jpg"} // Add a fallback image if `item.image` is undefined
+                    src={item?.icon || "/path/to/fallback-image.jpg"}
                     alt={item?.title}
                     className="rounded-xl cursor-pointer h-8 w-8 object-cover transform lg:hover:scale-80 transition-transform duration-200"
                     width={24}

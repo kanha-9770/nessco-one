@@ -56,9 +56,9 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
         className="w-full scale-80 opacity-10 absolute top-10 left-0 right-0"
       />
       <div className="mb-16">
-        <h1 className="text-3xl font-semibold text-center text-[#483d73]">
+        <h2 className="text-3xl font-semibold text-center text-[#483d73]">
           {heroData?.home[6]?.category}
-        </h1>
+        </h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 relative">
         {knowMoreData?.map((item, index) => (

@@ -9,19 +9,19 @@ import { SignupFormDemoProduct } from "@/components/Contact/CustomProductForm";
 import ProductApplication from "@/components/Products/ProductApplication";
 import RelatedProducts from "@/components/Products/RelatedProducts";
 import ProcessFlow from "@/components/Products/ProcessFlow";
-import { IndividualProductsData } from "./types/constant";
+import { MachineType } from "./types/constant";
 import TechnicalSpecifications from "./TechnicalSpecification";
 import FaqProducts from "./FaqSection";
 
 interface IndividualProductsDataProps {
-  IndividualProductsData: IndividualProductsData;
+  IndividualProductsData: MachineType;
 }
 
 const ProductLayout: React.FC<IndividualProductsDataProps> = ({
   IndividualProductsData,
 }) => {
   const params = useParams();
-  
+
   // Extract the last two slugs from the params
   const slugs = Object.values(params).filter(Boolean);
   const machineName =
@@ -32,13 +32,10 @@ const ProductLayout: React.FC<IndividualProductsDataProps> = ({
     slugs.length > 0
       ? decodeURIComponent(slugs[slugs.length - 1] as string)
       : "";
-      // alert(machineId)
+  // alert(machineId)
 
   // Use machineId for finding the machine in the data
-  const machine =
-    IndividualProductsData?.IndividualProducts[0]?.data?.Machines?.find(
-      (m) => m.name === machineId.toUpperCase()
-    );
+  const machine = IndividualProductsData;
 
   const overviewRef = useRef<HTMLDivElement>(null);
   const productDescriptionRef = useRef<HTMLDivElement>(null);
@@ -67,39 +64,13 @@ const ProductLayout: React.FC<IndividualProductsDataProps> = ({
       <Machine
         name={machine?.name}
         image={machine?.image}
-        application={machine?.application}
         mimage={machine?.mimage}
         product_heading={machine?.product_heading}
         first_name={machine?.first_name}
-        second_name={machine?.second_name}
         specification_image={machine?.specification_image}
         advantages={machine?.advantages}
-        applicationData={[]}
-        category={""}
-        icon={""}
         introduction={machine?.introduction}
-        parameters={""}
-        product_description={machine?.product_description}
-        status={""}
-        stars={""}
-        link={machine?.link}
-        reviews={""}
-        TechnicalSpecificationComponentData={{
-          title: "",
-          TableData: [],
-        }}
-        paperTypes={{
-          title: "",
-          types: [],
-        }}
-        optional_add_ons={""}
-        lottieAnimations={{
-          speed: "",
-          size: "",
-          speedDescription: "",
-          sizeDescription: "",
-          rangeDescription: "",
-        }}
+        technicalSpecifications={machine?.technicalSpecifications}
       />
       <NavLinksDemo type="product" navItems={navLinks} />
 
@@ -109,7 +80,8 @@ const ProductLayout: React.FC<IndividualProductsDataProps> = ({
             <ProductDescription machine={machine} />
           </div>
           <div className="h-auto  mt-10" ref={processRef}>
-            <CupFormactionProcess />
+            {machine?.drawingImage && <CupFormactionProcess />}
+            
             <ProcessFlow page4Data={machine?.Page4Data} />
           </div>
           <div className="mt-10" ref={applicationRef}>

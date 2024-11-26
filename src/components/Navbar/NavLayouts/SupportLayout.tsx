@@ -13,9 +13,10 @@ type SupportItem = {
 
 interface SupportGridProps {
   navData: NavbarData;
+  setActive?: (item: string | null) => void;
 }
 
-const SupportGrid: React.FC<SupportGridProps> = ({ navData }) => {
+const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
   // Extracting support items and ensuring it's an array
   const supportData = navData?.navbar[3]?.data;
   const supportItems = Array.isArray(supportData?.supportItem)
@@ -95,6 +96,7 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData }) => {
           return (
             <Link
               key={index}
+              onClick={() => setActive(null)}
               className="flex flex-col space-y-4"
               href={`/${countryCODE}/${languageCODE}/support/${item.link}`}
             >
@@ -102,7 +104,10 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData }) => {
                 className="flex-shrink-0 w-72 h-40 rounded-3xl p-4 flex flex-col justify-center items-center bg-cover bg-center"
                 style={{ backgroundImage: `url(${bgPick.src})` }}
               >
-                <LottieAnimation className="h-32" animationData={item?.image}></LottieAnimation>
+                <LottieAnimation
+                  className="h-32"
+                  animationData={item?.image}
+                ></LottieAnimation>
               </div>
               <p className="relative font-poppins text-center mt-4 invert-0 font-normal hover:text-[#483d78] hover:font-semibold text-base">
                 {item?.title}

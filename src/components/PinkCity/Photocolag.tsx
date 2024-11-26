@@ -25,7 +25,7 @@ const Gallery:React.FC<AboutLayoutProps> = ({pinkcityData}) => {
   {image?.galleryImages?.map((src, index) => (
     <div key={index} className="relative  rounded-2xl overflow-hidden  lg:left-0 hover:shadow-2xl">
       <Image 
-        src="https://res.cloudinary.com/dlti4o10e/image/upload/v1729146374/palace_xqfh7u.jpg"
+        src={src.gallery}
         alt={`Gallery image ${index + 1}`} 
         width={300}
         height={300} 

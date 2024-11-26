@@ -3,6 +3,9 @@ import { Metadata } from "next";
 import OurStrength from "@/components/OurStrength/OurStrength";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import React from "react";
+import { cookies } from "next/headers"; // Server-side (Next.js app directory)
+
+const countryUrl = "https://countryjson.nesscoindustries.com/";
 const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
 const locales = ["en", "fr", "nl", "de", "es", "hi", "ta"] as const;
 type Props = {
@@ -26,6 +29,29 @@ async function fetchstrengthData(locale: string): Promise<OurStrengthItem | null
   }
 }
 
+type CountryNames = {
+  [locale: string]: string; // Each locale key maps directly to the country name
+};
+
+async function fetchCountryData(locale: string): Promise<string> {
+  const country = cookies().get("country")?.value || "in";
+  console.log("countryname", country);
+
+  try {
+    const res = await fetch(`${countryUrl}${country}.json`);
+    const countryData: CountryNames = await res.json();
+
+    // Return the country name for the provided locale
+    return countryData[locale] || countryData["en"]; // Fallback to English if the locale isn't available
+  } catch (error) {
+    const fallbackRes = await fetch(`${countryUrl}in.json`);
+    const fallbackData: CountryNames = await fallbackRes.json();
+
+    // Handle fallback case, also fallback to English if locale not available
+    return fallbackData[locale] || fallbackData["en"];
+  }
+}
+
 // Dynamically generate metadata using the fetched SEO data
 export async function generateMetadata({
   params: { locale },
@@ -34,10 +60,11 @@ export async function generateMetadata({
   if (!locales.includes(locale as any)) {
     locale = "en";
   }
+  const countryName = await fetchCountryData(locale);
 
   const strengthData = await fetchstrengthData(locale);
 
-  if (!strengthData) {
+  if (!strengthData && !countryName) {
     return {
       title: "Default Title",
       description: "Default Description",
@@ -67,22 +94,30 @@ export async function generateMetadata({
  const seoData=strengthData?.OurStrength[0]?.ourStrengthSeoData;
 
   return {
-    title: seoData?.title,
+    title: `${seoData?.title} - ${countryName} `,
     description: seoData?.description,
-    keywords: seoData?.keywords,
-    openGraph: {
-      title: seoData?.openGraph?.title,
-      description: seoData?.openGraph?.description,
-      images: seoData?.openGraph?.images?.map(
-        (image: { url: string; alt: string }) => ({
-          url: image.url,
-          alt: image.alt,
-        })
-      ),
-    },
-    robots: seoData?.robots,
+    viewport: "width=device-width, initial-scale=1",
     alternates: {
-      canonical: seoData?.alternates?.canonical,
+      canonical: `https://nessco-two.vercel.app/${countryName}/${locale}`,
+    },
+    openGraph: {
+      type: "website",
+      title: seoData?.openGraph?.title,
+      siteName: "Nessco Industries",
+      url: `https://nessco-two.vercel.app/${countryName}/${locale}`,
+      description: seoData?.openGraph?.description,
+      images: seoData?.openGraph?.images,
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: "@NesscoIndia",
+      title: seoData?.twitter?.title,
+      description: seoData?.twitter?.description,
+      images: seoData?.twitter?.image,
+    },
+    robots: {
+      index: true,
+      follow: true,
     },
   };
 }

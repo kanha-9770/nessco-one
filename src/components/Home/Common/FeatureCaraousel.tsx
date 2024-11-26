@@ -67,9 +67,9 @@ const FeatureCaraousel = ({ type }: FeatureCaraouselProps) => {
           <div className={styles?.content}>
             <div className="pt-0 flex flex-col">
               {type === "newsFeature" && (
-                <h1 className="text-xl text-black text-justify font-bold">
+                <h2 className="text-xl text-black text-justify font-bold">
                   {item?.heading}
-                </h1>
+                </h2>
               )}
               <h2 className="font-montserrat bottom-0  text-base leading-5">{item?.title}</h2>
             </div>

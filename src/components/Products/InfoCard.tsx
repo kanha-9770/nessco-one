@@ -19,9 +19,9 @@ const InfoCard: FC<InfoCardProps> = ({
   bmp100Super,
 }) => {
   return (
-    <div className="w-full lg:px-10 px-4 text-xs font-poppins grid grid-cols-2 items-center">
+    <div className="w-full text-xs font-poppins flex items-center px-14">
       {/* Size range and speed round shapes */}
-      <div className="font-poppins p-1 lg:h-16 border-b-2 border-r-2">
+      <div className="font-poppins pt-6 pr-4 lg:h-32 border-r-2">
         <div className="flex justify-center pt-2 items-center space-x-2">
           <div className="flex flex-col gap-2">
             {/* SVG icons */}
@@ -53,8 +53,9 @@ const InfoCard: FC<InfoCardProps> = ({
         </div>
       </div>
 
-      {/* Max cups */}
-      <div className="flex border-b-2 h-16 px-4 gap-2 items-center">
+      <div className="">
+        {/* Max cups */}
+      <div className="flex border-b-2 h-14 px-4 gap-2 items-center">
         <div className="flex items-center justify-center">
           <Image
             src={watch}
@@ -68,7 +69,7 @@ const InfoCard: FC<InfoCardProps> = ({
       </div>
 
       {/* Cup variants */}
-      <div className="flex p-1 flex-row border-r-2">
+      {/* <div className="flex p-1 flex-row border-r-2">
         <div className="flex flex-row items-center gap-2 pl-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -100,11 +101,12 @@ const InfoCard: FC<InfoCardProps> = ({
             />
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Cups per minute */}
-      <div className="flex flex-col pl-4">
-        <div>up to 160 cups per minute ({bmp100Super})</div>
+      <div className="flex flex-col pl-4 h-14 items-center justify-center">
+        <div>up to {maxCups} cups per minute ({bmp100Super})</div>
+      </div>
       </div>
     </div>
   );

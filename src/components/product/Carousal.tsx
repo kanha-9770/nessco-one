@@ -89,9 +89,9 @@ const Carousal: React.FC<ProductProps> = ({ productData }) => {
       <div className="flex w-full h-max" ref={slideRef}>
         {/* Slide content */}
         <div className="lg:w-[50%] lg:pl-[1rem]">
-          <h1 className="lg:text-4xl text-[1.4rem] font-bold italic text-[#483d73] mb-[0.5rem]">
+          <h3 className="lg:text-4xl text-[1.4rem] font-bold italic text-[#483d73] mb-[0.5rem]">
             {Header?.products[currentIndex]?.machineName}
-          </h1>
+          </h3>
           <p className="lg:text-[0.9rem] text-black text-[0.7rem] lg:w-[20rem] md:w-[30rem] w-[9rem]">
             {Header?.products[currentIndex]?.description}
           </p>
@@ -103,7 +103,7 @@ const Carousal: React.FC<ProductProps> = ({ productData }) => {
             width={400}
             height={400}
             priority
-            className="lg:w-[19rem] md:w-[12rem] h-max w-[20rem] lg:mt-0 md:-mt-[2rem] mt-[5rem]"
+            className="lg:w-[19rem] md:w-[12rem] h-max w-[20rem] lg:-mt-10 md:-mt-[2rem] mt-[5rem]"
           />
 
           <Image
@@ -111,7 +111,7 @@ const Carousal: React.FC<ProductProps> = ({ productData }) => {
             alt={Header?.products[currentIndex]?.machineName}
             width={400}
             height={400}
-            className="lg:w-[5rem] w-[4rem] lg:-mt-[6.5rem] -mt-[8rem] lg:-ml-2 md:ml-2 -ml-[4rem]"
+            className="lg:w-[5rem] h-max w-[4rem] lg:-ml-2 md:ml-2 -ml-[4rem]"
           />
         </div>
       </div>
