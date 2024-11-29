@@ -1002,6 +1002,20 @@ export const blogPosts: BlogPost[] = [
         },
       },
       {
+        type:"image",
+        content:{
+        src:"https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/sidewall-formation.gif",
+        alt:"paper cup making process",
+        }
+      },
+      {
+        type:"image",
+        content:{
+        src:"https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/sidewall-formation.gif",
+        alt:"paper cup making process",
+        }
+      },
+      {
         type: "section",
         heading: "4. Sidewall Formation",
         content: {
@@ -1011,16 +1025,18 @@ export const blogPosts: BlogPost[] = [
               heading: "3. Machine Setup and Preheating",
               content: {
                 blocks: [
-                 
                   {
                     type: "text",
+                    content:
+                      "1. Suction Station:",
+                  },
+                  {
+                    type: "list",
                     content: {
-                      format: "number",
+                      format: "disc",
                       items: [
-                        {
-                          type: "text",
-                          content: "1. Suction Station:",
-                        },
+                        "Setpoints Configuration: Heater Temperature and Speed Settings are calibrated to match production requirements.",
+                        "Preheating: Once the desired setpoints are reached, the machine is ready to run.",
                       ],
                     },
                   },
@@ -1029,6 +1045,13 @@ export const blogPosts: BlogPost[] = [
             },
           ],
         },
+      },
+      {
+        type:"image",
+        content:{
+        src:"https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/bottom-formation-and-insertion.gif",
+        alt:"paper cup making process",
+        }
       },
       {
         type: "section",
@@ -1042,6 +1065,13 @@ export const blogPosts: BlogPost[] = [
             },
           ],
         },
+      },
+      {
+        type:"image",
+        content:{
+        src:"https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/bottom-preheating-and-sealing.gif",
+        alt:"paper cup making process",
+        }
       },
       {
         type: "section",
@@ -1067,6 +1097,13 @@ export const blogPosts: BlogPost[] = [
         },
       },
       {
+        type:"image",
+        content:{
+        src:"https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/top-curling.gif",
+        alt:"paper cup making process",
+        }
+      },
+      {
         type: "section",
         heading: "7. Top Curling",
         content: {
@@ -1089,6 +1126,13 @@ export const blogPosts: BlogPost[] = [
             },
           ],
         },
+      },
+      {
+        type:"image",
+        content:{
+        src:"https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/finished-cup-collection.gif",
+        alt:"paper cup making process",
+        }
       },
       {
         type: "section",
@@ -1195,6 +1239,7 @@ export const blogPosts: BlogPost[] = [
       heading: "The Paper Cup Manufacturing Process: A Detailed Guide",
       subheading:
         "Learn about each step in paper cup production and the advanced features of modern machines.",
+        headingImage:"https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/paper-cup-making-process.webp"
     },
   },
 ];
