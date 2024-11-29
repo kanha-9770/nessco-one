@@ -87,7 +87,7 @@ const SignupFormDemoProduct = () => {
             />
           </LabelInputContainer>
           <LabelInputContainer className="mb-2">
-            <CountrySelect isoCode={countryCode} onPhoneNumberChange={function (phoneNumber: string): void {
+            <CountrySelect isoCode={countryCode} onPhoneNumberChange={function (): void {
               throw new Error("Function not implemented.");
             } } />
           </LabelInputContainer>
