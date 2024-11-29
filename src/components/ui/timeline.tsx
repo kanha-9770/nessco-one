@@ -44,9 +44,9 @@ export const Timeline:React.FC<AboutLayoutProps> = ({companyData}) => {
           <div className="mass-gradient-timeline"></div>
         </div>
 
-        <div ref={ref} className="relative max-w-8xl mx-auto lg:pb-20 md:px-10">
+        <div ref={ref} className="relative max-w-8xl mx-auto lg:pb-20 md:px-10  -mt-[7rem]">
           {homecompanyData?.map((item, index) => (
-            <div key={index} className="flex justify-start pt-10 md:pt-40 md:gap-10">
+            <div key={index} className="flex justify-start pt-10 md:pt-20 md:gap-10">
               <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 lg:w-[30rem] h-[5rem] lg:h-[10rem] md:w-[18rem] lg:pl-[1rem] pl-[1.2rem] lg:-ml-9 md:-ml-10">
                 <div className="h-7 relative lg:left- w-7 rounded-full bg-black dark:bg-black flex items-center justify-center">
                   <div className="h-5 w-5 rounded-full bg-neutral-200 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700" />

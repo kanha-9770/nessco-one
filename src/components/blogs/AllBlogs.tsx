@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { BlogsItem } from "./types/constant";
 import Image from "next/image";
 import Page1 from "./Filter";
+import Link from "next/link";
 
 interface Page2Props {
   selectedCategories: string[];
@@ -135,7 +136,9 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
   };
 
   const headingData = getHeadingData();
-
+  function formatString(input) {
+    return input.trim().toLowerCase().replace(/\s+/g, "-");
+  }
   return (
     <>
       <div className="flex lg:flex-row flex-col lg:mx-0 mx-[4vw] lg:mt-0 mt-14 font-regular font-poppins">
@@ -181,7 +184,9 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
                     </button>
                   </div>
                   <div className="flex justify-center items-center w-[50%] mb-[0.5rem] font-poppins font-medium">
-                    <button className="text-[#dc0e2a]">{AllBlogs?.apply}</button>
+                    <button className="text-[#dc0e2a]">
+                      {AllBlogs?.apply}
+                    </button>
                   </div>
                 </div>
                 <Page1
@@ -238,7 +243,10 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
                   <p className="mb-[0.5rem] ml-[1rem] mr-[1.5rem]">
                     {headingData?.imgParagraph}
                   </p>
-                  <button className="text-lg absolute right-1 hover:bg-[#E6E7E6] rounded-full p-1">
+                  <Link
+                    href={`blog/${formatString(headingData?.imgTitle)}`}
+                    className="text-lg absolute right-1 hover:bg-[#E6E7E6] rounded-full p-1"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -249,18 +257,21 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
                       <circle cx="12" cy="12" r="2" />
                       <circle cx="12" cy="19" r="2" />
                     </svg>
-                  </button>
+                  </Link>
                 </div>
-                {headingData?.paragraphList?.map((item, index) => (
+                {/* {headingData?.paragraphList?.map((item, index) => (
                   <ul
                     key={index}
                     className="list-disc ml-[3rem] mr-[1rem] hidden lg:block"
                   >
                     <li className="text-black">{item?.title}</li>
                   </ul>
-                ))}
+                ))} */}
                 <div className="flex justify-end">
-                  <button className="flex items-center justify-center lg:mt-[1rem] bg-[#E6E7E6] w-[8.2rem] rounded-[1rem] mb-[1vh] py-[0.3rem] hover:bg-[#33246e] hover:text-white group">
+                  <Link
+                    href={`blog/${formatString(headingData?.imgTitle)}`}
+                    className="flex items-center justify-center lg:mt-[1rem] bg-[#E6E7E6] w-[8.2rem] rounded-[1rem] mb-[1vh] py-[0.3rem] hover:bg-[#33246e] hover:text-white group"
+                  >
                     <svg
                       width="200"
                       height="200"
@@ -333,7 +344,7 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
                     <p className="text-[0.7rem] ml-2">
                       {headingData?.fullCoverage}
                     </p>
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -375,7 +386,10 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
                         </p>
                       </div>
                       <div className="flex justify-end">
-                        <button className="flex items-center justify-center bg-[#E6E7E6] w-[8.2rem] rounded-[1rem] py-[0.3rem] hover:bg-[#33246e] hover:text-white group">
+                        <Link
+                          className="flex items-center justify-center bg-[#E6E7E6] w-[8.2rem] rounded-[1rem] py-[0.3rem] hover:bg-[#33246e] hover:text-white group"
+                          href={`blog/${formatString(item?.title)}`}
+                        >
                           <svg
                             width="200"
                             height="200"
@@ -448,7 +462,7 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
                           <p className="text-[0.7rem] ml-2">
                             {item?.fullCoverage}
                           </p>
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   </div>

@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import Page1 from "@/components/applicationLayout/Header";
 import { notFound, useParams } from "next/navigation";
 import Page2 from "@/components/applicationLayout/ScrollableComponent";
@@ -12,12 +11,15 @@ const Page4 = dynamic(
 const Page5 = dynamic(() => import("@/components/applicationLayout/FAQ"));
 import dynamic from "next/dynamic";
 import { ApplicationLayoutItem } from "./types/constant";
+import { FaqItem, Category } from "../Faq/types/constant";
 
 interface ApplicationLayoutProps {
   applicationLayoutData: ApplicationLayoutItem;
+  faqData: FaqItem;
+  id?: string;
 }
 
-const Pages: React.FC<ApplicationLayoutProps> = ({ applicationLayoutData }) => {
+const Pages: React.FC<ApplicationLayoutProps> = ({ applicationLayoutData, id, faqData }) => {
   const Header = applicationLayoutData?.ApplicationLayout[0]?.Header;
   const ScrollableComponent =
     applicationLayoutData?.ApplicationLayout[0]?.ScrollableComponent;
@@ -25,6 +27,7 @@ const Pages: React.FC<ApplicationLayoutProps> = ({ applicationLayoutData }) => {
     applicationLayoutData?.ApplicationLayout[0]?.ProductGallery;
   const RelatedMachines =
     applicationLayoutData?.ApplicationLayout[0]?.RelatedMachines;
+  const FAQ = applicationLayoutData?.ApplicationLayout[0]?.FAQ;
   const params = useParams() as Record<string, string | string[]> | null;
 
   if (!params || !params.id) {
@@ -34,12 +37,10 @@ const Pages: React.FC<ApplicationLayoutProps> = ({ applicationLayoutData }) => {
   let productname = "";
 
   if (Array.isArray(params.id)) {
-    // Join array elements into a single string and normalize spaces
     productname = decodeURIComponent(params.id.join(" "))
       .replace(/\+/g, " ")
       .trim();
   } else if (typeof params.id === "string") {
-    // Decode and normalize the single string
     productname = decodeURIComponent(params.id).replace(/\+/g, " ").trim();
   }
 
@@ -47,17 +48,16 @@ const Pages: React.FC<ApplicationLayoutProps> = ({ applicationLayoutData }) => {
     return notFound();
   }
 
-  // Helper function to normalize title for comparison
   const normalizeTitle = (title: string) =>
     title
-      .toLowerCase()          // Convert to lowercase
-      .replace(/\s+/g, "-")    // Replace spaces (and multiple spaces) with hyphens
-      .trim();                 // Remove leading or trailing spaces
-  
+      .toLowerCase()
+      .replace(/\s+/g, "-")
+      .trim();
 
-  // Find the product by its normalized title
-  const normalizedProductname = productname;
-  // alert(normalizedProductname);
+  const normalizedProductname = normalizeTitle(productname);
+
+ 
+
   const page1product = Header.icons.find(
     (m) => normalizeTitle(m.title) === normalizedProductname
   );
@@ -75,6 +75,16 @@ const Pages: React.FC<ApplicationLayoutProps> = ({ applicationLayoutData }) => {
     return notFound();
   }
 
+  // Find the matching category in faqData
+  const matchingCategory: Category | undefined = faqData.faq[0].searchbox.categories.find(
+    (category) => normalizeTitle(category.name) === normalizedProductname
+  );
+
+  // If a matching category is found, use its FAQs, otherwise use all FAQs
+  const filteredFaqs = matchingCategory
+    ? matchingCategory.faqs
+    : faqData.faq[0].searchbox.categories.flatMap((category) => category.faqs);
+
   return (
     <>
       <Page1
@@ -90,7 +100,23 @@ const Pages: React.FC<ApplicationLayoutProps> = ({ applicationLayoutData }) => {
         page3product={page3product}
         applicationLayoutData={applicationLayoutData}
       />
-      <Page5 applicationLayoutData={applicationLayoutData} />
+      <Page5 
+        filteredFaqs={filteredFaqs}
+        categoryName={matchingCategory ? matchingCategory.name : id}
+        faqTitle={faqData.faq[0].searchbox.title}
+        faqSubTitle={faqData.faq[0].searchbox.Questions}
+        formTitle={FAQ.formTitle}
+        formPara={FAQ.formPara}
+        firstName={FAQ.firstName}
+        lastName={FAQ.lastName}
+        emailAddress={FAQ.emailAddress}
+        password={FAQ.password}
+        twitterPassword={FAQ.twitterPassword}
+        sendMessage={FAQ.sendMessage}
+        tyler={FAQ.tyler}
+        durden={FAQ.durden}
+        emailPlaceholder={FAQ.emailPlaceholder}
+      />
     </>
   );
 };

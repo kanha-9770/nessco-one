@@ -314,7 +314,7 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
             </div>
           </div>
 
-          <div className="lg:w-[80%] space-y-4 pl-10">
+          <div className="lg:w-[80%] max-h-[40rem] overflow-y-scroll space-y-4 pl-10">
             <div className="bg-white w-full h-[3rem] lg:hidden rounded-lg flex items-center px-4 relative">
               <p className="text-xl font-normal">{data?.filter}</p>
               <svg

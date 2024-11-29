@@ -391,6 +391,7 @@ const TrendingNews: React.FC<NewsProps> = ({
                   {item?.header}
                 </p>
                 <h3 className="font-medium lg:text-lg text-md">{item?.title}</h3>
+                
                 <button
                   aria-label="Open"
                   onClick={() => openModal(item)}

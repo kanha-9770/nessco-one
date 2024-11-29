@@ -32,7 +32,14 @@ export default function Stepper({ onStepChange, categories }: StepperProps) {
   const [activeStep, setActiveStep] = useState(0);
   const [visibleSteps, setVisibleSteps] = useState<number[]>([]);
   const stepperRef = useRef<HTMLDivElement>(null);
-
+  function transformString(input) {
+    // Convert the entire string to lowercase, replace hyphens with spaces,
+    // and replace the word 'machine' with 'icon'.
+    return input
+      .toLowerCase() // Convert to lowercase
+      .replace(/-/g, " ") // Replace hyphens with spaces
+      .replace(/\bmachines\b/, "icon"); // Replace 'machine' with 'icon'
+  }
   const handleClick = (index: number) => {
     setActiveStep(index);
     onStepChange(index);
@@ -105,7 +112,7 @@ export default function Stepper({ onStepChange, categories }: StepperProps) {
                         <Image
                           className="h-6 w-6"
                           src={icon}
-                          alt={`step-icon-${index}`}
+                          alt={`${transformString(category?.name)}`}
                           height={24}
                           width={24}
                         />

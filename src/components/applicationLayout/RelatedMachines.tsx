@@ -120,7 +120,7 @@ const Page4: React.FC<CombinedProps> = ({
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 64 64"
-                className="lg:w-6 w-5 lg:h-6 h-5"
+                className="w-10 lg:w-8 h-10 lg:h-8"
               >
                 <circle
                   cx="32"
@@ -142,7 +142,7 @@ const Page4: React.FC<CombinedProps> = ({
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 64 64"
-                className="lg:w-6 w-5 lg:h-6 h-5"
+                className="w-10 lg:w-8 h-10 lg:h-8"
               >
                 <circle
                   cx="32"
@@ -168,11 +168,20 @@ const Page4: React.FC<CombinedProps> = ({
                 {page4product?.imageWithDescription?.map((item, idx) => (
                   <div
                     key={idx}
-                    className="relative lg:mb-20 mb-16 lg:w-[20rem] w-[17rem] bg-gradient-to-b from-[#f5f5f5] to-[#f2f2f2] rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300"
+                    className="relative lg:mb-20 mb-16 lg:w-[20rem] w-[17rem] bg-gradient-to-b from-[#f5f5f5] to-[#f2f2f2] rounded-[0.5rem] shadow-lg hover:shadow-2xl transition-all duration-300"
                   >
                     {/* Icons */}
                     <div className="absolute top-6 right-4 flex space-x-2">
-                      <div className="w-6 h-6 p-[0.2rem] bg-white border-solid border-[0.1rem] border-[#f5f5f5] hover:border-red-700 rounded-full flex items-center justify-center relative group">
+                      
+                      <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center font-medium cursor-pointer relative group hover:text-red-700 text-xl">
+                        {item?.s}
+                        <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-md shadow-md px-2 py-1 h-max w-max z-20">
+                          <p className="lg:text-[0.8rem] text-[0.7rem] text-black font-normal">
+                            {item?.sInformation}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="w-8 h-8 p-[0.2rem] bg-white border-solid border-[0.1rem] border-white hover:border-red-700 rounded-full flex items-center justify-center relative group">
                         <Image
                           src={item?.image}
                           alt=""
@@ -185,15 +194,7 @@ const Page4: React.FC<CombinedProps> = ({
                           </p>
                         </div>
                       </div>
-                      <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center font-medium cursor-pointer relative group hover:text-red-700">
-                        {item?.s}
-                        <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-md shadow-md px-2 py-1 h-max w-max z-20">
-                          <p className="lg:text-[0.8rem] text-[0.7rem] text-black font-normal">
-                            {item?.sInformation}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center cursor-pointer relative group hover:text-red-700 text-[1.1rem]">
+                      {/* <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center cursor-pointer relative group hover:text-red-700 text-[1.1rem]">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="24"
@@ -215,14 +216,14 @@ const Page4: React.FC<CombinedProps> = ({
                             {item?.information}
                           </p>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
 
                     {/* Title */}
                     <div className="pt-6 pl-6">
-                      <h2 className="lg:text-[1.1rem] text-[1rem] font-semibold w-[65%]">
+                      <h3 className="lg:text-[1.1rem] text-[1rem] font-semibold w-[65%]">
                         {item?.h1}
-                      </h2>
+                      </h3>
                       <h3 className="lg:text-lg text-[0.9rem] font-medium">
                         {item?.h2}
                       </h3>
@@ -245,7 +246,7 @@ const Page4: React.FC<CombinedProps> = ({
 
                     {/* Key Points or View Machine Button */}
                     <div className="my-[1rem] flex lg:flex-rows flex-col items-center justify-center lg:h-[2rem]">
-                      <button className="lg:text-[1rem] text-[0.9rem] w-[65%] lg:h-[2rem] h-[2rem] border-[0.1rem] border-solid font-medium rounded-lg transition-colors duration-300 border-[#9c9c9c] hover:border-black hover:bg-black hover:text-white">
+                      <button className="lg:text-[1rem] text-[0.9rem] w-[65%] lg:h-[2rem] h-[2rem] border-[0.1rem] border-solid font-medium rounded-[0.5rem] transition-colors duration-300 border-[#9c9c9c] hover:border-black hover:bg-black hover:text-white">
                         {RelatedMachines?.viewMachine}
                       </button>
                     </div>
@@ -259,6 +260,7 @@ const Page4: React.FC<CombinedProps> = ({
                         <input 
                           type="checkbox" 
                           id={`addToEnquiry-${idx}`}
+                          className="accent-red-700"
                           checked={enquiryItems.some(enquiryItem => enquiryItem.id === `${idx}`)}
                           onChange={() => handleToggleEnquiry(item, idx)}
                           aria-label={`Add ${item.h1} to enquiry`}

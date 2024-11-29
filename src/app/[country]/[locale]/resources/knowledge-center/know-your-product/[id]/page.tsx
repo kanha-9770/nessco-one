@@ -3,8 +3,8 @@ import React from "react";
 import { locales } from "@/i18n";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
-import KnowYourComponent from "@/components/KnowYourProductComponent";
 import { KnowYourProduct } from "@/components/types";
+import AnimatedBlogPost from "@/components/StaticBlogs/AnimatedBllog";
 
 const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
 const countryUrl = "https://countryjson.nesscoindustries.com/";
@@ -107,13 +107,14 @@ export async function generateMetadata({
   };
 }
 
-export default async function KnowYourProductPage({ params: { locale} }: Props) {
+export default async function KnowYourProductPage({ params: { locale,id} }: Props) {
   if (!locales.includes(locale as any)) {
     locale = "en";
   }
 
   unstable_setRequestLocale(locale);
-  const knowYourProductData = await fetchKnowYourProductData(locale);
+  
+  console.log(id)
 
-  return <KnowYourComponent data={knowYourProductData} />;
+  return <AnimatedBlogPost id={id}/>;
 }

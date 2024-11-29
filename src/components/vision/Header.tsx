@@ -8,11 +8,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const imageWidths = [
-  "lg:w-[2.5rem] w-[2rem]",
-  "lg:w-[2.5rem] w-[2rem]",
-  "lg:w-[10rem] w-[6rem]",
-  "lg:w-[2.5rem] w-[2rem]",
-  "lg:w-[2.5rem] w-[2rem]",
+  "lg:w-[3.5rem] w-[2rem]",
+  "lg:w-[3.5rem] w-[2rem]",
+  "lg:w-[8rem] w-[6rem]",
+  "lg:w-[3.5rem] w-[2rem]",
+  "lg:w-[3.5rem] w-[2rem]",
 ];
 const imagebottoms = [
   "justify-end lg:mb-3 mb-2",

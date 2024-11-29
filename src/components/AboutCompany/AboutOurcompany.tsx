@@ -85,7 +85,7 @@ const Home: React.FC<AboutLayoutProps> = ({ companyData }) => {
                   height={100}
                   className={`${imageWidths[index]}`}
                 />
-                <p className="font-medium lg:text-sm text-xs text-white lg:w-[10rem] w-[7rem] text-center">
+                <p className="font-medium lg:text-sm text-xs text-white lg:w-[9.5rem] break-words w-[7rem] text-center">
                   {item?.title}
                 </p>
               </div>

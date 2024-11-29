@@ -23,8 +23,8 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
     ? supportData?.supportItem
     : [];
   const mobileItem = supportData?.SupportMobile || {
-    mobileFirst: "",
-    mobileSecond: "",
+    mobileFirst: "+91 93584 04366",
+    mobileSecond: "+91 78499 04966",
   };
 
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -142,7 +142,12 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
                     key={itemIndex}
                     className="relative w-40 h-36 border-[1px] bg-white rounded-xl  flex flex-col justify-start items-center p-2"
                   >
-                    <div className="relative w-32 bg-white rounded-xl border-[1px] h-16 flex justify-center items-center"></div>
+                    <div className="relative w-full bg-white rounded-xl border-[1px] h-24 flex justify-center items-center">
+                      <LottieAnimation
+                        className="h-24"
+                        animationData={item?.image}
+                      ></LottieAnimation>
+                    </div>
                     <p className="relative font-poppins text-center mt-4 invert-0 font-medium hover:text-[#483d78] hover:font-bold text-16">
                       {item?.title}
                     </p>
@@ -170,34 +175,37 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
           <p className="invert-0 pl-4 text-lg font-poppins font-medium">
             Give us a Call:
           </p>
-          <div className="flex justify-between items-center border-b-2 h-28 flex-row pt-6">
+          <div className="flex items-center border-b-2 h-20 flex-row pt-6">
+            <div className="flex items-center justify-center w-1/2">
             <p
-              className="invert-0 text-lg flex flex-row gap-2 items-center"
+              className="invert-0 text-md -ml-16 w-12 h-12 whitespace-nowrap flex flex-row gap-2 items-center"
               style={{
                 backgroundImage:
-                  "url('https://i.pinimg.com/236x/76/c8/c0/76c8c0172ba662b6fb6d0c095c1158fe.jpg')",
+                  "url('https://assets.nesscoindustries.com/public/assets/navbar-images/contact-india.webp')",
                 backgroundSize: "contain",
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",
-                padding: "5px 10px",
               }}
             >
               {mobileItem?.mobileFirst}
             </p>
-            <div className="w-1 h-20 border-l-2"></div>
+            </div>
+            <div className="w-1 h-14 border-l-2"></div>
+
+            <div className="flex items-center justify-center w-1/2">
             <p
-              className="invert-0 text-lg flex flex-row gap-2 items-center"
+              className="invert-0 text-md -ml-16 whitespace-nowrap w-16 h-16 flex flex-row gap-2 items-center"
               style={{
                 backgroundImage:
-                  "url('https://i.pinimg.com/236x/76/c8/c0/76c8c0172ba662b6fb6d0c095c1158fe.jpg')",
+                  "url('https://assets.nesscoindustries.com/public/assets/navbar-images/contact-world.webp')",
                 backgroundSize: "contain",
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",
-                padding: "5px 10px",
               }}
             >
               {mobileItem?.mobileSecond}
             </p>
+            </div>
           </div>
         </div>
       </div>

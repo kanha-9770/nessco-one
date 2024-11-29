@@ -51,7 +51,7 @@ const Clientele: React.FC <AboutLayoutProps>=({clienteleData}) => {
         </h1>
         <div className="flex justify-between relative lg:top-0 top-32">
           {/* Left Hand */}
-          <div className="relative lg:top-14 lg:left-[8rem] z-10" ref={leftHandRef} >
+          <div className="relative lg:top-20 lg:left-[8rem] z-10" ref={leftHandRef} >
             <Image
               src={homeclientData?.lefthand}
               alt="lefthand"
@@ -63,7 +63,7 @@ const Clientele: React.FC <AboutLayoutProps>=({clienteleData}) => {
           </div>
 
           {/* Right Hand */}
-          <div className="relative lg:right-[8rem] lg:top-5 -top-3" ref={rightHandRef} >
+          <div className="relative lg:right-[8rem] lg:top-16 -top-3" ref={rightHandRef} >
             <Image
               src={homeclientData?.righthand}
               alt="righthand"
@@ -74,7 +74,7 @@ const Clientele: React.FC <AboutLayoutProps>=({clienteleData}) => {
             />
           </div>
         </div>
-        <div className="lg:flex lg:flex-row flex-col w-full font-poppins lg:pl-5 text-white relative ">
+        <div className="lg:flex lg:flex-row flex-col w-full font-poppins lg:pl-5 text-white relative mt-[10rem]">
           <div className="lg:w-2/5 text-5xl font-medium lg:top-0 relative top-32 text-left pl-3">
             <p className="lg:w-[16rem]">{homeclientData?.boldHeading}</p>
           </div>

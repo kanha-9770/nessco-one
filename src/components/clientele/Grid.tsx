@@ -10,7 +10,7 @@ interface AboutLayoutProps{
   clienteleData:ClienteleItem;
 }
 // Utility function to get a sliding animation class
-const getSlidingDirectionClass = () => {
+const getSlidingDirectionClass:React.FC = () => {
   const directions = [
     styles['animation-slide-in-left'],
     styles['animation-slide-in-right'],
@@ -23,6 +23,10 @@ const getSlidingDirectionClass = () => {
 
 // Generate square components
 const generateSquares = (data: Square[] , isFadingOut: boolean) => {
+
+  
+
+  
   return data?.map((sq) => {
     const animationClass = getSlidingDirectionClass();
     return (
@@ -35,11 +39,11 @@ const generateSquares = (data: Square[] , isFadingOut: boolean) => {
       >
         <div className={`absolute inset-0 flex items-center justify-center lg:p-0 p-3 ${animationClass}`}>
           <Image
-            src="https://res.cloudinary.com/dlti4o10e/image/upload/v1732004975/11_b2yedo.svg"
+            src={sq.src}
             alt={`image-${sq.id}`}
             width={110}
             height={110}
-            className="transform transition-transform duration-4000"
+            className="transform transition-transform duration-4000 invert brightness-0"
           />
         </div>
       </div>

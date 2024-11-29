@@ -1,8 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { NavbarData } from "../types/constant";
 import { countryCODE, languageCODE } from "../nav-menue";
+const LottieAnimation = dynamic(
+  () => import("@/components/ui/LottieAnimation")
+);
+import Blogs from "../../../../public/assets/ResourcesNavbar/Blog.json";
+import Faq from "../../../../public/assets/ResourcesNavbar/faq.json";
+import News from "../../../../public/assets/ResourcesNavbar/Newspaper.json";
+import Staff from "../../../../public/assets/ResourcesNavbar/Staff.json";
+import Lightbulb from "../../../../public/assets/ResourcesNavbar/lightbulb.json";
+import dynamic from "next/dynamic";
+
+const image = [Blogs, Faq, News, Staff, Lightbulb];
 
 type SupportItem = {
   title: string;
@@ -100,13 +110,17 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData, setActive }) => {
                 ></div>
 
                 <div className="relative w-full h-full flex justify-center items-center">
-                  <Image
+                  {/* <Image
                     src={item?.image}
                     alt={item?.title}
                     width={96}
                     height={96}
                     className="object-contain"
                     loading="lazy"
+                  /> */}
+                  <LottieAnimation
+                    className="h-24 w-24"
+                    animationData={image[index % image.length]} // Pass animation based on index
                   />
                 </div>
               </div>
@@ -119,9 +133,9 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData, setActive }) => {
       </div>
       {/* mobile view */}
 
-      <div className="relative p-1 h-screen  flex lg:hidden flex-col items-center">
+      <div className="relative p-1 h-screen flex lg:hidden flex-col items-center">
         <div
-          className="w-full h-[50%] py-2 overflow-x-scroll scroll-smooth [scrollbar-width:none]"
+          className="w-full py-2"
           ref={carouselRef}
           onScroll={checkScrollability}
         >
@@ -136,13 +150,19 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData, setActive }) => {
                     key={itemIndex}
                     className="relative w-40 h-36 border-[1px] bg-white rounded-xl  flex flex-col justify-start items-center p-2"
                   >
-                    <div className="relative w-32 bg-white rounded-xl border-[1px] h-16 flex justify-center items-center">
-                      <Image
+                    <div
+                      className="relative w-32 bg-[#483d73] rounded-xl border-[1px] h-[4.4rem] flex justify-center items-center"
+                    >
+                      {/* <Image
                         src={item?.image}
                         alt={item?.title}
                         width={96}
                         height={96}
                         className="object-contain h-16 w-32"
+                      /> */}
+                      <LottieAnimation
+                        className="h-16 w-16"
+                        animationData={image[itemIndex % image.length]} // Pass animation based on index
                       />
                     </div>
                     <p className="relative font-poppins text-center mt-4 invert-0 font-medium hover:text-[#483d78] hover:font-bold text-16">
@@ -169,7 +189,7 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData, setActive }) => {
             ></button>
           </div>
         )}
-        <div className="h-[50%] w-full">
+        {/* <div className="h-[50%] w-full">
           <div className="h-full pb-40 overflow-y-auto w-full">
             {DataBankItem?.map((item, index) => (
               <div key={index} className="flex flex-col space-y-4">
@@ -194,7 +214,7 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData, setActive }) => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -2,6 +2,12 @@
 import React, { useState, useEffect } from "react";
 import { GenuinePartsItem } from "./types/constant";
 import Image from "next/image";
+import LinkUrl from "../LinkUrl";
+import { usePathname, useRouter } from "next/navigation";
+import { useForm as useFormContext } from "@/app/[country]/[locale]/context/FormContext";
+import toast, { Toaster } from "react-hot-toast";
+import { motion } from "framer-motion";
+import { BottomGradient } from "../Contact/SignupFormDemo";
 
 interface Part {
   title: string;
@@ -26,7 +32,56 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
   const [sidebarSearchTerm, setSidebarSearchTerm] = useState("");
   const [headerSearchTerm, setHeaderSearchTerm] = useState("");
   const [filteredParts, setFilteredParts] = useState(Inventory.parts);
+  const { submitForm } = useFormContext();
+  const [countryCode, setCountryCode] = useState("in");
+  const pathname = usePathname();
+  const router = useRouter();
 
+  useEffect(() => {
+    const pathParts = pathname.split("/");
+    if (pathParts.length > 1) {
+      const newCountryCode = pathParts[1].toLowerCase();
+      if (newCountryCode.length === 2) setCountryCode(newCountryCode);
+    }
+    console.log(countryCode);
+    
+  }, [pathname, router]);
+
+  const [formValues, setFormValues] = useState({
+    fullname: "",
+    email: "",
+    mobilenumber: "",
+    message: "",
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { id, value } = e.target;
+    setFormValues((prev) => ({ ...prev, [id]: value }));
+  };
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    try {
+      await submitForm({ ...formValues });
+      toast.success("Form submitted successfully!", {
+        duration: 3000,
+        position: "top-right",
+        style: { borderRadius: "10px", background: "#4caf50", color: "#fff" },
+      });
+    } catch (error) {
+      console.error("Failed to submit the form:", error);
+      toast.error("Error submitting the form. Please try again.", {
+        duration: 3000,
+        position: "top-right",
+        style: { borderRadius: "10px", background: "#e63946", color: "#fff" },
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   const openModal = () => setIsPartsModalOpen(true);
   const closeModal = () => setIsPartsModalOpen(false);
   const openMachineModal = () => setIsMachineModalOpen(true);
@@ -40,10 +95,8 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
     let filtered = Inventory.parts;
     if (machineFilters?.length > 0) {
       filtered = filtered?.filter((part) =>
-        machineFilters?.some(
-          (filter) =>
-            part?.categoryType?.toLowerCase().includes(filter?.toLowerCase()) ||
-            part?.description?.toLowerCase().includes(filter?.toLowerCase())
+        machineFilters?.some((filter) =>
+          part?.categoryType?.toLowerCase().includes(filter?.toLowerCase())
         )
       );
     }
@@ -113,10 +166,12 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
 
   return (
     <div className="px-3 font-poppins font-regular flex">
+      <Toaster />
+
       {/* Left container*/}
-      <div className="w-[18%] bg-white p-2 rounded-lg mr-2 lg:block hidden">
+      <div className="w-[18%] bg-white p-2 rounded-[0.5rem] mr-2 lg:block hidden">
         <h2 className="py-2 mb-2 font-medium border-b ">{Inventory?.filter}</h2>
-        <div className="flex items-center border border-black rounded-lg mb-4 py-1">
+        <div className="flex items-center border border-black rounded-[0.5rem] mb-4 py-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -140,7 +195,9 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
         </div>
         {Inventory?.machineFilter
           .filter((item) =>
-            item?.title?.toLowerCase().includes(sidebarSearchTerm?.toLowerCase())
+            item?.title
+              ?.toLowerCase()
+              .includes(sidebarSearchTerm?.toLowerCase())
           )
           .map((item, idx) => (
             <div key={idx} className="mb-4 flex items-center relative">
@@ -160,11 +217,11 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
 
       {/* Right container*/}
       <div className="lg:w-[82%] w-full">
-        <div className="bg-white w-full rounded-lg p-2 flex items-center mb-2 space-x-2 lg:hidden">
+        <div className="bg-white w-full rounded-[0.5rem] p-2 flex items-center mb-2 space-x-2 lg:hidden">
           <button
             aria-label="Filter"
             onClick={openMachineModal}
-            className="w-[50%] bg-black flex items-center rounded-md py-1"
+            className="w-[50%] bg-black flex items-center rounded-[0.3rem] py-1"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -190,7 +247,7 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
           <button
             aria-label="Filter"
             onClick={openModal}
-            className="w-[50%] bg-black flex items-center rounded-md py-1"
+            className="w-[50%] bg-black flex items-center rounded-[0.3rem] py-1"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -215,8 +272,8 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
           </button>
         </div>
         {/* Filter section*/}
-        <div className="bg-white w-full rounded-lg p-2 lg:flex items-center mb-2 hidden">
-          <div className="flex items-center border border-black rounded-lg py-1 px-2 lg:visible invisible">
+        <div className="bg-white w-full rounded-[0.5rem] p-2 lg:flex items-center mb-2 hidden">
+          <div className="flex items-center border border-black rounded-[0.5rem] py-1 px-2 lg:visible invisible">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -263,7 +320,7 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
               <div
                 key={idx}
                 onClick={() => handleMachineFilterChangeFilter(item?.title)}
-                className="border border-black rounded-lg group hover:bg-black hover:text-white cursor-pointer flex items-center justify-center space-x-2 py-1 px-3"
+                className="border border-black rounded-[0.5rem] group hover:bg-black hover:text-white cursor-pointer flex items-center justify-center space-x-2 py-1 px-3"
               >
                 <Image
                   src={item?.img}
@@ -279,7 +336,7 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
         </div>
         <div className="lg:flex lg:static sticky top-14 z-50">
           {/* Inventory items */}
-          <div className="bg-white lg:w-[85%] lg:h-full h-[11.4rem] rounded-lg px-4 py-2 lg:mr-2 lg:block hidden">
+          <div className="bg-white lg:w-[85%] lg:h-full h-[11.4rem] rounded-[0.5rem] px-4 py-2 lg:mr-2 lg:block hidden">
             <h2 className="text-sm font-medium float-left">
               {Inventory?.inventory}
             </h2>
@@ -313,7 +370,7 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
               {inventoryItems?.map((item, idx) => (
                 <div
                   key={idx}
-                  className="bg-[#f5f5f5] rounded-lg p-2 flex space-x-8 relative"
+                  className="bg-[#f5f5f5] rounded-[0.5rem] p-2 flex space-x-8 relative"
                 >
                   <div>
                     <h3 className="text-xs font-medium whitespace-nowrap">
@@ -322,7 +379,9 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
                     <h3 className="text-xs font-medium whitespace-nowrap">
                       {item?.description}
                     </h3>
-                    <h3 className="text-xs whitespace-nowrap">{item?.code}</h3>
+                    <h3 className="text-xs text-red-700 font-medium whitespace-nowrap">
+                      {item?.code}
+                    </h3>
                   </div>
                   <div className="w-16 h-12">
                     <Image
@@ -330,7 +389,7 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
                       alt={item?.title}
                       width={400}
                       height={400}
-                      className="w-full h-full rounded-lg"
+                      className="w-full h-full rounded-[0.5rem]"
                     />
                   </div>
 
@@ -355,7 +414,7 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
                 </div>
               ))}
             </div>
-            <div className="mt-1 bg-[#f5f5f5]  px-2 py-1 rounded-md lg:float-left flex items-center justify-center">
+            <div className="mt-1 bg-[#f5f5f5]  px-2 py-1 rounded-[0.3rem] lg:float-left flex items-center justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -378,7 +437,7 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
             <div className="flex lg:justify-end">
               <button
                 aria-label="Proceed"
-                className="group text-xs mt-1 bg-black font-medium text-white lg:px-2 lg:py-1 py-2 px-3 rounded-md hover:bg-red-700 flex items-center justify-center lg:w-max w-full"
+                className="group text-xs mt-1 bg-black font-medium text-white lg:px-2 lg:py-1 py-2 px-3 rounded-[0.3rem] hover:bg-red-700 flex items-center justify-center lg:w-max w-full"
                 onClick={handleProceedClick}
               >
                 <p className="mr-2">{Inventory?.proceed}</p>
@@ -402,7 +461,7 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
             </div>
           </div>
 
-          <div className="bg-white lg:w-[15%] z-30 rounded-lg px-2 lg:py-4 py-2 lg:items-center lg:relative lg:mt-0 mt-2">
+          <div className="bg-white lg:w-[15%] z-30 rounded-[0.5rem] px-2 lg:py-4 py-2 lg:items-center lg:relative lg:mt-0 mt-2">
             <div className="flex lg:space-x-0 space-x-2 items-end">
               <div className="w-[50%] lg:hidden">
                 <div className="flex">
@@ -432,7 +491,7 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
                 </div>
                 <button
                   aria-label="Proceed"
-                  className="group lg:text-xs text-sm mt-1 bg-black font-medium text-white lg:px-2 lg:py-1 py-2 px-1 lg:rounded-md rounded-lg hover:bg-red-700 flex items-center justify-center lg:w-max w-full"
+                  className="group lg:text-xs text-sm mt-1 bg-black font-medium text-white lg:px-2 lg:py-1 py-2 px-1 lg:rounded-[0.3rem] rounded-[0.5rem] hover:bg-red-700 flex items-center justify-center lg:w-max w-full"
                   onClick={handleProceedClick}
                 >
                   <p className="mr-2">{Inventory?.proceed}</p>
@@ -458,17 +517,19 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
                 <h2 className="lg:text-[1.1rem] text-sm font-medium lg:w-[80%] text-center lg:mb-2 mb-2">
                   {Inventory?.productNotFound}
                 </h2>
-                <button
-                  aria-label="Request Spare"
-                  className="lg:text-md text-sm font-medium text-white bg-gradient-to-r from-[#483d73] to-red-700 rounded-lg lg:py-3 py-2 lg:px-3 whitespace-nowrap lg:absolute lg:bottom-2"
-                >
-                  {Inventory?.requestSpare}
-                </button>
+                <LinkUrl href="/support/services" className="w-full">
+                  <button
+                    aria-label="Request Spare"
+                    className="lg:text-md text-sm font-medium lg:w-auto w-full text-white bg-gradient-to-r from-[#483d73] to-red-700 rounded-[0.5rem] lg:py-3 py-2 lg:px-5 whitespace-nowrap lg:absolute lg:bottom-2"
+                  >
+                    {Inventory?.requestSpare}
+                  </button>
+                </LinkUrl>
               </div>
             </div>
             {/* Search Field in Mobile  */}
             <div className="w-full lg:hidden mt-2">
-              <div className="flex items-center border border-black rounded-lg py-2 px-2 h-full">
+              <div className="flex items-center border border-black rounded-[0.5rem] py-2 px-2 h-full">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -500,16 +561,27 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
         <div className="">
           <div className="w-full mt-2 lg:max-h-[154.1vh] lg:overflow-y-scroll grid lg:grid-cols-3 gap-2 scrollbar-custom scrollbar">
             {filteredParts?.map((item, idx) => (
-              <div key={idx} className="bg-white rounded-lg p-2">
+              <div key={idx} className="bg-white rounded-[0.5rem] p-2">
                 <div className="flex relative px-1">
                   <div>
                     <h3 className="text-md font-medium whitespace-nowrap">
                       {item?.title}
                     </h3>
-                    <h3 className="text-md font-medium whitespace-nowrap">
+                    <h3 className="text-md font-medium lg:h-[4.8rem]">
                       {item?.description}
                     </h3>
-                    <h3 className="text-sm whitespace-nowrap">{item?.code}</h3>
+                    <h3 className="text-md text-red-700 font-medium whitespace-nowrap">
+                      {item?.code}
+                    </h3>
+                  </div>
+                  <div>
+                    {/* <Image
+                  src={item?.img}
+                  alt={item?.title}
+                  width={400}
+                  height={400}
+                  className="w-5 group-hover:invert"
+                /> */}
                   </div>
                   <div className="cursor-pointer group absolute right-0 flex">
                     <svg
@@ -528,26 +600,26 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
                       <line x1="12" y1="16" x2="12" y2="12"></line>
                       <line x1="12" y1="8" x2="12" y2="8"></line>
                     </svg>
-                    <div className="hidden group-hover:flex absolute top-5 right-0 bg-white border border-gray-300 rounded-md shadow-md px-2 py-1 h-max w-[15vw] z-20">
+                    <div className="hidden group-hover:flex absolute top-5 right-0 bg-white border border-gray-300 rounded-[0.3rem] shadow-md px-2 py-1 h-max lg:w-[15vw] max-w-[15rem] z-20">
                       <p className="lg:text-[0.8rem] text-[0.7rem] text-black">
                         {item?.information}
                       </p>
                     </div>
                   </div>
                 </div>
-                <div className="w-full my-2">
+                <div className="rounded-[0.3rem] w-full my-2 h-[15rem] overflow-hidden flex items-center justify-center">
                   <Image
                     src={item?.img}
                     alt={item?.title}
                     width={400}
                     height={400}
-                    className="w-full rounded-lg"
+                    className="w-auto h-[15rem]"
                   />
                 </div>
                 {!enquiryState[item?.code] ? (
                   <button
                     aria-label="Add Enquiry"
-                    className="text-white bg-black lg:hover:bg-red-700 lg:hover:border-red-700 py-1 w-full rounded-lg border border-black"
+                    className="text-white bg-black lg:hover:bg-red-700 lg:hover:border-red-700 py-1 w-full rounded-[0.5rem] border border-black"
                     onClick={() => handleButtonClick(item)}
                   >
                     {Inventory?.addEnquiry}
@@ -555,12 +627,12 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
                 ) : (
                   <label
                     onClick={() => handleRemoveFromInventory(item)}
-                    className="flex items-center py-1 px-2 border border-black rounded-lg"
+                    className="flex items-center py-1 px-2 border border-black rounded-[0.5rem]"
                   >
                     <input
                       type="checkbox"
                       checked
-                      className="form-checkbox text-black"
+                      className="form-checkbox text-black accent-red-700"
                     />
                     <span className="text-black text-center w-full font-medium">
                       {Inventory?.addedEnquiry}
@@ -570,10 +642,10 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
               </div>
             ))}
           </div>
-          <div className="lg:flex items-center justify-center bg-white rounded-lg mt-2 hidden">
+          <div className="lg:flex items-center justify-center bg-white rounded-[0.5rem] mt-2 hidden">
             <button
               aria-label="Proceed"
-              className="group text-md my-2 bg-black font-medium text-white px-4 py-2 rounded-md float-right hover:bg-red-700 flex items-center justify-center"
+              className="group text-md my-2 bg-black font-medium text-white px-4 py-2 rounded-[0.3rem] float-right hover:bg-red-700 flex items-center justify-center"
               onClick={handleProceedClick}
             >
               <p className="mr-2">{Inventory?.proceed}</p>
@@ -598,7 +670,7 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
         </div>
 
         {/* inventory section in mobile view */}
-        <div className="bg-white lg:w-[85%] h-max custom-gradient-border rounded-lg px-4 py-2 lg:mr-2 lg:hidden my-2">
+        <div className="bg-white lg:w-[85%] h-max border-2 border-[#483d73] rounded-[0.5rem] px-4 py-2 lg:mr-2 lg:hidden my-2">
           <h2 className="text-sm font-medium float-left">
             {Inventory?.inventory}
           </h2>
@@ -632,16 +704,18 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
             {inventoryItems?.map((item, idx) => (
               <div
                 key={idx}
-                className="bg-[#f5f5f5] rounded-lg p-2 flex space-x-10 relative"
+                className="bg-[#f5f5f5] rounded-[0.5rem] p-2 flex space-x-4 relative"
               >
                 <div>
                   <h3 className="text-xs font-medium whitespace-nowrap">
                     {item?.title}
                   </h3>
-                  <h3 className="text-xs font-medium whitespace-nowrap">
+                  <h3 className="text-xs w-[10rem] font-medium ">
                     {item?.description}
                   </h3>
-                  <h3 className="text-xs whitespace-nowrap">{item?.code}</h3>
+                  <h3 className="text-xs text-red-700 font-medium whitespace-nowrap">
+                    {item?.code}
+                  </h3>
                 </div>
                 <div className="w-24 h-20">
                   <Image
@@ -649,7 +723,7 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
                     alt={item?.title}
                     width={400}
                     height={400}
-                    className="w-full h-full rounded-lg"
+                    className="w-full h-full rounded-[0.5rem]"
                   />
                 </div>
                 <div
@@ -673,7 +747,7 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
               </div>
             ))}
           </div>
-          <div className="mt-1 bg-[#f5f5f5]  px-2 py-1 rounded-md lg:float-left flex items-center justify-center">
+          <div className="mt-1 bg-[#f5f5f5]  px-2 py-1 rounded-[0.3rem] lg:float-left flex items-center justify-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -692,19 +766,45 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
             </svg>
             <p className="text-xs text-black">{Inventory?.iButton}</p>
           </div>
+          <div className="flex">
+            <button
+              aria-label="Proceed"
+              className="group text-lg mt-2  font-medium text-white lg:px-2 lg:py-1 py-2 px-3 rounded-[0.3rem] bg-red-700 flex items-center justify-center lg:w-max w-full"
+              onClick={handleProceedClick}
+            >
+              <p className="mr-2">{Inventory?.proceed}</p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 64 64"
+                className="w-6 h-6"
+              >
+                <circle
+                  cx="32"
+                  cy="32"
+                  r="32"
+                  className="fill-white cursor-pointer"
+                />
+                <path
+                  d="M25 20 L37 32 L25 44"
+                  className="stroke-red-700 stroke-[4px] fill-none stroke-linecap-round stroke-linejoin-round "
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Modal for Proceed */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur flex justify-center items-center z-50  lg:px-0 px-4 lg:mt-14">
-          <div className="bg-white rounded-lg p-4 lg:w-[60%]">
+          <div className="bg-white rounded-[0.5rem] p-4 lg:w-[60%]">
             <div className="flex relative">
               <h2 className="text-lg font-semibold mb-4 w-full text-center">
                 {Inventory?.inventoryItems}
               </h2>
               <button
                 aria-label="Close"
+
                 className="absolute right-0"
                 onClick={handleCloseModal}
               >
@@ -725,32 +825,35 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
             </div>
             <div className="flex lg:flex-row flex-col lg:space-x-6">
               <div className="lg:w-[60%] lg:mb-0 mb-2">
-                <div className="grid lg:grid-cols-2 gap-2 lg:max-h-[17rem] max-h-[10.4rem] overflow-y-auto scrollbar-custom scrollbar">
+                <div className="border rounded-[0.3rem] p-2 grid lg:grid-cols-2 gap-2 lg:max-h-[17rem] max-h-[10.4rem] overflow-y-auto scrollbar-custom scrollbar">
                   {inventoryItems?.map((item, idx) => (
                     <div
                       key={idx}
-                      className="bg-[#f5f5f5] rounded-lg p-2 flex lg:flex-col"
+                      className="bg-[#f5f5f5] relative rounded-[0.5rem] p-2 flex lg:flex-col w-full"
                     >
+                      <div className="absolute top-0 right-0 lg:hidden bg-red-700 text-white text-xs rounded-full h-4 w-4 m-1 flex items-center justify-center font-medium">
+                        {idx + 1}
+                      </div>
                       <div className="flex px-1 relative">
                         <div>
                           <h3 className="text-xs font-medium whitespace-nowrap">
                             {item?.title}
                           </h3>
-                          <h3 className="text-xs font-medium whitespace-nowrap">
+                          <h3 className="text-xs lg:h-[3rem] font-medium">
                             {item?.description}
                           </h3>
-                          <h3 className="text-xs whitespace-nowrap">
+                          <h3 className="text-xs text-red-700 font-medium whitespace-nowrap">
                             {item?.code}
                           </h3>
                         </div>
                       </div>
-                      <div className="w-full lg:my-2 lg:ml-0 ml-6">
+                      <div className="lg:w-full lg:mt-2 lg:ml-0 ml-6 bg-white lg:h-[10rem] h-16 w-24 rounded-[0.3rem] overflow-hidden flex items-center justify-center">
                         <Image
                           src={item?.img}
                           alt={item?.title}
                           width={400}
                           height={400}
-                          className="w-full rounded-lg"
+                          className="h-full w-auto lg:h-[10rem] rounded-[0.5rem]"
                         />
                       </div>
                     </div>
@@ -758,48 +861,60 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
                 </div>
               </div>
               <div className="lg:w-[40%]">
-                <form>
-                  {/* Form Fields */}
+                <form onSubmit={handleSubmit}>
                   <div className="mb-4">
-                    <label className="block text-sm mb-2 font-normal">
-                      {Inventory?.username}
+                    <label className="block text-sm mb-2 font-medium">
+                      {Inventory?.fullName}
                     </label>
                     <input
                       type="text"
                       required
-                      className="bg-[#f5f5f5] rounded-md w-full p-2 outline-none"
+                      onChange={handleChange}
+                      className="bg-[#f5f5f5] rounded-[0.3rem] w-full p-2 outline-none"
                     />
                   </div>
                   <div className="mb-4">
-                    <label className="block text-sm mb-2 font-normal">
+                    <label className="block text-sm mb-2 font-medium">
+                      {Inventory?.phone}
+                    </label>
+                    <input
+                      type="number"
+                      required
+                      onChange={handleChange}
+                      className="bg-[#f5f5f5] rounded-[0.3rem] w-full p-2 outline-none"
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm mb-2 font-medium"
+                    >
                       {Inventory?.email}
                     </label>
                     <input
                       type="email"
                       required
-                      className="bg-[#f5f5f5] rounded-md w-full p-2 outline-none"
+                      onChange={handleChange}
+                      className="bg-[#f5f5f5] rounded-[0.3rem] w-full p-2 outline-none"
                     />
                   </div>
-                  <div className="mb-4">
-                    <label
-                      htmlFor="password"
-                      className="block text-sm mb-2 font-normal"
-                    >
-                      {Inventory?.password}
-                    </label>
-                    <input
-                      type="password"
-                      required
-                      className="bg-[#f5f5f5] rounded-md w-full p-2 outline-none"
-                    />
-                  </div>
+                  <motion.button
+                    className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+                    type="submit"
+                    disabled={isSubmitting}
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.99 }}
+                  >
+                    {isSubmitting ? "Submitting..." : "Submit"}
+                    <BottomGradient />
+                  </motion.button>
                 </form>
               </div>
             </div>
-            <div className="flex justify-center lg:mt-4 mt-2">
+            <div className="flex lg:justify-end justify-center lg:mt-4 mt-2">
               <button
                 aria-label="Submit"
-                className="text-sm bg-black text-white px-4 py-2 rounded-md font-normal"
+                className="text-lg font-semibold bg-gradient-to-t from-[#483d73] to-black text-white lg:w-[39%] w-full px-4 py-2 rounded-[0.3rem] "
               >
                 {Inventory?.submit}
               </button>
@@ -811,7 +926,7 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
       {/* Parts Filter Modal */}
       {isPartsModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white mx-4 p-4 rounded-lg w-full lg:w-[60%] max-h-[80%]">
+          <div className="bg-white mx-4 p-4 rounded-[0.5rem] w-full lg:w-[60%] max-h-[80%]">
             {/* Close button */}
             <button
               aria-label="Close"
@@ -857,7 +972,7 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
               {Inventory?.Filter?.map((item, idx) => (
                 <div
                   key={idx}
-                  className="border border-black rounded-lg hover:bg-black hover:text-white cursor-pointer flex items-center  space-x-2 py-1 px-3"
+                  className="border border-black rounded-[0.5rem] hover:bg-black hover:text-white cursor-pointer flex items-center  space-x-2 py-1 px-3"
                 >
                   <Image
                     src={item?.img}
@@ -876,7 +991,7 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
       {/* Machine Filter Modal */}
       {isMachineModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white mx-4 p-4 rounded-lg w-full lg:w-[60%] max-h-[80%]">
+          <div className="bg-white mx-4 p-4 rounded-[0.5rem] w-full lg:w-[60%] max-h-[80%]">
             {/* Close button */}
             <button
               aria-label="Close"

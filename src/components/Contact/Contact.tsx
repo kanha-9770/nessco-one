@@ -49,7 +49,7 @@ export default function ContactForm() {
               transition={transition}
             >
               <div className="flex justify-between items-center p-4">
-                <h2 className="font-montserrat text-xl text-neutral-800 dark:text-neutral-200">
+                <h2 className="font-montserrat text-center text-xl text-neutral-800 dark:text-neutral-200">
                   GET IN TOUCH WITH US
                 </h2>
                 <button

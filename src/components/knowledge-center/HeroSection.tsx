@@ -21,7 +21,7 @@ const HeroSection: React.FC<KnowledgeCenterProps> = ({ knowledgeCenterData }) =>
           ref,
           { opacity: 0.5 }, // Start partially visible
           {
-            opacity: 1, // Fade to full opacity
+            opacity: 0.7, // Fade to full opacity
             duration: 1, // Slightly increase duration for each index
             repeat: -1, // Repeat indefinitely
             yoyo: true, // Reverse the animation on repeat
@@ -51,7 +51,7 @@ const HeroSection: React.FC<KnowledgeCenterProps> = ({ knowledgeCenterData }) =>
       <div className="h-[90%] flex w-full">
         <div className="w-1/2 ">
           <Image
-            src="https://res.cloudinary.com/dfryvystt/image/upload/v1729658363/Giphy_jnwcn8.webp"
+            src="https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/knowledge-center-hero-gif.webp"
             className="h-full w-full object-contain"
             height={600}
             width={600}
@@ -78,10 +78,10 @@ const HeroSection: React.FC<KnowledgeCenterProps> = ({ knowledgeCenterData }) =>
                     {/* SVG Bulb Icon with Glow */}
                     <div className="">
                       <Image
-                        src="https://res.cloudinary.com/dfryvystt/image/upload/v1731488577/Bulb_fxxa88.svg"
+                        src="https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/knowledge-center-bulb-image.webp"
                         width={400}
                         height={400}
-                        className="h-16 light-bulb w-16 glow"
+                        className="h-24 light-bulb w-auto glow z-30 -mt-10"
                         alt={""}
                       />
                     </div>
@@ -89,13 +89,13 @@ const HeroSection: React.FC<KnowledgeCenterProps> = ({ knowledgeCenterData }) =>
                       ref={(el) => {
                         glowRefs.current[idx] = el;
                       }}
-                      src="https://res.cloudinary.com/dfryvystt/image/upload/v1731488576/Light_mcxsno.svg"
+                      src="https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/knowledge-center-light-gif.webp"
                       width={400}
                       height={400}
                       className="absolute -top-[1.8rem] h-full w-full"
                       alt={""}
                     />
-                    <div className="flex flex-col items-center justify-center mt-20 gap-2">
+                    <div className="flex flex-col items-center justify-center mt-20 gap-2 z-20">
                       <Image
                         src={item?.img}
                         className="w-16"

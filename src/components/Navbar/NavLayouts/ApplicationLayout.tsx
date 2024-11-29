@@ -1,43 +1,10 @@
 import { useEffect, useState } from "react";
-const HandBurgerBox = dynamic(() => import("../../Icons/HandBurgerBox"), {
-  ssr: false,
-});
-const LunchBox = dynamic(() => import("../../Icons/LunchBox"), { ssr: false });
-const PaperBlank = dynamic(() => import("../../Icons/PaperBlank"), {
-  ssr: false,
-});
-const PaperBowl = dynamic(() => import("../../Icons/PaperBowl"), {
-  ssr: false,
-});
-const PaperCup = dynamic(() => import("../../Icons/PaperCup"), { ssr: false });
-const PaperCupWithLid = dynamic(() => import("../../Icons/PaperCupWithLid"), {
-  ssr: false,
-});
-const PaperCupWithSleeve = dynamic(
-  () => import("../../Icons/PaperCupWithSleeve"),
-  { ssr: false }
-);
-const PaperCutlery = dynamic(() => import("../../Icons/PaperCutlery"), {
-  ssr: false,
-});
-const PaperPlate = dynamic(() => import("../../Icons/PaperPlate"), {
-  ssr: false,
-});
-const PaperRoll = dynamic(() => import("../../Icons/PaperRoll"), {
-  ssr: false,
-});
-const PaperStraw = dynamic(() => import("../../Icons/PaperStraw"), {
-  ssr: false,
-});
-const PopcornTub = dynamic(() => import("../../Icons/PopcornTub"), {
-  ssr: false,
-});
-
-import { Button } from "../../ui/button";
-import dynamic from "next/dynamic";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
 import { NavbarData } from "../types/constant";
 import Link from "next/link";
 import { countryCODE, languageCODE } from "../nav-menue";
+
 interface Product {
   id: string;
   link: string;
@@ -46,77 +13,88 @@ interface Product {
 }
 
 export const componentList = [
-  PaperCutlery,
-  PaperCupWithSleeve,
-  PaperCupWithLid,
-  PaperCup,
-  PopcornTub,
-  LunchBox,
-  PaperStraw,
-  PaperRoll,
-  PaperPlate,
-  PaperBowl,
-  PaperBlank,
-  HandBurgerBox,
+  "https://assets.nesscoindustries.com/public/assets/homepage/paper-lid(2).webp",
+  "https://assets.nesscoindustries.com/public/assets/homepage/paper-cup(4).webp",
+  "https://assets.nesscoindustries.com/public/assets/homepage/paper-bowl(2).webp",
+  "https://assets.nesscoindustries.com/public/assets/homepage/paper-plate.webp",
+  "https://assets.nesscoindustries.com/public/assets/homepage/paper-straw.webp",
+  "https://assets.nesscoindustries.com/public/assets/homepage/paper-bag.webp",
+  "https://assets.nesscoindustries.com/public/assets/homepage/paper-container.webp",
+  "https://assets.nesscoindustries.com/public/assets/homepage/insulating-cup-icon.webp",
+  "https://assets.nesscoindustries.com/public/assets/homepage/cutlery-icon.webp",
 ];
+
 interface ApplicationLayoutProps {
   navData: NavbarData;
-  setActive?: (item: string | null) => void;
+  setActive: (item: string | null) => void;
 }
-export default function ApplicationLayout(
-  { navData }: ApplicationLayoutProps,
-  setActive
-) {
+
+export default function ApplicationLayout({
+  navData,
+  setActive,
+}: ApplicationLayoutProps) {
   const applicationData = navData?.navbar[2]?.data?.applications;
+  const [activeProduct, setActiveProduct] = useState<Product | null>(null);
+
   useEffect(() => {
-    console.log("i am inside applciation alyout", applicationData);
-  });
-  const [activeProduct, setActiveProduct] = useState<Product>(
-    applicationData[0]
-  );
+    console.log("i am inside application layout", applicationData);
+    if (applicationData && applicationData.length > 0) {
+      setActiveProduct(applicationData[0]);
+    }
+  }, [applicationData]);
+
+  if (!applicationData) {
+    return null;
+  }
+
   return (
-    <div className="flex flex-col md:flex-row w-full h-full p-4">
-      <div className="relative md:w-[70%] grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-4 mb-4 md:mb-0 md:mr-4">
-        {applicationData?.map((product, index) => {
-          const IconComponent = componentList[index];
-          return (
+    <div className="flex flex-col md:flex-row w-full h-full p-4 lg:h-[24rem]">
+      <div className="md:w-[70%] relative">
+        <div className="w-full grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-4 mb-4 md:mb-0 md:mr-4">
+          {applicationData.map((product, index) => (
             <Link
-              key={product?.id}
+              key={product.id}
               className="flex flex-col items-center justify-center p-2 invert-0 cursor-pointer"
               onMouseEnter={() => setActiveProduct(product)}
               href={`/${countryCODE}/${languageCODE}/application${product.link}`}
               onClick={() => setActive(null)}
             >
-              <div className=" h-20 w-20 flex items-center justify-center">
-                <IconComponent />
+              <div className="h-24 w-24 bg-[#f2f2f2] rounded-xl flex items-center justify-center">
+                <Image
+                  className="h-16 w-auto hover:scale-90 transition-all duration-300"
+                  width={100}
+                  height={100}
+                  src={componentList[index]}
+                  alt={product.name}
+                />
               </div>
-              <span className="text-xs text-center invert-0">
-                {product?.name}
+              <span className="text-md font-medium text-center invert-0">
+                {product.name}
               </span>
             </Link>
-          );
-        })}
-
+          ))}
+        </div>
         <Link
           onClick={() => setActive(null)}
+          className="flex lg:justify-end justify-center items-center pt-6 lg:pr-10"
           href={`/${countryCODE}/${languageCODE}/application`}
         >
-          <div className="absolute bottom-4 right-4">
+          <div className="">
             <Button
-              className="rounded-full flex items-center justify-center bg-primary text-primary-foreground hover:bg-red-700 border-2 group border-red-700 w-[12rem] space-x-4 py-1 text-base font-medium transition-all duration-300 ease-in-out group relative"
+              className="rounded-full flex items-center lg:justify-center justify-start bg-primary text-primary-foreground lg:hover:bg-white bg-red-700 border-2 group border-red-700 lg:w-[12rem] w-[8rem] space-x-4 py-1 text-base font-medium transition-all duration-300 ease-in-out group relative"
               aria-label="View all items"
             >
-              <span className="text-red-700 text-start group-hover:text-white">
-                View Machine
+              <span className="text-white text-start lg:group-hover:text-red-700">
+                View All
               </span>
-              <span className="bg-red-700 group-hover:bg-white p-1 rounded-full absolute right-2">
+              <span className="bg-white lg:group-hover:bg-red-700 p-1 rounded-full absolute right-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={3}
                   stroke="currentColor"
-                  className="w-4 h-4 stroke-white group-hover:stroke-red-700"
+                  className="w-4 h-4 stroke-red-700 lg:group-hover:stroke-white"
                 >
                   <path
                     strokeLinecap="round"
@@ -130,17 +108,22 @@ export default function ApplicationLayout(
         </Link>
       </div>
 
-      <div className="md:w-[30%] border-l p-6 flex flex-col  relative">
-        <div className="absolute inset-0 px-8  h-full w-full opacity-5 pointer-events-none">
-          {(() => {
-            const ActiveIconComponent =
-              componentList[
-                applicationData?.findIndex((p) => p?.id === activeProduct?.id)
-              ];
-            return <ActiveIconComponent width={"100%"} />;
-          })()}
+      <div className="md:w-[30%] hidden  border-l p-6 lg:flex flex-col relative">
+        <div className="absolute inset-0 px-8 h-full w-auto opacity-5 pointer-events-none">
+          {activeProduct && (
+            <Image
+              src={
+                componentList[
+                  applicationData.findIndex((p) => p.id === activeProduct.id)
+                ]
+              }
+              alt=""
+              layout="fill"
+              objectFit="contain"
+            />
+          )}
         </div>
-        <div className="relative w-full  z-10">
+        <div className="relative w-full z-10">
           <h2 className="w-full text-5xl font-semibold">
             <span className="text-[#483d73]">
               {activeProduct?.name.trim().replace(/\s+\S+$/, "")}
@@ -149,19 +132,19 @@ export default function ApplicationLayout(
               {activeProduct?.name.trim().match(/\S+$/)}
             </span>
           </h2>
-          <p className="pt-6 invert-0 mb-4">{activeProduct?.description}</p>
+          <p className="pt-6 invert-0 mb-8">{activeProduct?.description}</p>
         </div>
         <Link
           href={`/${countryCODE}/${languageCODE}/application/${activeProduct?.name}`}
           onClick={() => setActive(null)}
         >
-          <div className="absolute bottom-6 border right-8 z-20 rounded-full bg-white hover:bg-black hover:text-white">
+          <div className="absolute bottom-0 right-4 bg-white z-20 rounded-full hover:bg-black hover:text-white">
             <Button
               className="rounded-full relative flex items-center justify-center bg-primary text-primary-foreground hover:bg-[#483d73] border-2 group border-[#483d73] w-[12rem] space-x-4 py-1 text-base font-medium transition-all duration-300 ease-in-out group"
               aria-label="View all items"
             >
               <span className="text-[#483d73] group-hover:text-white">
-                Explore All
+                Explore More
               </span>
               <span className="bg-[#483d73] group-hover:bg-white p-1 rounded-full absolute right-2">
                 <svg

@@ -3,8 +3,8 @@ import React from "react";
 import { locales } from "@/i18n";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
-import KnowYourComponent from "@/components/KnowYourProductComponent";
 import { KnowYourMachine } from "@/components/types";
+import AnimatedBlogPost from "@/components/StaticBlogs/AnimatedBllog";
 
 const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
 const countryUrl = "https://countryjson.nesscoindustries.com/";
@@ -107,14 +107,13 @@ export async function generateMetadata({
   };
 }
 
-export default async function KnowYourMachinePage({ params: { locale} }: Props) {
+export default async function KnowYourMachinePage({ params: { locale,id} }: Props) {
   if (!locales.includes(locale as any)) {
     locale = "en";
   }
 
   unstable_setRequestLocale(locale);
-  const knowYourMachineData = await fetchKnowYourMachineData(locale);
 
-  return <KnowYourComponent data={knowYourMachineData} />;
+  return <AnimatedBlogPost id={id}/>;
 }
 

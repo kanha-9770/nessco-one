@@ -80,8 +80,8 @@ const OurStoryD:React.FC<AboutLayoutProps> = ({companyData}) => {
             {homecompanyData?.title}
             <span className='text-red-600'> {homecompanyData?.highlight}</span>
           </h2>
-          <div className="mb-10 max-w-4xl mx-auto mt-6 font-poppins text-sm font-regular">
-            {homecompanyData?.paragraphs?.paragraph}
+          <div className="mb-10 max-w-4xl mx-auto mt-6 font-poppins text-sm font-regular text-white">
+         {` Since our inception in 1978, Nessco India has been dedicated to delivering top-quality machinery to the disposable industry. Our journey began with a vision to provide innovative solutions that meet the evolving needs of our clients. Over the years, we have expanded our product range and enhanced our manufacturing capabilities, establishing ourselves as a trusted name in the market. Our commitment to excellence is reflected in our state-of-the-art R&D team, which continually strives to develop cutting-edge technologies. With a focus on customer satisfaction, we have built lasting relationships and garnered acclaim for our reliable and efficient machines. Today, Nessco India stands as a leader in the disposable industry, driven by a passion for innovation and a dedication to quality.`}
           </div>
           <div className="flex justify-center w-full h-auto mt-14 overflow-x-clip">
             <div

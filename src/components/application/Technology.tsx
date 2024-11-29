@@ -62,6 +62,26 @@ const Page3: React.FC<Page3Props> = ({ applicationData, selectedProduct }) => {
     Technology.container[0][
       selectedProduct.title as keyof (typeof Technology.container)[0]
     ] || [];
+    const staticItems = [
+      {
+        title: "1. Versatile Paper Cup and Bowl Manufacturing",
+        description: "Our machines produce paper cups in sizes from 2-32oz and bowls up to 300mm in diameter. They offer unmatched flexibility, catering to diverse packaging needs across industries.",
+        craftsmanshipImg: "/placeholder.svg?height=300&width=300",
+      },
+      {
+        title: "2. Superior Craftsmanship for Quality Cups",
+        description: "Delivering flawless rolled edges, tightly sealed bottoms, and fine knurling, our machines ensure premium results. Trusted by leading coffee chains and global food brands.",
+        craftsmanshipImg: "/placeholder.svg?height=300&width=300",
+      },
+      {
+        title: "3. Adaptable to Diverse Paper Materials",
+        description: "Our machines support PE, PLA, and eco-friendly papers, offering exceptional versatility. They handle various paper thicknesses, meeting modern market demands.",
+        craftsmanshipImg: "/placeholder.svg?height=300&width=300",
+      },
+    ];
+    
+
+  const itemsToDisplay = productItems.length > 0 ? productItems : staticItems;
 
   return (
     <div
@@ -87,36 +107,32 @@ const Page3: React.FC<Page3Props> = ({ applicationData, selectedProduct }) => {
       </div>
 
       <div className="lg:space-y-3 space-y-4">
-        {productItems?.length > 0 ? (
-          productItems?.map((item, idx) => (
-            <div
-              key={idx}
-              className="w-full lg:h-[10rem] h-full lg:space-x-3 flex lg:flex-row flex-col-reverse"
-            >
-              <div className="lg:w-[80%] w-full h-full bg-white lg:rounded-[0.5rem] rounded-b-[0.5rem] p-[0.5rem] lg:p-[1rem]">
-                <h2 className="text-[#483d73] font-medium lg:text-[1.6rem] text-[1rem]">
-                  {item?.title}
-                </h2>
-                <div className="h-max w-full lg:pl-[2rem] lg:mt-[0.5rem] mt-[0.2rem]">
-                  <p className="lg:text-[1rem] text-sm w-[98%]">
-                    {item?.description}
-                  </p>
-                </div>
-              </div>
-              <div className="lg:w-[20%] w-full h-full lg:rounded-[0.5rem] rounded-t-[0.5rem] overflow-hidden">
-                <Image
-                  className="lg:h-[10rem] h-full w-full object-cover"
-                  width={300}
-                  height={300}
-                  src={item?.craftsmanshipImg}
-                  alt={item?.title}
-                />
+        {itemsToDisplay.map((item, idx) => (
+          <div
+            key={idx}
+            className="w-full lg:h-[10rem] h-full lg:space-x-3 flex lg:flex-row flex-col-reverse"
+          >
+            <div className="lg:w-[80%] w-full h-full bg-white lg:rounded-[0.5rem] rounded-b-[0.5rem] p-[0.5rem] lg:p-[1rem]">
+              <h2 className="text-[#483d73] font-medium lg:text-[1.6rem] text-[1rem]">
+                {item.title}
+              </h2>
+              <div className="h-max w-full lg:pl-[2rem] lg:mt-[0.5rem] mt-[0.2rem]">
+                <p className="lg:text-[1rem] text-sm w-[98%]">
+                  {item.description}
+                </p>
               </div>
             </div>
-          ))
-        ) : (
-          <p className="text-red-500">No items available for this product.</p>
-        )}
+            <div className="lg:w-[20%] w-full h-full lg:rounded-[0.5rem] rounded-t-[0.5rem] overflow-hidden">
+              <Image
+                className="lg:h-[10rem] h-full w-full object-cover"
+                width={300}
+                height={300}
+                src={item.craftsmanshipImg}
+                alt={item.title}
+              />
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -37,6 +37,10 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
       .replace(/-/g, " ") // Replace all '-' with spaces
       .replace(/\b\w/g, (char) => char.toUpperCase()); // Capitalize every word's first letter
   }
+  function transformString(input) {
+    // Replace hyphens with spaces and then replace the word 'machine' with 'icon'
+    return input.replace(/-/g, " ").replace(/\bmachine\b/, "icon");
+  }
 
   const breadcrumbItems = [
     { label: "Home", href: "/" },
@@ -47,7 +51,9 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
           ? formatString(card?.secondLink)
           : activeStep,
       href: `/products/${
-        activeStep === "All paper Products" ? card?.secondLink : card?.secondLink
+        activeStep === "All paper Products"
+          ? card?.secondLink
+          : card?.secondLink
       }`,
     },
     { label: card?.firstname },
@@ -82,7 +88,7 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
                 >
                   <Image
                     src={card?.icon}
-                    alt="icon"
+                    alt={`${transformString(card?.secondLink)}`}
                     height={100}
                     width={100}
                     loading="lazy"
@@ -128,7 +134,7 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
             <div className="bg-[#f2f2f2] overflow-hidden w-full h-full rounded-2xl flex flex-col items-center">
               <Image
                 src={card?.image}
-                alt={card?.title}
+                alt={`${transformString(card?.secondLink)}`}
                 height={640}
                 width={480}
                 className="lg:h-44 h-32 w-auto rounded-xl lg:mt-10 mt-9 hover:scale-90 transition-all duration-300"
@@ -173,41 +179,41 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
                   height={400}
                   className="rounded-2xl object-fill lg:object-contain lg:h-[25rem] -mt-6 hover:scale-80 transition-all duration-300"
                 />
-                </Link>
-                <div
-                  className={`absolute top-0 -left-4 ${
-                    !card?.speed && !card?.unit ? "ml-4" : "ml-0"
-                  }`}
-                >
-                  <Image
-                    src={card?.icon}
-                    className="h-16 w-auto"
-                    alt="icon"
-                    height={100}
-                    width={100}
-                    loading="lazy"
-                    quality={75}
-                  />
-                </div>
+              </Link>
+              <div
+                className={`absolute top-0 -left-4 ${
+                  !card?.speed && !card?.unit ? "ml-4" : "ml-0"
+                }`}
+              >
+                <Image
+                  src={card?.icon}
+                  className="h-16 w-auto"
+                  alt="icon"
+                  height={100}
+                  width={100}
+                  loading="lazy"
+                  quality={75}
+                />
+              </div>
 
-                  {/* Speed and Title Section */}
-                {(card?.speed || card?.unit) && (
-                  <div className="flex items-center justify-center ml-2 absolute top-0 left-12">
-                    <div className="relative h-10 w-10 lg:h-14 lg:w-14 border-2 border-[#483d78] rounded-full bg-white inset-0 flex flex-col items-center justify-center">
-                      {card?.speed && (
-                        <span className="text-xs lg:text-[1.1rem] font-bold text-red-700 mt-3">
-                          {card?.speed}
-                        </span>
-                      )}
-                      {card?.unit && (
-                        <span className="mt-1 text-[0.3rem] lg:text-[0.45rem] lg:w-[2rem] w-[1.6rem] h-[0.8rem] lg:h-[1.2rem] font-bold text-[#483d78] whitespace-normal break-words">
-                          {card?.unit}
-                        </span>
-                      )}
-                    </div>
+              {/* Speed and Title Section */}
+              {(card?.speed || card?.unit) && (
+                <div className="flex items-center justify-center ml-2 absolute top-0 left-12">
+                  <div className="relative h-10 w-10 lg:h-14 lg:w-14 border-2 border-[#483d78] rounded-full bg-white inset-0 flex flex-col items-center justify-center">
+                    {card?.speed && (
+                      <span className="text-xs lg:text-[1.1rem] font-bold text-red-700 mt-3">
+                        {card?.speed}
+                      </span>
+                    )}
+                    {card?.unit && (
+                      <span className="mt-1 text-[0.3rem] lg:text-[0.45rem] lg:w-[2rem] w-[1.6rem] h-[0.8rem] lg:h-[1.2rem] font-bold text-[#483d78] whitespace-normal break-words">
+                        {card?.unit}
+                      </span>
+                    )}
                   </div>
-                )}
-              
+                </div>
+              )}
+
               <div className="flex items-center lg:space-x-8 space-x-4 justify-center w-full">
                 <div className="flex lg:w-1/2 items-center space-x-2 lg:space-x-8 justify-center lg:mt-8">
                   <Link

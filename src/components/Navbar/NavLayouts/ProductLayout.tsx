@@ -14,8 +14,8 @@ interface Machine {
   link: string;
   name: string;
   image: string;
-  mimage: string; // Added this field based on the error message
-  category: string; // Changed this from string[] to string
+  mimage: string;
+  category: string;
 }
 
 interface Link {
@@ -62,7 +62,6 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
   );
 
   const totalVisible = 6;
-  const mobileVisibleItems = totalVisible - 2;
 
   const handleNext = useCallback(() => {
     setCurrentIndex((prevIndex) =>
@@ -122,31 +121,13 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
     setCurrentIndex(0);
   }, [hoveredCategory]);
 
-  const imageVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: { delay: i * 0.05, duration: 0.2, ease: "easeInOut" },
-    }),
-  };
-
-  const sidebarVariants = {
-    hidden: { opacity: 0, x: -30 },
-    visible: (i: number) => ({
-      opacity: 1,
-      x: 0,
-      transition: { delay: i * 0.02, duration: 0.2, ease: "easeOut" },
-    }),
-  };
-
   const renderMachineItem = useCallback(
     (machine: Machine) => (
-      <div className="text-center relative w-1/3 p-2">
+      <div className="text-center relative w-1/3 p-2" key={machine.name}>
         <Link
           className="flex flex-col items-center"
           href={`/${countryCODE}/${languageCODE}/products${machineLink}/${machine?.link}`}
-          onClick={() => setActive(null)}
+          onClick={() => setActive && setActive(null)}
         >
           <div className="flex h-[10rem] overflow-hidden">
             <Image
@@ -157,24 +138,20 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
               height={150}
               loading="lazy"
             />
-            {/* <div className="border-[0.15rem] border-red-700 h-10 w-10 rounded-full font-poppins flex flex-col justify-center items-center">
-            <p className="text-xs font-semibold text-red-700">80</p>
-            <p className="text-[0.4rem] font-semibold">pch/min</p>
-          </div> */}
           </div>
           <h3
             className={`${
               componentCode === "knowledge-center"
-                ? "hover:text-[#bfb3f0]"
-                : "hover:text-[#483d78]"
-            } text-base font-normal mt-2 hover:font-semibold  invert-0 relative z-20`}
+                ? "lg:hover:text-[#bfb3f0]"
+                : "lg:hover:text-[#483d78]"
+            } text-base font-normal mt-2 lg:hover:font-semibold invert-0 relative z-20`}
           >
             {machine.name}
           </h3>
         </Link>
       </div>
     ),
-    [countryCode, imageVariants]
+    [countryCode, languageCODE, machineLink, componentCode, setActive]
   );
 
   const renderSidebarItem = useCallback(
@@ -189,14 +166,14 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
         onClick={() => handleCategoryClick(link?.name, link?.name)}
         className={`flex items-center space-x-4 text-base font-normal transition-colors duration-300 cursor-pointer ${
           componentCode === "knowledge-center"
-            ? "hover:text-[#bfb3f0] hover:font-semibold"
-            : "hover:text-[#483d78] hover:font-semibold"
+            ? "lg:hover:text-[#bfb3f0] lg:hover:font-semibold"
+            : "lg:hover:text-[#483d78] lg:hover:font-semibold"
         } `}
       >
         <Link
           className="flex w-full gap-2 flex-row"
           href={`/${countryCODE}/${languageCODE}/products${link.link}`}
-          onClick={() => setActive(null)}
+          onClick={() => setActive && setActive(null)}
         >
           <div className="flex items-center justify-center cursor-pointer">
             <BlurImage
@@ -212,7 +189,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
         </Link>
       </div>
     ),
-    [countryCode, handleCategoryClick, hoveredCategory, sidebarVariants]
+    [countryCode, languageCODE, handleCategoryClick, componentCode, setActive]
   );
 
   return (
@@ -222,11 +199,11 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
     >
       {/* Desktop View */}
       <div className="w-full hidden lg:flex flex-col gap-10 lg:flex-row rounded-lg overflow-hidden">
-        <div className="flex justify-center  w-full md:w-[75%]  relative">
+        <div className="flex justify-center w-full md:w-[75%] relative">
           {filteredMachines?.length > totalVisible && (
             <button
               onClick={handlePrev}
-              className={`absolute invert-0 left-0  h-6 w-6 sm:h-8 sm:w-8 bg-[#9e9c9c] hidden md:flex hover:bg-black rounded-full items-center justify-center ${
+              className={`absolute invert-0 left-0 h-6 w-6 sm:h-8 sm:w-8 bg-[#9e9c9c] hidden md:flex hover:bg-black rounded-full items-center justify-center ${
                 currentIndex === 0 ? "opacity-20" : "opacity-100"
               }`}
               style={{ top: "50%", transform: "translateY(-50%)" }}
@@ -260,7 +237,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
           {filteredMachines?.length > totalVisible && (
             <button
               onClick={handleNext}
-              className={`absolute invert-0  text-3xl  right-0 z-10 h-6 w-6 sm:h-8 sm:w-8 bg-[#9e9c9c] hidden md:flex hover:bg-black rounded-full items-center justify-center ${
+              className={`absolute invert-0 text-3xl right-0 z-10 h-6 w-6 sm:h-8 sm:w-8 bg-[#9e9c9c] hidden md:flex hover:bg-black rounded-full items-center justify-center ${
                 currentIndex + totalVisible >= filteredMachines?.length
                   ? "opacity-20"
                   : "opacity-100"
@@ -289,7 +266,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
           <div className="w-full h-full">
             {sidebarIndex > 0 && (
               <button
-                className="absolute -top-2 left-0 right-10 mx-auto z-10 text-2xl rounded-full  p-0 transition-all transform hover:scale-125 -rotate-90"
+                className="absolute -top-2 left-0 right-10 mx-auto z-10 text-2xl rounded-full p-0 transition-all transform hover:scale-125 -rotate-90"
                 style={{ width: "40px", height: "40px" }}
                 onClick={handleSidebarPrev}
               >
@@ -300,12 +277,12 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
             <div className="overflow-hidden flex flex-col space-y-5 items-center justify-start w-full py-10 h-full">
               {navRightData
                 .slice(sidebarIndex, sidebarIndex + 8)
-                .map(renderSidebarItem, sidebarIndex)}
+                .map(renderSidebarItem)}
             </div>
 
             {sidebarIndex + 8 < navRightData?.length && (
               <button
-                className="absolute left-0 -bottom-2 right-10  mx-auto  text-2xl rounded-full  p-0 transition-all transform hover:scale-125 rotate-90"
+                className="absolute left-0 -bottom-2 right-10 mx-auto text-2xl rounded-full p-0 transition-all transform hover:scale-125 rotate-90"
                 style={{ width: "40px", height: "40px" }}
                 onClick={handleSidebarNext}
               >
@@ -339,7 +316,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                         <div className="flex flex-row space-x-3 cursor-pointer">
                           <div className="flex items-center justify-center">
                             <BlurImage
-                              className="rounded-full h-6 w-6 ml-1 duration-200 object-cover"
+                              className="h-6 w-6 ml-1 duration-200 object-cover"
                               src={link?.icon}
                               alt={link?.name}
                               width={24}
@@ -366,77 +343,32 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                         <div className="inset-0 w-full bg-white h-full z-50 flex flex-col overflow-hidden">
                           <div className="py-4 px-2 h-full flex-grow overflow-y-auto">
                             <div className="text-sm text-gray-700">
-                              <div className="grid h-[22rem] border-t-[1px] grid-cols-2 py-4 gap-4 w-full">
-                                {filteredMachines?.length <= mobileVisibleItems
-                                  ? filteredMachines?.map((machine, index) => (
-                                      <div
-                                        key={`${machine?.name}-${index}`}
-                                        className="text-center h-40 rounded-2xl border-2 p-2"
-                                      >
-                                        <Image
-                                          src={machine?.image}
-                                          alt={machine?.name}
-                                          className="object-contain transform transition-transform duration-200 bg-white rounded-xl h-24 border-[1px] w-full"
-                                          width={200}
-                                          height={150}
-                                        />
-                                        <h3 className="text-sm invert-0 mt-2 w-full font-bold">
-                                          {machine?.name}
-                                        </h3>
-                                      </div>
-                                    ))
-                                  : filteredMachines
-                                      .slice(
-                                        currentIndex,
-                                        currentIndex + mobileVisibleItems
-                                      )
-                                      .map((machine, index) => (
-                                        <div
-                                          key={`${machine?.name}-${index}`}
-                                          className="text-center h-40 rounded-xl p-2 border-2"
-                                        >
-                                          <BlurImage
-                                            src={machine?.image}
-                                            alt={machine?.name}
-                                            className="object-contain transform transition-transform duration-200 border-[1px] rounded-xl h-24 w-full"
-                                            width={200}
-                                            height={150}
-                                            loading="lazy"
-                                          />
-                                          <h4 className="text-sm invert-0 font-bold mt-2">
-                                            {machine?.name}
-                                          </h4>
-                                        </div>
-                                      ))}
-                              </div>
-                              <div className="relative w-full space-x-4 flex  h-[5%] justify-center items-center">
-                                {filteredMachines?.length >
-                                  mobileVisibleItems && (
-                                  <>
-                                    <button
-                                      onClick={handlePrev}
-                                      className={`invert-0 text-3xl transition-all ${
-                                        currentIndex === 0
-                                          ? "opacity-20"
-                                          : "opacity-100"
-                                      }`}
-                                      disabled={currentIndex === 0}
-                                    ></button>
-                                    <button
-                                      onClick={handleNext}
-                                      className={`invert-0  text-3xl transition-all ${
-                                        currentIndex + mobileVisibleItems >=
-                                        filteredMachines?.length
-                                          ? "opacity-20"
-                                          : "opacity-100"
-                                      }`}
-                                      disabled={
-                                        currentIndex + mobileVisibleItems >=
-                                        filteredMachines?.length
+                              <div className="grid h-[22rem] border-t-[1px] grid-cols-2 py-4 gap-4 w-full overflow-y-auto">
+                                {filteredMachines?.map((machine, index) => (
+                                  <div
+                                    key={`${machine?.name}-${index}`}
+                                    className="text-center h-40 rounded-xl p-2 border-2"
+                                  >
+                                    <Link
+                                      href={`/${countryCODE}/${languageCODE}/products${machineLink}/${machine?.link}`}
+                                      onClick={() =>
+                                        setActive && setActive(null)
                                       }
-                                    ></button>
-                                  </>
-                                )}
+                                    >
+                                      <BlurImage
+                                        src={machine?.image}
+                                        alt={machine?.name}
+                                        className="object-contain transform transition-transform duration-200 border-[1px] rounded-xl h-24 w-full"
+                                        width={200}
+                                        height={150}
+                                        loading="lazy"
+                                      />
+                                      <h4 className="text-sm invert-0 font-bold mt-2">
+                                        {machine?.name}
+                                      </h4>
+                                    </Link>
+                                  </div>
+                                ))}
                               </div>
                             </div>
                           </div>

@@ -91,7 +91,7 @@ const MenuItem = ({
       <Link
         className="invert-0 text-base font-light"
         href={`/${countryCode}/${languageCode}/${link}`}
-        onClick={()=>setActive(null)}
+        onClick={() => setActive(null)}
       >
         {item}
       </Link>
@@ -106,7 +106,7 @@ const MenuItem = ({
               layout
               className="w-screen z-[99999] mx-auto h-full px-12"
             >
-              {React.Children.map(children, child =>
+              {React.Children.map(children, (child) =>
                 React.cloneElement(child as React.ReactElement, { setActive })
               )}
             </motion.div>
@@ -140,4 +140,3 @@ const Cursor = ({
 };
 
 export default MenuItem;
-

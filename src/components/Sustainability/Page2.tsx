@@ -22,11 +22,6 @@ const Page2:React.FC<MainLayoutProps> = ({sustainData}) => {
   const cupRef = useRef(null);
   const screen = useRef(null);
 
- 
-
-
-
-
   useEffect(() => {
    
     // Scroll animation
@@ -202,12 +197,12 @@ const Page2:React.FC<MainLayoutProps> = ({sustainData}) => {
     playsInline
     preload="metadata"
   >
-    <source src="https://res.cloudinary.com/dlti4o10e/image/upload/v1728990173/samples/landscapes/beach-boat.jpg" type="video/mp4" />
+    <source src="https://assets.nesscoindustries.com/public/assets/about/sustainability/sustainibility-carbon-footprint-video.webm" type="video/mp4" />
   </video>
 </div>
           <div>
             <Image
-              src="https://res.cloudinary.com/dlti4o10e/image/upload/v1728990173/samples/landscapes/beach-boat.jpg"
+              src={data?.leftFootprint}
               alt="footprint"
               width={40}
               height={40}
@@ -215,7 +210,7 @@ const Page2:React.FC<MainLayoutProps> = ({sustainData}) => {
               ref={leftFootRef}
             /> 
             <Image
-              src="https://res.cloudinary.com/dlti4o10e/image/upload/v1728990173/samples/landscapes/beach-boat.jpg"
+              src={data?.rightFootprint}
               alt="footprint"
               width={40}
               height={40}
@@ -224,10 +219,10 @@ const Page2:React.FC<MainLayoutProps> = ({sustainData}) => {
             />
             <div className=" lg:block hidden text-center lg:text-left">
           <h1 className="lg:text-[3.2rem] text-4xl font-poppins font-medium lg:mb-3">
-           
+           {data?.title1}
           </h1>
           <h1 className="lg:text-[3.2rem] text-2xl font-poppins text-[#95C43C] font-medium">
-         
+         {data?.title2}
           </h1>
         </div>
             <div className=" w-full h-[20rem] bg-[#0D340F] lg:rounded-[40px] rounded-2xl mt-5 relative ">
@@ -235,14 +230,14 @@ const Page2:React.FC<MainLayoutProps> = ({sustainData}) => {
                 {data?.description}
               </p>
             <Image
-                src="https://res.cloudinary.com/dlti4o10e/image/upload/v1728990173/samples/landscapes/beach-boat.jpg"
+                src={data?.leafs}
                 alt="leafs"
                 width={55}
                 height={55}
                 className="absolute lg:top-5 -left-6 top-1"
               />
               <Image
-                src="https://res.cloudinary.com/dlti4o10e/image/upload/v1728990173/samples/landscapes/beach-boat.jpg"
+                src={data?.cup}
                 alt="cup"
                 width={80}
                 height={80}

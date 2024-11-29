@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SustainabilityData,ThirdPageData } from "./types/constant";
+import Image from "next/image";
 
 interface MainLayoutProps{
   sustainData:SustainabilityData;
@@ -45,16 +46,18 @@ const Page3:React.FC<MainLayoutProps> = ({sustainData}) => {
 
   return (
     <>
-      <div className="flex items-center justify-center h-full overflow-hidden lg:mt-[10rem] mt-[10rem] md:mt-0 font-poppins lg:mb-5">
+      <div className="flex items-center justify-center h-full overflow-hidden lg:mt-[10rem] mt-[15rem] md:mt-0 font-poppins lg:mb-5">
         <div
           className="bg-[#388E3C] lg:h-[29rem] h-[43rem] relative lg:w-full w-[22rem] md:w-full mx-4 mt-[10rem] lg:mx-[5rem] lg:ounded-[2rem] rounded-2xl"
           ref={screen}
         >
-          {/* <Image
-            src={data.Sustainability[3].Data?.branchLeaves}
+          <Image
+            src="https://assets.nesscoindustries.com/public/assets/about/sustainability/sustainability-bushes.webp"
             alt="branchLeaves"
+            height={2000}
+            width={2000}
             className="absolute lg:-top-[9.1rem] lg:-left-[5rem] -top-10 -left-5 z-[300]"
-          /> */}
+          /> 
 
           <div className="flex absolute lg:left-[3.3rem] lg:top-[1.5rem] top-16 font-poppins">
             <h2 className="lg:text-[3.3rem] md:text-6xl font-extrabold md:font-bold text-white z-[301] text-4xl pl-16 lg:pl-0">
@@ -69,12 +72,14 @@ const Page3:React.FC<MainLayoutProps> = ({sustainData}) => {
               {data?.description}
             </p>
           </div>
-          {/* <Image
-            src={data.Sustainability[3].Data?.globe}
+          <Image
+            src="https://assets.nesscoindustries.com/public/assets/about/sustainability/sustainability-globe-gif.gif"
             alt="globe"
-            className="absolute -bottom-[0.5rem] lg:-right-[5.5rem] -right-[7rem] lg:w-[22rem] w-[15rem]"
+            width={50}
+            height={50}
+            className="absolute bottom-[1rem] lg:-right-[6rem] -right-[7rem] lg:w-[10rem] w-[8rem] -rotate-45"
             ref={globeRef}
-          /> */}
+          />
         </div>
       </div>
     </>

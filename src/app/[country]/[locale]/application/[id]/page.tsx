@@ -3,27 +3,41 @@ import { ApplicationLayoutItem } from "@/components/applicationLayout/types/cons
 import { Metadata } from "next";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import React from "react";
+
 const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
 const locales = ["en", "fr", "nl", "de", "es", "hi", "ta"] as const;
+
 type Props = {
-  params: { locale: string };
+  params: { locale: string; id: string };
 };
+
 // Revalidate every 60 seconds (or any time period you prefer)
 export const revalidate = 60;
-// Fetch home data based on the locale
+
+// Fetch application layout data and FAQ data based on the locale
 async function fetchapplicationLayoutData(
   locale: string
-): Promise<ApplicationLayoutItem | null> {
+): Promise<{ botData: ApplicationLayoutItem | null; faqData: any | null }> {
   try {
     const res = await fetch(`${apiUrl}${locale}/applicationlayout.json`);
-    const data = await res.json();
-    return data;
+    const faqRes = await fetch(`${apiUrl}${locale}/faq.json`);
+    const botData = await res.json();
+    const faqData = await faqRes.json();
+
+    return { botData, faqData };
   } catch (error) {
+    // Fallback to English data if the locale fails
     const fallbackRes = await fetch(`${apiUrl}en/applicationlayout.json`, {
       cache: "no-store", // Ensures no caching for the fallback as well
     });
-    const data = await fallbackRes.json();
-    return data;
+    const fallbackFaqRes = await fetch(`${apiUrl}en/faq.json`, {
+      cache: "no-store",
+    });
+
+    const botData = await fallbackRes.json();
+    const faqData = await fallbackFaqRes.json();
+
+    return { botData, faqData };
   }
 }
 
@@ -36,9 +50,9 @@ export async function generateMetadata({
     locale = "en";
   }
 
-  const applicationLayoutData = await fetchapplicationLayoutData(locale);
+  const { botData } = await fetchapplicationLayoutData(locale);
 
-  if (!applicationLayoutData) {
+  if (!botData) {
     return {
       title: "Default Title",
       description: "Default Description",
@@ -67,7 +81,7 @@ export async function generateMetadata({
   }
 
   const seoData =
-    applicationLayoutData?.ApplicationLayout[0]?.applicationLayoutSeoData;
+    botData?.ApplicationLayout[0]?.applicationLayoutSeoData;
 
   return {
     title: seoData?.title,
@@ -90,8 +104,8 @@ export async function generateMetadata({
   };
 }
 
-// Home component rendering the MainLayout with fetched data
-export default async function about({ params: { locale } }: Props) {
+// About component rendering the Pages component with fetched data
+export default async function about({ params: { locale, id } }: Props) {
   // Set default locale if not in supported list
   if (!locales.includes(locale as any)) {
     locale = "en"; // Fallback to English
@@ -100,19 +114,19 @@ export default async function about({ params: { locale } }: Props) {
   // Set the locale for the request
   unstable_setRequestLocale(locale);
 
-  // Fetch home data based on the locale
-  const applicationLayoutData = await fetchapplicationLayoutData(locale);
+  // Fetch application layout data and FAQ data based on the locale
+  const { botData, faqData } = await fetchapplicationLayoutData(locale);
 
   // Fetch translations based on the locale
   const t = await getTranslations({ locale });
 
-  if (!applicationLayoutData) {
+  if (!botData) {
     return <p>{t("failedToLoadData")}</p>;
   }
 
   return (
     <main>
-      <Pages applicationLayoutData={applicationLayoutData} />
+      <Pages applicationLayoutData={botData} faqData={faqData} id={id} />
     </main>
   );
 }

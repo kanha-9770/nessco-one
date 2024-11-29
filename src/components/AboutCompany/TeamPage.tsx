@@ -47,9 +47,9 @@ const TeamPage:React.FC<AboutLayoutProps> =({companyData})=> {
       ref={containerRef}
     >
       <div className="absolute top-12 w-full text-center z-10 ">
-        <h1 className="lg:text-3xl text-2xl font-medium  font-poppins text-white">
+        {/* <h1 className="lg:text-3xl text-2xl font-medium  font-poppins text-white">
          {homecompanyData?.heading} <span className="text-red-600">{homecompanyData?.highlight}</span>
-        </h1>
+        </h1> */}
         <h1 className="lg:text-lg text-2xl font-regular font-poppins text-white">
          {homecompanyData?.quote}
         </h1>

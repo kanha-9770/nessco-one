@@ -424,11 +424,9 @@ const validCountryISOs = [
 // const defaultLocale = "en";
 // Function to fetch user location based on client IP address using ipwhois.app
 
-
 const validLocales = ['af', 'sq', 'am', 'ar', 'hy', 'az', 'eu', 'be', 'bn', 'bs', 'bg', 'my', 'ca', 'ny', 'zh', 'co', 'hr', 'cs', 'da', 'nl', 'en', 'eo', 'et', 'fi', 'fr', 'fy', 'gd', 'gl', 'ka', 'de', 'el', 'gu', 'ht', 'ha', 'he', 'hi', 'hu', 'is', 'ig', 'id', 'ga', 'it', 'ja', 'jv', 'kn', 'kk', 'km', 'rw', 'ky', 'ko', 'ku', 'la', 'lb', 'lo', 'lt', 'lv', 'mk', 'mg', 'ms', 'ml', 'mt', 'mi', 'mr', 'mn', 'ne', 'no', 'nb', 'or', 'ps', 'fa', 'pl', 'pt', 'pa', 'ro', 'ru', 'sm', 'sr', 'sn', 'sd', 'si', 'sk', 'sl', 'so', 'st', 'es', 'su', 'sw', 'sv', 'ta', 'te', 'tg', 'th', 'tk', 'tl', 'tr', 'tt', 'ug', 'uk', 'ur', 'uz', 'vi', 'cy', 'xh', 'yi', 'yo', 'zu'];
 const defaultLocale = "en";
 
-// Helper function to set cookies
 function setCookie(
   name: string,
   value: string,
@@ -438,28 +436,25 @@ function setCookie(
   res.cookies.set(name, value, { path });
 }
 
-// Helper function to get the browser language from the 'accept-language' header
 function getBrowserLanguage(req: NextRequest) {
   const acceptLanguageHeader = req.headers.get("accept-language");
   if (!acceptLanguageHeader) return defaultLocale;
-  // Extract the first preferred language from the 'accept-language' header
   const browserLanguage = acceptLanguageHeader.split(",")[0]?.split("-")[0];
   console.log("Browser language detected:", browserLanguage);
   return validLocales.includes(browserLanguage) ? browserLanguage : defaultLocale;
 }
 
-// Fetch the user's location based on IP
 async function fetchUserLocation(req: NextRequest) {
   console.log("Fetching client IP address...");
   const myip = "106.219.68.189"; // For development
-  const isDevelopment = true;
+  const isDevelopment = process.env.NODE_ENV === 'development';
   const clientIP =
     req.headers.get("x-forwarded-for")?.split(",")[0] ||
     req.headers.get("x-real-ip");
   const newClientIp = isDevelopment ? myip : clientIP;
   if (!newClientIp) {
     console.error("Unable to detect client IP address.");
-    return { country: "us", language: "en" };
+    return { country: "us", language: "en", ipData: null };
   }
   console.log("Detected client IP address:", newClientIp);
   const nesscoUrl =`https://ipinfo.io/${newClientIp}/json/`;
@@ -472,6 +467,7 @@ async function fetchUserLocation(req: NextRequest) {
         country:
           data.country?.toLowerCase() || data.country_code?.toLowerCase(),
         language: "en",
+        ipData: data,
       };
     }
   } catch (error) {
@@ -494,6 +490,7 @@ async function fetchUserLocation(req: NextRequest) {
           country:
             data.country?.toLowerCase() || data.country_code?.toLowerCase(),
           language: "en",
+          ipData: data,
         };
       }
     } catch (error) {
@@ -502,10 +499,9 @@ async function fetchUserLocation(req: NextRequest) {
   }
 
   console.error("All IP services failed, using default location.");
-  return { country: "us", language: "en" };
+  return { country: "us", language: "en", ipData: null };
 }
 
-// Middleware to handle redirection and validation
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
   console.log("Current path:", pathname);
@@ -527,13 +523,18 @@ export async function middleware(req: NextRequest) {
   }
 
   const userLocation = await fetchUserLocation(req);
-  const { country: detectedCountry } = userLocation;
+  const { country: detectedCountry,  ipData } = userLocation;
   const browserLanguage = getBrowserLanguage(req);
   console.log("Detected user country:", detectedCountry);
   console.log("Browser language:", browserLanguage);
 
   setCookie("country", detectedCountry, { res, path: "/" });
   setCookie("language", browserLanguage, { res, path: "/" });
+
+  // Set IP data in a cookie for client-side access
+  if (ipData) {
+    setCookie("ipData", JSON.stringify(ipData), { res, path: "/" });
+  }
 
   const redirectURL = `/${detectedCountry}/${browserLanguage}`;
   const url = req.nextUrl.clone();
@@ -542,7 +543,6 @@ export async function middleware(req: NextRequest) {
   return NextResponse.redirect(url);
 }
 
-// Define the matcher for the middleware to run only on specific routes
 export const config = {
   matcher: [
     "/((?!_next/static|_next/image|favicon.ico|api).*)",

@@ -41,9 +41,10 @@ const Page1: React.FC<CombinedProps> = ({
   // Update selected product when the route changes
   useEffect(() => {
     if (pathname) {
-      const matchedProduct = Header.icons.find(
+      
+      const matchedProduct = Header?.icons?.find(
         (item) =>
-          encodeURIComponent(item.title).toLowerCase() ===
+          encodeURIComponent(item?.title).toLowerCase() ===
           pathname.split("/").pop()?.toLowerCase()
       );
       if (matchedProduct) {
@@ -73,10 +74,18 @@ const Page1: React.FC<CombinedProps> = ({
     }
   };
 
+ 
+  function convertToHyphenatedString(inputString) {
+    // Convert the string to lowercase and trim any leading/trailing spaces
+    const cleanedString = inputString.toLowerCase().trim();
+    // Replace spaces with hyphens
+    const hyphenatedString = cleanedString.replace(/ +/g, '-');
+    return hyphenatedString;
+}
   // Handle product click: update state and change route
   const handleProductClick = (item: Product) => {
     setSelectedProduct(item);
-    router.push(`/in/application/${encodeURIComponent(item.title)}`);
+    router.push(`${encodeURIComponent(convertToHyphenatedString(item?.title))}`);
   };
 
   // Title resize on scroll
@@ -115,7 +124,7 @@ const Page1: React.FC<CombinedProps> = ({
         )
           .to(
             titleRef.current.querySelectorAll("span"),
-            { color: "#424242", fontWeight: "300" },
+            { color: "#424242", fontWeight: "500" },
             "<"
           )
           .to(titleRef.current, { boxShadow: "none" }, "<");
@@ -161,7 +170,7 @@ const Page1: React.FC<CombinedProps> = ({
 
             {selectedProduct?.image && (
               <Image
-                className="h-full lg:w-[4rem] w-[2.5rem] absolute right-2 lg:top-2"
+                className="h-auto lg:w-[4rem] w-[2.5rem] absolute right-2 lg:top-2"
                 width={100}
                 height={100}
                 src={selectedProduct?.img}
@@ -172,14 +181,14 @@ const Page1: React.FC<CombinedProps> = ({
 
           <div className="lg:w-[82vw] w-[95vw] lg:mt-[4rem] overflow-hidden">
             <button
-              className="absolute lg:bottom-[4rem] -bottom-[2rem] lg:left-4 right-14"
+              className="absolute lg:bottom-[4rem] -bottom-[3rem] lg:left-4 right-16"
               aria-label="Left"
               onClick={scrollLeft}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 64 64"
-                className="lg:w-6 w-5 lg:h-6 h-5"
+                viewBox="0 0 68 64"
+                className="w-10 lg:w-8 h-10 lg:h-8"
               >
                 <circle
                   cx="32"
@@ -194,14 +203,14 @@ const Page1: React.FC<CombinedProps> = ({
               </svg>
             </button>
             <button
-              className="absolute lg:bottom-[4rem] -bottom-[2rem] right-4"
+              className="absolute lg:bottom-[4rem] -bottom-[3rem] right-4"
               aria-label="Right"
               onClick={scrollRight}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 64 64"
-                className="lg:w-6 w-5 lg:h-6 h-5"
+                viewBox="0 0 68 64"
+                className="w-10 lg:w-8 h-10 lg:h-8"
               >
                 <circle
                   cx="32"
@@ -219,7 +228,7 @@ const Page1: React.FC<CombinedProps> = ({
               className="flex justify-center items-center overflow-auto w-full scrollbar-hide"
               ref={carouselRef}
             >
-              <div className="w-max lg:mt-[2rem] mt-[0.5rem] flex justify-center lg:pl-[50rem] pl-[45rem]">
+              <div className="w-max lg:mt-[2rem] mt-[0.5rem] flex justify-center lg:pl-0 pl-[18rem]">
                 {Header?.icons?.map((item, idx) => (
                   <div
                     key={idx}
@@ -228,9 +237,9 @@ const Page1: React.FC<CombinedProps> = ({
                     onClick={() => handleProductClick(item)}
                   >
                     <Image
-                      className={`lg:h-[5rem] h-[4rem] z-10 rounded-xl border-2 group-hover:border-[#483d73] ${
+                      className={`lg:h-[5rem] w-auto h-[4rem] p-1 z-10  border-2 group-hover:border-[#483d73] group-hover:rounded-xl ${
                         selectedProduct?.title === item.title
-                          ? "bg-clip-padding custom-gradient-border"
+                          ? "bg-[#f5f5f5] border-[0.2rem] border-[#483d73] rounded-xl"
                           : "border-white"
                       }`}
                       width={100}

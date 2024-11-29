@@ -1,21 +1,23 @@
-import Pages from "@/components/blogsLayout/Pages";
 import { BlogsLayoutItem } from "@/components/blogsLayout/types/constant";
 import { Metadata } from "next";
 import { cookies } from "next/headers"; // Server-side (Next.js app directory)
 
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import React from "react";
+import BlogGeneric from "@/components/StaticBlogs/Blog/BlogGeneric";
 const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
 const locales = ["en", "fr", "nl", "de", "es", "hi", "ta"] as const;
 const countryUrl = "https://countryjson.nesscoindustries.com/";
 
 type Props = {
-  params: { locale: string };
+  params: { locale: string; id: string };
 };
 // Revalidate every 60 seconds (or any time period you prefer)
 export const revalidate = 60;
 // Fetch home data based on the locale
-async function fetchblogsLayoutData(locale: string): Promise<BlogsLayoutItem | null> {
+async function fetchblogsLayoutData(
+  locale: string
+): Promise<BlogsLayoutItem | null> {
   try {
     const res = await fetch(`${apiUrl}${locale}/blogsLayout.json`);
     const data = await res.json();
@@ -125,7 +127,7 @@ export async function generateMetadata({
 }
 
 // Home component rendering the MainLayout with fetched data
-export default async function about({ params: { locale } }: Props) {
+export default async function about({ params: { locale,id } }: Props) {
   // Set default locale if not in supported list
   if (!locales.includes(locale as any)) {
     locale = "en"; // Fallback to English
@@ -146,7 +148,7 @@ export default async function about({ params: { locale } }: Props) {
 
   return (
     <main>
-      <Pages blogsLayoutData={blogsLayoutData}/>
+      <BlogGeneric id={id} />
     </main>
   );
 }

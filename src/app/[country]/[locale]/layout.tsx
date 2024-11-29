@@ -9,6 +9,7 @@ import {
 } from "@/components/Constants/Navbar/config";
 import dynamic from "next/dynamic";
 import { locales } from "@/i18n";
+import { FormProvider } from "./context/FormContext";
 const FooterLayout = dynamic(() => import("@/components/Footer/FooterLayout"));
 const inter = Inter({
   subsets: ["latin"],
@@ -99,18 +100,22 @@ export default async function RootLayout({
   unstable_setRequestLocale(locale);
 
   // Fetch translations for the locale
- 
 
   return (
     <html lang={`${locale}-${country.toUpperCase()}`}>
       <head>{generateHreflangLinks(country)}</head>
       <body className={`${inter.variable} ${poppins.variable}`}>
         {/* NextIntlClientProvider wraps the children with messages and locale */}
-          {/* Navbar with internationalization */}
-          <NavLayout params={{ locale }} />
-          {/* Page content */}
+        {/* Navbar with internationalization */}
+        <NavLayout params={{ locale }} />
+
+        {/* Page content */}
+        <FormProvider>
           {children}
-          <div><FooterLayout params={{ locale }} /></div>
+        </FormProvider>
+        <div>
+          <FooterLayout params={{ locale }} />
+        </div>
         <Script
           src="https://cdn.pagesense.io/js/nesscoindia/ff3c25fdacd845338fcb5edd343fcde6.js"
           strategy="lazyOnload"

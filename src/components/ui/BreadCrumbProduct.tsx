@@ -1,6 +1,7 @@
 import React from "react";
 import Arrow from "../../../public/assets/product/Arrow.png";
 import Image from "next/image";
+import LinkUrl from "../LinkUrl"
 
 interface BreadcrumbItem {
   label: string;
@@ -19,7 +20,7 @@ const BreadcrumbProduct: React.FC<BreadcrumbProps> = ({ items }) => {
         {items?.map((item, index) => (
           <li key={index} className="inline-flex items-center mb-2">
             {item?.href ? (
-              <a
+              <LinkUrl
                 href={item?.href}
                 className={`inline-flex items-center text-sm md:text-lg font-bold ${
                   item?.current
@@ -41,7 +42,7 @@ const BreadcrumbProduct: React.FC<BreadcrumbProps> = ({ items }) => {
                     <span className="break-all">{item?.label}</span>
                   </>
                 )}
-              </a>
+              </LinkUrl>
             ) : (
               <span
                 className={`inline-flex items-center font-poppins font-medium text-sm md:text-lg ${

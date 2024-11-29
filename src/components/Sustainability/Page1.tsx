@@ -94,7 +94,7 @@ const Page1: React.FC<MainLayoutProps> = ({ sustainData }) => {
   return (
     <div className="mt-8 flex items-center justify-center h-full w-full" ref={screenRef}>
       <Image
-        src="https://res.cloudinary.com/dlti4o10e/image/upload/v1728990173/samples/landscapes/nature-mountains.jpg"
+        src={data?.butterfly}
         alt="butterfly"
         height={100}
         width={100}
@@ -111,7 +111,7 @@ const Page1: React.FC<MainLayoutProps> = ({ sustainData }) => {
           </h2>
         </div>
         <Image
-          src="https://res.cloudinary.com/dlti4o10e/image/upload/v1728990173/samples/landscapes/nature-mountains.jpg"
+          src={data?.grass}
           alt="grass"
           width={1100}
           height={400}
@@ -120,7 +120,7 @@ const Page1: React.FC<MainLayoutProps> = ({ sustainData }) => {
         />
         <div>
           <Image
-            src="https://res.cloudinary.com/dlti4o10e/image/upload/v1728990173/samples/landscapes/nature-mountains.jpg"
+            src={data?.trees}
             alt="trees"
             width={560}
             height={352}

@@ -2,16 +2,49 @@
 import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ApplicationLayoutItem } from "./types/constant";
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface ApplicationLayoutProps{
-  applicationLayoutData:ApplicationLayoutItem;
+interface FaqItem {
+  que: string;
+  ans: string;
 }
 
-const Page5:React.FC <ApplicationLayoutProps>= ({applicationLayoutData}) => {
-  const FAQ = applicationLayoutData?.ApplicationLayout[0]?.FAQ
+interface Page5Props {
+  filteredFaqs: FaqItem[];
+  categoryName: string;
+  faqTitle: string;
+  faqSubTitle: string;
+  formTitle: string;
+  formPara: string;
+  firstName: string;
+  lastName: string;
+  emailAddress: string;
+  password: string;
+  twitterPassword: string;
+  sendMessage: string;
+  tyler: string;
+  durden: string;
+  emailPlaceholder: string;
+}
+
+const Page5: React.FC<Page5Props> = ({
+  filteredFaqs,
+  categoryName,
+  faqTitle,
+  faqSubTitle,
+  formTitle,
+  formPara,
+  firstName,
+  lastName,
+  emailAddress,
+  password,
+  twitterPassword,
+  sendMessage,
+  tyler,
+  durden,
+  emailPlaceholder,
+}) => {
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const borderRef = useRef<HTMLDivElement | null>(null);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
@@ -48,11 +81,11 @@ const Page5:React.FC <ApplicationLayoutProps>= ({applicationLayoutData}) => {
         ></div>
         <div className="flex lg:pt-[3rem] pt-[1.5rem] lg:pb-[2rem] pb-[1.6rem] lg:px-[2rem] px-[1rem]">
           <h1 className="font-poppins font-semibold lg:text-[2.2rem] text-[1.4rem]">
-            <span className="text-[#483d73]">
-              {FAQ?.title?.trim().replace(/\s+\S+$/, "")}
-            </span>{" "}
+            {/* <span className="text-[#483d73]">
+              {faqTitle.trim().replace(/\s+\S+$/, "")}
+            </span>{" "} */}
             <span className="text-red-700">
-              {FAQ?.title?.trim().match(/\S+$/)}
+              {faqTitle.trim().match(/\S+$/)}
             </span>
           </h1>
         </div>
@@ -63,20 +96,21 @@ const Page5:React.FC <ApplicationLayoutProps>= ({applicationLayoutData}) => {
           <div className="lg:w-[72%] w-full bg-white lg:mx-[1.5rem] lg:py-[2.5rem] py-[1rem] lg:px-[2rem] px-[1rem] rounded-[0.5rem]">
             <div>
               <h2 className="font-semibold lg:text-[1.5rem] text-[1.2rem]">
-                {FAQ?.subTitle}
+                <span className="text-[#483d73]">{faqSubTitle}</span>
+                <span className="text-red-700 ml-2">{categoryName}</span>
               </h2>
               <div className="border-t-2 border-solid border-red-700 lg:w-[5.5rem] w-[4rem] mt-[0.6rem]"></div>
             </div>
             <div className="h-[15.5rem] w-full mt-[1rem] overflow-hidden">
               <div className="h-full overflow-auto scrollbar-hide">
-                {FAQ?.questions?.map((item, idx) => (
+                {filteredFaqs.map((item, idx) => (
                   <div key={idx} className="w-full lg:pt-[1rem] pt-[0.5rem]">
                     <div
                       className="flex justify-between items-center cursor-pointer"
                       onClick={() => toggleExpansion(idx)}
                     >
                       <h2 className="lg:text-[1.1rem] w-[70%] text-[0.9rem] font-medium font-poppins">
-                        {item?.que}
+                        {item.que}
                       </h2>
                       {expandedIndex === idx ? (
                         <svg
@@ -84,12 +118,12 @@ const Page5:React.FC <ApplicationLayoutProps>= ({applicationLayoutData}) => {
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
-                          stroke-width="2"
+                          strokeWidth="2"
                           className="w-6 h-6 stroke-red-700"
                         >
                           <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                             d="M20 12H4"
                           />
                         </svg>
@@ -99,12 +133,12 @@ const Page5:React.FC <ApplicationLayoutProps>= ({applicationLayoutData}) => {
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
-                          stroke-width="2"
+                          strokeWidth="2"
                           className="w-6 h-6"
                         >
                           <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                             d="M12 4v16m8-8H4"
                           />
                         </svg>
@@ -114,7 +148,7 @@ const Page5:React.FC <ApplicationLayoutProps>= ({applicationLayoutData}) => {
 
                     {expandedIndex === idx && (
                       <div className="ml-[1.5rem] text-[#9e9c9c] py-[0.5rem] lg:text-[1rem] text-[0.8rem] w-[90%]">
-                        <p>{item?.ans}</p>
+                        <p>{item.ans}</p>
                       </div>
                     )}
                   </div>
@@ -127,17 +161,15 @@ const Page5:React.FC <ApplicationLayoutProps>= ({applicationLayoutData}) => {
             <div className="px-[1rem] py-[0.5rem]">
               <div className="font-poppins mb-[0.7rem]">
                 <div className="flex">
-                  <h3 className="text-[1.1rem] font-semibold">
-                    {FAQ?.formTitle}
-                  </h3>
+                  <h3 className="text-[1.1rem] font-semibold">{formTitle}</h3>
                 </div>
-                <p className="text-[#727272] text-[0.9rem]">{FAQ?.formPara}</p>
+                <p className="text-[#727272] text-[0.9rem]">{formPara}</p>
               </div>
               <form className="font-poppins">
                 <div className="flex">
                   <div className="flex flex-col w-[49%] mr-[0.5rem]">
                     <label htmlFor="firstname" className="text-[0.9rem]">
-                      {FAQ?.firstName}
+                      {firstName}
                     </label>
                     <input
                       className="border-2 py-[0.4rem] px-[0.5rem] text-[0.8rem] rounded-[0.5rem] bg-[#f9fafb]"
@@ -145,12 +177,12 @@ const Page5:React.FC <ApplicationLayoutProps>= ({applicationLayoutData}) => {
                       type="text"
                       name="firstname"
                       id="firstname"
-                      placeholder={FAQ?.tyler}
+                      placeholder={tyler}
                     />
                   </div>
                   <div className="flex flex-col w-[49%]">
                     <label htmlFor="lastname" className="text-[0.9rem]">
-                      {FAQ?.lastName}
+                      {lastName}
                     </label>
                     <input
                       className="border-2 py-[0.4rem] px-[0.5rem] text-[0.8rem] rounded-[0.5rem] bg-[#f9fafb]"
@@ -158,13 +190,13 @@ const Page5:React.FC <ApplicationLayoutProps>= ({applicationLayoutData}) => {
                       type="text"
                       name="lastname"
                       id="lastname"
-                      placeholder={FAQ?.durden}
+                      placeholder={durden}
                     />
                   </div>
                 </div>
                 <div className="flex flex-col">
                   <label htmlFor="email" className="text-[0.9rem]">
-                    {FAQ?.emailAddress}
+                    {emailAddress}
                   </label>
                   <input
                     className="border-2 py-[0.4rem] px-[0.5rem] text-[0.8rem] rounded-[0.5rem] bg-[#f9fafb]"
@@ -172,12 +204,12 @@ const Page5:React.FC <ApplicationLayoutProps>= ({applicationLayoutData}) => {
                     type="email"
                     name="email"
                     id="email"
-                    placeholder={FAQ?.emailPlaceholder}
+                    placeholder={emailPlaceholder}
                   />
                 </div>
                 <div className="flex flex-col">
                   <label htmlFor="password" className="text-[0.9rem]">
-                    {FAQ?.password}
+                    {password}
                   </label>
                   <input
                     className="border-2 py-[0.4rem] px-[0.5rem] text-[0.8rem] rounded-[0.5rem] bg-[#f9fafb]"
@@ -189,7 +221,7 @@ const Page5:React.FC <ApplicationLayoutProps>= ({applicationLayoutData}) => {
                 </div>
                 <div className="flex flex-col">
                   <label htmlFor="twitterpassword" className="text-[0.9rem]">
-                    {FAQ?.twitterPassword}
+                    {twitterPassword}
                   </label>
                   <input
                     className="border-2 py-[0.4rem] px-[0.5rem] text-[0.8rem] rounded-[0.5rem] bg-[#f9fafb]"
@@ -202,7 +234,7 @@ const Page5:React.FC <ApplicationLayoutProps>= ({applicationLayoutData}) => {
                   className="border-2 py-[0.5rem] px-[0.5rem] text-[0.8rem] rounded-[0.5rem] bg-[#483d73] text-white w-full mt-[1.8vh]"
                   aria-label="Send Message"
                 >
-                  {FAQ?.sendMessage}
+                  {sendMessage}
                 </button>
               </form>
             </div>

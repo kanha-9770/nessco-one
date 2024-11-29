@@ -123,10 +123,10 @@ export default function IOT({ heroData }: KnowMoreLayoutProps) {
           </div>
           <div className="relative hidden lg:block">
             {[
-              { top: "32", left: "0" },
-              { top: "14", left: "24" },
-              { top: "11", left: "15.5rem" },
-              { top: "20", left: "22.8rem" },
+              { top: "24", left: "0" },
+              { top: "8", left: "24" },
+              { top: "16", left: "10" },
+              { top: "0", left: "20" },
             ].map((position, index) => (
               <svg
                 key={index}
@@ -208,7 +208,7 @@ export default function IOT({ heroData }: KnowMoreLayoutProps) {
               </svg>
             ))}
             <Image
-              className="object-cover ml-2 hidden lg:block"
+              className="object-cover mt-6 ml-2 hidden lg:block"
               src={IotData?.machineImg}
               alt={IotData?.title}
               width={400}

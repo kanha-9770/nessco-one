@@ -154,6 +154,7 @@ const KnowYourComponent: React.FC<KnowYourComponentProps> = ({ data }) => {
                 <p className="lg:text-sm text-sm font-normal text-justify cursor-text">
                   {item.ans}
                 </p>
+               
               </div>
             ))}
           </div>

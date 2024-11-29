@@ -3,8 +3,8 @@ import React from "react";
 import { locales } from "@/i18n";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
-import KnowYourComponent from "@/components/KnowYourProductComponent";
 import { KnowYourBusiness } from "@/components/types";
+import AnimatedBlogPost from "@/components/StaticBlogs/AnimatedBllog";
 
 const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
 const countryUrl = "https://countryjson.nesscoindustries.com/";
@@ -32,9 +32,12 @@ async function fetchKnowYourBusinessData(locale: string): Promise<KnowYourBusine
   }
 }
 
+
+
 type CountryNames = {
   [locale: string]: string;
 };
+
 
 async function fetchCountryData(locale: string): Promise<string> {
   const country = cookies().get("country")?.value || "in";
@@ -107,14 +110,13 @@ export async function generateMetadata({
   };
 }
 
-export default async function KnowYourBusinessPage({ params: { locale } }: Props) {
+export default async function KnowYourBusinessPage({ params: { locale,id} }: Props) {
   if (!locales.includes(locale as any)) {
     locale = "en";
   }
 
   unstable_setRequestLocale(locale);
-  const knowYourBusinessData = await fetchKnowYourBusinessData(locale);
 
-  return <KnowYourComponent data={knowYourBusinessData} />;
+  return <AnimatedBlogPost id={id}/>;
 }
 

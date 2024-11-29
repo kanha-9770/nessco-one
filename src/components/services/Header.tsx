@@ -27,7 +27,7 @@ const Page1: React.FC<ServicesProps> = ({ servicesData }) => {
           <div className="flex items-center space-x-10">
             <Image
               src="https://res.cloudinary.com/dfryvystt/image/upload/v1731481796/phone_aqzyu1.svg"
-              alt="Parts"
+              alt="Phone"
               width={400}
               height={400}
               priority
@@ -35,8 +35,8 @@ const Page1: React.FC<ServicesProps> = ({ servicesData }) => {
             />
             <div className="relative w-[9rem]">
               <Image
-                src="https://res.cloudinary.com/dfryvystt/image/upload/v1731481797/india_btmxh6.svg"
-                alt="Parts"
+                src="https://assets.nesscoindustries.com/public/assets/navbar-images/contact-india.webp"
+                alt="India"
                 width={400}
                 height={400}
                 priority
@@ -46,8 +46,8 @@ const Page1: React.FC<ServicesProps> = ({ servicesData }) => {
             </div>
             <div className="relative w-[9rem]">
               <Image
-                src="https://res.cloudinary.com/dfryvystt/image/upload/v1731481796/global_teizp7.svg"
-                alt="Parts"
+                src="https://assets.nesscoindustries.com/public/assets/navbar-images/contact-world.webp"
+                alt="World"
                 width={400}
                 height={400}
                 priority
@@ -59,7 +59,7 @@ const Page1: React.FC<ServicesProps> = ({ servicesData }) => {
           <div className="flex space-x-10 items-center">
             <Image
               src="https://res.cloudinary.com/dfryvystt/image/upload/v1731481795/email_zd5qce.svg"
-              alt="Parts"
+              alt="Email"
               width={400}
               height={400}
               priority

@@ -1,5 +1,4 @@
 import Founders from "@/components/AboutCompany/OurFounder";
-import TeamPage from "@/components/AboutCompany/TeamPage";
 import Grid from "@/components/AboutCompany/Grid";
 import SustainableD from "@/components/AboutCompany/SustainableD";
 import OurStoryD from "@/components/AboutCompany/OurstoryD";
@@ -21,7 +20,7 @@ export default function MainLayout({ companyData }: MainLayoutProps) {
       <Timeline companyData={companyData} />
       <Grid companyData={companyData} />
       <div className="bg-black">
-      <TeamPage companyData={companyData} />
+      {/* <TeamPage companyData={companyData} /> */}
       </div>
     </main>
   );

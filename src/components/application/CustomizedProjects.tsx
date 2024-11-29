@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ApplicationItem } from "./types/constant";
@@ -18,12 +19,8 @@ interface ApplicationProps {
 
 type CombinedProps = ApplicationProps & Page3Props;
 
-const Page4: React.FC<CombinedProps> = ({
-  applicationData,
-  selectedProduct,
-}) => {
-  const CustomizedProjects =
-    applicationData?.Application[0]?.CustomizedProjects;
+const Page4: React.FC<CombinedProps> = ({ applicationData, selectedProduct }) => {
+  const CustomizedProjects = applicationData?.Application[0]?.CustomizedProjects;
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const borderRef = useRef<HTMLDivElement | null>(null);
   const borderImgRef = useRef<HTMLDivElement | null>(null);
@@ -41,14 +38,13 @@ const Page4: React.FC<CombinedProps> = ({
     setIsModalOpen(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-useEffect(()=>{
-  console.log(selectedProduct);
-  console.log(applicationData);
+  const closeModal = () => setIsModalOpen(false);
 
-},[])
+  useEffect(() => {
+    console.log(selectedProduct);
+    console.log(applicationData);
+  }, [selectedProduct, applicationData]);
+
   useEffect(() => {
     if (borderRef.current) {
       gsap.fromTo(
@@ -105,7 +101,6 @@ useEffect(()=>{
               scrub: true,
               onUpdate: (self) => {
                 if (self.progress > 0.5) {
-                  // Reveal title2 after half of the scaling
                   gsap.to(title2Ref, { opacity: 1, y: 0, duration: 0.5 });
                 } else {
                   gsap.to(title2Ref, { opacity: 0, y: 20, duration: 0.5 });
@@ -119,48 +114,49 @@ useEffect(()=>{
   }, []);
 
   const productItems =
-    CustomizedProjects.container[
-     0
-    ][selectedProduct?.title as keyof typeof CustomizedProjects.container[0]] ||[];
+    CustomizedProjects.container[0][
+      selectedProduct?.title as keyof typeof CustomizedProjects.container[0]
+    ] || [];
 
   return (
-    <>
-      <div
-        className="lg:mt-[8rem] mt-[3rem] lg:px-[2rem] px-[1rem] font-regular font-poppins pb-[4rem]"
-        ref={carouselRef}
-      >
-        <div className="lg:px-[1rem] lg:mb-[8rem] mb-[4rem]">
-          <div>
+    <div className="mb-16">
+      {Array.isArray(productItems) && productItems.length > 0 && (
+        <div
+          className="lg:mt-[8rem] mt-[3rem] lg:px-[2rem] px-[1rem] font-regular font-poppins pb-[4rem]"
+          ref={carouselRef}
+        >
+          <div className="lg:px-[1rem] lg:mb-[8rem] mb-[4rem]">
             <h2 className="lg:text-[2.2rem] text-[1.5rem] font-semibold">
               <span className="text-[#483d73]">
-                {CustomizedProjects?.craftsmanshipTechnology?.trim().replace(/\s+\S+$/, "") ||
-                  "Default Title"}
+                {CustomizedProjects?.craftsmanshipTechnology
+                  ?.trim()
+                  .replace(/\s+\S+$/, "") || "Default Title"}
               </span>{" "}
               <span className="text-red-700">
-                {CustomizedProjects?.craftsmanshipTechnology?.trim().match(/\S+$/) ||
-                  "Default Title"}
+                {CustomizedProjects?.craftsmanshipTechnology
+                  ?.trim()
+                  .match(/\S+$/) || "Default Title"}
               </span>
             </h2>
+            <div
+              className="border-t-[0.2rem] border-solid border-red-700 w-[8rem] mt-[1rem]"
+              ref={borderRef}
+            ></div>
+            <div className="lg:w-[76vw] w-[98%] lg:mt-[2rem] mt-[1rem]">
+              <p className="lg:text-[1rem] text-sm">
+                {CustomizedProjects?.paragraph}
+              </p>
+            </div>
           </div>
-          <div
-            className="border-t-[0.2rem] border-solid border-red-700 w-[8rem] mt-[1rem]"
-            ref={borderRef}
-          ></div>
-          <div className="lg:w-[76vw] w-[98%] lg:mt-[2rem] mt-[1rem]">
-            <p className="lg:text-[1rem] text-sm">
-              {CustomizedProjects?.paragraph}
-            </p>
-          </div>
-        </div>
-        <div className="relative">
-          <div className="lg:w-[1.7rem] w-[1.2rem] lg:h-[1.7rem] h-[1.2rem] bg-white border-2 border-solid border-red-700 absolute lg:right-[4.8rem] right-[1.5rem] lg:-top-[3rem] -top-[1.5rem] rounded-full"></div>
-          <div
-            className="border-solid lg:border-r-[0.2rem] border-r-2 border-red-700 absolute lg:-top-[2rem] -top-[1rem] lg:right-[5.5rem] right-[2rem] -z-10"
-            ref={borderImgRef}
-          ></div>
 
-          {Array.isArray(productItems) && productItems.length > 0 ? (
-            productItems?.map((item, idx) => (
+          <div className="relative">
+            <div className="lg:w-[1.7rem] w-[1.2rem] lg:h-[1.7rem] h-[1.2rem] bg-white border-2 border-solid border-red-700 absolute lg:right-[4.8rem] right-[1.5rem] lg:-top-[3rem] -top-[1.5rem] rounded-full"></div>
+            <div
+              className="border-solid lg:border-r-[0.2rem] border-r-2 border-red-700 absolute lg:-top-[2rem] -top-[1rem] lg:right-[5.5rem] right-[2rem] -z-10"
+              ref={borderImgRef}
+            ></div>
+
+            {productItems.map((item, idx) => (
               <div key={idx} className="flex lg:my-[3rem] my-[1rem]">
                 <div className="lg:w-[65%] w-[60%] lg:pl-[1rem] pl-[0.5rem]">
                   <h2 className="lg:text-[1.6rem] text-[1.1rem] text-[#483d73] font-medium lg:mb-[0.8rem] mb-[0.4rem]">
@@ -180,8 +176,8 @@ useEffect(()=>{
                     </h3>
                   </div>
                   <div
-                    className="lg:w-[11rem] w-[4rem] h-[4rem] lg:h-[11rem] border-2 border-solid border-[#483d73] rounded-full overflow-hidden"
-                    onClick={() => openModal(item.img, item.title2)} // On click, open the modal
+                    className="lg:w-[11rem] w-[4rem] lg:h-[11rem] h-[4rem] border-2 border-solid border-[#483d73] rounded-full overflow-hidden"
+                    onClick={() => openModal(item.img, item.title2)}
                     ref={(el) => {
                       imageRefs.current[idx] = el;
                     }}
@@ -196,16 +192,11 @@ useEffect(()=>{
                   </div>
                 </div>
               </div>
-            ))
-          ) : (
-            <p className="text-red-700 text-center font-medium mt-8">
-              No items available for this product.
-            </p>
-          )}
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
-      {/* Modal */}
       {isModalOpen && selectedImage && (
         <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
           <div className="bg-white p-6 mx-4 rounded-lg max-w-lg w-full">
@@ -230,7 +221,7 @@ useEffect(()=>{
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

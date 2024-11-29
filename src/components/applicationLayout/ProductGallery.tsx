@@ -70,12 +70,12 @@ const Page3: React.FC<CombinedProps> = ({
 
   return (
     <>
-      <div className="w-full lg:mt-[6rem] mt-[4rem] font-poppins">
+      <div className="w-full lg:my-[6rem] mt-[4rem] font-poppins">
         <div
           ref={borderRef}
-          className="border-t-[0.1rem] border-solid border-[#6f6f6f] w-[10%] lg:mx-[2rem] mx-[1rem]"
+          className="border-t-[0.1rem] border-solid border-[#6f6f6f] mb-10 w-[10%] lg:mx-[2rem] mx-[1rem]"
         ></div>
-        <div className="flex lg:flex-row flex-col lg:py-[6rem] py-[1rem] px-[1rem] lg:static relative">
+        <div className="flex lg:flex-row flex-col lg:py-[3rem] py-[1rem] px-[1rem] lg:static relative">
           <div className="lg:w-[18rem] lg:pt-[2rem] lg:relative">
             <div className="flex flex-col lg:items-center lg:justify-center">
               <h2 className="lg:text-[2.2rem] text-[1.5rem] lg:text-center font-semibold lg:mb-[1rem]">
@@ -98,7 +98,7 @@ const Page3: React.FC<CombinedProps> = ({
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 64 64"
-                className="lg:w-6 w-5 lg:h-6 h-5"
+                className="w-10 lg:w-8 h-10 lg:h-8"
               >
                 <circle
                   cx="32"
@@ -120,7 +120,7 @@ const Page3: React.FC<CombinedProps> = ({
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 64 64"
-                className="lg:w-6 w-5 lg:h-6 h-5"
+                className="w-10 lg:w-8 h-10 lg:h-8"
               >
                 <circle
                   cx="32"
@@ -137,7 +137,7 @@ const Page3: React.FC<CombinedProps> = ({
           </div>
 
           {/* Display selected image in mobile view */}
-          <div className="w-full h-[12.5rem] mb-[1rem] lg:hidden px-[0.2rem]">
+          <div className="w-full h-auto mb-[1rem] lg:hidden px-[0.2rem]">
             <Image
               src={selectedImage!}
               alt="Selected image"
@@ -156,7 +156,7 @@ const Page3: React.FC<CombinedProps> = ({
                 {page3product?.image?.map((item, idx) => (
                   <div
                     key={idx}
-                    className={`bg-white lg:w-[22rem] lg:h-[22rem] lg:rounded-[1rem] rounded-[0.5rem] flex items-center justify-center overflow-hidden cursor-pointer ${
+                    className={`bg-white lg:w-[22rem] w-auto h-40 lg:h-[22rem] lg:rounded-[1rem] rounded-[0.5rem] flex items-center justify-center overflow-hidden cursor-pointer ${
                       selectedImage === item.img
                         ? "lg:border-none border-2 border-red-700"
                         : "border-none"

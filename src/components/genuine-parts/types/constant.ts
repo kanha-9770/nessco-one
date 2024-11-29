@@ -49,6 +49,8 @@ type Header = {
 };
 
 type Inventory = {
+  phone: string;
+  fullName: string;
   searchFilter: string;
   filter: string;
   machinesFilter: string;
@@ -64,9 +66,7 @@ type Inventory = {
   submitYourEnquiry: string;
   submit: string;
   cancel: string;
-  username: string;
   email: string;
-  password: string;
   iButton: string;
   machineFilter: MachineFilter[];
   Filter: FilterItem[];

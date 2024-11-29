@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Modal from "./Modal";
 import { Product } from "./Pages";
+
 gsap.registerPlugin(ScrollTrigger);
 const Page2 = ({
   applicationData,
@@ -191,12 +192,12 @@ const Page2 = ({
                       <div
                         className={`bg-[#f2f2f2] border-2 border-solid lg:group-hover:border-[#483d73] ${
                           selectedProduct === item
-                            ? "bg-clip-padding custom-gradient-border"
+                            ? " border-[0.2rem] border-[#483d73] bg-white"
                             : "border-[#f2f2f2]"
                         } lg:h-[6.5rem] h-[3.7rem] lg:w-full w-[3.7rem] rounded-[0.8rem] flex items-center justify-center`}
                       >
                         <Image
-                          className="lg:h-[5.5rem] h-[3rem]"
+                          className="lg:h-[4.5rem] w-auto h-[2rem]"
                           width={100}
                           height={100}
                           src={item?.img}
@@ -252,9 +253,9 @@ const Page2 = ({
               ref={borderRef}
             ></div>
           </div>
-          <div className="lg:h-[17rem] h-[12rem] flex items-center justify-center">
+          <div className="lg:h-[17rem] h-[12rem] flex items-center justify-start py-4">
             <Image
-              className="lg:w-[28rem] md:w-[10rem] w-full"
+              className="lg:h-[20rem] w-auto md:h-[8rem]"
               width={400}
               height={400}
               priority
@@ -269,12 +270,14 @@ const Page2 = ({
           </div>
 
           <div className="bg-[#483d73] border-2 border-[#483d73] lg:w-[10rem] lg:mt-0 mt-[1.5rem] w-[9rem] relative lg:h-[2.3rem] h-[2rem] rounded-[2rem] flex items-center hover:bg-white group">
+          {/* <LinkUrl href={`/${selectedProduct?.link}`} passHref> */}
             <button
               aria-label="View More"
               className="text-white lg:text-[1.2rem] absolute left-5 whitespace-nowrap group-hover:text-[#483d73]"
             >
               {SelectProduct?.viewMore}
             </button>
+            {/* </LinkUrl> */}
             <button aria-label="Right" className="absolute right-0 group">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

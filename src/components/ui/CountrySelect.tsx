@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Search, ChevronDown } from "lucide-react";
-import { ScrollArea } from "./ScrollArea";
+import { ScrollArea } from "@/components/ui/ScrollArea";
 
 type Country = {
   name: string;
@@ -16,9 +16,15 @@ type Country = {
 
 type CountrySelectProps = {
   isoCode: string;
+  onPhoneNumberChange: (phoneNumber: string) => void;
+  error?: string;
 };
 
-export default function CountrySelect({ isoCode }: CountrySelectProps) {
+export default function CountrySelect({
+  isoCode,
+  onPhoneNumberChange,
+  error,
+}: CountrySelectProps) {
   const [countries, setCountries] = useState<Country[]>([]);
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -59,12 +65,14 @@ export default function CountrySelect({ isoCode }: CountrySelectProps) {
     setSelectedCountry(country);
     setIsOpen(false);
     setPhoneNumber("");
+    onPhoneNumberChange(country.phone);
   };
 
   const handlePhoneNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const input = e.target.value;
     const formattedInput = input.replace(/[^0-9]/g, "");
     setPhoneNumber(formattedInput);
+    onPhoneNumberChange(selectedCountry?.phone + formattedInput);
   };
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -77,33 +85,23 @@ export default function CountrySelect({ isoCode }: CountrySelectProps) {
 
   return (
     <div className="w-full max-w-md mx-auto">
-      <div className="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
+      <div className="flex space-x-2">
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
           <DialogTrigger asChild>
-            <Button
-              variant="outline"
-              className="w-full sm:w-[140px] justify-between text-left font-normal group "
-              aria-label="Select country"
+            <motion.div
+              className="relative w-24"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              {selectedCountry && (
-                <>
-                  <span className="flex items-center">
-                    <span className="mr-2 h-4 w-6 overflow-hidden rounded-sm">
-                      <img
-                        src={`https://flagcdn.com/w40/${selectedCountry.code.toLowerCase()}.png`}
-                        width="40"
-                        alt={`${selectedCountry?.name} flag`}
-                        className="h-full w-full object-cover"
-                      />
-                    </span>
-                    <span className="font-medium">{selectedCountry?.phone}</span>
-                  </span>
-                  <ChevronDown className="h-4 w-4 opacity-50 group-hover:opacity-100 transition-opacity duration-200" />
-                </>
-              )}
-            </Button>
+              <Input
+                value={selectedCountry?.phone || ""}
+                readOnly
+                className="pr-8 cursor-pointer"
+              />
+              <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 h-4 w-4 opacity-50" />
+            </motion.div>
           </DialogTrigger>
-          <DialogContent className="sm:max-w-[425px] p-0 overflow-hidden bg-white dark:bg-gray-800 rounded-xl shadow-2xl">
+          <DialogContent className="sm:max-w-[450px] p-0 overflow-hidden bg-white dark:bg-gray-800 rounded-xl shadow-2xl">
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -124,7 +122,7 @@ export default function CountrySelect({ isoCode }: CountrySelectProps) {
                   className="pl-10 pr-4 py-2 w-full border-gray-300 dark:border-gray-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
                 />
               </div>
-              <ScrollArea className="h-[300px] sm:max-w-[390px] rounded-md border border-gray-200 dark:border-gray-700">
+              <ScrollArea className="h-[300px] sm:max-w-[420px] rounded-md border w-auto border-gray-200 dark:border-gray-700">
                 <motion.div layout className="p-2 grid gap-1">
                   <AnimatePresence>
                     {filteredCountries?.map((country) => (
@@ -137,7 +135,7 @@ export default function CountrySelect({ isoCode }: CountrySelectProps) {
                       >
                         <Button
                           variant="ghost"
-                          className="w-[90%] justify-start hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
+                          className="w-full justify-start hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
                           onClick={() => handleCountrySelect(country)}
                         >
                           <span className="mr-3 h-5 w-7 overflow-hidden rounded-sm">
@@ -163,17 +161,26 @@ export default function CountrySelect({ isoCode }: CountrySelectProps) {
             </motion.div>
           </DialogContent>
         </Dialog>
-        <div className="relative flex-1">
+        <div className="flex-1">
           <Input
             type="tel"
             placeholder="Enter phone number"
             value={phoneNumber}
             onChange={handlePhoneNumberChange}
-            className="pr-4 py-2 w-full border-gray-300 dark:border-gray-600 rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
+            className="w-full"
           />
-          
         </div>
       </div>
+      {error && (
+        <motion.p
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          className="text-red-500 text-sm mt-1"
+        >
+          {error}
+        </motion.p>
+      )}
     </div>
   );
 }
