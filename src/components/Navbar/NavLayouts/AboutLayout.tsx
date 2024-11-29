@@ -66,7 +66,7 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
 
   return (
     <div className="flex w-full lg:border-none lg:pb-6 mx-auto max-w-screen-2xl flex-col lg:flex-row items-center justify-center lg:rounded-xl h-full">
-      <div className="grid grid-cols-2 h-[80%] sm:grid-cols-3 lg:grid-cols-4 w-full lg:w-[70.5vw]">
+      <div className="grid grid-cols-2 gap-2 px-4 h-full sm:grid-cols-3 lg:grid-cols-4 w-full lg:w-[70.5vw]">
         {navRightData?.map((item: NavItem, index: number) => (
           <div
             key={index}
@@ -91,9 +91,9 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
           </div>
         ))}
       </div>
-      <div className="hidden lg:flex ml-2 w-2 h-72 border-l border-gray-300"></div>
+      <div className="lg:flex ml-2 w-2 h-72 hidden border-l border-gray-300"></div>
       {/* desktop view */}
-      <div className="w-full lg:w-[20vw] h-32 ml-4 lg:h-auto hidden lg:flex flex-col justify-between mt-4 lg:mt-0">
+      <div className="w-full lg:w-[20vw] h-32 ml-4 lg:h-auto flex flex-col justify-between mt-4 lg:mt-0">
         {navLeftData
           .slice(currentIndex, currentIndex + 2)
           .map((item: NavItem, index: number) => (
@@ -103,7 +103,7 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
               onClick={() => setActive(null)}
             >
               <div
-                className={`hidden lg:flex border-t-2 h-[6.5rem] lg:border-none lg:hover:scale-80 transition-transform duration-200 items-center lg:p-4 lg:rounded-3xl lg:mb-2 ${
+                className={`flex h-[6.5rem] lg:hover:scale-80 transition-transform duration-200 items-center lg:p-4 rounded-3xl lg:mb-2 ${
                   bgColors[index % bgColors?.length]
                 }`}
               >
@@ -124,7 +124,7 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
                   <h3 className="text-sm sm:text-md text-black font-semibold mb-0">
                     {item?.title}
                   </h3>
-                  <p className="text-xs hidden lg:flex font-regular text-black line-clamp-3">
+                  <p className="text-xs flex font-regular text-black line-clamp-3">
                     {item?.description}
                   </p>
                 </div>
@@ -132,7 +132,7 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
             </Link>
           ))}
         {/* Scroll Buttons */}
-        <div className="hidden lg:flex w-full bg-gray-800 justify-center">
+        <div className="flex w-full bg-gray-800 justify-center">
           {currentIndex > 0 && (
             <button
               onClick={scrollUp}
@@ -140,7 +140,7 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
             ></button>
           )}
         </div>
-        <div className="bottom-4 hidden lg:flex w-full justify-center text-3xl">
+        <div className="bottom-4 flex w-full justify-center text-3xl">
           {currentIndex < navLeftData?.length - 2 && (
             <button
               onClick={scrollDown}

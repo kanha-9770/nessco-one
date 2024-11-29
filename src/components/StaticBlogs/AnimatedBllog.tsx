@@ -105,6 +105,8 @@ const AnimatedBlogPost: React.FC<AnimatedBlogPostProps> = ({ id }) => {
     }
   };
 
+  console.log(id)
+
   return (
     <div className="font-poppins min-h-screen px-10 py-14">
       <motion.div

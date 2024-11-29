@@ -25,7 +25,7 @@ export type ListItem = {
 
 export type ListContent = {
   format: ListFormat;
-  items: (string | ListItem)[];
+  items: (string | ListItem)[] |ContentBlock[];
 }
 
 export type ContentBlock = {

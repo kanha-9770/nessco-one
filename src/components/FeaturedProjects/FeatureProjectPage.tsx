@@ -4,6 +4,8 @@ import React, { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { AboutItem, GridItem, Machine } from "../AboutHome/types/constant";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
+import { countryCODE, languageCODE } from "../Navbar/nav-menue";
 
 interface HomeLayoutProps {
   aboutData: AboutItem;
@@ -295,7 +297,10 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
         </div>
       </div>
 
-      <div className="text-center mt-16 mb-12 px-6 font-poppins " ref={carouselRef}>
+      <div
+        className="text-center mt-16 mb-12 px-6 font-poppins "
+        ref={carouselRef}
+      >
         <p className="text-2xl lg:text-3xl font-medium">
           <span className="block mb-3"> {homeaboutData?.banner1}</span>{" "}
           <span
@@ -359,9 +364,12 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
               </div>
 
               <div className="flex absolute lg:bottom-3 lg:right-3 space-x-1 bottom-3 right-3 group cursor-pointer">
-                <p className="font-poppins font-regular text-[0.70rem] mt-[] hover:text-red-700">
+                <Link
+                  className="font-poppins font-regular text-[0.70rem] mt-[] hover:text-red-700"
+                  href={`/${countryCODE}/${languageCODE}/resources/media-room/${selectedGrid?.title}`}
+                >
                   {homeaboutData?.button}
-                </p>
+                </Link>
 
                 <svg
                   fill="none"

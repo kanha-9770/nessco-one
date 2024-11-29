@@ -17,11 +17,11 @@ const imageWidths = [
   "lg:w-[3rem] w-[2rem]",
 ];
 const imagebottoms = [
-  "justify-end lg:mb-3 mb-2",
-  "justify-end lg:mb-3 mb-2",
+  "justify-end mb-0",
+  "justify-end mb-0",
   "justify-start",
-  "justify-end lg:mb-3 mb-2",
-  "justify-end lg:mb-3 mb-2",
+  "justify-end mb-0",
+  "justify-end mb-0",
 ];
 
 
@@ -80,7 +80,7 @@ const Home:React.FC <MainLayoutProps>= ({strengthData}) => {
             </svg>
             </div>
           </button>
-          <div className="absolute bottom-10 flex justify-center w-full lg:space-x-0 -space-x-5 ">
+          <div className="absolute bottom-10 flex justify-center w-full lg:space-x-3 space-x-1 ">
          
             {image.map((item, index) => (
               <div
@@ -94,7 +94,7 @@ const Home:React.FC <MainLayoutProps>= ({strengthData}) => {
                   height={100}
                   className={`${imageWidths[index]}`}
                 />
-                <p className="font-medium lg:text-sm text-xs text-white  w-[6rem] text-center">
+                <p className="font-medium lg:text-sm text-[0.5rem] whitespace-normal text-white w-[4rem] lg:w-[6rem] text-center">
                   {item?.title}
                 </p>
               </div>

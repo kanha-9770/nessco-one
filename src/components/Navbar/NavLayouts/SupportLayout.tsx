@@ -126,9 +126,9 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
       )}
       {/* mobile view */}
 
-      <div className="relative p-1 h-screen  flex lg:hidden flex-col items-center">
+      <div className="relative p-1 h-full flex lg:hidden flex-col items-center">
         <div
-          className="w-full h-[45%] py-2 overflow-x-scroll scroll-smooth [scrollbar-width:none]"
+          className="w-full py-2"
           ref={carouselRef}
           onScroll={checkScrollability}
         >
@@ -172,49 +172,59 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
             ></button>
           </div>
         )}
-        <div className="flex lg:hidden h-[50%] flex-col w-full mt-4">
+        <div className="flex lg:hidden flex-col w-full mt-4 relative">
           <p className="invert-0 pl-4 text-lg font-poppins font-medium">
             Give us a Call:
           </p>
           <Image
-                src="https://assets.nesscoindustries.com/public/assets/contact/contact-icon.webp"
-                alt="Phone"
-                width={400}
-                height={400}
-                className="rounded-xl"
-              />
+            src="https://assets.nesscoindustries.com/public/assets/contact/contact-icon.webp"
+            alt="Phone"
+            width={400}
+            height={400}
+            className="rounded-xl h-6 w-6 absolute top-[4.2rem]"
+          />
           <div className="flex items-center border-b-2 h-20 flex-row pt-6">
             <div className="flex items-center justify-center w-1/2">
-            <p
-              className="invert-0 text-md -ml-16 w-12 h-12 whitespace-nowrap flex flex-row gap-2 items-center"
-              style={{
-                backgroundImage:
-                  "url('https://assets.nesscoindustries.com/public/assets/navbar-images/contact-india.webp')",
-                backgroundSize: "contain",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-              }}
-            >
-              {mobileItem?.mobileFirst}
-            </p>
+              <p
+                className="invert-0 text-md -ml-16 w-12 h-12 whitespace-nowrap flex flex-row gap-2 items-center"
+                style={{
+                  backgroundImage:
+                    "url('https://assets.nesscoindustries.com/public/assets/navbar-images/contact-india.webp')",
+                  backgroundSize: "contain",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                }}
+              >
+                {mobileItem?.mobileFirst}
+              </p>
             </div>
             <div className="w-1 h-14 border-l-2"></div>
 
             <div className="flex items-center justify-center w-1/2">
-            <p
-              className="invert-0 text-md -ml-16 whitespace-nowrap w-16 h-16 flex flex-row gap-2 items-center"
-              style={{
-                backgroundImage:
-                  "url('https://assets.nesscoindustries.com/public/assets/navbar-images/contact-world.webp')",
-                backgroundSize: "contain",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-              }}
-            >
-              {mobileItem?.mobileSecond}
-            </p>
+              <p
+                className="invert-0 text-md -ml-16 whitespace-nowrap w-16 h-16 flex flex-row gap-2 items-center"
+                style={{
+                  backgroundImage:
+                    "url('https://assets.nesscoindustries.com/public/assets/navbar-images/contact-world.webp')",
+                  backgroundSize: "contain",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                }}
+              >
+                {mobileItem?.mobileSecond}
+              </p>
             </div>
           </div>
+        </div>
+        <div className="flex items-center lg:hidden w-full mt-4">
+          <Image
+            src="https://assets.nesscoindustries.com/public/assets/contact/email-icon.webp"
+            alt="email"
+            width={400}
+            height={400}
+            className="rounded-xl h-6 w-6 mr-2"
+          />
+          <p>support@nesscoindia.com</p>
         </div>
       </div>
     </div>

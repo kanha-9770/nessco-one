@@ -6,8 +6,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { AboutItem } from "./types/constant";
 import LinkUrl from "../LinkUrl";
 
-interface HomeLayoutProps{
-  aboutData:AboutItem;
+interface HomeLayoutProps {
+  aboutData: AboutItem;
 }
 
 interface Machine {
@@ -17,12 +17,10 @@ interface Machine {
   mainImage: string;
 }
 
-
-
 gsap.registerPlugin(ScrollTrigger);
 
-const FeatureProject: React.FC<HomeLayoutProps> = ({aboutData}) => {
-  const homemachineData=aboutData?.About[0]?.machines || [];
+const FeatureProject: React.FC<HomeLayoutProps> = ({ aboutData }) => {
+  const homemachineData = aboutData?.About[0]?.machines || [];
 
   const [selectedMachine, setSelectedMachine] = useState<Machine>(
     homemachineData.length > 0
@@ -39,8 +37,8 @@ const FeatureProject: React.FC<HomeLayoutProps> = ({aboutData}) => {
   const horizontalLineRef = useRef<HTMLDivElement | null>(null);
   const verticalLinesRef = useRef<(HTMLDivElement | null)[]>([]);
   const imagesRef = useRef<(HTMLDivElement | null)[]>([]);
-  const homeheadingData=aboutData?.About[0]?.Featureheading
-  const homemisionData=aboutData?.About[0]?.missionvissionContent
+  const homeheadingData = aboutData?.About[0]?.Featureheading;
+  const homemisionData = aboutData?.About[0]?.missionvissionContent;
 
   const wordLimit = 20;
 
@@ -214,60 +212,59 @@ const FeatureProject: React.FC<HomeLayoutProps> = ({aboutData}) => {
                 }}
                 className="w-[0.10rem] bg-[#b0aac5] h-[30rem] mask-gradient-featuredproject  relative opacity-25 "
               ></div>
-             <div
-  ref={(el) => {
-    imagesRef.current[index] = el;
-  }}
-  style={{
-    marginTop:
-      machine.id === 1
-        ? "7rem"
-        : machine.id === 2
-        ? "25rem"
-        : machine.id === 3
-        ? "20rem"
-        : machine.id === 4
-        ? "4rem"
-        : machine.id === 5
-        ? "20rem"
-        : "8rem",
-  }}
-  className={`border-2 border-x-gray-200 h-[9rem] rounded-2xl transform transition-transform duration-300 hover:scale-100 -ml-${
-    machine.id === 1
-      ? 5
-      : machine.id === 2
-      ? 8
-      : machine.id === 3
-      ? 24
-      : machine.id === 4
-      ? 20
-      : machine.id === 5
-      ? 24
-      : 20
-  } z-20 bg-white cursor-pointer ${
-    selectedMachine.id === machine.id ? "-ml-7 " : "-ml-10"
-  }`}
-  onClick={() => handleMachineClick(machine)}
->
-  <Image
-    src={machine?.mainImage}
-    alt={machine?.title}
-    width={200}
-    height={200}
-    className="object-cover h-[9rem] w-[9rem] -mt-2"
-  />
-</div>
-
+              <div
+                ref={(el) => {
+                  imagesRef.current[index] = el;
+                }}
+                style={{
+                  marginTop:
+                    machine.id === 1
+                      ? "7rem"
+                      : machine.id === 2
+                      ? "25rem"
+                      : machine.id === 3
+                      ? "20rem"
+                      : machine.id === 4
+                      ? "4rem"
+                      : machine.id === 5
+                      ? "20rem"
+                      : "8rem",
+                }}
+                className={`border-2 border-x-gray-200 h-[9rem] rounded-2xl transform transition-transform duration-300 hover:scale-100 -ml-${
+                  machine.id === 1
+                    ? 5
+                    : machine.id === 2
+                    ? 8
+                    : machine.id === 3
+                    ? 24
+                    : machine.id === 4
+                    ? 20
+                    : machine.id === 5
+                    ? 24
+                    : 20
+                } z-20 bg-white cursor-pointer ${
+                  selectedMachine.id === machine.id ? "-ml-7 " : "-ml-10"
+                }`}
+                onClick={() => handleMachineClick(machine)}
+              >
+                <Image
+                  src={machine?.mainImage}
+                  alt={machine?.title}
+                  width={200}
+                  height={200}
+                  className="object-cover h-[9rem] w-[9rem] -mt-2"
+                />
+              </div>
             </div>
           ))}
         </div>
       </div>
       <LinkUrl href="/about/projects">
-      <div className="flex justify-center ">
-        <button className="lg:mt-[20rem] mt-[10rem] mb-3 w-[8rem] h-[2rem] items-center justify-center text-center border border-[#6f6f6f] hover:bg-black bg-white text-[#6f6f6f] hover:text-white rounded-[0.26rem] z-10  cursor-pointer">
-          {homemisionData?.button}
-        </button>
-      </div>
+        <div className="flex justify-center ">
+          <button className="lg:mt-[20rem] mt-[10rem] mb-3 w-[8rem] h-[2rem] items-center justify-center text-center border border-[#6f6f6f] hover:bg-black bg-white text-[#6f6f6f] hover:text-white rounded-[0.26rem] z-10  cursor-pointer">
+            {homemisionData?.button}
+          </button>
+        </div>
       </LinkUrl>
     </div>
   );

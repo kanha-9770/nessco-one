@@ -114,7 +114,7 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
           <div
             className="absolute top-[10vh] lg:h-[40rem] h-[80rem] w-[0.15rem] lg:ml-0 ml-5"
             style={{
-              background: `linear-gradient(to bottom, #76479C ${scrollPercent}%, white ${scrollPercent}%)`,
+              background: `linear-gradient(to bottom, #483d73 ${scrollPercent}%, white ${scrollPercent}%)`,
             }}
           ></div>
           {title?.map((item, index) => (
@@ -126,21 +126,21 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
               <div className="flex items-center justify-center">
                 {index % 2 === 0 && (
                   <h1
-                    className={`absolute left-[2rem] text-black text-center italic text-[1rem] transition-all duration-500 ${
-                      activeIndex == index ? "font-black text-[2vw] scale-75" : ""
+                    className={`absolute left-[2.5rem] text-black text-center italic text-[1rem] transition-all duration-300 ${
+                      activeIndex == index ? "font-black lg:text-[2vw] lg:scale-75 scale-90" : ""
                     }`}
                   >
                     {item?.title}
                   </h1>
                 )}
                 <div
-                  className={`bg-white w-5 h-5 rounded-full border-[#76479C] border-[0.3rem] transition-all duration-500 lg:ml-0 ml-3 ${
+                  className={`bg-white w-5 h-5 rounded-full border-[#483d73] border-[0.3rem] transition-all duration-300 lg:ml-0 ml-3 ${
                     activeIndex == index ? "border-[0.62rem]" : ""
                   }`}
                 ></div>
                 {index % 2 !== 0 && (
                   <span
-                    className={`absolute lg:right-[2rem] w-[10rem] -right-[10rem] text-black text-left pl-2 lg:text-center italic text-[1rem] transition-all duration-500 ${
+                    className={`absolute lg:right-[2rem] w-[10rem] -right-[10.5rem] text-black text-left pl-2 lg:text-center italic text-[1rem] transition-all duration-300 ${
                       activeIndex == index ? "font-black scale-90" : ""
                     }`}
                   >
@@ -163,7 +163,7 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
               index % 2 === 0
                 ? "lg:left-[2rem] left-[10rem]"
                 : "lg:right-[2rem] right-[1.5rem]"
-            } lg:w-[26rem] lg:h-[30rem] h-[26rem] w-[13rem] bg-white rounded-3xl transition-all duration-500`}
+            } lg:w-[26rem] lg:h-[30rem] h-[22rem] w-[13rem] bg-white rounded-3xl transition-all duration-500`}
             style={{ top: `${50 + index * 80}vh` }}
           >
             <div className="grid lg:grid-cols-2 lg:gap-4 lg:mx-8 mx-3 mt-5">
@@ -171,7 +171,7 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
                 <h1 className="lg:text-2xl text-lg lg:mt-6 font-normal font-poppins text-center">
                   {item?.title1}
                 </h1>
-                <h1 className="font-poppins font-semibold lg:text-lg text-xs text-center text-[#76479C]">
+                <h1 className="font-poppins font-semibold lg:text-lg text-xs text-center text-[#483d73]">
                   {item?.title2}
                 </h1>
               </div>
@@ -212,9 +212,9 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
         ))}
 
         {isModalOpen && componentData && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 px-4">
-            <div className="flex flex-col items-center justify-center lg:h-[30rem] lg:w-[40rem] w-full p-4 lg:mt-12 relative bg-[#f5f5f5] rounded-3xl">
-              <div className="relative lg:w-[60rem] w-[22rem] flex justify-center items-center mt-10">
+          <div className="fixed inset-0 flex justify-center bg-black bg-opacity-50 z-50 lg:px-10 px-4 pt-20 overflow-y-scroll">
+            <div className="flex flex-col items-center justify-center h-max w-full p-4 relative bg-[#f5f5f5] rounded-3xl">
+              <div className="relative h-[16rem] lg:w-[60rem] w-[22rem] flex justify-center items-center mt-10">
                 <div className="overflow-hidden lg:w-[30rem] w-[25rem] -mt-5">
                   <Swiper
                     effect="coverflow"
@@ -299,7 +299,7 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
               </div>
               <button
                 aria-label="close-button"
-                className="absolute right-5 top-5"
+                className="fixed lg:right-16 right-6 top-[5.3rem] z-20"
                 onClick={closeModal}
               >
                 <svg
@@ -323,10 +323,10 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
                   </g>
                 </svg>
               </button>
-              <h3 className="text-[#483d73] font-poppins font-semibold text-2xl">
+              <h3 className="text-[#483d73] font-poppins text-center w-full font-semibold my-4 text-2xl">
                 {componentData?.modalContent?.title}
               </h3>
-              <p className="font-poppins text-black font-normal text-sm px-10 text-center">
+              <p className="font-poppins text-black font-normal text-sm lg:px-10 px-4 text-justify">
                 {componentData?.modalContent?.description}
               </p>
             </div>

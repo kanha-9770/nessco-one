@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { MediaRoomItem } from "./types/constant";
+import Link from "next/link";
 
 interface ModalProps {
   isOpen: boolean;
@@ -390,12 +391,14 @@ const TrendingNews: React.FC<NewsProps> = ({
                 <p className="border border-black rounded-md text-center w-max px-2 lg:text-md text-sm">
                   {item?.header}
                 </p>
-                <h3 className="font-medium lg:text-lg text-md">{item?.title}</h3>
-                
-                <button
+                <h3 className="font-medium lg:text-lg text-md">
+                  {item?.title}
+                </h3>
+
+                <Link
                   aria-label="Open"
-                  onClick={() => openModal(item)}
-                  className="flex items-center text-[#483d73] text-sm group bg-[#E6E7E6] hover:bg-black hover:text-white rounded-full pl-2 pr-1"
+                  className="flex w-48 h-6 items-center justify-center text-[#483d73] text-sm group bg-[#E6E7E6] hover:bg-black hover:text-white rounded-full "
+                  href={`media-room/${item?.title}`}
                 >
                   {item?.continueReading}
                   <svg
@@ -406,11 +409,11 @@ const TrendingNews: React.FC<NewsProps> = ({
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="w-4 h-4 ml-2 stroke-black group-hover:stroke-white"
+                    className="w-4 h-4 stroke-black group-hover:stroke-white"
                   >
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
-                </button>
+                </Link>
               </div>
             </div>
           ))}
@@ -452,29 +455,6 @@ const TrendingNews: React.FC<NewsProps> = ({
           </svg>
         </div>
       </div>
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <div className="flex lg:flex-row flex-col items-center justify-center lg:space-x-4">
-          <Image
-            className="lg:w-[50%] rounded-3xl lg:mt-0 mt-6"
-            width={400}
-            height={400}
-            src={modalContent?.img}
-            alt={modalContent?.title}
-          />
-          <div className="lg:w-[50%] w-full">
-            <h2 className="text-xl lg:text-left text-center lg:mt-0 mt-[0.5rem] mb-[0.5rem] text-[#483d73] font-medium font-poppins">
-              {modalContent?.title}
-            </h2>
-            <div className="overflow-hidden lg:h-[12rem] lg:pr-4 w-full h-[11rem]">
-              <div className="overflow-auto h-full scrollbar-custom scrollbar">
-                <p className="font-poppins lg:text-left text-center text-sm">
-                  {modalContent?.dialogDescription}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Modal>
     </>
   );
 };
@@ -530,7 +510,9 @@ const LatestNews: React.FC<NewsProps> = ({
   return (
     <>
       <div className="bg-white h-full lg:w-[70%] lg:mb-0 mb-6 rounded-2xl font-poppins px-[1.5rem]">
-        <h2 className="text-[#483d73] text-2xl my-4">{LatestNews?.mainTitle}</h2>
+        <h2 className="text-[#483d73] text-2xl my-4">
+          {LatestNews?.mainTitle}
+        </h2>
         <div className="h-[37rem] overflow-hidden mb-4">
           <div className="overflow-y-auto scrollbar h-full space-y-4 pr-1">
             {filteredNews?.map((item, index) => (
