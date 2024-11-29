@@ -87,7 +87,9 @@ const SignupFormDemoProduct = () => {
             />
           </LabelInputContainer>
           <LabelInputContainer className="mb-2">
-            <CountrySelect isoCode={countryCode} />
+            <CountrySelect isoCode={countryCode} onPhoneNumberChange={function (phoneNumber: string): void {
+              throw new Error("Function not implemented.");
+            } } />
           </LabelInputContainer>
           <div className="w-full flex justify-center">
             <button
