@@ -84,7 +84,7 @@ export default function Stepper({ onStepChange, categories }: StepperProps) {
         activeStep > 0 ? "bg-[#f2f2f2]" : "bg-[#f2f2f2]"
       }`}
     >
-      <div className="relative flex items-center justify-center w-full z-[9999] h-20 mx-auto lg:h-24 pb-2">
+      <div className="relative flex items-center justify-center w-full z-[9999] h-24 mx-auto pb-2">
         <div className="w-screen">
           <div
             className="relative flex items-center max-w-screen-2xl justify-start overflow-x-scroll scrollbar-hide w-full"

@@ -101,31 +101,31 @@ export async function POST(request: Request) {
     console.log("Google Sheets result:", sheetsResult.data);
 
     // Submit data to Zoho CRM
-    const zohoData = {
-      fullname,
-      email,
-      mobilenumber,
-      message,
-      formId,
-      ...visitData,
-    };
+    // const zohoData = {
+    //   fullname,
+    //   email,
+    //   mobilenumber,
+    //   message,
+    //   formId,
+    //   ...visitData,
+    // };
 
-    const zohoResponse = await axios.post(
-      `${ZOHO_API_URL}?auth_type=apikey&zapikey=${ZOHO_API_KEY}`,
-      zohoData,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${ZOHO_OAUTH_TOKEN}`,
-        },
-      }
-    );
+    // const zohoResponse = await axios.post(
+    //   `${ZOHO_API_URL}?auth_type=apikey&zapikey=${ZOHO_API_KEY}`,
+    //   zohoData,
+    //   {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       Authorization: `Bearer ${ZOHO_OAUTH_TOKEN}`,
+    //     },
+    //   }
+    // );
 
-    console.log("Zoho CRM result:", zohoResponse.data);
+    // console.log("Zoho CRM result:", zohoResponse.data);
 
-    if (zohoResponse.status !== 200) {
-      throw new Error("Zoho CRM submission failed");
-    }
+    // if (zohoResponse.status !== 200) {
+    //   throw new Error("Zoho CRM submission failed");
+    // }
 
     return NextResponse.json(
       {

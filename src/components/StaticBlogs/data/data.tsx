@@ -1242,4 +1242,321 @@ export const blogPosts: BlogPost[] = [
         headingImage:"https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/paper-cup-making-process.webp"
     },
   },
+ 
+  {
+    id: "5",
+    title: "Comprehensive Guide to Changing Molds in a Paper Cup ",
+    slug: "mould-change-guide",
+    date: "2024-11-29",
+    author: {
+      id: "1",
+      name: "Nessco Team",
+    },
+    tags: [
+      { id: "1", name: "Paper Cup Manufacturing" },
+      { id: "2", name: "Mold Changes" },
+    ],
+    excerpt:
+      "A detailed guide on changing molds in a paper cup machine, including step-by-step instructions, validation tips, and key checks for optimal setup and high-quality production.",
+    content: [
+      {
+        type: "section",
+        heading: "Introduction",
+        content: {
+          blocks: [
+            {
+              type: "text",
+              content:
+                "Changing the mold in a paper cup machine is a crucial task that directly impacts production efficiency and cup quality. This blog provides a detailed step-by-step guide on the mold change process, checks to ensure proper alignment and compatibility, and tips for validating the mold's fit with the paper blank or fan.",
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Why Mold Changes Are Necessary",
+        content: {
+          blocks: [
+            {
+              type: "text",
+              content:
+                "Mold changes in a paper cup machine are typically required for:",
+            },
+            {
+              type: "list",
+              content: {
+                format: "disc",
+                items: [
+                  "Switching Cup Sizes: To cater to different customer demands or orders.",
+                  "Custom Cup Designs: For branded or specific requirements.",
+                  "Maintenance: To replace worn-out or damaged molds ensuring consistent quality.",
+                ],
+              },
+            },
+            {
+              type: "text",
+              content:
+                "The process involves precision, systematic steps, and validation to ensure smooth operations.",
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Steps to Check the Machine with Installed Mold Before Changing",
+        content: {
+          blocks: [
+            {
+              type: "text",
+              content:
+                "Before initiating the mold change process, it is essential to perform the following checks:",
+            },
+            {
+              type: "list",
+              heading: "Verify the Existing Mold Setup",
+              content: {
+                format: "disc",
+                items: [
+                  "Check the mothermold base plate for proper alignment and condition.",
+                  "Inspect the blank stand for positioning and stability.",
+                ],
+              },
+            },
+            {
+              type: "list",
+              heading: "Removal of Existing Mold Components",
+              content: {
+                format: "disc",
+                items: [
+                  "Remove components like the curling plate, knurling bowl, knurling tool, and heater folding plate.",
+                  "Detach the cutter set and existing molds (8 pcs for standard machines).",
+                ],
+              },
+            },
+            {
+              type: "list",
+              heading: "Reinstall and Configure the New Mold",
+              content: {
+                format: "disc",
+                items: [
+                  "Install the new cutter set and ensure proper alignment.",
+                  "Begin with one mold piece for initial setup and validation.",
+                  "Install additional components like knurling tool, knurling bowl, and curling plate sequentially.",
+                  "Complete the setup with the remaining 7 molds and fine-tune the settings.",
+                ],
+              },
+            },
+            {
+              type: "list",
+              heading: "Final Checks",
+              content: {
+                format: "disc",
+                items: [
+                  "Verify the robot assembly and ensure proper alignment with the cone.",
+                  "Inspect the glass collector and other minor components for compatibility.",
+                ],
+              },
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Correct Steps for Changing the Mold Setup",
+        content: {
+          blocks: [
+            {
+              type: "list",
+              content: {
+                format: "disc",
+                items: [
+                  {
+                    type: "text",
+                    content: [
+                      "Confirm that the paper stand and blanks align with the required specifications.",
+                    ],
+                  },
+                  {
+                    text: "Mothermold and Butterfly Validation",
+                  content: [
+                      "Verify the mothermold and butterfly are compatible with the blank’s size and design.",
+                    ],
+                  },
+                  {
+                    text: "Sealing and Fitting Checks",
+                    content: [
+                      "Wrap the paper blank on the mold cone and check for proper sealing (minimum 3 mm).",
+                      "Ensure paper fit on the mothermold and verify alignment with the T-rod.",
+                    ],
+                  },
+                  {
+                    text: "Cone Shaft and Robot Inspection",
+                    content: [
+                      "Validate the cone shaft dimensions, taper, and length as per the machine’s configuration.",
+                      "Test the robot with the paper cone to ensure smooth functionality.",
+                    ],
+                  },
+                  {
+                    text: "Component Adjustments",
+                    content: [
+                      "Align the curling cup, knurling tool, and other parts to match the paper blank dimensions and thickness.",
+                    ],
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Validating the Mold with Paper Blanks",
+        content: {
+          blocks: [
+            {
+              type: "text",
+              content:
+                "Proper validation ensures the mold aligns with the paper blank and produces high-quality cups. Follow these key checks:",
+            },
+            {
+              type: "list",
+              heading: "Paper Wrapping Test",
+              content: {
+                format: "disc",
+                items: [
+                  "Wrap the paper around the mold cone and ensure:",
+                  {
+                    text: "Extra paper at the cone’s bottom equals twice the knurling depth (e.g., 10 mm for a 5 mm knurling depth).",
+                    content:"",
+                  },
+                  "A minimum side wall sealing of 3 mm.",
+                ],
+              },
+            },
+            {
+              type: "list",
+              heading: "Mothermold Fit",
+              content: {
+                format: "disc",
+                items: [
+                  "Fit the wrapped paper cone into the mothermold:",
+                  {
+                    text: "There should be no gaps.",
+                   content:""
+                  },
+                  "The paper cone should align tightly with the mothermold and sit 5 mm below the T-rod center.",
+                ],
+              },
+            },
+            {
+              type: "list",
+              heading: "Knurling Depth and Alignment",
+              content: {
+                format: "disc",
+                items: [
+                  "Use a long-leg vernier caliper to check the knurling depth and ensure uniform alignment.",
+                ],
+              },
+            },
+            {
+              type: "list",
+              heading: "Component Clearances",
+              content: {
+                format: "disc",
+                items: [
+                  "Ensure the curling plate and housing clearance matches twice the blank’s thickness.",
+                ],
+              },
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Tips for Precise Mold Setup",
+        content: {
+          blocks: [
+            {
+              type: "list",
+              content: {
+                format: "disc",
+                items: [
+                  "Cutter Adjustments: Ensure the cutter’s sharpness and fitment for precise blank cutting.",
+                  "Knurling Tool and Bowl: Maintain a 2–3 mm taper beyond the knurling depth for seamless operation.",
+                  "Curling Plate and Cup: Verify clearance between the curling plate and housing using 2x paper thickness. The curling cup should grab at least 75% of the cup.",
+                  "Heating Folding Plate: Ensure the plate aligns with the mold cone without excessive contact.",
+                ],
+              },
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Key Parts to Check During Mold Changes",
+        content: {
+          blocks: [
+            {
+              type: "table",
+              content: [
+                ["Part Name", "Key Checks"],
+                ["Blank", "Verify dimensions as per design."],
+                ["Mold Cone", "Check cone diameter, sealing area, and knurling depth compatibility."],
+                ["Mothermold", "Ensure no gaps between paper cone and mothermold; validate paraffin holes."],
+                ["Butterfly", "Confirm tight wrapping and alignment with the mothermold."],
+                ["Knurling Tool/Bowl", "Inspect height, depth, and alignment with the mold cone."],
+                ["Curling Plate", "Check clearance matching paper thickness (2x paper thickness)."],
+                ["Fiber Plate", "Ensure proper diameter for cup fitment (8–10 mm larger than cup top)."],
+                ["Cutter Set", "Validate sharpness, PCD, and tight fit for accurate cutting."],
+              ],
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Final Settings and Validation",
+        content: {
+          blocks: [
+            {
+              type: "text",
+              content:
+                "After completing the mold change and installation, run a test batch to verify:",
+            },
+            {
+              type: "list",
+              content: {
+                format: "disc",
+                items: [
+                  "Smooth cone formation.",
+                  "Proper wall sealing and knurling.",
+                  "Consistent curling and bottom fit.",
+                ],
+              },
+            },
+            {
+              type: "text",
+              content:
+                "Inspect the finished cups for even dimensions, smooth edges, and no wrinkles or gaps. Fine-tune machine settings if necessary, ensuring all components work seamlessly together.",
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Conclusion",
+        content: {
+          blocks: [
+            {
+              type: "text",
+              content:
+                "Changing the mold in a paper cup machine demands precision, technical expertise, and systematic checks. With this guide, you can ensure an efficient mold change process, resulting in smooth production and high-quality cups.",
+            },
+          ],
+        },
+      },
+    ],
+  },
+
+
 ];

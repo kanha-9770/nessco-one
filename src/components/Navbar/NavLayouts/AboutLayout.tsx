@@ -93,7 +93,7 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
       </div>
       <div className="lg:flex ml-2 w-2 h-72 hidden border-l border-gray-300"></div>
       {/* desktop view */}
-      <div className="w-full lg:w-[20vw] h-32 ml-4 lg:h-auto flex flex-col justify-between mt-4 lg:mt-0">
+      <div className="space-y-4 lg;space-y-0 w-full lg:w-[20vw] h-32 ml-4 lg:h-auto flex flex-col justify-between mt-4 lg:mt-0">
         {navLeftData
           .slice(currentIndex, currentIndex + 2)
           .map((item: NavItem, index: number) => (

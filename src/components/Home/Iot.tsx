@@ -42,12 +42,12 @@ export default function IOT({ heroData }: KnowMoreLayoutProps) {
               {IotData?.cards?.map((item, idx) => (
                 <div
                   key={idx}
-                  className="bg-white h-[18rem] md:h-[20rem] relative w-[60vw] md:w-[30vw] lg:w-[15rem] rounded-2xl"
+                  className="bg-white h-[18rem] md:h-[20rem] relative w-[60vw] md:w-[30vw] lg:w-[15rem] rounded-2xl flex flex-col items-center"
                 >
-                  <h3 className="font-medium text-center my-4 text-base md:text-lg">
+                  <h3 className="font-medium text-center my-4 w-[12rem] text-base md:text-lg">
                     {item?.title}
                   </h3>
-                  <p className="text-center px-4 md:px-6 text-xs md:text-sm absolute top-14 z-10 font-normal">
+                  <p className="text-center px-4 md:px-6 text-xs md:text-sm absolute top-[4.5rem] z-10 font-normal">
                     {item?.description}
                   </p>
                   <video
