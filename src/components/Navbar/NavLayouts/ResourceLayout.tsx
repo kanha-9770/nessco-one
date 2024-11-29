@@ -151,7 +151,7 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData, setActive }) => {
                     className="relative w-40 h-36 border-[1px] bg-white rounded-xl  flex flex-col justify-start items-center p-2"
                   >
                     <div
-                      className="relative w-32 bg-[#483d73] rounded-xl border-[1px] h-[4.4rem] flex justify-center items-center"
+                      className="relative w-32 bg-[#483d732a] rounded-xl border-[1px] h-[4.4rem] flex justify-center items-center"
                     >
                       {/* <Image
                         src={item?.image}

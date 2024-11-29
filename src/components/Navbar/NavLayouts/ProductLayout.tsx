@@ -316,7 +316,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                         <div className="flex flex-row space-x-3 cursor-pointer">
                           <div className="flex items-center justify-center">
                             <BlurImage
-                              className="h-6 w-6 ml-1 duration-200 object-cover"
+                              className="h-6 w-6  ml-1 duration-200 object-cover"
                               src={link?.icon}
                               alt={link?.name}
                               width={24}
@@ -355,14 +355,16 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                                         setActive && setActive(null)
                                       }
                                     >
+                                      <div className="border-[1px] rounded-xl h-24 w-full transform transition-transform duration-200 overflow-hidden">
                                       <BlurImage
                                         src={machine?.image}
                                         alt={machine?.name}
-                                        className="object-contain transform transition-transform duration-200 border-[1px] rounded-xl h-24 w-full"
+                                        className="object-contain h-36 -mt-6"
                                         width={200}
                                         height={150}
                                         loading="lazy"
                                       />
+                                        </div>
                                       <h4 className="text-sm invert-0 font-bold mt-2">
                                         {machine?.name}
                                       </h4>

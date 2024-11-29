@@ -84,9 +84,14 @@ function Navbar({ className, navData }: NavbarProps) {
     {
       name: `${navData?.navbar[2]?.category}`,
       link: "application",
-      component: <ApplicationLayout navData={navData} setActive={function (): void {
-        throw new Error("Function not implemented.");
-      } } />,
+      component: (
+        <ApplicationLayout
+          navData={navData}
+          setActive={function (): void {
+            throw new Error("Function not implemented.");
+          }}
+        />
+      ),
     },
     {
       name: `${navData?.navbar[3]?.category}`,

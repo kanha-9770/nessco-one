@@ -26,7 +26,7 @@ const Page1: React.FC<ServicesProps> = ({ servicesData }) => {
           </p>
           <div className="flex items-center space-x-10">
             <Image
-              src="https://res.cloudinary.com/dfryvystt/image/upload/v1731481796/phone_aqzyu1.svg"
+              src="https://assets.nesscoindustries.com/public/assets/contact/contact-icon.webp"
               alt="Phone"
               width={400}
               height={400}
@@ -58,7 +58,7 @@ const Page1: React.FC<ServicesProps> = ({ servicesData }) => {
           </div>
           <div className="flex space-x-10 items-center">
             <Image
-              src="https://res.cloudinary.com/dfryvystt/image/upload/v1731481795/email_zd5qce.svg"
+              src="https://assets.nesscoindustries.com/public/assets/contact/email-icon.webp"
               alt="Email"
               width={400}
               height={400}

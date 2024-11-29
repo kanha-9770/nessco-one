@@ -4,101 +4,136 @@ export const blogPosts: BlogPost[] = [
   //know-your-product data
   {
     id: "1",
-    title: "How Paper Cups Are Made: The Complete Process",
-    slug: "paper-cup-guide",
+    title: "Paper Cup Manufacturing Business: The Comprehensive Guide",
+    slug: "paper-cup-manufacturing-guide",
     date: "2024-11-27",
-    header: {
-      id: "header1",
-      heading: "How Paper Cups Are Made: The Complete Process",
-      headingImage:
-        "",
-      subheading: "From Raw Materials to Finished Product",
-    },
     author: {
       id: "author1",
-      name: "John Doe",
-      avatar:
-        "https://i.pinimg.com/236x/9d/c4/17/9dc41771feeac26dd5c22457f50c04bd.jpg",
+      name: "Nessco",
+      avatar: "/images/author-nessco.png",
     },
     tags: [
-      { id: "tag1", name: "Paper Cups" },
+      { id: "tag1", name: "Business" },
       { id: "tag2", name: "Manufacturing" },
-      { id: "tag3", name: "Sustainability" },
+      { id: "tag3", name: "Eco-Friendly" },
     ],
-    excerpt:
-      "Discover the complete process of how paper cups are made, including the materials, machines, and innovations for sustainability.",
+    excerpt: "A comprehensive guide to starting and running a paper cup manufacturing business, covering market insights, materials, machinery, and profitability.",
+    readingTime: 12,
+    header: {
+      id: "header1",
+      heading: "Paper Cup Manufacturing Business: The Comprehensive Guide",
+      headingImage: "https://assets.nesscoindustries.com/public/assets/resource/knowledge-center/know-your-product/paper-cup-guide/paper-cup-guide-img1.webp",
+      subheading: "Everything you need to know about starting a paper cup manufacturing business.",
+    },
     content: [
       {
         type: "text",
-        heading: "Introduction",
-        content:
-          "Paper cups are a common part of our everyday life, used for things like takeaway coffee and soft drinks at fast food restaurants. But how are they made? What machines and steps are used to create these common items? In this article, we will explore the complete process of how paper cups are manufactured, including the machines. We will also discuss the environmental impact and recent innovations that aim to make paper cups more sustainable.",
-      },
-      {
-        type: "text",
-        heading: "Raw Materials: The Starting Point for Paper Cups",
-        content:
-          "Making paper cups starts with choosing the right materials. The main materials used are paperboard and a thin layer of either polyethylene (PE) or polylactic acid (PLA) coating. These coatings help make the cups waterproof and strong.",
+        content: "The paper cup manufacturing business is a promising opportunity for entrepreneurs looking to enter the growing disposable products market.",
+        heading:"hello"
       },
       {
         type: "list",
-        heading: "Paperboard and PE Coating Details",
         content: {
           format: "disc",
           items: [
-            "Paperboard: Thick and strong material made from FSC-certified wood pulp for sustainable forestry.",
-            "Polyethylene (PE) Coating: A protective plastic layer inside the cup to prevent liquid leakage.",
+            "Growing Awareness of Environmental Issues",
+            "Expansion of the Food and Beverage Industry",
+            "Urbanization and Changing Lifestyles",
+            "Government Regulations",
+            "Increase in Health Awareness",
           ],
         },
+        heading: "Demand Analysis for the Paper Cup Business",
       },
+      
       {
         type: "text",
-        heading: "Step-by-Step: The Paper Cup Manufacturing Process",
-        content:
-          "The process involves multiple steps to transform raw materials into finished cups.",
+        content: "In 2023, the global paper cup market was valued at approximately $10.6 billion and is expected to grow at a CAGR of 4.06% from 2023 to 2028.",
+        heading: "Market Research",
       },
       {
         type: "list",
-        heading: "Manufacturing Steps",
-        content: {
-          format: "number",
-          items: [
-            "Paper Coating with a PE Layer: Adding water resistance using specialized coating machines.",
-            "Printing the Design: Using flexo printing machines for high-quality branding and logos.",
-            "Cutting the Paperboard: Precisely cutting fan-shaped pieces for cup body formation.",
-            "Forming the Cup Body: Rolling and bonding paperboard into a cylindrical shape.",
-            "Attaching the Cup Bottom: Heat sealing a bottom disc to the cup body.",
-            "Rolling the Lip: Creating a smooth, durable edge for user convenience.",
-            "Packaging: Stacking and preparing cups for distribution.",
-          ],
-        },
-      },
-      {
-        type: "text",
-        heading: "Sustainability and Environmental Impact",
-        content:
-          "While paper cups are better for the environment than plastic ones, challenges like PE coatings hinder recyclability. Innovations such as biodegradable PLA coatings, water-based barriers, and compostable materials are helping make paper cups more eco-friendly.",
-      },
-      {
-        type: "list",
-        heading: "Innovations in Paper Cup Manufacturing",
         content: {
           format: "disc",
           items: [
-            "Water-Based Barrier Coatings: Fully recyclable and biodegradable alternatives to PE and PLA.",
-            "Compostable and Edible Cups: Zero-waste options made from rice or sugar.",
-            "Recyclable Liners: Advanced materials for easier recycling in standard facilities.",
+            "Single-wall paper cups for cold drinks.",
+            "Double-wall paper cups for hot beverages.",
           ],
         },
+        heading: "Key Market Segments",
+      },
+      {
+        type: "table",
+        content: [
+          ["Material", "Cost per Ton (USD)"],
+          ["Paperboard", "$1,200 - $1,500"],
+          ["Polyethylene (PE)", "$1,000 - $1,200"],
+          ["Ink", "$2,000 - $3,000 per ton"],
+          ["Packaging Material", "$600 - $800 per ton"],
+        ],
+        heading: "Approximate Raw Material Costs",
+      },
+      {
+        type: "table",
+        content: [
+          ["Machinery", "Cost (USD)"],
+          ["Coating Machine", "$60,000 - $90,000"],
+          ["Flexographic Printing Machine", "$40,000 - $50,000"],
+          ["Die-Cutting Machine", "$35,000 - $60,000"],
+          ["Paper Cup Forming Machine", "$25,000 - $30,000"],
+          ["Packaging Machine", "$10,000 - $12,000"],
+        ],
+        heading: "Estimated Machinery Costs",
+      },
+      {
+        type: "table",
+        content: [
+          ["Item", "Cost (USD)"],
+          ["Land and Building", "$50,000 - $100,000"],
+          ["Machinery and Equipment", "$150,000 - $200,000"],
+          ["Raw Materials (Initial)", "$20,000 - $30,000"],
+          ["Labor and Overhead Costs", "$10,000 - $12,000"],
+          ["Working Capital", "$20,000 - $30,000"],
+          ["Total Investment", "$250,000 - $372,000"],
+        ],
+        heading: "Approximate Investment Breakdown",
       },
       {
         type: "text",
-        heading: "Conclusion",
-        content:
-          "The process of making paper cups involves advanced machinery and innovative practices. With a growing focus on sustainability, the industry is developing greener options to minimize environmental impact while meeting consumer demand.",
+        content: "The profit margin in the paper cup manufacturing business typically ranges from 12% to 20%, depending on the scale of operations and efficiency.",
+        heading: "Profit Margin and Break-Even Point",
+      },
+      {
+        type: "text",
+        content: "To start a paper cup manufacturing business, you will need to obtain licenses like business registration, environmental clearance, and fire safety certification.",
+        heading: "Licensing and Permits",
+      },
+      {
+        type: "list",
+        content: {
+          format: "disc",
+          items: [
+            "Target Cafes and Restaurants",
+            "Participate in Trade Shows",
+            "Online Presence",
+            "Develop a Distribution Network",
+          ],
+        },
+        heading: "Marketing and Distribution",
+      },
+      {
+        type: "list",
+        content: {
+          format: "disc",
+          items: [
+            "Fluctuating Raw Material Prices",
+            "Environmental Regulations",
+            "Quality Control",
+          ],
+        },
+        heading: "Top Strategies for Paper Cup Business Challenges",
       },
     ],
-    readingTime: 8,
   },
   {
     id: "2",

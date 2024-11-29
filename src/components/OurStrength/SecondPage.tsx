@@ -141,7 +141,7 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
                 {index % 2 !== 0 && (
                   <span
                     className={`absolute lg:right-[2rem] w-[10rem] -right-[10rem] text-black text-left pl-2 lg:text-center italic text-[1rem] transition-all duration-500 ${
-                      activeIndex == index ? "font-black scale-75" : ""
+                      activeIndex == index ? "font-black scale-90" : ""
                     }`}
                   >
                     {item?.title}
@@ -187,7 +187,7 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
                 <source src="https://res.cloudinary.com/dlti4o10e/video/upload/v1728990175/samples/cld-sample-video.mp4" type="video/mp4" />
               </video>
             </div>
-            <p className="lg:mx-8 mx-3 lg:mt-10 mt-3 font-poppins lg:text-sm text-xs text-center lg:text-left">
+            <p className="lg:mx-8 mx-3 lg:mt-10 mt-3 font-poppins lg:text-sm text-xs text-center lg:text-justify line-clamp-[11]">
               {window.innerWidth <= 1024
                 ? item?.description.split(" ").slice(0, 16).join(" ") + "..."
                 : item?.description}
@@ -213,7 +213,7 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
 
         {isModalOpen && componentData && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 px-4">
-            <div className="flex flex-col items-center justify-center lg:h-[30rem] lg:w-[60rem] w-full p-4 lg:mt-12 relative bg-[#f5f5f5] rounded-3xl">
+            <div className="flex flex-col items-center justify-center lg:h-[30rem] lg:w-[40rem] w-full p-4 lg:mt-12 relative bg-[#f5f5f5] rounded-3xl">
               <div className="relative lg:w-[60rem] w-[22rem] flex justify-center items-center mt-10">
                 <div className="overflow-hidden lg:w-[30rem] w-[25rem] -mt-5">
                   <Swiper
@@ -323,10 +323,10 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
                   </g>
                 </svg>
               </button>
-              <h1 className="text-[#76479C] font-bold text-2xl">
+              <h3 className="text-[#483d73] font-poppins font-semibold text-2xl">
                 {componentData?.modalContent?.title}
-              </h1>
-              <p className="font-poppins text-[#76479C] font-semibold text-xs px-10 text-center">
+              </h3>
+              <p className="font-poppins text-black font-normal text-sm px-10 text-center">
                 {componentData?.modalContent?.description}
               </p>
             </div>

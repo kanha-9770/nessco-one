@@ -239,10 +239,81 @@ export const blogPosts: BlogPost[] = [
           },
         ],
         readingTime: 3,
+      },
+
+      {
+        id: "4",
+        title: "Nessco Expands Presence in Japan with Servo Paper Packaging Solutions",
+        slug: "nessco-expands-presence-in-japan",
+        date: "2024-11-27",
+        author: {
+          id: "author1",
+          name: "Nessco Editorial Team",
+          avatar: "/images/authors/nessco-avatar.png", // Replace with actual path to the avatar image
+        },
+        tags: [
+          { id: "tag1", name: "Sustainability" },
+          { id: "tag2", name: "Packaging" },
+          { id: "tag3", name: "Innovation" },
+        ],
+        excerpt: 
+          "Nessco India enters the Japanese market with high-precision paper cup manufacturing machines, aligning with global sustainability goals and setting new benchmarks in packaging innovation.",
+        content: [
+          {
+            type: "text",
+            content: 
+              "In a significant development, Nessco India, a global leader in packaging machinery, has made a bold entry into the Japanese market with its fully automatic paper cup manufacturing machines. These state-of-the-art machines, capable of producing 160 cups per minute, are designed with high-precision servo control and a box-type structure, offering stable operations that surpass conventional machines.",
+          },
+          {
+            type: "list",
+            content: {
+              format: "disc",
+              items: [
+                "Fully compatible with European and American standards.",
+                "Japanese-language operation interface for user-friendly operations.",
+                "Approximately one-third the cost of higher-end models.",
+                "Exceptional quality and safety for sustainable packaging.",
+              ],
+            },
+            heading: "Highlighting Key Features",
+          },
+          {
+            type: "text",
+            content: 
+              "Nessco’s technology aligns with global efforts to reduce CO2 emissions and promote the use of recyclable materials. By introducing multiple units, manufacturers can produce a variety of eco-friendly packaging products, tailored to meet the diverse needs of the market.",
+            heading: "A Step Towards Sustainability",
+          },
+          {
+            type: "text",
+            content: 
+              "Nessco’s paper packaging solutions, including machines for producing paper cups, lids, lunch boxes, and plates, will be showcased for the first time at FOOMA JAPAN and TOKYO PACK. This marks an exciting opportunity for Japanese manufacturers to explore the latest in sustainable packaging technology.",
+            heading: "Unveiling at FOOMA JAPAN and TOKYO PACK",
+          },
+          {
+            type: "text",
+            content: 
+              "As a pioneer in sustainable packaging, Nessco is not only introducing paper cup manufacturing machines but is also developing cutting-edge paper lid forming technology. These machines transform single sheets of paper into robust lids, further solidifying Nessco’s commitment to innovative, eco-conscious manufacturing.",
+            heading: "A New Pillar of Growth",
+          },
+          {
+            type: "text",
+            content: 
+              "Since 2003, Nessco’s local partner in Japan has been instrumental in delivering its high-quality products to manufacturers across the country. This partnership has now expanded, with Nessco's tray and paper cup machinery becoming a key focus for future business growth.",
+            heading: "Building a Strong Foothold in Japan",
+          },
+        ],
+        readingTime: 4,
+        header: {
+          id: "header1",
+          heading: "Nessco Expands Presence in Japan",
+          headingImage: "/images/headers/nessco-japan.jpg", // Replace with actual path to the header image
+          subheading: "Driving sustainability and innovation in Japan's packaging industry.",
+        },
       }
 
-
-
-
       
+
+
+
+
   ];

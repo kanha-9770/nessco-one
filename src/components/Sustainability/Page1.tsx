@@ -113,8 +113,8 @@ const Page1: React.FC<MainLayoutProps> = ({ sustainData }) => {
         <Image
           src={data?.grass}
           alt="grass"
-          width={1100}
-          height={400}
+          width={3000}
+          height={3000}
           className="absolute left-3 -bottom-[8.1rem]"
           ref={grassRef}
         />

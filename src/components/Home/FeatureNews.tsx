@@ -6,6 +6,8 @@ import DecorativeImg2 from "../../../public/assets/FeaturedNews/DecorativeImg2.s
 import { HomeData, NewsFeatureItem } from "./types/constant";
 import { Key, useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import Link from "next/link";
+import { languageCODE } from "../Navbar/nav-menue";
 
 interface FeatureNewsLayoutProps {
   heroData: HomeData;
@@ -175,6 +177,7 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
                 <p className="font-poppins text-center lg:text-left text-sm">
                   {dialogContent?.description}
                 </p>
+                <Link href={`${languageCODE}/resources/media-room/${dialogContent?.title}`} className="h-10 w-20 left-[40%] font-bold relative ">Read More</Link>
               </div>
             </div>
           </div>

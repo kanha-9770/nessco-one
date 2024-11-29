@@ -4,6 +4,7 @@ import { NavbarData } from "../types/constant";
 import { countryCODE, languageCODE } from "../nav-menue";
 import Link from "next/link";
 import LottieAnimation from "@/components/ui/LottieAnimation";
+import Image from "next/image";
 
 type SupportItem = {
   title: string;
@@ -175,6 +176,13 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
           <p className="invert-0 pl-4 text-lg font-poppins font-medium">
             Give us a Call:
           </p>
+          <Image
+                src="https://assets.nesscoindustries.com/public/assets/contact/contact-icon.webp"
+                alt="Phone"
+                width={400}
+                height={400}
+                className="rounded-xl"
+              />
           <div className="flex items-center border-b-2 h-20 flex-row pt-6">
             <div className="flex items-center justify-center w-1/2">
             <p

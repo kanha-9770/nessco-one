@@ -88,7 +88,7 @@ const Home:React.FC <MainLayoutProps>= ({strengthData}) => {
                 className={`flex flex-col items-center ${imagebottoms[index]}`}
               >
                  <Image
-                  src="https://res.cloudinary.com/dlti4o10e/image/upload/v1731563544/2_gghfsu.svg"
+                  src={item?.img}
                   alt="Content"
                   width={100}
                   height={100}
