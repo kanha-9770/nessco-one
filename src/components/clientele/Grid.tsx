@@ -1,16 +1,16 @@
-
 "use client";
+
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import styles from './client.module.css'; // Import CSS module
+import styles from './client.module.css';
 import { ClienteleItem, Square } from './types/constant';
-// Square data
 
-interface AboutLayoutProps{
-  clienteleData:ClienteleItem;
+interface ShuffleGridProps {
+  clienteleData: ClienteleItem;
 }
+
 // Utility function to get a sliding animation class
-const getSlidingDirectionClass:React.FC = () => {
+const getSlidingDirectionClass = (): string => {
   const directions = [
     styles['animation-slide-in-left'],
     styles['animation-slide-in-right'],
@@ -20,22 +20,17 @@ const getSlidingDirectionClass:React.FC = () => {
   return directions[Math.floor(Math.random() * directions.length)];
 };
 
-
 // Generate square components
-const generateSquares = (data: Square[] , isFadingOut: boolean) => {
-
-  
-
-  
+const generateSquares = (data: Square[], isFadingOut: boolean) => {
   return data?.map((sq) => {
     const animationClass = getSlidingDirectionClass();
     return (
       <div
-        key={sq?.id}
+        key={sq.id}
         className={`relative border border-[#262626] rounded-lg flex items-center justify-center overflow-hidden 
-        ${sq?.bgClass} 
+        ${sq.bgClass} 
         ${isFadingOut ? 'opacity-0' : 'opacity-100'} 
-        transition-opacity duration-4000 ease-in-out`} // Fading effect
+        transition-opacity duration-4000 ease-in-out`}
       >
         <div className={`absolute inset-0 flex items-center justify-center lg:p-0 p-3 ${animationClass}`}>
           <Image
@@ -52,37 +47,34 @@ const generateSquares = (data: Square[] , isFadingOut: boolean) => {
 };
 
 // Main ShuffleGrid component
-const ShuffleGrid:React.FC <AboutLayoutProps>= ({clienteleData}) => {
-  const homegridData: Square[] = clienteleData?.Clientele[0]?.squares || []; // Type as Square[]
-  const [Squares, setSquares] = useState(generateSquares(homegridData, false));
-  const [ isFadingOut, setIsFadingOut] = useState(false); // Track fading state
+const ShuffleGrid: React.FC<ShuffleGridProps> = ({ clienteleData }) => {
+  const homegridData: Square[] = clienteleData?.Clientele[0]?.squares || [];
+  const [squares, setSquares] = useState(() => generateSquares(homegridData, false));
+  const [isFadingOut, setIsFadingOut] = useState(false);
 
   useEffect(() => {
     const shuffleSquares = () => {
-      setIsFadingOut(true); // Start fading out
+      setIsFadingOut(true);
 
-      // After fade-out, change squares and fade in
       setTimeout(() => {
-        setSquares(generateSquares(homegridData, false)); // Update squares
-        setIsFadingOut(false); // Fade back in
-      }, 4000); // Matches the fade-out duration
+        setSquares(generateSquares(homegridData, false));
+        setIsFadingOut(false);
+      }, 4000);
     };
 
-    const interval = setInterval(shuffleSquares, 4000); // Total cycle: 4s fade-out + 4s fade-in
+    const interval = setInterval(shuffleSquares, 8000);
 
-    return () => clearInterval(interval); // Cleanup interval on component unmount
+    return () => clearInterval(interval);
   }, [homegridData]);
 
   return (
     <div className="lg:h-[40rem] lg:w-full w-full h-[40rem] bg-black lg:p-10">
       <div className={`grid lg:grid-cols-4 grid-cols-2 lg:gap-3 gap-2 lg:h-full lg:w-full h-full w-full ${isFadingOut ? 'fade-out' : 'fade-in'}`}>
-        {Squares}
+        {squares}
       </div>
     </div>
   );
 };
 
 export default ShuffleGrid;
-
-
 
