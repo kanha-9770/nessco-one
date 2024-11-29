@@ -221,7 +221,7 @@ const FooterNew: React.FC<FooterProps> = ({
                   />
                   <svg
                     viewBox="0 0 24 24"
-                    className="-ml-10 lg:mt-[0.3rem] mt-3 lg:h-[3rem] lg:w-[3rem] h-[2rem] w-[2rem] "
+                    className="-ml-10 lg:mt-[0.3rem] mt-3 lg:h-[2.7rem] lg:w-[2.7rem] h-[2rem] w-[1.5rem] "
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
