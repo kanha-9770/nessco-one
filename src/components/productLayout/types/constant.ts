@@ -68,7 +68,6 @@ export interface MechanicalCam {
 
 export interface ProductData {
   title: string;
-  "seo title"?: string;
   description: string;
   openGraph: OpenGraph;
   heading: string;

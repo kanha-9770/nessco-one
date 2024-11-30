@@ -6,18 +6,23 @@ import gsap from "gsap";
 import { Label } from "@/components/ui/label";
 import EnquiryCart from "@/components/ui/EnquiryCart";
 import LinkUrl from "../LinkUrl";
+
+interface ProductsGrid {
+  inquiry: string;
+  placeholder: string;
+  all: {
+    s: string;
+  };
+  servoDriven: string;
+  mechanicalCam: string;
+  readMore: string;
+  readLess: string;
+  viewMachine: string;
+}
+
 interface ProductLayoutData {
   ProductLayout: Array<{
-    ProductsGrid: {
-      all: string;
-      servoDriven: string;
-      mechanicalCam: string;
-      placeholder: string;
-      viewMachine: string;
-      inquiry: string;
-      readLess: string;
-      readMore: string;
-    };
+    ProductsGrid: ProductsGrid;
   }>;
 }
 
@@ -31,7 +36,7 @@ interface MachineItem {
   information?: string;
   h1: string;
   h2: string;
-  h3: string;
+  h3?: string;
   link: string;
   img: string;
   range: string;
@@ -54,9 +59,10 @@ interface Page2Machine {
 interface Page2Props {
   productLayoutData: ProductLayoutData;
   page2machine: Page2Machine;
-  paramsthing:string | string[];
+  paramsthing: string | string[];
 }
-const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine,paramsthing}) => {
+
+const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine, paramsthing }) => {
   const ProductsGrid = productLayoutData?.ProductLayout[0]?.ProductsGrid;
   const [selectedCategory, setSelectedCategory] = useState<
     "all" | "servoDriven" | "mechanicalCam"
@@ -224,7 +230,7 @@ const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine,paramsthi
                 aria-label="All"
                 onClick={() => handleCategoryChange("all")}
               >
-                <button>{ProductsGrid?.all}</button>
+                <button>{ProductsGrid?.all.s}</button>
               </div>
               <div
                 className={`lg:border-2 border-[0.1rem] border-solid lg:w-[12rem] w-[7rem] h-[1.5rem] lg:h-[2rem] lg:rounded-full rounded-lg flex items-center lg:mx-[0.3rem] mx-[0.2rem] lg:text-[1rem] text-[0.7rem] font-medium ${
@@ -331,27 +337,6 @@ const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine,paramsthi
                     </p>
                   </div>
                 </div>
-                {/* <div className="w-6 h-6 bg-[#f5f5f5] rounded-full flex items-center justify-center cursor-pointer relative group hover:text-red-700 text-[1.1rem]">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="black"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="feather feather-info w-4 h-4 hover:stroke-red-700"
-                  >
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="12" y1="16" x2="12" y2="12"></line>
-                    <line x1="12" y1="8" x2="12" y2="8"></line>
-                  </svg>
-                  <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-md shadow-md p-3 h-max w-max z-20">
-                    <p className="text-sm text-black">{item?.information}</p>
-                  </div>
-                </div> */}
               </div>
 
               <div className="pt-6 pl-6">
@@ -422,7 +407,7 @@ const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine,paramsthi
                     aria-label="View Machine"
                     className={`mt-[1rem] w-[70%] h-[2rem] border-[0.1rem] border-solid font-medium rounded-lg transition-colors duration-300 border-[#9c9c9c] hover:border-black hover:bg-black hover:text-white`}
                   >
-                    <LinkUrl href={`/products/${item.link}/${item.link}`}>
+                    <LinkUrl href={`/products/${paramsthing}/${item.link}`}>
                       {ProductsGrid?.viewMachine}
                     </LinkUrl>
                   </button>
@@ -469,4 +454,5 @@ const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine,paramsthi
     </>
   );
 };
+
 export default Page2;
