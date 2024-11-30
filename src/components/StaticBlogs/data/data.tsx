@@ -1361,52 +1361,42 @@ export const blogPosts: BlogPost[] = [
         },
       },
       {
-        type: "section",
         heading: "Correct Steps for Changing the Mold Setup",
-        content: {
-          blocks: [
-            {
-              type: "list",
-              content: {
-                format: "disc",
-                items: [
-                  {
-                    type: "text",
-                    content: [
-                      "Confirm that the paper stand and blanks align with the required specifications.",
-                    ],
-                  },
-                  {
-                    text: "Mothermold and Butterfly Validation",
-                  content: [
-                      "Verify the mothermold and butterfly are compatible with the blank’s size and design.",
-                    ],
-                  },
-                  {
-                    text: "Sealing and Fitting Checks",
-                    content: [
-                      "Wrap the paper blank on the mold cone and check for proper sealing (minimum 3 mm).",
-                      "Ensure paper fit on the mothermold and verify alignment with the T-rod.",
-                    ],
-                  },
-                  {
-                    text: "Cone Shaft and Robot Inspection",
-                    content: [
-                      "Validate the cone shaft dimensions, taper, and length as per the machine’s configuration.",
-                      "Test the robot with the paper cone to ensure smooth functionality.",
-                    ],
-                  },
-                  {
-                    text: "Component Adjustments",
-                    content: [
-                      "Align the curling cup, knurling tool, and other parts to match the paper blank dimensions and thickness.",
-                    ],
-                  },
-                ],
-              },
-            },
-          ],
-        },
+        subHeading: "To ensure efficiency and precision, follow these steps:",
+        steps: [
+          {
+            title: "Paper Stand and Blank Check",
+            details: [
+              "Confirm that the paper stand and blanks align with the required specifications.",
+            ],
+          },
+          {
+            title: "Mothermold and Butterfly Validation",
+            details: [
+              "Verify the mothermold and butterfly are compatible with the blank’s size and design.",
+            ],
+          },
+          {
+            title: "Sealing and Fitting Checks",
+            details: [
+              "Wrap the paper blank on the mold cone and check for proper sealing (minimum 3 mm).",
+              "Ensure paper fit on the mothermold and verify alignment with the T-rod.",
+            ],
+          },
+          {
+            title: "Cone Shaft and Robot Inspection",
+            details: [
+              "Validate the cone shaft dimensions, taper, and length as per the machine’s configuration.",
+              "Test the robot with the paper cone to ensure smooth functionality.",
+            ],
+          },
+          {
+            title: "Component Adjustments",
+            details: [
+              "Align the curling cup, knurling tool, and other parts to match the paper blank dimensions and thickness.",
+            ],
+          },
+        ],
       },
       {
         type: "section",
@@ -1557,6 +1547,8 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+
+
 
 
 ];

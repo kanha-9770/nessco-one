@@ -7,6 +7,7 @@ import Page4 from "@/components/application/CustomizedProjects";
 import { ApplicationItem } from "./types/constant";
 
 export interface Product {
+  link?:string;
   img: string;
   title: string;
   description: string;
@@ -32,7 +33,11 @@ const Pages: React.FC<ApplicationProps> = ({ applicationData }) => {
   return (
     <>
       <Page1 applicationData={applicationData} />
-      <Page2 selectedProduct={selectedProduct} updateData={updateData} applicationData={applicationData} />
+      <Page2
+        selectedProduct={selectedProduct}
+        updateData={updateData}
+        applicationData={applicationData}
+      />
       <Page3
         selectedProduct={selectedProduct}
         applicationData={applicationData}
