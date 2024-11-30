@@ -3,7 +3,7 @@ export interface OpenGraph {
   description: string;
   images: {
     url: string;
-    alt: string;
+    alt?: string;
   }[];
 }
 
@@ -40,7 +40,7 @@ export interface Header {
 export interface ProductItem {
   h1: string;
   h2: string;
-  h3: string;
+  h3?: string;
   s: string;
   sInformation: string;
   img: string;
@@ -53,6 +53,9 @@ export interface ProductItem {
   image: string;
   imageInformation: string;
   information: string;
+  link?: string;
+  title?: string;
+  heading?: string;
 }
 
 export interface ServoDriven {
@@ -65,15 +68,20 @@ export interface MechanicalCam {
 
 export interface ProductData {
   title: string;
+  "seo title"?: string;
+  description: string;
+  openGraph: OpenGraph;
   heading: string;
   paragraph: string;
-  all: (ServoDriven | MechanicalCam)[];
+  all: (ServoDriven | MechanicalCam | null)[];
 }
 
 export interface ProductsGrid {
   inquiry: string;
   placeholder: string;
-  all: string;
+  all: {
+    s: string;
+  };
   servoDriven: string;
   mechanicalCam: string;
   readMore: string;

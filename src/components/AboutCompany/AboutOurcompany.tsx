@@ -70,7 +70,7 @@ const Home: React.FC<AboutLayoutProps> = ({ companyData }) => {
                   className="stroke-white stroke-[4px] fill-none stroke-linecap-round stroke-linejoin-round"
                 />
               </svg>
-            </div>{" "}
+            </div>
           </button>
           <div className="absolute bottom-10 flex justify-center w-full  lg:space-x-1 space-x-1">
             {homecompanyData?.images?.map((item, index) => (

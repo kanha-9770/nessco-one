@@ -1,6 +1,14 @@
 import createNextIntlPlugin from "next-intl/plugin";
+import withBundleAnalyzer from "@next/bundle-analyzer";
+
+// Configure the bundle analyzer
+const bundleAnalyzer = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === "true", // Enable only when ANALYZE is set to "true"
+});
+
+// Create the Next.js Intl plugin
 const withNextIntl = createNextIntlPlugin();
-// Import the bundle analyzer using the ES module syntax
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -11,11 +19,11 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "images.pexels.com", // Removed 'https://' here to make it match without 'www.'
+        hostname: "images.pexels.com",
       },
       {
         protocol: "https",
-        hostname: "www.youtube.com", // This is fine, 'www.' is already included.
+        hostname: "www.youtube.com",
       },
       {
         protocol: "https",
@@ -31,30 +39,32 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "www.nesscoindia.com", // This is fine, 'www.' is already included.
+        hostname: "www.nesscoindia.com",
       },
       {
         protocol: "https",
         hostname: "res.cloudinary.com",
       },
       {
-       protocol:"https",
-       hostname:"example.com",
+        protocol: "https",
+        hostname: "example.com",
       },
       {
         protocol: "https",
-        hostname: "www.*", // This will allow all 'www.' subdomains under 'https://'
+        hostname: "www.*", // Allows all 'www.' subdomains under 'https://'
       },
     ],
   },
   swcMinify: true,
+  // Add experimental features if needed
   // experimental: {
   //   optimizePackageImports: [
   //     '@mantine/core',     // Add Mantine components
   //     '@mantine/hooks',    // Add Mantine hooks
   //     'lodash',            // Add Lodash for tree shaking
-  //   ],  // List any additional packages you'd like to optimize
-  // }
+  //   ],
+  // },
 };
-// Export the configuration with the bundle analyzer applied
-export default withNextIntl(nextConfig);
+
+// Export the configuration with both plugins applied
+export default bundleAnalyzer(withNextIntl(nextConfig));
