@@ -69,7 +69,7 @@ const FooterNew: React.FC<FooterProps> = ({
                 className={`${styles.footerlistabout} lg:order-none lg:ml-[3rem]  lg:mt-0 -mt-[10rem] `}
               >
                 <h4
-                  className={`font-poppins text-xs md:text-xl lg:text-sm font-semibold md:w-[10rem] w-[12rem]  ${textColor}`}
+                  className={`font-poppins text-sm md:text-xl lg:text-sm font-semibold md:w-[10rem] w-[7rem]  ${textColor}`}
                 >
                   {footerData?.storeTitle}
                 </h4>
