@@ -1,14 +1,7 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import { HomeData } from "./types/constant";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "../ui/dialog";
 
 interface KnowMoreLayoutProps {
   heroData: HomeData;
@@ -18,7 +11,6 @@ export default function IOT({ heroData }: KnowMoreLayoutProps) {
   const carouselRef = useRef<HTMLDivElement | null>(null);
 
   const IotData = heroData?.home[10]?.data;
-  const [openModal, setOpenModal] = useState<number | null>(null);
 
   const scrollCarousel = (direction: "left" | "right") => {
     if (carouselRef.current) {

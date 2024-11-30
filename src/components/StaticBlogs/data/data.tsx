@@ -1383,36 +1383,45 @@ export const blogPosts: BlogPost[] = [
           format: "disc",
           items: [
             {
-              type: "text",
-              content: [
-                "Confirm that the paper stand and blanks align with the required specifications.",
-              ],
+              text: "Confirm that the paper stand and blanks align with the required specifications.",
             },
             {
               text: "Mothermold and Butterfly Validation",
-              content: [
-                "Verify the mothermold and butterfly are compatible with the blank’s size and design.",
-              ],
+              subItems: {
+                format: "disc",
+                items: [
+                  "Verify the mothermold and butterfly are compatible with the blank’s size and design.",
+                ],
+              },
             },
             {
               text: "Sealing and Fitting Checks",
-              content: [
-                "Wrap the paper blank on the mold cone and check for proper sealing (minimum 3 mm).",
-                "Ensure paper fit on the mothermold and verify alignment with the T-rod.",
-              ],
+              subItems: {
+                format: "disc",
+                items: [
+                  "Wrap the paper blank on the mold cone and check for proper sealing (minimum 3 mm).",
+                  "Ensure paper fit on the mothermold and verify alignment with the T-rod.",
+                ],
+              },
             },
             {
               text: "Cone Shaft and Robot Inspection",
-              content: [
-                "Validate the cone shaft dimensions, taper, and length as per the machine’s configuration.",
-                "Test the robot with the paper cone to ensure smooth functionality.",
-              ],
+              subItems: {
+                format: "disc",
+                items: [
+                  "Validate the cone shaft dimensions, taper, and length as per the machine’s configuration.",
+                  "Test the robot with the paper cone to ensure smooth functionality.",
+                ],
+              },
             },
             {
               text: "Component Adjustments",
-              content: [
-                "Align the curling cup, knurling tool, and other parts to match the paper blank dimensions and thickness.",
-              ],
+              subItems: {
+                format: "disc",
+                items: [
+                  "Align the curling cup, knurling tool, and other parts to match the paper blank dimensions and thickness.",
+                ],
+              },
             },
           ],
         },
@@ -1450,7 +1459,10 @@ export const blogPosts: BlogPost[] = [
                   "Fit the wrapped paper cone into the mothermold:",
                   {
                     text: "There should be no gaps.",
-                    content: "",
+                    subItems: {
+                      format: "disc",
+                      items: [],
+                    },
                   },
                   "The paper cone should align tightly with the mothermold and sit 5 mm below the T-rod center.",
                 ],
@@ -2925,35 +2937,50 @@ export const blogPosts: BlogPost[] = [
           items: [
             {
               text: "Paper Stand and Blank Check",
-              content: [
-                "Confirm that the paper stand and blanks align with the required specifications.",
-              ],
+              subItems: {
+                format: "disc",
+                items: [
+                  "Confirm that the paper stand and blanks align with the required specifications.",
+                ],
+              },
             },
             {
               text: "Mothermold and Butterfly Validation",
-              content: [
-                "Verify the mothermold and butterfly are compatible with the blank’s size and design.",
-              ],
+              subItems: {
+                format: "disc",
+                items: [
+                  "Verify the mothermold and butterfly are compatible with the blank’s size and design.",
+                ],
+              },
             },
             {
               text: "Sealing and Fitting Checks",
-              content: [
-                "Wrap the paper blank on the mold cone and check for proper sealing (minimum 3 mm).",
-                "Ensure paper fit on the mothermold and verify alignment with the T-rod.",
-              ],
+              subItems: {
+                format: "disc",
+                items: [
+                  "Wrap the paper blank on the mold cone and check for proper sealing (minimum 3 mm).",
+                  "Ensure paper fit on the mothermold and verify alignment with the T-rod.",
+                ],
+              },
             },
             {
               text: "Cone Shaft and Robot Inspection",
-              content: [
-                "Validate the cone shaft dimensions, taper, and length as per the machine’s configuration.",
-                "Test the robot with the paper cone to ensure smooth functionality.",
-              ],
+              subItems: {
+                format: "disc",
+                items: [
+                  "Validate the cone shaft dimensions, taper, and length as per the machine’s configuration.",
+                  "Test the robot with the paper cone to ensure smooth functionality.",
+                ],
+              },
             },
             {
               text: "Component Adjustments",
-              content: [
-                "Align the curling cup, knurling tool, and other parts to match the paper blank dimensions and thickness.",
-              ],
+              subItems: {
+                format: "disc",
+                items: [
+                  "Align the curling cup, knurling tool, and other parts to match the paper blank dimensions and thickness.",
+                ],
+              },
             },
           ],
         },
@@ -2991,7 +3018,6 @@ export const blogPosts: BlogPost[] = [
                   "Fit the wrapped paper cone into the mothermold:",
                   {
                     text: "There should be no gaps.",
-                    content: "",
                   },
                   "The paper cone should align tightly with the mothermold and sit 5 mm below the T-rod center.",
                 ],

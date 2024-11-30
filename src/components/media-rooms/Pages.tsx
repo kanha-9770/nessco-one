@@ -303,22 +303,8 @@ const TrendingNews: React.FC<NewsProps> = ({
 }) => {
   const TrendingNews = mediaRoomData?.MediaRoom[0]?.TrendingNews;
   const carouselRef = useRef<HTMLDivElement>(null);
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState<NewsItem>({
-    img: "",
-    filter: "",
-    title: "",
-    header: "",
-    continueReading: "",
-    dialogDescription: "",
-  });
 
-  const openModal = (content: NewsItem) => {
-    setModalContent(content);
-    setModalOpen(true);
-  };
 
-  const closeModal = () => setModalOpen(false);
 
   const scrollbarLeft = () => {
     if (carouselRef.current) {

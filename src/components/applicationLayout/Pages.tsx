@@ -12,8 +12,6 @@ const Page5 = dynamic(() => import("@/components/applicationLayout/FAQ"));
 import dynamic from "next/dynamic";
 import { ApplicationLayoutItem } from "./types/constant";
 import { FaqItem, Category } from "../Faq/types/constant";
-import { useEffect } from "react";
-
 interface ApplicationLayoutProps {
   applicationLayoutData: ApplicationLayoutItem;
   faqData: FaqItem;
@@ -87,11 +85,6 @@ const Pages: React.FC<ApplicationLayoutProps> = ({
     : faqData?.faq[0]?.searchbox.categories.flatMap(
         (category) => category?.faqs
       );
-  useEffect(() => {
-    console.log("machinecategory", matchingCategory);
-    console.log("machinecategory product", normalizedProductname, id);
-    console.log("machinecategory product faqs:", filteredFaqs);
-  }, []);
   return (
     <>
       <Page1
