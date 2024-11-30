@@ -155,7 +155,11 @@ const Machine: React.FC<MachineProps> = ({
     }
   };
 
-  const images = specification_image.flatMap((img) => Object.values(img));
+  // Include the extra image (initially selected image) in the images array
+  const images = [
+    image,
+    ...specification_image.flatMap((img) => Object.values(img)),
+  ];
   const shouldShowArrows = images.length > 1;
 
   const breadcrumbItems = [
@@ -182,9 +186,6 @@ const Machine: React.FC<MachineProps> = ({
                   <span className="bg-gradient-to-r from-[#483d73] to-red-700 bg-clip-text text-transparent font-semibold block pb-1">
                     {first_name}
                   </span>
-                  {/* <span className="font-semibold bg-gradient-to-r from-[#483d73] to-red-700 bg-clip-text text-transparent">
-                    {product_heading}
-                  </span> */}
                 </h1>
                 <div className="lg:h-[38%] h-full my-2 flex items-center break-words">
                   <p
@@ -195,7 +196,7 @@ const Machine: React.FC<MachineProps> = ({
                   </p>
                 </div>
                 <div className="flex flex-row-reverse justify-between  lg:flex-col">
-                <h2 className="lg:pl-2 lg:text-[2.8rem] text-[1.8rem] font-bold font-poppins text-[#424242] text-left italic">
+                  <h2 className="lg:pl-2 lg:text-[2.8rem] text-[1.8rem] font-bold font-poppins text-[#424242] text-left italic">
                     {name}
                   </h2>
                   <div className="w-max rounded-full group">
@@ -219,7 +220,6 @@ const Machine: React.FC<MachineProps> = ({
                       </svg>
                     </Button>
                   </div>
-                  
                 </div>
               </div>
               <div className="lg:w-[50%] w-full h-full flex relative mt-4 lg:mt-0">
@@ -228,14 +228,14 @@ const Machine: React.FC<MachineProps> = ({
                 </div>
                 <div className="w-full h-[90%] flex relative">
                   <div className="h-[18rem] overflow-hidden">
-                  <Image
-                    ref={smallImageRef}
-                    src={selectedImage}
-                    height={800}
-                    width={400}
-                    alt={product_heading}
-                    className="object-contain w-full h-[24rem] -mt-10"
-                  />
+                    <Image
+                      ref={smallImageRef}
+                      src={selectedImage}
+                      height={800}
+                      width={400}
+                      alt={product_heading}
+                      className="object-contain w-full h-[24rem] -mt-10"
+                    />
                   </div>
                   <div className="absolute top-0 right-0 p-2">
                     <Image

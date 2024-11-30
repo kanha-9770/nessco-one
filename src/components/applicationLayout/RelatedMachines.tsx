@@ -78,7 +78,10 @@ const Page4: React.FC<CombinedProps> = ({
     }
   }, []);
 
-  const handleToggleEnquiry = (item: { h1: string; img: string }, index: number) => {
+  const handleToggleEnquiry = (item: {
+    h2: string; h1: string; img: string 
+}, index: number) => {
+    const myItem=item.h1+item.h2
     setEnquiryItems(prevItems => {
       const existingItemIndex = prevItems.findIndex(prevItem => prevItem.id === `${index}`);
       if (existingItemIndex > -1) {
@@ -86,7 +89,7 @@ const Page4: React.FC<CombinedProps> = ({
         return prevItems.filter(prevItem => prevItem.id !== `${index}`);
       } else {
         // Item doesn't exist, add it
-        return [...prevItems, { id: `${index}`, name: item.h1, image: item.img }];
+        return [...prevItems, { id: `${index}`, name: myItem, image: item.img }];
       }
     });
   };

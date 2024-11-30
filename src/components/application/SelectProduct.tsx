@@ -6,6 +6,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Modal from "./Modal";
 import { Product } from "./Pages";
+import LinkUrl from "../LinkUrl";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 const Page2 = ({
@@ -117,13 +119,18 @@ const Page2 = ({
     setSearchTerm(event.target.value);
   };
 
-  const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleCategoryChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
     setSelectedCategory(event.target.value);
   };
 
   const filteredProducts = SelectProduct.products.filter((product) => {
-    const matchesSearch = product.title.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = selectedCategory === "" || product.title === selectedCategory;
+    const matchesSearch = product.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    const matchesCategory =
+      selectedCategory === "" || product.title === selectedCategory;
     return matchesSearch && matchesCategory;
   });
 
@@ -133,7 +140,11 @@ const Page2 = ({
         {/* Left-side product grid */}
         <div className="lg:w-[40%] lg:mx-[1rem] lg:pl-[4rem]">
           {/* Product Grid */}
-          <div className={`lg:w-[24.5rem] ${filteredProducts.length>15?'lg:h-[35.5rem]':'lg:h-auto'} bg-white rounded-[0.8rem] lg:px-[1rem] px-[0.5rem] py-[1rem] flex flex-col items-center justify-center`}>
+          <div
+            className={`lg:w-[24.5rem] ${
+              filteredProducts.length > 15 ? "lg:h-[35.5rem]" : "lg:h-auto"
+            } bg-white rounded-[0.8rem] lg:px-[1rem] px-[0.5rem] py-[1rem] flex flex-col items-center justify-center`}
+          >
             <div className="flex w-full">
               <div className="flex w-[60%] lg:h-[2.2rem] h-[1.8rem] rounded-[2rem] bg-[#f2f2f2] border-2 border-solid border-[#f2f2f2] overflow-hidden hover:border-[#d9d9d8] lg:mr-[1rem] mr-[0.4rem] text-[#6f6f6f] items-center">
                 <button
@@ -174,7 +185,9 @@ const Page2 = ({
                 >
                   <option value="">{SelectProduct.category}</option>
                   {SelectProduct.products.map((item, index) => (
-                    <option key={index} value={item.title}>{item.title}</option>
+                    <option key={index} value={item.title}>
+                      {item.title}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -270,14 +283,13 @@ const Page2 = ({
           </div>
 
           <div className="bg-[#483d73] border-2 border-[#483d73] lg:w-[10rem] lg:mt-0 mt-[1.5rem] w-[9rem] relative lg:h-[2.3rem] h-[2rem] rounded-[2rem] flex items-center hover:bg-white group">
-          {/* <LinkUrl href={`/${selectedProduct?.link}`} passHref> */}
-            <button
+            <Link
+              href={`application/${selectedProduct?.link}`}
               aria-label="View More"
               className="text-white lg:text-[1.2rem] absolute left-5 whitespace-nowrap group-hover:text-[#483d73]"
             >
               {SelectProduct?.viewMore}
-            </button>
-            {/* </LinkUrl> */}
+            </Link>
             <button aria-label="Right" className="absolute right-0 group">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

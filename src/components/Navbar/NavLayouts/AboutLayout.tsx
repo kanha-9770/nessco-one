@@ -93,7 +93,7 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
       </div>
       <div className="lg:flex ml-2 w-2 h-72 hidden border-l border-gray-300"></div>
       {/* desktop view */}
-      <div className="w-full lg:w-[20vw] h-32 ml-4 lg:h-auto flex flex-col justify-between mt-4 lg:mt-0">
+      <div className="w-full lg:w-[20vw] h-32 ml-4 lg:h-auto flex flex-col justify-between mt-4 lg:mt-0 lg:space-y-0 space-y-2">
         {navLeftData
           .slice(currentIndex, currentIndex + 2)
           .map((item: NavItem, index: number) => (
@@ -103,28 +103,28 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
               onClick={() => setActive(null)}
             >
               <div
-                className={`flex h-[6.5rem] lg:hover:scale-80 transition-transform duration-200 items-center lg:p-4 rounded-3xl lg:mb-2 ${
+                className={`flex h-[6.5rem] lg:hover:scale-80 transition-transform duration-200 items-center lg:p-4 lg:rounded-3xl lg:mb-2 ${
                   bgColors[index % bgColors?.length]
                 }`}
               >
                 <div
-                  className={`h-12 w-12 mr-4 flex justify-center items-center text-2xl ${item.textcolor}`}
+                  className={`w-[20%] mx-4 flex justify-center items-center text-2xl ${item.textcolor}`}
                 >
                   <Image
                     src={item?.icon || "/path/to/fallback-image.jpg"}
                     alt={item?.title}
-                    className="rounded-xl cursor-pointer h-8 w-8 object-cover transform lg:hover:scale-80 transition-transform duration-200"
+                    className="rounded-xl cursor-pointer h-full w-full object-cover transform lg:hover:scale-80 transition-transform duration-200"
                     width={24}
                     height={24}
                     priority={index < 4}
                     loading={index < 4 ? "eager" : "lazy"}
                   />
                 </div>
-                <div>
+                <div className="w-[80%]">
                   <h3 className="text-sm sm:text-md text-black font-semibold mb-0">
                     {item?.title}
                   </h3>
-                  <p className="text-xs flex font-regular text-black line-clamp-3">
+                  <p className="text-xs flex font-regular text-black pr-2">
                     {item?.description}
                   </p>
                 </div>

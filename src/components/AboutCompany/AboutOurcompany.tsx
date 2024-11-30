@@ -14,11 +14,11 @@ const imageWidths = [
   "lg:w-[2.5rem] w-[2rem]",
 ];
 const imagebottoms = [
-  "justify-end lg:mb-3 mb-2",
-  "justify-end lg:mb-3 mb-2",
+  "justify-end mb-0",
+  "justify-end mb-0",
   "justify-start",
-  "justify-end lg:mb-3 mb-2",
-  "justify-end lg:mb-3 mb-2",
+  "justify-end mb-0",
+  "justify-end mb-0",
 ];
 
 interface AboutLayoutProps {
@@ -72,7 +72,7 @@ const Home: React.FC<AboutLayoutProps> = ({ companyData }) => {
               </svg>
             </div>{" "}
           </button>
-          <div className="absolute bottom-10 flex justify-center w-full  lg:space-x-0 -space-x-5">
+          <div className="absolute bottom-10 flex justify-center w-full  lg:space-x-1 space-x-1">
             {homecompanyData?.images?.map((item, index) => (
               <div
                 key={index}
@@ -85,7 +85,7 @@ const Home: React.FC<AboutLayoutProps> = ({ companyData }) => {
                   height={100}
                   className={`${imageWidths[index]}`}
                 />
-                <p className="font-medium lg:text-sm text-xs text-white lg:w-[9.5rem] break-words w-[7rem] text-center">
+                <p className="font-medium lg:text-sm text-[0.5rem] text-white lg:w-[8rem] w-[4rem] text-center">
                   {item?.title}
                 </p>
               </div>

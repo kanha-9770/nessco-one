@@ -16,30 +16,36 @@ export interface Tag {
   name?: string;
 }
 
-export type ListFormat = 'disc' | 'number' | 'square';
+export type ListFormat = "disc" | "number" | "square";
 
 export type ListItem = {
   text: string;
   subItems?: ListContent;
-}
+};
 
 export type ListContent = {
   format: ListFormat;
-  items: (string | ListItem)[] |ContentBlock[];
-}
+  items: (string | ListItem)[] | ContentBlock[];
+};
 
 export type ContentBlock = {
-  type?: 'text' | 'image' | 'table' | 'list' | 'section' | 'code';
-  content?: string | { src: string; alt: string } | string[][] | ListContent | SectionContent | { language: string; code: string };
+  type?: "text" | "image" | "table" | "list" | "section" | "code";
+  content?:
+    | string
+    | { src: string; alt: string }
+    | string[][]
+    | ListContent
+    | SectionContent
+    | { language: string; code: string };
   heading?: string;
   subheading?: string;
-  image?:string;
-}
+  image?: string;
+};
 
 export type SectionContent = {
   intro?: string;
   blocks: ContentBlock[];
-}
+};
 
 export interface BlogPost {
   id?: string;
@@ -53,4 +59,3 @@ export interface BlogPost {
   readingTime?: number;
   header?: Header;
 }
-

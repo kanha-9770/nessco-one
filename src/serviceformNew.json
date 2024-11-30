@@ -1,6 +1,4 @@
-PORT='5000'
-MONGODB_URI=mongodb+srv://akash:akashpassword@cluster0.ruk6x.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-GOOGLE_SERVICE_ACCOUNT_KEY='{
+{
   "type": "service_account",
   "project_id": "serviceform-443001",
   "private_key_id": "6a82d76bb2a2b0f914610566e60c028517ad5fbb",
@@ -13,5 +11,3 @@ GOOGLE_SERVICE_ACCOUNT_KEY='{
   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/service-form%40serviceform-443001.iam.gserviceaccount.com",
   "universe_domain": "googleapis.com"
 }
-'
-SPREADSHEET_ID=12jgmYS5nV1YlwusAGMA6hN6F-6CHOHdtqeIeU6T-ziI

@@ -31,7 +31,7 @@ export async function generateMetadata({
 }) {
   const t = await getTranslations({ locale });
   const countryName = countryNames[country] || "Country";
-
+  
   let heroData;
   try {
     const heroRes = await fetch(`${apiUrl}${locale}/hero.json`);
@@ -107,15 +107,15 @@ export default async function RootLayout({
       <body className={`${inter.variable} ${poppins.variable}`}>
         {/* NextIntlClientProvider wraps the children with messages and locale */}
         {/* Navbar with internationalization */}
-        <NavLayout params={{ locale }} />
-
-        {/* Page content */}
         <FormProvider>
+          <NavLayout params={{ locale }} />
+
+          {/* Page content */}
           {children}
+          <div>
+            <FooterLayout params={{ locale }} />
+          </div>
         </FormProvider>
-        <div>
-          <FooterLayout params={{ locale }} />
-        </div>
         <Script
           src="https://cdn.pagesense.io/js/nesscoindia/ff3c25fdacd845338fcb5edd343fcde6.js"
           strategy="lazyOnload"

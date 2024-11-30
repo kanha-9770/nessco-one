@@ -1002,18 +1002,18 @@ export const blogPosts: BlogPost[] = [
         },
       },
       {
-        type:"image",
-        content:{
-        src:"https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/sidewall-formation.gif",
-        alt:"paper cup making process",
-        }
+        type: "image",
+        content: {
+          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/sidewall-formation.gif",
+          alt: "paper cup making process",
+        },
       },
       {
-        type:"image",
-        content:{
-        src:"https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/sidewall-formation.gif",
-        alt:"paper cup making process",
-        }
+        type: "image",
+        content: {
+          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/sidewall-formation.gif",
+          alt: "paper cup making process",
+        },
       },
       {
         type: "section",
@@ -1027,8 +1027,7 @@ export const blogPosts: BlogPost[] = [
                 blocks: [
                   {
                     type: "text",
-                    content:
-                      "1. Suction Station:",
+                    content: "1. Suction Station:",
                   },
                   {
                     type: "list",
@@ -1047,11 +1046,11 @@ export const blogPosts: BlogPost[] = [
         },
       },
       {
-        type:"image",
-        content:{
-        src:"https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/bottom-formation-and-insertion.gif",
-        alt:"paper cup making process",
-        }
+        type: "image",
+        content: {
+          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/bottom-formation-and-insertion.gif",
+          alt: "paper cup making process",
+        },
       },
       {
         type: "section",
@@ -1067,11 +1066,11 @@ export const blogPosts: BlogPost[] = [
         },
       },
       {
-        type:"image",
-        content:{
-        src:"https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/bottom-preheating-and-sealing.gif",
-        alt:"paper cup making process",
-        }
+        type: "image",
+        content: {
+          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/bottom-preheating-and-sealing.gif",
+          alt: "paper cup making process",
+        },
       },
       {
         type: "section",
@@ -1097,11 +1096,11 @@ export const blogPosts: BlogPost[] = [
         },
       },
       {
-        type:"image",
-        content:{
-        src:"https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/top-curling.gif",
-        alt:"paper cup making process",
-        }
+        type: "image",
+        content: {
+          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/top-curling.gif",
+          alt: "paper cup making process",
+        },
       },
       {
         type: "section",
@@ -1128,11 +1127,11 @@ export const blogPosts: BlogPost[] = [
         },
       },
       {
-        type:"image",
-        content:{
-        src:"https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/finished-cup-collection.gif",
-        alt:"paper cup making process",
-        }
+        type: "image",
+        content: {
+          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/finished-cup-collection.gif",
+          alt: "paper cup making process",
+        },
       },
       {
         type: "section",
@@ -1239,7 +1238,1563 @@ export const blogPosts: BlogPost[] = [
       heading: "The Paper Cup Manufacturing Process: A Detailed Guide",
       subheading:
         "Learn about each step in paper cup production and the advanced features of modern machines.",
-        headingImage:"https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/paper-cup-making-process.webp"
+      headingImage:
+        "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/paper-cup-making-process.webp",
+    },
+  },
+
+  //know your machine
+
+  {
+    id: "5",
+    title: "Comprehensive Guide to Changing Molds in a Paper Cup ",
+    slug: "mould-change-guide",
+    date: "2024-11-29",
+    author: {
+      id: "1",
+      name: "Nessco Team",
+    },
+    tags: [
+      { id: "1", name: "Paper Cup Manufacturing" },
+      { id: "2", name: "Mold Changes" },
+    ],
+    excerpt:
+      "A detailed guide on changing molds in a paper cup machine, including step-by-step instructions, validation tips, and key checks for optimal setup and high-quality production.",
+    content: [
+      {
+        type: "section",
+        heading: "Introduction",
+        content: {
+          blocks: [
+            {
+              type: "text",
+              content:
+                "Changing the mold in a paper cup machine is a crucial task that directly impacts production efficiency and cup quality. This blog provides a detailed step-by-step guide on the mold change process, checks to ensure proper alignment and compatibility, and tips for validating the mold's fit with the paper blank or fan.",
+            },
+          ],
+        },
+      },
+      {
+        type: "image",
+        content: {
+          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-machine/mould-change-guide/paper-mold.webp",
+          alt: "Mould change Guide",
+        },
+      },
+      {
+        type: "section",
+        heading: "Why Mold Changes Are Necessary",
+        content: {
+          blocks: [
+            {
+              type: "text",
+              content:
+                "Mold changes in a paper cup machine are typically required for:",
+            },
+            {
+              type: "list",
+              content: {
+                format: "disc",
+                items: [
+                  "Switching Cup Sizes: To cater to different customer demands or orders.",
+                  "Custom Cup Designs: For branded or specific requirements.",
+                  "Maintenance: To replace worn-out or damaged molds ensuring consistent quality.",
+                ],
+              },
+            },
+            {
+              type: "text",
+              content:
+                "The process involves precision, systematic steps, and validation to ensure smooth operations.",
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading:
+          "Steps to Check the Machine with Installed Mold Before Changing",
+        content: {
+          blocks: [
+            {
+              type: "text",
+              content:
+                "Before initiating the mold change process, it is essential to perform the following checks:",
+            },
+            {
+              type: "list",
+              heading: "Verify the Existing Mold Setup",
+              content: {
+                format: "disc",
+                items: [
+                  "Check the mothermold base plate for proper alignment and condition.",
+                  "Inspect the blank stand for positioning and stability.",
+                ],
+              },
+            },
+            {
+              type: "list",
+              heading: "Removal of Existing Mold Components",
+              content: {
+                format: "disc",
+                items: [
+                  "Remove components like the curling plate, knurling bowl, knurling tool, and heater folding plate.",
+                  "Detach the cutter set and existing molds (8 pcs for standard machines).",
+                ],
+              },
+            },
+            {
+              type: "list",
+              heading: "Reinstall and Configure the New Mold",
+              content: {
+                format: "disc",
+                items: [
+                  "Install the new cutter set and ensure proper alignment.",
+                  "Begin with one mold piece for initial setup and validation.",
+                  "Install additional components like knurling tool, knurling bowl, and curling plate sequentially.",
+                  "Complete the setup with the remaining 7 molds and fine-tune the settings.",
+                ],
+              },
+            },
+            {
+              type: "list",
+              heading: "Final Checks",
+              content: {
+                format: "disc",
+                items: [
+                  "Verify the robot assembly and ensure proper alignment with the cone.",
+                  "Inspect the glass collector and other minor components for compatibility.",
+                ],
+              },
+            },
+          ],
+        },
+      },
+      {
+        type: "image",
+        content: {
+          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-machine/mould-change-guide/mold2.webp",
+          alt: "Mould change Guide",
+        },
+      },
+      {
+        type: "list",
+        content: {
+          format: "disc",
+          items: [
+            {
+              type: "text",
+              content: [
+                "Confirm that the paper stand and blanks align with the required specifications.",
+              ],
+            },
+            {
+              text: "Mothermold and Butterfly Validation",
+              content: [
+                "Verify the mothermold and butterfly are compatible with the blank’s size and design.",
+              ],
+            },
+            {
+              text: "Sealing and Fitting Checks",
+              content: [
+                "Wrap the paper blank on the mold cone and check for proper sealing (minimum 3 mm).",
+                "Ensure paper fit on the mothermold and verify alignment with the T-rod.",
+              ],
+            },
+            {
+              text: "Cone Shaft and Robot Inspection",
+              content: [
+                "Validate the cone shaft dimensions, taper, and length as per the machine’s configuration.",
+                "Test the robot with the paper cone to ensure smooth functionality.",
+              ],
+            },
+            {
+              text: "Component Adjustments",
+              content: [
+                "Align the curling cup, knurling tool, and other parts to match the paper blank dimensions and thickness.",
+              ],
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Validating the Mold with Paper Blanks",
+        content: {
+          blocks: [
+            {
+              type: "text",
+              content:
+                "Proper validation ensures the mold aligns with the paper blank and produces high-quality cups. Follow these key checks:",
+            },
+            {
+              type: "list",
+              heading: "Paper Wrapping Test",
+              content: {
+                format: "disc",
+                items: [
+                  "Wrap the paper around the mold cone and ensure:",
+                  {
+                    text: "Extra paper at the cone’s bottom equals twice the knurling depth (e.g., 10 mm for a 5 mm knurling depth).",
+                    content: "",
+                  },
+                  "A minimum side wall sealing of 3 mm.",
+                ],
+              },
+            },
+            {
+              type: "list",
+              heading: "Mothermold Fit",
+              content: {
+                format: "disc",
+                items: [
+                  "Fit the wrapped paper cone into the mothermold:",
+                  {
+                    text: "There should be no gaps.",
+                    content: "",
+                  },
+                  "The paper cone should align tightly with the mothermold and sit 5 mm below the T-rod center.",
+                ],
+              },
+            },
+            {
+              type: "list",
+              heading: "Knurling Depth and Alignment",
+              content: {
+                format: "disc",
+                items: [
+                  "Use a long-leg vernier caliper to check the knurling depth and ensure uniform alignment.",
+                ],
+              },
+            },
+            {
+              type: "list",
+              heading: "Component Clearances",
+              content: {
+                format: "disc",
+                items: [
+                  "Ensure the curling plate and housing clearance matches twice the blank’s thickness.",
+                ],
+              },
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Tips for Precise Mold Setup",
+        content: {
+          blocks: [
+            {
+              type: "list",
+              content: {
+                format: "disc",
+                items: [
+                  "Cutter Adjustments: Ensure the cutter’s sharpness and fitment for precise blank cutting.",
+                  "Knurling Tool and Bowl: Maintain a 2–3 mm taper beyond the knurling depth for seamless operation.",
+                  "Curling Plate and Cup: Verify clearance between the curling plate and housing using 2x paper thickness. The curling cup should grab at least 75% of the cup.",
+                  "Heating Folding Plate: Ensure the plate aligns with the mold cone without excessive contact.",
+                ],
+              },
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Key Parts to Check During Mold Changes",
+        content: {
+          blocks: [
+            {
+              type: "table",
+              content: [
+                ["Part Name", "Key Checks"],
+                ["Blank", "Verify dimensions as per design."],
+                [
+                  "Mold Cone",
+                  "Check cone diameter, sealing area, and knurling depth compatibility.",
+                ],
+                [
+                  "Mothermold",
+                  "Ensure no gaps between paper cone and mothermold; validate paraffin holes.",
+                ],
+                [
+                  "Butterfly",
+                  "Confirm tight wrapping and alignment with the mothermold.",
+                ],
+                [
+                  "Knurling Tool/Bowl",
+                  "Inspect height, depth, and alignment with the mold cone.",
+                ],
+                [
+                  "Curling Plate",
+                  "Check clearance matching paper thickness (2x paper thickness).",
+                ],
+                [
+                  "Fiber Plate",
+                  "Ensure proper diameter for cup fitment (8–10 mm larger than cup top).",
+                ],
+                [
+                  "Cutter Set",
+                  "Validate sharpness, PCD, and tight fit for accurate cutting.",
+                ],
+              ],
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Final Settings and Validation",
+        content: {
+          blocks: [
+            {
+              type: "text",
+              content:
+                "After completing the mold change and installation, run a test batch to verify:",
+            },
+            {
+              type: "list",
+              content: {
+                format: "disc",
+                items: [
+                  "Smooth cone formation.",
+                  "Proper wall sealing and knurling.",
+                  "Consistent curling and bottom fit.",
+                ],
+              },
+            },
+            {
+              type: "text",
+              content:
+                "Inspect the finished cups for even dimensions, smooth edges, and no wrinkles or gaps. Fine-tune machine settings if necessary, ensuring all components work seamlessly together.",
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Conclusion",
+        content: {
+          blocks: [
+            {
+              type: "text",
+              content:
+                "Changing the mold in a paper cup machine demands precision, technical expertise, and systematic checks. With this guide, you can ensure an efficient mold change process, resulting in smooth production and high-quality cups.",
+            },
+          ],
+        },
+      },
+    ],
+  },
+
+  {
+    id: "6",
+    title: "Preventive Maintenance Guide For Paper Cup Machine",
+    slug: "preventive-maintenance-practices",
+    date: "2024-11-29",
+    author: {
+      id: "1",
+      name: "Nessco Team",
+    },
+    tags: [
+      { id: "1", name: "Paper Cup Machines" },
+      { id: "2", name: "Maintenance Guide" },
+    ],
+    excerpt:
+      "This guide provides essential maintenance practices, troubleshooting guidelines for electrical and mechanical issues, and routine checks to enhance the performance and longevity of paper cup machines.",
+    content: [
+      {
+        type: "section",
+        heading: "Introduction",
+        content: {
+          blocks: [
+            {
+              type: "text",
+              content:
+                "The smooth functioning of a paper cup machine is critical to ensuring uninterrupted production, product quality, and cost efficiency. This blog covers essential maintenance practices, troubleshooting guidelines for electrical and mechanical issues, and routine checks to enhance machine performance and longevity.",
+            },
+          ],
+        },
+      },
+
+      {
+        type: "section",
+        heading: "Machine Breakdown Troubleshooting",
+        content: {
+          blocks: [
+            {
+              type: "text",
+              content: "1. Electrical Errors: Causes and solutions",
+            },
+            {
+              type: "section",
+              heading: "1. Electrical Errors: Causes and Solutions",
+              content: {
+                blocks: [
+                  {
+                    type: "table",
+                    content: [
+                      ["Issue", "Causes", "Solutions"],
+                      [
+                        "Main Motor Not Working",
+                        "Incorrect wiring, overload condition",
+                        "Check wiring and resolve overload conditions.",
+                      ],
+                      [
+                        "Knurling Motor Not Working",
+                        "Incorrect wiring, overload condition",
+                        "Verify and correct wiring; resolve overload.",
+                      ],
+                      [
+                        "Knurling Motor Rotating in Reverse Direction",
+                        "Incorrect wiring position",
+                        "Inspect and correct wiring position.",
+                      ],
+                      [
+                        "Heater Temperature Not Increasing",
+                        "Faulty wires, damaged coils, thermocouples",
+                        "Replace faulty wires, coils, or thermocouples.",
+                      ],
+                      [
+                        "Ultrasonic Wall Sealing Not Happening",
+                        "Damaged horn, improper alignment, overload, probe position",
+                        "Replace damaged parts, align horn, resolve overload.",
+                      ],
+                    ],
+                  },
+                ],
+              },
+            },
+            {
+              type: "section",
+              heading: "2. Mechanical Errors: Causes and Solutions",
+              content: {
+                blocks: [
+                  {
+                    type: "text",
+                    content: "",
+                  },
+                  {
+                    type: "text",
+                    content: "2. Mechanical Errors: Causes and solutions",
+                  },
+                  {
+                    type: "table",
+                    content: [
+                      ["Issue", "Causes", "Solutions"],
+                      [
+                        "Problem in Paper Suction",
+                        "Air supply issues, damaged suction components",
+                        "Check air supply; replace damaged components.",
+                      ],
+                      [
+                        "Problem in Paper Guidance",
+                        "Misalignment of guidance components",
+                        "Align paper guidance parts properly.",
+                      ],
+                      [
+                        "Cone Formation/Wall Sealing Problem",
+                        "Incorrect timing, faulty cone formation",
+                        "Adjust timing; inspect and rectify formation issues.",
+                      ],
+                      [
+                        "Robot Function Problem",
+                        "Timing issues, faulty operation",
+                        "Adjust robot timing; inspect mechanism.",
+                      ],
+                      [
+                        "Cutter Set Problem",
+                        "Misaligned or damaged cutters",
+                        "Align or replace cutters.",
+                      ],
+                      [
+                        "Bottom Folding Problem",
+                        "Timing misalignment, faulty folding mechanism",
+                        "Adjust timing; inspect folding mechanism.",
+                      ],
+                      [
+                        "Knurling Problem",
+                        "Misalignment or malfunction of knurling unit",
+                        "Properly align or repair knurling unit.",
+                      ],
+                      [
+                        "Curling Problem",
+                        "Curling unit misalignment or malfunction",
+                        "Align curling unit; inspect mechanism.",
+                      ],
+                      [
+                        "Cup Collector Problem",
+                        "Misalignment of collector stations",
+                        "Align cup collector stations properly.",
+                      ],
+                    ],
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Machine Maintenance Guidelines",
+        content: {
+          blocks: [
+            {
+              type: "text",
+              content: "Daily Routine Checks",
+            },
+            {
+              type: "list",
+              heading: "Daily Routine Checks",
+              content: {
+                format: "disc",
+                items: [
+                  "Perform daily inspections and lubricate joints and moving parts.",
+                  "Monitor for unusual noises or vibrations during production.",
+                  "Tighten loose nuts, bolts, and other fasteners promptly.",
+                ],
+              },
+            },
+            {
+              type: "section",
+              heading: "Key Maintenance Tasks",
+              content: {
+                blocks: [
+                  {
+                    type: "text",
+                    content: "",
+                  },
+                  {
+                    type: "text",
+                    content: "Key Maintenance Tasks",
+                  },
+                  {
+                    type: "table",
+                    content: [
+                      ["Task", "Frequency", "Purpose"],
+                      [
+                        "Lubrication of Joints",
+                        "Daily",
+                        "Ensures smooth operation of moving parts.",
+                      ],
+                      [
+                        "Inspect Cylindrical Pins",
+                        "Weekly",
+                        "Prevents distortion or displacement of circlips.",
+                      ],
+                      [
+                        "Tighten Fasteners",
+                        "Daily",
+                        "Avoids vibration-related issues.",
+                      ],
+                      [
+                        "Optical Sensor Cleaning",
+                        "Every 3–5 working days",
+                        "Maintains detection sensitivity.",
+                      ],
+                      [
+                        "Air Blower Filter Cleaning",
+                        "Weekly",
+                        "Prevents air intake blockages.",
+                      ],
+                      [
+                        "Electric Panel Protection",
+                        "Ongoing",
+                        "Avoids moisture or rodent-related issues.",
+                      ],
+                      [
+                        "Stabilizer Operation Check",
+                        "Weekly (if applicable)",
+                        "Ensures machine safety from voltage fluctuations.",
+                      ],
+                      [
+                        "Ultrasonic Horn Pressure",
+                        "Regularly",
+                        "Prevents horn damage due to incorrect pressure.",
+                      ],
+                      [
+                        "Raw Material Inspection",
+                        "Before production",
+                        "Ensures defect-free paper blank and bottom reel.",
+                      ],
+                    ],
+                  },
+                ],
+              },
+            },
+            {
+              type: "text",
+              content: " ",
+            },
+            {
+              type: "text",
+              heading: "Lubrication and Oil Maintenance",
+              content:
+                "Replace lubricating oil: First change: 30–45 days for new machines. Subsequent changes: Every 3–16 months depending on oil condition. Clean the lubrication system’s oil pump inlet filter: Weekly for new machines during the first two months. Every two weeks afterward to ensure smooth oil flow.",
+            },
+            {
+              type: "list",
+              heading: "Preventive Measures for Optimal Performance",
+              content: {
+                format: "disc",
+                items: [
+                  "Regular Monitoring: Inspect and maintain all mechanical and electrical components for wear and tear. Address abnormalities promptly to avoid costly repairs.",
+                  "Operator Training: Ensure operators are well-trained in machine handling and basic troubleshooting.",
+                  "Environmental Safety: Keep the machine area clean and free from moisture, dust, and rodents. Store raw materials in a dry, clean environment to prevent defects in production.",
+                  "Emergency Protocols: Train personnel to identify critical issues, stop production, and notify technicians.",
+                ],
+              },
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Machine Breakdown Prevention Checklist",
+        content: {
+          blocks: [
+            {
+              type: "table",
+              content: [
+                ["Category", "Checkpoints"],
+                [
+                  "Electrical System",
+                  "Proper wiring, overload protection, sensor functionality.",
+                ],
+                [
+                  "Mechanical System",
+                  "Alignment of cutters, suction components, knurling and curling mechanisms.",
+                ],
+                [
+                  "Lubrication System",
+                  "Regular oiling, greasing, and filter cleaning.",
+                ],
+                [
+                  "Raw Material",
+                  "Moisture-free, defect-free paper blanks and bottom reels.",
+                ],
+              ],
+            },
+          ],
+        },
+      },
+    ],
+    header: {
+      id: "header-1",
+      heading: "Comprehensive Guide to Maintaining Paper Cup Machines",
+      headingImage:
+        "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-machine/preventive-maintenance-practices/preventive-maintenance-guide.webp",
+      subheading:
+        "Learn how to maintain paper cup machines with detailed troubleshooting and maintenance tips to ensure longevity and high performance.",
+    },
+  },
+  //know your business
+
+  {
+    id: "7",
+    title: "Sourcing Raw Materials for Paper Cups: A Practical Guide",
+    slug: "raw-material-sourcing",
+    date: "2024-11-29",
+    author: {
+      id: "1",
+      name: "Nessco Team",
+    },
+    tags: [
+      { id: "1", name: "Paper Cups" },
+      { id: "2", name: "Raw Materials" },
+    ],
+    excerpt:
+      "Sourcing raw materials for paper cups requires a balance between quality, cost, and sustainability. By understanding the paper types, specifications, manufacturers, pricing, and negotiation strategies, businesses can make informed decisions that enhance their product quality and profitability.",
+    content: [
+      {
+        type: "section",
+        heading: "Introduction",
+        content: {
+          blocks: [
+            {
+              type: "text",
+              content:
+                "Sourcing raw materials for paper cups requires a balance between quality, cost, and sustainability. By understanding the paper types, specifications, manufacturers, pricing, and negotiation strategies, businesses can make informed decisions that enhance their product quality and profitability.",
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Why Material Quality Matters",
+        content: {
+          blocks: [
+            {
+              type: "list",
+              content: {
+                format: "disc",
+                items: [
+                  "Customer Satisfaction: Durable cups that don’t deform or leak enhance the user experience.",
+                  "Brand Reliability: High-quality materials uphold your brand's reputation.",
+                  "Regulatory Compliance: Food-safe and eco-friendly materials meet global standards.",
+                ],
+              },
+            },
+          ],
+        },
+      },
+
+      {
+        type: "image",
+        content: {
+          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-business/raw-material-sourcing/raw-material-sourcing-img1.webp",
+          alt: "raw material sourcing",
+        },
+      },
+
+      {
+        type: "section",
+        heading: "Types of Paper Used in Paper Cups",
+        content: {
+          blocks: [
+            {
+              type: "table",
+              content: [
+                [
+                  "Paper Type",
+                  "Composition",
+                  "Applications",
+                  "Features",
+                  "Cost",
+                ],
+                [
+                  "Solid Bleached Sulfate (SBS)",
+                  "Virgin wood pulp, fully bleached",
+                  "Premium paper cups",
+                  "High strength, excellent printability, food-safe",
+                  "High",
+                ],
+                [
+                  "Coated Unbleached Kraft (CUK)",
+                  "Virgin kraft pulp, unbleached",
+                  "Eco-friendly paper cups",
+                  "Natural brown color, high durability, moisture-resistant",
+                  "Moderate",
+                ],
+                [
+                  "Folding Boxboard (FBB)",
+                  "Multi-layered with chemical and mechanical pulp",
+                  "General-purpose cups",
+                  "Lightweight, good stiffness, recyclable",
+                  "Moderate to High",
+                ],
+                [
+                  "Recycled Paperboard",
+                  "Post-consumer recycled fibers",
+                  "Secondary uses, basic cups",
+                  "Eco-friendly, cost-effective, slightly weaker",
+                  "Low",
+                ],
+              ],
+            },
+          ],
+        },
+      },
+      {
+        type: "image",
+        content: {
+          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-business/raw-material-sourcing/raw-material-sourcing-img2.webp",
+          alt: "raw material sourcing",
+        },
+      },
+      {
+        type: "section",
+        heading: "Global and Indian Manufacturers",
+        content: {
+          blocks: [
+            {
+              type: "list",
+              heading: "Global Manufacturers",
+              content: {
+                format: "disc",
+                items: [
+                  "International Paper: A leading producer of fiber-based products, including cup stock paper.",
+                  "WestRock: Offers a range of paperboard products suitable for food and beverage packaging.",
+                  "Stora Enso: Provides renewable solutions in packaging, biomaterials, and wooden constructions.",
+                ],
+              },
+            },
+            {
+              type: "list",
+              heading: "Indian Manufacturers",
+              content: {
+                format: "disc",
+                items: [
+                  "ITC Limited – Paperboards and Specialty Papers Division: A major player in the Indian market, offering a variety of paperboard products.",
+                  "JK Paper: Produces high-quality paper and packaging boards, catering to diverse industries.",
+                ],
+              },
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Key Specifications for Paper Cup Raw Material",
+        content: {
+          blocks: [
+            {
+              type: "table",
+              content: [
+                ["Specification", "Recommended Range", "Importance"],
+                [
+                  "Caliper (Thickness)",
+                  "250–350 µm",
+                  "Ensures rigidity, insulation, and structural integrity",
+                ],
+                [
+                  "Grammage (GSM)",
+                  "170–300 GSM",
+                  "Balances durability and cost-effectiveness",
+                ],
+                [
+                  "Moisture Content",
+                  "5–7%",
+                  "Prevents warping and ensures proper coating adhesion",
+                ],
+                [
+                  "Coating Weight",
+                  "10–20 GSM",
+                  "Provides liquid resistance and heat tolerance",
+                ],
+                [
+                  "Stiffness",
+                  "Above 400 mN for large cups",
+                  "Maintains shape under load",
+                ],
+              ],
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Pricing Overview",
+        content: {
+          blocks: [
+            {
+              type: "table",
+              content: [
+                [
+                  "Paper Type",
+                  "Price Range (Global)",
+                  "Price Range (India)",
+                  "Remarks",
+                ],
+                [
+                  "Virgin SBS Paperboard",
+                  "$1,000–$1,200 per metric ton",
+                  "₹70,000–₹85,000 per metric ton",
+                  "High-quality, premium material",
+                ],
+                [
+                  "Recycled Paperboard",
+                  "$800–$1,000 per metric ton",
+                  "₹55,000–₹70,000 per metric ton",
+                  "Eco-friendly, suitable for budget products",
+                ],
+                [
+                  "Kraft Paperboard",
+                  "$900–$1,100 per metric ton",
+                  "₹60,000–₹75,000 per metric ton",
+                  "Durable, natural look",
+                ],
+                [
+                  "PLA-Coated Paperboard",
+                  "$1,200–$1,400 per metric ton",
+                  "₹85,000–₹1,00,000 per metric ton",
+                  "Biodegradable but higher cost",
+                ],
+              ],
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Factors Influencing Pricing",
+        content: {
+          blocks: [
+            {
+              type: "text",
+              content:
+                "Pricing in the paperboard industry is influenced by various internal and external factors. These determine how much manufacturers pay for their raw materials.",
+            },
+            {
+              type: "table",
+              content: [
+                ["Factor", "Description", "Impact on Pricing"],
+                [
+                  "Raw Material Costs",
+                  "Pulp prices fluctuate based on global supply and demand",
+                  "High",
+                ],
+                [
+                  "Coating Type",
+                  "PE is cheaper; PLA or water-based coatings cost more",
+                  "Medium to High",
+                ],
+                [
+                  "Certifications",
+                  "FSC or food-grade certifications add production costs",
+                  "Moderate",
+                ],
+                [
+                  "Market Trends",
+                  "Demand for eco-friendly materials raises prices",
+                  "High",
+                ],
+                [
+                  "Supply Chain Efficiency",
+                  "Advanced logistics reduce transportation costs",
+                  "Low to Medium",
+                ],
+              ],
+            },
+            {
+              type: "text",
+              content:
+                "Summary: Keeping track of these factors allows manufacturers to negotiate better prices and ensure cost efficiency.",
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Negotiation Techniques",
+        content: {
+          blocks: [
+            {
+              type: "text",
+              content:
+                "Effective negotiation can lead to significant cost savings without compromising on quality. The table below highlights some proven strategies.",
+            },
+            {
+              type: "list",
+              heading: "Price Influencing Factors",
+              content: {
+                format: "number",
+                items: [
+                  "Raw Material Availability: Virgin wood pulp prices fluctuate based on global supply and demand. Recycled paperboard may be cheaper but less durable.",
+                  "Coating Type: PE coatings are cost-effective, but PLA or water-based coatings increase production costs due to limited availability.",
+                  "Certification Costs: FSC or food-grade certifications may add to the cost but ensure quality and compliance.",
+                  "Production Efficiency: Manufacturers with advanced machinery can produce consistent quality at a lower cost.",
+                  "Market Trends: Global trends in sustainability and eco-friendly materials significantly affect pricing and sourcing options.",
+                ],
+              },
+            },
+            {
+              type: "table",
+              content: [
+                ["Technique", "How to Implement", "Benefits"],
+                [
+                  "Bulk Purchasing",
+                  "Commit to larger orders to qualify for volume discounts",
+                  "Reduced per-unit cost",
+                ],
+                [
+                  "Long-Term Contracts",
+                  "Sign agreements with stable pricing for regular supply",
+                  "Price stability",
+                ],
+                [
+                  "Alternative Suppliers",
+                  "Evaluate multiple suppliers to foster competitive pricing",
+                  "Leverage better deals",
+                ],
+                [
+                  "Flexible Payment Terms",
+                  "Offer upfront payments or staggered payments for discounts",
+                  "Improved cash flow",
+                ],
+                [
+                  "Customization Requests",
+                  "Tailor specifications to reduce unnecessary costs",
+                  "Cost optimization",
+                ],
+              ],
+            },
+            {
+              type: "text",
+              content:
+                "Summary: Strategic sourcing and negotiation can provide competitive advantages in price and quality.",
+            },
+            {
+              type: "text",
+              content: "Negotiation Techniques",
+            },
+            {
+              type: "list",
+              heading: "Additional Negotiation Techniques",
+
+              content: {
+                format: "disc",
+                items: [
+                  "Bulk Orders: Commit to larger quantities to negotiate volume discounts.",
+                  "Long-Term Contracts: Secure stable pricing by signing long-term agreements with suppliers.",
+                  "Alternative Suppliers: Evaluate multiple suppliers to create competitive bids.",
+                  "Customization Requests: Negotiate for tailored specifications to reduce waste and optimize material usage.",
+                  "Market Research: Stay updated on global and local market trends to anticipate price fluctuations.",
+                ],
+              },
+            },
+          ],
+        },
+      },
+    ],
+    header: {
+      id: "header-1",
+      heading: "Sourcing Raw Materials for Paper Cups: A Practical Guide",
+      subheading:
+        "Learn how to effectively source raw materials for paper cups, balancing quality, cost, and sustainability for enhanced profitability.",
+    },
+  },
+
+  {
+    id: "8",
+    title: "Selling Paper Cup",
+    slug: "selling-paper-cup",
+    date: "2024-11-29",
+    author: {
+      id: "1",
+      name: "Nessco Team",
+    },
+    tags: [
+      { id: "1", name: "Paper Cups" },
+      { id: "2", name: "Sales Strategies" },
+    ],
+    excerpt:
+      "This guide provides a comprehensive approach to understanding the paper cup market, pricing strategies, customer segmentation, distribution networks, and marketing techniques to build a profitable business.",
+    content: [
+      {
+        type: "section",
+        heading: "Introduction: The Growing Demand for Paper Cups",
+        content: {
+          blocks: [
+            {
+              type: "text",
+              content:
+                "The global paper cup market is experiencing significant growth, driven by increasing consumer awareness of environmental sustainability and a shift away from plastic products. According to Data Bridge Market Research, the market was valued at USD 10.61 billion in 2022 and is projected to reach USD 13.55 billion by 2030, exhibiting a Compound Annual Growth Rate (CAGR) of 3.10% during the forecast period of 2023 to 2030.",
+            },
+            {
+              type: "text",
+              content:
+                "Similarly, KBV Research reports that the global paper cups market size is expected to reach USD 13.8 billion by 2030, rising at a CAGR of 3.8% during the forecast period. In the USA, Europe, Middle East and South Asia, the market is also expanding due to the growing trend of takeaway culture and the adoption of eco-friendly solutions. The Asia Pacific region dominated the paper cups market with a market share of 49.09% in 2023.",
+            },
+            {
+              type: "text",
+              content:
+                "These projections highlight the increasing demand for paper cups globally and in India, presenting lucrative opportunities for manufacturers and traders in the industry.",
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Topics Covered in This Article",
+        content: {
+          blocks: [
+            {
+              type: "list",
+              content: {
+                format: "disc",
+                items: [
+                  "Understanding the paper cup market.",
+                  "Product range and their application.",
+                  "Overview of the sales cycle: From manufacturing to delivery and reorder.",
+                  "Pricing strategy, cost calculations, profit margins, and factors influencing pricing.",
+                  "Key selling points and marketing strategies.",
+                  "Customer segmentation: direct customers, traders, and platforms.",
+                  "Negotiation tips and selling considerations.",
+                  "Distribution networks and business automation.",
+                ],
+              },
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Understanding the Paper Cup Market",
+        content: {
+          blocks: [
+            {
+              type: "table",
+              content: [
+                ["Segment", "Key Requirements", "Examples"],
+                [
+                  "Food Service Industry",
+                  "Branded cups, durability",
+                  "Starbucks, McDonald's",
+                ],
+                [
+                  "Corporate Sector",
+                  "Unbranded or plain cups",
+                  "Office suppliers",
+                ],
+                [
+                  "Event Organizers",
+                  "Affordable, large quantities",
+                  "Concerts, festivals",
+                ],
+                [
+                  "Retail Sector",
+                  "Bulk packaging for consumers",
+                  "Supermarkets, local stores",
+                ],
+                [
+                  "Disposable Traders",
+                  "Bulk orders, competitive pricing",
+                  "Wholesalers, distributors",
+                ],
+              ],
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Product Range in Paper Cups",
+        content: {
+          blocks: [
+            {
+              type: "table",
+              content: [
+                ["Size", "Usage", "Additional Applications"],
+                [
+                  "2–4 oz",
+                  "Tea, espresso, small servings of coffee; condiment cups (ketchup, sauces)",
+                  "Sampling cups at events or grocery stores; medicine cups in hospitals",
+                ],
+                [
+                  "4–12 oz",
+                  "Standard for hot and cold coffee, juices, cool drinks, beer, and water",
+                  "Quick-service restaurants and cafes; medium servings in offices or vending machines",
+                ],
+                [
+                  "14–32 oz",
+                  "Cinema halls for cold drinks, juices, and large servings",
+                  "Party cups for events; sports events or outdoor activities for hydration",
+                ],
+              ],
+            },
+            {
+              type: "table",
+              content: [
+                ["Variant", "Description", "Best For"],
+                [
+                  "Single-Wall Cups",
+                  "General-purpose cups, lightweight and economical",
+                  "Regular hot and cold beverages at restaurants or cafes",
+                ],
+                [
+                  "Double-Wall Cups",
+                  "Insulated cups with an extra layer for heat retention",
+                  "Hot beverages like coffee or tea",
+                ],
+                [
+                  "Ripple-Wall Cups",
+                  "Enhanced grip and heat resistance with a textured outer layer",
+                  "High-end cafes, premium coffee, and hot beverages",
+                ],
+                [
+                  "Custom-Printed Cups",
+                  "Cups designed with logos, designs, or branding for promotional purposes",
+                  "Corporate branding, advertising, and exclusive events",
+                ],
+              ],
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Overview of the Sales Cycle: From Manufacturing to Delivery and Reorder",
+        content: {
+          blocks: [
+            {
+              type: "text",
+              content:
+                "The sales cycle for paper cups encompasses multiple stages, starting from manufacturing and stock preparation to lead acquisition, quotation, order fulfillment, and customer retention. This cycle ensures smooth operations and long-term customer satisfaction. Here's a step-by-step overview:",
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "1. Manufacturing: Make-to-Order and Make-to-Stock",
+        content: {
+          blocks: [
+            {
+              type: "list",
+              content: {
+                format: "disc",
+                items: [
+                  {
+                    text: "Make-to-Order",
+                    subItems: {
+                      format: "disc",
+                      items: [
+                        "Manufacturing begins only after receiving a confirmed order.",
+                        "Common for customized products like branded cups or special sizes.",
+                        "Reduces inventory costs but requires efficient production planning to meet deadlines.",
+                      ],
+                    },
+                  },
+                  {
+                    text: "Make-to-Stock",
+                    subItems: {
+                      format: "disc",
+                      items: [
+                        "Regular-sized and high-demand paper cups are produced in advance and stocked.",
+                        "Ensures quick delivery for immediate market needs.",
+                        "Suitable for bulk orders, traders, and recurring clients.",
+                      ],
+                    },
+                  },
+                ],
+              },
+            },
+            {
+              type: "table",
+              content: [
+                ["Production Type", "Advantages", "Challenges"],
+                [
+                  "Make-to-Order",
+                  "Reduced inventory, tailored to customer needs",
+                  "Longer lead times",
+                ],
+                [
+                  "Make-to-Stock",
+                  "Ready availability, faster delivery",
+                  "Requires demand forecasting and storage",
+                ],
+              ],
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "2. Marketing and Sales Strategies",
+        content: {
+          blocks: [
+            {
+              type: "list",
+              content: {
+                format: "disc",
+                items: [
+                  {
+                    text: "a) Online Presence",
+                    subItems: {
+                      format: "disc",
+                      items: [
+                        "Website: Showcase your product range, pricing, and contact details.",
+                        "E-commerce Platforms: List products on platforms like Amazon, Flipkart, or Alibaba.",
+                        "Social Media: Use Instagram and LinkedIn to reach cafes, restaurants, and corporate buyers.",
+                      ],
+                    },
+                  },
+                  {
+                    text: "b) Targeted Advertising",
+                    subItems: {
+                      format: "disc",
+                      items: [
+                        "Use Google Ads or Facebook Ads to target specific audiences, such as café owners or event organizers.",
+                      ],
+                    },
+                  },
+                  {
+                    text: "c) Direct Outreach",
+                    subItems: {
+                      format: "disc",
+                      items: [
+                        "Approach potential customers directly, including:",
+                        "- Restaurants and cafes.",
+                        "- Corporate offices.",
+                        "- Retailers and wholesalers.",
+                      ],
+                    },
+                  },
+                  {
+                    text: "d) Trade Shows and Events",
+                    subItems: {
+                      format: "disc",
+                      items: [
+                        "Participate in packaging and food service trade fairs to showcase your products.",
+                      ],
+                    },
+                  },
+                  {
+                    text: "e) Sustainability Certifications",
+                    subItems: {
+                      format: "disc",
+                      items: [
+                        "Highlight certifications like FSC, FDA compliance, or food-grade approvals to build trust.",
+                      ],
+                    },
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "For Disposable Traders and Direct Customers",
+        content: {
+          blocks: [
+            {
+              type: "table",
+              content: [
+                ["Feature", "Why It Attracts Traders"],
+                [
+                  "Bulk Discounts",
+                  "Reduces per-unit cost, increasing their margins.",
+                ],
+                [
+                  "Variety of Products",
+                  "Enables traders to cater to multiple client segments.",
+                ],
+                [
+                  "Eco-Friendly Options",
+                  "Meets rising demand for sustainable disposables.",
+                ],
+                ["Custom Branding", "Adds value for their end customers."],
+              ],
+            },
+            {
+              type: "table",
+              content: [
+                ["Feature", "Why It Attracts Direct Customers"],
+                [
+                  "Durability and Quality",
+                  "Leak-proof and food-safe cups enhance customer satisfaction.",
+                ],
+                [
+                  "Custom Branding",
+                  "Helps businesses promote their brand effectively.",
+                ],
+                [
+                  "Eco-Friendly Options",
+                  "Appeals to environmentally conscious consumers.",
+                ],
+              ],
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Customer Acquisition and Qualification",
+        content: {
+          blocks: [
+            {
+              type: "list",
+              content: {
+                format: "disc",
+                items: [
+                  "Digital marketing campaigns (Google Ads, social media).",
+                  "Business directories (e.g., Alibaba, Ebay, IndiaMART, TradeIndia).",
+                  "Trade shows and industry events.",
+                  "Referrals and repeat customers.",
+                ],
+              },
+            },
+            {
+              type: "table",
+              content: [
+                ["Lead Source", "Examples", "Effectiveness"],
+                [
+                  "Digital Marketing",
+                  "Google Ads, LinkedIn, Instagram",
+                  "High for traders and direct customers",
+                ],
+                [
+                  "Business Directories",
+                  "IndiaMART, TradeIndia",
+                  "Effective for bulk and global buyers",
+                ],
+                [
+                  "Industry Events",
+                  "Trade shows, expos",
+                  "Great for networking and large orders",
+                ],
+              ],
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Pricing Strategy",
+        content: {
+          blocks: [
+            {
+              type: "table",
+              content: [
+                ["Market Type", "Price Range per Cup", "Remarks"],
+                [
+                  "Trader Level (India)",
+                  "₹3–₹5 for plain cups",
+                  "Depends on order quantity and cup size",
+                ],
+                [
+                  "Trader Level (Global)",
+                  "$0.05–$0.08 for plain cups",
+                  "Prices vary by region and shipping costs",
+                ],
+                [
+                  "Direct-to-Customer",
+                  "₹5–₹7 per cup",
+                  "Includes higher markup for retail and small orders",
+                ],
+                [
+                  "Eco-Friendly Cups",
+                  "₹5–₹8 (India) / $0.10–$0.15 (Global)",
+                  "Higher cost due to PLA coating or recycled material",
+                ],
+              ],
+            },
+            {
+              type: "text",
+              content:
+                "Summary: Bulk traders prioritize low-cost options, while direct customers may accept higher prices for customization or eco-friendly materials.",
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Negotiation Tips for Both Segments",
+        content: {
+          blocks: [
+            {
+              type: "table",
+              content: [
+                ["Technique", "How to Implement", "Benefit"],
+                [
+                  "Volume Discounts",
+                  "Provide better pricing for higher order quantities.",
+                  "Encourages bulk purchases.",
+                ],
+                [
+                  "Flexible Payment Terms",
+                  "Offer staggered payment or credit terms.",
+                  "Builds trust and repeat orders.",
+                ],
+                [
+                  "Promotions and Deals",
+                  "Introduce seasonal offers or discounts for regular buyers.",
+                  "Increases customer loyalty.",
+                ],
+              ],
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Customer Retention Strategies",
+        content: {
+          blocks: [
+            {
+              type: "list",
+              content: {
+                format: "disc",
+                items: [
+                  "Loyalty Programs: Offer discounts for repeat customers or bulk buyers.",
+                  "Targeted Discounts: Provide exclusive discounts for high-volume traders.",
+                  "Consistent Quality: Ensure every batch meets the same high-quality standards.",
+                  "Regular Follow-Ups: Stay in touch with clients for repeat orders.",
+                  "Personalized Offers: Send personalized offers based on purchase history.",
+                ],
+              },
+            },
+          ],
+        },
+      },
+      
+      
+      {
+        type: "section",
+        heading: "Pricing Strategy",
+        content: {
+          blocks: [
+            {
+              type: "table",
+              content: [
+                ["Market Type", "Price Range per Cup", "Remarks"],
+                [
+                  "Trader Level (India)",
+                  "₹3–₹5 for plain cups",
+                  "Depends on order quantity and cup size",
+                ],
+                [
+                  "Trader Level (Global)",
+                  "$0.05–$0.08 for plain cups",
+                  "Prices vary by region and shipping costs",
+                ],
+                [
+                  "Direct-to-Customer",
+                  "₹5–₹7 per cup",
+                  "Includes higher markup for retail and small orders",
+                ],
+                [
+                  "Eco-Friendly Cups",
+                  "₹5–₹8 (India) / $0.10–$0.15 (Global)",
+                  "Higher cost due to PLA coating or recycled material",
+                ],
+              ],
+            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Negotiation Tips for Both Segments",
+        content: {
+          blocks: [
+            {
+              type: "table",
+              content: [
+                ["Technique", "How to Implement", "Benefit"],
+                [
+                  "Volume Discounts",
+                  "Provide better pricing for higher order quantities.",
+                  "Encourages bulk purchases.",
+                ],
+                [
+                  "Flexible Payment Terms",
+                  "Offer staggered payment or credit terms.",
+                  "Builds trust and repeat orders.",
+                ],
+                [
+                  "Promotions and Deals",
+                  "Introduce seasonal offers or discounts for regular buyers.",
+                  "Increases customer loyalty.",
+                ],
+              ],
+            },
+          ],
+        },
+      },
+    ],
+    header: {
+      id: "header-1",
+      heading:
+        "How to Sell Paper Cups: A Comprehensive Guide to Building a Profitable Business",
+        headingImage:"https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-business/selling-paper-cup/resource-page-images.webp",
+      subheading:
+        "Learn how to understand the paper cup market, implement effective pricing strategies, and market your products to maximize profits.",
     },
   },
 ];

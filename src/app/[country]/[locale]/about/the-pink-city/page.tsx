@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import React from "react";
 import { cookies } from "next/headers"; // Server-side (Next.js app directory)
+import { getBaseUrl } from "@/app/api/environment";
 
 const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
 const locales = ["en", "fr", "nl", "de", "es", "hi", "ta"] as const;
@@ -11,7 +12,7 @@ const countryUrl = "https://countryjson.nesscoindustries.com/";
 
 
 type Props = {
-  params: { locale: string };
+  params: { locale: string; country: string };
 };
 // Revalidate every 60 seconds (or any time period you prefer)
 export const revalidate = 60;
@@ -55,8 +56,9 @@ async function fetchCountryData(locale: string): Promise<string> {
 
 // Dynamically generate metadata using the fetched SEO data
 export async function generateMetadata({
-  params: { locale },
+  params: { locale, country },
 }: Props): Promise<Metadata> {
+  const baseUrl = getBaseUrl();
   // Fallback to "en" if the locale isn't supported
   if (!locales.includes(locale as any)) {
     locale = "en";
@@ -82,7 +84,7 @@ export async function generateMetadata({
       },
       robots: "index, follow",
       alternates: {
-        canonical: "https://www.default.com",
+        canonical: `${baseUrl}/${country}/${locale}`,
       },
       twitter: {
         card: "summary_large_image",
@@ -100,13 +102,13 @@ export async function generateMetadata({
     description: seoData?.description,
     viewport: "width=device-width, initial-scale=1",
     alternates: {
-      canonical: `https://nessco-two.vercel.app/${countryName}/${locale}`,
+      canonical: `${baseUrl}/${country}/${locale}`,
     },
     openGraph: {
       type: "website",
       title: seoData?.openGraph?.title,
       siteName: "Nessco Industries",
-      url: `https://nessco-two.vercel.app/${countryName}/${locale}`,
+      url: `${baseUrl}/${country}/${locale}`,
       description: seoData?.openGraph?.description,
       images: seoData?.openGraph?.images,
     },

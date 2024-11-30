@@ -12,6 +12,7 @@ const Page5 = dynamic(() => import("@/components/applicationLayout/FAQ"));
 import dynamic from "next/dynamic";
 import { ApplicationLayoutItem } from "./types/constant";
 import { FaqItem, Category } from "../Faq/types/constant";
+import { useEffect } from "react";
 
 interface ApplicationLayoutProps {
   applicationLayoutData: ApplicationLayoutItem;
@@ -19,7 +20,11 @@ interface ApplicationLayoutProps {
   id?: string;
 }
 
-const Pages: React.FC<ApplicationLayoutProps> = ({ applicationLayoutData, id, faqData }) => {
+const Pages: React.FC<ApplicationLayoutProps> = ({
+  applicationLayoutData,
+  id,
+  faqData,
+}) => {
   const Header = applicationLayoutData?.ApplicationLayout[0]?.Header;
   const ScrollableComponent =
     applicationLayoutData?.ApplicationLayout[0]?.ScrollableComponent;
@@ -49,14 +54,9 @@ const Pages: React.FC<ApplicationLayoutProps> = ({ applicationLayoutData, id, fa
   }
 
   const normalizeTitle = (title: string) =>
-    title
-      .toLowerCase()
-      .replace(/\s+/g, "-")
-      .trim();
+    title.toLowerCase().replace(/\s+/g, "-").trim();
 
   const normalizedProductname = normalizeTitle(productname);
-
- 
 
   const page1product = Header.icons.find(
     (m) => normalizeTitle(m.title) === normalizedProductname
@@ -76,15 +76,22 @@ const Pages: React.FC<ApplicationLayoutProps> = ({ applicationLayoutData, id, fa
   }
 
   // Find the matching category in faqData
-  const matchingCategory: Category | undefined = faqData.faq[0].searchbox.categories.find(
-    (category) => normalizeTitle(category.name) === normalizedProductname
-  );
+  const matchingCategory: Category | undefined =
+    faqData.faq[0]?.searchbox?.categories?.find(
+      (category) => normalizeTitle(category?.name) === normalizedProductname
+    );
 
   // If a matching category is found, use its FAQs, otherwise use all FAQs
   const filteredFaqs = matchingCategory
-    ? matchingCategory.faqs
-    : faqData.faq[0].searchbox.categories.flatMap((category) => category.faqs);
-
+    ? matchingCategory?.faqs
+    : faqData?.faq[0]?.searchbox.categories.flatMap(
+        (category) => category?.faqs
+      );
+  useEffect(() => {
+    console.log("machinecategory", matchingCategory);
+    console.log("machinecategory product", normalizedProductname, id);
+    console.log("machinecategory product faqs:", filteredFaqs);
+  }, []);
   return (
     <>
       <Page1
@@ -100,7 +107,7 @@ const Pages: React.FC<ApplicationLayoutProps> = ({ applicationLayoutData, id, fa
         page3product={page3product}
         applicationLayoutData={applicationLayoutData}
       />
-      <Page5 
+      <Page5
         filteredFaqs={filteredFaqs}
         categoryName={matchingCategory ? matchingCategory.name : id}
         faqTitle={faqData.faq[0].searchbox.title}

@@ -28,7 +28,7 @@ const Grid: React.FC<AboutLayoutProps> = ({ companyData }) => {
 
   return (
     <div className="relative h-[40rem] bg-black w-full">
-      <div className="absolute inset-0 grid grid-cols-10 p-14 -ml-16 overflow-hidden">
+      <div className="absolute inset-0 grid grid-cols-10 p-14 -ml-16 overflow-hidden group">
         <div className="border border-gray-400 mt-16"></div>
         <div className="border border-gray-400 mt-16 col-span-3"></div>
         <div className="border border-gray-400 mt-16 col-span-3"></div>
@@ -36,7 +36,7 @@ const Grid: React.FC<AboutLayoutProps> = ({ companyData }) => {
         <div className="border border-gray-400 mt-16 ml-10 lg:-mr-[47%] -mr-[4rem]"></div>
       </div>
       <div className="absolute w-full top-1/2 z-30">
-        <h1 className="lg:text-6xl text-5xl z-30 lg:top-1/2 top-[23.5rem] lg:left-1/2 font-poppins justify-center text-center flex flex-col text-white font-medium">
+        <h1 className="lg:text-6xl text-5xl z-30 lg:top-1/2 top-[23.5rem] lg:left-1/2 font-poppins justify-center text-center flex flex-col text-white font-medium group-hover:scale-90 transition-all duration-300">
           Gallery
         </h1>
       </div>

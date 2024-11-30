@@ -80,8 +80,7 @@ export async function generateMetadata({
     };
   }
 
-  const seoData =
-    botData?.ApplicationLayout[0]?.applicationLayoutSeoData;
+  const seoData = botData?.ApplicationLayout[0]?.applicationLayoutSeoData;
 
   return {
     title: seoData?.title,

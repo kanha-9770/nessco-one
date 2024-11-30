@@ -134,7 +134,7 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
             <div className="bg-[#f2f2f2] overflow-hidden w-full h-full rounded-2xl flex flex-col items-center">
               <Image
                 src={card?.image}
-                alt={`${transformString(card?.secondLink)}`}
+                alt={`${card?.title}`}
                 height={640}
                 width={480}
                 className="lg:h-44 h-32 w-auto rounded-xl lg:mt-10 mt-9 hover:scale-90 transition-all duration-300"

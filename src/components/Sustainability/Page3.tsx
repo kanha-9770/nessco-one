@@ -77,7 +77,7 @@ const Page3:React.FC<MainLayoutProps> = ({sustainData}) => {
             alt="globe"
             width={50}
             height={50}
-            className="absolute bottom-[1rem] lg:-right-[6rem] -right-[7rem] lg:w-[10rem] w-[8rem] -rotate-45"
+            className="absolute bottom-[1rem] lg:-right-[2rem] -right-[7rem] lg:w-[10rem] w-[8rem] -rotate-45"
             ref={globeRef}
           />
         </div>
