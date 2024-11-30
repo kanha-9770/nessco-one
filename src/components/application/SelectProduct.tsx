@@ -6,7 +6,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Modal from "./Modal";
 import { Product } from "./Pages";
-import LinkUrl from "../LinkUrl";
 import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);

@@ -156,11 +156,10 @@ const Page3: React.FC<CombinedProps> = ({
                 {page3product?.image?.map((item, idx) => (
                   <div
                     key={idx}
-                    className={`bg-white lg:w-[22rem] w-auto h-40 lg:h-[22rem] lg:rounded-[1rem] rounded-[0.5rem] flex items-center justify-center overflow-hidden cursor-pointer ${
-                      selectedImage === item.img
-                        ? "lg:border-none border-2 border-red-700"
-                        : "border-none"
-                    }`}
+                    className={`bg-white lg:w-[22rem] w-40 h-40 lg:h-[22rem] lg:rounded-[1rem] rounded-[0.5rem] flex items-center justify-center overflow-hidden cursor-pointer ${selectedImage === item.img
+                      ? "lg:border-none border-2 border-red-700"
+                      : "border-none"
+                      }`}
                     onClick={() => setSelectedImage(item.img)}
                   >
                     <Image

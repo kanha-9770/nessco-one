@@ -7,7 +7,7 @@ import Page4 from "@/components/application/CustomizedProjects";
 import { ApplicationItem } from "./types/constant";
 
 export interface Product {
-  link?: string;
+  link?:string;
   img: string;
   title: string;
   description: string;

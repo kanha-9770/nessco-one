@@ -50,56 +50,37 @@ export default function IOT({ heroData }: KnowMoreLayoutProps) {
                   key={idx}
                   className="bg-white h-[18rem] md:h-[20rem] relative w-[60vw] md:w-[30vw] lg:w-[15rem] rounded-2xl flex flex-col items-center"
                 >
-                  <Dialog
-                    open={openModal === idx}
-                    onOpenChange={(isOpen) =>
-                      setOpenModal(isOpen ? idx : null)
-                    }
+                  <h3 className="font-medium text-center my-4 text-base md:text-lg">
+                    {item?.title}
+                  </h3>
+                  <p className="text-center px-4 md:px-6 text-xs md:text-sm absolute top-14 z-10 font-normal">
+                    {item?.description}
+                  </p>
+                  <video
+                    className="absolute bottom-0 w-full h-auto opacity-30 rounded-2xl"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    poster={item?.video}
                   >
-                    <h3 className="font-medium text-center my-4 text-base md:text-lg w-[12rem]">
-                      {item?.title}
-                    </h3>
-                    <p className="text-center px-4 md:px-6 text-xs md:text-sm absolute top-[4.5rem] z-10 font-normal line-clamp-11">
-                      {item?.description}
-                    </p>
-                    <video
-                      className="absolute bottom-0 w-full h-auto opacity-30 rounded-2xl"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      preload="metadata"
-                      poster={item?.video}
-                    >
-                      <source src={item?.video} type="video/mp4" />
-                    </video>
-                    <DialogTrigger asChild>
-                      <svg
-                        className="h-12 w-12 md:h-14 md:w-14 bg-black border-4 border-[#f5f5f5] p-1.5 rounded-full text-white transform transition-transform duration-300 ease-in-out hover:rotate-45 hover:bg-[#483d73] absolute -bottom-1 -right-1 z-20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M7 17L17 7M17 7H8M17 7V16"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </DialogTrigger>
-                    <DialogContent className="w-[90%] lg:w-[30%] font-poppins">
-                      <div className="rounded-xl bg-white h-full py-4 px-8">
-                        <DialogHeader>
-                          <DialogTitle className="text-center w-full text-lg mb-2">{item?.title}</DialogTitle>
-                        </DialogHeader>
-                        <p className="text-sm text-gray-600 text-justify leading-2">
-                          {item?.description}
-                        </p>
-                      </div>
-                    </DialogContent>
-                  </Dialog>
+                    <source src={item?.video} type="video/mp4" />
+                  </video>
+                  <svg
+                    className="h-12 w-12 md:h-14 md:w-14 bg-black border-4 border-[#f5f5f5] p-1.5 rounded-full text-white transform transition-transform duration-300 ease-in-out hover:rotate-45 hover:bg-[#483d73] absolute -bottom-1 -right-1 z-20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7 17L17 7M17 7H8M17 7V16"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </div>
               ))}
             </div>

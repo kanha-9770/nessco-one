@@ -7,11 +7,11 @@ import React from "react";
 gsap.registerPlugin(ScrollTrigger);
 
 const imageWidths = [
-  "lg:w-[2.5rem] w-[2rem]",
-  "lg:w-[2.5rem] w-[2rem]",
-  "lg:w-[10rem] w-[6rem]",
-  "lg:w-[2.5rem] w-[2rem]",
-  "lg:w-[2.5rem] w-[2rem]",
+  "lg:w-[3.5rem] w-[2rem]",
+  "lg:w-[3.5rem] w-[2rem]",
+  "lg:w-[10rem] w-[5rem]",
+  "lg:w-[3.5rem] w-[2rem]",
+  "lg:w-[3.5rem] w-[2rem]",
 ];
 const imagebottoms = [
   "justify-end mb-0",
@@ -72,7 +72,11 @@ const Home: React.FC<AboutLayoutProps> = ({ companyData }) => {
               </svg>
             </div>{" "}
           </button>
+<<<<<<< HEAD
           <div className="absolute bottom-10 flex justify-center w-full  lg:space-x-1 space-x-1">
+=======
+          <div className="absolute bottom-10 flex justify-center lg:space-x-2 space-x-1">
+>>>>>>> 0a8766029576b76d5923e3b70d4ae4d5595f1c7b
             {homecompanyData?.images?.map((item, index) => (
               <div
                 key={index}
@@ -85,7 +89,11 @@ const Home: React.FC<AboutLayoutProps> = ({ companyData }) => {
                   height={100}
                   className={`${imageWidths[index]}`}
                 />
+<<<<<<< HEAD
                 <p className="font-medium lg:text-sm text-[0.5rem] text-white lg:w-[8rem] w-[4rem] text-center">
+=======
+                <p className="font-medium lg:text-sm text-[0.5rem] text-white lg:w-[8rem] break-words w-[4rem] text-center">
+>>>>>>> 0a8766029576b76d5923e3b70d4ae4d5595f1c7b
                   {item?.title}
                 </p>
               </div>
