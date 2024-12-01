@@ -177,7 +177,7 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
                 <p className="font-poppins text-center lg:text-left text-sm">
                   {dialogContent?.description}
                 </p>
-                <Link href={`${languageCODE}/resources/media-room/${dialogContent?.title}`} className="h-10 w-20 left-[40%] font-bold relative ">Read More</Link>
+                <Link href={`media-room/${dialogContent?.title}`} className="h-10 w-20 left-[40%] font-bold relative ">Read More</Link>
               </div>
             </div>
           </div>

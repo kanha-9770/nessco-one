@@ -52,7 +52,7 @@ const Resources: React.FC <AboutLayoutProps>= ({resourceData}) => {
                 height={100}
                 className=" bottom-10 absolute"
               />
-              <LinkUrl href={`/resources/${card.link}`}>
+              <LinkUrl href={`/${card.link}`}>
               <div className="absolute bottom-2 right-2 group-hover:bg-[#483d7359] rounded-full p-2 transition duration-300">
                 <Image
                   src={Arrow}

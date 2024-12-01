@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { NavbarData } from "../types/constant";
-import { countryCODE, languageCODE } from "../nav-menue";
 const LottieAnimation = dynamic(
   () => import("@/components/ui/LottieAnimation")
 );
@@ -93,10 +92,7 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData, setActive }) => {
       >
         {DataBankItem?.map((item, index) => (
           <div key={index} className="flex flex-col space-y-4">
-            <Link
-              onClick={() => setActive(null)}
-              href={`/${countryCODE}/${languageCODE}/resources/${item.link}`}
-            >
+            <Link onClick={() => setActive(null)} href={`${item.link}`}>
               <div className="relative flex-shrink-0 w-56 h-32 rounded-3xl p-4 flex flex-col justify-center items-center">
                 {/* Pseudo-element for the background image */}
                 <div
@@ -150,9 +146,7 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData, setActive }) => {
                     key={itemIndex}
                     className="relative w-40 h-36 border-[1px] bg-white rounded-xl  flex flex-col justify-start items-center p-2"
                   >
-                    <div
-                      className="relative w-32 bg-[#483d732a] rounded-xl border-[1px] h-[4.4rem] flex justify-center items-center"
-                    >
+                    <div className="relative w-32 bg-[#483d732a] rounded-xl border-[1px] h-[4.4rem] flex justify-center items-center">
                       {/* <Image
                         src={item?.image}
                         alt={item?.title}

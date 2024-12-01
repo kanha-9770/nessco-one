@@ -131,7 +131,7 @@ const FooterNew: React.FC<FooterProps> = ({
                   {footerData?.clienteleTitle}
                 </h4>
                 <div className={styles.footerlistslink}>
-                <LinkUrl href="/resources/clientele">
+                <LinkUrl href="clientele">
                     <p
                       className={`font-poppins text-xs lg:text-xs md:text-lg font-light mt-4 w-[5rem] md:w-[7rem] hover:text-red-600 cursor-pointer ${textColor}`}
                     >

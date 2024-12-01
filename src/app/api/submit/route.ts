@@ -2,7 +2,8 @@ import { NextResponse } from "next/server";
 import { sheets } from "@/lib/googlesheet";
 import { VisitData } from "@/hooks/useTrackUserSource";
 
-const SPREADSHEET_ID = process.env.SPREADSHEET_ID || "12jgmYS5nV1YlwusAGMA6hN6F-6CHOHdtqeIeU6T-ziI";
+const SPREADSHEET_ID =
+  process.env.SPREADSHEET_ID || "12jgmYS5nV1YlwusAGMA6hN6F-6CHOHdtqeIeU6T-ziI";
 const RANGE = "Sheet1!A1";
 
 interface EnquiryItem {
@@ -24,10 +25,17 @@ interface SubmissionData {
 export async function POST(request: Request) {
   try {
     const data: SubmissionData = await request.json();
-    const { fullname, email, mobilenumber, message, formId, visitData, cartItems } = data;
+    const {
+      fullname,
+      email,
+      mobilenumber,
+      message,
+      formId,
+      visitData,
+      cartItems,
+    } = data;
     console.log("Received data:", data);
 
-    // Prepare data for Google Sheets
     const sheetData: (string | number)[] = [
       fullname,
       email,
@@ -35,8 +43,10 @@ export async function POST(request: Request) {
       message,
       formId,
       new Date().toISOString(),
-      // Include all cart item details
-      ...cartItems.flatMap(item => [item.id, item.name, item.image]),
+      // Safely map cart items if they exist
+      ...(Array.isArray(cartItems)
+        ? cartItems.flatMap((item) => [item.id, item.name, item.image])
+        : []),
       visitData.IP_Address,
       visitData.Country,
       visitData.City,
@@ -92,4 +102,3 @@ export async function POST(request: Request) {
     );
   }
 }
-

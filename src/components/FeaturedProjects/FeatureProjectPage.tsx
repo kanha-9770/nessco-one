@@ -366,7 +366,7 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
               <div className="flex absolute lg:bottom-3 lg:right-3 space-x-1 bottom-3 right-3 group cursor-pointer">
                 <Link
                   className="font-poppins font-regular text-[0.70rem] mt-[] hover:text-red-700"
-                  href={`/${countryCODE}/${languageCODE}/resources/media-room/${selectedGrid?.title}`}
+                  href={`media-room/${selectedGrid?.title}`}
                 >
                   {homeaboutData?.button}
                 </Link>

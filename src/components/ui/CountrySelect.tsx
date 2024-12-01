@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Search, ChevronDown } from "lucide-react";
 import { ScrollArea } from "@/components/ui/ScrollArea";
+import countriesData from "./constant/CountryData";
 
 type Country = {
   name: string;
@@ -20,45 +21,25 @@ type CountrySelectProps = {
   error?: string;
 };
 
+// Your pre-defined countries data
+
 export default function CountrySelect({
   isoCode,
   onPhoneNumberChange,
   error,
 }: CountrySelectProps) {
-  const [countries, setCountries] = useState<Country[]>([]);
+  const [countries, setCountries] = useState<Country[]>(countriesData);
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
+  // Set the initial selected country based on the provided isoCode
   useEffect(() => {
-    const fetchCountries = async () => {
-      try {
-        const response = await fetch("https://restcountries.com/v3.1/all");
-        const countriesData = await response.json();
-        const formattedCountries = countriesData
-          .map((country: any) => ({
-            name: country.name.common,
-            code: country.cca2,
-            phone: country.idd.root
-              ? country.idd.root +
-                (country.idd.suffixes ? country.idd.suffixes[0] : "")
-              : "",
-          }))
-          .sort((a: Country, b: Country) => a.name.localeCompare(b.name));
-
-        setCountries(formattedCountries);
-
-        const preSelectedCountry = formattedCountries.find(
-          (country: Country) => country.code === isoCode.toUpperCase()
-        );
-        setSelectedCountry(preSelectedCountry || formattedCountries[0]);
-      } catch (error) {
-        console.error("Error fetching countries:", error);
-      }
-    };
-
-    fetchCountries();
+    const preSelectedCountry = countriesData.find(
+      (country) => country.code === isoCode.toUpperCase()
+    );
+    setSelectedCountry(preSelectedCountry || countriesData[0]);
   }, [isoCode]);
 
   const handleCountrySelect = (country: Country) => {
@@ -84,7 +65,7 @@ export default function CountrySelect({
   );
 
   return (
-    <div className="w-full max-w-md mx-auto">
+    <div className="py-[0.4rem] px-[0.5rem] text-[0.9rem] rounded-[0.3rem] bg-[#f9fafb] focus:ring-2 focus:ring-[#483d73] transition-all duration-200">
       <div className="flex space-x-2">
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
           <DialogTrigger asChild>

@@ -30,7 +30,7 @@ const Section: React.FC<SectionProps> = ({
       </div>
       <div className="flex flex-col w-[20%] items-center justify-center space-y-4 relative">
         <Image src={img} alt="" width={400} height={400} className="h-20 w-auto" />
-        <LinkUrl href={`/resources/knowledge-center/${link}`}
+        <LinkUrl href={`/knowledge-center/${link}`}
           className="group flex items-center justify-center text-white hover:text-[#8c52ff] absolute bottom-0 left-1/2 transform -translate-x-1/2"
         >
           {button}
