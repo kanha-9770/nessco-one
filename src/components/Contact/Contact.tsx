@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import { toast, Toaster } from "react-hot-toast";
 import { usePathname, useRouter } from "next/navigation";
