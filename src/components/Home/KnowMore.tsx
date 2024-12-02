@@ -102,7 +102,7 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
                             </svg>
                           </DialogTrigger>
                           <DialogContent>
-                            <div className="rounded-2xl">
+                            <div className="rounded-2xl bg-red-400">
                               <DialogHeader>
                                 <DialogTitle>{item?.title}</DialogTitle>
                               </DialogHeader>

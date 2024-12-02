@@ -59,8 +59,12 @@ export async function generateMetadata({
   const countryName = await fetchCountryData(locale);
   const knowledgeCenterData = await fetchKnowledgeCenterData(locale);
   // console.log("i am seo data", knowledgeCenterData.knowledgeCenter[0].knowLedgeCenterSeoData);
-  
-  if (!knowledgeCenterData || !knowledgeCenterData.knowledgeCenter || knowledgeCenterData.knowledgeCenter.length === 0) {
+
+  if (
+    !knowledgeCenterData ||
+    !knowledgeCenterData.knowledgeCenter ||
+    knowledgeCenterData.knowledgeCenter.length === 0
+  ) {
     return {
       title: "Knowledge Center - Nessco Industries",
       description:
@@ -97,11 +101,14 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       site: "@NesscoIndia",
-      title: seoData.twitter.title,
-      description: seoData.twitter.description,
-      images: seoData.twitter.image,
+      title: seoData?.twitter?.title,
+      description: seoData?.twitter?.description,
+      images: seoData?.twitter?.image,
     },
-    robots: seoData.robots,
+    robots: {
+      index: true,
+      follow: true,
+    },
   };
 }
 
@@ -130,4 +137,3 @@ export default async function KnowledgeCenter({ params: { locale } }: Props) {
     </main>
   );
 }
-

@@ -85,7 +85,7 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
                 <span className="text-gray-700 font-regular">
                   Nessco Paper Cup Machine{" "}
                 </span>{" "}
-                Catalogue
+                  Catalogue
               </p>
             </div>
             <div className="w-[20%] font-poppins flex items-center justify-center">

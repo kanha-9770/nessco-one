@@ -53,9 +53,6 @@ html::-webkit-scrollbar {
   mask-image: linear-gradient(black, white, transparent);
   -webkit-mask-image: linear-gradient(black, white, transparent);
 }
-/* Add this to your CSS file */
-
-/* Add this to your CSS file */
 
 @keyframes scrollTestinomial {
   0% {
@@ -166,12 +163,11 @@ html::-webkit-scrollbar {
   );
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
+/* hide scrollbar from browser */
 .scrollbar-hide::-webkit-scrollbar {
-  display: none;
+  display: none;    /* Hide scrollbar for Chrome, Safari and Opera */
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
 .scrollbar-hide {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
@@ -181,21 +177,6 @@ html::-webkit-scrollbar {
 .stopscrollProduct {
   /* Ensure scrollable content */
   overflow-y: auto;
-}
-
-/* hide scrollbar from blogs Page3 component */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, and Opera */
-}
-
-/* hide scrollbar from blogs Page3 component */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, and Opera */
-}
-
-.scrollbar-hide {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
 }
 
 @layer utilities {
@@ -296,23 +277,65 @@ html::-webkit-scrollbar {
   background-color: black; /* For visibility, adjust the color as needed */
 }
 
-/* Custom thin scrollbar styles */
-.custom-scrollbar-container {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
+/* master product page background gradient */
+.bgLines {
+  background-image:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1.5px),
+    linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 1.5px);
+  background-size: 100% 2rem, 2rem 100%;
 }
 
-.custom-scrollbar-container::-webkit-scrollbar {
-  width: 6px;
+/* scrollbar for applicationLayout page2 component*/
+.scroll-wrapper {
+  direction: rtl;
+  overflow-y: scroll;
+  height: 200px;
+  /* Adjust the height if necessary */
 }
 
-.custom-scrollbar-container::-webkit-scrollbar-track {
-  background: transparent;
+.scroll-wrapper .style-1 {
+  direction: ltr;
 }
 
-.custom-scrollbar-container::-webkit-scrollbar-thumb {
-  background-color: rgba(155, 155, 155, 0.5);
-  border-radius: 20px;
-  border: transparent;
+.style-1::-webkit-scrollbar {
+  width: 3px;
+  /* Set the scrollbar width */
 }
 
+.style-1::-webkit-scrollbar-track {
+  border-left: 3px dotted #6d6d6d;
+  /* Only left border */
+}
+
+.style-1::-webkit-scrollbar-thumb {
+  background-color: black;
+}
+
+/* Custom scrollbar */
+.scrollbar-hide {
+  overflow: scroll;
+  height: 100%;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 0.15rem;
+  height: 0.15rem;
+  /* Set the scrollbar width */
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  border: 1px solid #b1afaf;
+  background-color: #b1afaf;
+  border-radius: 2rem;
+  /* Only left border */
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 2rem;
+}
+
+/* for safari browser */
+video ::-webkit-media-controls {
+  display: none !important;
+}
