@@ -17,13 +17,13 @@ interface AnimatedBlogPostProps {
 
 const AnimatedBlogPost: React.FC<AnimatedBlogPostProps> = ({ id }) => {
   const post = blogPosts.find((p) => p?.slug === id);
-  console.log(id)
+  console.log(id);
   const [activeIndex, setActiveIndex] = useState(0);
   const contentRefs = useRef<(HTMLElement | null)[]>([]);
   const rightContainerRef = useRef<HTMLDivElement | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  console.log(id) 
+  console.log(id);
 
   const handleScroll = () => {
     if (rightContainerRef.current) {
@@ -105,15 +105,15 @@ const AnimatedBlogPost: React.FC<AnimatedBlogPostProps> = ({ id }) => {
     }
   };
 
-  console.log(id)
+  console.log(id);
 
   return (
-    <div className="font-poppins min-h-screen px-10 py-14">
+    <div className="font-poppins px-10 py-14">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="w-full relative overflow-hidden h-[50vh] bg-black rounded-3xl"
+        className="w-full relative overflow-hidden h-[20rem] mt-4 bg-black rounded-3xl"
       >
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -122,7 +122,10 @@ const AnimatedBlogPost: React.FC<AnimatedBlogPostProps> = ({ id }) => {
           className="w-full pt-8 pb-6 shadow-2xl relative overflow-hidden"
         >
           <div className="absolute inset-0 bg-[url('/path/to/texture.png')] opacity-10 mix-blend-overlay"></div>
-          <h2 className="text-white lg:text-2xl text-lg lg:px-12 px-8 font-light relative z-10 font-">
+          <h2
+            className="text-white lg:text-3xl text-lg lg:px-12 px-8 relative z-10"
+            style={{ fontFamily: "Georgia, serif" }}
+          >
             {post?.title}
           </h2>
         </motion.div>
@@ -134,17 +137,19 @@ const AnimatedBlogPost: React.FC<AnimatedBlogPostProps> = ({ id }) => {
         transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
         className="lg:px-[10%] px-[8%] -mt-52 mb-8 relative z-10"
       >
-        <Image
-          className="object-cover z-50 lg:h-[25rem] h-[12rem] w-full rounded-3xl shadow-2xl"
-          width={1200}
-          height={600}
-          priority
-          src={post?.header?.headingImage}
-          alt={post?.slug || "Blog post header image"}
-        />
+       
+          <Image
+            className="object-cover w-full rounded-3xl shadow-2xl z-50"
+            width={1200}
+            height={600}
+            priority
+            src={post?.header?.headingImage}
+            alt={post?.slug || "Blog post header image"}
+          />
+       
       </motion.div>
 
-      <div className="bg-white rounded-3xl min-h-screen w-full px-[4%] lg:py-20 py-12 font-light relative">
+      <div className="bg-white -mt-20 rounded-3xl min-h-screen w-full px-[4%] lg:py-20 py-12 font-light relative">
         {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -312,4 +317,3 @@ const AnimatedBlogPost: React.FC<AnimatedBlogPostProps> = ({ id }) => {
 };
 
 export default AnimatedBlogPost;
-

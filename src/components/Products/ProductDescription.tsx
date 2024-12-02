@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 const LottieAnimation = dynamic(() => import("../ui/LottieAnimation"));
 import speed from "../../../public/assets/product/speed.json";
 import size from "../../../public/assets/product/size.json";
+import Image from "next/image";
 
 import { Machine } from "./types/constant";
 
@@ -41,14 +42,17 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ machine }) => {
         <div className="relative items-center p-4 flex flex-row justify-center">
           {machine?.descriptionSpeed && (
             <div className="lg:h-48 h-40 flex flex-col w-64">
-              <LottieAnimation
-                className="lg:h-20 lg:w-20 h-16 w-16"
-                animationData={machine?.lottieAnimations?.speed || speed}
+              <Image
+                src="https://assets.nesscoindustries.com/public/assets/product/product-layout-speed-icon.webp"
+                alt="Speed"
+                width={80}
+                height={80}
+                className="lg:h-20 lg:w-20 h-16 w-16 object-contain mx-auto"
               />
               <p className="text-[#483d78] text-center lg:text-xl text-lg">
                 {machine.descriptionSpeed}
               </p>
-              <p className="lg:text-base text-xs justify-center px-6 lg:mt-4 mt-2 text-center font-regular bg-red-200">
+              <p className="lg:text-base text-xs justify-center px-6 lg:mt-4 mt-2 text-center font-regular ">
                 {machine?.technicalSpecifications?.specifications[0]?.title ||
                   "N/A"}
               </p>
@@ -56,31 +60,37 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ machine }) => {
           )}
           {machine?.descriptionSize && (
             <div className="lg:h-48 h-40 w-64 flex flex-col border-l-2 border-gray-300 border-r-2">
-              <LottieAnimation
-                className="lg:h-20 lg:w-20 h-16 w-16 -rotate-45"
-                animationData={machine?.lottieAnimations?.size || size}
+              <Image
+                src="https://assets.nesscoindustries.com/public/assets/product/product-layout-specs-icon.webp"
+                alt="Speed"
+                width={80}
+                height={80}
+                className="lg:h-20 lg:w-20 h-16 w-16 object-contain mx-auto"
               />
               <p className="text-[#483d78] text-center lg:text-xl text-lg">
                 {machine.descriptionSize}
               </p>
-              <p className="lg:text-base text-xs lg:mt-4 mt-2 px-6 text-center font-regular bg-green-200">
-              {machine?.technicalSpecifications?.specifications[2]?.title ||
-                  "N/A"} 
+              <p className="lg:text-base text-xs lg:mt-4 mt-2 px-6 text-center font-regular ">
+                {machine?.technicalSpecifications?.specifications[2]?.title ||
+                  "N/A"}
               </p>
             </div>
           )}
           {machine?.descriptionRange && (
             <div className="lg:h-48 h-40 w-64 flex flex-col">
-              <LottieAnimation
-                className="lg:h-20 lg:w-20 h-16 w-16"
-                animationData={machine?.lottieAnimations?.range || speed}
+              <Image
+                src="https://assets.nesscoindustries.com/public/assets/product/product-layout-range-icon.webp"
+                alt="Speed"
+                width={80}
+                height={80}
+                className="lg:h-20 lg:w-20 h-16 w-16 object-contain mx-auto"
               />
               <p className="text-[#483d78] text-center lg:text-xl text-lg">
                 {machine.descriptionRange}
               </p>
-              <p className="lg:text-base text-xs lg:mt-4 mt-2 px-6 text-center font-regular bg-red-300">
-                 {machine?.technicalSpecifications?.specifications[1]?.title ||
-                    "N/A"}
+              <p className="lg:text-base text-xs lg:mt-4 mt-2 px-6 text-center font-regular ">
+                {machine?.technicalSpecifications?.specifications[1]?.title ||
+                  "N/A"}
               </p>
             </div>
           )}

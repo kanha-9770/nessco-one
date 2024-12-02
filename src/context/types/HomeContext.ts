@@ -23,6 +23,7 @@ type Item = {
   };
   
  export  type ProductData = {
+    title: any;
     category: string;
     products: Product[];
     stepperFilter: StepperFilterItem[];

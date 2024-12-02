@@ -46,7 +46,11 @@ async function fetchCountryData(locale: string): Promise<string> {
     return fallbackData[locale] || fallbackData["en"];
   }
 }
-
+const normalizeTitle = (title: string) =>
+  title.toLowerCase().replace(/\s+/g, " ").trim();
+const formatMachineName = (name: string): string => {
+  return name.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase());
+};
 // Dynamically generate metadata
 export async function generateMetadata({
   params: { locale, id },
@@ -87,12 +91,23 @@ export async function generateMetadata({
       },
     };
   }
-
+  let machinename = "";
+  if (Array.isArray(id)) {
+    machinename = id.join("-");
+  } else if (typeof id === "string") {
+    machinename = id;
+  }
+  const formattedMachineName = formatMachineName(machinename);
+  const normalizedMachinename = normalizeTitle(formattedMachineName);
+  const ProductsGrid = productLayoutData?.ProductLayout[0]?.ProductsGrid;
+  const page2machine = ProductsGrid.data.find(
+    (m) => normalizeTitle(m.title) === normalizedMachinename
+  );
   const seoData = productLayoutData?.ProductLayout[0]?.productLayoutSeoData;
-
+  console.log("my product", ProductsGrid?.data);
   return {
-    title: `${seoData?.title} - ${countryName} `,
-    description: seoData?.description,
+    title: ` ${seoData?.title} - ${countryName} `,
+    description: page2machine?.description || seoData?.description,
     viewport: "width=device-width, initial-scale=1",
     alternates: {
       canonical: `https://nessco-two.vercel.app/${countryName}/${locale}/products/${id}`,

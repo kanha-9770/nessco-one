@@ -611,7 +611,7 @@ export const blogPosts: BlogPost[] = [
                 blocks: [
                   {
                     type: "text",
-                    content: "1. i am akash",
+                    content: "1.  Grammage (GSM)",
                   },
                   {
                     type: "list",
@@ -634,7 +634,7 @@ export const blogPosts: BlogPost[] = [
                 blocks: [
                   {
                     type: "text",
-                    content: "2. i am akash",
+                    content: "2. Caliper",
                   },
                   {
                     type: "list",
@@ -656,7 +656,7 @@ export const blogPosts: BlogPost[] = [
                 blocks: [
                   {
                     type: "text",
-                    content: "3. i am akash",
+                    content: "3. Bulk",
                   },
                   {
                     type: "list",
@@ -678,7 +678,7 @@ export const blogPosts: BlogPost[] = [
                 blocks: [
                   {
                     type: "text",
-                    content: "4. i am akash",
+                    content: "4. Stiffness/Bending Resistance",
                   },
                   {
                     type: "list",
@@ -700,7 +700,7 @@ export const blogPosts: BlogPost[] = [
                 blocks: [
                   {
                     type: "text",
-                    content: "5. i am akash",
+                    content: "5. Bendtsen Smoothness",
                   },
                   {
                     type: "list",
@@ -722,7 +722,7 @@ export const blogPosts: BlogPost[] = [
                 blocks: [
                   {
                     type: "text",
-                    content: "6. i am akash",
+                    content: "6. Edge Wick (Waterproofing Capability)",
                   },
                   {
                     type: "list",
@@ -743,7 +743,7 @@ export const blogPosts: BlogPost[] = [
                 blocks: [
                   {
                     type: "text",
-                    content: "7. i am akash",
+                    content: "7. Cobb Value",
                   },
                   {
                     type: "list",
@@ -764,7 +764,7 @@ export const blogPosts: BlogPost[] = [
                 blocks: [
                   {
                     type: "text",
-                    content: "9. i am akash",
+                    content: "8. Brightness",
                   },
                   {
                     type: "list",

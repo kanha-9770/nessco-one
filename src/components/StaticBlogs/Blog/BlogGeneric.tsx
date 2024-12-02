@@ -22,7 +22,9 @@ const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
       .replace(/\s+/g, "-") // Replace spaces with hyphens
       .replace(/[^a-z0-9-]/g, ""); // Remove special characters except hyphens
   }
-  const post = blogPosts.find((p) => formatString(p?.slug) === formatString(id));
+  const post = blogPosts.find(
+    (p) => formatString(p?.slug) === formatString(id)
+  );
   const [activeIndex, setActiveIndex] = useState(0);
   const contentRefs = useRef<(HTMLElement | null)[]>([]);
   const rightContainerRef = useRef<HTMLDivElement | null>(null);
@@ -272,7 +274,7 @@ const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
                       />
                     </div>
                   )}
-                  {block?.subheading && (
+                 {block?.subheading && (
                     <h2 className="text-base font-regulars mb-6 text-gray-800 leading-tight">
                       {block?.subheading}
                     </h2>

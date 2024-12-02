@@ -110,10 +110,8 @@ export default async function RootLayout({
         {/* Navbar with internationalization */}
         <FormProvider>
           <NavLayout params={{ locale }} />
-
           {/* Page content */}
           <ContactIcons />
-
           {children}
           <div>
             <FooterLayout params={{ locale }} />
