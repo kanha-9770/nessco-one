@@ -9,7 +9,9 @@ interface KnowledgeCenterProps {
   knowledgeCenterData: KnowledgeCenterItem;
 }
 
-const HeroSection: React.FC<KnowledgeCenterProps> = ({ knowledgeCenterData }) => {
+const HeroSection: React.FC<KnowledgeCenterProps> = ({
+  knowledgeCenterData,
+}) => {
   const Hero = knowledgeCenterData?.knowledgeCenter[0]?.Hero;
   const glowRefs = useRef<(HTMLImageElement | null)[]>([]);
 
@@ -63,10 +65,7 @@ const HeroSection: React.FC<KnowledgeCenterProps> = ({ knowledgeCenterData }) =>
           {/* start */}
           <div className="text-white py-20 w-[95%]">
             <p className="text-left text-3xl font-medium mb-10">
-              {Hero?.subtitle
-                .split(" ")
-                .slice(0, -1)
-                .join(" ")}{" "}
+              {Hero?.subtitle.split(" ").slice(0, -1).join(" ")}{" "}
               <span className="text-[#8c52ff]">
                 {Hero?.subtitle?.split(" ").slice(-1)}
               </span>

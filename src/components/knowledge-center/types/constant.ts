@@ -1,4 +1,5 @@
 export interface KnowledgeCenterItem {
+  knowYourBussinessSeoData: any;
   knowledgeCenter: any;
   KnowYourBussiness: Array<{
     knowYourBussinessSeoData: KnowledgeCenterSeoData;

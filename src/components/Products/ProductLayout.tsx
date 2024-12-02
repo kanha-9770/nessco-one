@@ -107,7 +107,7 @@ const ProductLayout: React.FC<IndividualProductsDataProps> = ({
       </div>
 
       <div className="lg:hidden px-4 pt-10">
-        <SignupFormDemoProduct />
+        <SignupFormDemoProduct  related_product={machine?.related_product}/>
       </div>
       <div className="lg:mt-24 -mt-44" ref={relatedProductsRef}>
         <RelatedProducts related_product={machine?.related_product} />

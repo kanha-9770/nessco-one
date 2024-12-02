@@ -3,38 +3,17 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { FormProvider, useForm } from "@/app/[country]/[locale]/context/FormContext";
-
 import { toast, Toaster } from "react-hot-toast";
 import SubmitButton from "./Submit";
 import FormFields, { FormValues } from "./FormFileds";
+import { RelatedProductType } from "../Products/types/constant";
 
-const products = [
-  {
-    id: 1,
-    title: "Die Cutting Machines",
-    description: "Raw Material fulfillment for paper cup machines",
-    image:
-      "https://www.nesscoindia.com/Assets/images/resource/flexo-printing-machine-nessco.webp",
-  },
-  {
-    id: 2,
-    title: "Flexo Printing Machines",
-    description: "Raw Material fulfillment for paper cup machines",
-    image:
-      "https://www.nesscoindia.com/Assets/images/resource/paper-cutlery-making-machine.webp",
-  },
-  {
-    id: 3,
-    title: "Die Cutting Machines",
-    description: "Raw Material fulfillment for paper cup machines",
-    image:
-      "https://www.nesscoindia.com/Assets/images/resource/paper-glass-machine.webp",
-  },
-];
+interface SignupFormDemoProductProps {
+  related_product?: RelatedProductType;
+}
 
-const SignupFormDemoProduct = () => {
+const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({ related_product }) => {
   const [expanded, setExpanded] = useState(false);
-
   const { submitForm } = useForm();
 
   const [formValues, setFormValues] = useState<FormValues>({
@@ -64,6 +43,8 @@ const SignupFormDemoProduct = () => {
       setIsSubmitting(false);
     }
   };
+
+  const relatedProducts = related_product?.imageWithDescription || [];
 
   return (
     <FormProvider>
@@ -112,17 +93,17 @@ const SignupFormDemoProduct = () => {
               }`}
             >
               <div className="p-4 w-full max-w-md">
-                {products
-                  .slice(0, expanded ? products.length : 3)
-                  .map((product) => (
+                {relatedProducts
+                  .slice(0, expanded ? relatedProducts.length : 3)
+                  .map((product, index) => (
                     <div
-                      key={product.id}
+                      key={index}
                       className="flex border-b-[2px] items-start mb-4"
                     >
                       <div className="w-16 h-16 rounded-md overflow-hidden">
                         <Image
                           src={product.image}
-                          alt={product.title}
+                          alt={product.h1}
                           width={64}
                           height={64}
                           className="object-cover"
@@ -130,9 +111,9 @@ const SignupFormDemoProduct = () => {
                       </div>
 
                       <div className="ml-4 flex-1">
-                        <h3 className="font-semibold text-sm">{product.title}</h3>
+                        <h3 className="font-semibold text-sm">{product.h1}</h3>
                         <p className="text-xs text-gray-600">
-                          {product.description}
+                          {product.information}
                         </p>
                       </div>
 
