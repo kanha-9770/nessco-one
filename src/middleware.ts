@@ -424,7 +424,114 @@ const validCountryISOs = [
 // const defaultLocale = "en";
 // Function to fetch user location based on client IP address using ipwhois.app
 
-const validLocales = ['af', 'sq', 'am', 'ar', 'hy', 'az', 'eu', 'be', 'bn', 'bs', 'bg', 'my', 'ca', 'ny', 'zh', 'co', 'hr', 'cs', 'da', 'nl', 'en', 'eo', 'et', 'fi', 'fr', 'fy', 'gd', 'gl', 'ka', 'de', 'el', 'gu', 'ht', 'ha', 'he', 'hi', 'hu', 'is', 'ig', 'id', 'ga', 'it', 'ja', 'jv', 'kn', 'kk', 'km', 'rw', 'ky', 'ko', 'ku', 'la', 'lb', 'lo', 'lt', 'lv', 'mk', 'mg', 'ms', 'ml', 'mt', 'mi', 'mr', 'mn', 'ne', 'no', 'nb', 'or', 'ps', 'fa', 'pl', 'pt', 'pa', 'ro', 'ru', 'sm', 'sr', 'sn', 'sd', 'si', 'sk', 'sl', 'so', 'st', 'es', 'su', 'sw', 'sv', 'ta', 'te', 'tg', 'th', 'tk', 'tl', 'tr', 'tt', 'ug', 'uk', 'ur', 'uz', 'vi', 'cy', 'xh', 'yi', 'yo', 'zu'];
+const validLocales = [
+  "af",
+  "sq",
+  "am",
+  "ar",
+  "hy",
+  "az",
+  "eu",
+  "be",
+  "bn",
+  "bs",
+  "bg",
+  "my",
+  "ca",
+  "ny",
+  "zh",
+  "co",
+  "hr",
+  "cs",
+  "da",
+  "nl",
+  "en",
+  "eo",
+  "et",
+  "fi",
+  "fr",
+  "fy",
+  "gd",
+  "gl",
+  "ka",
+  "de",
+  "el",
+  "gu",
+  "ht",
+  "ha",
+  "he",
+  "hi",
+  "hu",
+  "is",
+  "ig",
+  "id",
+  "ga",
+  "it",
+  "ja",
+  "jv",
+  "kn",
+  "kk",
+  "km",
+  "rw",
+  "ky",
+  "ko",
+  "ku",
+  "la",
+  "lb",
+  "lo",
+  "lt",
+  "lv",
+  "mk",
+  "mg",
+  "ms",
+  "ml",
+  "mt",
+  "mi",
+  "mr",
+  "mn",
+  "ne",
+  "no",
+  "nb",
+  "or",
+  "ps",
+  "fa",
+  "pl",
+  "pt",
+  "pa",
+  "ro",
+  "ru",
+  "sm",
+  "sr",
+  "sn",
+  "sd",
+  "si",
+  "sk",
+  "sl",
+  "so",
+  "st",
+  "es",
+  "su",
+  "sw",
+  "sv",
+  "ta",
+  "te",
+  "tg",
+  "th",
+  "tk",
+  "tl",
+  "tr",
+  "tt",
+  "ug",
+  "uk",
+  "ur",
+  "uz",
+  "vi",
+  "cy",
+  "xh",
+  "yi",
+  "yo",
+  "zu",
+];
 const defaultLocale = "en";
 
 function setCookie(
@@ -441,13 +548,15 @@ function getBrowserLanguage(req: NextRequest) {
   if (!acceptLanguageHeader) return defaultLocale;
   const browserLanguage = acceptLanguageHeader.split(",")[0]?.split("-")[0];
   console.log("Browser language detected:", browserLanguage);
-  return validLocales.includes(browserLanguage) ? browserLanguage : defaultLocale;
+  return validLocales.includes(browserLanguage)
+    ? browserLanguage
+    : defaultLocale;
 }
 
 async function fetchUserLocation(req: NextRequest) {
   console.log("Fetching client IP address...");
   const myip = "106.219.68.189"; // For development
-  const isDevelopment = process.env.NODE_ENV === 'development';
+  const isDevelopment = process.env.NODE_ENV === "development";
   const clientIP =
     req.headers.get("x-forwarded-for")?.split(",")[0] ||
     req.headers.get("x-real-ip");
@@ -457,7 +566,7 @@ async function fetchUserLocation(req: NextRequest) {
     return { country: "us", language: "en", ipData: null };
   }
   console.log("Detected client IP address:", newClientIp);
-  const nesscoUrl =`https://ipinfo.io/${newClientIp}/json/`;
+  const nesscoUrl = `https://ipinfo.io/${newClientIp}/json/`;
   try {
     const nesscoResponse = await fetch(nesscoUrl);
     if (nesscoResponse.ok) {
@@ -514,7 +623,8 @@ export async function middleware(req: NextRequest) {
   const isLanguageValid = validLocales.includes(userLanguage);
 
   const res = NextResponse.next();
-
+  res.headers.set("x-next-url-path", req.nextUrl.pathname);
+  res.headers.set("x-next-url-query", req.nextUrl.search);
   if (isCountryValid && isLanguageValid) {
     console.log("Valid country and language in URL, setting cookies...");
     setCookie("country", userCountryISO, { res, path: "/" });
@@ -523,7 +633,7 @@ export async function middleware(req: NextRequest) {
   }
 
   const userLocation = await fetchUserLocation(req);
-  const { country: detectedCountry,  ipData } = userLocation;
+  const { country: detectedCountry, ipData } = userLocation;
   const browserLanguage = getBrowserLanguage(req);
   console.log("Detected user country:", detectedCountry);
   console.log("Browser language:", browserLanguage);
@@ -544,7 +654,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|api).*)",
-  ],
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|api).*)"],
 };

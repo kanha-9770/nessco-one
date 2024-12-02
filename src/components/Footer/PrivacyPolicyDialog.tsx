@@ -7,7 +7,7 @@
 //   DialogHeader,
 //   DialogTitle,
 //   DialogTrigger,
-// } from "@/components/ui"
+// } from "@/components/ui/dialog"
 // import { ScrollArea } from "@/components/ui/scroll-area"
 
 // export default function PrivacyPolicyDialog() {

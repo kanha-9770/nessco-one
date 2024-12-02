@@ -14,7 +14,7 @@ const LandingPage:React.FC <AboutLayoutProps>= ({pinkcityData}) => {
       {/* Background Image Container */}
       <div className="relative w-full lg:h-[27rem]  lg:mt-10 mt-16 lg:left-0 h-[36rem] bg-gray-50">
         <Image
-          src={homepinkcity?.backgroundImg}
+          src="https://assets.nesscoindustries.com/public/assets/about/pinkcity/pinkcity-banner.webp"
           alt="Jaipur"
           height={600}
           width={600}
@@ -40,7 +40,7 @@ const LandingPage:React.FC <AboutLayoutProps>= ({pinkcityData}) => {
         {/* Corner Image */}
         <div className="absolute -left-20 -top-8 lg:visible invisible  ">
           <Image
-            src="https://res.cloudinary.com/dlti4o10e/image/upload/v1731733864/cornerlayer_pcuw7p.svg"
+            src="https://assets.nesscoindustries.com/public/assets/about/pinkcity/corner-layer.svg.webp"
             alt="Stroke"
             width={300}
             height={300}
@@ -63,7 +63,7 @@ const LandingPage:React.FC <AboutLayoutProps>= ({pinkcityData}) => {
   <div className="flex-shrink-0 p-0 lg:p-0 lg:-bottom-12 md:bottom-6 bottom-20 absolute lg:flex lg:justify-center lg:items-center lg:w-1/3 lg:h-1/3 mx-auto">
     <div className="w-[150px] h-[150px] lg:w-[300px] lg:h-[300px] md:w-[300px] md:h-[300px] flex items-center justify-center">
       <Image
-        src="https://res.cloudinary.com/dlti4o10e/image/upload/v1731733896/stickerimg_ijlenh.png"
+        src="https://assets.nesscoindustries.com/public/assets/about/pinkcity/pinkcity-sticker.webp"
         alt="The Pink City"
         width={300}
         height={300}

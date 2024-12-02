@@ -5,7 +5,6 @@ interface AboutLayoutProps{
 }
 
 const Bluepage:React.FC <AboutLayoutProps>= ({pinkcityData}) => {
-const homepinkcity=pinkcityData?.pinkcity[0]?.bluePageContent;
   return (
     <div className="relative w-full h-full bg-gray-100 mt-10 p-12 overflow-hidden hidden lg:block">
     
@@ -18,9 +17,9 @@ const homepinkcity=pinkcityData?.pinkcity[0]?.bluePageContent;
           muted
           playsInline
           preload="metadata"
-          poster ={homepinkcity?.videoSrc}
+          poster ="https://assets.nesscoindustries.com/public/assets/about/pinkcity/pinkhaveli.mp4"
         >
-          <source src={homepinkcity?.videoSrc} type="video/mp4" />
+          <source src="https://assets.nesscoindustries.com/public/assets/about/pinkcity/pinkhaveli.mp4" type="video/mp4" />
         </video>
       </div>
     </div>

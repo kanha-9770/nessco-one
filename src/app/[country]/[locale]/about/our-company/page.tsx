@@ -16,7 +16,9 @@ type Props = {
 // Revalidate every 60 seconds (or any time period you prefer)
 export const revalidate = 60;
 // Fetch home data based on the locale
-async function fetchcompanyData(locale: string): Promise<OurCompanyItem | null> {
+async function fetchcompanyData(
+  locale: string
+): Promise<OurCompanyItem | null> {
   try {
     const res = await fetch(`${apiUrl}${locale}/ourcompany.json`);
     const data = await res.json();
@@ -55,7 +57,7 @@ async function fetchCountryData(locale: string): Promise<string> {
 
 // Dynamically generate metadata using the fetched SEO data
 export async function generateMetadata({
-  params: { locale, country },
+  params: { locale },
 }: Props): Promise<Metadata> {
   // Fallback to "en" if the locale isn't supported
   const baseUrl = getBaseUrl();
@@ -83,7 +85,7 @@ export async function generateMetadata({
       },
       robots: "index, follow",
       alternates: {
-        canonical: `${baseUrl}/${country}/${locale}`,
+        canonical: `${baseUrl}`,
       },
       twitter: {
         card: "summary_large_image",
@@ -101,13 +103,13 @@ export async function generateMetadata({
     description: seoData?.description,
     viewport: "width=device-width, initial-scale=1",
     alternates: {
-      canonical: `${baseUrl}/${country}/${locale}`,
+      canonical: `${baseUrl}`,
     },
     openGraph: {
       type: "website",
       title: seoData?.openGraph?.title,
       siteName: "Nessco Industries",
-      url: `${baseUrl}/${country}/${locale}`,
+      url: `${baseUrl}`,
       description: seoData?.openGraph?.description,
       images: seoData?.openGraph?.images,
     },
@@ -147,7 +149,7 @@ export default async function ourcompany({ params: { locale } }: Props) {
 
   return (
     <main>
-      <MainLayout companyData={companyData}/>
+      <MainLayout companyData={companyData} />
     </main>
   );
 }

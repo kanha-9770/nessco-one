@@ -59,8 +59,6 @@ const Machine: React.FC<MachineProps> = ({
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const pathname = usePathname() || "";
-  const countryCode = pathname.split("/")[1]?.toLowerCase();
-  const languageCode = pathname.split("/")[2]?.toLowerCase();
   const fallBackLink = pathname.split("/")[4]?.toLocaleLowerCase();
 
   useEffect(() => {

@@ -5,6 +5,7 @@ import { cookies } from "next/headers"; // Server-side (Next.js app directory)
 
 import { resourceItem } from "@/components/resources/types/constant";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { getBaseUrl } from "@/app/api/environment";
 
 const countryUrl = "https://countryjson.nesscoindustries.com/";
 const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
@@ -60,6 +61,7 @@ export async function generateMetadata({
   if (!locales.includes(locale as any)) {
     locale = "en";
   }
+  const baseUrl = getBaseUrl();
 
   const resourceData = await fetchresourceData(locale);
   const countryName = await fetchCountryData(locale);
@@ -99,13 +101,13 @@ export async function generateMetadata({
     description: seoData?.description,
     viewport: "width=device-width, initial-scale=1",
     alternates: {
-      canonical: `https://nessco-two.vercel.app/${countryName}/${locale}`,
+      canonical: `${baseUrl}`,
     },
     openGraph: {
       type: "website",
       title: seoData?.openGraph?.title,
       siteName: "Nessco Industries",
-      url: `https://nessco-two.vercel.app/${countryName}/${locale}`,
+      url: `${baseUrl}`,
       description: seoData?.openGraph?.description,
       images: seoData?.openGraph?.images,
     },

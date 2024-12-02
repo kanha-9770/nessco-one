@@ -216,7 +216,7 @@ function getDescription(content: any): string {
 }
 
 export async function generateMetadata({
-  params: { locale, country, id },
+  params: { locale, id },
 }: Props): Promise<Metadata> {
   const baseUrl = getBaseUrl();
 
@@ -246,7 +246,7 @@ export async function generateMetadata({
       },
       robots: "noindex, nofollow",
       alternates: {
-        canonical: `${baseUrl}/${country}/${locale}`,
+        canonical: `${baseUrl}`,
       },
       twitter: {
         card: "summary_large_image",
@@ -263,13 +263,13 @@ export async function generateMetadata({
     description,
     viewport: "width=device-width, initial-scale=1",
     alternates: {
-      canonical: `${baseUrl}/${country}/${locale}/blog/${id}`,
+      canonical: `${baseUrl}`,
     },
     openGraph: {
       type: "article",
       title: post.title,
       siteName: "Nessco Industries",
-      url: `${baseUrl}/${country}/${locale}/blog/${id}`,
+      url: `${baseUrl}`,
       description,
       images: [
         {

@@ -50,13 +50,13 @@ const VideoGrid: React.FC<VideoLayoutGridProps> = ({ navData }) => {
                 openModal("https://www.youtube.com/embed/AE0QMNZleJs") }
               >
                 <Image
-                  src="https://res.cloudinary.com/dlti4o10e/image/upload/v1732767837/about2_iihgbu.webp" // bgpic in json to be updated
+                  src={item.bgPic} // bgpic in json to be updated
                   alt={item.title}
                   fill
                   className="absolute inset-0 h-full w-full rounded-xl opacity-80" // Adding image opacity
                 />
                 <button
-                  className="absolute bg-red-500 text-white text-lg font-bold rounded-lg w-[10rem] h-[3rem] flex items-center justify-center transition-transform duration-300 hover:scale-105"
+                  className="absolute bg-[#483d73] text-white text-lg font-medium rounded-[0.8rem] w-[10rem] h-[3rem] flex items-center justify-center transition-transform duration-300 hover:scale-105"
                   onClick={() =>
                     openModal("https://www.youtube.com/embed/AE0QMNZleJs")
                   }

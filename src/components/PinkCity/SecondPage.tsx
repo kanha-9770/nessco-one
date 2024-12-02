@@ -53,7 +53,7 @@ const SecondPage:React.FC<AboutLayoutProps> = ({pinkcityData}) => {
           className="rounded-2xl z-10 lg:w-[21rem] lg:h-[20rem] w-[11rem] h-[11rem] md:w-[20rem] md:h-[20rem] absolute object-cover"
         />
         <Image
-          src="https://res.cloudinary.com/dlti4o10e/image/upload/v1731733958/1_jiqg7e.svg"
+          src="https://assets.nesscoindustries.com/public/assets/about/pinkcity/second-mandala.svg"
           alt="Mandala Design"
           width={400}
           height={400}
@@ -65,7 +65,7 @@ const SecondPage:React.FC<AboutLayoutProps> = ({pinkcityData}) => {
         <DashedLineWithImage />
         <div className="absolute  lg:-bottom-10 -bottom-28 z-10 h-full lg:w-[35rem] w-[20rem] md:w-[46rem] ">
           <Image
-            src="https://res.cloudinary.com/dlti4o10e/image/upload/v1731734035/strokerimg_nl3ytz.svg"
+            src="https://assets.nesscoindustries.com/public/assets/about/pinkcity/stroke-2.webp"
             alt="Stroke"
             width={400}
             height={400}

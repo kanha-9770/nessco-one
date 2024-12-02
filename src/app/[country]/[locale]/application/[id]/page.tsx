@@ -1,3 +1,4 @@
+import { getBaseUrl } from "@/app/api/environment";
 import Pages from "@/components/applicationLayout/Pages";
 import { ApplicationLayoutItem } from "@/components/applicationLayout/types/constant";
 import { Metadata } from "next";
@@ -49,6 +50,7 @@ export async function generateMetadata({
   if (!locales.includes(locale as any)) {
     locale = "en";
   }
+  const baseUrl = getBaseUrl();
 
   const { botData } = await fetchapplicationLayoutData(locale);
 
@@ -98,7 +100,7 @@ export async function generateMetadata({
     },
     robots: seoData?.robots,
     alternates: {
-      canonical: seoData?.alternates?.canonical,
+      canonical:`${baseUrl}`,
     },
   };
 }

@@ -7,6 +7,7 @@ import Branches from "@/components/Contact-page/Branches";
 import Reach from "@/components/Contact-page/Reach";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import React from "react";
+import { getBaseUrl } from "@/app/api/environment";
 const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
 const locales = ["en", "fr", "nl", "de", "es", "hi", "ta"] as const;
 const countryUrl = "https://countryjson.nesscoindustries.com/";
@@ -17,7 +18,7 @@ type Props = {
 // Revalidate every 60 seconds (or any time period you prefer)
 export const revalidate = 60;
 // Fetch home data based on the locale
-async function fetchcontactData(locale: string): Promise<ContactItem| null> {
+async function fetchcontactData(locale: string): Promise<ContactItem | null> {
   try {
     const res = await fetch(`${apiUrl}${locale}/contact.json`);
     const data = await res.json();
@@ -53,8 +54,6 @@ async function fetchCountryData(locale: string): Promise<string> {
   }
 }
 
-
-
 // Dynamically generate metadata using the fetched SEO data
 export async function generateMetadata({
   params: { locale },
@@ -63,6 +62,7 @@ export async function generateMetadata({
   if (!locales.includes(locale as any)) {
     locale = "en";
   }
+  const baseUrl = getBaseUrl();
 
   const countryName = await fetchCountryData(locale);
   const contactData = await fetchcontactData(locale);
@@ -95,20 +95,20 @@ export async function generateMetadata({
     };
   }
 
-  const seoData=contactData?.contact[0]?.contactSeoData;
+  const seoData = contactData?.contact[0]?.contactSeoData;
 
   return {
     title: `${seoData?.title} - ${countryName} `,
     description: seoData?.description,
     viewport: "width=device-width, initial-scale=1",
     alternates: {
-      canonical: `https://nessco-two.vercel.app/${countryName}/${locale}`,
+      canonical: `${baseUrl}`,
     },
     openGraph: {
       type: "website",
       title: seoData?.openGraph?.title,
       siteName: "Nessco Industries",
-      url: `https://nessco-two.vercel.app/${countryName}/${locale}`,
+      url: `${baseUrl}`,
       description: seoData?.openGraph?.description,
       images: seoData?.openGraph?.images,
     },
@@ -146,12 +146,11 @@ export default async function contact({ params: { locale } }: Props) {
     return <p>{t("failedToLoadData")}</p>;
   }
 
-
   return (
     <main>
-      <Contact contactData={contactData}/>
-      <Branches  contactData={contactData}/>
-      <Reach  contactData={contactData}/>
+      <Contact contactData={contactData} />
+      <Branches contactData={contactData} />
+      <Reach contactData={contactData} />
     </main>
   );
 }

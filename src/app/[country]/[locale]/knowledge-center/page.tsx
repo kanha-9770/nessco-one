@@ -49,7 +49,7 @@ async function fetchCountryData(locale: string): Promise<string> {
 }
 
 export async function generateMetadata({
-  params: { locale, country },
+  params: { locale },
 }: Props): Promise<Metadata> {
   if (!locales.includes(locale as any)) {
     locale = "en";
@@ -88,13 +88,13 @@ export async function generateMetadata({
     keywords: seoData.keywords,
     viewport: "width=device-width, initial-scale=1",
     alternates: {
-      canonical: `${baseUrl}/${country}/${locale}`,
+      canonical: `${baseUrl}`,
     },
     openGraph: {
       type: "website",
       title: seoData.openGraph.title,
       siteName: "Nessco Industries",
-      url: `${baseUrl}/${country}/${locale}`,
+      url: `${baseUrl}`,
       description: seoData.openGraph.description,
       images: seoData.openGraph.images,
     },

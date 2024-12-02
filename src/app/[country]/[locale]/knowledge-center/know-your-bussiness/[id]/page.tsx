@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import { cookies } from "next/headers";
 import { KnowYourBusiness } from "@/components/types";
 import AnimatedBlogPost from "@/components/StaticBlogs/AnimatedBllog";
+import { getBaseUrl } from "@/app/api/environment";
 
 const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
 const countryUrl = "https://countryjson.nesscoindustries.com/";
@@ -59,6 +60,7 @@ export async function generateMetadata({
   if (!locales.includes(locale as any)) {
     locale = "en";
   }
+  const baseUrl=getBaseUrl();
 
   const knowYourBusinessData = await fetchKnowYourBusinessData(locale);
   const countryName = await fetchCountryData(locale);
@@ -89,12 +91,12 @@ export async function generateMetadata({
       type: "website",
       title: seoData.openGraph.title,
       siteName: "Nessco Industries",
-      url: `https://nessco-two.vercel.app/${countryName}/${locale}`,
+      url:`${baseUrl}`,
       description: seoData.openGraph.description,
       images: seoData.openGraph.images,
     },
     alternates: {
-      canonical: seoData.alternates.canonical,
+      canonical:`${baseUrl}`,
     },
     twitter: {
       card: "summary_large_image",

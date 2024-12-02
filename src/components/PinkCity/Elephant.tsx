@@ -73,7 +73,7 @@ const DashedLineWithImage = () => {
         className={`opacity-0  -mt-9 w-[15rem] h-[15rem] relative `}
       >
         <Image
-          src="https://res.cloudinary.com/dlti4o10e/image/upload/v1731734049/elephantimg_t0dlr7.svg" // Update with your SVG image path
+          src="https://assets.nesscoindustries.com/public/assets/about/pinkcity/elephant.svg" // Update with your SVG image path
           alt="Elephant"
           layout="intrinsic" // Ensure proper sizing
           width={208} // 13rem in pixels (13 * 16px = 208px)

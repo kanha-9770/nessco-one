@@ -45,7 +45,7 @@ const PinkPage:React.FC <AboutLayoutProps> =({pinkcityData}) => {
         {homepinkcity?.birdComponent && <Bird />}
         <div className="absolute lg:-bottom-20 z-10 h-full lg:w-[35rem] w-[20rem] md:w-[46rem] -bottom-44 md:-bottom-16">
           <Image
-            src="https://res.cloudinary.com/dlti4o10e/image/upload/v1731734091/1_iwvwwl.svg"
+            src="https://assets.nesscoindustries.com/public/assets/about/pinkcity/stroke-1.svg"
             alt="Stroke"  
             width={400}
             height={400}
@@ -68,14 +68,14 @@ const PinkPage:React.FC <AboutLayoutProps> =({pinkcityData}) => {
       </div>
       <div className="lg:w-[50%] w-full lg:h-full h-[50%] md:w-full relative flex items-center justify-center ">
         <Image
-          src={homepinkcity?.hawamahalImg}
+          src="https://assets.nesscoindustries.com/public/assets/about/pinkcity/hawamahal.webp"
           alt="Jaipur"
           width={400}
           height={400}
           className="rounded-full lg:w-[17rem] lg:h-[17rem] w-[13rem] h-[13rem] md:w-[17rem] md:h-[17rem]  absolute object-cover"
         />
         <Image
-          src="https://res.cloudinary.com/dlti4o10e/image/upload/v1731733968/2_dkdvba.svg"
+          src="https://assets.nesscoindustries.com/public/assets/about/pinkcity/pink-mandala.svg"
           alt="Mandala Design"
           width={400}
           height={400}

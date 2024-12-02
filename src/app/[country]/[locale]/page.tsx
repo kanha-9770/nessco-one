@@ -40,18 +40,14 @@ type CountryNames = {
 
 async function fetchCountryData(locale: string): Promise<string> {
   const country = cookies().get("country")?.value || "in";
-  console.log("countryname", country);
-
   try {
     const res = await fetch(`${countryUrl}${country}.json`);
     const countryData: CountryNames = await res.json();
-
     // Return the country name for the provided locale
     return countryData[locale] || countryData["en"]; // Fallback to English if the locale isn't available
   } catch (error) {
     const fallbackRes = await fetch(`${countryUrl}in.json`);
     const fallbackData: CountryNames = await fallbackRes.json();
-
     // Handle fallback case, also fallback to English if locale not available
     return fallbackData[locale] || fallbackData["en"];
   }
@@ -59,7 +55,7 @@ async function fetchCountryData(locale: string): Promise<string> {
 
 // Dynamically generate metadata using the fetched SEO data
 export async function generateMetadata({
-  params: { locale, country },
+  params: { locale},
 }: Props): Promise<Metadata> {
   const baseUrl = getBaseUrl();
   // Fallback to "en" if the locale isn't supported
@@ -80,7 +76,7 @@ export async function generateMetadata({
       },
       robots: "index, follow",
       alternates: {
-        canonical: `${baseUrl}/${country}/${locale}`,
+        canonical: `${baseUrl}`,
       },
       twitter: {
         card: "summary_large_image",
@@ -98,13 +94,13 @@ export async function generateMetadata({
     description: seoData?.description,
     viewport: "width=device-width, initial-scale=1",
     alternates: {
-      canonical: `${baseUrl}/${country}/${locale}`,
+      canonical: `${baseUrl}`,
     },
     openGraph: {
       type: "website",
       title: seoData?.openGraph?.title,
       siteName: "Nessco Industries",
-      url: `${baseUrl}/${country}/${locale}`,
+      url: `${baseUrl}`,
       description: seoData?.openGraph?.description,
       images: seoData?.openGraph?.images,
     },

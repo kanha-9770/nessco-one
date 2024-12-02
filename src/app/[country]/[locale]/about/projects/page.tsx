@@ -56,7 +56,7 @@ async function fetchCountryData(locale: string): Promise<string> {
 
 // Dynamically generate metadata using the fetched SEO data
 export async function generateMetadata({
-  params: { locale, country },
+  params: { locale },
 }: Props): Promise<Metadata> {
   const baseUrl = getBaseUrl();
   // Fallback to "en" if the locale isn't supported
@@ -84,7 +84,7 @@ export async function generateMetadata({
       },
       robots: "index, follow",
       alternates: {
-        canonical: `${baseUrl}/${country}/${locale}`,
+        canonical: `${baseUrl}`,
       },
       twitter: {
         card: "summary_large_image",
@@ -102,13 +102,13 @@ export async function generateMetadata({
     description: seoData?.description,
     viewport: "width=device-width, initial-scale=1",
     alternates: {
-      canonical: `${baseUrl}/${country}/${locale}`,
+      canonical:`${baseUrl}`,
     },
     openGraph: {
       type: "website",
       title: seoData?.openGraph?.title,
       siteName: "Nessco Industries",
-      url: `${baseUrl}/${country}/${locale}`,
+      url:`${baseUrl}`,
       description: seoData?.openGraph?.description,
       images: seoData?.openGraph?.images,
     },

@@ -1,9 +1,7 @@
 "use client";
 import React from "react";
 import dynamic from "next/dynamic";
-const LottieAnimation = dynamic(() => import("../ui/LottieAnimation"));
-import speed from "../../../public/assets/product/speed.json";
-import size from "../../../public/assets/product/size.json";
+
 import Image from "next/image";
 
 import { Machine } from "./types/constant";

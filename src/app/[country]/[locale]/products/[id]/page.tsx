@@ -56,7 +56,7 @@ const formatMachineName = (name: string): string => {
 };
 // Dynamically generate metadata
 export async function generateMetadata({
-  params: { locale, id, country },
+  params: { locale, id },
 }: Props): Promise<Metadata> {
   if (!locales.includes(locale as any)) {
     locale = "en";
@@ -111,13 +111,13 @@ export async function generateMetadata({
     description: page2machine?.description,
     viewport: "width=device-width, initial-scale=1",
     alternates: {
-      canonical: `${baseUrl}/${country}/${locale}`,
+      canonical: `${baseUrl}`,
     },
     openGraph: {
       type: "website",
       title: seoData?.openGraph?.title,
       siteName: "Nessco Industries",
-      url: `https://nessco-two.vercel.app/${countryName}/${locale}/products/${id}`,
+      url:`${baseUrl}`,
       description: seoData?.openGraph?.description,
       images: seoData?.openGraph?.images,
     },

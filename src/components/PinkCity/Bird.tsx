@@ -73,7 +73,7 @@ const Bird = () => {
         className={`opacity-0  w-[15rem] h-[15rem] relative `}
       >
         <Image
-          src="https://res.cloudinary.com/dlti4o10e/image/upload/v1731734106/bird_bqfjwe.svg"
+          src="https://assets.nesscoindustries.com/public/assets/pinkcity/bird.webp"
           alt="bird"
             ref={svgImageRef}
           layout="intrinsic" 

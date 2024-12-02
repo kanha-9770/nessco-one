@@ -5,6 +5,7 @@ import ProductLayout from "@/components/Products/ProductLayout";
 import { IndividualProductsData } from "@/components/Products/types/constant";
 import { Metadata } from "next";
 import { cookies } from "next/headers";
+import { getBaseUrl } from "@/app/api/environment";
 
 const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
 const countryUrl = "https://countryjson.nesscoindustries.com/";
@@ -60,6 +61,7 @@ export async function generateMetadata({
   if (!locales.includes(locale as any)) {
     locale = "en";
   }
+  const baseUrl = getBaseUrl();
 
   const IndividualProductsData = await fetchIndividualProductsData(locale);
   const countryName = await fetchCountryData(locale);
@@ -106,13 +108,13 @@ export async function generateMetadata({
     description: seoData?.introduction,
     viewport: "width=device-width, initial-scale=1",
     alternates: {
-      canonical: `https://nessco-two.vercel.app/${locale}/${slug}`,
+      canonical: `${baseUrl}`,
     },
     openGraph: {
       type: "website",
       title: `${seoData?.name}-${seoData?.first_name}`,
       description: seoData?.introduction,
-      url: `https://nessco-two.vercel.app/${locale}/${slug}`,
+      url: `${baseUrl}`,
       siteName: "Nessco Industries",
       images: [
         {

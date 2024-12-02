@@ -66,7 +66,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "image",
         content: {
-          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-guide/paper-cup-guide-img2.webp",
+          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-guide/banner-image.webp",
           alt: "Changing the mold in a paper cup machine is a crucial task that directly impacts production efficiency and cup quality. This blog provides a detailed step-by-step guide on the mold change process, checks to ensure proper alignment and compatibility, and tips for validating the mold's fit with the paper blank or fan.",
         },
       },

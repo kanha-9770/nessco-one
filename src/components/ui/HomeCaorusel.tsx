@@ -45,7 +45,7 @@ const VideoCarousel: React.FC<VideoCarouselProps> = ({ heroData }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: index === currentIndex ? 1 : 0 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 30 }}
           >
             <video
               ref={(el) => {
