@@ -10,6 +10,7 @@ import News from "../../../../public/assets/ResourcesNavbar/Newspaper.json";
 import Staff from "../../../../public/assets/ResourcesNavbar/Staff.json";
 import Lightbulb from "../../../../public/assets/ResourcesNavbar/lightbulb.json";
 import dynamic from "next/dynamic";
+import { countryCODE, languageCODE } from "../nav-menue";
 
 const image = [Blogs, Faq, News, Staff, Lightbulb];
 
@@ -92,7 +93,10 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData, setActive }) => {
       >
         {DataBankItem?.map((item, index) => (
           <div key={index} className="flex flex-col space-y-4">
-            <Link onClick={() => setActive(null)} href={`${item.link}`}>
+            <Link
+              onClick={() => setActive(null)}
+              href={`/${countryCODE}/${languageCODE}/${item.link}`}
+            >
               <div className="relative flex-shrink-0 w-56 h-32 rounded-3xl p-4 flex flex-col justify-center items-center">
                 {/* Pseudo-element for the background image */}
                 <div

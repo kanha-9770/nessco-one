@@ -15,8 +15,14 @@ interface BlogGenericProps {
   id?: string;
 }
 const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
-  
-  const post = blogPosts.find((p) => p?.slug === id);
+  function formatString(input) {
+    return input
+      .trim() // Remove leading and trailing spaces
+      .toLowerCase() // Convert to lowercase
+      .replace(/\s+/g, "-") // Replace spaces with hyphens
+      .replace(/[^a-z0-9-]/g, ""); // Remove special characters except hyphens
+  }
+  const post = blogPosts.find((p) => formatString(p?.slug) === formatString(id));
   const [activeIndex, setActiveIndex] = useState(0);
   const contentRefs = useRef<(HTMLElement | null)[]>([]);
   const rightContainerRef = useRef<HTMLDivElement | null>(null);
@@ -149,11 +155,11 @@ const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
           className="flex items-center mb-8 space-x-6"
         >
           <Image
-            src={post?.author?.avatar}
+            src="https://www.nesscoindia.com/Assets/images/logo.webp"
             alt={post?.author?.name || "Author avatar"}
             width={64}
             height={64}
-            className="rounded-full shadow-lg border-2 border-gray-200"
+            className="rounded-full h-20 w-20  shadow-lg border-2 border-gray-200"
           />
           <div>
             <span className="text-gray-800 font-semibold text-xl">

@@ -1,13 +1,14 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
 import { GenuinePartsItem } from "./types/constant";
 import Image from "next/image";
 import LinkUrl from "../LinkUrl";
 import { usePathname, useRouter } from "next/navigation";
-import { useForm as useFormContext } from "@/app/[country]/[locale]/context/FormContext";
 import toast, { Toaster } from "react-hot-toast";
-import { motion } from "framer-motion";
-import { BottomGradient } from "../Contact/SignupFormDemo";
+import FormFields, { FormValues } from "../Contact/FormFileds";
+import SubmitButton from "../Contact/Submit";
+import { useForm } from "@/app/[country]/[locale]/context/FormContext";
 
 interface Part {
   title: string;
@@ -15,6 +16,7 @@ interface Part {
   code: string;
   img: string;
   information: string;
+  categoryType?: string;
 }
 
 interface GenuinePartsProps {
@@ -32,10 +34,17 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
   const [sidebarSearchTerm, setSidebarSearchTerm] = useState("");
   const [headerSearchTerm, setHeaderSearchTerm] = useState("");
   const [filteredParts, setFilteredParts] = useState(Inventory.parts);
-  const { submitForm } = useFormContext();
   const [countryCode, setCountryCode] = useState("in");
   const pathname = usePathname();
   const router = useRouter();
+
+  const [formValues, setFormValues] = useState<FormValues>({
+    fullname: "",
+    email: "",
+    mobilenumber: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { submitForm } = useForm();
 
   useEffect(() => {
     const pathParts = pathname.split("/");
@@ -44,48 +53,7 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
       if (newCountryCode.length === 2) setCountryCode(newCountryCode);
     }
     console.log(countryCode);
-    
   }, [pathname, router]);
-
-  const [formValues, setFormValues] = useState({
-    fullname: "",
-    email: "",
-    mobilenumber: "",
-    message: "",
-  });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { id, value } = e.target;
-    setFormValues((prev) => ({ ...prev, [id]: value }));
-  };
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    try {
-      await submitForm({ ...formValues });
-      toast.success("Form submitted successfully!", {
-        duration: 3000,
-        position: "top-right",
-        style: { borderRadius: "10px", background: "#4caf50", color: "#fff" },
-      });
-    } catch (error) {
-      console.error("Failed to submit the form:", error);
-      toast.error("Error submitting the form. Please try again.", {
-        duration: 3000,
-        position: "top-right",
-        style: { borderRadius: "10px", background: "#e63946", color: "#fff" },
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-  const openModal = () => setIsPartsModalOpen(true);
-  const closeModal = () => setIsPartsModalOpen(false);
-  const openMachineModal = () => setIsMachineModalOpen(true);
-  const closeMachineModal = () => setIsMachineModalOpen(false);
 
   useEffect(() => {
     filterParts();
@@ -122,6 +90,7 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
         : [...prev, filter]
     );
   };
+
   const handleMachineFilterChangeFilter = (filter: string) => {
     setMachineFilters([filter]);
   };
@@ -164,11 +133,39 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
     return inventoryItems.length;
   };
 
+  const handleSubmit = async () => {
+    setIsSubmitting(true);
+    try {
+      // Include inventory items with form data
+      const submissionData = {
+        ...formValues,
+        formId: "SignupFormDemoProduct",
+        inventoryItems: inventoryItems
+      };
+      await submitForm(submissionData);
+      toast.success("Form submitted successfully!", {
+        duration: 3000,
+        position: "top-right",
+      });
+      setFormValues({ fullname: "", email: "", mobilenumber: "" });
+      setInventoryItems([]); // Clear inventory after successful submission
+      handleCloseModal(); // Close the modal after submission
+    } catch (error) {
+      console.error("Failed to submit the form:", error);
+      toast.error("Error submitting the form. Please try again.", {
+        duration: 3000,
+        position: "top-right",
+        style: { borderRadius: "10px", background: "#e63946", color: "#fff" },
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="px-3 font-poppins font-regular flex">
       <Toaster />
-
-      {/* Left container*/}
+      {/* Left container */}
       <div className="w-[18%] bg-white p-2 rounded-[0.5rem] mr-2 lg:block hidden">
         <h2 className="py-2 mb-2 font-medium border-b ">{Inventory?.filter}</h2>
         <div className="flex items-center border border-black rounded-[0.5rem] mb-4 py-1">
@@ -215,12 +212,12 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
           ))}
       </div>
 
-      {/* Right container*/}
+      {/* Right container */}
       <div className="lg:w-[82%] w-full">
         <div className="bg-white w-full rounded-[0.5rem] p-2 flex items-center mb-2 space-x-2 lg:hidden">
           <button
             aria-label="Filter"
-            onClick={openMachineModal}
+            onClick={() => setIsMachineModalOpen(true)}
             className="w-[50%] bg-black flex items-center rounded-[0.3rem] py-1"
           >
             <svg
@@ -246,7 +243,7 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
           </button>
           <button
             aria-label="Filter"
-            onClick={openModal}
+            onClick={() => setIsPartsModalOpen(true)}
             className="w-[50%] bg-black flex items-center rounded-[0.3rem] py-1"
           >
             <svg
@@ -271,7 +268,7 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
             </p>
           </button>
         </div>
-        {/* Filter section*/}
+        {/* Filter section */}
         <div className="bg-white w-full rounded-[0.5rem] p-2 lg:flex items-center mb-2 hidden">
           <div className="flex items-center border border-black rounded-[0.5rem] py-1 px-2 lg:visible invisible">
             <svg
@@ -348,7 +345,7 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
                 </div>
               </div>
               <div className="border-solid border-2 border-black bg-[#f5f5f5] p-1 flex items-center jystify-center rounded-full z-10 -ml-6 -mt-[0.095rem]">
-                <svg
+              <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="none"
@@ -557,7 +554,7 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
           </div>
         </div>
 
-        {/* parts section*/}
+        {/* parts section */}
         <div className="">
           <div className="w-full mt-2 lg:max-h-[154.1vh] lg:overflow-y-scroll grid lg:grid-cols-3 gap-2 scrollbar-custom scrollbar">
             {filteredParts?.map((item, idx) => (
@@ -573,15 +570,6 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
                     <h3 className="text-md text-red-700 font-medium whitespace-nowrap">
                       {item?.code}
                     </h3>
-                  </div>
-                  <div>
-                    {/* <Image
-                  src={item?.img}
-                  alt={item?.title}
-                  width={400}
-                  height={400}
-                  className="w-5 group-hover:invert"
-                /> */}
                   </div>
                   <div className="cursor-pointer group absolute right-0 flex">
                     <svg
@@ -804,7 +792,6 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
               </h2>
               <button
                 aria-label="Close"
-
                 className="absolute right-0"
                 onClick={handleCloseModal}
               >
@@ -813,9 +800,9 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   className="w-6 h-6 stroke-black "
                 >
                   <line x1="18" y1="6" x2="6" y2="18" />
@@ -861,63 +848,17 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
                 </div>
               </div>
               <div className="lg:w-[40%]">
-                <form onSubmit={handleSubmit}>
-                  <div className="mb-4">
-                    <label className="block text-sm mb-2 font-medium">
-                      {Inventory?.fullName}
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      onChange={handleChange}
-                      className="bg-[#f5f5f5] rounded-[0.3rem] w-full p-2 outline-none"
+                {/* part-one-contact-page */}
+                <div className="w-full lg:h-auto bg-white p-4 rounded-xl">
+                  <FormFields onChange={setFormValues} values={formValues} />
+                  <div className="w-full flex justify-center mt-4">
+                    <SubmitButton
+                      isSubmitting={isSubmitting}
+                      onClick={handleSubmit}
                     />
                   </div>
-                  <div className="mb-4">
-                    <label className="block text-sm mb-2 font-medium">
-                      {Inventory?.phone}
-                    </label>
-                    <input
-                      type="number"
-                      required
-                      onChange={handleChange}
-                      className="bg-[#f5f5f5] rounded-[0.3rem] w-full p-2 outline-none"
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <label
-                      htmlFor="email"
-                      className="block text-sm mb-2 font-medium"
-                    >
-                      {Inventory?.email}
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      onChange={handleChange}
-                      className="bg-[#f5f5f5] rounded-[0.3rem] w-full p-2 outline-none"
-                    />
-                  </div>
-                  <motion.button
-                    className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
-                    type="submit"
-                    disabled={isSubmitting}
-                    whileHover={{ scale: 1.01 }}
-                    whileTap={{ scale: 0.99 }}
-                  >
-                    {isSubmitting ? "Submitting..." : "Submit"}
-                    <BottomGradient />
-                  </motion.button>
-                </form>
+                </div>
               </div>
-            </div>
-            <div className="flex lg:justify-end justify-center lg:mt-4 mt-2">
-              <button
-                aria-label="Submit"
-                className="text-lg font-semibold bg-gradient-to-t from-[#483d73] to-black text-white lg:w-[39%] w-full px-4 py-2 rounded-[0.3rem] "
-              >
-                {Inventory?.submit}
-              </button>
             </div>
           </div>
         </div>
@@ -930,7 +871,7 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
             {/* Close button */}
             <button
               aria-label="Close"
-              onClick={closeModal}
+              onClick={() => setIsPartsModalOpen(false)}
               className="flex justify-end w-full mb-4"
             >
               <svg
@@ -938,9 +879,9 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="w-6 h-6 stroke-black "
               >
                 <line x1="18" y1="6" x2="6" y2="18" />
@@ -953,9 +894,9 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="1.2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="1.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="w-6 h-6 mr-2"
               >
                 <line x1="4" y1="6" x2="16" y2="6" />
@@ -995,7 +936,7 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
             {/* Close button */}
             <button
               aria-label="Close"
-              onClick={closeMachineModal}
+              onClick={() => setIsMachineModalOpen(false)}
               className="flex justify-end w-full mb-4"
             >
               <svg
@@ -1003,9 +944,9 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="w-6 h-6 stroke-black "
               >
                 <line x1="18" y1="6" x2="6" y2="18" />
@@ -1018,9 +959,9 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="1.2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="1.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="w-6 h-6 mr-2"
               >
                 <line x1="4" y1="6" x2="16" y2="6" />
@@ -1041,6 +982,8 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
                   type="checkbox"
                   id={`item-${idx}`}
                   className="absolute right-0"
+                  checked={machineFilters?.includes(item?.title)}
+                  onChange={() => handleMachineFilterChange(item?.title)}
                 />
               </div>
             ))}
@@ -1052,3 +995,4 @@ const Page2: React.FC<GenuinePartsProps> = ({ genuinePartsData }) => {
 };
 
 export default Page2;
+

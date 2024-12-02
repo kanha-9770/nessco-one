@@ -8,7 +8,6 @@ const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
 const locales = ["en", "fr", "nl", "de", "es", "hi", "ta"] as const;
 const countryUrl = "https://countryjson.nesscoindustries.com/";
 
-
 // Revalidate every 60 seconds
 export const revalidate = 60;
 
@@ -30,7 +29,7 @@ async function fetchProductLayoutData(
 }
 
 type CountryNames = {
-  [locale: string]: string; 
+  [locale: string]: string;
 };
 
 // Fetch country data based on locale
@@ -51,7 +50,9 @@ async function fetchCountryData(locale: string): Promise<string> {
 // Dynamically generate metadata
 export async function generateMetadata({
   params: { locale, id },
-}: { params: { locale: string; id: string } }): Promise<Metadata> {
+}: {
+  params: { locale: string; id: string };
+}): Promise<Metadata> {
   if (!locales.includes(locale as any)) {
     locale = "en";
   }
@@ -120,8 +121,10 @@ export async function generateMetadata({
 
 // Home component rendering
 export default async function about({
-  params: { locale},
-}: { params: { locale: string; id: string } }) {
+  params: { locale },
+}: {
+  params: { locale: string; id: string };
+}) {
   if (!locales.includes(locale as any)) {
     locale = "en";
   }

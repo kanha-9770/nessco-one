@@ -24,7 +24,7 @@ const Pages:React.FC <BlogsProps>= ({blogsData}) => {
     <>
       <main>
         <div className="flex lg:flex-row flex-col lg:mt-0 mt-14">
-          <div className="lg:w-[20%] sticky top-0 lg:h-[40rem] hidden lg:block">
+          <div className="lg:w-[20%] ml-4 sticky top-0 lg:h-[40rem] hidden lg:block">
             <Page1 onCategorySelect={handleCategorySelect} blogsData={blogsData} />
           </div>
           <div className="flex flex-col lg:w-[80%]">

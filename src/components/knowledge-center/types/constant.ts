@@ -1,58 +1,48 @@
 export interface KnowledgeCenterItem {
-  knowledgeCenter: Array<{
-    knowledgeCenterSeoData: KnowledgeCenterSeoData;
-    Hero: Hero;
-    Section: Section;
-    SubSection: SubSection;
+  knowledgeCenter: any;
+  KnowYourBussiness: Array<{
+    knowYourBussinessSeoData: KnowledgeCenterSeoData;
+    Header: {
+      title: string;
+      description: string;
+      img: string;
+      cards: Array<{
+        title: string;
+        img: string;
+        section?: Array<{
+          que: string;
+          ans: string;
+        }>;
+      }>;
+    };
   }>;
 }
 
-type KnowledgeCenterSeoData = {
-  twitter: any;
-  robots: string;
-  alternates: any;
+export type KnowledgeCenterSeoData = {
   title: string;
   description: string;
   keywords: string;
-  openGraph: OpenGraph;
+  openGraph: {
+    title: string;
+    description: string;
+    images: Array<{
+      url: string;
+      alt: string;
+    }>;
+  };
+  robots: string;
+  alternates: {
+    canonical: string;
+  };
+  twitter: {
+    card: string;
+    site: string;
+    title: string;
+    description: string;
+    image: string;
+  };
 };
 
-type OpenGraph = {
-  title: string;
-  description: string;
-  images: OpenGraphImage[];
-};
-
-type OpenGraphImage = {
-  url: string;
-  alt: string;
-};
-
-type Hero = {
-  title: string;
-  subtitle: string;
-  section: HeroSection[];
-};
-
-type HeroSection = {
-  title: string;
-  img: string;
-};
-
-type Section = {
-  button: string;
-  sections: SectionItem[];
-};
-
-type SectionItem = {
-  link: string;
-  number: number;
-  title: string;
-  description: string;
-  img: string;
-};
-
-type SubSection = {
-  title: string;
-  description: string;
+export type Props = {
+  params: { locale: string; country: string };
 };

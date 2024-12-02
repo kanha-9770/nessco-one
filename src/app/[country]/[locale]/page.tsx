@@ -123,12 +123,11 @@ export async function generateMetadata({
 }
 
 // Home component rendering the MainLayout with fetched data
-export default async function Home({ params: { locale, country } }: Props) {
+export default async function Home({ params: { locale } }: Props) {
   // Set default locale if not in supported list
   if (!locales.includes(locale as any)) {
     locale = "en"; // Fallback to English
   }
-  console.log("i am akash krisna", country);
 
   // Set the locale for the request
   unstable_setRequestLocale(locale);

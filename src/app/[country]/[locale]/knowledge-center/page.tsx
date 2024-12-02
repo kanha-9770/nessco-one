@@ -1,146 +1,116 @@
-import Pages from "@/components/knowledge-center/Pages";
-import { KnowledgeCenterItem } from "@/components/knowledge-center/types/constant";
 import { Metadata } from "next";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
-import React from "react";
-import { cookies } from "next/headers"; // Server-side (Next.js app directory)
+import { cookies } from "next/headers";
+import Pages from "@/components/knowledge-center/Pages";
+import { KnowledgeCenterItem, Props } from "@/components/knowledge-center/types/constant";
+import { getBaseUrl } from "@/app/api/environment";
 
 const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
 const locales = ["en", "fr", "nl", "de", "es", "hi", "ta"] as const;
 const countryUrl = "https://countryjson.nesscoindustries.com/";
 
-type Props = {
-  params: { locale: string };
-};
-// Revalidate every 60 seconds (or any time period you prefer)
 export const revalidate = 60;
-// Fetch home data based on the locale
-async function fetchknowledgeCenterData(locale: string): Promise<KnowledgeCenterItem | null> {
+
+async function fetchKnowledgeCenterData(locale: string): Promise<KnowledgeCenterItem | null> {
   try {
     const res = await fetch(`${apiUrl}${locale}/knowledgecenter.json`);
-    const data = await res.json();
-    return data;
+    if (!res.ok) throw new Error('Failed to fetch');
+    return await res.json();
   } catch (error) {
-    const fallbackRes = await fetch(`${apiUrl}en/knowledgecenter.json`, {
-      cache: "no-store", // Ensures no caching for the fallback as well
-    });
-    const data = await fallbackRes.json();
-    return data;
+    console.error("Error fetching knowledge center data:", error);
+    const fallbackRes = await fetch(`${apiUrl}en/knowledgecenter.json`, { cache: "no-store" });
+    if (!fallbackRes.ok) throw new Error('Failed to fetch fallback');
+    return await fallbackRes.json();
   }
 }
 
-type CountryNames = {
-  [locale: string]: string; // Each locale key maps directly to the country name
-};
-
 async function fetchCountryData(locale: string): Promise<string> {
   const country = cookies().get("country")?.value || "in";
-  console.log("countryname", country);
-
   try {
     const res = await fetch(`${countryUrl}${country}.json`);
-    const countryData: CountryNames = await res.json();
-
-    // Return the country name for the provided locale
-    return countryData[locale] || countryData["en"]; // Fallback to English if the locale isn't available
+    if (!res.ok) throw new Error('Failed to fetch country data');
+    const countryData: Record<string, string> = await res.json();
+    return countryData[locale] || countryData["en"];
   } catch (error) {
+    console.error("Error fetching country data:", error);
     const fallbackRes = await fetch(`${countryUrl}in.json`);
-    const fallbackData: CountryNames = await fallbackRes.json();
-
-    // Handle fallback case, also fallback to English if locale not available
+    if (!fallbackRes.ok) throw new Error('Failed to fetch fallback country data');
+    const fallbackData: Record<string, string> = await fallbackRes.json();
     return fallbackData[locale] || fallbackData["en"];
   }
 }
 
-// Dynamically generate metadata using the fetched SEO data
-export async function generateMetadata({
-  params: { locale },
-}: Props): Promise<Metadata> {
-  // Fallback to "en" if the locale isn't supported
+export async function generateMetadata({ params: { locale, country } }: Props): Promise<Metadata> {
   if (!locales.includes(locale as any)) {
     locale = "en";
   }
+  const baseUrl = getBaseUrl();
+
+  
   const countryName = await fetchCountryData(locale);
+  const knowledgeCenterData = await fetchKnowledgeCenterData(locale);
 
-  const knowledgeCenterData = await fetchknowledgeCenterData(locale);
-
-  if (!knowledgeCenterData && !countryName) {
+  if (!knowledgeCenterData || !knowledgeCenterData.KnowYourBussiness) {
     return {
-      title: "Default Title",
-      description: "Default Description",
-      keywords: "default, keywords",
-      openGraph: {
-        title: "Default OG Title",
-        description: "Default OG Description",
-        images: [
-          {
-            url: "/default-image.webp",
-            alt: "Default Image Alt",
-          },
-        ],
-      },
-      robots: "index, follow",
-      alternates: {
-        canonical: "https://www.default.com",
-      },
-      twitter: {
-        card: "summary_large_image",
-        site: "@DefaultTwitter",
-        title: "Default Twitter Title",
-        description: "Default Twitter Description",
-      },
+      title: "Knowledge Center - Nessco Industries",
+      description: "Explore our Knowledge Center for valuable insights and information.",
     };
   }
 
-  const seoData = knowledgeCenterData?.knowledgeCenter[0]?.knowledgeCenterSeoData;
+  const seoData = knowledgeCenterData.KnowYourBussiness[0]?.knowYourBussinessSeoData;
+  console.log(seoData);
+  
+  if (!seoData) {
+    return {
+      title: "Knowledge Center - Nessco Industries",
+      description: "Explore our Knowledge Center for valuable insights and information.",
+    };
+  }
 
   return {
-    title: `${seoData?.title} - ${countryName} `,
-    description: seoData?.description,
+    title: `${seoData.title} - ${countryName}`,
+    description: seoData.description,
+    keywords: seoData.keywords,
     viewport: "width=device-width, initial-scale=1",
     alternates: {
-      canonical: `https://nessco-two.vercel.app/${countryName}/${locale}`,
+      canonical: `${baseUrl}/${country}/${locale}`,
     },
     openGraph: {
       type: "website",
-      title: seoData?.openGraph?.title,
+      title: seoData.openGraph.title,
       siteName: "Nessco Industries",
-      url: `https://nessco-two.vercel.app/${countryName}/${locale}`,
-      description: seoData?.openGraph?.description,
-      images: seoData?.openGraph?.images,
+      url: `${baseUrl}/${country}/${locale}`,
+      description: seoData.openGraph.description,
+      images: seoData.openGraph.images,
     },
     twitter: {
       card: "summary_large_image",
       site: "@NesscoIndia",
-      title: seoData?.twitter?.title,
-      description: seoData?.twitter?.description,
-      images: seoData?.twitter?.image,
+      title: seoData.twitter.title,
+      description: seoData.twitter.description,
+      images: seoData.twitter.image,
     },
-    robots: {
-      index: true,
-      follow: true,
-    },
+    robots: seoData.robots,
   };
 }
 
-// Home component rendering the MainLayout with fetched data
-export default async function about({ params: { locale } }: Props) {
-  // Set default locale if not in supported list
+export default async function KnowledgeCenter({ params: { locale} }: Props) {
   if (!locales.includes(locale as any)) {
-    locale = "en"; // Fallback to English
+    locale = "en";
   }
 
-  // Set the locale for the request
   unstable_setRequestLocale(locale);
 
-  // Fetch home data based on the locale
-  const knowledgeCenterData = await fetchknowledgeCenterData(locale);
-
-  // Fetch translations based on the locale
+  const knowledgeCenterData = await fetchKnowledgeCenterData(locale);
   const t = await getTranslations({ locale });
 
   if (!knowledgeCenterData) {
-    return <p>{t("failedToLoadData")}</p>;
+    return (
+      <main className="container mx-auto px-4 py-8">
+        <h1 className="text-2xl font-bold mb-4">{t("knowledgeCenter")}</h1>
+        <p className="text-red-500">{t("failedToLoadData")}</p>
+      </main>
+    );
   }
 
   return (
@@ -149,3 +119,4 @@ export default async function about({ params: { locale } }: Props) {
     </main>
   );
 }
+

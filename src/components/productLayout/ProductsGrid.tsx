@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { Label } from "@/components/ui/label";
 import EnquiryCart from "@/components/ui/EnquiryCart";
 import LinkUrl from "../LinkUrl";
+import Link from "next/link";
 
 interface ProductsGrid {
   inquiry: string;
@@ -62,7 +63,11 @@ interface Page2Props {
   paramsthing: string | string[];
 }
 
-const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine, paramsthing }) => {
+const Page2: React.FC<Page2Props> = ({
+  productLayoutData,
+  page2machine,
+  paramsthing,
+}) => {
   const ProductsGrid = productLayoutData?.ProductLayout[0]?.ProductsGrid;
   const [selectedCategory, setSelectedCategory] = useState<
     "all" | "servoDriven" | "mechanicalCam"
@@ -320,7 +325,6 @@ const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine, paramsth
               onMouseLeave={() => isDesktop && setHoveredCardIndex(null)}
             >
               <div className="absolute top-6 right-4 flex space-x-2">
-                
                 <div className="w-8 h-8 bg-[#f5f5f5] rounded-full flex items-center justify-center font-medium cursor-pointer relative group hover:text-red-700 text-xl">
                   {item?.s}
                   <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-md shadow-md p-3 h-max w-max z-20">
@@ -340,19 +344,22 @@ const Page2: React.FC<Page2Props> = ({ productLayoutData, page2machine, paramsth
               </div>
 
               <div className="pt-6 pl-6">
-                <h3 className="text-xl font-bold w-[65%]">{item?.h1}</h3>
-                <h3 className="text-lg font-semibold">{item?.h2}</h3>
+                <Link href={`${paramsthing}/${item.link}`}>
+                  <h3 className="text-xl font-bold w-[65%]">{item?.h1}</h3>
+                  <h3 className="text-lg font-semibold">{item?.h2}</h3>
+                </Link>
               </div>
-
               <div className="flex justify-center items-center overflow-hidden">
                 <div className="mt-[1rem] lg:p-6 p-4 lg:h-[16rem] flex justify-center items-center">
-                  <Image
-                    src={item?.img}
-                    alt=""
-                    priority
-                    width={400}
-                    height={400}
-                  />
+                  <Link href={`${paramsthing}/${item.link}`}>
+                    <Image
+                      src={item?.img}
+                      alt=""
+                      priority
+                      width={400}
+                      height={400}
+                    />
+                  </Link>
                 </div>
               </div>
 

@@ -16,7 +16,6 @@ const FeatureNews = dynamic(() => import("@/components/Home/FeatureNews"), {
 const AnnouncementSection = dynamic(
   () => import("@/components/Home/AnnouncementSection")
 );
-const ContactIcons = dynamic(() => import("@/components/Contact/ContactIcon"));
 const MarqueeSection = dynamic(
   () => import("@/components/Home/MarqueeSection"),
   { ssr: true }
@@ -102,7 +101,6 @@ export default function MainLayout({ homeData }: MainLayoutProps) {
       <div className="top-2 relative">
         <Hero heroData={homeData} />
       </div>
-      <ContactIcons />
 
       <NavLinksDemo navItems={navItems} />
 

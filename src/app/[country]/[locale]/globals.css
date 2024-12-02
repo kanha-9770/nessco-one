@@ -295,3 +295,23 @@ html::-webkit-scrollbar {
   );
   background-color: black; /* For visibility, adjust the color as needed */
 }
+/* Custom thin scrollbar styles */
+.custom-scrollbar-container {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
+}
+
+.custom-scrollbar-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar-container::-webkit-scrollbar-thumb {
+  background-color: rgba(155, 155, 155, 0.5);
+  border-radius: 20px;
+  border: transparent;
+}
+

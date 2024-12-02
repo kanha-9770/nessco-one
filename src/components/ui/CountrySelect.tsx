@@ -5,9 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { Search, ChevronDown } from "lucide-react";
+import { Search, ChevronDown } from 'lucide-react';
 import { ScrollArea } from "@/components/ui/ScrollArea";
 import countriesData from "./constant/CountryData";
+import { cn } from "@/lib/utils";
 
 type Country = {
   name: string;
@@ -19,22 +20,21 @@ type CountrySelectProps = {
   isoCode: string;
   onPhoneNumberChange: (phoneNumber: string) => void;
   error?: string;
+  className?: string;
 };
-
-// Your pre-defined countries data
 
 export default function CountrySelect({
   isoCode,
   onPhoneNumberChange,
   error,
+  className,
 }: CountrySelectProps) {
-  const [countries, setCountries] = useState<Country[]>(countriesData);
+  const [countries] = useState<Country[]>(countriesData);
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
-  // Set the initial selected country based on the provided isoCode
   useEffect(() => {
     const preSelectedCountry = countriesData.find(
       (country) => country.code === isoCode.toUpperCase()
@@ -65,7 +65,7 @@ export default function CountrySelect({
   );
 
   return (
-    <div className="py-[0.4rem] px-[0.5rem] text-[0.9rem] rounded-[0.3rem] bg-[#f9fafb] focus:ring-2 focus:ring-[#483d73] transition-all duration-200">
+    <div className={cn("py-[0.1rem] px-[0.2rem] text-[0.9rem] rounded-[0.3rem] bg-[#f9fafb] focus:ring-2 focus:ring-[#483d73] transition-all duration-200", className)}>
       <div className="flex space-x-2">
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
           <DialogTrigger asChild>
@@ -165,3 +165,4 @@ export default function CountrySelect({
     </div>
   );
 }
+

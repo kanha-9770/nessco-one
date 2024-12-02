@@ -7,7 +7,6 @@ import { HomeData, NewsFeatureItem } from "./types/constant";
 import { Key, useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import Link from "next/link";
-import { languageCODE } from "../Navbar/nav-menue";
 
 interface FeatureNewsLayoutProps {
   heroData: HomeData;

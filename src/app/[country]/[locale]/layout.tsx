@@ -10,6 +10,7 @@ import {
 import dynamic from "next/dynamic";
 import { locales } from "@/i18n";
 import { FormProvider } from "./context/FormContext";
+import ContactIcons from "@/components/Contact/ContactIcon";
 const FooterLayout = dynamic(() => import("@/components/Footer/FooterLayout"));
 const inter = Inter({
   subsets: ["latin"],
@@ -31,7 +32,7 @@ export async function generateMetadata({
 }) {
   const t = await getTranslations({ locale });
   const countryName = countryNames[country] || "Country";
-  
+
   let heroData;
   try {
     const heroRes = await fetch(`${apiUrl}${locale}/hero.json`);
@@ -111,6 +112,8 @@ export default async function RootLayout({
           <NavLayout params={{ locale }} />
 
           {/* Page content */}
+          <ContactIcons />
+
           {children}
           <div>
             <FooterLayout params={{ locale }} />

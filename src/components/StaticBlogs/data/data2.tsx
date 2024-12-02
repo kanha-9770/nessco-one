@@ -2,220 +2,262 @@ import { BlogPost } from "../types/blogs";
 
 export const blogPosts: BlogPost[] = [
   {
-    id: '1',
-    title: 'What is Flexo Label Printing Machine: Types and Process',
-    slug: '',
-    date: '2024-11-27',
+    id: "1",
+    title: "What is Flexo Label Printing Machine: Types and Process",
+    slug: "",
+    date: "2024-11-27",
     author: {
-      id: 'author1',
-      name: 'John Doe',
-      avatar: '/avatars/john-doe.png',
+      id: "author1",
+      name: "John Doe",
+      avatar: "https://www.nesscoindia.com/Assets/images/logo.webp",
     },
     tags: [
-      { id: 'tag1', name: 'Printing' },
-      { id: 'tag2', name: 'Technology' },
-      { id: 'tag3', name: 'Packaging' },
+      { id: "tag1", name: "Printing" },
+      { id: "tag2", name: "Technology" },
+      { id: "tag3", name: "Packaging" },
     ],
-    excerpt: 'Flexo label printing machines are essential for the printing industry. This blog explores their types and the flexo printing process.',
+    excerpt:
+      "Flexo label printing machines are essential for the printing industry. This blog explores their types and the flexo printing process.",
     content: [
       {
-        type: 'text',
-        content: 'Flexo label printing machines are very important in the printing industry, especially for making labels and packaging. If you’re new to flexo label printing or already know a bit and want to learn more about the latest technology, it’s important to understand how these machines work. This blog will explain what flexo label printing machines are, the different types, and the simple steps of the printing process.',
+        type: "text",
+        content:
+          "Flexo label printing machines are very important in the printing industry, especially for making labels and packaging. If you’re new to flexo label printing or already know a bit and want to learn more about the latest technology, it’s important to understand how these machines work. This blog will explain what flexo label printing machines are, the different types, and the simple steps of the printing process.",
       },
       {
-        type: 'text',
-        content: 'Flexographic printing is also known as flexo printing. It is a method that uses a flexible relief plate to print on various materials. This process is very efficient and mostly used for printing labels, packaging, and even wallpapers. The main benefit of flexo printing is that it can print on many types of surfaces, like paper, plastic, and metal films.',
+        type: "text",
+        content:
+          "Flexographic printing is also known as flexo printing. It is a method that uses a flexible relief plate to print on various materials. This process is very efficient and mostly used for printing labels, packaging, and even wallpapers. The main benefit of flexo printing is that it can print on many types of surfaces, like paper, plastic, and metal films.",
       },
       {
-        type: 'text',
-        content: 'A flexo printing machine is designed to handle fast and large printing works. They are perfect for industries that need reliable and long-lasting prints, like food, drinks, medicine, and retail.',
+        type: "text",
+        content:
+          "A flexo printing machine is designed to handle fast and large printing works. They are perfect for industries that need reliable and long-lasting prints, like food, drinks, medicine, and retail.",
       },
       {
-        type: 'text',
-        content: 'Flexo label printing machines come in different types, each designed to meet specific printing needs. Here are the most common types:',
+        type: "text",
+        content:
+          "Flexo label printing machines come in different types, each designed to meet specific printing needs. Here are the most common types:",
       },
       {
-        type: 'text',
-        content: '1. Stacked Type Flexo Printing Machine: The stacked type flexo printing machine is the most traditional and commonly used model. In this design, the printing stations are arranged one above the other. Each station handles a different color, so you can print in multiple colors. The main benefits are that it saves space because of its compact design, and it’s also fairly easy to use and maintain.',
+        type: "text",
+        content:
+          "1. Stacked Type Flexo Printing Machine: The stacked type flexo printing machine is the most traditional and commonly used model. In this design, the printing stations are arranged one above the other. Each station handles a different color, so you can print in multiple colors. The main benefits are that it saves space because of its compact design, and it’s also fairly easy to use and maintain.",
       },
       {
-        type: 'text',
-        content: '2. Inline Flexo Printing Machine: Inline flexo printing machines have their printing stations arranged in a row, one after the other. This setup is excellent for handling large printing projects because it allows for continuous printing without needing to stop and start again.',
+        type: "text",
+        content:
+          "2. Inline Flexo Printing Machine: Inline flexo printing machines have their printing stations arranged in a row, one after the other. This setup is excellent for handling large printing projects because it allows for continuous printing without needing to stop and start again.",
       },
       {
-        type: 'text',
-        content: '3. Central Impression (CI) Flexo Printing Machine: The central impression (CI) flexo printing machine features a large central cylinder that all the printing stations are arranged around. This setup ensures that the colors stay perfectly aligned, which is crucial for producing high-quality prints.',
+        type: "text",
+        content:
+          "3. Central Impression (CI) Flexo Printing Machine: The central impression (CI) flexo printing machine features a large central cylinder that all the printing stations are arranged around. This setup ensures that the colors stay perfectly aligned, which is crucial for producing high-quality prints.",
       },
       {
-        type: 'text',
-        content: '4. Modular Flexo Printing Machine: Modular flexo printing machines are highly versatile and customizable. They consist of separate units that can be added or removed based on the printing requirements.',
+        type: "text",
+        content:
+          "4. Modular Flexo Printing Machine: Modular flexo printing machines are highly versatile and customizable. They consist of separate units that can be added or removed based on the printing requirements.",
       },
       {
-        type: 'text',
-        content: 'It’s important to understand how flexo printing works if you make labels and packaging. Here’s an easy guide to how flexo printing is done:',
+        type: "text",
+        content:
+          "It’s important to understand how flexo printing works if you make labels and packaging. Here’s an easy guide to how flexo printing is done:",
       },
       {
-        type: 'text',
-        content: 'Pre-Press Preparation: Before printing begins, the design is placed onto flexible plates made from a special material that reacts to light. These plates are then attached to the printing cylinders. In the pre-press stage, the artwork is checked to make sure everything is right, and any changes needed are made to ensure the print looks good.',
+        type: "text",
+        content:
+          "Pre-Press Preparation: Before printing begins, the design is placed onto flexible plates made from a special material that reacts to light. These plates are then attached to the printing cylinders. In the pre-press stage, the artwork is checked to make sure everything is right, and any changes needed are made to ensure the print looks good.",
       },
       {
-        type: 'text',
-        content: 'Ink Preparation: Flexo printing uses inks that dry quickly. These inks can be water-based, solvent-based, or UV-curable, depending on what you’re printing and how you want it to look. The ink is mixed and controlled in a special system to make sure the right amount is applied to the printing plate.',
+        type: "text",
+        content:
+          "Ink Preparation: Flexo printing uses inks that dry quickly. These inks can be water-based, solvent-based, or UV-curable, depending on what you’re printing and how you want it to look. The ink is mixed and controlled in a special system to make sure the right amount is applied to the printing plate.",
       },
       {
-        type: 'text',
-        content: 'Plate Mounting: Once the plates and ink are ready, the plates are put onto the printing cylinders. It’s important to mount the plates correctly to make sure the colors and images line up properly.',
+        type: "text",
+        content:
+          "Plate Mounting: Once the plates and ink are ready, the plates are put onto the printing cylinders. It’s important to mount the plates correctly to make sure the colors and images line up properly.",
       },
       {
-        type: 'text',
-        content: 'Printing: During printing, the inked plates touch the material moving through the machine. The flexible plates put the ink onto the material very precisely, so the images come out clear and consistent.',
+        type: "text",
+        content:
+          "Printing: During printing, the inked plates touch the material moving through the machine. The flexible plates put the ink onto the material very precisely, so the images come out clear and consistent.",
       },
       {
-        type: 'text',
-        content: 'Drying: After the ink is applied, it needs to dry fast to avoid smudging. Flexo printing machines have drying systems, like hot air or UV lamps, that dry the ink quickly.',
+        type: "text",
+        content:
+          "Drying: After the ink is applied, it needs to dry fast to avoid smudging. Flexo printing machines have drying systems, like hot air or UV lamps, that dry the ink quickly.",
       },
       {
-        type: 'text',
-        content: 'Quality Control: The final step in the flexo printing process is quality control. Printed labels are inspected for color accuracy, alignment, and overall quality.',
+        type: "text",
+        content:
+          "Quality Control: The final step in the flexo printing process is quality control. Printed labels are inspected for color accuracy, alignment, and overall quality.",
       },
     ],
     readingTime: 7,
     header: {
-      id: 'header1',
-      heading: 'What is Flexo Label Printing Machine: Types and Process',
-      headingImage: '/images/flexo-printing-machine.jpg',
-      subheading: 'Learn about Flexo Label Printing machines and how they work.',
+      id: "header1",
+      heading: "What is Flexo Label Printing Machine: Types and Process",
+      headingImage: "/images/flexo-printing-machine.jpg",
+      subheading:
+        "Learn about Flexo Label Printing machines and how they work.",
     },
   },
 
   {
-    id: '2',
-    title: 'What Is a Paper Roll Die Cutting Machine and How Does It Work?',
-    slug: 'paper-roll-die-cutting-machine',
-    date: '2024-11-27',
+    id: "2",
+    title: "What Is a Paper Roll Die Cutting Machine and How Does It Work?",
+    slug: "paper-roll-die-cutting-machine",
+    date: "2024-11-27",
     author: {
-      id: 'author1',
-      name: 'John Doe',
-      avatar: '/avatars/johndoe.png',
+      id: "author1",
+      name: "John Doe",
+      avatar: "https://www.nesscoindia.com/Assets/images/logo.webp",
     },
     tags: [
-      { id: 'tag1', name: 'Die Cutting' },
-      { id: 'tag2', name: 'Packaging' },
-      { id: 'tag3', name: 'Manufacturing' },
+      { id: "tag1", name: "Die Cutting" },
+      { id: "tag2", name: "Packaging" },
+      { id: "tag3", name: "Manufacturing" },
     ],
-    excerpt: 'Learn about paper roll die cutting machines, their components, types, and how they work in the packaging industry.',
+    excerpt:
+      "Learn about paper roll die cutting machines, their components, types, and how they work in the packaging industry.",
     content: [
       {
-        type: 'text',
+        type: "text",
         content: `Die-cutting machines are valuable machines used to cut paper according to the specific needs of the user, especially in industries like packaging and printing where precise shapes and designs are required. One popular type is the paper roll die cutting machine, widely used in the paper industry. These machines cut large rolls of paper into custom shapes and sizes, which are then used to create items like packaging boxes, paper cups, and other paper-based products.
          
          A roll die cutting machine is a versatile piece of equipment that cuts shapes from large rolls of material, such as paper or cardboard, without the need for manual intervention. This is achieved using specially designed machines called dies, which are customized based on the desired shape or design.`,
       },
       {
-        type: 'text',
-        content: 'What is a Die?\nA die in die cutting is a cutter used to cut or shape materials like paper or cardboard. It works like a stencil or mold, and when it presses onto the material, it cuts out the desired shape, just like a cookie cutter. Dies come in different shapes and can be made to fit the needs of different projects.',
+        type: "text",
+        content:
+          "What is a Die?\nA die in die cutting is a cutter used to cut or shape materials like paper or cardboard. It works like a stencil or mold, and when it presses onto the material, it cuts out the desired shape, just like a cookie cutter. Dies come in different shapes and can be made to fit the needs of different projects.",
       },
       {
-        type: 'text',
-        content: 'Types of Dies:\n\nWooden Die: These are traditionally made from a base of wood with a sharp metal blade embedded around the edges in the shape of the desired cut. Wooden dies are commonly used for softer materials like paper, cardboard, and thin plastics. They are cost-effective but may wear out faster compared to metal dies.\n\nMetal Die: A metal die is made completely from metal, making it stronger and more accurate than other types. It\'s used for cutting more detailed designs and tougher materials. Metal dies are great for large projects that need to be very precise.',
+        type: "text",
+        content:
+          "Types of Dies:\n\nWooden Die: These are traditionally made from a base of wood with a sharp metal blade embedded around the edges in the shape of the desired cut. Wooden dies are commonly used for softer materials like paper, cardboard, and thin plastics. They are cost-effective but may wear out faster compared to metal dies.\n\nMetal Die: A metal die is made completely from metal, making it stronger and more accurate than other types. It's used for cutting more detailed designs and tougher materials. Metal dies are great for large projects that need to be very precise.",
       },
       {
-        type: 'text',
-        content: 'What is a die cutting machine?\nA die cutting machine is a device that cuts materials like paper, cardboard, or fabric into specific shapes. It works by using a sharp tool, called a die, to press onto the material and cut it. This machine is used in industries like packaging, printing, and crafting to quickly and accurately create things like labels, boxes, and designs. It can be either manual or automatic, making the cutting process faster and easier than doing it by hand.',
+        type: "text",
+        content:
+          "What is a die cutting machine?\nA die cutting machine is a device that cuts materials like paper, cardboard, or fabric into specific shapes. It works by using a sharp tool, called a die, to press onto the material and cut it. This machine is used in industries like packaging, printing, and crafting to quickly and accurately create things like labels, boxes, and designs. It can be either manual or automatic, making the cutting process faster and easier than doing it by hand.",
       },
       {
-        type: 'text',
-        content: 'Components of a Die Cutting Machine:\nA paper roll die cutting machine is made up of several important parts that work together to make sure the machine runs smoothly and cuts accurately.',
+        type: "text",
+        content:
+          "Components of a Die Cutting Machine:\nA paper roll die cutting machine is made up of several important parts that work together to make sure the machine runs smoothly and cuts accurately.",
       },
       {
-        type: 'text',
-        content: '1. Die Plate: This is the surface where the die is placed. It presses the die onto the material, like paper or cardboard, to cut it into the desired shape. The die plate needs to be strong enough to handle the pressure required for cutting.\n2. Feeding Mechanism: This system helps guide the paper roll into the machine. It makes sure the paper is aligned properly with the die so the cuts are accurate by using servo machines.',
+        type: "text",
+        content:
+          "1. Die Plate: This is the surface where the die is placed. It presses the die onto the material, like paper or cardboard, to cut it into the desired shape. The die plate needs to be strong enough to handle the pressure required for cutting.\n2. Feeding Mechanism: This system helps guide the paper roll into the machine. It makes sure the paper is aligned properly with the die so the cuts are accurate by using servo machines.",
       },
       {
-        type: 'text',
-        content: '3. Traction Controller: The rollers use hydraulic pressure to move the paper through the machine while keeping it flat and tight. The hydraulic pressure ensures that the paper doesn’t shift or wrinkle, which could affect the accuracy of the cutting.\n4. Control Panel: Nessco’s, use advanced control panels with PLC (Programmable Logic Controller) systems in die cutting machines. Operators can easily adjust settings like roller speed, cutting depth, and die position.',
+        type: "text",
+        content:
+          "3. Traction Controller: The rollers use hydraulic pressure to move the paper through the machine while keeping it flat and tight. The hydraulic pressure ensures that the paper doesn’t shift or wrinkle, which could affect the accuracy of the cutting.\n4. Control Panel: Nessco’s, use advanced control panels with PLC (Programmable Logic Controller) systems in die cutting machines. Operators can easily adjust settings like roller speed, cutting depth, and die position.",
       },
       {
-        type: 'text',
-        content: '5. Cutting Die: This is the part that actually cuts the paper. The die can be made of wood or metal, depending on how detailed the cuts need to be and how tough the material is. Wooden dies are great for simple shapes, while metal dies are better for detailed designs and stronger materials.\n6. Embossing and Creasing Features: Some die cutting machines can also emboss (add raised patterns) or crease (create fold lines) along with cutting.',
+        type: "text",
+        content:
+          "5. Cutting Die: This is the part that actually cuts the paper. The die can be made of wood or metal, depending on how detailed the cuts need to be and how tough the material is. Wooden dies are great for simple shapes, while metal dies are better for detailed designs and stronger materials.\n6. Embossing and Creasing Features: Some die cutting machines can also emboss (add raised patterns) or crease (create fold lines) along with cutting.",
       },
       {
-        type: 'text',
-        content: 'Types of Die Cutting Machines\nDie cutting machines come in a variety of forms, each designed to meet different industry needs. The two main types of die cutting machines are automatic and manual.',
+        type: "text",
+        content:
+          "Types of Die Cutting Machines\nDie cutting machines come in a variety of forms, each designed to meet different industry needs. The two main types of die cutting machines are automatic and manual.",
       },
       {
-        type: 'text',
-        content: '1. Automatic Die Cutting Machines: Automatic die cutting machines are built to perform cutting tasks with very little human effort, making the process quicker and more accurate. These machines can be programmed to do a variety of tasks, such as cutting, embossing, and creasing, which makes them perfect for large-scale production where accuracy and efficiency are important.',
+        type: "text",
+        content:
+          "1. Automatic Die Cutting Machines: Automatic die cutting machines are built to perform cutting tasks with very little human effort, making the process quicker and more accurate. These machines can be programmed to do a variety of tasks, such as cutting, embossing, and creasing, which makes them perfect for large-scale production where accuracy and efficiency are important.",
       },
       {
-        type: 'text',
-        content: 'a) Wooden Roll Die Cutting Machine: The Wooden Roll Die Cutting Machine is a great, cost-effective choice that works well for many tasks. It’s perfect for those who need flexibility without spending too much. This machine is commonly used with 970mm and 1200mm roll widths, making it suitable for both small and large production needs.',
+        type: "text",
+        content:
+          "a) Wooden Roll Die Cutting Machine: The Wooden Roll Die Cutting Machine is a great, cost-effective choice that works well for many tasks. It’s perfect for those who need flexibility without spending too much. This machine is commonly used with 970mm and 1200mm roll widths, making it suitable for both small and large production needs.",
       },
       {
-        type: 'text',
-        content: 'b) Metal Die Cutting Machine: Metal die cutting machines are highly valued for their strength and precision, thanks to the use of metal dies. These machines are perfect for tasks that require detailed, intricate patterns or cutting through tougher materials like thick paper, cardboard, or plastic.',
+        type: "text",
+        content:
+          "b) Metal Die Cutting Machine: Metal die cutting machines are highly valued for their strength and precision, thanks to the use of metal dies. These machines are perfect for tasks that require detailed, intricate patterns or cutting through tougher materials like thick paper, cardboard, or plastic.",
       },
       {
-        type: 'text',
-        content: '2. Manual Die Cutting Machine: A manual die cutting machine is a simple and user-operated device used for cutting materials like paper, fabric, or thin cardboard into specific shapes.',
+        type: "text",
+        content:
+          "2. Manual Die Cutting Machine: A manual die cutting machine is a simple and user-operated device used for cutting materials like paper, fabric, or thin cardboard into specific shapes.",
       },
       {
-        type: 'text',
-        content: 'How Does a Paper Roll Die Cutting Machine Work?\nA paper roll die cutting machine is an efficient tool that turns large rolls of paper into finished products, like paper boxes, with precision and speed. Let’s start through the step-by-step process, using the example of cutting and creasing paper to make a paper box.',
+        type: "text",
+        content:
+          "How Does a Paper Roll Die Cutting Machine Work?\nA paper roll die cutting machine is an efficient tool that turns large rolls of paper into finished products, like paper boxes, with precision and speed. Let’s start through the step-by-step process, using the example of cutting and creasing paper to make a paper box.",
       },
       {
-        type: 'text',
-        content: 'Step 1: Feeding the Paper Roll into the Machine\nThe process begins by loading a large roll of paper into the machine. The paper is positioned onto the feeding mechanism, which guides the paper smoothly into the machine.',
+        type: "text",
+        content:
+          "Step 1: Feeding the Paper Roll into the Machine\nThe process begins by loading a large roll of paper into the machine. The paper is positioned onto the feeding mechanism, which guides the paper smoothly into the machine.",
       },
       {
-        type: 'text',
-        content: 'Step 2: Setting the Die for Cutting\nBefore the cutting begins, a die is fixed into the machine. A die is a pre-made template or mold designed to cut the paper into a specific shape. In this case, the die would be shaped to cut and crease the paper for making a box.',
+        type: "text",
+        content:
+          "Step 2: Setting the Die for Cutting\nBefore the cutting begins, a die is fixed into the machine. A die is a pre-made template or mold designed to cut the paper into a specific shape. In this case, the die would be shaped to cut and crease the paper for making a box.",
       },
       {
-        type: 'text',
-        content: 'Step 3: Cutting and Creasing the Paper\nAs the paper is fed into the machine, the rollers apply hydraulic pressure to move the paper through the machine without wrinkles or misalignment. Once the paper reaches the die, the die presses down onto the paper with force, cutting it into the box shape and adding creases for the fold lines.',
+        type: "text",
+        content:
+          "Step 3: Cutting and Creasing the Paper\nAs the paper is fed into the machine, the rollers apply hydraulic pressure to move the paper through the machine without wrinkles or misalignment. Once the paper reaches the die, the die presses down onto the paper with force, cutting it into the box shape and adding creases for the fold lines.",
       },
       {
-        type: 'text',
-        content: 'Step 4: Collecting the Cut Paper\nAfter the paper has been cut and creased, it moves through the final section of the machine and is collected onto a tray. The paper now has the exact shape and creases needed to form a box, but it’s still flat at this point.',
+        type: "text",
+        content:
+          "Step 4: Collecting the Cut Paper\nAfter the paper has been cut and creased, it moves through the final section of the machine and is collected onto a tray. The paper now has the exact shape and creases needed to form a box, but it’s still flat at this point.",
       },
       {
-        type: 'text',
-        content: 'Step 5: Folding into a Box\nThe last step happens outside the machine, where the cut and creased paper is folded into a box.',
+        type: "text",
+        content:
+          "Step 5: Folding into a Box\nThe last step happens outside the machine, where the cut and creased paper is folded into a box.",
       },
       {
-        type: 'text',
-        content: 'Advantages of Using a Die Cutting Machine\nThere are many benefits to using a die cutting machine, especially in industries where accuracy and fast production are important.',
+        type: "text",
+        content:
+          "Advantages of Using a Die Cutting Machine\nThere are many benefits to using a die cutting machine, especially in industries where accuracy and fast production are important.",
       },
       {
-        type: 'text',
-        content: '1. Precision: Die cutting machines are very accurate. They can cut detailed and complex shapes that would be hard to do by hand. This makes them perfect for projects that need clean and precise designs, like packaging or manufacturing products.',
+        type: "text",
+        content:
+          "1. Precision: Die cutting machines are very accurate. They can cut detailed and complex shapes that would be hard to do by hand. This makes them perfect for projects that need clean and precise designs, like packaging or manufacturing products.",
       },
       {
-        type: 'text',
-        content: '2. Efficiency: Automatic die cutting machines can cut large amounts of material quickly. This helps speed up production, so companies can produce more items in less time.',
+        type: "text",
+        content:
+          "2. Efficiency: Automatic die cutting machines can cut large amounts of material quickly. This helps speed up production, so companies can produce more items in less time.",
       },
       {
-        type: 'text',
-        content: '3. Customization: These machines can easily cut different shapes by changing the die (the cutting tool). This means manufacturers can create a variety of products in unique shapes, offering more flexibility.',
+        type: "text",
+        content:
+          "3. Customization: These machines can easily cut different shapes by changing the die (the cutting tool). This means manufacturers can create a variety of products in unique shapes, offering more flexibility.",
       },
       {
-        type: 'text',
-        content: '4. Cost-Effective: For big production runs, using a die cutting machine saves money. It reduces the need for extra workers and minimizes waste, as the machine makes cuts more precisely.',
+        type: "text",
+        content:
+          "4. Cost-Effective: For big production runs, using a die cutting machine saves money. It reduces the need for extra workers and minimizes waste, as the machine makes cuts more precisely.",
       },
       {
-        type: 'text',
-        content: '5. Versatility: A die cutting machine can do more than just cut; it can emboss, crease, and even print on materials, all in one process.',
-      }
+        type: "text",
+        content:
+          "5. Versatility: A die cutting machine can do more than just cut; it can emboss, crease, and even print on materials, all in one process.",
+      },
     ],
     readingTime: 0,
-    header: undefined
+    header: undefined,
   },
 
   {
     id: "3",
     title: "Paper Straws Vs Plastic Straws: Which Are More Eco-Friendly",
-    slug: "paper-straws-vs-plastic-straws%3A-which-are-more-eco-friendly",
+    slug: "paper-straws-vs-plastic-straws-which-are-more-eco-friendly",
     date: "2024-11-30",
     author: {
       id: "1",
@@ -356,7 +398,6 @@ export const blogPosts: BlogPost[] = [
                     subItems: {
                       format: "disc",
                       items: [
-                        
                         "Plastic straws are very sturdy and can last a long time. They don’t break down quickly and stay in good shape even after being used for a while. This makes them perfect for drinks that you might take your time with or for thicker drinks like milkshakes.",
                         "Paper straws break down faster, especially if they are in liquid for a long time. Many people notice that paper straws become soggy after just a few minutes, which can make them less practical for drinks that take longer to finish.",
                       ],
@@ -454,16 +495,17 @@ export const blogPosts: BlogPost[] = [
     header: {
       id: "header-1",
       heading: "Paper Straws Vs Plastic Straws: Which Are More Eco-Friendly",
-      headingImage: "https://assets.nesscoindustries.com/public/assets/blogs/paper-straw-vs-plastic-straw-featured-image.webp",
+      headingImage:
+        "https://assets.nesscoindustries.com/public/assets/blogs/paper-straw-vs-plastic-straw-featured-image.webp",
       subheading:
         "A detailed analysis of the advantages and disadvantages of paper and plastic straws to determine which is more environmentally friendly.",
     },
-  },  
-  
+  },
+
   {
     id: "6",
     title: "Paper Cup Manufacturing Business: The Comprehensive Guide",
-    slug: "paper-cup-manufacturing-business%3A-the-comprehensive-guide",
+    slug: "paper-cup-manufacturing-business-the-comprehensive-guide",
     date: "2024-11-30",
     author: {
       id: "1",
@@ -527,8 +569,8 @@ export const blogPosts: BlogPost[] = [
               content: {
                 blocks: [
                   {
-                    type:"text",
-                    content:"1. Market Research",
+                    type: "text",
+                    content: "1. Market Research",
                   },
                   {
                     type: "text",
@@ -645,8 +687,9 @@ export const blogPosts: BlogPost[] = [
         content: {
           blocks: [
             {
-              type:"text",
-              content:"Starting a paper cup manufacturing business requires a big investment in machinery, materials, and setup costs. However, if you run the business well and focus on quality and marketing, you can make a good profit. The rising demand for eco-friendly cups and a growing food and drink industry offer great opportunities for success.",
+              type: "text",
+              content:
+                "Starting a paper cup manufacturing business requires a big investment in machinery, materials, and setup costs. However, if you run the business well and focus on quality and marketing, you can make a good profit. The rising demand for eco-friendly cups and a growing food and drink industry offer great opportunities for success.",
             },
             {
               type: "table",
@@ -661,8 +704,8 @@ export const blogPosts: BlogPost[] = [
               ],
             },
             {
-              type:"text",
-              content:"",
+              type: "text",
+              content: "",
             },
             {
               type: "text",
@@ -713,18 +756,16 @@ export const blogPosts: BlogPost[] = [
           ],
         },
       },
-     
     ],
     header: {
       id: "header-1",
       heading: "Paper Cup Manufacturing Business: The Comprehensive Guide",
-      headingImage: "https://assets.nesscoindustries.com/public/assets/blogs/paper-cup-manufacturing-business-featured-image.webp",
+      headingImage:
+        "https://assets.nesscoindustries.com/public/assets/blogs/paper-cup-manufacturing-business-featured-image.webp",
       subheading:
         "Learn how to start and run a successful paper cup manufacturing business with this detailed guide covering market analysis, costs, and profitability.",
     },
   },
-  
-  
 
   {
     id: "5",
@@ -734,12 +775,12 @@ export const blogPosts: BlogPost[] = [
     author: {
       id: "author1",
       name: "EcoBlog Team",
-      avatar: "/avatars/eco-team.png"
+      avatar: "/avatars/eco-team.png",
     },
     tags: [
       { id: "1", name: "Sustainability" },
       { id: "2", name: "Environment" },
-      { id: "3", name: "Technology" }
+      { id: "3", name: "Technology" },
     ],
     excerpt:
       "Explore the environmental impact of paper and plastic cups, from production to disposal, and discover the role of technology in creating sustainable solutions.",
@@ -748,19 +789,19 @@ export const blogPosts: BlogPost[] = [
         type: "text",
         heading: "Introduction",
         content:
-          "In today’s world, the discussion around sustainability is becoming more and more important. As we deal with environmental problems, we need to think about how the everyday items we use, like a simple cup, affect the environment..."
+          "In today’s world, the discussion around sustainability is becoming more and more important. As we deal with environmental problems, we need to think about how the everyday items we use, like a simple cup, affect the environment...",
       },
       {
         type: "text",
         heading: "The Basics of Sustainability",
         content:
-          "Sustainability means meeting our needs today without harming the ability of future generations to meet their own needs. This idea means thinking about how the things we use affect the environment, people, and the economy..."
+          "Sustainability means meeting our needs today without harming the ability of future generations to meet their own needs. This idea means thinking about how the things we use affect the environment, people, and the economy...",
       },
       {
         type: "text",
         heading: "Paper Cups: A Closer Look",
         content:
-          "Paper cups are made from a type of paper called paperboard, which usually comes from trees. Although trees can grow back, making paper cups involves several steps that affect the environment..."
+          "Paper cups are made from a type of paper called paperboard, which usually comes from trees. Although trees can grow back, making paper cups involves several steps that affect the environment...",
       },
       {
         type: "list",
@@ -771,36 +812,36 @@ export const blogPosts: BlogPost[] = [
             "Resource Use",
             "Energy Consumption",
             "Pollution",
-            "Waste Management"
-          ]
-        }
+            "Waste Management",
+          ],
+        },
       },
       {
         type: "text",
         heading: "The Role of Technology in Improving Sustainability",
         content:
-          "As people look for more eco-friendly options, technology is key to making paper and plastic cups better. For example, companies that make paper cup machines are working on new designs and ways to make paper cups..."
+          "As people look for more eco-friendly options, technology is key to making paper and plastic cups better. For example, companies that make paper cup machines are working on new designs and ways to make paper cups...",
       },
       {
         type: "text",
         heading: "Conclusion",
         content:
-          "Neither paper cups nor plastic cups are perfect for the environment. Each has its own problems. Paper cups use a lot of resources to make and are often coated with plastic, making them hard to recycle..."
-      }
+          "Neither paper cups nor plastic cups are perfect for the environment. Each has its own problems. Paper cups use a lot of resources to make and are often coated with plastic, making them hard to recycle...",
+      },
     ],
     readingTime: 7,
     header: {
       id: "header1",
       heading: "Paper Cups vs Plastic Cups",
       headingImage: "/images/sustainability-cups.jpg",
-      subheading: "Which One is More Sustainable?"
-    }
+      subheading: "Which One is More Sustainable?",
+    },
   },
-  
+
   {
     id: "6",
     title: "Paper Cup Manufacturing Business: The Comprehensive Guide",
-    slug: "paper-cup-manufacturing-business%3A-the-comprehensive-guide",
+    slug: "paper-cup-manufacturing-business-the-comprehensive-guide",
     date: "2024-11-27",
     author: {
       id: "author1",
@@ -818,8 +859,10 @@ export const blogPosts: BlogPost[] = [
     header: {
       id: "header1",
       heading: "Paper Cup Manufacturing Business",
-      headingImage: "https://assets.nesscoindustries.com/public/assets/blogs/paper-cup-manufacturing-business-featured-image.webp",
-      subheading: "The Comprehensive Guide to Starting and Running a Successful Business",
+      headingImage:
+        "https://assets.nesscoindustries.com/public/assets/blogs/paper-cup-manufacturing-business-featured-image.webp",
+      subheading:
+        "The Comprehensive Guide to Starting and Running a Successful Business",
     },
     content: [
       {
@@ -1035,7 +1078,7 @@ export const blogPosts: BlogPost[] = [
   // {
   //   id: "8",
   //   title: "Paper Cup Manufacturing Business: The Comprehensive Guide",
-  //   slug: "paper-cup-manufacturing-business%3A-the-comprehensive-guide",
+  //   slug: "paper-cup-manufacturing-business-the-comprehensive-guide",
   //   date: "2024-11-27",
   //   author: {
   //     id: "author-001",
@@ -1138,14 +1181,14 @@ export const blogPosts: BlogPost[] = [
   //         ],
   //       },
   //     },
-     
+
   //   ],
   // },
 
   {
     id: "8",
     title: "How to Start Paper Bag Manufacturing Business: Complete Guide",
-    slug: "how-to-start-paper-bag-manufacturing-business%3A-complete-guide",
+    slug: "how-to-start-paper-bag-manufacturing-business-complete-guide",
     date: "2024-11-30",
     author: {
       id: "1",
@@ -1158,13 +1201,15 @@ export const blogPosts: BlogPost[] = [
     ],
     excerpt:
       "This guide provides a complete roadmap for starting a paper bag manufacturing business, covering market analysis, production processes, financial management, and scaling strategies.",
-      readingTime: 15,
-      header: {
-        id: "header1",
-        heading: "Paper Cup Manufacturing Business",
-        headingImage: "https://assets.nesscoindustries.com/public/assets/blogs/paper-bag-manufacturing-business-featured-image.webp",
-        subheading: "The Comprehensive Guide to Starting and Running a Successful Business",
-      },
+    readingTime: 15,
+    header: {
+      id: "header1",
+      heading: "Paper Cup Manufacturing Business",
+      headingImage:
+        "https://assets.nesscoindustries.com/public/assets/blogs/paper-bag-manufacturing-business-featured-image.webp",
+      subheading:
+        "The Comprehensive Guide to Starting and Running a Successful Business",
+    },
     content: [
       {
         type: "section",
@@ -1219,12 +1264,25 @@ export const blogPosts: BlogPost[] = [
             },
             {
               type: "table",
-              heading: "Benefits of Starting a Paper Bag Manufacturing Business",
+              heading:
+                "Benefits of Starting a Paper Bag Manufacturing Business",
               content: [
                 ["Benefit", "Description", "Impact on Business"],
-                ["Environmental Impact", "Eco-friendly and recyclable", "High consumer appeal"],
-                ["Market Demand", "Growing due to bans on plastic", "Expanding customer base"],
-                ["Profit Potential", "High margins and scalability", "Increased revenue opportunities"],
+                [
+                  "Environmental Impact",
+                  "Eco-friendly and recyclable",
+                  "High consumer appeal",
+                ],
+                [
+                  "Market Demand",
+                  "Growing due to bans on plastic",
+                  "Expanding customer base",
+                ],
+                [
+                  "Profit Potential",
+                  "High margins and scalability",
+                  "Increased revenue opportunities",
+                ],
               ],
             },
           ],
@@ -1273,9 +1331,21 @@ export const blogPosts: BlogPost[] = [
               heading: "Initial Considerations",
               content: [
                 ["Consideration", "Detail", "Notes"],
-                ["Investment Requirements", "Capital needed for setup", "Includes machinery and location"],
-                ["Skill Set", "Industry knowledge and technical skills", "Essential for smooth operation"],
-                ["Market Research", "Demand and competitor analysis", "Critical for strategic planning"],
+                [
+                  "Investment Requirements",
+                  "Capital needed for setup",
+                  "Includes machinery and location",
+                ],
+                [
+                  "Skill Set",
+                  "Industry knowledge and technical skills",
+                  "Essential for smooth operation",
+                ],
+                [
+                  "Market Research",
+                  "Demand and competitor analysis",
+                  "Critical for strategic planning",
+                ],
               ],
             },
           ],
@@ -1283,7 +1353,8 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "section",
-        heading: "10 Essential Steps to Start a Paper Bag Manufacturing Business",
+        heading:
+          "10 Essential Steps to Start a Paper Bag Manufacturing Business",
         content: {
           blocks: [
             {
@@ -1297,12 +1368,12 @@ export const blogPosts: BlogPost[] = [
                       "Before starting any business, it’s important to understand the market. The demand for paper bags is growing because more people care about the environment, and many governments are banning plastic bags.",
                   },
                   {
-                    type:"text",
-                    content:"",
+                    type: "text",
+                    content: "",
                   },
                   {
-                    type:"text",
-                    content:"Market Demand",
+                    type: "text",
+                    content: "Market Demand",
                   },
                   {
                     type: "list",
@@ -1319,9 +1390,17 @@ export const blogPosts: BlogPost[] = [
                     type: "table",
                     content: [
                       ["Factor", "Detail", "Data/Info"],
-                      ["Target Customers", "Retail stores, grocery shops", "High demand in urban areas"],
+                      [
+                        "Target Customers",
+                        "Retail stores, grocery shops",
+                        "High demand in urban areas",
+                      ],
                       ["Market Growth (2023-2028)", "Global CAGR", "4.1%"],
-                      ["Competitors", "Local manufacturers", "Moderate competition"],
+                      [
+                        "Competitors",
+                        "Local manufacturers",
+                        "Moderate competition",
+                      ],
                     ],
                   },
                 ],
@@ -1333,12 +1412,12 @@ export const blogPosts: BlogPost[] = [
               content: {
                 blocks: [
                   {
-                    type:"text",
-                    content:" ",
+                    type: "text",
+                    content: " ",
                   },
                   {
-                    type:"text",
-                    content:"Developing a Business Plan",
+                    type: "text",
+                    content: "Developing a Business Plan",
                   },
                   {
                     type: "list",
@@ -1354,17 +1433,29 @@ export const blogPosts: BlogPost[] = [
                     type: "table",
                     content: [
                       ["Category", "Estimated Cost (USD)", "Notes"],
-                      ["Initial Investment", "$120,000 - $250,000", "Includes machinery and setup"],
-                      ["Annual Revenue (Year 1)", "$50,000 - $75,000", "Based on production capacity"],
-                      ["Break-Even Point", "12-18 months", "Depends on market conditions"],
+                      [
+                        "Initial Investment",
+                        "$120,000 - $250,000",
+                        "Includes machinery and setup",
+                      ],
+                      [
+                        "Annual Revenue (Year 1)",
+                        "$50,000 - $75,000",
+                        "Based on production capacity",
+                      ],
+                      [
+                        "Break-Even Point",
+                        "12-18 months",
+                        "Depends on market conditions",
+                      ],
                     ],
                   },
                 ],
               },
             },
             {
-              type:"text",
-              content:" ",
+              type: "text",
+              content: " ",
             },
             {
               type: "section",
@@ -1375,9 +1466,21 @@ export const blogPosts: BlogPost[] = [
                     type: "table",
                     content: [
                       ["Requirement", "Description", "Steps to Comply"],
-                      ["Business Registration", "Choose structure and name", "Register with local authorities"],
-                      ["Licenses and Permits", "Manufacturing and sales", "Apply through local government"],
-                      ["Environmental Compliance", "Waste management", "Implement eco-friendly practices"],
+                      [
+                        "Business Registration",
+                        "Choose structure and name",
+                        "Register with local authorities",
+                      ],
+                      [
+                        "Licenses and Permits",
+                        "Manufacturing and sales",
+                        "Apply through local government",
+                      ],
+                      [
+                        "Environmental Compliance",
+                        "Waste management",
+                        "Implement eco-friendly practices",
+                      ],
                     ],
                   },
                 ],
@@ -1389,12 +1492,12 @@ export const blogPosts: BlogPost[] = [
               content: {
                 blocks: [
                   {
-                    type:"text",
-                    content:" ",
+                    type: "text",
+                    content: " ",
                   },
                   {
-                    type:"text",
-                    content:"Setting Up the Manufacturing Unit",
+                    type: "text",
+                    content: "Setting Up the Manufacturing Unit",
                   },
                   {
                     type: "text",
@@ -1405,9 +1508,21 @@ export const blogPosts: BlogPost[] = [
                     type: "table",
                     content: [
                       ["Item", "Estimated Cost (USD)", "Notes"],
-                      ["Location Lease/Buy", "$50,000 - $1,00,000", "Depends on location and size"],
-                      ["Machinery Purchase", "$150,000 - $2,00,000", "Based on type and number of machines"],
-                      ["Utility Installation", "$20,000 - $30,000", "Includes electricity, water"],
+                      [
+                        "Location Lease/Buy",
+                        "$50,000 - $1,00,000",
+                        "Depends on location and size",
+                      ],
+                      [
+                        "Machinery Purchase",
+                        "$150,000 - $2,00,000",
+                        "Based on type and number of machines",
+                      ],
+                      [
+                        "Utility Installation",
+                        "$20,000 - $30,000",
+                        "Includes electricity, water",
+                      ],
                     ],
                   },
                 ],
@@ -1419,16 +1534,24 @@ export const blogPosts: BlogPost[] = [
               content: {
                 blocks: [
                   {
-                    type:"text",
-                    content:"",
+                    type: "text",
+                    content: "",
                   },
                   {
                     type: "table",
                     content: [
                       ["Material", "Estimated Cost per Ton (USD)", "Notes"],
                       ["Kraft Paper", "$800 - $1200", "Varies based on grade"],
-                      ["Inks and Dyes", "$50 - $100 per kg", "Depends on color and quality"],
-                      ["Glue", "$100 - $150 per barrel", "High-strength adhesives recommended"],
+                      [
+                        "Inks and Dyes",
+                        "$50 - $100 per kg",
+                        "Depends on color and quality",
+                      ],
+                      [
+                        "Glue",
+                        "$100 - $150 per barrel",
+                        "High-strength adhesives recommended",
+                      ],
                     ],
                   },
                 ],
@@ -1442,7 +1565,11 @@ export const blogPosts: BlogPost[] = [
                   {
                     type: "table",
                     content: [
-                      ["Position", "Number of Employees", "Estimated Salary per Month (USD)"],
+                      [
+                        "Position",
+                        "Number of Employees",
+                        "Estimated Salary per Month (USD)",
+                      ],
                       ["Machine Operators", "4-5", "$500 - $700"],
                       ["Quality Control Staff", "2-3", "$400 - $600"],
                       ["Administrative Staff", "2-4", "$300 - $500"],
@@ -1472,9 +1599,21 @@ export const blogPosts: BlogPost[] = [
                     type: "table",
                     content: [
                       ["Machine Type", "Production Capacity per Day", "Notes"],
-                      ["Paper Bag Making Machine", "70,000 bags", "Ideal for small to medium scale"],
-                      ["Fully Automatic Paper Bag Making Machine", "1,00,000 bags", "High efficiency"],
-                      ["Square Bottom Paper Bag Making Machine", "90,000 bags", "For square bottom bags"],
+                      [
+                        "Paper Bag Making Machine",
+                        "70,000 bags",
+                        "Ideal for small to medium scale",
+                      ],
+                      [
+                        "Fully Automatic Paper Bag Making Machine",
+                        "1,00,000 bags",
+                        "High efficiency",
+                      ],
+                      [
+                        "Square Bottom Paper Bag Making Machine",
+                        "90,000 bags",
+                        "For square bottom bags",
+                      ],
                     ],
                   },
                 ],
@@ -1489,9 +1628,21 @@ export const blogPosts: BlogPost[] = [
                     type: "table",
                     content: [
                       ["Marketing Channel", "Estimated Cost (USD)", "Notes"],
-                      ["Online Marketing", "$5,000 - $10,000", "Includes website, SEO, and PPC"],
-                      ["Offline Marketing", "$2,000 - $5,000", "Includes trade shows and brochures"],
-                      ["Sales Staff", "$3,000 - $5,000 per month", "Salaries and commissions"],
+                      [
+                        "Online Marketing",
+                        "$5,000 - $10,000",
+                        "Includes website, SEO, and PPC",
+                      ],
+                      [
+                        "Offline Marketing",
+                        "$2,000 - $5,000",
+                        "Includes trade shows and brochures",
+                      ],
+                      [
+                        "Sales Staff",
+                        "$3,000 - $5,000 per month",
+                        "Salaries and commissions",
+                      ],
                     ],
                   },
                 ],
@@ -1505,10 +1656,26 @@ export const blogPosts: BlogPost[] = [
                   {
                     type: "table",
                     content: [
-                      ["Growth Strategy", "Investment Required (USD)", "Potential ROI"],
-                      ["Product Line Expansion", "$10,000 - $20,000", "High ROI with custom products"],
-                      ["Capacity Increase", "$50,000 - $100,000", "Depends on market demand"],
-                      ["Geographic Expansion", "$20,000 - $50,000", "Medium to high ROI"],
+                      [
+                        "Growth Strategy",
+                        "Investment Required (USD)",
+                        "Potential ROI",
+                      ],
+                      [
+                        "Product Line Expansion",
+                        "$10,000 - $20,000",
+                        "High ROI with custom products",
+                      ],
+                      [
+                        "Capacity Increase",
+                        "$50,000 - $100,000",
+                        "Depends on market demand",
+                      ],
+                      [
+                        "Geographic Expansion",
+                        "$20,000 - $50,000",
+                        "Medium to high ROI",
+                      ],
                     ],
                   },
                 ],
@@ -1517,7 +1684,7 @@ export const blogPosts: BlogPost[] = [
           ],
         },
       },
-      
+
       {
         type: "section",
         heading: "How Nessco Can Help Your Business",
@@ -1579,15 +1746,15 @@ export const blogPosts: BlogPost[] = [
           ],
         },
       },
-      
+
       // Continue with similar formatting for the remaining sections of the content...
     ],
-  },  
-{
-
+  },
+  {
     id: "10",
-    title: "How to Start Paper Straw Manufacturing Business: Step By Step Guide",
-    slug: "how-to-start-paper-straw-manufacturing-business%3A-step-by-step-guide",
+    title:
+      "How to Start Paper Straw Manufacturing Business: Step By Step Guide",
+    slug: "how-to-start-paper-straw-manufacturing-business-step-by-step-guide",
     date: "2024-11-27",
     author: {
       id: "author1",
@@ -1599,7 +1766,8 @@ export const blogPosts: BlogPost[] = [
       { id: "tag2", name: "Sustainability" },
       { id: "tag3", name: "Paper Straws" },
     ],
-    excerpt: "Learn how to start a paper straw manufacturing business with this step-by-step guide. Discover the importance of sustainability, product differentiation, supply chain optimization, and more.",
+    excerpt:
+      "Learn how to start a paper straw manufacturing business with this step-by-step guide. Discover the importance of sustainability, product differentiation, supply chain optimization, and more.",
     content: [
       {
         type: "text",
@@ -1630,9 +1798,21 @@ export const blogPosts: BlogPost[] = [
         heading: "Machinery Requirements",
         content: [
           ["Machine Type", "Approximate Cost (USD)", "Functionality"],
-          ["Paper Straw Making Machine", "$20,000 - $35,000", "Core machine for producing straws."],
-          ["Paper Straw Bending Machine", "$19,000 - $25,000", "Bends paper straws into desired shapes."],
-          ["Paper Straw Slitting Machine", "$8,000 - $12,000", "Cuts wide paper sheets into narrow strips for straws."],
+          [
+            "Paper Straw Making Machine",
+            "$20,000 - $35,000",
+            "Core machine for producing straws.",
+          ],
+          [
+            "Paper Straw Bending Machine",
+            "$19,000 - $25,000",
+            "Bends paper straws into desired shapes.",
+          ],
+          [
+            "Paper Straw Slitting Machine",
+            "$8,000 - $12,000",
+            "Cuts wide paper sheets into narrow strips for straws.",
+          ],
           [
             "U Shape Tetra Pak Paper Straw Packing Machine",
             "$18,000 - $25,000",
@@ -1647,7 +1827,8 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "text",
-        heading: "How Nessco Helps You Start and Grow Your Paper Straw Manufacturing Business",
+        heading:
+          "How Nessco Helps You Start and Grow Your Paper Straw Manufacturing Business",
         content:
           "Starting and running a paper straw business needs a good plan, the right equipment, and reliable partners. Nessco provides eco-friendly machinery, reliable supply chain solutions, and robust customer support to help you succeed.",
       },
@@ -1655,12 +1836,15 @@ export const blogPosts: BlogPost[] = [
     readingTime: 8,
     header: {
       id: "header1",
-      heading: "How to Start Paper Straw Manufacturing Business: Step By Step Guide",
-      headingImage: "https://assets.nesscoindustries.com/public/assets/blogs/paper-straw-manufacturing-business-featured-image.webp", // replace with actual image path
-      subheading: "A comprehensive guide to launching and scaling your paper straw business in an eco-conscious world.",
+      heading:
+        "How to Start Paper Straw Manufacturing Business: Step By Step Guide",
+      headingImage:
+        "https://assets.nesscoindustries.com/public/assets/blogs/paper-straw-manufacturing-business-featured-image.webp", // replace with actual image path
+      subheading:
+        "A comprehensive guide to launching and scaling your paper straw business in an eco-conscious world.",
     },
   },
-   {
+  {
     id: "11",
     title: "How to Start Successful Paper Bowl Manufacturing Business",
     slug: "how-to-start-successful-paper-bowl-manufacturing-business",
@@ -1698,8 +1882,10 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "text",
-        heading: "Step-by-Step Guide to Starting and Running Your Paper Bowl Business",
-        content: "This section outlines the essential steps in market research, planning, production, and sales.",
+        heading:
+          "Step-by-Step Guide to Starting and Running Your Paper Bowl Business",
+        content:
+          "This section outlines the essential steps in market research, planning, production, and sales.",
       },
       {
         type: "list",
@@ -1751,7 +1937,8 @@ export const blogPosts: BlogPost[] = [
     header: {
       id: "header1",
       heading: "How to Start Successful Paper Bowl Manufacturing Business",
-      headingImage: "https://assets.nesscoindustries.com/public/assets/blogs/paper-bowl-manufacturing-business-featured-image.webp",
+      headingImage:
+        "https://assets.nesscoindustries.com/public/assets/blogs/paper-bowl-manufacturing-business-featured-image.webp",
       subheading:
         "A step-by-step guide to starting and growing a successful eco-friendly paper bowl manufacturing business.",
     },
@@ -1759,24 +1946,26 @@ export const blogPosts: BlogPost[] = [
   {
     id: "12",
     title: "Food Packaging Machine: Diverse Solutions for Every Business",
-    slug: "food-packaging-machine%3A-diverse-solutions-for-every-business",
+    slug: "food-packaging-machine-diverse-solutions-for-every-business",
     date: "2024-11-27",
     author: {
       id: "author1",
       name: "Nessco Team",
-      avatar: "/images/authors/nessco-team.jpg"
+      avatar: "/images/authors/nessco-team.jpg",
     },
     tags: [
       { id: "tag1", name: "Food Packaging" },
       { id: "tag2", name: "Packaging Machines" },
-      { id: "tag3", name: "Sustainability" }
+      { id: "tag3", name: "Sustainability" },
     ],
-    excerpt: "Explore diverse food packaging solutions, types of machines, benefits, and future trends. Learn how Nessco caters to every business need with efficiency and sustainability.",
+    excerpt:
+      "Explore diverse food packaging solutions, types of machines, benefits, and future trends. Learn how Nessco caters to every business need with efficiency and sustainability.",
     content: [
       {
         type: "text",
         heading: "Introduction",
-        content: "Food packaging machines are important for keeping food safe and fresh..."
+        content:
+          "Food packaging machines are important for keeping food safe and fresh...",
       },
       {
         type: "list",
@@ -1788,24 +1977,27 @@ export const blogPosts: BlogPost[] = [
             "Carton Erecting Machine",
             "Paper Lunch Box Machine",
             "Paper Bag Making Machine",
-            "Square Bottom Paper Bag Making Machines"
-          ]
-        }
+            "Square Bottom Paper Bag Making Machines",
+          ],
+        },
       },
       {
         type: "text",
         heading: "Top Features to Consider in Food Packaging Machines",
-        content: "When choosing a food packaging machine, look for these important features..."
+        content:
+          "When choosing a food packaging machine, look for these important features...",
       },
       {
         type: "text",
         heading: "Benefits of Using Paper Food Packaging Machines",
-        content: "Investing in food packaging machines provides many benefits. They help speed up production..."
+        content:
+          "Investing in food packaging machines provides many benefits. They help speed up production...",
       },
       {
         type: "text",
         heading: "Industry-Specific Solutions for Food Packaging",
-        content: "Different industries have unique packaging requirements, and food packaging machines must cater..."
+        content:
+          "Different industries have unique packaging requirements, and food packaging machines must cater...",
       },
       {
         type: "list",
@@ -1816,14 +2008,15 @@ export const blogPosts: BlogPost[] = [
             "Smart Packaging",
             "Sustainable Packaging",
             "Automation and AI",
-            "Personalization"
-          ]
-        }
+            "Personalization",
+          ],
+        },
       },
       {
         type: "text",
         heading: "Achieve Top-Notch Packaging Solution with Nessco’s Machines",
-        content: "Nessco is dedicated to offering customized food packaging solutions that fit your business’s specific needs..."
+        content:
+          "Nessco is dedicated to offering customized food packaging solutions that fit your business’s specific needs...",
       },
       {
         type: "table",
@@ -1834,8 +2027,8 @@ export const blogPosts: BlogPost[] = [
           ["Annual Maintenance", "$2,000 - $15,000", "Medium"],
           ["Energy Consumption", "$3,000 - $10,000 per year", "Medium"],
           ["Spare Parts Replacement", "$1,000 - $5,000 per year", "Medium"],
-          ["Potential Downtime Costs", "$500 - $2,000 per hour", "High"]
-        ]
+          ["Potential Downtime Costs", "$500 - $2,000 per hour", "High"],
+        ],
       },
       {
         type: "list",
@@ -1847,18 +2040,20 @@ export const blogPosts: BlogPost[] = [
             "How can I ensure that my packaging machine complies with food safety standards?",
             "What factors should I consider when choosing a packaging machine?",
             "How does automation improve the packaging process?",
-            "Can I upgrade my packaging machine as my business grows?"
-          ]
-        }
-      }
+            "Can I upgrade my packaging machine as my business grows?",
+          ],
+        },
+      },
     ],
     readingTime: 10,
     header: {
       id: "header1",
       heading: "Food Packaging Machines",
-      headingImage: "https://assets.nesscoindustries.com/public/assets/blogs/food-packaging-machines-featured-image.webp",
-      subheading: "Explore diverse packaging solutions tailored for every business."
-    }
+      headingImage:
+        "https://assets.nesscoindustries.com/public/assets/blogs/food-packaging-machines-featured-image.webp",
+      subheading:
+        "Explore diverse packaging solutions tailored for every business.",
+    },
   },
 
   {
@@ -1876,23 +2071,28 @@ export const blogPosts: BlogPost[] = [
       { id: "tag-2", name: "Business Efficiency" },
       { id: "tag-3", name: "Sustainability" },
     ],
-    excerpt: "Learn why the Nessco Paper Cup Machine is the smart choice for businesses with its high efficiency, energy savings, and consistent quality.",
+    excerpt:
+      "Learn why the Nessco Paper Cup Machine is the smart choice for businesses with its high efficiency, energy savings, and consistent quality.",
     readingTime: 6,
     header: {
       id: "header-1",
       heading: "7 Reasons Why Nessco Paper Cup Machine is the Smart Choice",
-      headingImage: "https://assets.nesscoindustries.com/public/assets/blogs/why-nessco-paper-cup-machine-featured-image.webp",
-      subheading: "Discover the benefits of Nessco's state-of-the-art paper cup machines for your business.",
+      headingImage:
+        "https://assets.nesscoindustries.com/public/assets/blogs/why-nessco-paper-cup-machine-featured-image.webp",
+      subheading:
+        "Discover the benefits of Nessco's state-of-the-art paper cup machines for your business.",
     },
     content: [
       {
         type: "text",
-        content: "When businesses need to produce paper cups, they should choose their machines carefully. The right machine can improve efficiency, guarantee good product quality, and help the company succeed. Among the many machines available, the Nessco Paper Cup Making Machine is a smart option for several good reasons.",
+        content:
+          "When businesses need to produce paper cups, they should choose their machines carefully. The right machine can improve efficiency, guarantee good product quality, and help the company succeed. Among the many machines available, the Nessco Paper Cup Making Machine is a smart option for several good reasons.",
         heading: "Introduction",
       },
       {
         type: "text",
-        content: "Choosing the right paper cup machine can help you produce faster, save money, and make better-quality products. Here's how:",
+        content:
+          "Choosing the right paper cup machine can help you produce faster, save money, and make better-quality products. Here's how:",
         heading: "The Importance of Choosing the Right Paper Cup Machine",
       },
       {
@@ -1910,8 +2110,10 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "text",
-        content: "Here are the top seven reasons why the Nessco Paper Cup Machine is a top choice for businesses.",
-        heading: "Top 7 Reasons Why Nessco Paper Cup Machine is the Smart Choice",
+        content:
+          "Here are the top seven reasons why the Nessco Paper Cup Machine is a top choice for businesses.",
+        heading:
+          "Top 7 Reasons Why Nessco Paper Cup Machine is the Smart Choice",
       },
       {
         type: "list",
@@ -1932,18 +2134,43 @@ export const blogPosts: BlogPost[] = [
         type: "table",
         content: [
           ["Feature", "Benefit", "Value"],
-          ["High Production Capacity", "Maximize Output", "Up to 50,000 cups/day"],
+          [
+            "High Production Capacity",
+            "Maximize Output",
+            "Up to 50,000 cups/day",
+          ],
           ["Energy Efficiency", "Save on Costs", "Lower energy consumption"],
-          ["Precision and Consistency", "Achieve Consistent Quality", "Minimal defects, uniform batches"],
-          ["Low Maintenance Requirements", "Reduce Downtime", "Low maintenance frequency"],
-          ["User-Friendly Interface", "Streamline Operations", "Easy to operate, minimal training"],
-          ["Versatile Cup Size Options", "Meet Market Demands", "3 oz to 22 oz range"],
-          ["Durable Construction", "Ensure Longevity", "High-quality, durable materials"],
+          [
+            "Precision and Consistency",
+            "Achieve Consistent Quality",
+            "Minimal defects, uniform batches",
+          ],
+          [
+            "Low Maintenance Requirements",
+            "Reduce Downtime",
+            "Low maintenance frequency",
+          ],
+          [
+            "User-Friendly Interface",
+            "Streamline Operations",
+            "Easy to operate, minimal training",
+          ],
+          [
+            "Versatile Cup Size Options",
+            "Meet Market Demands",
+            "3 oz to 22 oz range",
+          ],
+          [
+            "Durable Construction",
+            "Ensure Longevity",
+            "High-quality, durable materials",
+          ],
         ],
       },
       {
         type: "text",
-        content: "Besides the seven main reasons mentioned above, there are more benefits to choosing a Nessco Paper Cup Machine:",
+        content:
+          "Besides the seven main reasons mentioned above, there are more benefits to choosing a Nessco Paper Cup Machine:",
         heading: "Additional Benefits of Nessco Paper Cup Machines",
       },
       {
@@ -1959,7 +2186,8 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "text",
-        content: "Picking the right paper cup machine is an important decision for a business. The Nessco Paper Cup Machine is a great choice because it has high production capacity, uses energy efficiently, and needs little maintenance. This makes it a smart option for businesses that want to improve their paper cup production. With its user-friendly interface, versatility, and strong support network, Nessco stands out as a reliable partner in the paper cup manufacturing industry.",
+        content:
+          "Picking the right paper cup machine is an important decision for a business. The Nessco Paper Cup Machine is a great choice because it has high production capacity, uses energy efficiently, and needs little maintenance. This makes it a smart option for businesses that want to improve their paper cup production. With its user-friendly interface, versatility, and strong support network, Nessco stands out as a reliable partner in the paper cup manufacturing industry.",
         heading: "Conclusion",
       },
     ],
@@ -1977,8 +2205,10 @@ export const blogPosts: BlogPost[] = [
     },
     header: {
       id: "header1",
-      heading: "Paper Plate Manufacturing Business Plan, Investment, and Profit",
-      headingImage: "https://assets.nesscoindustries.com/public/assets/blogs/paper-plate-manufacturing-business-featured-image.webp", // replace with actual image path
+      heading:
+        "Paper Plate Manufacturing Business Plan, Investment, and Profit",
+      headingImage:
+        "https://assets.nesscoindustries.com/public/assets/blogs/paper-plate-manufacturing-business-featured-image.webp", // replace with actual image path
       subheading:
         "A comprehensive guide to launching and scaling your paper plate business for profit and sustainability.",
     },
@@ -2184,12 +2414,5 @@ export const blogPosts: BlogPost[] = [
         },
       },
     ],
-  }
-  
-  
-  
-  
-  
-
+  },
 ];
-

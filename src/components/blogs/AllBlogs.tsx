@@ -50,7 +50,9 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
   const AllBlogs = blogsData.blogs[0]?.AllBlogs;
   const Filter = blogsData.blogs[0]?.Filter;
   const [isPage1Visible, setPage1Visible] = useState(false);
-
+  // function cleanUrl(input) {
+  //   return input.replace(/[^a-zA-Z0-9-]/g, "");
+  // }
   const togglePage1Visibility = () => {
     if (window.innerWidth < 1024) {
       setPage1Visible(!isPage1Visible);
@@ -137,7 +139,11 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
 
   const headingData = getHeadingData();
   function formatString(input) {
-    return input.trim().toLowerCase().replace(/\s+/g, "-");
+    return input
+      .trim() // Remove leading and trailing spaces
+      .toLowerCase() // Convert to lowercase
+      .replace(/\s+/g, "-") // Replace spaces with hyphens
+      .replace(/[^a-z0-9-]/g, ""); // Remove special characters except hyphens
   }
   return (
     <>

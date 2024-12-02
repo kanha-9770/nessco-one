@@ -31,7 +31,6 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
   const toggleExpansion = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index);
   };
- 
 
   const scrollbarLeft = () => {
     if (carouselRef.current) {

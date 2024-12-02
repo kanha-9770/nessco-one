@@ -8,30 +8,24 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogDescription,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { useForm } from "@/app/[country]/[locale]/context/FormContext";
 import { toast } from "react-hot-toast";
+import { EnquiryItem } from "@/hooks/useEnquiryCart";
+import FormFields, { FormValues } from "../Contact/FormFileds";
 
-type EnquiryItem = {
-  id: string;
-  name: string;
-  image: string;
-};
-
-type EnquiryCartProps = {
+interface EnquiryComponentProps {
   items: EnquiryItem[];
   onRemoveItem: (id: string) => void;
   maxItems?: number;
-};
+}
 
-export default function EnquiryCart({
+export default function EnquiryComponent({
   items,
   onRemoveItem,
   maxItems = 10,
-}: EnquiryCartProps) {
+}: EnquiryComponentProps) {
   const [cartItems, setCartItems] = useState<EnquiryItem[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -39,11 +33,10 @@ export default function EnquiryCart({
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const { submitForm } = useForm();
 
-  const [formValues, setFormValues] = useState({
+  const [formValues, setFormValues] = useState<FormValues>({
     fullname: "",
     email: "",
     mobilenumber: "",
-    message: "",
   });
 
   useEffect(() => {
@@ -122,13 +115,6 @@ export default function EnquiryCart({
 
   const openModal = () => setIsModalOpen(true);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { id, value } = e.target;
-    setFormValues((prev) => ({ ...prev, [id]: value }));
-  };
-
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -150,7 +136,7 @@ export default function EnquiryCart({
       });
       setIsModalOpen(false);
       clearCart();
-      setFormValues({ fullname: "", email: "", mobilenumber: "", message: "" });
+      setFormValues({ fullname: "", email: "", mobilenumber: "" });
     } catch (error) {
       console.error("Failed to submit the enquiry:", error);
       toast.error("Error submitting the enquiry. Please try again.", {
@@ -261,83 +247,38 @@ export default function EnquiryCart({
         <DialogContent className="sm:max-w-[900px]">
           <div className="bg-gray-50 rounded-2xl p-4">
             <DialogHeader>
-              <DialogTitle>Enquire Now</DialogTitle>
-              <DialogDescription>
-                Fill out the form to contact the supplier about the items in
-                your cart.
-              </DialogDescription>
+              <DialogTitle className="h-12 text-xl font-semibold w-full text-center">
+                Enquire Items
+              </DialogTitle>
             </DialogHeader>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-4 max-h-[60vh] overflow-y-auto pr-4">
-                <h4 className="font-semibold text-sm">Enquiry Items:</h4>
-                {cartItems.map((item) => (
-                  <div
-                    key={item.id}
-                    className="flex items-center space-x-3 border-b pb-2"
-                  >
-                    <Image
-                      src={item.image}
-                      alt={item.name}
-                      width={50}
-                      height={50}
-                      className="rounded-md object-cover"
-                    />
-                    <span className="text-sm">{item.name}</span>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+              <div className=" pr-4">
+                <div className="border-2 space-y-4 max-h-[50vh] overflow-y-auto rounded-xl p-4 custom-scrollbar-container">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    {cartItems.map((item) => (
+                      <div
+                        key={item.id}
+                        className="flex flex-col bg-[#f2f2f2] items-center justify-center h-44 w-full border rounded-[0.5rem] p-1"
+                      >
+                        <div className="text-sm font-semibold text-center mb-2">
+                          {item.name}
+                        </div>
+                        <div className="bg-white w-full rounded-[0.5rem] h-auto">
+                          <Image
+                            src={item.image}
+                            alt={item.name}
+                            width={176}
+                            height={112}
+                            className="rounded-md object-cover w-full h-32"
+                          />
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
               </div>
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label htmlFor="fullname" className="text-sm font-medium">
-                    Name
-                  </label>
-                  <Input
-                    id="fullname"
-                    value={formValues.fullname}
-                    onChange={handleChange}
-                    placeholder="Your name"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="text-sm font-medium">
-                    Email
-                  </label>
-                  <Input
-                    id="email"
-                    type="email"
-                    value={formValues.email}
-                    onChange={handleChange}
-                    placeholder="Your email"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="mobilenumber" className="text-sm font-medium">
-                    Mobile Number
-                  </label>
-                  <Input
-                    id="mobilenumber"
-                    type="tel"
-                    value={formValues.mobilenumber}
-                    onChange={handleChange}
-                    placeholder="Your mobile number"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="text-sm font-medium">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    value={formValues.message}
-                    onChange={handleChange}
-                    placeholder="Your message to the supplier"
-                    className="w-full min-h-[100px] px-3 py-2 text-sm rounded-md border border-input bg-background"
-                    required
-                  />
-                </div>
+                <FormFields onChange={setFormValues} values={formValues} />
                 <Button
                   type="submit"
                   disabled={isSubmitting}
