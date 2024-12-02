@@ -290,18 +290,15 @@ html::-webkit-scrollbar {
   direction: rtl;
   overflow-y: scroll;
   height: 200px;
-  cursor: all-scroll;
   /* Adjust the height if necessary */
 }
 
 .scroll-wrapper .style-1 {
   direction: ltr;
-  cursor: all-scroll;
 }
 
 .style-1::-webkit-scrollbar {
   width: 3px;
-  cursor: all-scroll;
   /* Set the scrollbar width */
 }
 
@@ -320,13 +317,11 @@ html::-webkit-scrollbar {
 .scrollbar-hide {
   overflow: scroll;
   height: 100%;
-  cursor: all-scroll;
 }
 
 .scrollbar::-webkit-scrollbar {
   width: 0.15rem;
   height: 0.15rem;
-  cursor: all-scroll;
   /* Set the scrollbar width */
 }
 

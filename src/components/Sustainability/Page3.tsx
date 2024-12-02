@@ -60,15 +60,15 @@ const Page3:React.FC<MainLayoutProps> = ({sustainData}) => {
           /> 
 
           <div className="flex absolute lg:left-[3.3rem] lg:top-[1.5rem] top-16 font-poppins">
-            <h2 className="lg:text-[3.3rem] md:text-6xl font-extrabold md:font-bold text-white z-[301] text-4xl pl-16 lg:pl-0">
-              {data?.titleWhite}
+            <h2 className="lg:text-[3.3rem] md:text-6xl font-medium text-white z-[301] text-4xl pl-16 lg:pl-0">
+              Sustainable
             </h2>
-            <h2 className="absolute top-[4.5rem] whitespace-nowrap lg:text-[3.3rem] md:text-3xl text-2xl lg:pl-0 pl-5 md:pl-16 font-extrabold text-black z-[301]">
-              {data?.titleBlack}
+            <h2 className="absolute top-[4.5rem] whitespace-nowrap lg:text-[3.3rem] md:text-3xl text-2xl lg:pl-0 pl-5 md:pl-16 font-medium text-black z-[301]">
+             Manufacturing practices
             </h2>
           </div>
           <div className=" flex absolute top-[12rem] lg:left-[3.3rem] font-poppins text-center lg:text-left">
-            <p className="w-full max-w-[50rem] text-white font-light md:font-medium md:text-xl leading-[1.3rem] lg:text-[1rem] text-sm z-[301] md:px-4">
+            <p className="w-full max-w-[50rem] text-white font-normal md:text-xl leading-[1.3rem] lg:text-[1rem] text-sm z-[301] md:px-4">
               {data?.description}
             </p>
           </div>

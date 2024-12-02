@@ -66,7 +66,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "image",
         content: {
-          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-guide/banner-image.webp",
+          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-guide/paper-cup-guide-img1.webp",
           alt: "Changing the mold in a paper cup machine is a crucial task that directly impacts production efficiency and cup quality. This blog provides a detailed step-by-step guide on the mold change process, checks to ensure proper alignment and compatibility, and tips for validating the mold's fit with the paper blank or fan.",
         },
       },
@@ -311,7 +311,7 @@ export const blogPosts: BlogPost[] = [
       id: "header-1",
       heading: "Paper Cup Manufacturing Business: The Comprehensive Guide",
       headingImage:
-        "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-guide/paper-cup-guide-img1.webp",
+        "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-guide/banner-image.webp",
       subheading:
         "Your ultimate guide to starting and running a successful paper cup manufacturing business.",
     },
@@ -492,7 +492,7 @@ export const blogPosts: BlogPost[] = [
       subheading:
         "Learn about Nessco's advanced and sustainable paper manufacturing process.",
       headingImage:
-        "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-making-process/paper-making-process-img1.webp",
+        "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-making-process/banner-image.webp",
     },
   },
 
@@ -893,7 +893,7 @@ export const blogPosts: BlogPost[] = [
       heading:
         "A Complete Guide to Paper and Cup Stock Board Paper for Paper Cups",
       headingImage:
-        "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-guide-and-specification/paper-cup-2.webp",
+        "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-guide-and-specification/banner-image.webp",
       subheading:
         "All you need to know about selecting the best paper for paper cups.",
     },
@@ -1239,7 +1239,7 @@ export const blogPosts: BlogPost[] = [
       subheading:
         "Learn about each step in paper cup production and the advanced features of modern machines.",
       headingImage:
-        "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/paper-cup-making-process.webp",
+        "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/banner-image.webp",
     },
   },
 
@@ -1597,6 +1597,14 @@ export const blogPosts: BlogPost[] = [
         },
       },
     ],
+    header: {
+      id: "header-1",
+      heading: "The Paper Cup Manufacturing Process: A Detailed Guide",
+      subheading:
+        "Learn about each step in paper cup production and the advanced features of modern machines.",
+      headingImage:
+        "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-machine/mould-change-guide/banner-image.webp",
+    },
   },
 
   {
@@ -1896,7 +1904,7 @@ export const blogPosts: BlogPost[] = [
       id: "header-1",
       heading: "Comprehensive Guide to Maintaining Paper Cup Machines",
       headingImage:
-        "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-machine/preventive-maintenance-practices/preventive-maintenance-guide.webp",
+        "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-machine/preventive-maintenance-practices/banner-image.webp",
       subheading:
         "Learn how to maintain paper cup machines with detailed troubleshooting and maintenance tips to ensure longevity and high performance.",
     },
@@ -2263,6 +2271,7 @@ export const blogPosts: BlogPost[] = [
     header: {
       id: "header-1",
       heading: "Sourcing Raw Materials for Paper Cups: A Practical Guide",
+      headingImage: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-business/raw-material-sourcing/banner-image.webp",
       subheading:
         "Learn how to effectively source raw materials for paper cups, balancing quality, cost, and sustainability for enhanced profitability.",
     },
@@ -2804,7 +2813,7 @@ export const blogPosts: BlogPost[] = [
       heading:
         "How to Sell Paper Cups: A Comprehensive Guide to Building a Profitable Business",
       headingImage:
-        "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-business/selling-paper-cup/resource-page-images.webp",
+        "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-business/selling-paper-cup/banner-image.webp",
       subheading:
         "Learn how to understand the paper cup market, implement effective pricing strategies, and market your products to maximize profits.",
     },

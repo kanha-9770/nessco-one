@@ -4,7 +4,7 @@ interface AboutLayoutProps{
   pinkcityData:PinkCityData
 }
 
-const Bluepage:React.FC <AboutLayoutProps>= ({pinkcityData}) => {
+const Bluepage:React.FC <AboutLayoutProps>= () => {
   return (
     <div className="relative w-full h-full bg-gray-100 mt-10 p-12 overflow-hidden hidden lg:block">
     
