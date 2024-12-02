@@ -13,8 +13,6 @@ interface RelatedMachineLayoutProps {
   related_product: RelatedProductType;
 }
 
-
-
 type CombinedProps = RelatedMachineLayoutProps;
 
 const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
@@ -41,8 +39,6 @@ const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
       });
     }
   };
-
-  
 
   const handleToggleEnquiry = (
     item: { h1: string; img: string },
@@ -72,7 +68,6 @@ const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
   return (
     <>
       <div className="w-full lg:mt-[5rem] mt-[2rem] font-poppins">
-        
         <div className="flex flex-col lg:my-[3rem] my-[2rem] bg-white lg:px-[2rem] px-[1rem] relative">
           <div className="pt-[1.5rem]">
             <h2 className="lg:text-[2.2rem] text-[1.5rem] font-semibold">
@@ -143,7 +138,6 @@ const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
                   >
                     {/* Icons */}
                     <div className="absolute top-6 right-4 flex space-x-2">
-                      
                       <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center font-medium cursor-pointer relative group hover:text-red-700 text-xl">
                         {item?.s}
                         <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-md shadow-md px-2 py-1 h-max w-max z-20">
@@ -155,7 +149,7 @@ const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
                       <div className="w-8 h-8 p-[0.2rem] bg-white border-solid border-[0.1rem] border-white hover:border-red-700 rounded-full flex items-center justify-center relative group">
                         <Image
                           src={item?.image}
-                          alt=""
+                          alt={item?.h2}
                           width={400}
                           height={400}
                         />
@@ -208,7 +202,7 @@ const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
                       <div className="mt-[0.8rem] w-[70%] lg:h-[10rem] flex justify-center items-center">
                         <Image
                           src={item?.img}
-                          alt="Machine"
+                          alt={item?.h2}
                           width={400}
                           height={400}
                         />
@@ -218,7 +212,7 @@ const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
                     {/* Key Points or View Machine Button */}
                     <div className="my-[1rem] flex lg:flex-rows flex-col items-center justify-center lg:h-[2rem]">
                       <button className="lg:text-[1rem] text-[0.9rem] w-[65%] lg:h-[2rem] h-[2rem] border-[0.1rem] border-solid font-medium rounded-[0.5rem] transition-colors duration-300 border-[#9c9c9c] hover:border-black hover:bg-black hover:text-white">
-                      View Machine
+                        View Machine
                       </button>
                     </div>
 

@@ -1,18 +1,23 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { FormProvider, useForm } from "@/app/[country]/[locale]/context/FormContext";
+import {
+  FormProvider,
+  useForm,
+} from "@/app/[country]/[locale]/context/FormContext";
 import { toast, Toaster } from "react-hot-toast";
 import SubmitButton from "./Submit";
 import FormFields, { FormValues } from "./FormFileds";
 import { RelatedProductType } from "../Products/types/constant";
 
 interface SignupFormDemoProductProps {
-  related_product?: RelatedProductType;
+  related_product: RelatedProductType;
 }
 
-const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({ related_product }) => {
+const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
+  related_product,
+}) => {
   const [expanded, setExpanded] = useState(false);
   const { submitForm } = useForm();
 
@@ -45,7 +50,9 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({ related_p
   };
 
   const relatedProducts = related_product?.imageWithDescription || [];
-
+  useEffect(() => {
+    console.log("i am custom product demo signup", relatedProducts);
+  }, []);
   return (
     <FormProvider>
       <motion.div
@@ -56,9 +63,16 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({ related_p
         <div className="w-full lg:h-screen h-max gap-2 flex flex-col">
           {/* part-one-contact-page */}
           <div className="w-full lg:h-[29.2vh] bg-white p-4 rounded-xl">
-            <FormFields onChange={setFormValues} values={formValues} inline={true} />
+            <FormFields
+              onChange={setFormValues}
+              values={formValues}
+              inline={true}
+            />
             <div className="w-full flex justify-center mt-4">
-              <SubmitButton isSubmitting={isSubmitting} onClick={handleSubmit} />
+              <SubmitButton
+                isSubmitting={isSubmitting}
+                onClick={handleSubmit}
+              />
             </div>
           </div>
 
@@ -102,8 +116,8 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({ related_p
                     >
                       <div className="w-16 h-16 rounded-md overflow-hidden">
                         <Image
-                          src={product.image}
-                          alt={product.h1}
+                          src={product?.img}
+                          alt={product?.h1}
                           width={64}
                           height={64}
                           className="object-cover"
@@ -171,4 +185,3 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({ related_p
 };
 
 export { SignupFormDemoProduct };
-

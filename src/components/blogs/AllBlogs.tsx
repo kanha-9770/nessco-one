@@ -50,9 +50,7 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
   const AllBlogs = blogsData.blogs[0]?.AllBlogs;
   const Filter = blogsData.blogs[0]?.Filter;
   const [isPage1Visible, setPage1Visible] = useState(false);
-  // function cleanUrl(input) {
-  //   return input.replace(/[^a-zA-Z0-9-]/g, "");
-  // }
+
   const togglePage1Visibility = () => {
     if (window.innerWidth < 1024) {
       setPage1Visible(!isPage1Visible);
@@ -139,11 +137,7 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
 
   const headingData = getHeadingData();
   function formatString(input) {
-    return input
-      .trim() // Remove leading and trailing spaces
-      .toLowerCase() // Convert to lowercase
-      .replace(/\s+/g, "-") // Replace spaces with hyphens
-      .replace(/[^a-z0-9-]/g, ""); // Remove special characters except hyphens
+    return input.trim().toLowerCase().replace(/\s+/g, "-");
   }
   return (
     <>
@@ -228,22 +222,22 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
           {/* Filtered Data Display */}
           <div className="overflow-auto scrollbar-custom scrollbar h-full">
             <div className="mx-[1rem] relative flex lg:flex-row flex-col border-solid border-b-2 border-[#E6E7E6] mb-[0.8rem]">
-              <div className="lg:w-[40%] w-full relative flex items-center justify-center">
-                <video className="w-full h-[13rem] lg:mb-0 mb-[0.5rem] rounded-[0.5rem] object-cover lg:top-0 lg:absolute">
+              <div className="lg:w-[40%] w-full relative flex items-start justify-center">
+                {/* <video className="w-full h-[13rem] lg:mb-0 mb-[0.5rem] rounded-[0.5rem] object-cover lg:top-0 lg:absolute">
                   <source src={headingData?.machineBg} type="video/mp4" />
-                </video>
+                </video> */}
                 <Image
                   src={headingData?.machineImg}
                   alt={"MachineImg"}
                   width={200}
                   height={200}
-                  className="w-[20.5rem] absolute"
+                  className="w-full rounded-xl"
                 />
               </div>
 
               <div className="font-poppins text-[0.9rem] lg:w-[60%]">
                 <div className="flex flex-col items-start">
-                  <p className="text-black text-[1.1rem] ml-[1rem] mr-[1rem] font-poppins font-bold">
+                  <p className="text-black text-[1.1rem] ml-[1rem] mr-[1rem] font-poppins font-semibold">
                     {headingData?.imgTitle}
                   </p>
                   <p className="mb-[0.5rem] ml-[1rem] mr-[1.5rem]">
@@ -356,12 +350,12 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
             </div>
 
             {/* Blogs List */}
-            <div className="w-full lg:overflow-y-auto overflow-x-auto scrollbar-custom scrollbar">
+            <div className="w-full lg:max-h-[58rem] lg:overflow-y-auto overflow-x-auto scrollbar-custom scrollbar">
               <div className="lg:w-full lg:space-x-0 space-x-4 w-max flex lg:flex-col flex-row overflow-x-hidden px-[1rem]">
                 {getFilteredData().map((item, idx) => (
                   <div
                     key={idx}
-                    className="flex w-full my-[1.5vh] border-solid border-b-2 border-[#E6E7E6] pb-[0.5rem]"
+                    className="flex items-start w-full my-[1.5vh] border-solid border-b-2 border-[#E6E7E6] pb-[0.5rem]"
                   >
                     <Image
                       src={item?.img}
@@ -383,11 +377,11 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
                           <circle cx="12" cy="19" r="2" />
                         </svg>
                       </div>
-                      <div className="flex flex-col lg:my-[0.5rem] ml-[1rem] lg:w-full w-[13.2rem]">
-                        <h2 className="text-black lg:mb-[0.5rem] lg:font-bold font-semibold lg:text-[1.2rem] text-[1rem] font-poppins w-[94%]">
+                      <div className="flex flex-col ml-[1rem] lg:w-full w-[13.2rem]">
+                        <h2 className="text-black lg:mb-[0.2rem] font-semibold text-lg font-poppins w-[92%]">
                           {item?.title}
                         </h2>
-                        <p className="text-black lg:text-[0.9rem] text-[0.8rem] lg:mb-0 mb-[0.5rem] font-poppins">
+                        <p className="text-black font-normal lg:text-sm pr-10 text-[0.8rem] lg:mb-0 mb-[0.5rem] font-poppins">
                           {item?.description}
                         </p>
                       </div>

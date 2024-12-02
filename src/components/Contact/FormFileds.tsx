@@ -39,7 +39,7 @@ const FormFields: React.FC<FormFieldsProps> = ({
       <div
         className={cn(
           "space-y-4",
-          inline && "lg:flex lg:space-x-4 lg:space-y-0"
+          inline && "lg:flex lg:space-x-0 lg:space-y-0"
         )}
       >
         <LabelInputContainer className={inline ? "lg:w-1/2" : "w-full"}>
@@ -111,4 +111,3 @@ const LabelInputContainer = ({
 );
 
 export default FormFields;
-

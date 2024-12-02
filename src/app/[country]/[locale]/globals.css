@@ -295,6 +295,7 @@ html::-webkit-scrollbar {
   );
   background-color: black; /* For visibility, adjust the color as needed */
 }
+
 /* Custom thin scrollbar styles */
 .custom-scrollbar-container {
   scrollbar-width: thin;

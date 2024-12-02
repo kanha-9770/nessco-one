@@ -50,7 +50,7 @@ const Page3: React.FC<BlogsProps> = ({ blogsData }) => {
                     <circle cx="12" cy="19" r="2" />
                   </svg>
                 </div>
-                <p className="text-black text-[1rem] w-full pr-[1rem] font-poppins">
+                <p className="text-black text-md font-medium lg:w-[88%] w-full pr-[1rem] font-poppins">
                   {item?.description}
                 </p>
               </div>
@@ -178,7 +178,7 @@ const Page3: React.FC<BlogsProps> = ({ blogsData }) => {
                     <circle cx="12" cy="19" r="2" />
                   </svg>
                 </div>
-                <p className="text-black text-[1rem] w-full pr-[1rem] font-poppins">
+                <p className="text-black text-md font-medium lg:w-[88%] w-full pr-[1rem] font-poppins">
                   {item?.description}
                 </p>
               </div>

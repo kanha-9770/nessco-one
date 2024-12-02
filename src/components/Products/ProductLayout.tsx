@@ -81,7 +81,7 @@ const ProductLayout: React.FC<IndividualProductsDataProps> = ({
           </div>
           <div className="h-auto  mt-10" ref={processRef}>
             {machine?.drawingImage && <CupFormactionProcess />}
-            
+
             <ProcessFlow page4Data={machine?.Page4Data} />
           </div>
           <div className="mt-10" ref={applicationRef}>
@@ -102,12 +102,12 @@ const ProductLayout: React.FC<IndividualProductsDataProps> = ({
           </div>
         </div>
         <div className="lg:w-[33%] sticky">
-          <SignupFormDemoProduct />
+          <SignupFormDemoProduct related_product={machine?.related_product} />
         </div>
       </div>
 
       <div className="lg:hidden px-4 pt-10">
-        <SignupFormDemoProduct  related_product={machine?.related_product}/>
+        <SignupFormDemoProduct related_product={machine?.related_product} />
       </div>
       <div className="lg:mt-24 -mt-44" ref={relatedProductsRef}>
         <RelatedProducts related_product={machine?.related_product} />

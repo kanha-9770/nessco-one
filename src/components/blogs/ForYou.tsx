@@ -39,7 +39,7 @@ const Page4: React.FC<BlogsProps> = ({ blogsData }) => {
                   key={idx}
                   className="flex mx-[1rem] mt-[1rem] h-max border-solid border-b-2 border-[#E6E7E6] pb-[0.1rem]"
                 >
-                  <div className="flex flex-col lg:w-full w-[55vw] mr-[0.8rem] relative">
+                  <div className="flex flex-col pb-2 lg:w-full w-[55vw] mr-[0.8rem] relative">
                     <div className="absolute top-0 right-0 text-lg hover:bg-[#E6E7E6] rounded-full p-1">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -52,10 +52,10 @@ const Page4: React.FC<BlogsProps> = ({ blogsData }) => {
                         <circle cx="12" cy="19" r="2" />
                       </svg>
                     </div>
-                    <h2 className="text-black mb-[0.5rem] lg:font-bold font-semibold lg:text-[1.2rem] text-[1rem] font-poppins">
+                    <h2 className="text-black mb-[0.2rem] lg:w-[94%] font-semibold text-lg font-poppins">
                       {item?.title}
                     </h2>
-                    <p className="text-black lg:text-[0.9rem] text-[0.8rem] w-full font-poppins">
+                    <p className="text-black font-normal lg:text-sm text-[0.8rem] w-full font-poppins">
                       {item?.description}
                     </p>
                   </div>
