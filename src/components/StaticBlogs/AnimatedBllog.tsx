@@ -122,7 +122,7 @@ const AnimatedBlogPost: React.FC<AnimatedBlogPostProps> = ({ id }) => {
           className="w-full pt-8 pb-6 shadow-2xl relative overflow-hidden"
         >
           <div className="absolute inset-0 bg-[url('/path/to/texture.png')] opacity-10 mix-blend-overlay"></div>
-          <h2 className="text-white lg:text-2xl text-lg lg:px-12 px-8 font-light relative z-10">
+          <h2 className="text-white lg:text-2xl text-lg lg:px-12 px-8 font-light relative z-10 font-">
             {post?.title}
           </h2>
         </motion.div>

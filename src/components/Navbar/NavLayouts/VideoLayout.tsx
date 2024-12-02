@@ -45,7 +45,10 @@ const VideoGrid: React.FC<VideoLayoutGridProps> = ({ navData }) => {
         {videoDataItem?.map((item, index) => (
           <div key={index} className="flex cursor-grab flex-col space-y-4">
             <div className="relative flex-shrink-0 cursor-grab w-80 h-48 bg-[#f2f2f2] rounded-3xl flex flex-col justify-center items-center">
-              <div className="relative w-full h-full flex justify-center items-center">
+              <div className="relative w-full h-full flex justify-center items-center cursor-pointer"
+               onClick={() =>
+                openModal("https://www.youtube.com/embed/AE0QMNZleJs") }
+              >
                 <Image
                   src="https://res.cloudinary.com/dlti4o10e/image/upload/v1732767837/about2_iihgbu.webp" // bgpic in json to be updated
                   alt={item.title}

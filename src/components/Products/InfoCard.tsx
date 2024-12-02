@@ -44,10 +44,10 @@ const InfoCard: FC<InfoCardProps> = ({
           </div>
           <div className="flex flex-col gap-2">
             <p className="text-black text-xs font-poppins">
-              Size range: {sizeRange}
+              Size range: {speedRoundShapes}
             </p>
             <p className="text-black text-xs font-poppins">
-              Speed round shapes: {speedRoundShapes}
+              Speed round shapes: {sizeRange}
             </p>
           </div>
         </div>

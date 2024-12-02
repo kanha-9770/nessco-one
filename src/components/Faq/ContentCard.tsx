@@ -8,12 +8,12 @@ interface ContentCardProps {
 }
 
 const ContentCard: React.FC<ContentCardProps> = ({ categories }) => {
-  const [expandedIndices, setExpandedIndices] = useState<Set<number>>(
+  const [expandedIndices, setExpandedIndices] = useState<Set<string>>(
     new Set()
   );
 
   const toggleExpansion = (categoryIndex: number, faqIndex: number) => {
-    const index = categoryIndex * 1000 + faqIndex;
+    const index = `${categoryIndex}-${faqIndex}`;
     setExpandedIndices((prev) => {
       const newSet = new Set(prev);
       if (newSet.has(index)) {
@@ -26,11 +26,11 @@ const ContentCard: React.FC<ContentCardProps> = ({ categories }) => {
   };
 
   return (
-    <div className="flex flex-col gap-4 px-[1vw]">
+    <div className="flex flex-col gap-4 px-[1vw] overflow-visible">
       {categories?.map((category, categoryIndex) => (
         <div
           key={categoryIndex}
-          className="bg-white rounded-lg shadow-lg p-10 lg:h-[30.5rem] md:h-[20rem]"
+          className="bg-white rounded-lg shadow-lg p-10 lg:min-h-[30.5rem] md:min-h-[20rem]"
         >
           <h1 className="text-2xl text-gray-600">
             Questions Related to{" "}
@@ -39,10 +39,10 @@ const ContentCard: React.FC<ContentCardProps> = ({ categories }) => {
           <div className="lg:border-t-[0.2rem] border-t-2 border-solid border-red-700 lg:w-[8vw] w-[18vw] mt-[0.6rem]"></div>
           <div className="mt-[2vh]">
             {category?.faqs?.map((faq, faqIndex) => {
-              const index = categoryIndex * 1000 + faqIndex;
+              const index = `${categoryIndex}-${faqIndex}`;
               const isExpanded = expandedIndices.has(index);
               return (
-                <div key={faqIndex} className="mb-[1rem]">
+                <div key={`${categoryIndex}-${faqIndex}`} className="mb-[1rem]">
                   <div
                     className="flex justify-between items-center cursor-pointer"
                     onClick={() => toggleExpansion(categoryIndex, faqIndex)}
@@ -59,13 +59,7 @@ const ContentCard: React.FC<ContentCardProps> = ({ categories }) => {
                         fill="none"
                         className="text-black font-bold"
                       >
-                        <rect
-                          x="3"
-                          y="11"
-                          width="18"
-                          height="2"
-                          fill="black"
-                        />
+                        <rect x="3" y="11" width="18" height="2" fill="black" />
                       </svg>
                     ) : (
                       <svg
@@ -102,13 +96,13 @@ const ContentCard: React.FC<ContentCardProps> = ({ categories }) => {
                   <div
                     className={`overflow-hidden transition-all ease-in-out duration-500 transform origin-top ${
                       isExpanded
-                        ? "max-h-[300px] opacity-100"
+                        ? "max-h-[500px] opacity-100"
                         : "max-h-0 scale-y-0 opacity-0"
                     }`}
                   >
                     <div
                       className="no-scrollbar ml-[2vw] text-gray-600 py-[1vh] lg:text-sm text-[0.8rem] w-[90%]"
-                      style={{ overflowY: "auto" }}
+                      style={{ height: "10-rem" }}
                     >
                       <p>{faq?.ans}</p>
                     </div>

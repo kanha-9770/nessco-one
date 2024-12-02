@@ -237,11 +237,11 @@ const Machine: React.FC<MachineProps> = ({
                       className="object-contain w-full h-[24rem] -mt-10"
                     />
                   </div>
-                  <div className="absolute top-0 right-0 p-2">
+                  <div className="absolute top-0 right-0 p-2 h-24 w-24">
                     <Image
                       src={mimage}
-                      height={60}
-                      width={60}
+                      height={1000}
+                      width={1000}
                       alt="Small Image"
                       className="object-cover"
                     />

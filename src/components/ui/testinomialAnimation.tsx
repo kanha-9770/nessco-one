@@ -66,9 +66,9 @@ export const TestiNomialAnimation = ({
                     <div className="flex flex-row justify-between items-center">
                       <Image
                         src={el?.src}
-                        className="rounded-full h-6 w-6 lg:h-8 lg:w-8 object-cover"
-                        height="8"
-                        width="8"
+                        className="rounded-full h-6 w-6 lg:h-10 lg:w-10 object-cover"
+                        height="10"
+                        width="10"
                         alt={el?.username}
                       />
                       <div className="flex justify-end">

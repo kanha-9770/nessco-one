@@ -172,12 +172,12 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
               <h5 className="text-xl text-center lg:text-left mb-2 text-[#483d73] font-medium font-poppins">
                 {dialogContent?.title}
               </h5>
-              <div className="h-48 lg:h-64 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+              <div className="h-48 lg:h-60 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
                 <p className="font-poppins text-center lg:text-left text-sm">
                   {dialogContent?.description}
                 </p>
-                <Link href={`media-room/${dialogContent?.title}`} className="h-10 w-20 left-[40%] font-bold relative ">Read More</Link>
               </div>
+              <Link href={`media-room/${dialogContent?.title}`} className="h-10 w-20 left-[40%] font-bold relative ">Read More</Link>
             </div>
           </div>
         </DialogContent>

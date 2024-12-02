@@ -201,34 +201,27 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
                     >
                       {activeCard?.ctaText}
                       <svg
-                        width="64"
-                        height="64"
-                        viewBox="0 0 64 54"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-6 h-6"
-                      >
-                        <path
-                          d="M52 32C52.4183 32 56 28.4183 56 24C56 19.5817 52.4183 16 48 16C47.1524 16 46.3354 16.0955 45.5656 16.2758C43.5061 12.6805 39.5471 10 35 10C29.4772 10 25 14.4772 25 20C25 20.0651 25.0004 20.1301 25.0013 20.195C20.4146 20.7047 17 24.417 17 29C17 33.4183 20.5817 37 27 37H40Z"
+                          viewBox="-0.4 0 24 24"
                           fill="none"
-                          stroke="white"
-                          strokeWidth="3"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M36 18V32"
-                          stroke="white"
-                          strokeWidth="3"
-                          strokeLinecap="round"
-                        />
-                        <path
-                          d="M30 28L36 33L42 28"
-                          stroke="white"
-                          strokeWidth="3"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="w-8 h-8 ml-2"
+                        >
+                          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                          <g
+                            id="SVGRepo_tracerCarrier"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          ></g>
+                          <g id="SVGRepo_iconCarrier">
+                            <path
+                              d="M12 12V19M12 19L9.75 16.6667M12 19L14.25 16.6667M6.6 17.8333C4.61178 17.8333 3 16.1917 3 14.1667C3 12.498 4.09438 11.0897 5.59198 10.6457C5.65562 10.6268 5.7 10.5675 5.7 10.5C5.7 7.46243 8.11766 5 11.1 5C14.0823 5 16.5 7.46243 16.5 10.5C16.5 10.5582 16.5536 10.6014 16.6094 10.5887C16.8638 10.5306 17.1284 10.5 17.4 10.5C19.3882 10.5 21 12.1416 21 14.1667C21 16.1917 19.3882 17.8333 17.4 17.8333"
+                              stroke="currentColor"
+                              className="stroke-white"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            ></path>
+                          </g>
+                        </svg>
                     </motion.button>
                   </div>
                   <div className="relative px-4 h-[22vh] pb-2 overflow-y-scroll scrollbar">
@@ -314,8 +307,8 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
             </div>
           </div>
 
-          <div className="lg:w-[80%] max-h-[40rem] overflow-y-scroll space-y-4 pl-10">
-            <div className="bg-white w-full h-[3rem] lg:hidden rounded-lg flex items-center px-4 relative">
+          <div className="lg:w-[80%] max-h-[40rem] overflow-y-scroll scrollbar-custom scrollbar pl-10 mt-4 pr-1">
+            <div className="bg-white  w-full h-[3rem] lg:hidden rounded-lg flex items-center px-4 relative">
               <p className="text-xl font-normal">{data?.filter}</p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -342,7 +335,7 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
                 <motion.div
                   layoutId={`card-${card?.title}-${index}-${id}`}
                   onClick={() => handleOpenCardDetail(card)}
-                  className="p-5 flex flex-col lg:flex-row shadow-2xl bg-white justify-center items-center border-[0.1rem] border-[#f5f5f5] hover:border-[#483d73] rounded-xl cursor-pointer"
+                  className="p-5 flex flex-col lg:flex-row shadow-2xl bg-white justify-center items-center border-[0.1rem] border-[#f5f5f5] mb-4 hover:border-[#483d73] rounded-xl cursor-pointer"
                 >
                   <div className="flex lg:w-[45%] w-full lg:border-r-2 border-[#5d5d5e] gap-4 flex-col md:flex-row items-center">
                     <motion.div layoutId={`image-${card?.title}-${index}-${id}`}>
@@ -351,7 +344,7 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
                         height={400}
                         src={card?.src}
                         alt={card?.title}
-                        className="h-full w-full lg:w-14 lg:h-14 rounded-lg object-cover object-top bg-[#f5f5f5]"
+                        className="h-full w-full lg:w-14 lg:h-14 object-cover object-top"
                       />
                     </motion.div>
                     <div className="flex flex-col justify-center">
@@ -394,34 +387,27 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
                     >
                       <span>{card?.ctaText}</span>
                       <svg
-                        width="64"
-                        height="64"
-                        viewBox="0 0 64 54"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-6 h-6"
-                      >
-                        <path
-                          d="M52 32C52.4183 32 56 28.4183 56 24C56 19.5817 52.4183 16 48 16C47.1524 16 46.3354 16.0955 45.5656 16.2758C43.5061 12.6805 39.5471 10 35 10C29.4772 10 25 14.4772 25 20C25 20.0651 25.0004 20.1301 25.0013 20.195C20.4146 20.7047 17 24.417 17 29C17 33.4183 20.5817 37 27 37H40Z"
+                          viewBox="-0.4 0 24 24"
                           fill="none"
-                          stroke="white"
-                          strokeWidth="3"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M36 18V32"
-                          stroke="white"
-                          strokeWidth="3"
-                          strokeLinecap="round"
-                        />
-                        <path
-                          d="M30 28L36 33L42 28"
-                          stroke="white"
-                          strokeWidth="3"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="w-8 h-8 ml-2"
+                        >
+                          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                          <g
+                            id="SVGRepo_tracerCarrier"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          ></g>
+                          <g id="SVGRepo_iconCarrier">
+                            <path
+                              d="M12 12V19M12 19L9.75 16.6667M12 19L14.25 16.6667M6.6 17.8333C4.61178 17.8333 3 16.1917 3 14.1667C3 12.498 4.09438 11.0897 5.59198 10.6457C5.65562 10.6268 5.7 10.5675 5.7 10.5C5.7 7.46243 8.11766 5 11.1 5C14.0823 5 16.5 7.46243 16.5 10.5C16.5 10.5582 16.5536 10.6014 16.6094 10.5887C16.8638 10.5306 17.1284 10.5 17.4 10.5C19.3882 10.5 21 12.1416 21 14.1667C21 16.1917 19.3882 17.8333 17.4 17.8333"
+                              stroke="currentColor"
+                              className="stroke-white"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            ></path>
+                          </g>
+                        </svg>
                     </motion.button>
                   </div>
                 </motion.div>

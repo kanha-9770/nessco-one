@@ -65,19 +65,34 @@ export default function CountrySelect({
   );
 
   return (
-    <div className={cn("py-[0.1rem] px-[0.2rem] text-[0.9rem] rounded-[0.3rem] bg-[#f9fafb] focus:ring-2 focus:ring-[#483d73] transition-all duration-200", className)}>
+    <div
+      className={cn(
+        "py-[0.1rem] px-[0.2rem] text-[0.9rem] rounded-[0.3rem] bg-[#f9fafb] focus:ring-2 focus:ring-[#483d73] transition-all duration-200",
+        className
+      )}
+    >
       <div className="flex space-x-2">
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
           <DialogTrigger asChild>
             <motion.div
-              className="relative w-24"
+              className="relative w-28"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
+              <div className="absolute left-2 top-1/2 transform -translate-y-1/2 h-4 w-6 overflow-hidden rounded-sm">
+                {selectedCountry && (
+                  <img
+                    src={`https://flagcdn.com/w40/${selectedCountry.code.toLowerCase()}.png`}
+                    width="24"
+                    alt={`${selectedCountry.name} flag`}
+                    className="h-full w-full object-cover"
+                  />
+                )}
+              </div>
               <Input
                 value={selectedCountry?.phone || ""}
                 readOnly
-                className="pr-8 cursor-pointer"
+                className="pl-10 pr-8 cursor-pointer"
               />
               <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 h-4 w-4 opacity-50" />
             </motion.div>

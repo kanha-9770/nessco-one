@@ -160,7 +160,7 @@ const Page3: React.FC<BlogsProps> = ({ blogsData }) => {
             </p>
           </div>
 
-          {FeaturedBlogs?.featured?.map((item, idx) => (
+          {FeaturedBlogs?.feature?.map((item, idx) => (
             <div
               key={idx}
               className="flex mx-[1rem] my-[1.5rem] border-solid border-b-2 border-[#E6E7E6] pb-[0.1rem]"

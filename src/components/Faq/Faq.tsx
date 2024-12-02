@@ -54,7 +54,7 @@ const FAQ: React.FC<MainLayoutProps> = ({ faqData }) => {
   };
 
   return (
-    <div className="h-[45rem] w-full overflow-hidden">
+    <div className="h-[45rem] z-40 w-full overflow-hidden">
       <h1 className="text-5xl font-poppins bg-gradient-to-r from-[#483d73] via-red-700 to-red-700 bg-clip-text text-transparent relative mt-20 left-7 font-extrabold">
         FAQs
       </h1>

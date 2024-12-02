@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 const LottieAnimation = dynamic(() => import("../ui/LottieAnimation"));
 import speed from "../../../public/assets/product/speed.json";
 import size from "../../../public/assets/product/size.json";
+
 import { Machine } from "./types/constant";
 
 interface ProductDescriptionProps {
@@ -47,7 +48,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ machine }) => {
               <p className="text-[#483d78] text-center lg:text-xl text-lg">
                 {machine.descriptionSpeed}
               </p>
-              <p className="lg:text-base text-xs justify-center px-6 lg:mt-4 mt-2 text-center font-regular">
+              <p className="lg:text-base text-xs justify-center px-6 lg:mt-4 mt-2 text-center font-regular bg-red-200">
                 {machine?.technicalSpecifications?.specifications[0]?.title ||
                   "N/A"}
               </p>
@@ -62,9 +63,9 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ machine }) => {
               <p className="text-[#483d78] text-center lg:text-xl text-lg">
                 {machine.descriptionSize}
               </p>
-              <p className="lg:text-base text-xs lg:mt-4 mt-2 px-6 text-center font-regular">
-                {machine?.technicalSpecifications?.specifications[1]?.title ||
-                  "N/A"}
+              <p className="lg:text-base text-xs lg:mt-4 mt-2 px-6 text-center font-regular bg-green-200">
+              {machine?.technicalSpecifications?.specifications[2]?.title ||
+                  "N/A"} 
               </p>
             </div>
           )}
@@ -77,9 +78,9 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ machine }) => {
               <p className="text-[#483d78] text-center lg:text-xl text-lg">
                 {machine.descriptionRange}
               </p>
-              <p className="lg:text-base text-xs lg:mt-4 mt-2 px-6 text-center font-regular">
-                {machine?.technicalSpecifications?.specifications[2]?.title ||
-                  "N/A"}
+              <p className="lg:text-base text-xs lg:mt-4 mt-2 px-6 text-center font-regular bg-red-300">
+                 {machine?.technicalSpecifications?.specifications[1]?.title ||
+                    "N/A"}
               </p>
             </div>
           )}

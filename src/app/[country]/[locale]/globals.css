@@ -290,36 +290,43 @@ html::-webkit-scrollbar {
   direction: rtl;
   overflow-y: scroll;
   height: 200px;
+  cursor: all-scroll;
   /* Adjust the height if necessary */
 }
 
 .scroll-wrapper .style-1 {
   direction: ltr;
+  cursor: all-scroll;
 }
 
 .style-1::-webkit-scrollbar {
   width: 3px;
+  cursor: all-scroll;
   /* Set the scrollbar width */
 }
 
 .style-1::-webkit-scrollbar-track {
   border-left: 3px dotted #6d6d6d;
+  cursor: all-scroll;
   /* Only left border */
 }
 
 .style-1::-webkit-scrollbar-thumb {
   background-color: black;
+  cursor: all-scroll;
 }
 
 /* Custom scrollbar */
 .scrollbar-hide {
   overflow: scroll;
   height: 100%;
+  cursor: all-scroll;
 }
 
 .scrollbar::-webkit-scrollbar {
   width: 0.15rem;
   height: 0.15rem;
+  cursor: all-scroll;
   /* Set the scrollbar width */
 }
 
@@ -327,12 +334,14 @@ html::-webkit-scrollbar {
   border: 1px solid #b1afaf;
   background-color: #b1afaf;
   border-radius: 2rem;
+  cursor: all-scroll;
   /* Only left border */
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
   background-color: black;
   border-radius: 2rem;
+  cursor: all-scroll;
 }
 
 /* for safari browser */

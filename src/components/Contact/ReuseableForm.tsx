@@ -99,7 +99,11 @@ const ReusableForm: React.FC<ReusableFormProps> = ({
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
             )}
-            <div className={`w-full ${imageUrl ? 'sm:w-1/2' : ''} px-[1.5rem] py-[1rem] bg-white rounded-[0.5rem]`}>
+            <div
+              className={`w-full ${
+                imageUrl ? "sm:w-1/2" : ""
+              } px-[1.5rem] py-[1rem] bg-white rounded-[0.5rem]`}
+            >
               {formContent}
             </div>
           </div>
@@ -110,4 +114,3 @@ const ReusableForm: React.FC<ReusableFormProps> = ({
 };
 
 export default ReusableForm;
-

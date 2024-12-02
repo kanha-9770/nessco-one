@@ -76,7 +76,9 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
                 {index % 2 !== 0 && (
                   <div className="group-hover:shadow-2xl bg-white max-w-[300px] mx-auto  p-2 rounded-[1.2rem] shadow-lg transition-all duration-300">
                     <div className="flex justify-between  items-center">
-                      <h3 className="text-sm ml-4 w-[12.5rem]">{item?.title}</h3>
+                      <h3 className="text-sm ml-4 w-[12.5rem]">
+                        {item?.title}
+                      </h3>
 
                       {item?.description?.split(" ").length > 20 && (
                         <Dialog
@@ -103,8 +105,8 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
                           </DialogTrigger>
                           <DialogContent>
                             <div className="rounded-2xl bg-red-400">
-                              <DialogHeader>
-                                <DialogTitle>{item?.title}</DialogTitle>
+                              <DialogHeader className="pb-2">
+                                <DialogTitle className="pb-4">{item?.title}</DialogTitle>
                               </DialogHeader>
                               <p className="text-sm text-gray-600">
                                 {item?.description}
@@ -161,7 +163,7 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
                               </DialogTrigger>
                               <DialogContent>
                                 <div className="bg-white rounded-2xl">
-                                  <DialogHeader>
+                                  <DialogHeader className="pb-2">
                                     <DialogTitle>{item?.title}</DialogTitle>
                                   </DialogHeader>
                                   <p className="text-sm text-gray-600 text-center lg:text-left">
@@ -213,7 +215,7 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
                                 />
                               </div>
                               <div className="lg:w-1/2 w-full">
-                                <DialogHeader>
+                                <DialogHeader className="pb-2">
                                   <DialogTitle>{item?.title}</DialogTitle>
                                 </DialogHeader>
                                 <p className="text-sm text-gray-600 text-center lg:text-left">
@@ -244,7 +246,9 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
                 >
                   <DialogTrigger asChild>
                     <div className="flex items-center justify-between p-2 bg-white rounded-[1.2rem] shadow-2xl">
-                      <h3 className="text-sm w-[12.5rem] ml-4">{item?.title}</h3>
+                      <h3 className="text-sm w-[12.5rem] ml-4">
+                        {item?.title}
+                      </h3>
 
                       {item?.description?.split(" ").length > 40 && (
                         <Dialog
@@ -280,7 +284,7 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
                               />
                             </div>
                             <div className="lg:w-1/2 w-full">
-                              <DialogHeader>
+                              <DialogHeader className="pb-2">
                                 <DialogTitle>{item?.title}</DialogTitle>
                               </DialogHeader>
                               <p className="text-sm text-gray-600 text-center lg:text-left">
