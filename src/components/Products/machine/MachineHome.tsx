@@ -163,11 +163,11 @@ const Machine: React.FC<MachineProps> = ({
   const shouldShowArrows = images.length > 1;
 
   const breadcrumbItems = [
-    { label: "Home", href: `/${countryCode}/${languageCode}/` },
-    { label: "Products", href: `/${countryCode}/${languageCode}/products` },
+    { label: "Home", href: `/` },
+    { label: "Products", href: `/products` },
     {
       label: first_name,
-      href: `/${countryCode}/${languageCode}/products/${link || fallBackLink}`,
+      href: `/products/${link || fallBackLink}`,
     },
     { label: name, current: true },
   ];

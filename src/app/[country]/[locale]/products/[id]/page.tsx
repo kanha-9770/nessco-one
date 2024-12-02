@@ -4,10 +4,13 @@ import { Metadata } from "next";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import React from "react";
 import { cookies } from "next/headers";
+import { getBaseUrl } from "@/app/api/environment";
 const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
 const locales = ["en", "fr", "nl", "de", "es", "hi", "ta"] as const;
 const countryUrl = "https://countryjson.nesscoindustries.com/";
-
+type Props = {
+  params: { locale: string; id: string; country: string };
+};
 // Revalidate every 60 seconds
 export const revalidate = 60;
 
@@ -53,13 +56,12 @@ const formatMachineName = (name: string): string => {
 };
 // Dynamically generate metadata
 export async function generateMetadata({
-  params: { locale, id },
-}: {
-  params: { locale: string; id: string };
-}): Promise<Metadata> {
+  params: { locale, id, country },
+}: Props): Promise<Metadata> {
   if (!locales.includes(locale as any)) {
     locale = "en";
   }
+  const baseUrl = getBaseUrl();
 
   const productLayoutData = await fetchProductLayoutData(locale);
   const countryName = await fetchCountryData(locale);
@@ -104,13 +106,12 @@ export async function generateMetadata({
     (m) => normalizeTitle(m.title) === normalizedMachinename
   );
   const seoData = productLayoutData?.ProductLayout[0]?.productLayoutSeoData;
-  console.log("my product", ProductsGrid?.data);
   return {
-    title: ` ${seoData?.title} - ${countryName} `,
-    description: page2machine?.description || seoData?.description,
+    title: `${page2machine?.seoTitle}  - ${countryName} `,
+    description: page2machine?.description,
     viewport: "width=device-width, initial-scale=1",
     alternates: {
-      canonical: `https://nessco-two.vercel.app/${countryName}/${locale}/products/${id}`,
+      canonical: `${baseUrl}/${country}/${locale}`,
     },
     openGraph: {
       type: "website",
