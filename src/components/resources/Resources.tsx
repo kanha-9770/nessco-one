@@ -28,13 +28,14 @@ const Resources: React.FC <AboutLayoutProps>= ({resourceData}) => {
               {homeresourceData.description}
             </p>
           </div>
-          <div className="w-[10rem] h-[10rem] relative mt-14">
+          <div className="w-1/4 mt-14 relative">
             <Image
               src={homeimgData.src}
               alt={homeimgData.alt}
               width={homeimgData.width}
               height={homeimgData.height}
               priority
+              className="w-[10rem] h-[10rem] absolute right-6 top-2"
             />
           </div>
         </div>

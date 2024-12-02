@@ -206,7 +206,7 @@ const Page2:React.FC<MainLayoutProps> = ({sustainData}) => {
               alt="footprint"
               width={40}
               height={40}
-              className="absolute -top-8 -right-1 lg:visible invisible"
+              className="absolute -top-2 right-10 lg:visible invisible"
               ref={leftFootRef}
             /> 
             <Image
@@ -214,7 +214,7 @@ const Page2:React.FC<MainLayoutProps> = ({sustainData}) => {
               alt="footprint"
               width={40}
               height={40}
-              className="absolute -top-14 -right-10 lg:visible invisible"
+              className="absolute -top-8 right-0 lg:visible invisible"
               ref={rightFootRef}
             />
             <div className=" lg:block hidden text-center lg:text-left">
@@ -225,7 +225,7 @@ const Page2:React.FC<MainLayoutProps> = ({sustainData}) => {
          {data?.title2}
           </h1>
         </div>
-            <div className=" w-full h-[20rem] bg-[#0D340F] lg:rounded-[40px] rounded-2xl mt-5 relative ">
+            <div className=" w-full h-[20rem] bg-[#0D340F] lg:rounded-[40px] rounded-2xl mt-24 relative ">
               <p className="text-center text-white lg:text-[1.07rem] text-sm p-8 font-[200] md:text-xl">
                 {data?.description}
               </p>
