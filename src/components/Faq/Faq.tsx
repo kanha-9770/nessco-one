@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Search, Menu } from 'lucide-react';
+import { Search, Menu } from "lucide-react";
 
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
@@ -151,15 +151,19 @@ const FAQ: React.FC<MainLayoutProps> = ({ faqData }) => {
         <ScrollArea className="h-[calc(100vh-80px)] lg:h-[calc(100vh-10px)]">
           <div className="space-y-6">
             {filteredFAQs.map((category) => (
-              <Card className="bg-white p-4 lg:p-8 lg:h-[30rem] rounded-xl" key={category.name}>
+              <Card
+                className="bg-white p-4 lg:p-8 lg:h-[30rem] rounded-xl"
+                key={category.name}
+              >
                 <CardHeader>
                   <CardTitle>
-                    <h1 className="text-xl lg:text-2xl text-gray-600">
+                    <h1 className="text-2xl text-gray-600">
                       Questions Related to{" "}
                       <span className="text-red-700 font-bold">
                         {category?.name}
                       </span>
                     </h1>
+                    <div className="lg:border-t-[0.2rem] border-t-2 border-solid border-red-700 lg:w-[8vw] w-[18vw] mt-[0.6rem]"></div>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -194,4 +198,3 @@ const FAQ: React.FC<MainLayoutProps> = ({ faqData }) => {
 };
 
 export default FAQ;
-
