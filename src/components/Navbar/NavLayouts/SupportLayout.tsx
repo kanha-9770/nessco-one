@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import bgPick from "../../../../public/assets/nav_support/BgMapImage.png";
 import { NavbarData } from "../types/constant";
 import { countryCODE, languageCODE } from "../nav-menue";
 import Link from "next/link";
@@ -234,4 +233,3 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
 };
 
 export default SupportGrid;
-

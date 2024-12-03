@@ -49,7 +49,6 @@ function Navbar({ className, navData }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [active, setActive] = useState("");
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
-  const [searchValue, setSearchValue] = useState<string>("");
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -61,8 +60,7 @@ function Navbar({ className, navData }: NavbarProps) {
   const expandItem = (item: string) =>
     setExpandedItem(expandedItem === item ? null : item);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setSearchValue(e.target.value);
+
 
   const navbarItems: NavbarItem[] = [
     {
