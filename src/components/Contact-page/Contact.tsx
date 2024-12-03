@@ -32,9 +32,9 @@
 //                 className="lg:rounded-xl rounded-2xl lg:object-cover object-cover h-full w-full"
 //               />
 //             </span>
-            
+
 //             {item.textAfterImage && <span className="text-[#483d73] ml-1 ">{item.textAfterImage}</span>}
-            
+
 //           </p>
 //         ))}
 //       </div> */}
@@ -150,184 +150,201 @@
 
 // export default Contact;
 
-
-
-
 "use client";
 
 import Image from "next/image";
-// import { IoIosArrowForward } from "react-icons/io";
 import styles from "./contact.module.css";
 import { ContactItem } from "./types/constant";
+import { useState } from "react";
+import * as z from "zod";
+import {
+  useForm,
+  FormProvider,
+} from "@/app/[country]/[locale]/context/FormContext";
+import { ContactFormData, contactSchema } from "@/lib/ContactSchema";
 
 interface MainLayoutProps {
   contactData: ContactItem;
 }
 
-
-
 const Contact: React.FC<MainLayoutProps> = ({ contactData }) => {
-
-
-
+  const { formData, setFormData, submitForm, visitData } = useForm();
+  const [errors, setErrors] = useState<Partial<ContactFormData>>({});
   const getintouch = contactData?.contact[0]?.getintouch;
   const contactcaption = contactData?.contact[0]?.Contactcaption;
   const caption = contactData?.contact[0]?.caption;
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const validatedData = contactSchema.parse(formData);
+      await submitForm(validatedData);
+      // Reset form or show success message
+      setFormData({});
+      setErrors({});
+      alert("Form submitted successfully!");
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        setErrors(error.formErrors.fieldErrors);
+      }
+    }
+  };
 
-
- 
-
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    // Clear error when user starts typing
+    if (errors[name as keyof ContactFormData]) {
+      setErrors({ ...errors, [name]: undefined });
+    }
+  };
 
   return (
-    
-    <section
-      className={`${styles.contact} lg:left-9 left-2 mt-[7rem] bottom-10 rounded-[2rem] bg-red-200`}
-    >
-      <div className={`${styles.contactshape}`}></div>
-      <div className="container mx-auto p-6">
-        <div className="flex flex-col lg:flex-row">
-          <div className="lg:w-1/2">
-            <p className="text-3xl font-poppins font-medium text-black mt-3">
-              {getintouch}
-            </p>
-            <h1 className="text-3xl text-black font-poppins font-regular mt-3">
-             {caption} {contactcaption}
-            </h1>
-            <div className="mt-8">
-              <div className="flex items-start mb-6">
-                <Image
-                  src="https://res.cloudinary.com/dlti4o10e/image/upload/v1732005261/location_jqqcij.png"
-                  alt="Marker"
-                  width={80}
-                  height={80}
-                  className="w-10 h-10 mr-4 mt-10"
-                />
-                <div className="ml-2">
-                  <h2 className="text-xl font-medium font-poppins text-[#3a2a79] mb-1">
-                    {contactData?.contact[0]?.contactInfo[0]?.title}
-                  </h2>
-                  <a
-                    // href={contactContent.office.mapLink}
-                    className="text-black font-poppins font-regular text-sm"
-                  >
-                    {contactData?.contact[0]?.contactInfo[0]?.description
-                      .split("\n")
-                      .map((line, index) => (
-                        <span key={index}>
-                          {line}
-                          <br />
-                        </span>
-                      ))}
-                  </a>
+    <FormProvider>
+      <section
+        className={`${styles.contact} lg:left-9 left-2 mt-[7rem] bottom-10 rounded-[2rem] bg-red-200`}
+      >
+        <div className={`${styles.contactshape}`}></div>
+        <div className="container mx-auto p-6">
+          <div className="flex flex-col lg:flex-row">
+            <div className="lg:w-1/2">
+              <p className="text-3xl font-poppins font-medium text-black mt-3">
+                {getintouch}
+              </p>
+              <h1 className="text-3xl text-black font-poppins font-regular mt-3">
+                {caption} {contactcaption}
+              </h1>
+              <div className="mt-8">
+                <div className="flex items-start mb-6">
+                  <Image
+                    src="https://res.cloudinary.com/dlti4o10e/image/upload/v1732005261/location_jqqcij.png"
+                    alt="Marker"
+                    width={80}
+                    height={80}
+                    className="w-10 h-10 mr-4 mt-10"
+                  />
+                  <div className="ml-2">
+                    <h2 className="text-xl font-medium font-poppins text-[#3a2a79] mb-1">
+                      {contactData?.contact[0]?.contactInfo[0]?.title}
+                    </h2>
+                    <a className="text-black font-poppins font-regular text-sm">
+                      {contactData?.contact[0]?.contactInfo[0]?.description
+                        .split("\n")
+                        .map((line, index) => (
+                          <span key={index}>
+                            {line}
+                            <br />
+                          </span>
+                        ))}
+                    </a>
+                  </div>
                 </div>
-              </div>
-              <hr className="border-gray-400 border-[0.10rem] -ml-6 lg:w-[35rem] " />
-              <div className="flex items-start mb-6">
-                <Image
-                  src="https://res.cloudinary.com/dlti4o10e/image/upload/v1732005262/email_htjgie.png"
-                  alt="Email"
-                  width={80}
-                  height={80}
-                  className="w-10 h-10 mr-4 mt-7"
-                />
-                <div className="">
-                  <h2 className="text-xl font-semibold font-poppins text-[#3a2a79] mt-5 mb-1 ml-2">
-                    {contactData?.contact[0]?.contactInfo[1]?.title}
-                  </h2>
-                  <a
-                    // href={contactContent.email.emailLink}
-                    className="text-black ml-2 text-sm font-regular font-poppins"
-                  >
-                    {contactData?.contact[0]?.contactInfo[1]?.description}
-                  </a>
+                <hr className="border-gray-400 border-[0.10rem] -ml-6 lg:w-[35rem] " />
+                <div className="flex items-start mb-6">
+                  <Image
+                    src="https://res.cloudinary.com/dlti4o10e/image/upload/v1732005262/email_htjgie.png"
+                    alt="Email"
+                    width={80}
+                    height={80}
+                    className="w-10 h-10 mr-4 mt-7"
+                  />
+                  <div className="">
+                    <h2 className="text-xl font-semibold font-poppins text-[#3a2a79] mt-5 mb-1 ml-2">
+                      {contactData?.contact[0]?.contactInfo[1]?.title}
+                    </h2>
+                    <a className="text-black ml-2 text-sm font-regular font-poppins">
+                      {contactData?.contact[0]?.contactInfo[1]?.description}
+                    </a>
+                  </div>
                 </div>
-              </div>
-              <hr className="border-gray-400 border-[0.10rem] -ml-6 lg:w-[35rem]" />
-              <div className="flex items-start">
-                <Image
-                  src="https://res.cloudinary.com/dlti4o10e/image/upload/v1732005262/call_pmtrk9.png"
-                  alt="Phone"
-                  width={80}
-                  height={80}
-                  className="w-10 h-10 mr-4 mt-10"
-                />
-                <div className="ml-2">
-                  <h2 className="text-xl font-medium font-poppins text-[#3a2a79] mt-3 mb-1 ">
-                    {contactData?.contact[0]?.contactInfo[2]?.title}
-                  </h2>
-                  <div>
-                    <h3
-                      
-                      className="text-black font-regular font-poppins text-sm"
-                   
-                    >
-                      {contactData?.contact[0]?.contactInfo[2]?.description}
-                      <br />
-                    </h3>
-                </div>
+                <hr className="border-gray-400 border-[0.10rem] -ml-6 lg:w-[35rem]" />
+                <div className="flex items-start">
+                  <Image
+                    src="https://res.cloudinary.com/dlti4o10e/image/upload/v1732005262/call_pmtrk9.png"
+                    alt="Phone"
+                    width={80}
+                    height={80}
+                    className="w-10 h-10 mr-4 mt-10"
+                  />
+                  <div className="ml-2">
+                    <h2 className="text-xl font-medium font-poppins text-[#3a2a79] mt-3 mb-1 ">
+                      {contactData?.contact[0]?.contactInfo[2]?.title}
+                    </h2>
+                    <div>
+                      <h3 className="text-black font-regular font-poppins text-sm">
+                        {contactData?.contact[0]?.contactInfo[2]?.description}
+                        <br />
+                      </h3>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="lg:w-1/2 mt-0">
-            <form  className="bg-white p-8">
-              <div className="grid grid-cols-1 gap-4">
-                {/* First row */}
+            <div className="lg:w-1/2 mt-0">
+              <form className="bg-white p-8" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 gap-4">
-                  <input
-                    type="text"
-                    name="SingleLine"
-                    
-                    placeholder="Full Name"
-                    className="p-2  border-none rounded-xl h-[5rem] bg-[#f5f5f5] placeholder-black font-poppins text-sm font-regular"
-                  />
-                  <input
-                    type="text"
-                    name="Email"
-                  
-                    placeholder="Email"
-                    className="p-2 border-none rounded-xl bg-[#f5f5f5] placeholder-black font-poppins text-sm font-regular h-[5rem]"
-                  />
+                  <div className="grid grid-cols-1 gap-4">
+                    <input
+                      type="text"
+                      name="fullName"
+                      placeholder="Full Name"
+                      className="p-2 border-none rounded-xl h-[5rem] bg-[#f5f5f5] placeholder-black font-poppins text-sm font-regular"
+                      value={formData.fullName || ""}
+                      onChange={handleInputChange}
+                    />
+                    {errors.fullName && (
+                      <p className="text-red-500 text-xs">{errors.fullName}</p>
+                    )}
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Email"
+                      className="p-2 border-none rounded-xl bg-[#f5f5f5] placeholder-black font-poppins text-sm font-regular h-[5rem]"
+                      value={formData.email || ""}
+                      onChange={handleInputChange}
+                    />
+                    {errors.email && (
+                      <p className="text-red-500 text-xs">{errors.email}</p>
+                    )}
+                  </div>
+                  <div className="grid grid-cols-1 gap-4">
+                    <input
+                      type="tel"
+                      name="phone"
+                      placeholder="Phone"
+                      className="p-2 border-none rounded-xl h-[5rem] bg-[#f5f5f5] placeholder-black font-poppins text-sm font-regular"
+                      value={formData.phone || ""}
+                      onChange={handleInputChange}
+                    />
+                    {errors.phone && (
+                      <p className="text-red-500 text-xs">{errors.phone}</p>
+                    )}
+                  </div>
+                  <textarea
+                    name="message"
+                    placeholder="Message"
+                    className="p-2 border-none rounded-xl w-full h-[10rem] bg-[#f5f5f5] placeholder-black font-poppins text-sm font-regular"
+                    value={formData.message || ""}
+                    onChange={handleInputChange}
+                  ></textarea>
+                  {errors.message && (
+                    <p className="text-red-500 text-xs">{errors.message}</p>
+                  )}
                 </div>
-
-                {/* Second row */}
-                <div className="grid grid-cols-1 gap-4">
-                  <input
-                    type="text"
-                    name="PhoneNumber_countrycode"
-                   
-                    placeholder="Phone"
-                    className="p-2 border-none rounded-xl h-[5rem] bg-[#f5f5f5] placeholder-black font-poppins text-sm font-regular"
-                  />
-               
-                </div>
-
-                {/* Third row */}
-                <input
-                  type="text"
-                  name="MultiLine"
-                  
-                  placeholder="Message"
-                  className="p-2 border-none rounded-xl w-full h-[10rem] bg-[#f5f5f5] placeholder-black font-poppins text-sm font-regular"
-                />
-              </div>
-              <button
-                aria-label="Send Message"
-                type="submit"
-                className="mt-6 text-xl flex items-center text-white py-4 px-9 rounded-xl bg-gradient-to-b from-[#171033] to-[#300675] transition"
-              >
-                <p>Send Message</p>
-
-                {/* <IoIosArrowForward
-                  className="ml-2 text-[#300675] bg-white rounded-full p-1 "
-                  style={{ fontSize: "1.4rem" }}
-                /> */}
-              </button>
-            </form>
+                <button
+                  aria-label="Send Message"
+                  type="submit"
+                  className="mt-6 text-xl flex items-center text-white py-4 px-9 rounded-xl bg-gradient-to-b from-[#171033] to-[#300675] transition"
+                >
+                  <p>Send Message</p>
+                </button>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </FormProvider>
   );
 };
 
