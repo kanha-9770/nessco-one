@@ -25,6 +25,7 @@ interface NavbarItem {
   link: string;
   component?: React.ReactNode;
   type?: string;
+  hasComponent: boolean;
 }
 
 interface navLayoutProps {
@@ -49,10 +50,10 @@ function Navbar({ className, navData }: NavbarProps) {
   const [active, setActive] = useState("");
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
   const [searchValue, setSearchValue] = useState<string>("");
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
     if (isOpen) {
-      // Reset expanded item when closing the menu
       setExpandedItem(null);
     }
   };
@@ -68,6 +69,7 @@ function Navbar({ className, navData }: NavbarProps) {
       name: `${navData?.navbar[0]?.category}`,
       link: "about",
       component: <AboutLayout navData={navData} />,
+      hasComponent: true,
     },
     {
       name: `${navData?.navbar[1]?.category}`,
@@ -80,6 +82,7 @@ function Navbar({ className, navData }: NavbarProps) {
           navData={navData}
         />
       ),
+      hasComponent: true,
     },
     {
       name: `${navData?.navbar[2]?.category}`,
@@ -92,25 +95,30 @@ function Navbar({ className, navData }: NavbarProps) {
           }}
         />
       ),
+      hasComponent: true,
     },
     {
       name: `${navData?.navbar[3]?.category}`,
       link: "support",
       component: <SupportGrid navData={navData} />,
+      hasComponent: true,
     },
     {
       name: `${navData?.navbar[4]?.category}`,
       link: "resources",
       component: <ResourceGrid navData={navData} />,
+      hasComponent: true,
     },
     {
       name: `${navData?.navbar[5]?.category}`,
       link: "videos",
       component: <VideoGrid navData={navData} />,
+      hasComponent: true,
     },
     {
       name: `${navData?.navbar[6]?.category}`,
       link: "contact",
+      hasComponent: false,
     },
   ];
 
@@ -155,10 +163,7 @@ function Navbar({ className, navData }: NavbarProps) {
       {/* Mobile Menu */}
       <div className="lg:hidden flex w-full">
         <div className="lg:hidden w-full flex justify-between items-center p-4">
-          <Link
-            href={`/${countryCODE}/${languageCODE}`}
-            className="h-14 w-14  flex items-center"
-          >
+          <Link href={`/`} className="h-14 w-14  flex items-center">
             <SVGComponent />
           </Link>
           <button
@@ -196,18 +201,36 @@ function Navbar({ className, navData }: NavbarProps) {
             <div className="flex bg-white h-2/3 p-4 flex-col space-y-3">
               {navbarItems?.map((item) => (
                 <div key={item?.name}>
-                  <div
-                    className="flex -mt-3 justify-between items-center py-2 border-b"
-                    onClick={() => expandItem(item?.name)}
-                  >
-                    <span className="text-lg font-semimedium text-black">
+                  <div className="flex -mt-3 justify-between items-center py-2 border-b">
+                    <Link
+                      href={`${item.link}`}
+                      className="text-lg font-semimedium text-black flex-grow"
+                      onClick={() => {
+                        if (item.hasComponent) {
+                          setIsOpen(false);
+                          setActive(null);
+                        }
+                      }}
+                    >
                       {item?.name}
-                    </span>
-                    <span className="text-gray-500 pr-2 text-2xl">
-                      {expandedItem === item?.name ? <MinusSvg /> : <PlusSvg />}
-                    </span>
+                    </Link>
+                    {item.hasComponent && (
+                      <button
+                        className="text-gray-500 pr-2 text-2xl"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          expandItem(item?.name);
+                        }}
+                      >
+                        {expandedItem === item?.name ? (
+                          <MinusSvg />
+                        ) : (
+                          <PlusSvg />
+                        )}
+                      </button>
+                    )}
                   </div>
-                  {expandedItem === item?.name && (
+                  {item.hasComponent && expandedItem === item?.name && (
                     <div className="absolute h-screen inset-0 bg-white z-50 flex flex-col">
                       <div className="flex border-b-2 bg-[#f2f2f2] justify-between items-center">
                         <span className="text-lg pl-4 text-[#483d73] font-semibold">
@@ -231,23 +254,7 @@ function Navbar({ className, navData }: NavbarProps) {
               ))}
               <div className="w-full">
                 <div className="relative -mt-3 h-full flex flex-col w-full lg:hidden">
-                  <div className="relative max-w-screen-2xl p-1 flex w-full mx-auto">
-                    <div className="justify-center items-center w-full rounded-xl">
-                      <form className="flex justify-start">
-                        <div className="relative w-full border-gray-300">
-                          <input
-                            type="text"
-                            id="search-dropdown"
-                            value={searchValue}
-                            onChange={handleInputChange}
-                            className="block p-[0.6rem] w-full z-20 text-sm bg-gray-100 rounded-3xl border-slate-100 font-montserrat pr-10 focus:outline-none focus:ring-2 focus:ring-transparent"
-                            placeholder="Search Product Name..."
-                            required
-                          />
-                        </div>
-                      </form>
-                    </div>
-                  </div>
+                 
                   <div className="flex flex-row justify-between items-center gap-2 border-t-[1px] border-b-[1px] w-full p-2">
                     <div className="absolute top-20">
                       <CountryLayout />

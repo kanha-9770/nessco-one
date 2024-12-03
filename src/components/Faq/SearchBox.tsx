@@ -13,7 +13,6 @@ interface SearchBoxProps {
 
 const SearchBox: React.FC<SearchBoxProps> = ({
   filter,
-
   placeholder,
   categories,
   onCategorySelect,
@@ -24,8 +23,8 @@ const SearchBox: React.FC<SearchBoxProps> = ({
 
   const handleCategoryChange = (category: string) => {
     setSelectedCategories((prevSelected) =>
-      prevSelected?.includes(category)
-        ? prevSelected?.filter((c) => c !== category)
+      prevSelected.includes(category)
+        ? prevSelected.filter((c) => c !== category)
         : [...prevSelected, category]
     );
   };
@@ -40,8 +39,8 @@ const SearchBox: React.FC<SearchBoxProps> = ({
   }, [selectedCategories, onCategorySelect]);
 
   return (
-    <div className="bg-white rounded-lg p-3 mt-3 sticky">
-      <div className="lg:w-full lg:h-[29rem] lg:pr-3 lg:px-0 px-[6vw] border-[#E6E7E6] overflow-auto sticky lg:rounded-none rounded-[0.5rem]">
+    <div className="rounded-lg p-3 mt-3 sticky top-3 z-10 bg-white"> {/* Added top-3 and z-10 */}
+      <div className="lg:w-full lg:h-[29rem] lg:pr-3 lg:px-0 px-[6vw] border-[#E6E7E6] overflow-auto lg:rounded-none rounded-[0.5rem]">
         <div className="flex justify-between">
           <p className="mb-2 font-poppins invisible lg:visible text-gray-500">
             {filter}
@@ -53,16 +52,12 @@ const SearchBox: React.FC<SearchBoxProps> = ({
             height={25}
             xmlns="http://www.w3.org/2000/svg"
           >
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-            <g
-              id="SVGRepo_tracerCarrier"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            ></g>
+            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
             <g id="SVGRepo_iconCarrier">
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M15 10.5A3.502 3.502 0 0 0 18.355 8H21a1 1 0 1 0 0-2h-2.645a3.502 3.502 0 0 0-6.71 0H3a1 1 0 0 0 0 2h8.645A3.502 3.502 0 0 0 15 10.5zM3 16a1 1 0 1 0 0 2h2.145a3.502 3.502 0 0 0 6.71 0H21a1 1 0 1 0 0-2h-9.145a3.502 3.502 0 0 0-6.71 0H3z"
                 fill="#000000"
               ></path>
@@ -83,21 +78,16 @@ const SearchBox: React.FC<SearchBoxProps> = ({
               xmlns="http://www.w3.org/2000/svg"
               stroke="#f0f0f0"
             >
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-              <g
-                id="SVGRepo_tracerCarrier"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              ></g>
+              <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+              <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
               <g id="SVGRepo_iconCarrier">
-                {" "}
                 <path
                   d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z"
                   stroke="#000000"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>{" "}
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></path>
               </g>
             </svg>
           </button>
@@ -113,21 +103,21 @@ const SearchBox: React.FC<SearchBoxProps> = ({
         <div className="border relative top-4 border-gray-300"></div>
 
         <div className="mt-6">
-          {categories?.map((category, index) => (
+          {categories.map((category, index) => (
             <div key={index} className="flex justify-between items-center">
               <label
                 className="font-poppins text-[#575555] my-[0.2rem]"
-                htmlFor={category?.name}
+                htmlFor={category.name}
               >
-                {category?.name}
+                {category.name}
               </label>
               <input
                 type="checkbox"
-                id={category?.name}
-                name={category?.name}
-                value={category?.name}
-                checked={selectedCategories?.includes(category?.name)}
-                onChange={() => handleCategoryChange(category?.name)}
+                id={category.name}
+                name={category.name}
+                value={category.name}
+                checked={selectedCategories.includes(category.name)}
+                onChange={() => handleCategoryChange(category.name)}
               />
             </div>
           ))}

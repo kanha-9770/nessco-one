@@ -107,6 +107,7 @@ export interface NavLeftData {
   
   // Define the type for individual video data items
   export interface VideoDataItem {
+    videoUrl: string;
     // Define the type for the overall video data structure
     videoId // Define the type for the overall video data structure
       (videoId: any): void;

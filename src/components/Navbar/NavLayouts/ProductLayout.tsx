@@ -101,9 +101,16 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
     [setHoveredItem, setHeading, setIsVisible]
   );
 
-  const expandItem = useCallback((item: string) => {
-    setExpandedItem((prev) => (prev === item ? null : item));
-  }, []);
+  const expandItem = useCallback(
+    (item: string) => {
+      setExpandedItem((prev) => (prev === item ? null : item));
+      setHoveredCategory(item);
+      setMachineLink(
+        navRightData.find((link) => link.name === item)?.link || ""
+      );
+    },
+    [navRightData]
+  );
 
   useEffect(() => {
     const containerElement = containerRef.current;
@@ -294,93 +301,77 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
       </div>
 
       {/* Mobile View */}
-      <div className="absolute w-full h-screen p-2 -mt-2 flex lg:hidden flex-col rounded-lg overflow-hidden">
-        <div className="flex flex-col h-full w-full relative">
-          <div className="absolute w-full h-full flex flex-col">
-            <div className="w-full flex justify-start items-start overflow-y-hidden relative">
-              <div className="space-y-4 pb-32 h-full stopscrollProduct overflow-y-auto w-full">
-                {navRightData
-                  .slice(sidebarIndex, navRightData?.length)
-                  .map((link, index) => (
-                    <div
-                      key={index}
-                      onClick={() =>
-                        handleCategoryClick(link?.name, link?.name)
-                      }
-                      className="flex flex-col border-b-[1px] justify-between text-lg transition-colors duration-300 cursor-pointer font-poppins text-[#483d78] font-semimedium overflow-hidden"
-                    >
-                      <div
-                        onClick={() => expandItem(link?.name)}
-                        className="flex items-center justify-between"
-                      >
-                        <div className="flex flex-row space-x-3 cursor-pointer">
-                          <div className="flex items-center justify-center">
+      <div className="lg:hidden w-full h-screen overflow-hidden">
+        <div className="h-full overflow-y-auto">
+          {navRightData.map((link, index) => (
+            <div
+              key={index}
+              className="border-b-[1px] text-lg font-poppins text-[#483d78] font-semimedium"
+            >
+              <div
+                onClick={() => expandItem(link?.name)}
+                className="flex items-center justify-between p-4 cursor-pointer"
+              >
+                <div className="flex items-center space-x-3">
+                  <BlurImage
+                    className="h-6 w-6 object-cover"
+                    src={link?.icon}
+                    alt={link?.name}
+                    width={24}
+                    height={24}
+                    loading="lazy"
+                  />
+                  <Link
+                    className={
+                      expandedItem === link?.name
+                        ? "text-[#483d73]"
+                        : "text-gray-500"
+                    }
+                    href={`/${countryCODE}/${languageCODE}/products${link.link}`}
+                    onClick={() => setActive(null)}
+                  >
+                    {link?.name}
+                  </Link>
+                </div>
+                <span className="text-gray-500 text-2xl">
+                  {expandedItem === link?.name ? "-" : "+"}
+                </span>
+              </div>
+
+              {expandedItem === link?.name && (
+                <div className="bg-white p-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    {filteredMachines
+                      .filter((machine) =>
+                        machine.category.includes(link?.name)
+                      )
+                      .map((machine, machineIndex) => (
+                        <Link
+                          key={`${machine?.name}-${machineIndex}`}
+                          href={`/${countryCODE}/${languageCODE}/products${link.link}/${machine?.link}`}
+                          onClick={() => setActive(null)}
+                          className="flex flex-col items-center"
+                        >
+                          <div className="border rounded-xl h-24 w-full overflow-hidden">
                             <BlurImage
-                              className="h-6 w-6  ml-1 duration-200 object-cover"
-                              src={link?.icon}
-                              alt={link?.name}
-                              width={24}
-                              height={24}
+                              src={machine?.image}
+                              alt={machine?.name}
+                              className="object-contain h-full w-full"
+                              width={200}
+                              height={150}
                               loading="lazy"
                             />
                           </div>
-                          <p
-                            className={
-                              expandedItem === link?.name
-                                ? "text-[#483d73]"
-                                : "text-gray-500"
-                            }
-                          >
-                            {link?.name}
-                          </p>
-                        </div>
-                        <span className={`text-gray-500 pr-[0.7rem] text-2xl`}>
-                          {expandedItem === link?.name ? "-" : "+"}
-                        </span>
-                      </div>
-
-                      {expandedItem === link?.name && (
-                        <div className="inset-0 w-full bg-white h-full z-50 flex flex-col overflow-hidden">
-                          <div className="py-4 px-2 h-full flex-grow overflow-y-auto">
-                            <div className="text-sm text-gray-700">
-                              <div className="grid h-[22rem] border-t-[1px] grid-cols-2 py-4 gap-4 w-full overflow-y-auto">
-                                {filteredMachines?.map((machine, index) => (
-                                  <div
-                                    key={`${machine?.name}-${index}`}
-                                    className="text-center h-40 rounded-xl p-2 border-2"
-                                  >
-                                    <Link
-                                      href={`/${countryCODE}/${languageCODE}/products${machineLink}/${machine?.link}`}
-                                      onClick={() =>
-                                        setActive && setActive(null)
-                                      }
-                                    >
-                                      <div className="border-[1px] rounded-xl h-24 w-full transform transition-transform duration-200 overflow-hidden">
-                                      <BlurImage
-                                        src={machine?.image}
-                                        alt={machine?.name}
-                                        className="object-contain h-36 -mt-6"
-                                        width={200}
-                                        height={150}
-                                        loading="lazy"
-                                      />
-                                        </div>
-                                      <h4 className="text-sm invert-0 font-bold mt-2">
-                                        {machine?.name}
-                                      </h4>
-                                    </Link>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-              </div>
+                          <h4 className="text-sm font-bold mt-2 text-center">
+                            {machine?.name}
+                          </h4>
+                        </Link>
+                      ))}
+                  </div>
+                </div>
+              )}
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

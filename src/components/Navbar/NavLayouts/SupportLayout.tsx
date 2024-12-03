@@ -139,9 +139,11 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
                 className="min-w-full p-1 grid grid-cols-2 grid-rows-2 gap-4"
               >
                 {group?.map((item, itemIndex) => (
-                  <div
+                  <Link
                     key={itemIndex}
-                    className="relative w-40 h-36 border-[1px] bg-white rounded-xl  flex flex-col justify-start items-center p-2"
+                    href={`/${countryCODE}/${languageCODE}/support/${item.link}`}
+                    onClick={() => setActive(null)}
+                    className="relative w-40 h-36 border-[1px] bg-white rounded-xl flex flex-col justify-start items-center p-2"
                   >
                     <div className="relative w-full bg-white rounded-xl border-[1px] h-24 flex justify-center items-center">
                       <LottieAnimation
@@ -152,7 +154,7 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
                     <p className="relative font-poppins text-center mt-4 invert-0 font-medium hover:text-[#483d78] hover:font-bold text-16">
                       {item?.title}
                     </p>
-                  </div>
+                  </Link>
                 ))}
               </div>
             ))}
@@ -232,3 +234,4 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
 };
 
 export default SupportGrid;
+

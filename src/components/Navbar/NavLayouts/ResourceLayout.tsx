@@ -1,24 +1,26 @@
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { NavbarData } from "../types/constant";
+import dynamic from "next/dynamic";
+import { countryCODE, languageCODE } from "../nav-menue";
+
 const LottieAnimation = dynamic(
   () => import("@/components/ui/LottieAnimation")
 );
+
 import Blogs from "../../../../public/assets/ResourcesNavbar/Blog.json";
 import Faq from "../../../../public/assets/ResourcesNavbar/faq.json";
 import News from "../../../../public/assets/ResourcesNavbar/Newspaper.json";
 import Staff from "../../../../public/assets/ResourcesNavbar/Staff.json";
 import Lightbulb from "../../../../public/assets/ResourcesNavbar/lightbulb.json";
-import dynamic from "next/dynamic";
-import { countryCODE, languageCODE } from "../nav-menue";
 
-const image = [Blogs, Faq, News, Staff, Lightbulb];
+const image = [Faq, Lightbulb, News, Blogs, Staff];
 
 type SupportItem = {
   title: string;
   link: string;
   image: string;
-  bgPic: string; // Corrected property name
+  bgPic: string;
 };
 
 interface ResourceGridProps {
@@ -74,6 +76,7 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData, setActive }) => {
       : [];
 
   const paginatedItems = chunkItems(DataBankItem, 5);
+
   return (
     <div className="relative flex flex-row items-center mx-auto max-w-screen-2xl justify-center lg:p-4 w-full">
       {/* desktop view */}
@@ -98,29 +101,20 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData, setActive }) => {
               href={`/${countryCODE}/${languageCODE}/${item.link}`}
             >
               <div className="relative flex-shrink-0 w-56 h-32 rounded-3xl p-4 flex flex-col justify-center items-center">
-                {/* Pseudo-element for the background image */}
                 <div
                   className="absolute inset-0 rounded-xl"
                   style={{
                     backgroundImage: `url(${item.bgPic})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
-                    opacity: 0.2, // Adjust this value for desired opacity
+                    opacity: 0.2,
                   }}
                 ></div>
 
                 <div className="relative w-full h-full flex justify-center items-center">
-                  {/* <Image
-                    src={item?.image}
-                    alt={item?.title}
-                    width={96}
-                    height={96}
-                    className="object-contain"
-                    loading="lazy"
-                  /> */}
                   <LottieAnimation
                     className="h-24 w-24"
-                    animationData={image[index % image.length]} // Pass animation based on index
+                    animationData={image[index % image.length]}
                   />
                 </div>
               </div>
@@ -131,8 +125,15 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData, setActive }) => {
           </div>
         ))}
       </div>
-      {/* mobile view */}
+      {shouldShowArrows && (
+        <button
+          className="h-12 w-16 z-30 cursor-pointer rounded-full hidden lg:flex items-center justify-center disabled:opacity-50"
+          onClick={scrollRight}
+          disabled={!canScrollRight}
+        ></button>
+      )}
 
+      {/* mobile view */}
       <div className="relative p-1 h-screen flex lg:hidden flex-col items-center">
         <div
           className="w-full py-2"
@@ -146,35 +147,29 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData, setActive }) => {
                 className="min-w-full p-1 grid grid-cols-2 grid-rows-2 gap-4"
               >
                 {group?.map((item, itemIndex) => (
-                  <div
+                  <Link
                     key={itemIndex}
-                    className="relative w-40 h-36 border-[1px] bg-white rounded-xl  flex flex-col justify-start items-center p-2"
+                    href={`/${countryCODE}/${languageCODE}/${item.link}`}
+                    onClick={() => setActive(null)}
+                    className="relative w-40 h-36 border-[1px] bg-white rounded-xl flex flex-col justify-start items-center p-2"
                   >
                     <div className="relative w-32 bg-[#483d732a] rounded-xl border-[1px] h-[4.4rem] flex justify-center items-center">
-                      {/* <Image
-                        src={item?.image}
-                        alt={item?.title}
-                        width={96}
-                        height={96}
-                        className="object-contain h-16 w-32"
-                      /> */}
                       <LottieAnimation
                         className="h-16 w-16"
-                        animationData={image[itemIndex % image.length]} // Pass animation based on index
+                        animationData={image[itemIndex % image.length]}
                       />
                     </div>
                     <p className="relative font-poppins text-center mt-4 invert-0 font-medium hover:text-[#483d78] hover:font-bold text-16">
                       {item?.title}
                     </p>
-                  </div>
+                  </Link>
                 ))}
               </div>
             ))}
           </div>
         </div>
-        {/* bottom arrow and items */}
         {shouldShowArrows && (
-          <div className="flex h-[5%] justify-center  w-full ">
+          <div className="flex h-[5%] justify-center w-full">
             <button
               className="h-12 w-12 rounded-full flex items-start justify-center disabled:opacity-50"
               onClick={scrollLeft}
@@ -187,35 +182,10 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData, setActive }) => {
             ></button>
           </div>
         )}
-        {/* <div className="h-[50%] w-full">
-          <div className="h-full pb-40 overflow-y-auto w-full">
-            {DataBankItem?.map((item, index) => (
-              <div key={index} className="flex flex-col space-y-4">
-                <Link
-                  href="#"
-                  onClick={() => setActive(null)}
-                  className="flex felx-row justify-between items-center border-t-[1px]  p-4"
-                >
-                  <div className="flex flex-row space-x-3">
-                    <div className="h-full w-6 flex items-center">
-                      <Image
-                        className="h-6 w-6"
-                        width={10}
-                        height={10}
-                        src={item?.bgPic}
-                        alt={item?.title}
-                      />
-                    </div>
-                    <p className="text-base">{item?.title}</p>
-                  </div>
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div> */}
       </div>
     </div>
   );
 };
 
 export default ResourceGrid;
+
