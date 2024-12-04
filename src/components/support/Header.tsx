@@ -3,7 +3,6 @@ import React from "react";
 import Image from "next/image";
 import Arrow from "../../../public/assets/Support/RedirectionArrowImg.svg";
 import LinkUrl from "@/components/LinkUrl";
-import { usePathname } from "next/navigation";
 
 interface CardsProps {
   title: string;
