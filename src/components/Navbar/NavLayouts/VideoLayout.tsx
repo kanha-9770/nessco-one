@@ -8,12 +8,13 @@ import SVGComponent from "../BlueLogo";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/ScrollArea";
 
+
 interface VideoLayoutGridProps {
   navData: NavbarData;
   setActive?: (item: string | null) => void;
 }
 
-const VideoGrid: React.FC<VideoLayoutGridProps> = ({ navData, setActive }) => {
+const VideoGrid: React.FC<VideoLayoutGridProps> = ({ navData }) => {
   const videoData = navData?.navbar[5]?.data;
   const videoDataItem = videoData?.videoDataItem || [];
 
@@ -33,10 +34,10 @@ const VideoGrid: React.FC<VideoLayoutGridProps> = ({ navData, setActive }) => {
   const renderVideoCard = (item: any, index: number) => (
     <Dialog key={index}>
       <DialogTrigger asChild>
-        <div className="relative flex-shrink-0 cursor-grab w-full h-48 bg-[#f2f2f2] rounded-3xl flex flex-col justify-center items-center">
+        <div className="relative flex-shrink-0 cursor-grab w-full h-32 bg-[#f2f2f2] rounded-3xl flex flex-col justify-center items-center">
           <div className="relative w-full h-full flex justify-center items-center cursor-pointer">
             <Image
-              src={item.bgPic}
+              src={item?.image}
               alt={item.title}
               fill
               className="absolute inset-0 h-full w-full rounded-xl opacity-80"
@@ -53,11 +54,11 @@ const VideoGrid: React.FC<VideoLayoutGridProps> = ({ navData, setActive }) => {
             </div>
           </div>
 
-          <div className="absolute flex items-center space-x-2 -top-2 left-2 z-40 cursor-pointer font-poppins text-center mt-4 font-semibold text-base hover:text-[#483d78]">
-            <div className="h-8 w-8 flex items-center justify-center rounded-full bg-[#483d73] text-white">
+          <div className="absolute flex items-center space-x-2 -top-2 left-2 z-40 cursor-pointer font-poppins mt-4 font-semibold text-base">
+            <div className="h-8 w-8 flex items-center justify-center rounded-full bg-white text-white">
               <SVGComponent />
             </div>
-            <span className="text-white hover:text-[#483d73] text-sm font-semibold">
+            <span className="text-white text-sm line-clamp-1 font-medium">
               {item?.title || "Watch Video"}
             </span>
           </div>
@@ -116,7 +117,7 @@ const VideoGrid: React.FC<VideoLayoutGridProps> = ({ navData, setActive }) => {
                       <div className="h-8 w-8 flex items-center justify-center rounded-full bg-white text-white">
                         <SVGComponent />
                       </div>
-                      <span className="text-white  text-lg font-medium">
+                      <span className="text-white text-lg font-medium">
                         {item?.title || "Watch Video"}
                       </span>
                     </div>

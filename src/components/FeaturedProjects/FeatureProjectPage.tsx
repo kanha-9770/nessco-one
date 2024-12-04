@@ -5,8 +5,6 @@ import gsap from "gsap";
 import { AboutItem, GridItem, Machine } from "../AboutHome/types/constant";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
-import Arrow from "../../../public/assets/Support/RedirectionArrowImg.svg";
-import LinkUrl from "../LinkUrl";
 
 interface HomeLayoutProps {
   aboutData: AboutItem;

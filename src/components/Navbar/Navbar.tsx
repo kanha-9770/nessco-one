@@ -211,7 +211,7 @@ function Navbar({ className, navData }: NavbarProps) {
                     {item?.name}
                     
                     {item.hasComponent && (
-                      <button className="text-gray-500 pr-2 text-2xl">
+                      <button className="text-gray-500 pr-2">
                         {expandedItem === item?.name ? (
                           <MinusSvg />
                         ) : (

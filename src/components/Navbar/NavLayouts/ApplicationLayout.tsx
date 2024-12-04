@@ -52,7 +52,7 @@ export default function ApplicationLayout({
       <div className="md:w-[70%] px-4 pt-4 relative">
         <div className="w-full grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-4 mb-4 md:mb-0 md:mr-4">
           <Link
-            className="flex flex-col items-center justify-center  invert-0 cursor-pointer"
+            className="flex flex-col lg:hidden items-center justify-center  invert-0 cursor-pointer"
             href={`/${countryCODE}/${languageCODE}/application`}
             onClick={() => setActive(null)}
           >
@@ -67,7 +67,7 @@ export default function ApplicationLayout({
               />
             </div>
             <span className="text-md font-medium text-center invert-0">
-              All applications
+              Applications
             </span>
           </Link>
           {applicationData.map((product, index) => (

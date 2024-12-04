@@ -12,7 +12,7 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({ isSubmitting, onClick }) =>
     disabled={isSubmitting}
     onClick={onClick}
     aria-label="send message"
-    className="w-full py-[0.6rem] px-[0.5rem] text-[0.9rem] rounded-[0.3rem] bg-gradient-to-r from-[#483d73] to-[#6a5acd] text-white font-medium hover:from-[#6a5acd] hover:to-[#483d73] transition-all duration-300 shadow-md hover:shadow-lg"
+    className="w-full py-[0.6rem] px-[0.5rem] text-[0.9rem] rounded-[0.8rem] bg-gradient-to-t lg:hover:from-black lg:hover:to-[#483d73] text-white font-medium from-[#483d73] to-black transition-all duration-300 shadow-md hover:shadow-lg "
   >
     {isSubmitting ? "Submitting..." : "Send Message"}
   </Button>

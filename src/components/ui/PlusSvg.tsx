@@ -4,7 +4,7 @@ const PlusSvg = (props) => (
     xmlns="http://www.w3.org/2000/svg"
     width={164}
     height={164}
-    className="h-3 w-3"
+    className="h-4 w-4"
     viewBox="-1.82 -1.82 49.04 49.04"
     xmlSpace="preserve"
     stroke="#000"

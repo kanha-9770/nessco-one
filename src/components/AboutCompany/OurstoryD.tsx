@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from 'react';
 import Head from 'next/head';
-import Image from 'next/image';
 // import bg from '../../../public/assets/about/nesscobg.avif'; // Add your background image path here
 import styles from './Story.module.css';
 import { OurCompanyItem } from "./types/constant";

@@ -188,7 +188,7 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
               </div>
               <video
                 id="background-video"
-                className="w-full h-full object-cover rounded-xl bg-yellow-200"
+                className="w-full h-full object-cover rounded-xl bg-gray-100"
                 autoPlay
                 loop
                 muted

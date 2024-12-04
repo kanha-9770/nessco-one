@@ -134,7 +134,7 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                   ))}
                 </div>
               </div>
-              <div className="flex flex-col  w-[11%] relative left-[10rem] lg:-left-14 md:left-[18rem] lg:top-0 top-[0.65rem] md:top-16">
+              <div className="flex flex-col  w-[11%] relative left-[10rem] lg:-left-14 md:left-[18rem] lg:top-0 top-[0.50rem] md:top-16">
                 <h4
                   className={`font-semibold font-poppins text-sm md:text-xl lg:text-sm ${textColor}`}
                 >
@@ -183,13 +183,13 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                   </div>
                 </div>
 
-                <div className="w-[20%] bg-red-100 lg:ml-16 md:ml-[13rem] ml-10 ">
+                <div className="w-[20%]  lg:ml-16 md:ml-[13rem] ml-5 ">
                   <h4
                     className={`font-semibold text-sm md:text-xl lg:text-sm font-poppins  ${textColor}`}
                   >
                     {footerData?.linkSecond}
                   </h4>
-                  <div className="font-poppins text-xs lg:text-xs md:text-lg font-light space-y-10 hover:text-red-600 lg:w-[8rem] w-[7rem] md:w-[5rem] ">
+                  <div className="font-poppins text-xs lg:text-xs md:text-lg font-light space-y-10 hover:text-red-600 lg:w-[8rem] w-[8rem] md:w-[5rem] ">
                     {footerData?.linkstwo?.map((link, index) => (
                       <LinkUrl key={index} href={`${link.ref}`} passHref>
                         <p className={`${styles.footeratags}  ${textColor}`}>
@@ -200,13 +200,13 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                   </div>
                 </div>
 
-                <div className="flex flex-col  w-[30%] lg:ml-20 md:ml-[8rem] ml-10 ">
+                <div className="flex flex-col  w-[30%] lg:ml-20 md:ml-[8rem] ml-14 ">
                   <h4
                     className={`font-semibold font-poppins text-sm md:text-xl lg:text-sm   ${textColor}`}
                   >
                     {footerData?.serviceTitle}
                   </h4>
-                  <div className="font-poppins hover:text-red-600 font-light text-xs lg:text-xs md:text-lg w-[8.5rem] lg:w-[9rem] md:w-[13rem]  cursor-pointer">
+                  <div className="font-poppins hover:text-red-600 font-light text-xs lg:text-xs md:text-lg w-[7rem] lg:w-[9rem] md:w-[13rem]  cursor-pointer">
                     {footerData?.services?.map((service, index) => (
                       <LinkUrl key={index} href={`${service.ref}`} passHref>
                         <p className={`${styles.footeratags}  ${textColor}`}>
@@ -229,29 +229,15 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                     placeholder="Enter your email address"
                     className=" lg:w-[24rem] w-[22rem] md:w-[47rem]  mt-2 h-[2.3rem] rounded-xl border p-2 border-black font-poppins font-light text-xs"
                   />
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="-ml-10 lg:mt-[0.3rem] mt-3 lg:h-[2.7rem] lg:w-[2.7rem] h-[2rem] w-[1.5rem] "
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g
-                      id="SVGRepo_tracerCarrier"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    ></g>
-                    <g id="SVGRepo_iconCarrier">
-                      {" "}
-                      <path
-                        d="M10.3009 13.6949L20.102 3.89742M10.5795 14.1355L12.8019 18.5804C13.339 19.6545 13.6075 20.1916 13.9458 20.3356C14.2394 20.4606 14.575 20.4379 14.8492 20.2747C15.1651 20.0866 15.3591 19.5183 15.7472 18.3818L19.9463 6.08434C20.2845 5.09409 20.4535 4.59896 20.3378 4.27142C20.2371 3.98648 20.013 3.76234 19.7281 3.66167C19.4005 3.54595 18.9054 3.71502 17.9151 4.05315L5.61763 8.2523C4.48114 8.64037 3.91289 8.83441 3.72478 9.15032C3.56153 9.42447 3.53891 9.76007 3.66389 10.0536C3.80791 10.3919 4.34498 10.6605 5.41912 11.1975L9.86397 13.42C10.041 13.5085 10.1295 13.5527 10.2061 13.6118C10.2742 13.6643 10.3352 13.7253 10.3876 13.7933C10.4468 13.87 10.491 13.9585 10.5795 14.1355Z"
-                        stroke="#000000"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      ></path>{" "}
-                    </g>
-                  </svg>
+                 
+                    <Image
+                    src="https://assets.nesscoindustries.com/public/assets/footer/send-button.svg"
+                    alt="send Button"
+                    width={25}
+                    height={25}
+                    className="-ml-[2.5rem] mt-2"
+                    />
+                   
                 </div>
 
                 <div className="flex lg:flex-col ">

@@ -23,8 +23,8 @@ const Clientele: React.FC <AboutLayoutProps>=({clienteleData}) => {
     const isMobile = window.innerWidth <= 768; // You can adjust the breakpoint
    
 
-    const mobileX = window.innerWidth * 0.1; // 10% of the screen width for mobile
-    const desktopX = window.innerWidth * 0.2; // 20% of the screen width for desktop
+    const mobileX = 40;  // Movement for mobile screens
+    const desktopX = 170; // Movement for desktop screens
 
     const movementX = isMobile ? mobileX : desktopX;
 

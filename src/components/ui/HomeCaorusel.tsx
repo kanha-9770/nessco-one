@@ -60,11 +60,11 @@ const VideoCarousel: React.FC<VideoCarouselProps> = ({ heroData }) => {
             >
               Your browser does not support the video tag.
             </video>
-            <div className="absolute top-[4rem] lg:top-1/3 left-20 text-white z-10">
-              <h1 className="lg:text-5xl md:text-5xl sm:text-4xl text-3xl font-semibold mb-2">
+            <div className="absolute top-[4rem] lg:top-1/3 lg:left-20  text-white z-10">
+              <h1 className="lg:text-5xl md:text-5xl sm:text-4xl text-3xl text-center font-semibold mb-2">
                 {video?.headline}
               </h1>
-              <p className="lg:text-4xl md:text-4xl sm:text-3xl text-xl italic">
+              <p className="lg:text-4xl md:text-4xl text-center sm:text-3xl text-xl italic w-full">
                 {video?.subheadline}
               </p>
             </div>

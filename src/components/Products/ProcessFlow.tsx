@@ -103,7 +103,7 @@ const ProcessFlow: React.FC<ProcessFlowProps> = ({ page4Data }) => {
           {page4Data?.container?.map((item, idx) => (
             <div key={idx} className="flex lg:my-[3rem] my-[2vh] items-center">
               <div className="lg:w-[25%] w-[40%] relative flex lg:pl-[2rem]">
-                <div className="absolute bottom-0 left-0 right-0 z-30 flex justify-center">
+                {/* <div className="absolute bottom-0 left-0 right-0 z-30 flex justify-center">
                   <h3
                     className="text-black text-xs font-semibold bg-white p-2 rounded-xl"
                     ref={(el) => {
@@ -112,7 +112,7 @@ const ProcessFlow: React.FC<ProcessFlowProps> = ({ page4Data }) => {
                   >
                     {item?.title2}
                   </h3>
-                </div>
+                </div> */}
                 <div
                   className="lg:w-[9rem] w-[7rem] bg-[#f5f5f5] rounded-xl z-20 h-[7rem] lg:h-[9rem] border-[1px] overflow-hidden cursor-pointer"
                   ref={(el) => {

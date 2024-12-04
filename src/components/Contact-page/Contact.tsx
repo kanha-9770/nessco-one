@@ -156,7 +156,6 @@ import Image from "next/image";
 import styles from "./contact.module.css";
 import { ContactItem } from "./types/constant";
 import { useState } from "react";
-import LinkUrl from "../LinkUrl";
 
 import * as z from "zod";
 import {

@@ -26,25 +26,17 @@ const Header: React.FC<CardsProps> = ({
   cards = [],
   type,
 }) => {
-  function convertToKebabCase(input) {
-    return input
-      .trim() // Remove leading and trailing spaces
-      .replace(/\s+/g, "-") // Replace one or more spaces with a single hyphen
-      .toLowerCase(); // Convert the string to lowercase
-  }
+  
   const pathname = usePathname();
 
   // Split the pathname by '/' and filter out any empty strings
   const segments = pathname.split("/").filter((segment) => segment !== "");
 
   // Find the index of 'in/en' in the array
-  const indexOfInEn = segments.indexOf("in") + 1; // Assuming 'in/en' is always part of the URL
 
   // Get the segments after 'in/en' (excluding 'in' and 'en')
-  const lastSegments = segments.slice(indexOfInEn + 1);
 
   // Prepare the dynamic URL for the Link component
-  const href = `/${lastSegments.slice(0, 3).join("/")}`; // Ensure it joins up to 3 segments
 
   return (
     <>

@@ -102,12 +102,25 @@ const ProductLayout: React.FC<IndividualProductsDataProps> = ({
           </div>
         </div>
         <div className="lg:w-[33%] sticky">
-          <SignupFormDemoProduct related_product={machine?.related_product} />
+          <SignupFormDemoProduct
+            related_product={machine?.related_product}
+            name={machine?.name}
+            image={machine?.image}
+            mimage={machine?.mimage}
+            product_heading={machine?.first_name}
+          />{" "}
         </div>
       </div>
 
       <div className="lg:hidden px-4 pt-10">
-        <SignupFormDemoProduct related_product={machine?.related_product} />
+        <SignupFormDemoProduct
+          related_product={machine?.related_product}
+          name={machine?.name}
+          image={machine?.image}
+          mimage={machine?.mimage}
+          product_heading={machine?.first_name}
+
+        />
       </div>
       <div className="lg:mt-24 -mt-44" ref={relatedProductsRef}>
         <RelatedProducts related_product={machine?.related_product} />

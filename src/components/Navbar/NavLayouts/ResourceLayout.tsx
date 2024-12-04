@@ -16,12 +16,7 @@ import Lightbulb from "../../../../public/assets/ResourcesNavbar/lightbulb.json"
 
 const image = [Faq, Lightbulb, News, Blogs, Staff];
 
-type SupportItem = {
-  title: string;
-  link: string;
-  image: string;
-  bgPic: string;
-};
+
 
 interface ResourceGridProps {
   navData: NavbarData;
@@ -70,13 +65,6 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData, setActive }) => {
 
   const shouldShowArrows = DataBankItem.length > 5;
 
-  const chunkItems = (arr: SupportItem[], size: number): SupportItem[][] =>
-    arr.length
-      ? [arr.slice(0, size), ...chunkItems(arr.slice(size), size)]
-      : [];
-
-  const paginatedItems = chunkItems(DataBankItem, 5);
-
   return (
     <div className="relative flex flex-row items-center mx-auto max-w-screen-2xl justify-center lg:p-4 w-full">
       {/* desktop view */}
@@ -85,7 +73,9 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData, setActive }) => {
           className="h-12 w-16 z-30 cursor-pointer rounded-full hidden lg:flex items-center justify-center disabled:opacity-50"
           onClick={scrollLeft}
           disabled={!canScrollLeft}
-        ></button>
+        >
+          ←
+        </button>
       )}
       <div
         className={`hidden lg:flex overflow-x-auto ${
@@ -130,58 +120,60 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData, setActive }) => {
           className="h-12 w-16 z-30 cursor-pointer rounded-full hidden lg:flex items-center justify-center disabled:opacity-50"
           onClick={scrollRight}
           disabled={!canScrollRight}
-        ></button>
+        >
+          →
+        </button>
       )}
 
       {/* mobile view */}
-      <div className="relative w-full flex lg:hidden flex-col items-center overflow-hidden">
-        <div
-          className="w-full snap-x snap-mandatory overflow-x-auto flex"
-          ref={carouselRef}
-          onScroll={checkScrollability}
-        >
-          {DataBankItem?.map((item, index) => (
-            <div key={index} className="snap-start min-w-full px-4 py-2">
-              <Link
-                href={`/${countryCODE}/${languageCODE}/${item.link}`}
-                onClick={() => setActive(null)}
-                className="w-full bg-white rounded-xl border border-gray-100 shadow-sm flex items-center p-4 gap-4"
+      <div className="w-full lg:hidden">
+        <div className="flex flex-col space-y-0 px-4 py-2">
+          <Link
+            href={`/${countryCODE}/${languageCODE}/about`}
+            onClick={() => setActive(null)}
+            className="flex items-center border-b py-1 space-x-2 cursor-pointer pl-2"
+          >
+            <div className="w-8 h-8 rounded-xl flex items-center justify-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
-                <div className="flex-shrink-0 w-16 h-16 bg-[#483d732a] rounded-xl flex justify-center items-center">
-                  <LottieAnimation
-                    className="h-12 w-12"
-                    animationData={image[index % image.length]}
-                  />
-                </div>
-                <p className="font-poppins font-medium text-base flex-1 text-gray-800 hover:text-[#483d78]">
-                  {item?.title}
-                </p>
-              </Link>
+                <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+                <path d="m21 3-9 9" />
+                <path d="M15 3h6v6" />
+              </svg>
             </div>
+            <p className="text-xl font-poppins pl-4 font-medium">All Resources</p>
+          </Link>
+          {DataBankItem?.map((item, index) => (
+            <Link
+              key={index}
+              href={`/${countryCODE}/${languageCODE}/${item.link}`}
+              onClick={() => setActive(null)}
+              className="w-full space-x-4 py-1 border-b flex items-center  "
+            >
+              <div className="flex-shrink-0 h-12 w-12  flex justify-center items-center">
+                <LottieAnimation
+                  className="h-full w-full"
+                  animationData={image[index % image.length]}
+                />
+              </div>
+              <p className="font-poppins font-medium text-base flex-1 text-gray-800 hover:text-[#483d78]">
+                {item?.title}
+              </p>
+            </Link>
           ))}
         </div>
-        {shouldShowArrows && (
-          <div className="flex justify-center w-full py-4">
-            <button
-              className="h-10 w-10 rounded-full flex items-center justify-center bg-gray-100 mr-2 disabled:opacity-50"
-              onClick={scrollLeft}
-              disabled={!canScrollLeft}
-            >
-              ←
-            </button>
-            <button
-              className="h-10 w-10 rounded-full flex items-center justify-center bg-gray-100 ml-2 disabled:opacity-50"
-              onClick={scrollRight}
-              disabled={!canScrollRight}
-            >
-              →
-            </button>
-          </div>
-        )}
       </div>
     </div>
   );
 };
 
 export default ResourceGrid;
-

@@ -30,7 +30,7 @@ const Home: React.FC<AboutLayoutProps> = ({ companyData }) => {
   return (
     <>
       <div className="mb-14  lg:mt-0 w-full font-poppins font-regular overflow-hidden">
-        <div className="w-full lg:h-screen h-[35rem] relative flex items-center justify-center">
+        <div className="w-full lg:h-screen h-[44rem] relative flex items-center justify-center">
           <video
             id="background-video"
             className="w-full lg:h-screen h-full  object-cover"
@@ -46,7 +46,7 @@ const Home: React.FC<AboutLayoutProps> = ({ companyData }) => {
           <div className="absolute bottom-0 w-full h-24 bg-gradient-to-t from-black to-transparent"></div>
 
           <div className="absolute top-0 h-full w-full bg-black opacity-50"></div>
-          <div className="absolute lg:top-28 top-16 space-y-4 flex  flex-col  items-center w-full">
+          <div className="absolute lg:top-28 top-20 mt-10 space-y-4 flex  flex-col  items-center w-full ">
             <h1 className="text-white font-semibold lg:text-3xl text-4xl">
               {homecompanyData?.title}
             </h1>

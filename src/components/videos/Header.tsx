@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { VideosItem } from "./types/constant";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search, X, Filter, Play } from "lucide-react";
+import { Search,Filter} from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ScrollArea } from "../ui/ScrollArea";
 import { Checkbox } from "../ui/CheckBox";
@@ -17,16 +17,12 @@ interface VideosProps {
 
 const VideoGallery: React.FC<VideosProps> = ({ videosData }) => {
   const Header = videosData?.Videos[0]?.Header;
-  const [isOpen, setIsOpen] = useState(false);
-  const [currentVideoUrl, setCurrentVideoUrl] = useState("");
-  const iframeRef = useRef<HTMLIFrameElement>(null);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([
     "All Categories",
   ]);
   const [selectedApplications, setSelectedApplications] = useState<string[]>([
     "All Categories",
   ]);
-  const [searchTerm, setSearchTerm] = useState("");
   const [categorySearch, setCategorySearch] = useState("");
 
   const [tempSelectedCategories, setTempSelectedCategories] = useState<
@@ -36,13 +32,6 @@ const VideoGallery: React.FC<VideosProps> = ({ videosData }) => {
     string[]
   >(["All Categories"]);
 
-  useEffect(() => {
-    if (isOpen && iframeRef.current) {
-      const videoUrl = new URL(currentVideoUrl);
-      videoUrl.searchParams.set("autoplay", "1");
-      iframeRef.current.src = videoUrl.toString();
-    }
-  }, [isOpen, currentVideoUrl]);
 
   const filteredVideos = Header?.VideosRef?.filter((video) => {
     const categoryMatch =
@@ -51,10 +40,8 @@ const VideoGallery: React.FC<VideosProps> = ({ videosData }) => {
     const applicationMatch =
       selectedApplications?.includes("All Categories") ||
       selectedApplications?.includes(video?.tag);
-    const searchMatch = video?.title
-      .toLowerCase()
-      .includes(searchTerm?.toLowerCase());
-    return categoryMatch && applicationMatch && searchMatch;
+   
+    return categoryMatch && applicationMatch ;
   });
 
   const handleSelectionChange = (
@@ -118,9 +105,9 @@ const VideoGallery: React.FC<VideosProps> = ({ videosData }) => {
           </svg>
         </div>
         <div className="relative">
-          <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+          <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
           <Input
-            placeholder="Search Category"
+            placeholder="Search..."
             value={categorySearch}
             onChange={(e) => setCategorySearch(e.target.value)}
             className="pl-9 rounded-[1rem] border-gray-200"
@@ -210,9 +197,9 @@ const VideoGallery: React.FC<VideosProps> = ({ videosData }) => {
         <div className="flex-grow">
           <div className="bg-white rounded-xl p-5 mt-4 lg:mt-0">
             <div className="flex justify-between items-center mb-4">
-              <h1 className="text-[#483d73] text-2xl font-poppins font-medium mb-6">
+              <h1 className="text-[#483d73] text-2xl font-poppins font-medium mb-2">
                 {Header?.title}
-                <div className="lg:border-t-[0.2rem] border-t-2 border-solid border-red-700 lg:w-[8vw] w-[18vw] mt-[0.6rem]"></div>
+                <div className="lg:border-t-[0.2rem] border-t-2 border-solid border-red-700 lg:w-[8vw] w-[18vw] mt-[0.4rem]"></div>
               </h1>
               <Dialog>
                 <DialogTrigger asChild>
@@ -251,7 +238,7 @@ const VideoGallery: React.FC<VideosProps> = ({ videosData }) => {
                 </DialogContent>
               </Dialog>
             </div>
-            <ScrollArea className="h-[calc(100vh-200px)] pr-4">
+            <ScrollArea className="h-[calc(100vh-100px)] pr-4">
               <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
                 {filteredVideos?.map((item, idx) => (
                   <Dialog key={idx}>
@@ -266,10 +253,10 @@ const VideoGallery: React.FC<VideosProps> = ({ videosData }) => {
                           className="w-full h-full object-cover rounded-[1rem] shadow-lg"
                         />
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <YouTube className="w-16 h-16 text-white opacity-100 " />
+                          <YouTube className="w-12 h-12 text-white opacity-100 " />
                         </div>
                         <div className="absolute top-0 left-0 right-0 p-4 text-white">
-                          <h3 className="text-lg font-semibold truncate">
+                          <h3 className="text-md font-medium truncate">
                             {item.title}
                           </h3>
                         </div>

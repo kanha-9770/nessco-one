@@ -164,7 +164,7 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
                   <Image
                     src={item?.icon || "/path/to/fallback-image.jpg"}
                     alt={item?.title}
-                    className="rounded-xl cursor-pointer h-full w-full object-cover transform lg:hover:scale-80 transition-transform duration-200"
+                    className="cursor-pointer h-full w-full object-cover transform lg:hover:scale-80 transition-transform duration-200"
                     width={24}
                     height={24}
                     priority={index < 4}
@@ -172,7 +172,7 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
                   />
                 </div>
                 <div className="w-[80%]">
-                  <h3 className="text-sm sm:text-md text-black font-semibold mb-0">
+                  <h3 className="text-sm sm:text-md text-black font-semibold">
                     {item?.title}
                   </h3>
                   <p className="text-xs hidden lg:flex font-regular text-black pr-2">
@@ -181,13 +181,13 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
                 </div>
               </div>
               <div
-                className={`flex border-b lg:hidden h-10 lg:hover:scale-80 transition-transform duration-200 items-center lg:p-4 lg:rounded-3xl lg:mb-2`}
+                className={`flex border-b lg:hidden h-10 transition-transform duration-200 items-center`}
               >
-                <div className={`mx-3 flex text-2xl ${item.textcolor}`}>
+                <div className={`mx-3 -mt-1 h-8 w-auto flex text-2xl ${item.textcolor}`}>
                   <Image
                     src={item?.icon || "/path/to/fallback-image.jpg"}
                     alt={item?.title}
-                    className="cursor-pointer h-8 w-auto object-cover brightness-0"
+                    className="cursor-pointer h-full w-full object-cover brightness-0"
                     width={24}
                     height={24}
                     priority={index < 4}
@@ -195,12 +195,9 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
                   />
                 </div>
                 <div className="w-full pl-3">
-                  <h3 className="text-xl text-black mb-0 font-normal font-poppins">
+                  <h3 className="text-xl text-black font-normal font-poppins">
                     {item?.title}
                   </h3>
-                  <p className="text-xs hidden lg:flex text-black pr-2">
-                    {item?.description}
-                  </p>
                 </div>
               </div>
             </Link>

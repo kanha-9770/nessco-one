@@ -1,7 +1,7 @@
 import * as React from "react";
 const MinusSvg = (props) => (
   <svg
-    className="h-3 w-3"
+    className="h-6 w-6"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 459.313 459.314"
     xmlSpace="preserve"

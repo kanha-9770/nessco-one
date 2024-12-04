@@ -122,9 +122,9 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
       )}
       {/* mobile view */}
 
-      <div className="relative px-4 bg-green-300 w-full h-full flex lg:hidden flex-col items-center">
+      <div className="relative w-full h-full flex lg:hidden flex-col items-center">
         <Link
-          className="h-14 w-full lg:hidden border-b flex items-center space-x-2"
+          className="h-14 w-full lg:hidden border-b flex items-center space-x-2 px-4"
           href={`/${countryCODE}/${languageCODE}/support`}
           onClick={() => setActive(null)}
         >
@@ -148,27 +148,27 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
           <span className="text-black font-medium pl-4 text-xl">Support</span>
         </Link>
         <div
-          className="w-full py-2"
+          className="w-full"
           ref={carouselRef}
           onScroll={checkScrollability}
         >
           <div className="flex space-y-2">
             {paginatedItems?.map((group, groupIndex) => (
-              <div key={`slide-${groupIndex}`} className="w-full p-1">
+              <div key={`slide-${groupIndex}`} className="w-full">
                 {group?.map((item, itemIndex) => (
                   <Link
                     key={itemIndex}
                     href={`/${countryCODE}/${languageCODE}/support/${item.link}`}
                     onClick={() => setActive(null)}
-                    className="relative bg-white flex items-center p-2"
+                    className="relative flex items-center border-b p-1"
                   >
-                    <div className="bg-white flex justify-center items-center">
+                    <div className="flex justify-center items-center">
                       <LottieAnimation
                         className="h-12"
                         animationData={item?.image}
                       ></LottieAnimation>
                     </div>
-                    <p className="font-poppins text-center font-normal text-xl text-black">
+                    <p className="font-poppins text-center font-normal text-xl pl-4 text-black">
                       {item?.title}
                     </p>
                   </Link>
@@ -191,7 +191,7 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
             ></button>
           </div>
         )}
-        <div className="flex lg:hidden flex-col w-full mt-4 relative">
+        <div className="flex lg:hidden flex-col w-full mt-4 relative px-4">
           <p className="invert-0 pl-4 text-lg font-poppins font-medium">
             Give us a Call:
           </p>
@@ -235,7 +235,7 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
             </div>
           </div>
         </div>
-        <div className="flex items-center lg:hidden w-full mt-4">
+        <div className="flex items-center lg:hidden w-full mt-4 px-4">
           <Image
             src="https://assets.nesscoindustries.com/public/assets/contact/email-icon.webp"
             alt="email"

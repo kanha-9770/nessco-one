@@ -80,7 +80,7 @@ export const blogPosts: BlogPost[] = [
       header: {
         heading: "Nessco's Sustainable Packaging Revolution",
         subheading: "Advancing the Industry with Innovative Machinery",
-        headingImage: "/placeholder.svg?height=400&width=800"
+        headingImage: ""
       }
     },
     {
@@ -170,7 +170,7 @@ export const blogPosts: BlogPost[] = [
     {
         id: "3",
         title: "Nessco Revolutionizes Dome Lid Manufacturing with Advanced Technology for the Japanese Market",
-        slug: "Nessco Revolutionizes Dome Lid Manufacturing with Advanced Technology for the Japanese Market",
+        slug: "nessco-unveils-advanced-servo-paper-cup-machine-and-two-compartment-rectangular-bowl-making-technology-a-bold-step-towards-sustainability",
         date: "2024-11-29",
         author: {
           id: "author-1",
@@ -309,7 +309,316 @@ export const blogPosts: BlogPost[] = [
           headingImage: "/images/headers/nessco-japan.jpg", // Replace with actual path to the header image
           subheading: "Driving sustainability and innovation in Japan's packaging industry.",
         },
-      }
+      },
+
+      {
+        id: "5",
+        title: "Nessco Shines at Drupa Germany with Sustainable Packaging Innovations",
+        slug: "nessco-creates-waves-at-drupa-germany-with-cutting-edge-packaging-solutions",
+        date: "2024-12-04",
+        author: {
+          name: "Nessco India",
+          avatar: "https://example.com/avatar.png", // Replace with actual URL if available
+        },
+        tags: [
+          { id: "1", name: "Sustainability" },
+          { id: "2", name: "Packaging" },
+          { id: "3", name: "Drupa Germany" },
+        ],
+        excerpt: "Nessco showcases its innovative sustainable packaging machinery at Drupa Germany, setting global benchmarks with cutting-edge solutions.",
+        content: [
+          {
+            type: "section",
+            heading: "Nessco’s Participation at Drupa Germany",
+            content: {
+              intro: "Nessco has made a significant impact at Drupa Germany, showcasing its latest innovations in sustainable packaging machinery. With an overwhelming response from industry leaders, Nessco is setting a new benchmark in the global packaging industry, reaffirming its position as a pioneer in delivering world-class solutions.",
+              blocks: [
+                {
+                  type: "list",
+                  heading: "Highlights of the Showcase",
+                  content: {
+                    format: "number",
+                    items: [
+                      {
+                        text: "Carton Erecting Machines: Engineered for precision and speed, these machines are designed to meet the growing demands of efficient and sustainable carton packaging.",
+                      },
+                      {
+                        text: "Servo-Driven Machines with Vision Camera Inspection: Setting new standards for quality, these advanced systems ensure perfect cups every time, combining high-speed operations with impeccable accuracy.",
+                      },
+                      {
+                        text: "Flat Rectangular Bowl Machine: A game-changer in packaging, this machine is designed to cater to the rising demand for rectangular eco-friendly packaging solutions, offering superior performance and sustainability.",
+                      },
+                    ],
+                  },
+                },
+                {
+                  type: "text",
+                  heading: "Revolutionizing the Packaging Industry",
+                  content:
+                    "Nessco’s participation at Drupa Germany marks a milestone moment for the company and the packaging industry. By introducing innovative solutions tailored to the needs of the global market, Nessco continues to drive advancements in sustainable packaging technology. The overwhelming response at the event is a testament to Nessco’s ability to deliver cutting-edge machinery that aligns with the industry’s focus on precision, sustainability, and efficiency.",
+                },
+                {
+                  type: "text",
+                  heading: "A Commitment to Excellence",
+                  content:
+                    "From carton erecting to vision inspection technology, Nessco’s solutions are designed to redefine the packaging process, ensuring high-quality output with every product. With its flat rectangular bowl machines, Nessco is catering to the growing demand for versatile and eco-conscious packaging, making a strong case for the future of sustainable manufacturing.",
+                },
+                {
+                  type: "text",
+                  heading: "Setting a Global Standard",
+                  content:
+                    "By receiving an enthusiastic response in Germany, Nessco has once again proven its ability to provide world-class packaging solutions. This milestone solidifies its reputation as a global leader in sustainable packaging machinery, ready to transform industries across the world.",
+                },
+              ],
+            },
+          },
+        ],
+        readingTime: 5,
+        header: {
+          heading: "Nessco at Drupa Germany",
+          headingImage: "https://assets.nesscoindustries.com/public/assets/resources/media-room/drupa24-booth.webp", // Replace with actual URL if available
+          subheading: "Innovations in Sustainable Packaging Machinery",
+        },
+      },
+
+      {
+        id: "6",
+        title: "Nessco Revolutionizes Food Packaging at FOOMA Japan",
+        slug: "nessco-unveils-rectangular-bowl-machine-at-fooma-japan-eyes-bold-expansion-in-japanese-market",
+        date: "2024-12-04",
+        author: {
+          id: "author-1",
+          name: "Nessco India",
+          avatar: "https://example.com/avatar.png", // Replace with actual URL if available
+        },
+        tags: [
+          { id: "1", name: "Sustainability" },
+          { id: "2", name: "Packaging" },
+          { id: "3", name: "FOOMA Japan" },
+        ],
+        excerpt: "Nessco launched its innovative Rectangular Bowl Machine at FOOMA Japan, setting a new benchmark in sustainable food packaging solutions.",
+        content: [
+          {
+            type: "section",
+            content: {
+              intro: "At the renowned FOOMA Japan, Nessco made headlines with the launch of its innovative Rectangular Bowl Machine, a significant step towards transforming the food packaging industry in Japan. This advanced machine is engineered to meet the rising demand for eco-friendly rectangular packaging solutions, further establishing Nessco as a global leader in sustainable packaging machinery.",
+              blocks: [
+                {
+                  type: "list",
+                  heading: "Revolutionizing Food Packaging in Japan",
+                  content: {
+                    format: "disc",
+                    items: [
+                      {
+                        text: "High-Speed and Precision Performance: Ensuring exceptional output quality and efficiency.",
+                      },
+                      {
+                        text: "Sustainable Manufacturing: Designed for biodegradable, paper-based packaging products, aligning with global and Japanese sustainability goals.",
+                      },
+                      {
+                        text: "Advanced Technology: Incorporates cutting-edge features for reliable and seamless operation, catering to the high standards of Japan’s food packaging industry.",
+                      },
+                    ],
+                  },
+                },
+                {
+                  type: "text",
+                  heading: "Aggressive Plans for Future Launches",
+                  content:
+                    "Nessco is just getting started. The company is planning to launch additional servo-driven paper cup machines and two-compartment machines, which are expected to further disrupt the food packaging market with their superior performance and eco-friendly designs. These machines are poised to address the growing need for sustainable packaging solutions, especially in the food industry, where biodegradable products are rapidly gaining traction.",
+                },
+                {
+                  type: "text",
+                  heading: "A Vision for Biodegradable Solutions",
+                  content:
+                    "Beyond machinery, Nessco is committed to advancing paper-based biodegradable products for the food industry. With its state-of-the-art machines, Nessco is enabling manufacturers to replace traditional plastic packaging with eco-conscious alternatives that reduce environmental impact while maintaining the highest standards of quality and durability.",
+                },
+                {
+                  type: "text",
+                  heading: "More Innovations on the Horizon",
+                  content:
+                    "As part of its aggressive growth strategy, Nessco is planning several new launches in the coming months, including machines designed for customized paper packaging solutions. These innovations are set to further strengthen Nessco’s foothold in the Japanese market and empower local manufacturers with cutting-edge, sustainable technology.",
+                },
+                {
+                  type: "text",
+                  heading: "A Sustainable Future for Japan",
+                  content:
+                    "The overwhelming response to the Rectangular Bowl Machine launch is a testament to Nessco’s ability to meet market demands while driving sustainability. By combining innovation, quality, and eco-conscious practices, Nessco is not only shaping the future of packaging but also supporting Japan’s efforts to transition toward a greener, more sustainable future.",
+                },
+              ],
+            },
+          },
+        ],
+        readingTime: 6,
+        header: {
+          id: "header-2",
+          heading: "Nessco at FOOMA Japan",
+          headingImage: "https://assets.nesscoindustries.com/public/assets/resources/media-room/nessco-fooma-japan-24-visitor3.webp", // Replace with actual URL if available
+          subheading: "Innovative Rectangular Bowl Machine and Sustainable Packaging Solutions",
+        },
+      },
+
+      {
+        id: "7",
+        title: "Nessco Unveils High-Speed Paper Cup Machine at K Show Germany",
+        slug: "nessco-shines-at-k-show-germany-with-new-paper-cup-machine-launch-and-sustainability-focus",
+        date: "2024-12-04",
+        author: {
+          id: "author-1",
+          name: "Nessco India",
+          avatar: "https://example.com/avatar.png", // Replace with actual URL if available
+        },
+        tags: [
+          { id: "1", name: "Sustainability" },
+          { id: "2", name: "Packaging" },
+          { id: "3", name: "K Show Germany" },
+        ],
+        excerpt: "Nessco showcases its cutting-edge High-Speed Paper Cup Machine at K Show Germany, emphasizing sustainability and innovation in the packaging industry.",
+        content: [
+          {
+            type: "section",
+            content: {
+              intro: "At the prestigious K Show Germany, Nessco showcased its commitment to driving the future of sustainable packaging with the launch of its New Model of High-Speed Paper Cup Machine. This cutting-edge machine is designed to deliver exceptional performance, empowering manufacturers to meet the growing demand for eco-friendly packaging solutions.",
+              blocks: [
+                {
+                  type: "text",
+                  heading: "Creating Awareness in the Paper Industry",
+                  content:
+                    "In addition to the product launch, Nessco took the opportunity to raise awareness about the paper packaging industry, emphasizing its critical role in replacing single-use plastics with biodegradable and sustainable alternatives. By engaging with industry professionals and thought leaders, Nessco highlighted the importance of adopting environmentally responsible practices in the packaging sector.",
+                },
+                {
+                  type: "text",
+                  heading: "Converting Plastic to Paper: A New Era",
+                  content:
+                    "One of the key focuses of Nessco’s participation at the K Show was the conversion of businesses from the plastic industry to the paper industry. With insightful discussions, live demonstrations, and practical solutions, Nessco successfully demonstrated how manufacturers can transition to paper-based packaging, aligning with global sustainability goals and consumer preferences.",
+                },
+                {
+                  type: "text",
+                  heading: "Magazine Coverage and Feedback Videos",
+                  content:
+                    "Nessco’s impactful presence at the K Show garnered widespread attention, with coverage in leading industry magazines that highlighted the company’s innovations and thought leadership.",
+                },
+                {
+                  type: "text",
+                  heading: "Driving the Future of Sustainable Packaging",
+                  content:
+                    "The new model paper cup machine, designed for high precision and efficiency, reinforces Nessco’s commitment to delivering world-class solutions for the food and beverage industry. By combining innovation with sustainability, Nessco continues to empower businesses to embrace eco-conscious practices without compromising on quality or performance.",
+                },
+                {
+                  type: "text",
+                  heading: "A Bold Step Forward",
+                  content:
+                    "Nessco’s participation at the K Show Germany marks a significant milestone in its journey to revolutionize the packaging industry. With a clear vision and cutting-edge technology, Nessco is not just launching machines but also inspiring a global shift toward sustainable manufacturing practices.",
+                },
+              ],
+            },
+          },
+        ],
+        readingTime: 6,
+        header: {
+          id: "header-3",
+          heading: "Nessco at K Show Germany",
+          headingImage: "https://example.com/k-show-launch.jpg", // Replace with actual URL if available
+          subheading: "Launching the High-Speed Paper Cup Machine and Driving Sustainability",
+        },
+      },
+
+      {
+        id: "8",
+        title: "Nessco Highlights Sustainable Food Packaging at Gulf Food Dubai",
+        slug: "nessco-highlights-sustainable-food-packaging-at-gulf-food-dubai",
+        date: "2024-12-04",
+        author: {
+          id: "author-1",
+          name: "Nessco India",
+          avatar: "https://example.com/avatar.png", // Replace with actual URL if available
+        },
+        tags: [
+          { id: "1", name: "Sustainability" },
+          { id: "2", name: "Food Packaging" },
+          { id: "3", name: "Gulf Food Dubai" },
+        ],
+        excerpt: "Nessco showcased its paper-based food packaging solutions at Gulf Food Dubai, emphasizing sustainability and innovation in the Middle East.",
+        content: [
+          {
+            type: "section",
+            content: {
+              intro: "At the prestigious Gulf Food event in Dubai, Nessco took the opportunity to highlight the future of food packaging with a strong focus on the scope of paper-based food packaging products. As the global demand for sustainable alternatives grows, Nessco presented its innovative solutions designed to meet the needs of a rapidly evolving industry.",
+              blocks: [
+                {
+                  type: "text",
+                  heading: "Driving Awareness for Sustainable Food Packaging",
+                  content:
+                    "Nessco emphasized the importance of transitioning from traditional materials to paper-based, biodegradable packaging solutions. Through engaging presentations and discussions, the company showcased how its cutting-edge machinery is helping manufacturers:",
+                },
+                {
+                  type: "list",
+                  content: {
+                    format: "disc",
+                    items: [
+                      {
+                        text: "Reduce reliance on plastics in food packaging.",
+                      },
+                      {
+                        text: "Embrace eco-friendly materials for a sustainable future.",
+                      },
+                      {
+                        text: "Cater to consumer preferences for environmentally conscious products.",
+                      },
+                    ],
+                  },
+                },
+                {
+                  type: "text",
+                  heading: "Upcoming Machine Launches Unveiled",
+                  content:
+                    "As part of its participation at Gulf Food, Nessco provided a sneak peek into its upcoming machine launches tailored to the demands of the Middle Eastern market. These include advanced machinery for producing:",
+                },
+                {
+                  type: "list",
+                  content: {
+                    format: "disc",
+                    items: [
+                      {
+                        text: "Paper cups with high-speed precision.",
+                      },
+                      {
+                        text: "Paper bowls and trays for versatile food packaging.",
+                      },
+                      {
+                        text: "Biodegradable food packaging solutions designed to meet the region’s sustainability goals.",
+                      },
+                    ],
+                  },
+                },
+                {
+                  type: "text",
+                  heading: "A Vision for Dubai and Beyond",
+                  content:
+                    "Nessco’s presence at Gulf Food underscores its commitment to leading the transformation of the food packaging industry in Dubai and the broader Middle East. By introducing innovative, eco-friendly technologies, Nessco is equipping businesses with the tools they need to embrace sustainability while maintaining top-tier production standards.",
+                },
+                {
+                  type: "text",
+                  heading: "Building Momentum for a Sustainable Future",
+                  content:
+                    "With its groundbreaking solutions, Nessco is setting a new benchmark for sustainable food packaging in the region. The company's participation at Gulf Food reinforces its mission to drive global awareness for sustainable practices and provide businesses with actionable solutions to reduce their environmental footprint.",
+                },
+              ],
+            },
+          },
+        ],
+        readingTime: 5,
+        header: {
+          id: "header-4",
+          heading: "Nessco at Gulf Food Dubai",
+          headingImage: "https://assets.nesscoindustries.com/public/assets/resources/media-room/nessco-gulfood-visitor6.webp", // Replace with actual URL if available
+          subheading: "Innovative Paper-Based Food Packaging Solutions for the Middle East",
+        },
+      },      
+      
+      
+
+
 
       
 

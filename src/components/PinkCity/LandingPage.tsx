@@ -12,7 +12,7 @@ const LandingPage:React.FC <AboutLayoutProps>= ({pinkcityData}) => {
   return (
     <div className="bg-gray-100 flex flex-col p-5  h-full lg:p-6 lg:h-[40rem] overflow-hidden">
       {/* Background Image Container */}
-      <div className="relative w-full lg:h-[27rem]  lg:mt-10 mt-16 lg:left-0 h-[36rem] bg-gray-50">
+      <div className="relative w-full lg:h-[27rem]  lg:mt-10 mt-16 lg:left-0 h-[36rem] bg-gray-50  ">
         <Image
           src="https://assets.nesscoindustries.com/public/assets/about/pinkcity/pinkcity-banner.webp"
           alt="Jaipur"
@@ -20,7 +20,7 @@ const LandingPage:React.FC <AboutLayoutProps>= ({pinkcityData}) => {
           width={600}
           priority
           objectPosition="right center"
-          className="object-cover w-full h-full rounded-lg lg:rounded-2xl "
+          className="object-cover w-full h-full rounded-xl lg:rounded-2xl "
         />
         {/* Gradient Overlay */}
         <div className="absolute bottom-0 left-0 w-full h-[30rem] bg-gradient-to-t from-black to-transparent rounded-b-lg lg:invisible"></div>
