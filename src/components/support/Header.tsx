@@ -27,10 +27,8 @@ const Header: React.FC<CardsProps> = ({
   type,
 }) => {
   
-  const pathname = usePathname();
 
   // Split the pathname by '/' and filter out any empty strings
-  const segments = pathname.split("/").filter((segment) => segment !== "");
 
   // Find the index of 'in/en' in the array
 
