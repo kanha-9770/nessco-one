@@ -42,7 +42,9 @@ const Page1: React.FC<ServicesProps> = ({ servicesData }) => {
                 priority
                 className="w-[4rem] ml-10 opacity-50"
               />
+              <a href="tel:+91 93584 04366 ">
               <p className="absolute top-4">+91 93584 04366</p>
+              </a>
             </div>
             <div className="relative w-[9rem]">
               <Image
@@ -53,7 +55,9 @@ const Page1: React.FC<ServicesProps> = ({ servicesData }) => {
                 priority
                 className="w-[7rem] ml-6 opacity-50"
               />
+              <a href="tel:+91 78499 04966">
               <p className="absolute top-10 ">+91 78499 04966</p>
+              </a>
             </div>
           </div>
           <div className="flex space-x-10 items-center">
@@ -65,7 +69,9 @@ const Page1: React.FC<ServicesProps> = ({ servicesData }) => {
               priority
               className="w-[2rem]"
             />
+            <a href="mailto:info@nesscoindia.com">
             <p>support@nesscoindia.com</p>
+            </a>
           </div>
         </div>
         <div className="lg:w-[50%] lg:px-0 px-8 flex lg:h-screen pt-14 h-full">

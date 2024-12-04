@@ -205,7 +205,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
       className="w-full h-full flex max-w-screen-2xl mx-auto items-start justify-center font-light"
     >
       {/* Desktop View */}
-      <div className="w-full hidden lg:flex flex-col gap-10 lg:flex-row rounded-lg overflow-hidden">
+      <div className="w-full hidden lg:flex flex-col gap-10 lg:flex-row rounded-lg overflow-hidden bg-green-300">
         <div className="flex justify-center w-full md:w-[75%] relative">
           {filteredMachines?.length > totalVisible && (
             <button
@@ -303,6 +303,31 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
       {/* Mobile View */}
       <div className="lg:hidden w-full h-screen overflow-hidden">
         <div className="h-full overflow-y-auto">
+          <Link
+            className="h-14 w-full border-b flex items-center space-x-2 px-4"
+            href={`/${countryCODE}/${languageCODE}/products`}
+            onClick={() => setActive(null)}
+          >
+            {/* here should be icon remove bellow svg */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-square-arrow-out-up-right"
+            >
+              <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+              <path d="m21 3-9 9" />
+              <path d="M15 3h6v6" />
+            </svg>
+            <span className="text-gray-500 text-xl">All Products</span>
+          </Link>
+
           {navRightData.map((link, index) => (
             <div
               key={index}
@@ -341,31 +366,63 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
               {expandedItem === link?.name && (
                 <div className="bg-white p-4">
                   <div className="grid grid-cols-2 gap-4">
+                    <>
+                      <Link
+                        href={`/${countryCODE}/${languageCODE}/products${link.link}`}
+                        onClick={() => setActive(null)}
+                        className="flex p-2 rounded-[0.5rem] border flex-col items-center"
+                      >
+                        <div className="border rounded-xl h-24 w-full flex items-center justify-center overflow-hidden">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="lucide lucide-square-arrow-out-up-right"
+                          >
+                            <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+                            <path d="m21 3-9 9" />
+                            <path d="M15 3h6v6" />
+                          </svg>
+                        </div>
+                        <h4 className="text-sm font-bold mt-2 text-center">
+                          All {link?.name}s
+                        </h4>
+                      </Link>
+                    </>
+
                     {filteredMachines
                       .filter((machine) =>
                         machine.category.includes(link?.name)
                       )
                       .map((machine, machineIndex) => (
-                        <Link
-                          key={`${machine?.name}-${machineIndex}`}
-                          href={`/${countryCODE}/${languageCODE}/products${link.link}/${machine?.link}`}
-                          onClick={() => setActive(null)}
-                          className="flex flex-col items-center"
-                        >
-                          <div className="border rounded-xl h-24 w-full overflow-hidden">
-                            <BlurImage
-                              src={machine?.image}
-                              alt={machine?.name}
-                              className="object-contain h-full w-full"
-                              width={200}
-                              height={150}
-                              loading="lazy"
-                            />
-                          </div>
-                          <h4 className="text-sm font-bold mt-2 text-center">
-                            {machine?.name}
-                          </h4>
-                        </Link>
+                        <>
+                          <Link
+                            key={`${machine?.name}-${machineIndex}`}
+                            href={`/${countryCODE}/${languageCODE}/products${link.link}/${machine?.link}`}
+                            onClick={() => setActive(null)}
+                            className="flex p-2 rounded-[0.5rem] border flex-col items-center"
+                          >
+                            <div className="border rounded-xl h-24 w-full overflow-hidden">
+                              <BlurImage
+                                src={machine?.image}
+                                alt={machine?.name}
+                                className="object-contain h-full w-full"
+                                width={200}
+                                height={150}
+                                loading="lazy"
+                              />
+                            </div>
+                            <h4 className="text-sm font-bold mt-2 text-center">
+                              {machine?.name}
+                            </h4>
+                          </Link>
+                        </>
                       ))}
                   </div>
                 </div>

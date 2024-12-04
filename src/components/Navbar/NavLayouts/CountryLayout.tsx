@@ -1,93 +1,101 @@
-'use client'
+"use client";
 
-import { useRouter, usePathname } from 'next/navigation'
-import { useState, useTransition, useEffect, useRef } from 'react'
-import { locales, LnaguageSwitcherlocales } from '@/i18n'
-import Image from 'next/image'
-import { Button } from '@/components/ui/button'
+import { useRouter, usePathname } from "next/navigation";
+import { useState, useTransition, useEffect, useRef } from "react";
+import { locales, LnaguageSwitcherlocales } from "@/i18n";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 const getFullLanguageName = (code: string) => {
   const fullName = LnaguageSwitcherlocales.find((loc) =>
-    loc.startsWith(code + '-')
-  )
-  return fullName ? fullName.split('-')[1] : code.toUpperCase()
-}
+    loc.startsWith(code + "-")
+  );
+  return fullName ? fullName.split("-")[1] : code.toUpperCase();
+};
 
 export default function LocaleSwitcher({
-  type = 'default',
+  type = "default",
 }: {
-  type?: 'default' | 'footer'
+  type?: "default" | "footer";
 }) {
-  const router = useRouter()
-  const pathname = usePathname()
-  const [isPending, startTransition] = useTransition()
-  const [isOpen, setIsOpen] = useState(false)
-  const [searchQuery, setSearchQuery] = useState('')
-  const [countryCode, setCountryCode] = useState('')
-  const [languageCode, setLanguageCode] = useState('')
-  const [visibleCount, setVisibleCount] = useState(16)
+  const router = useRouter();
+  const pathname = usePathname();
+  const [isPending, startTransition] = useTransition();
+  const [isOpen, setIsOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [countryCode, setCountryCode] = useState("");
+  const [languageCode, setLanguageCode] = useState("");
+  const [visibleCount, setVisibleCount] = useState(16);
 
-  const switcherRef = useRef<HTMLDivElement>(null)
+  const switcherRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const updateCodesFromURL = () => {
-      const pathSegments = pathname.split('/').filter(Boolean)
+      const pathSegments = pathname.split("/").filter(Boolean);
       if (pathSegments.length >= 2) {
-        setCountryCode(pathSegments[0].toLowerCase())
-        setLanguageCode(pathSegments[1].toLowerCase())
+        setCountryCode(pathSegments[0].toLowerCase());
+        setLanguageCode(pathSegments[1].toLowerCase());
       }
-    }
+    };
 
-    updateCodesFromURL()
+    updateCodesFromURL();
 
-    window.addEventListener('popstate', updateCodesFromURL)
+    window.addEventListener("popstate", updateCodesFromURL);
 
     return () => {
-      window.removeEventListener('popstate', updateCodesFromURL)
-    }
-  }, [pathname])
+      window.removeEventListener("popstate", updateCodesFromURL);
+    };
+  }, [pathname]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (switcherRef.current && !switcherRef.current.contains(event.target as Node)) {
-        setIsOpen(false)
+      if (
+        switcherRef.current &&
+        !switcherRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
       }
-    }
+    };
 
-    document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [])
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const onSelectChange = (nextLocale: string) => {
     startTransition(() => {
-      const pathSegments = pathname.split('/').filter(Boolean)
-      pathSegments[1] = nextLocale
-      const newUrl = `/${pathSegments.join('/')}`
-      router.replace(newUrl)
-      setLanguageCode(nextLocale)
-    })
+      const pathSegments = pathname.split("/").filter(Boolean);
+      pathSegments[1] = nextLocale;
+      const newUrl = `/${pathSegments.join("/")}`;
+      router.replace(newUrl);
+      setLanguageCode(nextLocale);
+    });
 
-    setIsOpen(false)
-  }
+    setIsOpen(false);
+  };
 
   const filteredLocales = locales.filter((loc) =>
     getFullLanguageName(loc).toLowerCase().includes(searchQuery.toLowerCase())
-  )
+  );
 
   const handleShowMore = () => {
-    setVisibleCount((prevCount) => prevCount + 9)
-  }
+    setVisibleCount((prevCount) => prevCount + 9);
+  };
 
   return (
-    <div ref={switcherRef} className={`relative inline-block text-left z-10 ${type === 'footer' ? 'footer-switcher' : ''}`}>
+    <div
+      ref={switcherRef}
+      className={`relative inline-block text-left z-10 ${
+        type === "footer" ? "footer-switcher" : ""
+      }`}
+    >
       <Button
         type="button"
         className={`inline-flex w-full  rounded-full border text-sm font-medium invert-0 focus:outline-none ${
-          type === 'footer' ? 'footer-dropdown' : ''
-        } ${isPending ? 'opacity-50' : ''}`}
-        onClick={() => setIsOpen(!isOpen)}
+          type === "footer" ? "footer-dropdown" : ""
+        } ${isPending ? "opacity-50" : ""}`}
+        // onClick={() => setIsOpen(!isOpen)}
         disabled={isPending}
         aria-expanded={isOpen}
         aria-haspopup="true"
@@ -115,7 +123,13 @@ export default function LocaleSwitcher({
       </Button>
 
       {isOpen && (
-        <div className={`absolute ${type === 'footer' ? 'bottom-full mb-2' : 'top-full mt-2 right-[-6.5rem]'}  w-72 bg-white rounded-2xl shadow-lg border border-gray-300 ring-1 ring-black ring-opacity-5`}>
+        <div
+          className={`absolute ${
+            type === "footer"
+              ? "bottom-full mb-2"
+              : "top-full mt-2 right-[-6.5rem]"
+          }  w-72 bg-white rounded-2xl shadow-lg border border-gray-300 ring-1 ring-black ring-opacity-5`}
+        >
           <div className="relative p-4">
             <input
               type="text"
@@ -170,5 +184,5 @@ export default function LocaleSwitcher({
         }
       `}</style>
     </div>
-  )
+  );
 }

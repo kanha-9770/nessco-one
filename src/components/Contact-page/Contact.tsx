@@ -156,6 +156,8 @@ import Image from "next/image";
 import styles from "./contact.module.css";
 import { ContactItem } from "./types/constant";
 import { useState } from "react";
+import LinkUrl from "../LinkUrl";
+
 import * as z from "zod";
 import {
   useForm,
@@ -168,7 +170,7 @@ interface MainLayoutProps {
 }
 
 const Contact: React.FC<MainLayoutProps> = ({ contactData }) => {
-  const { formData, setFormData, submitForm, visitData } = useForm();
+  const { formData, setFormData, submitForm } = useForm();
   const [errors, setErrors] = useState<Partial<ContactFormData>>({});
   const getintouch = contactData?.contact[0]?.getintouch;
   const contactcaption = contactData?.contact[0]?.Contactcaption;
@@ -200,6 +202,56 @@ const Contact: React.FC<MainLayoutProps> = ({ contactData }) => {
     }
   };
 
+  const handleGetDirections = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+  
+          // Destination coordinates for Nessco Paper Cup Machine
+          const destinationLat = 26.786439154068415; // Replace with actual latitude
+          const destinationLng = 75.86478078515786; // Replace with actual longitude
+          //26.786439154068415, 75.86478078515786
+  
+          // Calculate the distance between current location and destination
+          const distance = calculateDistance(latitude, longitude, destinationLat, destinationLng);
+  
+          if (distance < 0.1) { // If distance is less than 100 meters
+            alert("You are already at the destination!");
+          } else {
+            const destination = encodeURIComponent(
+              "Nessco Paper Cup Machine, E-186, Riico Industrial Area Apparel Park, Mahal Rd, Jagatpura, Jaipur, Rajasthan 302022"
+            );
+            const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${latitude},${longitude}&destination=${destination}`;
+            window.open(googleMapsUrl, "_blank", "noopener,noreferrer");
+          }
+        },
+        (error) => {
+          console.error("Error getting location:", error);
+          alert("Unable to get your location. Please enable location services and try again.");
+        }
+      );
+    } else {
+      alert("Geolocation is not supported by your browser.");
+    }
+  };
+  
+  // Helper function to calculate distance between two coordinates
+  const calculateDistance = (lat1, lng1, lat2, lng2) => {
+    const toRad = (value) => (value * Math.PI) / 180;
+  
+    const R = 6371; // Radius of the Earth in km
+    const dLat = toRad(lat2 - lat1);
+    const dLng = toRad(lng2 - lng1);
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) * Math.sin(dLng / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const distance = R * c; // Distance in km
+  
+    return distance; // Returns distance in km
+  };
+
   return (
     <FormProvider>
       <section
@@ -215,14 +267,22 @@ const Contact: React.FC<MainLayoutProps> = ({ contactData }) => {
               <h1 className="text-3xl text-black font-poppins font-regular mt-3">
                 {caption} {contactcaption}
               </h1>
-              <div className="mt-8">
-                <div className="flex items-start mb-6">
+              <div className="mt-8 ">
+                
+              <a
+          className="text-black font-poppins font-regular text-sm block"
+          onClick={handleGetDirections}
+          role="button"
+          style={{ cursor: "pointer" }}
+        >
+
+                <div className="flex items-start mb-6 ">
                   <Image
-                    src="https://res.cloudinary.com/dlti4o10e/image/upload/v1732005261/location_jqqcij.png"
-                    alt="Marker"
+                    src="https://assets.nesscoindustries.com/public/assets/contact/location-icon1.webp"
+                    alt="location"
                     width={80}
                     height={80}
-                    className="w-10 h-10 mr-4 mt-10"
+                    className="w-10 h-10 mr-4 mt-5"
                   />
                   <div className="ml-2">
                     <h2 className="text-xl font-medium font-poppins text-[#3a2a79] mb-1">
@@ -240,32 +300,37 @@ const Contact: React.FC<MainLayoutProps> = ({ contactData }) => {
                     </a>
                   </div>
                 </div>
-                <hr className="border-gray-400 border-[0.10rem] -ml-6 lg:w-[35rem] " />
-                <div className="flex items-start mb-6">
+                          </a>
+                <h2 className="border-gray-400 border-[0.10rem] -ml-6 lg:w-[35rem] " />
+                <a href="mailto:info@nesscoindia.com">
+                <div className="flex items-start mb-6 ">
                   <Image
-                    src="https://res.cloudinary.com/dlti4o10e/image/upload/v1732005262/email_htjgie.png"
+                    src="https://assets.nesscoindustries.com/public/assets/contact/email-icon.webp"
                     alt="Email"
                     width={80}
                     height={80}
-                    className="w-10 h-10 mr-4 mt-7"
+                    className="w-10 h-10 mr-4 mt-5"
                   />
                   <div className="">
                     <h2 className="text-xl font-semibold font-poppins text-[#3a2a79] mt-5 mb-1 ml-2">
                       {contactData?.contact[0]?.contactInfo[1]?.title}
                     </h2>
-                    <a className="text-black ml-2 text-sm font-regular font-poppins">
+                    <p className="text-black ml-2 text-sm font-regular font-poppins">
                       {contactData?.contact[0]?.contactInfo[1]?.description}
-                    </a>
+                    </p>
                   </div>
                 </div>
+                </a>
                 <hr className="border-gray-400 border-[0.10rem] -ml-6 lg:w-[35rem]" />
-                <div className="flex items-start">
+              
+                <a href="tel:+91 95494 44484">
+                <div className="flex items-start  h-full">
                   <Image
-                    src="https://res.cloudinary.com/dlti4o10e/image/upload/v1732005262/call_pmtrk9.png"
+                    src="https://assets.nesscoindustries.com/public/assets/contact/contact-icon.webp"
                     alt="Phone"
                     width={80}
                     height={80}
-                    className="w-10 h-10 mr-4 mt-10"
+                    className="w-10 h-10 mr-4 mt-5"
                   />
                   <div className="ml-2">
                     <h2 className="text-xl font-medium font-poppins text-[#3a2a79] mt-3 mb-1 ">
@@ -278,6 +343,119 @@ const Contact: React.FC<MainLayoutProps> = ({ contactData }) => {
                       </h3>
                     </div>
                   </div>
+                </div>
+                  </a>
+              </div>
+
+              <div className="flex justify-center mt-10">
+                <div className="flex flex-row space-x-4">
+                  <a
+                    href="https://www.facebook.com/NesscoPaperCupMachine"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Visit our Facebook page"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      x="0px"
+                      y="0px"
+                      fill="#483d73"
+                      width="30"
+                      height="30"
+                      viewBox="0 0 30 30"
+                    >
+                      <path d="M24,4H6C4.895,4,4,4.895,4,6v18c0,1.105,0.895,2,2,2h10v-9h-3v-3h3v-1.611C16,9.339,17.486,8,20.021,8 c1.214,0,1.856,0.09,2.16,0.131V11h-1.729C19.376,11,19,11.568,19,12.718V14h3.154l-0.428,3H19v9h5c1.105,0,2-0.895,2-2V6 C26,4.895,25.104,4,24,4z"></path>
+                    </svg>
+                  </a>
+                  <a
+                    href="https://x.com/NesscoIndia"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Visit our X (formerly Twitter) page"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      x="0px"
+                      y="0px"
+                      fill="#483d73"
+                      width="30"
+                      height="30"
+                      viewBox="0 0 48 48"
+                    >
+                      <path
+                        fill="#483d73"
+                        fillRule="evenodd"
+                        d="M38,42H10c-2.209,0-4-1.791-4-4V10c0-2.209,1.791-4,4-4h28	c2.209,0,4,1.791,4,4v28C42,40.209,40.209,42,38,42z"
+                        clipRule="evenodd"
+                      ></path>
+                      <path
+                        fill="#fff"
+                        d="M34.257,34h-6.437L13.829,14h6.437L34.257,34z M28.587,32.304h2.563L19.499,15.696h-2.563 L28.587,32.304z"
+                      ></path>
+                      <polygon
+                        fill="#fff"
+                        points="15.866,34 23.069,25.656 22.127,24.407 13.823,34"
+                      ></polygon>
+                      <polygon
+                        fill="#fff"
+                        points="24.45,21.721 25.355,23.01 33.136,14 31.136,14"
+                      ></polygon>
+                    </svg>
+                  </a>
+                  <a
+                    href="https://www.youtube.com/c/NesscoPaperCupMachine"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Visit our YouTube channel"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      x="0px"
+                      y="0px"
+                       fill="#483d73"
+                      width="30"
+                      height="30"
+                      viewBox="0 0 50 50"
+                    >
+                      <path d="M 44.898438 14.5 C 44.5 12.300781 42.601563 10.699219 40.398438 10.199219 C 37.101563 9.5 31 9 24.398438 9 C 17.800781 9 11.601563 9.5 8.300781 10.199219 C 6.101563 10.699219 4.199219 12.199219 3.800781 14.5 C 3.398438 17 3 20.5 3 25 C 3 29.5 3.398438 33 3.898438 35.5 C 4.300781 37.699219 6.199219 39.300781 8.398438 39.800781 C 11.898438 40.5 17.898438 41 24.5 41 C 31.101563 41 37.101563 40.5 40.601563 39.800781 C 42.800781 39.300781 44.699219 37.800781 45.101563 35.5 C 45.5 33 46 29.398438 46.101563 25 C 45.898438 20.5 45.398438 17 44.898438 14.5 Z M 19 32 L 19 18 L 31.199219 25 Z"></path>
+                    </svg>
+                  </a>
+                  <a
+                    href="https://www.instagram.com/nesscoindia/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Visit our Instagram page"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      x="0px"
+                      y="0px"
+                       fill="#483d73"
+                      width="30"
+                      height="30"
+                      viewBox="0 0 64 64"
+                    >
+                      <path d="M 31.820312 12 C 13.438312 12 12 13.439312 12 31.820312 L 12 32.179688 C 12 50.560688 13.438313 52 31.820312 52 L 32.179688 52 C 50.561688 52 52 50.560688 52 32.179688 L 52 32 C 52 13.452 50.548 12 32 12 L 31.820312 12 z M 43.994141 18 C 45.099141 17.997 45.997 18.889141 46 19.994141 C 46.003 21.099141 45.110859 21.997 44.005859 22 C 42.900859 22.003 42.003 21.110859 42 20.005859 C 41.997 18.900859 42.889141 18.003 43.994141 18 z M 31.976562 22 C 37.498562 21.987 41.987 26.454563 42 31.976562 C 42.013 37.498562 37.545437 41.987 32.023438 42 C 26.501437 42.013 22.013 37.545437 22 32.023438 C 21.987 26.501437 26.454563 22.013 31.976562 22 z M 31.986328 26 C 28.672328 26.008 25.992 28.701625 26 32.015625 C 26.008 35.328625 28.700672 38.008 32.013672 38 C 35.327672 37.992 38.008 35.299328 38 31.986328 C 37.992 28.672328 35.299328 25.992 31.986328 26 z"></path>
+                    </svg>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/company/nesscoindia/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Visit our LinkedIn page"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      x="0px"
+                      y="0px"
+                      width="30"
+                       fill="#483d73"
+                      height="30"
+                      viewBox="0 0 30 30"
+                    >
+                      <path d="M24,4H6C4.895,4,4,4.895,4,6v18c0,1.105,0.895,2,2,2h18c1.105,0,2-0.895,2-2V6C26,4.895,25.105,4,24,4z M10.954,22h-2.95 v-9.492h2.95V22z M9.449,11.151c-0.951,0-1.72-0.771-1.72-1.72c0-0.949,0.77-1.719,1.72-1.719c0.948,0,1.719,0.771,1.719,1.719 C11.168,10.38,10.397,11.151,9.449,11.151z M22.004,22h-2.948v-4.616c0-1.101-0.02-2.517-1.533-2.517 c-1.535,0-1.771,1.199-1.771,2.437V22h-2.948v-9.492h2.83v1.297h0.04c0.394-0.746,1.356-1.533,2.791-1.533 c2.987,0,3.539,1.966,3.539,4.522V22z"></path>
+                    </svg>
+                  </a>
                 </div>
               </div>
             </div>
@@ -349,3 +527,4 @@ const Contact: React.FC<MainLayoutProps> = ({ contactData }) => {
 };
 
 export default Contact;
+

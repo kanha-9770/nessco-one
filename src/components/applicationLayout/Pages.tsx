@@ -93,6 +93,7 @@ const Pages: React.FC<ApplicationLayoutProps> = ({
       />
       <Page2 page2product={page2product} />
       <Page4
+        id={id}
         page4product={page4product}
         applicationLayoutData={applicationLayoutData}
       />

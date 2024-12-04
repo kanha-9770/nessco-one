@@ -2,6 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import { BlogsItem } from "./types/constant";
+import Link from "next/link";
 
 interface BlogsProps {
   blogsData: BlogsItem;
@@ -9,6 +10,15 @@ interface BlogsProps {
 
 const Page4: React.FC<BlogsProps> = ({ blogsData }) => {
   const ForYou = blogsData?.blogs[0]?.ForYou;
+
+  function formatString(input) {
+    return input
+      .trim() // Remove extra spaces
+      .toLowerCase() // Convert to lowercase
+      .replace(/[^a-z0-9\s-]/g, "") // Remove special characters except spaces and hyphens
+      .replace(/\s+/g, "-"); // Replace spaces with hyphens
+  }
+
   return (
     <>
       <div className="lg:mr-[3vw] lg:ml-0 mr-[4vw] ml-[4vw] font-regular font-poppins">
@@ -35,7 +45,8 @@ const Page4: React.FC<BlogsProps> = ({ blogsData }) => {
           <div className="lg:h-[25.3rem] w-full overflow-hidden">
             <div className="lg:grid lg:grid-cols-2 lg:grid-rows-[auto] flex h-full w-full lg:overflow-y-auto overflow-x-auto scrollbar-custom scrollbar">
               {ForYou?.for?.map((item, idx) => (
-                <div
+                <Link
+                  href={`blog/${formatString(item?.title)}`}
                   key={idx}
                   className="flex mx-[1rem] mt-[1rem] h-max border-solid border-b-2 border-[#E6E7E6] pb-[0.1rem]"
                 >
@@ -141,7 +152,7 @@ const Page4: React.FC<BlogsProps> = ({ blogsData }) => {
                       </svg>
                     </button>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>

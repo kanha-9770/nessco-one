@@ -41,7 +41,7 @@ export default function IOT({ heroData }: KnowMoreLayoutProps) {
       <div className="flex flex-col-reverse lg:flex-row px-4 md:px-14">
         <div className="w-full lg:w-1/2 relative mb-8 lg:mb-0">
           <div
-            className="w-full lg:w-[33rem] pb-2 overflow-x-scroll scrollbar-hide"
+            className="w-full lg:h-max lg:w-[33rem] pb-2 overflow-x-scroll scrollbar-hide"
             ref={carouselRef}
           >
             <div className="w-max flex space-x-4 md:space-x-8">
@@ -90,7 +90,9 @@ export default function IOT({ heroData }: KnowMoreLayoutProps) {
                     <DialogContent className="w-[90%] lg:w-[30%] font-poppins">
                       <div className="rounded-2xl bg-white py-4 px-8">
                         <DialogHeader>
-                          <DialogTitle className="text-lg mb-1 w-full text-center">{item?.title}</DialogTitle>
+                          <DialogTitle className="text-lg mb-1 w-full text-center">
+                            {item?.title}
+                          </DialogTitle>
                         </DialogHeader>
                         <p className="text-sm text-gray-600 text-justify">
                           {item?.description}
@@ -102,7 +104,7 @@ export default function IOT({ heroData }: KnowMoreLayoutProps) {
               ))}
             </div>
           </div>
-          <div className="flex space-x-2 items-center justify-end mt-2 lg:absolute lg:left-[28rem] z-20">
+          <div className="flex space-x-2 items-center justify-end mt-2 lg:absolute lg:left-[28rem] z-50">
             <button
               onClick={() => scrollCarousel("left")}
               className="h-6 w-6 bg-[#9e9c9c] hover:bg-black rounded-full flex items-center justify-center"
@@ -240,24 +242,13 @@ export default function IOT({ heroData }: KnowMoreLayoutProps) {
           </div>
         </div>
         <div className="w-full lg:w-1/2 relative">
-          <video
-            className="absolute -top-20 -right-56 opacity-10 -z-10"
-            id="background-video"
-            autoPlay
-            muted
-            playsInline
-            preload="auto"
-            poster={IotData?.globeVideo}
-            onTimeUpdate={(e) => {
-              const video = e.target as HTMLVideoElement;
-              if (video?.currentTime >= video?.duration - 0.2) {
-                video.currentTime = 0;
-                video?.play();
-              }
-            }}
-          >
-            <source src={IotData?.globeVideo} type="video/mp4" />
-          </video>
+          <Image
+            className="absolute -top-20 opacity-30 -right-56 -z-10 h-[40rem] w-auto"
+            src={IotData?.globeVideo}
+            alt={"globe"}
+            width={400}
+            height={400}
+          />
 
           <h3 className="text-transparent bg-clip-text bg-gradient-to-r from-[#d08ceb] to-[#483d73] text-4xl md:text-5xl lg:text-[5.5rem] font-semibold pt-4 md:pt-8 text-center lg:text-left">
             {IotData?.subTitle}

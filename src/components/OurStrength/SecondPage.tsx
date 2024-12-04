@@ -184,7 +184,7 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
                 playsInline
                 preload="metadata"
               >
-                <source src="https://res.cloudinary.com/dlti4o10e/video/upload/v1728990175/samples/cld-sample-video.mp4" type="video/mp4" />
+                <source src={item?.video} type="video/mp4" />
               </video>
             </div>
             <p className="lg:mx-8 mx-3 lg:mt-10 mt-3 font-poppins lg:text-sm text-xs text-center lg:text-justify line-clamp-[11]">
@@ -243,7 +243,7 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
                   >
                     {componentData?.modalContent?.images?.map((img, index) => (
                       <SwiperSlide key={index}>
-                        <Image src="https://res.cloudinary.com/dlti4o10e/image/upload/v1728990173/samples/ecommerce/leather-bag-gray.jpg" width={300} height={300} alt="img" />
+                        <Image src={img.img} width={300} height={300} alt="img" />
                       </SwiperSlide>
                     ))}
                   </Swiper>

@@ -49,9 +49,9 @@ const Home:React.FC <MainLayoutProps>= ({strengthData}) => {
             muted
             playsInline
             preload="metadata"
-            poster ="https://res.cloudinary.com/dlti4o10e/video/upload/v1729831939/OurStrength_glmwfe.mp4"
+            poster ={strengthData?.OurStrength[1]?.Data?.video}
           >
-            <source src="https://res.cloudinary.com/dlti4o10e/video/upload/v1729831939/OurStrength_glmwfe.mp4" type="video/mp4" />
+            <source src={strengthData?.OurStrength[1]?.Data?.video} type="video/mp4" />
           </video>
           <div className="absolute top-0 h-full w-full bg-black opacity-50"></div>
           <div className="absolute lg:top-28 top-12 space-y-4 flex flex-col  items-center w-full">

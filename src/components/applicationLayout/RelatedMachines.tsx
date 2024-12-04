@@ -14,6 +14,7 @@ interface ApplicationLayoutProps {
 }
 
 interface Page4Props {
+  id: string;
   page4product: {
     imageWithDescription: {
       img: string;
@@ -34,12 +35,15 @@ type CombinedProps = ApplicationLayoutProps & Page4Props;
 const Page4: React.FC<CombinedProps> = ({
   applicationLayoutData,
   page4product,
+  id,
 }) => {
   const RelatedMachines =
     applicationLayoutData?.ApplicationLayout[0]?.RelatedMachines;
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const borderRef = useRef<HTMLDivElement | null>(null);
-  const [enquiryItems, setEnquiryItems] = useState<Array<{ id: string; name: string; image: string }>>([]);
+  const [enquiryItems, setEnquiryItems] = useState<
+    Array<{ id: string; name: string; image: string }>
+  >([]);
 
   const scrollbarLeft = () => {
     if (carouselRef.current) {
@@ -58,6 +62,13 @@ const Page4: React.FC<CombinedProps> = ({
       });
     }
   };
+
+  function formatString(input) {
+    return input
+      .split("-") // Split the string into parts by '-'
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize the first letter of each part
+      .join(" "); // Join the parts with a space
+  }
 
   useEffect(() => {
     if (borderRef.current) {
@@ -78,24 +89,34 @@ const Page4: React.FC<CombinedProps> = ({
     }
   }, []);
 
-  const handleToggleEnquiry = (item: {
-    h2: string; h1: string; img: string 
-}, index: number) => {
-    const myItem=item.h1+item.h2
-    setEnquiryItems(prevItems => {
-      const existingItemIndex = prevItems.findIndex(prevItem => prevItem.id === `${index}`);
+  const handleToggleEnquiry = (
+    item: {
+      h2: string;
+      h1: string;
+      img: string;
+    },
+    index: number
+  ) => {
+    const myItem = item.h1 + item.h2;
+    setEnquiryItems((prevItems) => {
+      const existingItemIndex = prevItems.findIndex(
+        (prevItem) => prevItem.id === `${index}`
+      );
       if (existingItemIndex > -1) {
         // Item exists, remove it
-        return prevItems.filter(prevItem => prevItem.id !== `${index}`);
+        return prevItems.filter((prevItem) => prevItem.id !== `${index}`);
       } else {
         // Item doesn't exist, add it
-        return [...prevItems, { id: `${index}`, name: myItem, image: item.img }];
+        return [
+          ...prevItems,
+          { id: `${index}`, name: myItem, image: item.img },
+        ];
       }
     });
   };
 
   const handleRemoveFromEnquiry = (id: string) => {
-    setEnquiryItems(prevItems => prevItems.filter(item => item.id !== id));
+    setEnquiryItems((prevItems) => prevItems.filter((item) => item.id !== id));
   };
 
   return (
@@ -108,9 +129,7 @@ const Page4: React.FC<CombinedProps> = ({
         <div className="flex flex-col lg:my-[3rem] my-[2rem] bg-white lg:px-[2rem] px-[1rem] relative">
           <div className="pt-[1.5rem]">
             <h2 className="lg:text-[2.2rem] text-[1.5rem] font-semibold">
-              <span className="text-[#483d73]">
-                {RelatedMachines?.title?.trim().replace(/\s+\S+$/, "")}
-              </span>{" "}
+              <span className="text-[#483d73]">{formatString(id)}</span>{" "}
               <span className="text-red-700">
                 {RelatedMachines?.title?.trim().match(/\S+$/)}
               </span>
@@ -175,7 +194,6 @@ const Page4: React.FC<CombinedProps> = ({
                   >
                     {/* Icons */}
                     <div className="absolute top-6 right-4 flex space-x-2">
-                      
                       <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center font-medium cursor-pointer relative group hover:text-red-700 text-xl">
                         {item?.s}
                         <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-md shadow-md px-2 py-1 h-max w-max z-20">
@@ -260,11 +278,13 @@ const Page4: React.FC<CombinedProps> = ({
                     {/* Checkbox */}
                     <div className="my-4 flex items-center justify-center">
                       <div className="flex items-center space-x-2">
-                        <input 
-                          type="checkbox" 
+                        <input
+                          type="checkbox"
                           id={`addToEnquiry-${idx}`}
                           className="accent-red-700"
-                          checked={enquiryItems.some(enquiryItem => enquiryItem.id === `${idx}`)}
+                          checked={enquiryItems.some(
+                            (enquiryItem) => enquiryItem.id === `${idx}`
+                          )}
                           onChange={() => handleToggleEnquiry(item, idx)}
                           aria-label={`Add ${item.h1} to enquiry`}
                         />
@@ -283,7 +303,7 @@ const Page4: React.FC<CombinedProps> = ({
           </div>
         </div>
       </div>
-      <EnquiryCart 
+      <EnquiryCart
         items={enquiryItems}
         onRemoveItem={handleRemoveFromEnquiry}
         maxItems={10}

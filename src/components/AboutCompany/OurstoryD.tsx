@@ -51,7 +51,7 @@ const OurStoryD:React.FC<AboutLayoutProps> = ({companyData}) => {
       } 
       // If the scroll position is before the shrink range
       else if (windowScrollY < startShrinkPosition) {
-        imageRef.current.style.transform = 'scale(1.3)'; // Initial scale
+        imageRef.current.style.transform = 'scale(1.2)'; // Initial scale
         imageRef.current.style.borderRadius = '1px'; // Initial border-radius
       } 
       // If the scroll position is after the shrink range
@@ -92,13 +92,25 @@ const OurStoryD:React.FC<AboutLayoutProps> = ({companyData}) => {
                 transition: 'transform 2s ease, border-radius 0.9s ease', // Adjusted transition time
               }}
             >
-              <Image
+              {/* <Image
                 src={homecompanyData?.image?.src}
                 width={homecompanyData?.image?.width}
                 height={homecompanyData?.image?.height}
                 alt={homecompanyData?.image?.alt}
                 className="w-full h-full object-cover"
-              />
+              /> */}
+               <video
+            id="background-video"
+            className="w-full h-full object-cover"
+            autoPlay
+            playsInline
+            loop
+            muted
+            preload="metadata"
+            poster={homecompanyData?.image?.src}
+          >
+            <source src={homecompanyData?.image?.src} type="video/mp4" />
+          </video>
             </div>
           </div>
         </div>

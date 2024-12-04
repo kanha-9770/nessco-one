@@ -73,7 +73,7 @@ const Bird = () => {
         className={`opacity-0  w-[15rem] h-[15rem] relative `}
       >
         <Image
-          src="https://assets.nesscoindustries.com/public/assets/pinkcity/bird.webp"
+          src="https://assets.nesscoindustries.com/public/assets/about/pinkcity/bird.svg"
           alt="bird"
             ref={svgImageRef}
           layout="intrinsic" 

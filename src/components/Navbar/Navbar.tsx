@@ -60,8 +60,6 @@ function Navbar({ className, navData }: NavbarProps) {
   const expandItem = (item: string) =>
     setExpandedItem(expandedItem === item ? null : item);
 
-
-
   const navbarItems: NavbarItem[] = [
     {
       name: `${navData?.navbar[0]?.category}`,
@@ -161,7 +159,10 @@ function Navbar({ className, navData }: NavbarProps) {
       {/* Mobile Menu */}
       <div className="lg:hidden flex w-full">
         <div className="lg:hidden w-full flex justify-between items-center p-4">
-          <Link href={`/`} className="h-14 w-14  flex items-center">
+          <Link
+            href={`${languageCODE}`}
+            className="h-14 w-14  flex items-center"
+          >
             <SVGComponent />
           </Link>
           <button
@@ -196,30 +197,21 @@ function Navbar({ className, navData }: NavbarProps) {
 
         {isOpen && (
           <div className="lg:hidden absolute top-full left-0 w-full bg-gray-300/90 backdrop-blur-[80px] h-screen shadow-lg z-50">
-            <div className="flex bg-white h-2/3 p-4 flex-col space-y-3">
+            <div className="flex bg-white cursor-pointer h-2/3 p-4 flex-col space-y-3">
               {navbarItems?.map((item) => (
                 <div key={item?.name}>
-                  <div className="flex -mt-3 justify-between items-center py-2 border-b">
-                    <Link
-                      href={`${item.link}`}
-                      className="text-lg font-semimedium text-black flex-grow"
-                      onClick={() => {
-                        if (item.hasComponent) {
-                          setIsOpen(false);
-                          setActive(null);
-                        }
-                      }}
-                    >
-                      {item?.name}
-                    </Link>
+                  <div
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setActive(null);
+                      expandItem(item?.name);
+                    }}
+                    className="flex -mt-3 justify-between items-center py-2 border-b"
+                  >
+                    {item?.name}
+                    
                     {item.hasComponent && (
-                      <button
-                        className="text-gray-500 pr-2 text-2xl"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          expandItem(item?.name);
-                        }}
-                      >
+                      <button className="text-gray-500 pr-2 text-2xl">
                         {expandedItem === item?.name ? (
                           <MinusSvg />
                         ) : (
@@ -241,7 +233,7 @@ function Navbar({ className, navData }: NavbarProps) {
                           -
                         </button>
                       </div>
-                      <div className="py-4 flex-grow">
+                      <div className="py-2 flex-grow">
                         <div className="text-sm text-gray-700">
                           {item?.component}
                         </div>
@@ -252,7 +244,6 @@ function Navbar({ className, navData }: NavbarProps) {
               ))}
               <div className="w-full">
                 <div className="relative -mt-3 h-full flex flex-col w-full lg:hidden">
-                 
                   <div className="flex flex-row justify-between items-center gap-2 border-t-[1px] border-b-[1px] w-full p-2">
                     <div className="absolute top-20">
                       <CountryLayout />

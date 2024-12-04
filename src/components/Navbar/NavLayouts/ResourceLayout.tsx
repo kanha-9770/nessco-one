@@ -88,7 +88,7 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData, setActive }) => {
         ></button>
       )}
       <div
-        className={`hidden lg:flex overflow-x-auto py-8 ${
+        className={`hidden lg:flex overflow-x-auto ${
           shouldShowArrows ? "scroll-smooth" : ""
         } [scrollbar-width:none] gap-6`}
         ref={carouselRef}

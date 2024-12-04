@@ -2,6 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import { BlogsItem } from "./types/constant";
+import Link from "next/link";
 
 interface BlogsProps {
   blogsData: BlogsItem;
@@ -9,6 +10,15 @@ interface BlogsProps {
 
 const Page3: React.FC<BlogsProps> = ({ blogsData }) => {
   const FeaturedBlogs = blogsData?.blogs[0]?.FeaturedBlogs;
+
+  function formatString(input) {
+    return input
+      .trim() // Remove extra spaces
+      .toLowerCase() // Convert to lowercase
+      .replace(/[^a-z0-9\s-]/g, "") // Remove special characters except spaces and hyphens
+      .replace(/\s+/g, "-"); // Replace spaces with hyphens
+  }
+
   return (
     <>
       <div className="lg:mr-[3vw] lg:ml-0 mr-[4vw] ml-[4vw] font-regular font-poppins">
@@ -33,7 +43,8 @@ const Page3: React.FC<BlogsProps> = ({ blogsData }) => {
             </p>
           </div>
           {FeaturedBlogs?.featured?.map((item, idx) => (
-            <div
+            <Link
+              href={`blog/${formatString(item?.description)}`}
               key={idx}
               className="flex mx-[1rem] my-[1.5rem] border-solid border-b-2 border-[#E6E7E6] pb-[0.1rem]"
             >
@@ -50,7 +61,7 @@ const Page3: React.FC<BlogsProps> = ({ blogsData }) => {
                     <circle cx="12" cy="19" r="2" />
                   </svg>
                 </div>
-                <p className="text-black text-md font-medium lg:w-[88%] w-full pr-[1rem] font-poppins">
+                <p className="text-black text-[0.9rem] font-medium lg:w-[88%] w-full pr-[1rem] font-poppins">
                   {item?.description}
                 </p>
               </div>
@@ -136,7 +147,7 @@ const Page3: React.FC<BlogsProps> = ({ blogsData }) => {
                   </svg>
                 </button>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
         <div className="bg-white w-full h-max mt-[1rem] rounded-[1rem] hidden lg:block overflow-hidden">
@@ -160,8 +171,9 @@ const Page3: React.FC<BlogsProps> = ({ blogsData }) => {
             </p>
           </div>
 
-          {FeaturedBlogs?.featured?.map((item, idx) => (
-            <div
+          {FeaturedBlogs?.feature?.map((item, idx) => (
+            <Link
+              href={`blog/${formatString(item?.description)}`}
               key={idx}
               className="flex mx-[1rem] my-[1.5rem] border-solid border-b-2 border-[#E6E7E6] pb-[0.1rem]"
             >
@@ -178,7 +190,7 @@ const Page3: React.FC<BlogsProps> = ({ blogsData }) => {
                     <circle cx="12" cy="19" r="2" />
                   </svg>
                 </div>
-                <p className="text-black text-md font-medium lg:w-[88%] w-full pr-[1rem] font-poppins">
+                <p className="text-black text-[0.9rem] font-medium lg:w-[88%] w-full pr-[1rem] font-poppins">
                   {item?.description}
                 </p>
               </div>
@@ -264,7 +276,7 @@ const Page3: React.FC<BlogsProps> = ({ blogsData }) => {
                   </svg>
                 </button>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

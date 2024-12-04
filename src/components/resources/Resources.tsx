@@ -15,6 +15,7 @@ const Resources: React.FC <AboutLayoutProps>= ({resourceData}) => {
   const homecardData=resourceData?.resources[0]?.cards;
 
 
+
   return (
     <>
       <div className="h-full w-full flex flex-col">
@@ -43,7 +44,8 @@ const Resources: React.FC <AboutLayoutProps>= ({resourceData}) => {
         {/* // Cards Section */}
         <div className=" grid lg:grid-row-1 lg:grid-cols-5 gap-5 flex-col p-9 bg-[#f2f2f2]">
           {homecardData.map((card, index) => (
-            <div key={index} className=" lg:h-[20rem] h-[20rem]  items-center py-10 rounded-xl flex flex-col relative  shadow-lg hover:shadow-2xl hover:scale-80  transform transition-transform duration-300 group bg-gradient-to-t from-[#f2f2f2] to-white ">
+            <LinkUrl href={`/${card.link}`} key={index}>
+            <div  className=" lg:h-[20rem] h-[20rem]  items-center py-10 rounded-xl flex flex-col relative  shadow-lg hover:shadow-2xl hover:scale-80  transform transition-transform duration-300 group bg-gradient-to-t from-[#f2f2f2] to-white ">
               <h1 className="font-poppins font-semibold text-3xl  relative text-center text-[#636363] group-hover:text-red-700">{card.title}</h1>
               <Image
                 src={card.image.src}
@@ -52,7 +54,7 @@ const Resources: React.FC <AboutLayoutProps>= ({resourceData}) => {
                 height={100}
                 className=" bottom-10 absolute"
               />
-              <LinkUrl href={`/${card.link}`}>
+              
               <div className="absolute bottom-2 right-2 group-hover:bg-[#483d7359] rounded-full p-2 transition duration-300">
                 <Image
                   src={Arrow}
@@ -62,10 +64,13 @@ const Resources: React.FC <AboutLayoutProps>= ({resourceData}) => {
                   className="w-[1.5rem]  "
                 />
                 </div>
-              </LinkUrl>
+          
             </div>
+            </LinkUrl>
           ))}
         </div>
+
+        
       </div>
     </>
   );

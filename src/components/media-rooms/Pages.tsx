@@ -67,13 +67,13 @@ const Filter: React.FC<FilterProps> = ({
 
   return (
     <div className="font-regular font-poppins">
-      <div className="w-full h-[57rem] pr-8 border-r-2">
+      <div className="w-full h-[57rem] bg-white p-5 rounded-[1rem]">
         <p className="mb-2 font-poppins invisible lg:visible">
           {Header?.filter}
         </p>
         <p className="mb-2 font-poppins">{Header?.byCategory}</p>
 
-        <div className="flex rounded-[1rem] bg-white overflow-hidden mb-4">
+        <div className="flex rounded-[1rem] bg-[#f2f2f2] overflow-hidden mb-4">
           <input
             aria-label="Search categories"
             type="search"
@@ -304,8 +304,6 @@ const TrendingNews: React.FC<NewsProps> = ({
   const TrendingNews = mediaRoomData?.MediaRoom[0]?.TrendingNews;
   const carouselRef = useRef<HTMLDivElement>(null);
 
-
-
   const scrollbarLeft = () => {
     if (carouselRef.current) {
       carouselRef.current.scrollBy({
@@ -323,6 +321,14 @@ const TrendingNews: React.FC<NewsProps> = ({
       });
     }
   };
+
+  function formatString(input) {
+    return input
+      .trim() // Remove extra spaces
+      .toLowerCase() // Convert to lowercase
+      .replace(/[^a-z0-9\s-]/g, "") // Remove special characters except spaces and hyphens
+      .replace(/\s+/g, "-"); // Replace spaces with hyphens
+  }
 
   const filteredNews = TrendingNews?.sections?.filter((item) => {
     const matchesSearch = item?.title
@@ -348,7 +354,8 @@ const TrendingNews: React.FC<NewsProps> = ({
           className="flex overflow-x-scroll space-x-4 scrollbar pb-2"
         >
           {filteredNews?.map((item, index) => (
-            <div
+            <Link
+              href={`media-room/${formatString(item?.title)}`}
               key={index}
               className="flex items-center space-x-4 border-r-2 pr-1"
             >
@@ -374,17 +381,17 @@ const TrendingNews: React.FC<NewsProps> = ({
                     <circle cx="12" cy="19" r="2" />
                   </svg>
                 </div>
-                <p className="border border-black rounded-md text-center w-max px-2 lg:text-md text-sm">
+                <p className="border border-black rounded-[0.3rem] text-center w-max px-2 lg:text-md text-sm">
                   {item?.header}
                 </p>
-                <h3 className="font-medium lg:text-lg text-md">
+                <h3 className="font-medium text-sm">
                   {item?.title}
                 </h3>
 
                 <Link
                   aria-label="Open"
                   className="flex w-48 h-6 items-center justify-center text-[#483d73] text-sm group bg-[#E6E7E6] hover:bg-black hover:text-white rounded-full "
-                  href={`media-room/${item?.title}`}
+                  href={`media-room/${formatString(item?.title)}`}
                 >
                   {item?.continueReading}
                   <svg
@@ -401,7 +408,7 @@ const TrendingNews: React.FC<NewsProps> = ({
                   </svg>
                 </Link>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
         <div className="flex mt-2 justify-end lg:text-3xl text-2xl z-20">
@@ -415,7 +422,7 @@ const TrendingNews: React.FC<NewsProps> = ({
               cx="32"
               cy="32"
               r="32"
-              className="fill-black hover:fill-red-700 cursor-pointer"
+              className="fill-[#9e9c9c] hover:fill-black cursor-pointer"
             />
             <path
               d="M39 20 L27 32 L39 44"
@@ -432,7 +439,7 @@ const TrendingNews: React.FC<NewsProps> = ({
               cx="32"
               cy="32"
               r="32"
-              className="fill-black hover:fill-red-700 cursor-pointer"
+              className="fill-[#9e9c9c] hover:fill-black cursor-pointer"
             />
             <path
               d="M25 20 L37 32 L25 44"
@@ -493,6 +500,14 @@ const LatestNews: React.FC<NewsProps> = ({
     return matchesSearch && matchesCategory && matchesFilter;
   });
 
+  function formatString(input) {
+    return input
+      .trim() // Remove extra spaces
+      .toLowerCase() // Convert to lowercase
+      .replace(/[^a-z0-9\s-]/g, "") // Remove special characters except spaces and hyphens
+      .replace(/\s+/g, "-"); // Replace spaces with hyphens
+  }
+
   return (
     <>
       <div className="bg-white h-full lg:w-[70%] lg:mb-0 mb-6 rounded-2xl font-poppins px-[1.5rem]">
@@ -502,7 +517,8 @@ const LatestNews: React.FC<NewsProps> = ({
         <div className="h-[37rem] overflow-hidden mb-4">
           <div className="overflow-y-auto scrollbar h-full space-y-4 pr-1">
             {filteredNews?.map((item, index) => (
-              <div
+              <Link
+                href={`media-room/${formatString(item?.title)}`}
                 key={index}
                 className={`flex ${
                   index === 0 ? "lg:flex-row flex-col" : "items-center"
@@ -544,14 +560,14 @@ const LatestNews: React.FC<NewsProps> = ({
                       <circle cx="12" cy="19" r="2" />
                     </svg>
                   </div>
-                  <p className="border border-black rounded-md text-center w-max px-3">
+                  <p className="border border-black rounded-[0.3rem] text-center w-max px-3">
                     {item?.header}
                   </p>
                   <h3
                     className={
                       index === 0
-                        ? "font-semibold text-lg"
-                        : "font-medium text-lg"
+                        ? "font-medium text-md"
+                        : "font-medium text-md"
                     }
                   >
                     {item?.title}
@@ -579,7 +595,7 @@ const LatestNews: React.FC<NewsProps> = ({
                     </svg>
                   </button>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -633,6 +649,14 @@ const MostRead: React.FC<NewsProps> = ({
     setModalOpen(true);
   };
 
+  function formatString(input) {
+    return input
+      .trim() // Remove extra spaces
+      .toLowerCase() // Convert to lowercase
+      .replace(/[^a-z0-9\s-]/g, "") // Remove special characters except spaces and hyphens
+      .replace(/\s+/g, "-"); // Replace spaces with hyphens
+  }
+
   const closeModal = () => setModalOpen(false);
 
   const filteredNews = MostRead?.sections?.filter((item) => {
@@ -656,7 +680,8 @@ const MostRead: React.FC<NewsProps> = ({
         <div className="h-[37rem] overflow-hidden mb-4">
           <div className="overflow-y-auto h-full scrollbar space-y-5 pr-1">
             {filteredNews?.map((item) => (
-              <div
+              <Link
+                href={`media-room/${formatString(item?.title)}`}
                 key={item?.title}
                 className="flex items-center border-b-2 pb-[1.1rem] space-x-1"
               >
@@ -673,10 +698,10 @@ const MostRead: React.FC<NewsProps> = ({
                       <circle cx="12" cy="19" r="2" />
                     </svg>
                   </div>
-                  <p className="border border-black rounded-md text-center text-sm w-max px-2">
+                  <p className="border border-black rounded-[0.3rem] text-center text-sm w-max px-2">
                     {item?.header}
                   </p>
-                  <h3 className="font-medium">{item?.title}</h3>
+                  <h3 className="font-medium text-sm">{item?.title}</h3>
                   <button
                     aria-label="Open"
                     onClick={() => openModal(item)}
@@ -706,7 +731,7 @@ const MostRead: React.FC<NewsProps> = ({
                     alt={""}
                   />
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -774,7 +799,7 @@ const Pages: React.FC<MediaRoomProps> = ({ mediaRoomData }) => {
         mediaRoomData={mediaRoomData}
       />
       <div className="flex lg:px-0 px-[1rem]">
-        <div className="w-[20%] px-[1.5rem] lg:block hidden">
+        <div className="w-[20%] pl-[2rem] pr-[1.5rem] lg:block hidden">
           <Filter
             onSearch={handleSearch}
             onCategoryChange={handleCategoryChange}

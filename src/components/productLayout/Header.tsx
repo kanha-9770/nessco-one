@@ -113,7 +113,7 @@ const Page1: React.FC<Page1Props> = ({ page1machine }) => {
           {page1machine?.description}
         </p>
       </div>
-      <div className="lg:h-[9rem] h-[6rem] lg:w-[12rem] w-[6rem] absolute right-0 bottom-[1rem] lg:bottom-[2rem] overflow-hidden">
+      <div className="lg:h-[9rem] h-[6rem] lg:w-[9rem] w-[6rem] absolute right-0 bottom-[1rem] lg:bottom-[2rem] overflow-hidden">
         <Image
           className="p-2 h-full w-full"
           width={400}

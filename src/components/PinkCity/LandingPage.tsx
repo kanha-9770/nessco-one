@@ -40,7 +40,7 @@ const LandingPage:React.FC <AboutLayoutProps>= ({pinkcityData}) => {
         {/* Corner Image */}
         <div className="absolute -left-20 -top-8 lg:visible invisible  ">
           <Image
-            src="https://assets.nesscoindustries.com/public/assets/about/pinkcity/corner-layer.svg.webp"
+            src="https://assets.nesscoindustries.com/public/assets/about/pinkcity/corner-layer.svg"
             alt="Stroke"
             width={300}
             height={300}

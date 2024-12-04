@@ -21,21 +21,22 @@ const Clientele: React.FC <AboutLayoutProps>=({clienteleData}) => {
 
     // Check screen width to determine mobile or desktop behavior
     const isMobile = window.innerWidth <= 768; // You can adjust the breakpoint
+   
 
-    const mobileX = 40;  // Movement for mobile screens
-    const desktopX = 170; // Movement for desktop screens
+    const mobileX = window.innerWidth * 0.1; // 10% of the screen width for mobile
+    const desktopX = window.innerWidth * 0.2; // 20% of the screen width for desktop
 
-    const moveX = isMobile ? mobileX : desktopX; // Choose based on screen size
+    const movementX = isMobile ? mobileX : desktopX;
 
     // Add a delay before starting the animation
     tl.to(leftHandRef.current, {
-      x: moveX, // Move right
+      x: movementX, // Move right
       duration: 4,
       ease: "power2.inOut",
       delay: 1, // Delay before starting the animation
     })
       .to(rightHandRef.current, {
-        x: -moveX, // Move left
+        x: -movementX, // Move left
         duration: 4,
         ease: "power2.inOut",
       }, "<") // "<" syncs the two animations

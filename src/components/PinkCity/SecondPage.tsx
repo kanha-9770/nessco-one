@@ -65,7 +65,7 @@ const SecondPage:React.FC<AboutLayoutProps> = ({pinkcityData}) => {
         <DashedLineWithImage />
         <div className="absolute  lg:-bottom-10 -bottom-28 z-10 h-full lg:w-[35rem] w-[20rem] md:w-[46rem] ">
           <Image
-            src="https://assets.nesscoindustries.com/public/assets/about/pinkcity/stroke-2.webp"
+            src="https://assets.nesscoindustries.com/public/assets/about/pinkcity/stroke-2.svg"
             alt="Stroke"
             width={400}
             height={400}

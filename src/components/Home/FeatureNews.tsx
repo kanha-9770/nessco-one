@@ -7,6 +7,7 @@ import { HomeData, NewsFeatureItem } from "./types/constant";
 import { Key, useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import Link from "next/link";
+import { languageCODE } from "../Navbar/nav-menue";
 
 interface FeatureNewsLayoutProps {
   heroData: HomeData;
@@ -29,6 +30,14 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
     setDialogContent(content);
     setDialogOpen(true);
   };
+
+  function formatString(input) {
+    return input
+      .trim() // Remove extra spaces
+      .toLowerCase() // Convert to lowercase
+      .replace(/[^a-z0-9\s-]/g, "") // Remove special characters except spaces and hyphens
+      .replace(/\s+/g, "-"); // Replace spaces with hyphens
+  }
 
   return (
     <div className="max-w-screen-2xl relative mx-auto py-6 sm:py-10 px-4 sm:px-6 lg:px-14 mb-8 sm:mb-12 font-poppins">
@@ -56,7 +65,7 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
               <p className="text-sm text-gray-600 mb-0 line-clamp-3">
                 {newsfData[0]?.description}
               </p>
-              <Dialog  open={isDialogOpen} onOpenChange={setDialogOpen}>
+              <Dialog open={isDialogOpen} onOpenChange={setDialogOpen}>
                 <DialogTrigger asChild>
                   <button
                     onClick={() =>
@@ -106,7 +115,9 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
               className="bg-white h-full z-20 shadow-lg rounded-2xl overflow-hidden flex flex-col"
             >
               <div className="px-4 py-2  relative ">
-                <h4 className="text-sm font-medium line-clamp-2  pr-8">{news?.title}</h4>
+                <h4 className="text-sm font-medium line-clamp-2  pr-8">
+                  {news?.title}
+                </h4>
                 <p className="text-xs text-gray-600 line-clamp-2">
                   {news?.description}
                 </p>
@@ -156,7 +167,7 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
           ))}
         </div>
       </div>
-      <Dialog  open={isDialogOpen} onOpenChange={setDialogOpen}>
+      <Dialog open={isDialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent className="sm:max-w-[1000px] bg-white ">
           <div className="flex flex-col lg:flex-row items-center justify-center lg:space-x-4 space-y-4 lg:space-y-0">
             <div className="w-full h-full relative rounded-xl overflow-hidden">
@@ -168,16 +179,27 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
                 className="rounded-xl"
               />
             </div>
-            <div className="w-full lg:w-[70%]">
+            <div className="w-full lg:w-[70%] flex flex-col items-center">
               <h5 className="text-xl text-center lg:text-left mb-2 text-[#483d73] font-medium font-poppins">
                 {dialogContent?.title}
               </h5>
               <div className="h-48 lg:h-60 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
-                <p className="font-poppins text-center lg:text-left text-sm">
+                <p className="font-poppins text-justify text-sm">
                   {dialogContent?.description}
                 </p>
               </div>
-              <Link href={`media-room/${dialogContent?.title}`} className="h-10 w-20 left-[40%] font-bold relative ">Read More</Link>
+              <Link href={`${languageCODE}/media-room/${formatString(dialogContent?.title)}`}>
+                <div className="w-max text-xs font-poppins font-medium lg:hover:text-black lg:hover:bg-white bg-black text-white py-[0.2rem] px-2 rounded-full border border-black flex items-center group transition-all duration-300">
+                  <p>Read More</p>
+                  <Image
+                    src="https://assets.nesscoindustries.com/public/assets/homepage/read-more-icon.webp"
+                    alt={"ReDirection Arrow"}
+                    width={400}
+                    height={400}
+                    className="w-4 h-4 lg:group-hover:invert ml-2 transition-all diration-300"
+                  />
+                </div>
+              </Link>
             </div>
           </div>
         </DialogContent>

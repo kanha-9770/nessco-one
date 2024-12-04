@@ -136,9 +136,15 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
   };
 
   const headingData = getHeadingData();
+
   function formatString(input) {
-    return input.trim().toLowerCase().replace(/\s+/g, "-");
+    return input
+      .trim() // Remove extra spaces
+      .toLowerCase() // Convert to lowercase
+      .replace(/[^a-z0-9\s-]/g, "") // Remove special characters except spaces and hyphens
+      .replace(/\s+/g, "-"); // Replace spaces with hyphens
   }
+  
   return (
     <>
       <div className="flex lg:flex-row flex-col lg:mx-0 mx-[4vw] lg:mt-0 mt-14 font-regular font-poppins">
@@ -221,7 +227,7 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
 
           {/* Filtered Data Display */}
           <div className="overflow-auto scrollbar-custom scrollbar h-full">
-            <div className="mx-[1rem] relative flex lg:flex-row flex-col border-solid border-b-2 border-[#E6E7E6] mb-[0.8rem]">
+            <Link href={`blog/${formatString(headingData?.imgTitle)}`} className="mx-[1rem] relative flex lg:flex-row flex-col border-solid border-b-2 border-[#E6E7E6] mb-[0.8rem]">
               <div className="lg:w-[40%] w-full relative flex items-start justify-center">
                 {/* <video className="w-full h-[13rem] lg:mb-0 mb-[0.5rem] rounded-[0.5rem] object-cover lg:top-0 lg:absolute">
                   <source src={headingData?.machineBg} type="video/mp4" />
@@ -347,13 +353,13 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
                   </Link>
                 </div>
               </div>
-            </div>
+            </Link>
 
             {/* Blogs List */}
             <div className="w-full lg:max-h-[58rem] lg:overflow-y-auto overflow-x-auto scrollbar-custom scrollbar">
               <div className="lg:w-full lg:space-x-0 space-x-4 w-max flex lg:flex-col flex-row overflow-x-hidden px-[1rem]">
                 {getFilteredData().map((item, idx) => (
-                  <div
+                  <Link href={`blog/${formatString(item?.title)}`}
                     key={idx}
                     className="flex items-start w-full my-[1.5vh] border-solid border-b-2 border-[#E6E7E6] pb-[0.5rem]"
                   >
@@ -465,7 +471,7 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
                         </Link>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>

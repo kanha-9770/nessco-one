@@ -83,7 +83,7 @@ const FAQ: React.FC<MainLayoutProps> = ({ faqData }) => {
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
+                className="h-6 w-6 mt-2"
               >
                 <path
                   d="M3 7H21"
@@ -106,12 +106,12 @@ const FAQ: React.FC<MainLayoutProps> = ({ faqData }) => {
               </svg>
             </div>
             <div className="relative">
-              <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+              <Search className="absolute  left-3 top-2.5 h-4 w-4 text-muted-foreground" />
               <Input
                 placeholder="Search Category"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-9 rounded-md border-gray-200"
+                className="pl-9 rounded-[1rem] border-gray-200"
               />
             </div>
           </div>

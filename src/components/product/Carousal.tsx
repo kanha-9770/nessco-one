@@ -92,30 +92,32 @@ const Carousal: React.FC<ProductProps> = ({ productData }) => {
           <h3 className="lg:text-4xl text-[1.4rem] font-bold italic text-[#483d73] mb-[0.5rem]">
             {Header?.products[currentIndex]?.machineName}
           </h3>
-          <p className="lg:text-[0.9rem] text-black text-[0.7rem] lg:w-[20rem] md:w-[30rem] w-[9rem]">
+          <p className="lg:text-sm text-black text-[0.7rem] lg:w-[20rem] md:w-[30rem] w-[9rem] line-clamp-4">
             {Header?.products[currentIndex]?.description}
           </p>
         </div>
         <div className="lg:w-[50%] flex">
-          <Image
-            src={Header?.products[currentIndex]?.machineImg}
-            alt={Header?.products[currentIndex]?.machineName}
-            width={400}
-            height={400}
-            priority
-            className="lg:w-[19rem] md:w-[12rem] h-max w-[20rem] lg:-mt-10 md:-mt-[2rem] mt-[5rem]"
-          />
+          <div className="h-[10.2rem]">
+            <Image
+              src={Header?.products[currentIndex]?.machineImg}
+              alt={Header?.products[currentIndex]?.machineName}
+              width={400}
+              height={400}
+              priority
+              className="lg:w-[14rem] md:w-[12rem] h-max w-[20rem] lg:-mt-10 md:-mt-[2rem] mt-[5rem]"
+            />
+          </div>
 
           <Image
             src={Header?.products[currentIndex]?.productImg}
             alt={Header?.products[currentIndex]?.machineName}
             width={400}
             height={400}
-            className="lg:w-[5rem] h-max w-[4rem] lg:-ml-2 md:ml-2 -ml-[4rem]"
+            className="lg:w-[4rem] h-max w-[4rem] lg:ml-0 md:ml-2 -ml-[4rem]"
           />
         </div>
       </div>
-      <div className="flex lg:pl-[1rem] lg:py-4 pt-4 space-x-2 ">
+      <div className="flex lg:pl-[1rem] lg:pt-0 pt-4 space-x-2 absolute bottom-3 right-8">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 64 64"
@@ -152,7 +154,7 @@ const Carousal: React.FC<ProductProps> = ({ productData }) => {
           />
         </svg>
       </div>
-      <div className="absolute lg:bottom-4 bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-2">
+      {/* <div className="absolute lg:bottom-4 bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-2">
         {Header?.products?.map((_, idx) => (
           <div
             key={idx}
@@ -162,7 +164,7 @@ const Carousal: React.FC<ProductProps> = ({ productData }) => {
             onClick={() => setCurrentIndex(idx)}
           />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

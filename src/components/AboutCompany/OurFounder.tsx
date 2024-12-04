@@ -21,7 +21,9 @@ const FounderCard: React.FC<{
     {/* Image container */}
     <div className="lg:w-full lg:h-[70%] h-full w-[50%] lg:p-4">
       <Image
-        className="transform 0.3 ease-in-out lg:rounded-t-lg rounded-lg object-cover h-full w-full"
+        className="transform 0.3 ease-in-out lg:rounded-t-xl rounded-lg  h-full w-full  object-cover object-[center_10%]"
+        
+        
         src={imageSrc}
         alt={name}
         width={400}
@@ -77,7 +79,7 @@ const FounderCard: React.FC<{
             className="inline-block mb-3"
           />
         </a>
-        <p className="text-black font-poppins">{description}</p>
+        <p className="text-black font-poppins text-xs font-regular">{description}</p>
       </div>
     </div>
   </div>
@@ -90,7 +92,7 @@ const Founders: React.FC<MainLayoutProps> = ({ companyData }) => {
   return (
     <div className="bg-black text-white py-16 h-full">
       <h2 className="text-center lg:text-3xl text-2xl font-poppins font-medium mb-8 mt-28">
-        {ourfounderheading?.title}
+        {ourfounderheading?.title} {" "}
         <span className="text-red-600">{ourfounderheading?.highlight}</span>
       </h2>
       <div className="lg:flex justify-center lg:gap-4 space-y-5 lg:space-y-0 lg:p-10 p-5">

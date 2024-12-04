@@ -1,53 +1,48 @@
 "use client";
-import React, { useState } from "react";
+
+import React, { useEffect, useRef, useState } from "react";
 import { VideosItem } from "./types/constant";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Search, X, Filter, Play } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { ScrollArea } from "../ui/ScrollArea";
+import { Checkbox } from "../ui/CheckBox";
+import YouTube from "../Navbar/NavLayouts/YoutubeSvg";
 
 interface VideosProps {
   videosData: VideosItem;
 }
 
-const Header: React.FC<VideosProps> = ({ videosData }) => {
+const VideoGallery: React.FC<VideosProps> = ({ videosData }) => {
   const Header = videosData?.Videos[0]?.Header;
-  const [showApplications, setShowApplications] = useState(false);
-  const [showCategories, setShowCategories] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentVideoUrl, setCurrentVideoUrl] = useState("");
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([
     "All Categories",
   ]);
   const [selectedApplications, setSelectedApplications] = useState<string[]>([
     "All Categories",
   ]);
-  const [searchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
   const [categorySearch, setCategorySearch] = useState("");
-  const [applicationSearch, setApplicationSearch] = useState("");
-  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
 
-  const handleOpenFilter = () => {
-    setIsFilterModalOpen(true);
-  };
+  const [tempSelectedCategories, setTempSelectedCategories] = useState<
+    string[]
+  >(["All Categories"]);
+  const [tempSelectedApplications, setTempSelectedApplications] = useState<
+    string[]
+  >(["All Categories"]);
 
-  const handleCloseFilter = () => {
-    setIsFilterModalOpen(false);
-  };
-
-  const filterItems = (items: any[], search: string) => {
-    return items?.filter((item) =>
-      item?.title?.toLowerCase()?.includes(search?.toLowerCase())
-    );
-  };
-
-  const displayApplications = filterItems(
-    showApplications
-      ? Header?.applications
-      : Header?.applications?.slice(0, 3),
-    applicationSearch
-  );
-
-  const displayCategories = filterItems(
-    showCategories
-      ? Header?.categories
-      : Header?.categories?.slice(0, 3),
-    categorySearch
-  );
+  useEffect(() => {
+    if (isOpen && iframeRef.current) {
+      const videoUrl = new URL(currentVideoUrl);
+      videoUrl.searchParams.set("autoplay", "1");
+      iframeRef.current.src = videoUrl.toString();
+    }
+  }, [isOpen, currentVideoUrl]);
 
   const filteredVideos = Header?.VideosRef?.filter((video) => {
     const categoryMatch =
@@ -87,279 +82,228 @@ const Header: React.FC<VideosProps> = ({ videosData }) => {
     handleSelectionChange(event, setSelectedCategories, "All Categories");
   };
 
-  const handleApplicationChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    handleSelectionChange(event, setSelectedApplications, "All Categories");
-  };
-
-  return (
-    <div className="mt-[5.2rem] my-10 lg:mx-10 mx-5 font-poppins">
-      <div className="lg:flex lg:space-x-10">
-        {/* Filter Section */}
-        <div className="w-[18%] lg:block hidden h-[82vh] pr-5 border-r-2 border-[#E6E7E6] overflow-auto sticky top-[5.2rem] scrollbar-hide">
-          <p className="mb-2">{Header?.filter}</p>
-          <p className="font-medium mb-2">
-            {Header?.byCategory}
-          </p>
-
-          {/* Category Search Field */}
-          <div className="flex rounded-[1rem] bg-white overflow-hidden">
-            <input
-              type="search"
-              placeholder="Search categories..."
-              value={categorySearch}
-              onChange={(e) => setCategorySearch(e.target.value)}
-              className="w-full py-[0.3rem] px-[1rem] outline-none bg-transparent text-black"
-            />
-            <button className="mr-[0.8rem] text-[#9CA3AF]">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="feather feather-search"
-              >
-                <circle cx="10" cy="10" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-              </svg>
-            </button>
-          </div>
-
-          {/* By Category */}
-          <div className="mt-5">
-            {displayCategories.map((item, index) => (
-              <div key={index} className="flex justify-between items-center">
-                <label
-                  className="font-montserrat my-[0.2rem]"
-                  htmlFor={item?.title}
-                >
-                  {item?.title}
-                </label>
-                <input
-                  type="checkbox"
-                  id={item?.title}
-                  name={item?.title}
-                  checked={selectedCategories?.includes(item?.title)}
-                  onChange={handleCategoryChange}
-                  className="ml-2"
-                />
-              </div>
-            ))}
-            <button
-              onClick={() => setShowCategories(!showCategories)}
-              className="text-red-600 font-montserrat mt-1"
-            >
-              {showCategories ? "Less" : "Expand"}
-            </button>
-          </div>
-
-          <p className="font-medium mb-2 mt-9">
-            {Header?.byApplications}
-          </p>
-
-          {/* Application Search Field */}
-          <div className="flex rounded-[1rem] bg-white overflow-hidden">
-            <input
-              type="search"
-              placeholder="Search applications..."
-              value={applicationSearch}
-              onChange={(e) => setApplicationSearch(e.target.value)}
-              className="w-full py-[0.3rem] px-[1rem] outline-none bg-transparent text-black"
-            />
-            <button className="mr-[0.8rem] text-[#9CA3AF]">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="feather feather-search"
-              >
-                <circle cx="10" cy="10" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-              </svg>
-            </button>
-          </div>
-
-          {/* By Application */}
-          <div className="mt-5">
-            {displayApplications?.map((item, index) => (
-              <div key={index} className="flex justify-between items-center">
-                <label
-                  className="font-montserrat my-[0.2rem]"
-                  htmlFor={item?.title}
-                >
-                  {item?.title}
-                </label>
-                <input
-                  type="checkbox"
-                  id={item?.title}
-                  name={item?.title}
-                  checked={selectedApplications?.includes(item?.title)}
-                  onChange={handleApplicationChange}
-                  className="ml-2"
-                />
-              </div>
-            ))}
-            <button
-              onClick={() => setShowApplications(!showApplications)}
-              className="text-red-600 font-montserrat mt-1"
-            >
-              {showApplications ? "Less" : "Expand"}
-            </button>
-          </div>
-        </div>
-
-        {/* Filter in mobile */}
-        <div className="w-full bg-white h-[3rem] rounded-t-2xl relative flex items-center justify-center lg:hidden border-solid border-b-2 border-[#E6E7E6] text-[#483d73] cursor-pointer">
-          <p className="font-poppins text-[1.3rem] absolute left-4">
+  const FilterContent = ({ isMobile = false }) => (
+    <div className={cn("space-y-6", isMobile ? "p-4" : "p-6")}>
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <h2 className="text-lg hidden lg:flex font-medium text-gray-900">
             {Header?.filter}
-          </p>
+          </h2>
           <svg
-            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="w-6 h-6 stroke-black absolute right-4"
-            onClick={handleOpenFilter}
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 hidden lg:flex w-6 mt-2"
           >
-            <line x1="4" y1="6" x2="16" y2="6" />
-            <line x1="8" y1="12" x2="20" y2="12" />
-            <line x1="4" y1="18" x2="16" y2="18" />
-            <circle cx="18" cy="6" r="2" />
-            <circle cx="6" cy="12" r="2" />
-            <circle cx="18" cy="18" r="2" />
+            <path
+              d="M3 7H21"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+            <path
+              d="M6 12H18"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+            <path
+              d="M10 17H14"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
           </svg>
         </div>
-
-        {/* Videos Section */}
-        <div className="lg:w-[82%] w-full bg-white rounded-b-2xl lg:rounded-t-2xl py-5 px-10">
-          <h1 className="text-[#483d73] text-2xl font-poppins font-medium">
-            {Header?.title}
-          </h1>
-          {/* <div className="my-4">
-            <input
-              type="search"
-              placeholder="Search videos..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full py-2 px-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div> */}
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 my-4 gap-8">
-            {filteredVideos?.map((item, idx) => (
-              <div key={idx} className="w-full h-full">
-                <iframe
-                  className="w-full h-full rounded-lg shadow-lg"
-                  src={item?.url}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            ))}
-          </div>
+        <div className="relative">
+          <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+          <Input
+            placeholder="Search Category"
+            value={categorySearch}
+            onChange={(e) => setCategorySearch(e.target.value)}
+            className="pl-9 rounded-[1rem] border-gray-200"
+          />
         </div>
       </div>
 
-      {/* Filter Modal in Mobile */}
-      {isFilterModalOpen && (
-        <div className="fixed inset-0 bg-[#f5f5f5] bg-opacity-50 backdrop-blur z-50 flex items-center justify-center lg:mt-14">
-          <div className="bg-white lg:w-[30%] w-full h-[28rem] mx-[1rem] p-[1rem] rounded-lg shadow-lg">
-            <div className="w-full h-[3rem] flex items-center border-b-2 border-solid border-[#E6E7E6]">
-              <div className="flex justify-center items-center h-full w-[50%] border-r-2 border-solid border-[#E6E7E6] mb-[0.5rem] font-poppins font-medium">
-                <button onClick={handleCloseFilter} className="text-[#838282]">
-                  {Header?.cancel}
-                </button>
-              </div>
-              <div className="flex justify-center items-center w-[50%] mb-[0.5rem] font-poppins font-medium">
-                <button onClick={handleCloseFilter} className="text-red-700">
-                  {Header?.apply}
-                </button>
-              </div>
-            </div>
+      <ScrollArea
+        className={cn(
+          "pr-4",
+          isMobile ? "h-[calc(100vh-200px)]" : "h-[calc(100vh-240px)]"
+        )}
+      >
+        <div className="space-y-2">
+          <p className="font-medium hidden lg:flex mb-2">
+            {Header?.byCategory}
+          </p>
+          {Header?.categories
+            .filter((category) =>
+              category.title
+                .toLowerCase()
+                .includes(categorySearch.toLowerCase())
+            )
+            .map((category) => (
+              <label
+                key={category.title}
+                className="flex items-center space-x-2 cursor-pointer py-1"
+              >
+                <Checkbox
+                  checked={
+                    isMobile
+                      ? tempSelectedCategories.includes(category.title)
+                      : selectedCategories.includes(category.title)
+                  }
+                  onCheckedChange={(checked) => {
+                    const event = {
+                      target: {
+                        name: category.title,
+                        checked: checked === true,
+                      },
+                    };
+                    if (isMobile) {
+                      handleSelectionChange(
+                        event as React.ChangeEvent<HTMLInputElement>,
+                        setTempSelectedCategories,
+                        "All Categories"
+                      );
+                    } else {
+                      handleCategoryChange(
+                        event as React.ChangeEvent<HTMLInputElement>
+                      );
+                    }
+                  }}
+                  id={category.title}
+                  className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary accent-red-700"
+                />
+                <span
+                  className={cn(
+                    "text-sm font-montserrat",
+                    isMobile
+                      ? tempSelectedCategories.includes(category.title)
+                        ? "text-gray-900 font-medium"
+                        : "text-gray-600"
+                      : selectedCategories.includes(category.title)
+                      ? "text-gray-900 font-medium"
+                      : "text-gray-600"
+                  )}
+                >
+                  {category.title}
+                </span>
+              </label>
+            ))}
+        </div>
+      </ScrollArea>
+    </div>
+  );
 
-            <div className="h-[22rem] mt-4 p-[1rem] bg-[#f5f5f5] rounded-lg overflow-y-auto">
-              <p className="font-medium mb-2">
-                {Header?.byCategory}
-              </p>
-              <input
-                type="search"
-                placeholder="Search categories..."
-                value={categorySearch}
-                onChange={(e) => setCategorySearch(e.target.value)}
-                className="w-full py-2 px-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2"
-              />
-              {filterItems(
-                Header?.categories,
-                categorySearch
-              ).map((item, index) => (
-                <div key={index} className="flex justify-between items-center">
-                  <label
-                    className="font-poppins my-[0.2rem]"
-                    htmlFor={`mobile-category-${item?.title}`}
-                  >
-                    {item?.title}
-                  </label>
-                  <input
-                    type="checkbox"
-                    id={`mobile-category-${item?.title}`}
-                    name={item?.title}
-                    checked={selectedCategories?.includes(item?.title)}
-                    onChange={handleCategoryChange}
-                  />
-                </div>
-              ))}
+  return (
+    <div className="mt-[5.2rem] my-10 lg:mx-10 mx-5 font-poppins">
+      <div className="lg:flex lg:space-x-6">
+        {/* Sidebar for desktop */}
+        <aside className="hidden lg:block w-[280px] bg-white rounded-xl lg:min-h-screen flex-shrink-0 lg:mr-6">
+          <FilterContent />
+        </aside>
 
-              <p className="font-medium mb-2 mt-4">
-                {Header?.byApplications}
-              </p>
-              <input
-                type="search"
-                placeholder="Search applications..."
-                value={applicationSearch}
-                onChange={(e) => setApplicationSearch(e.target.value)}
-                className="w-full py-2 px-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2"
-              />
-              {filterItems(
-                Header?.applications,
-                applicationSearch
-              ).map((item, index) => (
-                <div key={index} className="flex justify-between items-center">
-                  <label
-                    className="font-poppins my-[0.2rem]"
-                    htmlFor={`mobile-application-${item?.title}`}
-                  >
-                    {item?.title}
-                  </label>
-                  <input
-                    type="checkbox"
-                    id={`mobile-application-${item?.title}`}
-                    name={item?.title}
-                    checked={selectedApplications?.includes(item?.title)}
-                    onChange={handleApplicationChange}
-                  />
-                </div>
-              ))}
+        {/* Main Content */}
+        <div className="flex-grow">
+          <div className="bg-white rounded-xl p-5 mt-4 lg:mt-0">
+            <div className="flex justify-between items-center mb-4">
+              <h1 className="text-[#483d73] text-2xl font-poppins font-medium mb-6">
+                {Header?.title}
+                <div className="lg:border-t-[0.2rem] border-t-2 border-solid border-red-700 lg:w-[8vw] w-[18vw] mt-[0.6rem]"></div>
+              </h1>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button className="lg:hidden flex items-center justify-center">
+                    <Filter className="mr-2 h-4 w-4" />
+                    {Header?.filter}
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[90vw] bg-white h-[95vh] p-0">
+                  <div className="flex flex-col h-full">
+                    <div className="flex justify-between items-center p-4 border-b">
+                      <h2 className="text-lg font-medium">{Header?.filter}</h2>
+                      <DialogTrigger asChild></DialogTrigger>
+                    </div>
+                    <FilterContent isMobile />
+                    <div className="flex justify-end space-x-2 p-4 border-t">
+                      <Button
+                        variant="outline"
+                        onClick={() => {
+                          setTempSelectedCategories(["All Categories"]);
+                          setTempSelectedApplications(["All Categories"]);
+                        }}
+                      >
+                        {Header?.cancel}
+                      </Button>
+                      <Button
+                        onClick={() => {
+                          setSelectedCategories(tempSelectedCategories);
+                          setSelectedApplications(tempSelectedApplications);
+                        }}
+                      >
+                        {Header?.apply}
+                      </Button>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
             </div>
+            <ScrollArea className="h-[calc(100vh-200px)] pr-4">
+              <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
+                {filteredVideos?.map((item, idx) => (
+                  <Dialog key={idx}>
+                    <DialogTrigger asChild>
+                      <div className="w-full aspect-video relative group cursor-pointer">
+                        <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-60 transition-all duration-300 rounded-[1rem]" />
+                        <img
+                          src={`https://img.youtube.com/vi/${getYouTubeVideoId(
+                            item.url
+                          )}/0.jpg`}
+                          alt={item.title}
+                          className="w-full h-full object-cover rounded-[1rem] shadow-lg"
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <YouTube className="w-16 h-16 text-white opacity-100 " />
+                        </div>
+                        <div className="absolute top-0 left-0 right-0 p-4 text-white">
+                          <h3 className="text-lg font-semibold truncate">
+                            {item.title}
+                          </h3>
+                        </div>
+                      </div>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[70vw] rounded-2xl sm:max-h-[90vh] px-6">
+                      <div className="relative w-full rounded-[1rem] h-[80vh]">
+                        <iframe
+                          className="w-full rounded-2xl h-full"
+                          src={`${item.url}${
+                            item.url.includes("?") ? "&" : "?"
+                          }autoplay=1`}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          referrerPolicy="strict-origin-when-cross-origin"
+                          allowFullScreen
+                        ></iframe>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                ))}
+              </div>
+            </ScrollArea>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };
 
-export default Header;
+const getYouTubeVideoId = (url: string) => {
+  const regExp =
+    /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  const match = url.match(regExp);
+  return match && match[2].length === 11 ? match[2] : null;
+};
+
+export default VideoGallery;

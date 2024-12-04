@@ -48,8 +48,32 @@ export default function ApplicationLayout({
   }
 
   return (
-    <div className="flex flex-col md:flex-row w-full h-full p-4 lg:h-[24rem]">
-      <div className="md:w-[70%] relative">
+    <div className="flex flex-col md:flex-row w-full h-full  lg:h-[24rem]">
+      <Link
+        className="h-14 w-full lg:hidden border-b px-4 flex items-center space-x-2 "
+        href={`/${countryCODE}/${languageCODE}/application`}
+        onClick={() => setActive(null)}
+      >
+        {/* here should be icon remove bellow svg */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="lucide lucide-square-arrow-out-up-right"
+        >
+          <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+          <path d="m21 3-9 9" />
+          <path d="M15 3h6v6" />
+        </svg>
+        <span className="text-gray-500 text-xl">Application</span>
+      </Link>
+      <div className="md:w-[70%] px-4 pt-4 relative">
         <div className="w-full grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-4 mb-4 md:mb-0 md:mr-4">
           {applicationData.map((product, index) => (
             <Link
@@ -109,7 +133,7 @@ export default function ApplicationLayout({
       </div>
 
       <div className="md:w-[30%] hidden  border-l p-6 lg:flex flex-col relative">
-        <div className="absolute inset-0 px-8 h-full w-auto opacity-5 pointer-events-none">
+        <div className="absolute inset-0 px-8 h-[20rem] w-auto opacity-5 pointer-events-none">
           {activeProduct && (
             <Image
               src={
@@ -118,6 +142,7 @@ export default function ApplicationLayout({
                 ]
               }
               alt=""
+              className="h-full w-full"
               layout="fill"
               objectFit="contain"
             />
@@ -138,7 +163,7 @@ export default function ApplicationLayout({
           href={`/${countryCODE}/${languageCODE}/application/${activeProduct?.name}`}
           onClick={() => setActive(null)}
         >
-          <div className="absolute bottom-0 right-4 bg-white z-20 rounded-full hover:bg-black hover:text-white">
+          <div className="absolute bottom-4 right-4 bg-white z-20 rounded-full hover:bg-black hover:text-white">
             <Button
               className="rounded-full relative flex items-center justify-center bg-primary text-primary-foreground hover:bg-[#483d73] border-2 group border-[#483d73] w-[12rem] space-x-4 py-1 text-base font-medium transition-all duration-300 ease-in-out group"
               aria-label="View all items"

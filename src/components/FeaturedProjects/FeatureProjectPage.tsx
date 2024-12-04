@@ -5,6 +5,8 @@ import gsap from "gsap";
 import { AboutItem, GridItem, Machine } from "../AboutHome/types/constant";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
+import Arrow from "../../../public/assets/Support/RedirectionArrowImg.svg";
+import LinkUrl from "../LinkUrl";
 
 interface HomeLayoutProps {
   aboutData: AboutItem;
@@ -131,6 +133,14 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
     // Clean up the timeout if the component unmounts
     return () => clearTimeout(timeoutId);
   }, []);
+
+  function formatString(input) {
+    return input
+      .trim() // Remove extra spaces
+      .toLowerCase() // Convert to lowercase
+      .replace(/[^a-z0-9\s-]/g, "") // Remove special characters except spaces and hyphens
+      .replace(/\s+/g, "-"); // Replace spaces with hyphens
+  }
 
   return (
     <div className="h-full relative overflow-hidden font-poppins">
@@ -262,8 +272,8 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                       : machine.id === 4
                       ? 16
                       : machine.id === 5
-                      ? 28
-                      : 5
+                      ? 40
+                      : 20
                   } -ml-${
                     machine.id === 1
                       ? 5
@@ -312,33 +322,42 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
       </div>
 
       {isModalOpen && selectedGrid && (
-        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 backdrop-blur-sm z-50 flex lg:flex-row flex-col justify-center items-center transition-all duration-700 ease-in-out transform">
+        <div
+          className="fixed inset-0 bg-gray-800 bg-opacity-50 backdrop-blur-sm z-50 flex lg:flex-row flex-col justify-center items-center transition-all duration-700 ease-in-out transform"
+          onClick={closeModal}
+        >
           <div className="bg-white rounded-3xl flex lg:flex-row flex-col lg:w-[45rem] lg:h-[20rem] h-[40rem] w-[23rem]  transition-all duration-700 ease-in-out transform">
             {/* Left side: Image */}
             <div className="lg:w-1/2 lg:h-full h-1/2 p-4 ">
               <div className="w-full h-full overflow-hidden rounded-2xl">
-                <Image
-                  src={
-                    selectedGrid?.mainImage ||
-                    "https://www.nesscoindia.com/Assets/images/resource/fully-automatic-paper-cup-making-machine.webp"
-                  } // Assuming selectedGrid contains an image source
-                  alt={selectedGrid?.title}
-                  height={300}
-                  width={300}
-                  className="rounded-2xl h-[40rem] w-[30rem] -mt-24"
-                />
+                <Link href={`projects/${formatString(selectedGrid?.title)}`}>
+                  <Image
+                    src={
+                      selectedGrid?.mainImage ||
+                      "https://www.nesscoindia.com/Assets/images/resource/fully-automatic-paper-cup-making-machine.webp"
+                    } // Assuming selectedGrid contains an image source
+                    alt={selectedGrid?.title}
+                    height={300}
+                    width={300}
+                    className="rounded-2xl h-[40rem] w-[30rem] -mt-24"
+                  />
+                </Link>
               </div>
             </div>
 
             {/* Right side: Title and Description */}
             <div className="lg:w-1/2 w-full h-1/2 lg:h-full flex flex-col justify-between relative lg:p-0 p-3 ">
               <div className="p-4 ">
-                <h3 className="text-sm mb-2 font-poppins font-semibold text-black w-[18rem]">
-                  {selectedGrid?.title}
-                </h3>
-                <p className="font-poppins font-regular text-[0?.66rem] w-[15rem] mt-5 h-[13rem]  overflow-hidden text-ellipsis break-words">
-                  {selectedGrid?.description}
-                </p>
+                <Link href={`projects/${formatString(selectedGrid?.title)}`}>
+                  <h3 className="text-md mb-2 font-poppins font-semibold text-black w-[18rem]">
+                    {selectedGrid?.title}
+                  </h3>
+                </Link>
+                <div className="w-[18rem] mt-2 h-[13rem] overflow-y-scroll scroll-wrapper style-1">
+                  <p className="font-poppins font-regular text-sm pl-2 text-justify">
+                    {selectedGrid?.description}
+                  </p>
+                </div>
               </div>
 
               {/* Close button */}
@@ -362,48 +381,18 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                 </button>
               </div>
 
-              <div className="flex absolute lg:bottom-3 lg:right-3 space-x-1 bottom-3 right-3 group cursor-pointer">
-                <Link
-                  className="font-poppins font-regular text-[0.70rem] mt-[] hover:text-red-700"
-                  href={`media-room/${selectedGrid?.title}`}
-                >
-                  {homeaboutData?.button}
-                </Link>
-
-                <svg
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="icon flat-line group-hover:stroke-red-700 transition-all duration-300 ease-in-out"
-                  width="15" /* Size matching the previous icon */
-                  height="15"
-                >
-                  <g id="SVGRepo_iconCarrier">
-                    <line
-                      x1="3"
-                      y1="12"
-                      x2="21"
-                      y2="12"
-                      style={{
-                        stroke:
-                          "#3a2a79" /* Change this to the desired color */,
-                        strokeLinecap: "round",
-                        strokeLinejoin: "round",
-                        strokeWidth: "2",
-                      }}
-                    ></line>
-                    <polyline
-                      points="18 15 21 12 18 9"
-                      style={{
-                        stroke: "#3a2a79" /* Same color for consistency */,
-                        strokeLinecap: "round",
-                        strokeLinejoin: "round",
-                        strokeWidth: "2",
-                      }}
-                    ></polyline>
-                  </g>
-                </svg>
-              </div>
+              <Link href={`projects/${formatString(selectedGrid?.title)}`}>
+                <div className="absolute bottom-2 right-14 text-xs font-poppins font-medium lg:hover:text-black lg:hover:bg-white bg-black text-white py-[0.2rem] px-2 rounded-full border border-black flex items-center group transition-all duration-300">
+                  <p>Read More</p>
+                  <Image
+                    src="https://assets.nesscoindustries.com/public/assets/homepage/read-more-icon.webp"
+                    alt={"ReDirection Arrow"}
+                    width={400}
+                    height={400}
+                    className="w-4 h-4 lg:group-hover:invert ml-2 transition-all diration-300"
+                  />
+                </div>
+              </Link>
             </div>
           </div>
         </div>
@@ -431,7 +420,7 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
               {item?.title}
             </h4>
             <div className="flex-col flex space-y-4 first-letter: p-2  relative -ml-7">
-              <p className="text-gray-600 text-xs font-poppins font-regular mt-3 px-7 h-[5rem] ">
+              <p className="text-gray-600 text-xs font-poppins font-regular mt-3 px-7 h-[5rem]">
                 {truncateTextdesktop(
                   selectedMachine?.description,
                   wordLimitdesktop

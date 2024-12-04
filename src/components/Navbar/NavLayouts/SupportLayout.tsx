@@ -86,7 +86,7 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
         ></button>
       )}
       <div
-        className={`hidden lg:flex overflow-x-auto py-8 ${
+        className={`hidden lg:flex overflow-x-auto ${
           shouldShowArrows ? "scroll-smooth" : ""
         } [scrollbar-width:none] gap-8`}
         ref={carouselRef}
@@ -102,10 +102,9 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
             >
               <div
                 className="flex-shrink-0 w-72 h-40 rounded-3xl p-4 flex flex-col justify-center items-center bg-cover bg-center bg-[#bbabf949]"
-                // style={{ backgroundImage: `url(${bgPick.src})` }}
               >
                 <LottieAnimation
-                  className="h-32"
+                  className="h-28 w-28"
                   animationData={item?.image}
                 ></LottieAnimation>
               </div>
@@ -126,6 +125,30 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
       {/* mobile view */}
 
       <div className="relative p-1 h-full flex lg:hidden flex-col items-center">
+      <Link
+        className="h-14 w-full lg:hidden border-b flex items-center space-x-2 px-4"
+        href={`/${countryCODE}/${languageCODE}/about`}
+        onClick={() => setActive(null)}
+      >
+        {/* here should be icon remove bellow svg */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="lucide lucide-square-arrow-out-up-right"
+        >
+          <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+          <path d="m21 3-9 9" />
+          <path d="M15 3h6v6" />
+        </svg>
+        <span className="text-gray-500 text-xl">About</span>
+      </Link>
         <div
           className="w-full py-2"
           ref={carouselRef}

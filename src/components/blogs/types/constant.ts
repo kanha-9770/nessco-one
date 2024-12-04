@@ -111,6 +111,7 @@ type FeaturedBlogsData = {
   featuredBlogs: string;
   picksForYou: string;
   featured: FeaturedBlog[];
+  feature: FeaturedBlog[];
 };
 
 type FeaturedBlog = {

@@ -186,7 +186,7 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
 
   return (
     <>
-      <div className="w-full bgLines font-poppins bg-grid-black/[0.2] lg:px-[2rem] px-[1rem] pt-[5rem] pb-[4rem] flex items-center justify-center relative font-regular">
+      <div className="w-full bgLines font-poppins bg-grid-black/[0.2] lg:px-[2rem] px-[1rem] pt-[3.5rem] pb-[4rem] flex items-center justify-center relative font-regular">
         <div className="absolute pointer-events-none inset-0 flex items-center justify-center  bg-[#f2f2f2] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
         <div className="bg-white w-full rounded-[0.5rem] lg:px-[2.2rem] px-[1rem] pb-[1.8rem] z-20">
           {ProductCatalouge?.card?.map((item, idx) => (
@@ -283,12 +283,12 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
                       ref={circleRef}
                       className="border-2 border-solid border-red-700 lg:w-[1rem] lg:h-[1rem] w-[0.5rem] h-[0.5rem] lg:left-[9.5rem] left-[2rem]  lg:top-[16.6rem] md:top-[3.5rem] top-[5.5rem] absolute rounded-full bg-red-700 opacity-0 scale-0"
                     ></div>
-                    <div className="py-[0.5rem] lg:pl-0 pl-[3.5rem] lg:text-[1rem] text-[0.7rem] font-light lg:w-[37rem]">
+                    <div className="lg:pl-0 pl-[3.5rem] lg:-mt-2 lg:text-sm text-[0.7rem] font-light lg:w-[48rem]">
                       <p>{item.description}</p>
                     </div>
                     <div className="w-full">
                       <div
-                        className="overflow-x-scroll lg:ml-[3rem] mb-[1rem] flex items-center lg:px-10 px-2 scrollbar-hide lg:pt-[4rem] pt-[2rem]"
+                        className="overflow-x-scroll lg:ml-[3rem] mb-[1rem] flex items-center lg:px-10 px-2 scrollbar-hide lg:pt-[1.5rem] pt-[2rem]"
                         ref={carouselRef}
                       >
                         <div className="flex items-center justify-center lg:space-x-8 space-x-4">
@@ -375,7 +375,7 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
                                     </p>
                                   </div>
 
-                                  <div className="flex justify-center items-center">
+                                  <div className="flex justify-center items-center h-[14rem]">
                                     <div className="p-2  flex justify-center items-center">
                                       <Image
                                         src={containerItem?.img}
