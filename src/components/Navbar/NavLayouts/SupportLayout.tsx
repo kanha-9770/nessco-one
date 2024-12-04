@@ -100,9 +100,7 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
               className="flex flex-col space-y-4"
               href={`/${countryCODE}/${languageCODE}/support/${item.link}`}
             >
-              <div
-                className="flex-shrink-0 w-72 h-40 rounded-3xl p-4 flex flex-col justify-center items-center bg-cover bg-center bg-[#bbabf949]"
-              >
+              <div className="flex-shrink-0 w-72 h-40 rounded-3xl p-4 flex flex-col justify-center items-center bg-cover bg-center bg-[#bbabf949]">
                 <LottieAnimation
                   className="h-28 w-28"
                   animationData={item?.image}
@@ -124,56 +122,53 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
       )}
       {/* mobile view */}
 
-      <div className="relative p-1 h-full flex lg:hidden flex-col items-center">
-      <Link
-        className="h-14 w-full lg:hidden border-b flex items-center space-x-2 px-4"
-        href={`/${countryCODE}/${languageCODE}/about`}
-        onClick={() => setActive(null)}
-      >
-        {/* here should be icon remove bellow svg */}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="lucide lucide-square-arrow-out-up-right"
+      <div className="relative px-4 bg-green-300 w-full h-full flex lg:hidden flex-col items-center">
+        <Link
+          className="h-14 w-full lg:hidden border-b flex items-center space-x-2"
+          href={`/${countryCODE}/${languageCODE}/support`}
+          onClick={() => setActive(null)}
         >
-          <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
-          <path d="m21 3-9 9" />
-          <path d="M15 3h6v6" />
-        </svg>
-        <span className="text-gray-500 text-xl">About</span>
-      </Link>
+          {/* here should be icon remove bellow svg */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="lucide lucide-square-arrow-out-up-right"
+          >
+            <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+            <path d="m21 3-9 9" />
+            <path d="M15 3h6v6" />
+          </svg>
+          <span className="text-black font-medium pl-4 text-xl">Support</span>
+        </Link>
         <div
           className="w-full py-2"
           ref={carouselRef}
           onScroll={checkScrollability}
         >
-          <div className="flex flex-row gap-2">
+          <div className="flex space-y-2">
             {paginatedItems?.map((group, groupIndex) => (
-              <div
-                key={`slide-${groupIndex}`}
-                className="min-w-full p-1 grid grid-cols-2 grid-rows-2 gap-4"
-              >
+              <div key={`slide-${groupIndex}`} className="w-full p-1">
                 {group?.map((item, itemIndex) => (
                   <Link
                     key={itemIndex}
                     href={`/${countryCODE}/${languageCODE}/support/${item.link}`}
                     onClick={() => setActive(null)}
-                    className="relative w-40 h-36 border-[1px] bg-white rounded-xl flex flex-col justify-start items-center p-2"
+                    className="relative bg-white flex items-center p-2"
                   >
-                    <div className="relative w-full bg-white rounded-xl border-[1px] h-24 flex justify-center items-center">
+                    <div className="bg-white flex justify-center items-center">
                       <LottieAnimation
-                        className="h-24"
+                        className="h-12"
                         animationData={item?.image}
                       ></LottieAnimation>
                     </div>
-                    <p className="relative font-poppins text-center mt-4 invert-0 font-medium hover:text-[#483d78] hover:font-bold text-16">
+                    <p className="font-poppins text-center font-normal text-xl text-black">
                       {item?.title}
                     </p>
                   </Link>

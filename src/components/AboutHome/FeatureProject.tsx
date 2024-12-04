@@ -136,7 +136,7 @@ const FeatureProject: React.FC<HomeLayoutProps> = ({ aboutData }) => {
           {homemachineData?.map((machine) => (
             <div
               key={machine?.id}
-              className="flex flex-col items-center mb-8 border h-[13rem] bg-[#ededed] rounded-2xl w-full relative justify-center"
+              className="flex flex-col items-center mb-8 border h-[15rem] bg-[#ededed] rounded-2xl w-full relative justify-center"
             >
               <div className="flex flex-row items-center -mt-8">
                 <div className="w-[40%]  h-full ">
@@ -160,11 +160,13 @@ const FeatureProject: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                   </p>
                 </div>
               </div>
+              <LinkUrl href={`${machine?.link}`}>
               <div className="flex absolute bottom-2 flex-row border border-[#6f6f6f] rounded-md bg-black  group p-1  cursor-pointer ">
                 <p className="text-white font-regular font-poppins text-xs   ">
                   {homeheadingData?.viewmachine}
                 </p>
               </div>
+              </LinkUrl>
             </div>
           ))}
         </div>
@@ -261,7 +263,7 @@ const FeatureProject: React.FC<HomeLayoutProps> = ({ aboutData }) => {
       </div>
       <LinkUrl href="/about/projects">
         <div className="flex justify-center ">
-          <button className="lg:mt-[20rem] mt-[10rem] mb-3 w-[8rem] h-[2rem] items-center justify-center text-center border border-[#6f6f6f] hover:bg-black bg-white text-[#6f6f6f] hover:text-white rounded-[0.26rem] z-10  cursor-pointer">
+          <button className="lg:mt-[20rem] mt-[10rem] mb-3 w-[8rem] h-[2rem] items-center justify-center text-center border lg:border-[#6f6f6f] lg:hover:bg-black lg:bg-white lg:text-[#6f6f6f] lg:hover:text-white bg-black text-white lg:bg-white rounded-[0.26rem] z-10  cursor-pointer">
             {homemisionData?.button}
           </button>
         </div>

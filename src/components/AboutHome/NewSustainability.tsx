@@ -216,8 +216,8 @@ const NewSustainability: React.FC<HomeLayoutProps> = ({ aboutData }) => {
       <div className="flex justify-center">
         <button
           aria-label="read-more"
-          className="bottom-3 absolute text-center font-poppins border border-[#6f6f6f] hover:bg-black text-[#6f6f6f] hover:text-white rounded-[0.26rem] z-10 w-[8rem] h-[2rem]"
-        >
+          className=" absolute bottom-3  w-[8rem] text-base hover:font-medium font-normal font-poppins h-[2rem] items-center justify-center text-center border lg:border-[#6f6f6f] lg:hover:bg-black lg:text-[#6f6f6f] lg:hover:text-white bg-black text-white lg:bg-white rounded-[0.26rem] z-10 ">
+        
           {homemisionData?.button}
         </button>
       </div>

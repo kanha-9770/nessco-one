@@ -73,13 +73,14 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
   return (
     <div className="flex w-full lg:border-none lg:pb-6 mx-auto max-w-screen-2xl flex-col lg:flex-row items-center justify-center lg:rounded-xl h-full">
       <div className="grid grid-cols-1 gap-2 lg:mt-2 lg:px-4 h-full sm:grid-cols-3 lg:grid-cols-4 w-full lg:w-[70.5vw]">
-        <div className="lg:hidden p-2 bg-[#483d782a] border-b lg:rounded-none lg:p-0 lg:border-none flex flex-row  items-center">
+        <div className="lg:hidden p-2 text-black border-b lg:rounded-none lg:p-0 lg:border-none flex items-center relative">
           <Link
             href={`/${countryCODE}/${languageCODE}/about`}
             onClick={() => setActive(null)}
-            className="flex items-center space-x-2 cursor-pointer"
+            className="flex items-center space-x-2 cursor-pointer pl-2"
           >
-            <div className="flex items-center justify-center w-8 h-8 rounded-xl ">
+            
+            <div className="w-8 h-8 rounded-xl flex items-center justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -96,15 +97,16 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
                 <path d="M15 3h6v6" />
               </svg>
             </div>
-            <p className="text-xl font-poppins hover:text-[#483d78] hover:font-bold font-normal transition-transform duration-300">
+            <p className="text-xl font-poppins pl-4 font-medium">
               About
             </p>
           </Link>
         </div>
 
         {navRightData?.map((item: NavItem, index: number) => (
-          <div
+          <Link
             key={index}
+            href={`/${countryCODE}/${languageCODE}/about/${item.link}`}
             className="lg:p-0 px-4 lg:px-0 border-b p-1 lg:border-none flex flex-row lg:flex-col justify-start items-center lg:mt-4"
           >
             <Link
@@ -120,7 +122,7 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
                   height={224}
                   loading="lazy"
                 />
-                <p className=" flex items-center justify-center text-xl   text-center font-poppins invert-0 hover:text-[#483d78] hover:font-bold font-normal md:text-base transform lg:hover:scale-80 transition-transform duration-300">
+                <p className=" flex items-center justify-center text-xl  text-center font-poppins invert-0 lg:hover:text-[#483d78] lg:hover:font-bold font-normal md:text-base transform lg:hover:scale-80 transition-transform duration-300">
                   <span>{item?.title}</span>
                 </p>
               </div>
@@ -133,12 +135,12 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
                   height={224}
                   loading="lazy"
                 />
-                <p className=" flex items-center justify-center text-xl   text-center font-poppins invert-0 hover:text-[#483d78] hover:font-bold font-normal md:text-base transform lg:hover:scale-80 transition-transform duration-300">
+                <p className=" flex items-center justify-center text-xl text-center font-poppins invert-0  font-normal text-black">
                   <span>{item?.title}</span>
                 </p>
               </div>
             </Link>
-          </div>
+          </Link>
         ))}
       </div>
       <div className="lg:flex lg:px-0 px-4  ml-2 w-2 h-72 hidden border-l border-gray-300"></div>
@@ -181,22 +183,22 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
               <div
                 className={`flex border-b lg:hidden h-10 lg:hover:scale-80 transition-transform duration-200 items-center lg:p-4 lg:rounded-3xl lg:mb-2`}
               >
-                <div className={` mx-4 flex  text-2xl ${item.textcolor}`}>
+                <div className={`mx-3 flex text-2xl ${item.textcolor}`}>
                   <Image
                     src={item?.icon || "/path/to/fallback-image.jpg"}
                     alt={item?.title}
-                    className="rounded-xl cursor-pointer h-6 w-6 object-cover transform lg:hover:scale-80 transition-transform duration-200"
+                    className="cursor-pointer h-8 w-auto object-cover brightness-0"
                     width={24}
                     height={24}
                     priority={index < 4}
                     loading={index < 4 ? "eager" : "lazy"}
                   />
                 </div>
-                <div className="w-[80%]">
-                  <h3 className="text-sm sm:text-md text-black font-semibold mb-0">
+                <div className="w-full pl-3">
+                  <h3 className="text-xl text-black mb-0 font-normal font-poppins">
                     {item?.title}
                   </h3>
-                  <p className="text-xs hidden lg:flex font-regular text-black pr-2">
+                  <p className="text-xs hidden lg:flex text-black pr-2">
                     {item?.description}
                   </p>
                 </div>

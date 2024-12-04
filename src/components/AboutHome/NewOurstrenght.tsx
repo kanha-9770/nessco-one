@@ -251,7 +251,7 @@ const ExpandableCardDemo: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                   key={index}
                   className=" lg:p-6 md:p-16 h-[10rem] w-[10rem] lg:w-[9rem] lg:h-[8rem] md:h-[15rem] md:w-[15rem] flex items-center justify-center  lg:bg-[#483d73] lg:rounded-tr-2xl lg:rounded-br-2xl transition-colors duration-300 p-7 group "
                 >
-                  <Icons />
+                  <Icons className=" invert " />
                 </div>
               </div>
             </motion.div>

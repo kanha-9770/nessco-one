@@ -49,8 +49,8 @@ interface FooterProps {
 
 const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
   const pathname = usePathname() || "";
-  const componentCode = pathname?.split("/")[2]?.toLowerCase();
-  const componentCodeourCompany = pathname.split("/")[4]?.toLowerCase();
+  const componentCode =  pathname.split('/').filter(Boolean).pop()?.toLowerCase();
+  const componentCodeourCompany = componentCode;
   const isDarkBackground =
     ["knowledge-center", "clientele", "our-company"].includes(componentCode) ||
     ["our-company"].includes(componentCodeourCompany) ||
@@ -168,11 +168,11 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
               <div className="flex-row  flex lg:flex-none  lg:mt-0 mt-[2rem] lg:-ml-12 -ml-[0]">
                 <div className="w-[27%]">
                   <h4
-                    className={`font-semibold text-sm md:text-xl lg:text-sm font-poppins w-full  ${textColor}`}
+                    className={`font-semibold text-sm md:text-xl lg:text-sm font-poppins lg:w-full w-[7rem]  ${textColor}`}
                   >
                     {footerData?.linkTitle}
                   </h4>
-                  <div className="font-poppins text-xs lg:text-xs md:text-lg font-light space-y-10 hover:text-red-600 lg:w-[6rem]  md:w-[5rem]  w-[4rem]">
+                  <div className="font-poppins text-xs lg:text-xs md:text-lg font-light space-y-10 hover:text-red-600 lg:w-[6rem]  md:w-[5rem]  w-[6rem]">
                     {footerData?.links?.map((link, index) => (
                       <LinkUrl key={index} href={`${link.ref}`} passHref>
                         <p className={`${styles?.footeratags}  ${textColor}`}>
@@ -183,13 +183,13 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                   </div>
                 </div>
 
-                <div className="w-[20%]  lg:ml-16 md:ml-[13rem] ml-10 ">
+                <div className="w-[20%] bg-red-100 lg:ml-16 md:ml-[13rem] ml-10 ">
                   <h4
                     className={`font-semibold text-sm md:text-xl lg:text-sm font-poppins  ${textColor}`}
                   >
                     {footerData?.linkSecond}
                   </h4>
-                  <div className="font-poppins text-xs lg:text-xs md:text-lg font-light space-y-10 hover:text-red-600 lg:w-[8rem] w-[4rem] md:w-[5rem] ">
+                  <div className="font-poppins text-xs lg:text-xs md:text-lg font-light space-y-10 hover:text-red-600 lg:w-[8rem] w-[7rem] md:w-[5rem] ">
                     {footerData?.linkstwo?.map((link, index) => (
                       <LinkUrl key={index} href={`${link.ref}`} passHref>
                         <p className={`${styles.footeratags}  ${textColor}`}>

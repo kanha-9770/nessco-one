@@ -1,12 +1,8 @@
 "use client";
-import React, {
-  useEffect,
-  useState,
-  createContext,
-} from "react";
+import React, { useEffect, useState, createContext } from "react";
 
 import { cn } from "@/lib/utils";
-import {  motion } from "framer-motion";
+import { motion } from "framer-motion";
 import BlurImage from "./BlurImage";
 
 interface CarouselProps {
@@ -104,10 +100,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
                 ></div>
 
                 <div
-                  className={cn(
-                    "flex flex-row  gap-4 ",
-                    "max-w-7xl mx-auto"
-                  )}
+                  className={cn("flex flex-row  gap-4 ", "max-w-7xl mx-auto")}
                 >
                   {items
                     .slice(
@@ -140,7 +133,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
                   )}
                 >
                   {items
-                    .slice(items?.length / 2, items?.length - 1)
+                    .slice(items?.length / 2 + 1, items?.length)
                     .map((item, index) => (
                       <div
                         key={"card" + index}
@@ -250,14 +243,41 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
               onClick={scrollLeft}
               disabled={!canScrollLeft}
             >
-              back arrow
+               <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={3}
+                stroke="currentColor"
+                className="w-4 h-4 stroke-black"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+             
             </button>
             <button
               className="relative z-20 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
               onClick={scrollRight}
               disabled={!canScrollRight}
             >
-              forward arrow
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={3}
+                stroke="currentColor"
+                className="w-4 h-4 stroke-black"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
             </button>
           </div>
         </>
@@ -276,24 +296,24 @@ export const Card = ({
 }) => {
   return (
     <>
-    <motion.button
-      layoutId={layout ? `card-${card?.title}` : undefined}
-      className="relative rounded-3xl bg-gray-100  h-52 w-48 md:h-[15rem] md:w-[12rem] overflow-hidden flex flex-col items-start justify-end z-10"
-    >
-      <div className="absolute inset-0 cursor-grab bg-gradient-to-t from-black/90 via-black/70 to-transparent z-30 " />
-      <BlurImage
-        src={card?.src}
-        alt={card?.title}
-        fill
-        className="object-cover absolute z-10 inset-0"
-      />
-      <motion.p
-        layoutId={layout ? `title-${card?.title}` : undefined}
-        className="text-white md:text-base font-semibold max-w-xs text-left font-sans absolute bottom-4 left-4 z-40"
+      <motion.button
+        layoutId={layout ? `card-${card?.title}` : undefined}
+        className="relative rounded-3xl bg-gray-100  h-52 w-48 md:h-[15rem] md:w-[12rem] overflow-hidden flex flex-col items-start justify-end z-10"
       >
-        {card?.title}
-      </motion.p>
-    </motion.button>
-  </>  
+        <div className="absolute inset-0 cursor-pointer bg-gradient-to-t from-black/90 via-black/70 to-transparent z-30 " />
+        <BlurImage
+          src={card?.src}
+          alt={card?.title}
+          fill
+          className="object-cover absolute z-10 inset-0"
+        />
+        <motion.p
+          layoutId={layout ? `title-${card?.title}` : undefined}
+          className="text-white md:text-base font-semibold max-w-xs text-left font-sans absolute bottom-4 left-4 z-40"
+        >
+          {card?.title}
+        </motion.p>
+      </motion.button>
+    </>
   );
 };

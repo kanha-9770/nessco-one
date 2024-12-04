@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
@@ -18,7 +18,8 @@ const spacing = 11;
 
 const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
   const title = strengthData?.OurStrength[2]?.OurStrengthFeature?.strengthItems;
-  const component = strengthData?.OurStrength[2]?.OurStrengthFeature?.StrengthComponent;
+  const component =
+    strengthData?.OurStrength[2]?.OurStrengthFeature?.StrengthComponent;
 
   const containerRefs = useRef([]);
   const [activeIndex, setActiveIndex] = useState(null);
@@ -35,7 +36,8 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
       const scrollTop = window.scrollY;
       const windowHeight = window.innerHeight;
       const secondPageStart = windowHeight;
-      const documentHeight = document.documentElement.scrollHeight - windowHeight;
+      const documentHeight =
+        document.documentElement.scrollHeight - windowHeight;
       const scrollableHeight = documentHeight - secondPageStart;
 
       if (scrollTop > secondPageStart) {
@@ -98,6 +100,13 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (isModalOpen && swiperRef.current) {
+      swiperRef.current.navigation.init();
+      swiperRef.current.navigation.update();
+    }
+  }, [isModalOpen]);
+
   return (
     <div>
       <div className="relative h-full items-center min-h-[400vh] mb-[38rem]">
@@ -127,7 +136,9 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
                 {index % 2 === 0 && (
                   <h1
                     className={`absolute left-[2.5rem] text-black text-center italic text-[1rem] transition-all duration-300 ${
-                      activeIndex == index ? "font-black lg:text-[2vw] lg:scale-75 scale-90" : ""
+                      activeIndex == index
+                        ? "font-black lg:text-[2vw] lg:scale-75 scale-90"
+                        : ""
                     }`}
                   >
                     {item?.title}
@@ -236,19 +247,31 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
                     modules={[EffectCoverflow, Navigation]}
                     onSwiper={(swiper) => {
                       swiperRef.current = swiper;
-                      swiper.navigation.init();
-                      swiper.navigation.update();
+                    }}
+                    onBeforeInit={(swiper) => {
+                      if (typeof swiper.params.navigation !== "boolean") {
+                        swiper.params.navigation!.prevEl = prevRef.current;
+                        swiper.params.navigation!.nextEl = nextRef.current;
+                      }
                     }}
                     className="mySwiper"
                   >
                     {componentData?.modalContent?.images?.map((img, index) => (
                       <SwiperSlide key={index}>
-                        <Image src={img.img} width={300} height={300} alt="img" />
+                        <Image
+                          src={img.img}
+                          width={300}
+                          height={300}
+                          alt="img"
+                        />
                       </SwiperSlide>
                     ))}
                   </Swiper>
                 </div>
-                <div ref={prevRef} className="absolute left-[10rem] cursor-pointer">
+                <div
+                  ref={prevRef}
+                  className="absolute left-[10rem] cursor-pointer z-10"
+                >
                   <svg
                     viewBox="0 0 24 24"
                     height={30}
@@ -272,7 +295,10 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
                     </g>
                   </svg>
                 </div>
-                <div ref={nextRef} className="absolute right-[10rem] cursor-pointer">
+                <div
+                  ref={nextRef}
+                  className="absolute right-[10rem] cursor-pointer z-10"
+                >
                   <svg
                     viewBox="0 0 24 24"
                     height={30}

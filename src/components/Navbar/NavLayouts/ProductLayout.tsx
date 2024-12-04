@@ -325,7 +325,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
               <path d="m21 3-9 9" />
               <path d="M15 3h6v6" />
             </svg>
-            <span className="text-gray-500 text-xl">All Products</span>
+            <span className="text-black font-medium pl-2 text-xl">All Products</span>
           </Link>
 
           {navRightData.map((link, index) => (

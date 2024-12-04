@@ -134,52 +134,48 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData, setActive }) => {
       )}
 
       {/* mobile view */}
-      <div className="relative p-1 h-screen flex lg:hidden flex-col items-center">
+      <div className="relative w-full flex lg:hidden flex-col items-center overflow-hidden">
         <div
-          className="w-full py-2"
+          className="w-full snap-x snap-mandatory overflow-x-auto flex"
           ref={carouselRef}
           onScroll={checkScrollability}
         >
-          <div className="flex flex-row gap-2">
-            {paginatedItems?.map((group, groupIndex) => (
-              <div
-                key={`slide-${groupIndex}`}
-                className="min-w-full p-1 grid grid-cols-2 grid-rows-2 gap-4"
+          {DataBankItem?.map((item, index) => (
+            <div key={index} className="snap-start min-w-full px-4 py-2">
+              <Link
+                href={`/${countryCODE}/${languageCODE}/${item.link}`}
+                onClick={() => setActive(null)}
+                className="w-full bg-white rounded-xl border border-gray-100 shadow-sm flex items-center p-4 gap-4"
               >
-                {group?.map((item, itemIndex) => (
-                  <Link
-                    key={itemIndex}
-                    href={`/${countryCODE}/${languageCODE}/${item.link}`}
-                    onClick={() => setActive(null)}
-                    className="relative w-40 h-36 border-[1px] bg-white rounded-xl flex flex-col justify-start items-center p-2"
-                  >
-                    <div className="relative w-32 bg-[#483d732a] rounded-xl border-[1px] h-[4.4rem] flex justify-center items-center">
-                      <LottieAnimation
-                        className="h-16 w-16"
-                        animationData={image[itemIndex % image.length]}
-                      />
-                    </div>
-                    <p className="relative font-poppins text-center mt-4 invert-0 font-medium hover:text-[#483d78] hover:font-bold text-16">
-                      {item?.title}
-                    </p>
-                  </Link>
-                ))}
-              </div>
-            ))}
-          </div>
+                <div className="flex-shrink-0 w-16 h-16 bg-[#483d732a] rounded-xl flex justify-center items-center">
+                  <LottieAnimation
+                    className="h-12 w-12"
+                    animationData={image[index % image.length]}
+                  />
+                </div>
+                <p className="font-poppins font-medium text-base flex-1 text-gray-800 hover:text-[#483d78]">
+                  {item?.title}
+                </p>
+              </Link>
+            </div>
+          ))}
         </div>
         {shouldShowArrows && (
-          <div className="flex h-[5%] justify-center w-full">
+          <div className="flex justify-center w-full py-4">
             <button
-              className="h-12 w-12 rounded-full flex items-start justify-center disabled:opacity-50"
+              className="h-10 w-10 rounded-full flex items-center justify-center bg-gray-100 mr-2 disabled:opacity-50"
               onClick={scrollLeft}
               disabled={!canScrollLeft}
-            ></button>
+            >
+              ←
+            </button>
             <button
-              className="h-12 w-12 rounded-full flex items-start justify-center disabled:opacity-50"
+              className="h-10 w-10 rounded-full flex items-center justify-center bg-gray-100 ml-2 disabled:opacity-50"
               onClick={scrollRight}
               disabled={!canScrollRight}
-            ></button>
+            >
+              →
+            </button>
           </div>
         )}
       </div>

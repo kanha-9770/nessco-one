@@ -130,14 +130,20 @@ const Page2: React.FC<Page2Props> = ({
       : page2machine.all.flatMap((item) =>
           Array.isArray(item?.mechanicalCam) ? item?.mechanicalCam : []
         );
-
-  const searchFilteredData = filteredData.filter((item) =>
-    Object?.values(item).some(
-      (value) =>
-        typeof value === "string" &&
-        value?.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  );
+  useEffect(() => {
+    console.log("my filterdata", filteredData);
+  });
+  const searchFilteredData = filteredData?.filter((item) => {
+    if (!item) return false;
+    const searchLower = searchTerm?.toLowerCase();
+    return (
+      item?.h1.toLowerCase().includes(searchLower) ||
+      item?.h2.toLowerCase().includes(searchLower) ||
+      item?.range.toLowerCase().includes(searchLower) ||
+      item?.punch.toLowerCase().includes(searchLower) ||
+      item?.weight.toLowerCase().includes(searchLower)
+    );
+  });
 
   const handleItemSelection = (
     itemId: string,
@@ -344,14 +350,14 @@ const Page2: React.FC<Page2Props> = ({
               </div>
 
               <div className="pt-6 pl-6">
-                <Link href={`${paramsthing}/${item.link}`}>
-                  <h3 className="text-xl font-bold w-[65%]">{item?.h1}</h3>
-                  <h3 className="text-lg font-semibold">{item?.h2}</h3>
+                <Link href={`${paramsthing}/${item?.link}`}>
+                  <h3 className="text-xl font-semibold w-[65%]">{item?.h1}</h3>
+                  <h3 className="text-lg text-[#483d73] font-semibold">{item?.h2}</h3>
                 </Link>
               </div>
               <div className="flex justify-center items-center overflow-hidden">
                 <div className="mt-[1rem] lg:p-6 p-4 lg:h-[16rem] flex justify-center items-center">
-                  <Link href={`${paramsthing}/${item.link}`}>
+                  <Link href={`${paramsthing}/${item?.link}`}>
                     <Image
                       src={item?.img}
                       alt=""
@@ -414,7 +420,7 @@ const Page2: React.FC<Page2Props> = ({
                     aria-label="View Machine"
                     className={`mt-[1rem] w-[70%] h-[2rem] border-[0.1rem] border-solid font-medium rounded-lg transition-colors duration-300 border-[#9c9c9c] hover:border-black hover:bg-black hover:text-white`}
                   >
-                    <LinkUrl href={`/products/${paramsthing}/${item.link}`}>
+                    <LinkUrl href={`/products/${paramsthing}/${item?.link}`}>
                       {ProductsGrid?.viewMachine}
                     </LinkUrl>
                   </button>

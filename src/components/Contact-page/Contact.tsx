@@ -284,11 +284,11 @@ const Contact: React.FC<MainLayoutProps> = ({ contactData }) => {
                     height={80}
                     className="w-10 h-10 mr-4 mt-5"
                   />
-                  <div className="ml-2">
+                  <div className="ml-2 w-[30rem]">
                     <h2 className="text-xl font-medium font-poppins text-[#3a2a79] mb-1">
                       {contactData?.contact[0]?.contactInfo[0]?.title}
                     </h2>
-                    <a className="text-black font-poppins font-regular text-sm">
+                    <a className="text-black font-poppins font-regular text-sm ">
                       {contactData?.contact[0]?.contactInfo[0]?.description
                         .split("\n")
                         .map((line, index) => (
@@ -348,7 +348,8 @@ const Contact: React.FC<MainLayoutProps> = ({ contactData }) => {
               </div>
 
               <div className="flex justify-center mt-10">
-                <div className="flex flex-row space-x-4">
+                
+                <div className="flex space-x-4 items-center">
                   <a
                     href="https://www.facebook.com/NesscoPaperCupMachine"
                     target="_blank"

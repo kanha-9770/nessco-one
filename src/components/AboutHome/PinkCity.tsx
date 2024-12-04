@@ -119,7 +119,8 @@ const PinkCity:React.FC <HomeLayoutProps> =({aboutData}) => {
         </div>
         <LinkUrl href="/about/the-pink-city " className="bg-slate-50 absolute bottom-3 rounded-md">
         <div>
-          <button aria-label="read-more" className="text-base hover:font-medium font-normal font-poppins w-[8rem] h-[2rem] items-center justify-center text-center border border-[#6f6f6f] hover:bg-black text-[#6f6f6f] hover:text-white  rounded-[0.26rem] z-10 ">
+          <button aria-label="read-more" 
+          className="text-base hover:font-medium font-normal font-poppins w-[8rem] h-[2rem] items-center justify-center text-center border lg:border-[#6f6f6f] lg:hover:bg-black lg:text-[#6f6f6f] lg:hover:text-white bg-black text-white lg:bg-white  rounded-[0.26rem] z-10 ">
             {homemisionData?.button}
           </button>
         </div>

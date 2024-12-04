@@ -11,7 +11,7 @@ const Reach: React.FC <MainLayoutProps> =({contactData}) => {
 
   return (
     <>
-      <section className="bg-gray-100 lg:py-10 lg:h-full h-screen flex flex-row ">
+      <section className="lg:py-10 lg:h-full h-screen flex flex-row ">
         <div className="container  h-full w-[90%] bg-white rounded-[2rem] p-5">
           <h2 className="text-3xl font-medium font-poppins text-center mb-2">
             {reachtitle} <span className="text-red-700">{reachhighlight}</span>

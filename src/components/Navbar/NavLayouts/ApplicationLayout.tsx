@@ -49,32 +49,27 @@ export default function ApplicationLayout({
 
   return (
     <div className="flex flex-col md:flex-row w-full h-full  lg:h-[24rem]">
-      <Link
-        className="h-14 w-full lg:hidden border-b px-4 flex items-center space-x-2 "
-        href={`/${countryCODE}/${languageCODE}/application`}
-        onClick={() => setActive(null)}
-      >
-        {/* here should be icon remove bellow svg */}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="lucide lucide-square-arrow-out-up-right"
-        >
-          <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
-          <path d="m21 3-9 9" />
-          <path d="M15 3h6v6" />
-        </svg>
-        <span className="text-gray-500 text-xl">Application</span>
-      </Link>
       <div className="md:w-[70%] px-4 pt-4 relative">
         <div className="w-full grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-4 mb-4 md:mb-0 md:mr-4">
+          <Link
+            className="flex flex-col items-center justify-center  invert-0 cursor-pointer"
+            href={`/${countryCODE}/${languageCODE}/application`}
+            onClick={() => setActive(null)}
+          >
+            <div className="h-24 w-24 bg-[#f2f2f2] rounded-xl flex items-center justify-center">
+              <Image
+                src="https://res.cloudinary.com/dfryvystt/image/upload/v1731481264/49_vtvq7r.svg"
+                className="h-16 w-auto hover:scale-90 transition-all duration-300"
+                width={100}
+                height={100}
+              
+                alt={"application link"}
+              />
+            </div>
+            <span className="text-md font-medium text-center invert-0">
+              All applications
+            </span>
+          </Link>
           {applicationData.map((product, index) => (
             <Link
               key={product.id}

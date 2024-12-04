@@ -149,6 +149,7 @@
     description: string;
     mainImage: string;
     mobileimg: string;
+    link:string;
   }
   
   export interface GridItem {

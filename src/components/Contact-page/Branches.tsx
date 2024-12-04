@@ -13,7 +13,7 @@ const highlight=contactData?.contact[0]?.heading[0]?.highlight;
 const branchesData=contactData?.contact[0]?.branchesData;
   return (
     <>
-      <section className="bg-gray-100 py-12 h-full ">
+      <section className="py-12 h-full ">
         <div className="container mx-auto px-10">
           <h2 className="text-4xl font-medium font-poppins text-center ">
             {title} <span className="text-red-700">{highlight}</span>
@@ -23,7 +23,7 @@ const branchesData=contactData?.contact[0]?.branchesData;
             {branchesData?.map((branch) => (
               <div
                 key={branch?.id}
-                className=" text-center p-6 shadow-lg h-[24rem] rounded-[2rem] relative"
+                className="bg-white text-center p-6 shadow-lg h-[24rem] rounded-[2rem] relative"
               >
                 <div className=" flex relative">
                   {/* Flag on the left */}
@@ -55,7 +55,7 @@ const branchesData=contactData?.contact[0]?.branchesData;
                 <p className="text-black w-full px-5 text-lg font-poppins font-regular top-8 relative">
                   {branch?.address}
                 </p>
-                <div className="absolute bottom-1 px-5 left-0">
+                <div className="absolute bottom-0 px-5 left-0">
                   <Image
                     src={branch?.image}
                     width={300}

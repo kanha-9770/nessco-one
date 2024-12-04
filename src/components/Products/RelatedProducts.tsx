@@ -236,7 +236,7 @@ const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
                           htmlFor={`addToEnquiry-${idx}`}
                           className="text-sm whitespace-nowrap"
                         >
-                          Enquire Now
+                          Added to inquiry
                         </Label>
                       </div>
                     </div>
