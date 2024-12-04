@@ -151,7 +151,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
               componentCode === "knowledge-center"
                 ? "lg:hover:text-[#bfb3f0]"
                 : "lg:hover:text-[#483d78]"
-            } text-base font-normal mt-2 lg:hover:font-semibold invert-0 relative z-20`}
+            } text-base font-normal lg:hover:font-semibold invert-0 relative z-20`}
           >
             {machine.name}
           </h3>
@@ -205,8 +205,8 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
       className="w-full h-full flex max-w-screen-2xl mx-auto items-start justify-center font-light"
     >
       {/* Desktop View */}
-      <div className="w-full hidden lg:flex flex-col gap-10 lg:flex-row rounded-lg overflow-hidden bg-green-300">
-        <div className="flex justify-center w-full md:w-[75%] relative">
+      <div className="w-full hidden lg:flex flex-col gap-10 lg:flex-row rounded-lg overflow-hidden">
+        <div className="flex justify-center w-full md:w-[75%] relative pb-2">
           {filteredMachines?.length > totalVisible && (
             <button
               onClick={handlePrev}
