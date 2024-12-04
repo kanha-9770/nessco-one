@@ -76,7 +76,7 @@ const OurCompany:React.FC<HomeLayoutProps> = ({aboutData}) => {
       </div>
       <LinkUrl href="/about/our-company">
       <div aria-label="read-more" className="flex justify-center bg-slate-50 ">
-        <button className=" absolute bottom-3  w-[8rem] text-base hover:font-medium font-normal font-poppins h-[2rem] items-center justify-center text-center border border-[#6f6f6f] hover:bg-black text-[#6f6f6f] hover:text-white rounded-[0.26rem] z-10 ">
+        <button className=" absolute bottom-3  w-[8rem] text-base hover:font-medium font-normal font-poppins h-[2rem] items-center justify-center text-center border lg:border-[#6f6f6f] lg:hover:bg-black lg:text-[#6f6f6f] lg:hover:text-white bg-black text-white lg:bg-white rounded-[0.26rem] z-10 ">
         {homemisionData?.button}
         </button>
       </div>

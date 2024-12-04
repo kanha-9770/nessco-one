@@ -11,6 +11,7 @@ import dynamic from "next/dynamic";
 import { locales } from "@/i18n";
 import { FormProvider } from "./context/FormContext";
 import ContactIcons from "@/components/Contact/ContactIcon";
+import { getBaseUrl } from "@/app/api/environment";
 const FooterLayout = dynamic(() => import("@/components/Footer/FooterLayout"));
 const inter = Inter({
   subsets: ["latin"],
@@ -56,11 +57,10 @@ export async function generateMetadata({
 }
 // Generate hreflang links with absolute URLs
 const generateHreflangLinks = (country: CountryCode) => {
-  const baseUrl = "https://nessco-services.vercel.app"; // Replace with your actual base URL or use a dynamic solution if needed
   const supportedLocales = locales;
 
   const hreflangLinks = supportedLocales.map((locale) => {
-    const url = `${baseUrl}/${country}/${locale}`;
+    const url = `${getBaseUrl}/${country}/${locale}`;
     return (
       <link
         key={locale}
@@ -77,7 +77,7 @@ const generateHreflangLinks = (country: CountryCode) => {
       key="x-default"
       rel="alternate"
       hrefLang="x-default"
-      href={`${baseUrl}/in/en`} // x-default URL as your main English page
+      href={`${getBaseUrl}`}
     />
   );
 

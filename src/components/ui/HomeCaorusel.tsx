@@ -72,50 +72,53 @@ const VideoCarousel: React.FC<VideoCarouselProps> = ({ heroData }) => {
         ))}
       </AnimatePresence>
 
-      <div className="absolute bottom-2 left-[5.5rem] lg:bottom-8 lg:left-1/2 transform -translate-x-1/2 flex items-center space-x-2 lg:space-x-4">
-        <button
-          onClick={goToPrevious}
-          className="bg-white/30 p-2 rounded-full hover:bg-white/50 transition-colors"
-        >
-          <ChevronLeft className="lg:w-6 lg:h-6 w-4 h-4 text-white" />
-        </button>
+      {heroData?.home?.[1]?.data?.video?.sources?.length > 1 && (
+  <div className="absolute bottom-2 left-[5.5rem] lg:bottom-8 lg:left-1/2 transform -translate-x-1/2 flex items-center space-x-2 lg:space-x-4">
+    <button
+      onClick={goToPrevious}
+      className="bg-white/30 p-2 rounded-full hover:bg-white/50 transition-colors"
+    >
+      <ChevronLeft className="lg:w-6 lg:h-6 w-4 h-4 text-white" />
+    </button>
 
-        <div className="flex space-x-1 lg:space-x-3">
-          {heroData?.home?.[1]?.data?.video?.sources?.map((_, index) => (
-            <div
-              key={index}
-              className={`relative ${
-                index === currentIndex
-                  ? "w-8 lg:w-16 h-[0.3rem]"
-                  : "w-[0.3rem] h-[0.3rem"
-              } rounded-full transition-all duration-300 ease-in-out overflow-hidden`}
-            >
-              <div
-                className={`absolute inset-0 ${
-                  index === currentIndex ? "bg-white/30" : "bg-white/50"
-                } rounded-full`}
-              />
-              {index === currentIndex && (
-                <motion.div
-                  className="absolute inset-0 bg-white rounded-full"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ duration: 10, ease: "linear" }}
-                  style={{ originX: 0 }}
-                  onAnimationComplete={goToNext}
-                />
-              )}
-            </div>
-          ))}
+    <div className="flex space-x-1 lg:space-x-3">
+      {heroData?.home?.[1]?.data?.video?.sources?.map((_, index) => (
+        <div
+          key={index}
+          className={`relative ${
+            index === currentIndex
+              ? "w-8 lg:w-16 h-[0.3rem]"
+              : "w-[0.3rem] h-[0.3rem]"
+          } rounded-full transition-all duration-300 ease-in-out overflow-hidden`}
+        >
+          <div
+            className={`absolute inset-0 ${
+              index === currentIndex ? "bg-white/30" : "bg-white/50"
+            } rounded-full`}
+          />
+          {index === currentIndex && (
+            <motion.div
+              className="absolute inset-0 bg-white rounded-full"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 10, ease: "linear" }}
+              style={{ originX: 0 }}
+              onAnimationComplete={goToNext}
+            />
+          )}
         </div>
+      ))}
+    </div>
 
-        <button
-          onClick={goToNext}
-          className="bg-white/30 p-2 rounded-full hover:bg-white/50 transition-colors"
-        >
-          <ChevronRight className="lg:w-6 lg:h-6 w-4 h-4 text-white" />
-        </button>
-      </div>
+    <button
+      onClick={goToNext}
+      className="bg-white/30 p-2 rounded-full hover:bg-white/50 transition-colors"
+    >
+      <ChevronRight className="lg:w-6 lg:h-6 w-4 h-4 text-white" />
+    </button>
+  </div>
+)}
+
     </div>
   );
 };

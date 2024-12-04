@@ -100,7 +100,7 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
 
   return (
     <div>
-      <div className="relative h-screen items-center min-h-[400vh] mb-[38rem]">
+      <div className="relative h-full items-center min-h-[400vh] mb-[38rem]">
         <div className="Feature sticky top-0 flex flex-col lg:items-center">
           <div className="absolute lg:-top-[6rem] text-white text-3xl">
             {/* <Image
@@ -112,7 +112,7 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
             /> */}
           </div>
           <div
-            className="absolute top-[10vh] lg:h-[40rem] h-[80rem] w-[0.15rem] lg:ml-0 ml-5"
+            className="absolute top-[10vh] lg:h-[32rem] h-[80rem] w-[0.15rem] lg:ml-0 ml-5"
             style={{
               background: `linear-gradient(to bottom, #483d73 ${scrollPercent}%, white ${scrollPercent}%)`,
             }}

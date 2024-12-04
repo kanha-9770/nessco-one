@@ -101,7 +101,7 @@ const Missionvission: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                                   style={{ height: "15rem", width: "15rem" }}
                                 />
                               </div>
-                              <p className="lg:text-sm text-xs font-semi-medium text-center lg:w-[26rem] font-poppins lg:mb-3 lg:right-10 relative  lg:bottom-0 w-[18rem]          ">
+                              <p className="lg:text-sm text-xs font-semi-medium text-center lg:w-[26rem] font-poppins lg:mb-3 lg:right-10 relative  lg:bottom-0 w-[18rem] ">
                                 {slide?.description}
                               </p>
                             </div>
@@ -113,7 +113,7 @@ const Missionvission: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                                     key={pointIndex}
                                     className="flex  gap-2 lg:gap-2 "
                                   >
-                                    <p className=" lg:w-7 lg:h-7 w-4 h-4 rounded-full bg-[#312465] text-white flex items-center justify-center lg:font-bold ">
+                                    <p className=" lg:w-7 lg:h-7 w-[1.26rem] h-5 p-3 rounded-full bg-[#312465] text-white flex items-center justify-center lg:font-bold ">
                                       {pointIndex + 1}
                                     </p>
                                     <p className=" lg:w-[8rem] w-[8rem] text-left text-xs  lg:text-[#6f6f6f] font-medium  font-poppins lg:font-medium  relative">
@@ -125,7 +125,7 @@ const Missionvission: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                             )}
 
                             {slide?.values && (
-                              <div className="lg:flex lg:flex-row grid grid-cols-2 gap-5 lg:gap-0 text-sm lg:w-full lg:font-bold  text-left lg:p-3 justify-center  w-full lg:h-[4rem]  p-2  z-10  ">
+                              <div className="lg:flex lg:flex-row grid grid-cols-2 gap-5 lg:gap-0 text-sm lg:w-full lg:font-bold  text-left lg:p-3 justify-center  w-full lg:h-[4rem]   p-2  z-10  ">
                                 {slide?.values?.map((value, valueIndex) => {
                                   const List = pillar[valueIndex];
                                   return (
@@ -175,7 +175,7 @@ const Missionvission: React.FC<HomeLayoutProps> = ({ aboutData }) => {
           aria-label="read-more"
           className="flex justify-center bg-slate-50 "
         >
-          <button className=" absolute bottom-3  w-[8rem] text-base hover:font-medium font-normal font-poppins h-[2rem] items-center justify-center text-center border border-[#6f6f6f] hover:bg-black text-[#6f6f6f] hover:text-white rounded-[0.26rem] z-10 ">
+          <button className=" absolute bottom-3  w-[8rem] text-base hover:font-medium font-normal font-poppins h-[2rem] items-center justify-center text-center border lg:border-[#6f6f6f] lg:hover:bg-black lg:text-[#6f6f6f] bg-black lg:bg-white text-white lg:hover:text-white rounded-[0.26rem] z-10  ">
             {homeaboutData?.button}
           </button>
         </div>

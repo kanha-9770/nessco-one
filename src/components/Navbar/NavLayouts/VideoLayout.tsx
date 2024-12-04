@@ -80,7 +80,7 @@ const VideoGrid: React.FC<VideoLayoutGridProps> = ({ navData, setActive }) => {
 
   return (
     <>
-      <div className="relative hidden lg:flex flex-col lg:flex-row items-center mx-auto max-w-screen-2xl justify-center lg:p-2 w-full">
+      <div className="relative hidden lg:flex flex-col lg:flex-row items-center mx-auto max-w-screen-2xl justify-center lg:p-2 w-full font-poppins">
         <div
           className={`flex overflow-x-auto py-2 scroll-smooth [scrollbar-width:none] gap-6`}
           ref={carouselRef}
@@ -112,11 +112,11 @@ const VideoGrid: React.FC<VideoLayoutGridProps> = ({ navData, setActive }) => {
                       </div>
                     </div>
 
-                    <div className="absolute flex items-center space-x-2 -top-2 left-2 z-40 cursor-pointer font-poppins text-center mt-4 font-semibold text-base hover:text-[#483d78]">
-                      <div className="h-8 w-8 flex items-center justify-center rounded-full bg-[#483d73] text-white">
+                    <div className="absolute flex items-center space-x-2 -top-2 left-2 z-40 cursor-pointer font-poppins text-center mt-4 font-semibold text-base ">
+                      <div className="h-8 w-8 flex items-center justify-center rounded-full bg-white text-white">
                         <SVGComponent />
                       </div>
-                      <span className="text-white hover:text-[#483d73] text-lg font-semibold">
+                      <span className="text-white  text-lg font-medium">
                         {item?.title || "Watch Video"}
                       </span>
                     </div>

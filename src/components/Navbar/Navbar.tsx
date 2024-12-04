@@ -233,7 +233,7 @@ function Navbar({ className, navData }: NavbarProps) {
                           -
                         </button>
                       </div>
-                      <div className="py-2 flex-grow">
+                      <div className="flex-grow">
                         <div className="text-sm text-gray-700">
                           {item?.component}
                         </div>

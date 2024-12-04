@@ -63,11 +63,17 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
     "bg-blue-200",
     "bg-yellow-200",
   ];
+  const mobileImage = [
+    "https://assets.nesscoindustries.com/public/assets/about/about-main-icon.webp",
+    "https://assets.nesscoindustries.com/public/assets/about/our-company/our-company-main-icon.webp",
+    "https://assets.nesscoindustries.com/public/assets/about/our-strength/our-strength-main-icon.webp",
+    "https://assets.nesscoindustries.com/public/assets/about/mission-and-vision/mission&vision-main-icon.webp",
+  ];
 
   return (
     <div className="flex w-full lg:border-none lg:pb-6 mx-auto max-w-screen-2xl flex-col lg:flex-row items-center justify-center lg:rounded-xl h-full">
-      <div className="grid grid-cols-1 gap-2 mt-2 px-4 h-full sm:grid-cols-3 lg:grid-cols-4 w-full lg:w-[70.5vw]">
-        <div className="lg:hidden border-b lg:rounded-none lg:p-0 lg:border-none flex flex-row p-1 items-center">
+      <div className="grid grid-cols-1 gap-2 lg:mt-2 lg:px-4 h-full sm:grid-cols-3 lg:grid-cols-4 w-full lg:w-[70.5vw]">
+        <div className="lg:hidden p-2 bg-[#483d782a] border-b lg:rounded-none lg:p-0 lg:border-none flex flex-row  items-center">
           <Link
             href={`/${countryCODE}/${languageCODE}/about`}
             onClick={() => setActive(null)}
@@ -91,7 +97,7 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
               </svg>
             </div>
             <p className="text-xl font-poppins hover:text-[#483d78] hover:font-bold font-normal transition-transform duration-300">
-              about
+              About
             </p>
           </Link>
         </div>
@@ -99,17 +105,30 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
         {navRightData?.map((item: NavItem, index: number) => (
           <div
             key={index}
-            className="lg:p-0 border-b p-1 lg:border-none flex flex-row lg:flex-col justify-start items-center lg:mt-4"
+            className="lg:p-0 px-4 lg:px-0 border-b p-1 lg:border-none flex flex-row lg:flex-col justify-start items-center lg:mt-4"
           >
             <Link
               href={`/${countryCODE}/${languageCODE}/about/${item.link}`}
               onClick={() => setActive(null)}
             >
-              <div className="flex flex-row lg:flex-col space-x-4 lg:space-x-0">
+              <div className="hidden lg:flex flex-row lg:flex-col space-x-4 lg:space-x-0">
                 <Image
                   src={item?.image || "/path/to/fallback-image.jpg"}
                   alt={item?.alt || "Fallback alt text"}
                   className="rounded-xl cursor-pointer h-10 w-10 lg:w-56 lg:h-56 object-cover transform lg:hover:scale-80 transition-transform duration-200"
+                  width={224}
+                  height={224}
+                  loading="lazy"
+                />
+                <p className=" flex items-center justify-center text-xl   text-center font-poppins invert-0 hover:text-[#483d78] hover:font-bold font-normal md:text-base transform lg:hover:scale-80 transition-transform duration-300">
+                  <span>{item?.title}</span>
+                </p>
+              </div>
+              <div className="flex lg:hidden flex-row lg:flex-col space-x-4 lg:space-x-0">
+                <Image
+                  src={mobileImage[index % mobileImage?.length]} // Removed unnecessary template literal                    alt={item?.alt || "Fallback alt text"}
+                  alt={item?.alt || "Fallback alt text"}
+                  className="rounded-xl invert cursor-pointer h-10 w-10 lg:w-56 lg:h-56 object-cover transform lg:hover:scale-80 transition-transform duration-200"
                   width={224}
                   height={224}
                   loading="lazy"
@@ -123,7 +142,6 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
         ))}
       </div>
       <div className="lg:flex lg:px-0 px-4  ml-2 w-2 h-72 hidden border-l border-gray-300"></div>
-      {/* desktop view */}
       <div className="w-full lg:w-[20vw] h-32 ml-4 lg:h-auto flex flex-col justify-between mt-4 lg:mt-0">
         {navLeftData
           .slice(currentIndex, currentIndex + 2)
@@ -161,9 +179,7 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
                 </div>
               </div>
               <div
-                className={`flex border-b lg:hidden h-10 lg:hover:scale-80 transition-transform duration-200 items-center lg:p-4 lg:rounded-3xl lg:mb-2 lg:${
-                  bgColors[index % bgColors?.length]
-                }`}
+                className={`flex border-b lg:hidden h-10 lg:hover:scale-80 transition-transform duration-200 items-center lg:p-4 lg:rounded-3xl lg:mb-2`}
               >
                 <div className={` mx-4 flex  text-2xl ${item.textcolor}`}>
                   <Image

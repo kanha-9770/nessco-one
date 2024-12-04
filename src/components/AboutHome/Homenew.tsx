@@ -86,7 +86,7 @@ const Home:React.FC<HomeLayoutProps> = ({aboutData}) => {
             </svg>
             </div>
           </button>
-        <div className="absolute bottom-10 flex justify-center w-full lg:space-x-0 -space-x-5 ">
+        <div className="absolute bottom-10 flex justify-center w-full lg:space-x-0 -space-x-3 ">
           {homeimgData?.map((item, index) => (
               <div
                 key={index}
@@ -99,7 +99,7 @@ const Home:React.FC<HomeLayoutProps> = ({aboutData}) => {
                   height={100}
                   className={`${imageWidths[index]}`}
                 />
-                <p className="font-medium lg:text-sm text-xs text-white lg:w-[10rem] w-[7rem] text-center">
+                <p className="font-medium lg:text-sm text-[0.5rem] whitespace-normal text-white lg:w-[10rem] w-[5rem] text-center">
                   {item?.title}
                 </p>
               </div>
