@@ -203,7 +203,7 @@ const VideoGallery: React.FC<VideosProps> = ({ videosData }) => {
               </h1>
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button className="lg:hidden flex items-center justify-center">
+                  <Button className="lg:hidden flex items-center -mt-4 justify-center">
                     <Filter className="mr-2 h-4 w-4" />
                     {Header?.filter}
                   </Button>
@@ -243,14 +243,14 @@ const VideoGallery: React.FC<VideosProps> = ({ videosData }) => {
                 {filteredVideos?.map((item, idx) => (
                   <Dialog key={idx}>
                     <DialogTrigger asChild>
-                      <div className="w-full aspect-video relative group cursor-pointer">
+                      <div className="w-full h-[10rem] relative group cursor-pointer">
                         <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-60 transition-all duration-300 rounded-[1rem]" />
                         <img
                           src={`https://img.youtube.com/vi/${getYouTubeVideoId(
                             item.url
                           )}/0.jpg`}
                           alt={item.title}
-                          className="w-full h-full object-cover rounded-[1rem] shadow-lg"
+                          className="w-full h-full object-cover rounded-[1rem]"
                         />
                         <div className="absolute inset-0 flex items-center justify-center">
                           <YouTube className="w-12 h-12 text-white opacity-100 " />

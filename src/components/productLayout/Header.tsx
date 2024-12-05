@@ -95,13 +95,13 @@ const Page1: React.FC<Page1Props> = ({ page1machine }) => {
   }, []);
 
   return (
-    <div className="w-full mt-14 lg:px-[2rem] px-[1rem] pt-[1rem] lg:pb-[2rem] pb-[1rem] border-solid border-b-2 border-[#d6d6d6] bg-white flex font-regular font-poppins relative ">
+    <div className="w-full mt-14 lg:px-[2rem] px-[1rem] pt-[1rem] lg:pb-[2rem] pb-[1rem] border-solid border-b-2 border-[#d6d6d6] bg-white flex font-poppins relative ">
       <div>
         <h1
           ref={h1Ref}
-          className="lg:text-5xl text-[1.5rem] lg:mb-[1rem] mb-[0.5rem] lg:leading-[3rem] leading-[2rem] bg-gradient-to-r from-[#483d73] from-5% via-red-700 via-20% to-red-700  bg-clip-text text-transparent"
+          className="lg:text-5xl text-3xl lg:mb-[1rem] mb-[0.5rem] lg:leading-[3rem] leading-[2rem] bg-gradient-to-r from-[#483d73] from-5% via-red-700 via-20% to-red-700  bg-clip-text text-transparent"
         >
-          <span ref={span1Ref} className="lg:font-medium font-bold block">
+          <span ref={span1Ref} className="font-medium block">
             {page1machine?.title?.split(" ").slice(0, -2).join(" ")}
           </span>{" "}
           <span ref={span2Ref} className="font-semibold block">
@@ -109,7 +109,7 @@ const Page1: React.FC<Page1Props> = ({ page1machine }) => {
           </span>
         </h1>
 
-        <p className="lg:w-[52rem] md:w-[36rem] w-[16rem] lg:text-[0.9rem] text-[0.7rem] text-black">
+        <p className="lg:w-[52rem] md:w-[36rem] w-[16rem] text-[0.8rem] lg:text-sm text-black">
           {page1machine?.description}
         </p>
       </div>

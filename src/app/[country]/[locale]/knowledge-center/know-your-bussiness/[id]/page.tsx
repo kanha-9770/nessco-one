@@ -19,7 +19,9 @@ type Props = {
 
 export const revalidate = 60;
 
-async function fetchKnowYourBusinessData(locale: string): Promise<KnowYourBusiness | null> {
+async function fetchKnowYourBusinessData(
+  locale: string
+): Promise<KnowYourBusiness | null> {
   try {
     const res = await fetch(`${apiUrl}${locale}/knowyourbussiness.json`);
     const data: KnowYourBusiness = await res.json();
@@ -33,12 +35,9 @@ async function fetchKnowYourBusinessData(locale: string): Promise<KnowYourBusine
   }
 }
 
-
-
 type CountryNames = {
   [locale: string]: string;
 };
-
 
 async function fetchCountryData(locale: string): Promise<string> {
   const country = cookies().get("country")?.value || "in";
@@ -60,7 +59,7 @@ export async function generateMetadata({
   if (!locales.includes(locale as any)) {
     locale = "en";
   }
-  const baseUrl=getBaseUrl();
+  const baseUrl = getBaseUrl();
 
   const knowYourBusinessData = await fetchKnowYourBusinessData(locale);
   const countryName = await fetchCountryData(locale);
@@ -81,7 +80,8 @@ export async function generateMetadata({
     };
   }
 
-  const seoData = knowYourBusinessData.KnowYourBussiness[0].knowYourBussinessSeoData;
+  const seoData =
+    knowYourBusinessData.KnowYourBussiness[0].knowYourBussinessSeoData;
 
   return {
     title: seoData.title,
@@ -91,12 +91,12 @@ export async function generateMetadata({
       type: "website",
       title: seoData.openGraph.title,
       siteName: "Nessco Industries",
-      url:`${baseUrl}`,
+      url: `${baseUrl}`,
       description: seoData.openGraph.description,
       images: seoData.openGraph.images,
     },
     alternates: {
-      canonical:`${baseUrl}`,
+      canonical: `${baseUrl}`,
     },
     twitter: {
       card: "summary_large_image",
@@ -112,13 +112,14 @@ export async function generateMetadata({
   };
 }
 
-export default async function KnowYourBusinessPage({ params: { locale,id} }: Props) {
+export default async function KnowYourBusinessPage({
+  params: { locale, id },
+}: Props) {
   if (!locales.includes(locale as any)) {
     locale = "en";
   }
 
   unstable_setRequestLocale(locale);
 
-  return <AnimatedBlogPost id={id}/>;
+  return <AnimatedBlogPost id={id} />;
 }
-

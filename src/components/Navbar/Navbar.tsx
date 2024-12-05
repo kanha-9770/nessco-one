@@ -160,7 +160,7 @@ function Navbar({ className, navData }: NavbarProps) {
       <div className="lg:hidden flex w-full">
         <div className="lg:hidden w-full flex justify-between items-center p-4">
           <Link
-            href={`${languageCODE}`}
+            href={`/${countryCODE}/${languageCODE}`}
             className="h-20 w-20  flex items-center"
           >
             <SVGComponent />
@@ -202,15 +202,44 @@ function Navbar({ className, navData }: NavbarProps) {
                 <div key={item?.name}>
                   <div
                     onClick={(e) => {
+                      if (item?.name === "Contact") {
+                        return; // Prevent expandItem for Contact
+                      }
                       e.preventDefault();
                       setActive(null);
                       expandItem(item?.name);
                     }}
                     className="flex -mt-3 justify-between items-center py-2 border-b"
                   >
-                    {item?.name}
-                    
-                    {item.hasComponent && (
+                    {item?.name === "Contact" ? (
+                      <Link
+                        href={`/${countryCODE}/${languageCODE}/contact`}
+                        className="flex w-full items-center"
+                      >
+                        {item?.name}
+                        <div className="ml-2 inline-block">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+                            <path d="m21 3-9 9" />
+                            <path d="M15 3h6v6" />
+                          </svg>
+                        </div>
+                      </Link>
+                    ) : (
+                      <span>{item?.name}</span>
+                    )}
+
+                    {item.hasComponent && item?.name !== "Contact" && (
                       <button className="text-gray-500 pr-2">
                         {expandedItem === item?.name ? (
                           <MinusSvg />
@@ -220,6 +249,7 @@ function Navbar({ className, navData }: NavbarProps) {
                       </button>
                     )}
                   </div>
+
                   {item.hasComponent && expandedItem === item?.name && (
                     <div className="absolute h-screen inset-0 bg-white z-50 flex flex-col">
                       <div className="flex border-b-2 bg-[#f2f2f2] justify-between items-center">
@@ -244,8 +274,8 @@ function Navbar({ className, navData }: NavbarProps) {
               ))}
               <div className="w-full">
                 <div className="relative -mt-3 h-full flex flex-col w-full lg:hidden">
-                  <div className="flex flex-row justify-between items-center gap-2 border-t-[1px] border-b-[1px] w-full p-2">
-                    <div className="absolute top-20">
+                  <div className="flex flex-row justify-between items-center gap-2 w-full p-2">
+                    <div className="absolute top-20 right-0">
                       <CountryLayout />
                     </div>
                     <div className="relative"></div>

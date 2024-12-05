@@ -145,13 +145,9 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
             <path d="m21 3-9 9" />
             <path d="M15 3h6v6" />
           </svg>
-          <span className="text-black font-medium pl-4 text-xl">Support</span>
+          <span className="text-black font-regular pl-2 text-lg">Support</span>
         </Link>
-        <div
-          className="w-full"
-          ref={carouselRef}
-          onScroll={checkScrollability}
-        >
+        <div className="w-full" ref={carouselRef} onScroll={checkScrollability}>
           <div className="flex space-y-2">
             {paginatedItems?.map((group, groupIndex) => (
               <div key={`slide-${groupIndex}`} className="w-full">
@@ -168,7 +164,7 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
                         animationData={item?.image}
                       ></LottieAnimation>
                     </div>
-                    <p className="font-poppins text-center font-normal text-xl pl-4 text-black">
+                    <p className="font-poppins text-center text-lg font-regular pl-2 text-black">
                       {item?.title}
                     </p>
                   </Link>
@@ -204,7 +200,8 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
           />
           <div className="flex items-center border-b-2 h-20 flex-row pt-6">
             <div className="flex items-center justify-center w-1/2">
-              <p
+              <a
+                href={`tel:${mobileItem?.mobileFirst}`}
                 className="invert-0 text-md -ml-16 w-12 h-12 whitespace-nowrap flex flex-row gap-2 items-center"
                 style={{
                   backgroundImage:
@@ -215,12 +212,12 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
                 }}
               >
                 {mobileItem?.mobileFirst}
-              </p>
+              </a>
             </div>
             <div className="w-1 h-14 border-l-2"></div>
-
             <div className="flex items-center justify-center w-1/2">
-              <p
+              <a
+                href={`tel:${mobileItem?.mobileSecond}`}
                 className="invert-0 text-md -ml-16 whitespace-nowrap w-16 h-16 flex flex-row gap-2 items-center"
                 style={{
                   backgroundImage:
@@ -231,7 +228,7 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
                 }}
               >
                 {mobileItem?.mobileSecond}
-              </p>
+              </a>
             </div>
           </div>
         </div>
@@ -243,7 +240,9 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
             height={400}
             className="rounded-xl h-6 w-6 mr-2"
           />
-          <p>support@nesscoindia.com</p>
+          <a href="mailto:support@nesscoindia.com" className="text-inherit">
+            support@nesscoindia.com
+          </a>
         </div>
       </div>
     </div>

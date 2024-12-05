@@ -499,7 +499,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: "3",
     title: "A Complete Guide to Paper and Cup Stock Board Paper for Paper Cups",
-    slug: "paper-guide-%26-specifications",
+    slug: "paper-guide-specifications",
     date: "2024-11-29",
     author: {
       id: "1",

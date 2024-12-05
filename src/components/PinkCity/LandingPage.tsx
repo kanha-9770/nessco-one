@@ -16,11 +16,11 @@ const LandingPage:React.FC <AboutLayoutProps>= ({pinkcityData}) => {
         <Image
           src="https://assets.nesscoindustries.com/public/assets/about/pinkcity/pinkcity-banner.webp"
           alt="Jaipur"
-          height={1000}
-          width={1000}
+          height={3000}
+          width={3000}
           priority
           objectPosition="right center"
-          className="object-cover w-full h-full rounded-xl lg:rounded-2xl "
+          className="object-cover w-full h-full rounded-xl lg:rounded-2xl lg:object-[center_20%] object-[right_6%]"
         />
         {/* Gradient Overlay */}
         <div className="absolute bottom-0 left-0 w-full h-[30rem] bg-gradient-to-t from-black to-transparent rounded-b-lg lg:invisible"></div>

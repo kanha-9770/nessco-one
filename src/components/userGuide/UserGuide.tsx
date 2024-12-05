@@ -145,7 +145,7 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
                   opacity: 0,
                   transition: { duration: 0.001, ease: "easeInOut" },
                 }}
-                className="flex absolute top-20 right-12 lg:hidden items-center justify-center bg-white rounded-full h-6 w-6"
+                className="flex absolute top-24 right-12 lg:hidden items-center justify-center h-6 w-6"
                 onClick={handleCloseCardDetail}
               >
                 ✖
@@ -201,27 +201,27 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
                     >
                       {activeCard?.ctaText}
                       <svg
-                          viewBox="-0.4 0 24 24"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="w-8 h-8 ml-2"
-                        >
-                          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                          <g
-                            id="SVGRepo_tracerCarrier"
+                        viewBox="-0.4 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-8 h-8 ml-2"
+                      >
+                        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                        <g
+                          id="SVGRepo_tracerCarrier"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        ></g>
+                        <g id="SVGRepo_iconCarrier">
+                          <path
+                            d="M12 12V19M12 19L9.75 16.6667M12 19L14.25 16.6667M6.6 17.8333C4.61178 17.8333 3 16.1917 3 14.1667C3 12.498 4.09438 11.0897 5.59198 10.6457C5.65562 10.6268 5.7 10.5675 5.7 10.5C5.7 7.46243 8.11766 5 11.1 5C14.0823 5 16.5 7.46243 16.5 10.5C16.5 10.5582 16.5536 10.6014 16.6094 10.5887C16.8638 10.5306 17.1284 10.5 17.4 10.5C19.3882 10.5 21 12.1416 21 14.1667C21 16.1917 19.3882 17.8333 17.4 17.8333"
+                            stroke="currentColor"
+                            className="stroke-white"
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                          ></g>
-                          <g id="SVGRepo_iconCarrier">
-                            <path
-                              d="M12 12V19M12 19L9.75 16.6667M12 19L14.25 16.6667M6.6 17.8333C4.61178 17.8333 3 16.1917 3 14.1667C3 12.498 4.09438 11.0897 5.59198 10.6457C5.65562 10.6268 5.7 10.5675 5.7 10.5C5.7 7.46243 8.11766 5 11.1 5C14.0823 5 16.5 7.46243 16.5 10.5C16.5 10.5582 16.5536 10.6014 16.6094 10.5887C16.8638 10.5306 17.1284 10.5 17.4 10.5C19.3882 10.5 21 12.1416 21 14.1667C21 16.1917 19.3882 17.8333 17.4 17.8333"
-                              stroke="currentColor"
-                              className="stroke-white"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            ></path>
-                          </g>
-                        </svg>
+                          ></path>
+                        </g>
+                      </svg>
                     </motion.button>
                   </div>
                   <div className="relative px-4 h-[22vh] pb-2 overflow-y-scroll scrollbar">
@@ -307,8 +307,8 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
             </div>
           </div>
 
-          <div className="lg:w-[80%] max-h-[40rem] overflow-y-scroll scrollbar-custom scrollbar pl-10 mt-4 pr-1">
-            <div className="bg-white  w-full h-[3rem] lg:hidden rounded-lg flex items-center px-4 relative">
+          <div className="lg:w-[80%] lg:max-h-[40rem] lg:overflow-y-scroll scrollbar-custom scrollbar lg:pl-10 mt-4 pr-1">
+            <div className="bg-white mb-4 shadow-xl w-full h-[3rem] lg:hidden rounded-xl flex items-center px-4 relative">
               <p className="text-xl font-normal">{data?.filter}</p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -335,10 +335,12 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
                 <motion.div
                   layoutId={`card-${card?.title}-${index}-${id}`}
                   onClick={() => handleOpenCardDetail(card)}
-                  className="p-5 flex flex-col lg:flex-row shadow-2xl bg-white justify-center items-center border-[0.1rem] border-[#f5f5f5] mb-4 hover:border-[#483d73] rounded-xl cursor-pointer"
+                  className="p-5 flex flex-col lg:flex-row shadow-2xl bg-white justify-center items-center border-[0.1rem] border-[#f5f5f5] mb-4 lg:hover:border-[#483d73] rounded-xl cursor-pointer"
                 >
                   <div className="flex lg:w-[45%] w-full lg:border-r-2 border-[#5d5d5e] gap-4 flex-col md:flex-row items-center">
-                    <motion.div layoutId={`image-${card?.title}-${index}-${id}`}>
+                    <motion.div
+                      layoutId={`image-${card?.title}-${index}-${id}`}
+                    >
                       <Image
                         width={400}
                         height={400}
@@ -387,27 +389,27 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
                     >
                       <span>{card?.ctaText}</span>
                       <svg
-                          viewBox="-0.4 0 24 24"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="w-8 h-8 ml-2"
-                        >
-                          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                          <g
-                            id="SVGRepo_tracerCarrier"
+                        viewBox="-0.4 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-8 h-8 ml-2"
+                      >
+                        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                        <g
+                          id="SVGRepo_tracerCarrier"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        ></g>
+                        <g id="SVGRepo_iconCarrier">
+                          <path
+                            d="M12 12V19M12 19L9.75 16.6667M12 19L14.25 16.6667M6.6 17.8333C4.61178 17.8333 3 16.1917 3 14.1667C3 12.498 4.09438 11.0897 5.59198 10.6457C5.65562 10.6268 5.7 10.5675 5.7 10.5C5.7 7.46243 8.11766 5 11.1 5C14.0823 5 16.5 7.46243 16.5 10.5C16.5 10.5582 16.5536 10.6014 16.6094 10.5887C16.8638 10.5306 17.1284 10.5 17.4 10.5C19.3882 10.5 21 12.1416 21 14.1667C21 16.1917 19.3882 17.8333 17.4 17.8333"
+                            stroke="currentColor"
+                            className="stroke-white"
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                          ></g>
-                          <g id="SVGRepo_iconCarrier">
-                            <path
-                              d="M12 12V19M12 19L9.75 16.6667M12 19L14.25 16.6667M6.6 17.8333C4.61178 17.8333 3 16.1917 3 14.1667C3 12.498 4.09438 11.0897 5.59198 10.6457C5.65562 10.6268 5.7 10.5675 5.7 10.5C5.7 7.46243 8.11766 5 11.1 5C14.0823 5 16.5 7.46243 16.5 10.5C16.5 10.5582 16.5536 10.6014 16.6094 10.5887C16.8638 10.5306 17.1284 10.5 17.4 10.5C19.3882 10.5 21 12.1416 21 14.1667C21 16.1917 19.3882 17.8333 17.4 17.8333"
-                              stroke="currentColor"
-                              className="stroke-white"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            ></path>
-                          </g>
-                        </svg>
+                          ></path>
+                        </g>
+                      </svg>
                     </motion.button>
                   </div>
                 </motion.div>
@@ -419,7 +421,7 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
         {/* Filter Modal in Mobile */}
         {isFilterModalOpen && (
           <div className="fixed inset-0 bg-[#f5f5f5] bg-opacity-50 backdrop-blur z-50 flex items-center justify-center lg:mt-14">
-            <div className="bg-white lg:w-[30%] w-full h-[28rem] mx-[1rem] p-[1rem] rounded-lg shadow-lg">
+            <div className="bg-white lg:w-[30%] w-full h-[28rem] mx-[1rem] p-[1rem] rounded-[1rem] shadow-lg">
               <div className="w-full h-[3rem] flex items-center border-b-2 border-solid border-[#E6E7E6]">
                 <div className="flex justify-center items-center h-full w-[50%] border-r-2 border-solid border-[#E6E7E6] mb-[0.5rem] font-poppins font-medium">
                   <button
@@ -436,7 +438,7 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
                 </div>
               </div>
 
-              <div className="h-[22rem] mt-4 p-[1rem] bg-[#f5f5f5] rounded-lg">
+              <div className="h-[22rem] mt-4 p-[1rem] bg-[#f5f5f5] rounded-[0.8rem] overflow-hidden">
                 {/* Search field for mobile */}
                 <div className="mb-4">
                   <input
@@ -444,12 +446,12 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
                     placeholder="Search"
                     value={searchTerm}
                     onChange={handleSearch}
-                    className="w-full py-2 px-3 rounded-md outline-none bg-white text-black font-poppins"
+                    className="w-full py-2 px-3 rounded-[0.5rem] outline-none bg-white text-black font-poppins"
                   />
                 </div>
 
                 {/* By Category */}
-                <div className="h-[14rem] overflow-y-scroll scrollbar-hide">
+                <div className="h-max overflow-y-scroll scrollbar-hide pb-4">
                   {categories?.map((item, index) => (
                     <div
                       key={index}
@@ -465,6 +467,7 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
                         type="checkbox"
                         id={`mobile-${item?.title}`}
                         name={item?.title}
+                        className="accent-red-700"
                         value={item?.title}
                         checked={selectedCategories?.includes(item?.title)}
                         onChange={() => handleCategoryChange(item?.title)}
@@ -480,7 +483,7 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
         {/* Modal for Download */}
         {isDownloadModalOpen && selectedDownloadCard && (
           <div className="fixed inset-0 bg-black bg-opacity-80 backdrop-blur flex justify-center items-center z-50 lg:px-0 px-4">
-            <div className="bg-white relative rounded-lg lg:w-[50rem] lg:h-[28rem] shadow-xl font-poppins font-regular flex items-center justify-center">
+            <div className="bg-white relative rounded-[1rem] lg:w-[50rem] lg:h-[28rem] shadow-xl font-poppins font-regular flex items-center justify-center">
               <div className="w-1/2 bg-[#f5f5f5] rounded-l-lg h-[28rem] lg:flex flex-col items-center justify-center hidden relative">
                 <Image
                   src="https://res.cloudinary.com/dfryvystt/image/upload/v1731482365/Logo_ilp80b.png"
@@ -522,7 +525,7 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
                       type="text"
                       required
                       placeholder="Your Full Name"
-                      className="bg-[#f5f5f5] rounded-md w-full text-lg p-2 outline-none"
+                      className="bg-[#f5f5f5] rounded-[0.5rem] w-full text-lg p-2 outline-none"
                     />
                   </div>
                   <div className="mb-2 space-y-1">
@@ -533,7 +536,7 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
                       type="email"
                       required
                       placeholder="Your Email"
-                      className="bg-[#f5f5f5] rounded-md w-full text-lg p-2 outline-none"
+                      className="bg-[#f5f5f5] rounded-[0.5rem] w-full text-lg p-2 outline-none"
                     />
                   </div>
                   <div className="mb-2 space-y-1">
@@ -544,13 +547,13 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
                       type="number"
                       required
                       placeholder="Your Phone Number"
-                      className="bg-[#f5f5f5] rounded-md w-full text-lg p-2 outline-none"
+                      className="bg-[#f5f5f5] rounded-[0.5rem] w-full text-lg p-2 outline-none"
                     />
                   </div>
                   <div className="flex justify-center mt-5">
                     <button
                       type="submit"
-                      className="text-lg font-medium bg-black lg:hover:bg-[#483d73] text-white w-full p-2 rounded-md"
+                      className="text-lg font-medium bg-gradient-to-t from-[#483d73] to-black lg:hover:to-[#483d73] lg:hover:from-black text-white w-full p-2 rounded-[0.5rem]"
                       onClick={handleCloseDownloadModal}
                     >
                       {data?.submit}
@@ -558,7 +561,7 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
                   </div>
                   <div
                     onClick={handleCloseDownloadModal}
-                    className="absolute top-1 right-2 text-2xl cursor-pointer"
+                    className="absolute top-2 right-3 text-lg cursor-pointer"
                   >
                     ✖
                   </div>

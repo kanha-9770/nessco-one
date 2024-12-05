@@ -72,7 +72,7 @@ const OurStoryD:React.FC<AboutLayoutProps> = ({companyData}) => {
       <Head>
         <title>{homecompanyData?.title}</title>
       </Head>
-      <div className="relative h-full text-white px-4 mb-36 lg:mt-32  mt-44 ">
+      <div className="relative h-full text-white px-4 mb-36 lg:mt-[15rem]  ">
       
         <div className="relative z-10 flex flex-col items-center justify-center h-screen text-center">
           <h2 className="lg:text-3xl text-2xl font-poppins font-medium text-white mt-20">

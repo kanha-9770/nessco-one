@@ -7,7 +7,9 @@ import YouTube from "./YoutubeSvg";
 import SVGComponent from "../BlueLogo";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/ScrollArea";
-
+import Link from "next/link";
+import { countryCODE, languageCODE } from "../nav-menue";
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface VideoLayoutGridProps {
   navData: NavbarData;
@@ -21,6 +23,8 @@ const VideoGrid: React.FC<VideoLayoutGridProps> = ({ navData }) => {
   const carouselRef = useRef<HTMLDivElement>(null);
 
   const [currentVideo, setCurrentVideo] = useState<string | null>(null);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(true);
 
   useEffect(() => {
     checkScrollability();
@@ -28,9 +32,28 @@ const VideoGrid: React.FC<VideoLayoutGridProps> = ({ navData }) => {
 
   const checkScrollability = () => {
     if (carouselRef.current) {
-      // Your scrollability check logic here
+      const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
+      setShowLeftArrow(scrollLeft > 0);
+      setShowRightArrow(scrollLeft + clientWidth < scrollWidth);
     }
   };
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (carouselRef.current) {
+      const scrollAmount = 320; // Adjust this value as needed
+      const newScrollLeft = direction === 'left' 
+        ? carouselRef.current.scrollLeft - scrollAmount
+        : carouselRef.current.scrollLeft + scrollAmount;
+      
+      carouselRef.current.scrollTo({
+        left: newScrollLeft,
+        behavior: 'smooth'
+      });
+
+      setTimeout(checkScrollability, 300); // Check after animation
+    }
+  };
+
   const renderVideoCard = (item: any, index: number) => (
     <Dialog key={index}>
       <DialogTrigger asChild>
@@ -82,6 +105,14 @@ const VideoGrid: React.FC<VideoLayoutGridProps> = ({ navData }) => {
   return (
     <>
       <div className="relative hidden lg:flex flex-col lg:flex-row items-center mx-auto max-w-screen-2xl justify-center lg:p-2 w-full font-poppins">
+        {showLeftArrow && (
+          <button
+            onClick={() => scroll('left')}
+            className="absolute -left-10 top-1/2 transform -translate-y-1/2 bg-[#9e9c9c] hidden md:flex hover:bg-black rounded-full p-2 shadow-md z-50"
+          >
+            <ChevronLeft className="text-black hover:text-white" size={24} />
+          </button>
+        )}
         <div
           className={`flex overflow-x-auto py-2 scroll-smooth [scrollbar-width:none] gap-6`}
           ref={carouselRef}
@@ -139,10 +170,43 @@ const VideoGrid: React.FC<VideoLayoutGridProps> = ({ navData }) => {
             </div>
           ))}
         </div>
+        {showRightArrow && (
+          <button
+            onClick={() => scroll('right')}
+            className="absolute -right-10 top-1/2 transform -translate-y-1/2 bg-[#9e9c9c] hidden md:flex hover:bg-black rounded-full p-2 shadow-md z-10"
+          >
+            <ChevronRight size={24} />
+          </button>
+        )}
       </div>
       {/* Mobile View */}
       <div className="lg:hidden">
-        <ScrollArea className="h-[calc(100vh-12rem)]">
+        <div className="lg:hidden p-2 text-black border-b lg:rounded-none lg:p-0 lg:border-none flex items-center relative">
+          <Link
+            href={`/${countryCODE}/${languageCODE}/videos`}
+            className="flex items-center space-x-2 cursor-pointer pl-2"
+          >
+            <div className="w-8 h-8 rounded-xl flex items-center justify-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+                <path d="m21 3-9 9" />
+                <path d="M15 3h6v6" />
+              </svg>
+            </div>
+            <p className="text-lg font-poppins ">Video</p>
+          </Link>
+        </div>
+        <ScrollArea className="h-[calc(100vh-15rem)]">
           <div className="grid grid-cols-2 gap-4 p-4">
             {videoDataItem?.map((item, index) => (
               <div key={index} className="w-full">

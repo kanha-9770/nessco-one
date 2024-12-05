@@ -265,9 +265,9 @@ const Page2 = ({
               ref={borderRef}
             ></div>
           </div>
-          <div className="lg:h-[17rem] h-[12rem] flex items-center justify-start py-4">
+          <div className="lg:h-[17rem] h-[10rem] flex items-center justify-start py-4">
             <Image
-              className="lg:h-[20rem] w-auto md:h-[8rem]"
+              className="lg:h-[20rem] w-auto md:h-[8rem] h-[8rem]"
               width={400}
               height={400}
               priority

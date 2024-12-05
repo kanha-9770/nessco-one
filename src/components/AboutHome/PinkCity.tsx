@@ -94,7 +94,7 @@ const PinkCity:React.FC <HomeLayoutProps> =({aboutData}) => {
                         alt="Overlay Icon"
                         width={100}
                         height={50}
-                        className=""
+                        className="top-0"
                       />
                       <p className="text-black text-xs font-bold text-center font-poppins md:text-lg w-[85%] absolute bottom-12 md:bottom-24">
                         {truncateText(item?.paragraph, 11.5)}{" "}

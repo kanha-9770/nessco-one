@@ -375,8 +375,8 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
                                     </p>
                                   </div>
 
-                                  <div className="flex justify-center items-center h-[14rem]">
-                                    <div className="p-2  flex justify-center items-center">
+                                  <div className="flex justify-center items-center h-[14rem] overflow-hidden">
+                                    <div className="p-2 flex justify-center items-center">
                                       <Image
                                         src={containerItem?.img}
                                         alt=""

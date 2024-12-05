@@ -34,7 +34,7 @@ const FounderCard: React.FC<{
     {/* Content */}
     <div className="relative justify-center lg:h-[30%] lg:w-full w-[50%] h-full lg:p-4 items-center flex flex-col flex-none lg:items-start pl-3">
       <h3
-        className={`${styles?.nameTitle} md:text-xl lg:text-sm font-poppins font-regular text-center lg:text-left`}
+        className={`${styles?.nameTitle} md:text-xl lg:text-sm font-poppins font-regular text-center lg:pl-0 pl-2  lg:text-left`}
       >
         {name}
         <a
@@ -90,8 +90,8 @@ const Founders: React.FC<MainLayoutProps> = ({ companyData }) => {
   const { ourfounderheading, founders } = data || {};
 
   return (
-    <div className="bg-black text-white py-16 h-full">
-      <h2 className="text-center lg:text-3xl text-2xl font-poppins font-medium mb-8 mt-28">
+    <div className="bg-black text-white py-16 h-full ">
+      <h2 className="text-center lg:text-3xl text-2xl font-poppins font-medium mb-8 lg:mt-28">
         {ourfounderheading?.title} {" "}
         <span className="text-red-600">{ourfounderheading?.highlight}</span>
       </h2>

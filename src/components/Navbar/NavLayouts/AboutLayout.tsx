@@ -79,7 +79,6 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
             onClick={() => setActive(null)}
             className="flex items-center space-x-2 cursor-pointer pl-2"
           >
-            
             <div className="w-8 h-8 rounded-xl flex items-center justify-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -97,9 +96,7 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
                 <path d="M15 3h6v6" />
               </svg>
             </div>
-            <p className="text-xl font-poppins pl-4 font-medium">
-              About
-            </p>
+            <p className="text-lg font-poppins ">About</p>
           </Link>
         </div>
 
@@ -107,6 +104,7 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
           <Link
             key={index}
             href={`/${countryCODE}/${languageCODE}/about/${item.link}`}
+            onClick={() => setActive(null)}
             className="lg:p-0 px-4 lg:px-0 border-b p-1 lg:border-none flex flex-row lg:flex-col justify-start items-center lg:mt-4"
           >
             <Link
@@ -130,12 +128,12 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
                 <Image
                   src={mobileImage[index % mobileImage?.length]} // Removed unnecessary template literal                    alt={item?.alt || "Fallback alt text"}
                   alt={item?.alt || "Fallback alt text"}
-                  className="rounded-xl invert cursor-pointer h-10 w-10 lg:w-56 lg:h-56 object-cover transform lg:hover:scale-80 transition-transform duration-200"
+                  className="rounded-xl invert cursor-pointer h-6 w-6 lg:w-56 lg:h-56 object-cover transform lg:hover:scale-80 transition-transform duration-200"
                   width={224}
                   height={224}
                   loading="lazy"
                 />
-                <p className=" flex items-center justify-center text-xl text-center font-poppins invert-0  font-normal text-black">
+                <p className=" flex items-center justify-center text-lg text-center font-poppins invert-0  font-normal text-black">
                   <span>{item?.title}</span>
                 </p>
               </div>
@@ -181,9 +179,11 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
                 </div>
               </div>
               <div
-                className={`flex border-b lg:hidden h-10 transition-transform duration-200 items-center`}
+                className={`flex border-b lg:hidden h-6  transition-transform duration-200 items-center`}
               >
-                <div className={`mx-3 -mt-1 h-8 w-auto flex text-2xl ${item.textcolor}`}>
+                <div
+                  className={`mx-3 -mt-3 h-6 w-auto flex ${item.textcolor}`}
+                >
                   <Image
                     src={item?.icon || "/path/to/fallback-image.jpg"}
                     alt={item?.title}
@@ -194,8 +194,8 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
                     loading={index < 4 ? "eager" : "lazy"}
                   />
                 </div>
-                <div className="w-full pl-3">
-                  <h3 className="text-xl text-black font-normal font-poppins">
+                <div className="w-full pl-2 -mt-3">
+                  <h3 className="text-lg text-black font-normal font-poppins">
                     {item?.title}
                   </h3>
                 </div>

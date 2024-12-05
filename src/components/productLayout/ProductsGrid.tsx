@@ -233,7 +233,7 @@ const Page2: React.FC<Page2Props> = ({
           <div className="flex lg:flex-row flex-col-reverse ">
             <div className="flex lg:mt-0 mt-[1rem]">
               <div
-                className={`lg:border-2 border-[0.1rem] border-solid lg:w-[6rem] w-[3rem] h-[1.5rem] lg:h-[2rem] lg:rounded-full rounded-[0.5rem] flex items-center justify-center lg:mx-[0.3rem] mx-[0.2rem] lg:text-[1rem] text-[0.7rem] font-medium ${
+                className={`lg:border-2 border-[0.1rem] border-solid lg:w-[6rem] w-[3rem] h-[1.5rem] lg:h-[2rem] lg:rounded-full rounded-[0.3rem] flex items-center justify-center lg:mx-[0.3rem] mx-[0.2rem] lg:text-[1rem] text-[0.7rem] font-medium ${
                   selectedCategory === "all"
                     ? "text-white  font-semibold bg-red-700 bg-gradient-to-r from-[#483d73] to-red-700 border-none"
                     : "lg:hover:text-red-700 lg:hover:border-red-700 border-[#c4c3c3]"
@@ -244,7 +244,7 @@ const Page2: React.FC<Page2Props> = ({
                 <button>{ProductsGrid?.all.s}</button>
               </div>
               <div
-                className={`lg:border-2 border-[0.1rem] border-solid lg:w-[12rem] w-[7rem] h-[1.5rem] lg:h-[2rem] lg:rounded-full rounded-lg flex items-center lg:mx-[0.3rem] mx-[0.2rem] lg:text-[1rem] text-[0.7rem] font-medium ${
+                className={`lg:border-2 border-[0.1rem] border-solid lg:w-[12rem] w-[7rem] h-[1.5rem] lg:h-[2rem] lg:rounded-full rounded-[0.3rem] flex items-center lg:mx-[0.3rem] mx-[0.2rem] lg:text-[1rem] text-[0.7rem] font-medium ${
                   selectedCategory === "servoDriven"
                     ? "text-white border-red-700 font-semibold bg-red-700"
                     : "lg:hover:text-red-700 lg:hover:border-red-700 border-[#c4c3c3]"
@@ -266,7 +266,7 @@ const Page2: React.FC<Page2Props> = ({
                 </button>
               </div>
               <div
-                className={`lg:border-2 border-[0.1rem] border-solid lg:w-[14rem] w-[8.5rem] h-[1.5rem] lg:h-[2rem] lg:rounded-full rounded-lg flex items-center lg:mx-[0.3rem] mx-[0.2rem] font-medium lg:text-[1rem] text-[0.7rem] ${
+                className={`lg:border-2 border-[0.1rem] border-solid lg:w-[14rem] w-[8.5rem] h-[1.5rem] lg:h-[2rem] lg:rounded-full rounded-[0.3rem] flex items-center lg:mx-[0.3rem] mx-[0.2rem] font-medium lg:text-[1rem] text-[0.7rem] ${
                   selectedCategory === "mechanicalCam"
                     ? "text-white border-red-700 font-semibold bg-red-700"
                     : "lg:hover:text-red-700 lg:hover:border-red-700 border-[#c4c3c3]"
@@ -290,7 +290,7 @@ const Page2: React.FC<Page2Props> = ({
             </div>
             <div>
               <div className="lg:absolute lg:right-[2.5rem]">
-                <div className="flex items-center lg:rounded-full rounded-lg overflow-hidden lg:w-[18rem] w-full lg:h-[2rem] h-[1.5rem] lg:border-2 border-[0.1rem] border-solid border-[#c4c3c3] bg-white">
+                <div className="flex items-center lg:rounded-full rounded-[0.3rem] overflow-hidden lg:w-[18rem] w-full lg:h-[2rem] h-[1.5rem] lg:border-2 border-[0.1rem] border-solid border-[#c4c3c3] bg-white">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -333,7 +333,7 @@ const Page2: React.FC<Page2Props> = ({
               <div className="absolute top-6 right-4 flex space-x-2">
                 <div className="w-8 h-8 bg-[#f5f5f5] rounded-full flex items-center justify-center font-medium cursor-pointer relative group hover:text-red-700 text-xl">
                   {item?.s}
-                  <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-md shadow-md p-3 h-max w-max z-20">
+                  <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-[0.3rem] shadow-md p-3 h-max w-max z-20">
                     <p className="text-sm text-black font-normal">
                       {item?.sInformation}
                     </p>
@@ -341,8 +341,8 @@ const Page2: React.FC<Page2Props> = ({
                 </div>
                 <div className="w-8 h-8 p-[0.2rem] bg-[#f5f5f5] border-solid border-[0.1rem] border-[#f5f5f5] hover:border-red-700 rounded-full flex items-center justify-center relative group">
                   <Image src={item?.image} alt="" width={400} height={400} />
-                  <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-md shadow-md p-3 h-max w-max z-20">
-                    <p className="text-sm text-black">
+                  <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-[0.3rem] shadow-md p-3 h-max w-max z-20">
+                    <p className="text-sm text-black font-normal">
                       {item?.imageInformation}
                     </p>
                   </div>
@@ -418,7 +418,7 @@ const Page2: React.FC<Page2Props> = ({
                 <div className="flex items-center justify-center lg:hidden w-full">
                   <button
                     aria-label="View Machine"
-                    className={`mt-[1rem] w-[70%] h-[2rem] border-[0.1rem] border-solid font-medium rounded-lg transition-colors duration-300 border-[#9c9c9c] hover:border-black hover:bg-black hover:text-white`}
+                    className={`mt-[1rem] w-[70%] h-[2rem] border-[0.1rem] border-solid font-medium rounded-[0.5rem] transition-colors duration-300 border-[#9c9c9c] hover:border-black hover:bg-black hover:text-white`}
                   >
                     <LinkUrl href={`/products/${paramsthing}/${item?.link}`}>
                       {ProductsGrid?.viewMachine}

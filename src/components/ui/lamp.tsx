@@ -11,7 +11,7 @@ export const LampContainer = ({
 }) => {
   return (
     <div
-      className={`relative flex h-full my-[7rem] flex-col items-center justify-center w-full rounded-md z-0 ${className}`}
+      className={`relative flex h-full lg:px-0 px-4 lg:my-[7rem] lg:mb-0 mb-12 lg:-mt-0 -mt-20 flex-col items-center justify-center w-full rounded-[0.5rem] z-0 ${className}`}
     >
       <div className="relative flex w-full flex-1 items-center justify-center isolate z-0">
         <motion.div
@@ -25,7 +25,7 @@ export const LampContainer = ({
           style={{
             backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
           }}
-          className="absolute inset-auto right-1/2 top-0 h-[80rem] overflow-visible bg-gradient-conic from-[#39315f] via-transparent to-transparent text-white [--conic-position:from_70deg_at_center_top]"
+          className="absolute inset-auto right-1/2 top-0 lg:h-[80rem] h-[134rem] overflow-visible bg-gradient-conic from-[#39315f] via-transparent to-transparent text-white [--conic-position:from_70deg_at_center_top]"
         ></motion.div>
         <motion.div
           initial={{ opacity: 0.5, width: "20rem" }}
@@ -38,7 +38,7 @@ export const LampContainer = ({
           style={{
             backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
           }}
-          className="absolute inset-auto left-1/2 top-0 h-[80rem] bg-gradient-conic from-transparent via-transparent to-[#372e5e] text-white [--conic-position:from_290deg_at_center_top]"
+          className="absolute inset-auto left-1/2 top-0 lg:h-[80rem] h-[134rem] bg-gradient-conic from-transparent via-transparent to-[#372e5e] text-white [--conic-position:from_290deg_at_center_top]"
         ></motion.div>
         <motion.div
           initial={{ width: "20rem" }}

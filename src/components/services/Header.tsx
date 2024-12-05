@@ -12,7 +12,7 @@ const Page1: React.FC<ServicesProps> = ({ servicesData }) => {
   return (
     <>
       <div className="font-poppins font-regular flex lg:flex-row flex-col">
-        <div className="lg:w-[50%] bg-white px-[2rem] lg:pt-10 pt-5 lg:h-screen h-full">
+        <div className="lg:w-[50%] bg-white px-[2rem] lg:pt-10 pt-5 lg:h-screen h-full lg:pb-0 pb-4">
           <h1 className="mt-[4rem] lg:text-[3rem] text-3xl lg:leading-[3.2rem] w-[12rem]">
             <span className="text-[#483d73] font-semibold lg:block">
               {Header?.title?.split(" ").slice(0, -2).join(" ")}
@@ -24,7 +24,7 @@ const Page1: React.FC<ServicesProps> = ({ servicesData }) => {
           <p className="text-[#5d5d5e] lg:text-[1.2rem] lg:my-[2.5rem] my-5 lg:pr-[2rem]">
             {Header?.paragraph}
           </p>
-          <div className="flex items-center space-x-10">
+          <div className="flex items-center lg:space-x-10 space-x-4">
             <Image
               src="https://assets.nesscoindustries.com/public/assets/contact/contact-icon.webp"
               alt="Phone"
@@ -56,11 +56,11 @@ const Page1: React.FC<ServicesProps> = ({ servicesData }) => {
                 className="w-[7rem] ml-6 opacity-50"
               />
               <a href="tel:+91 78499 04966">
-              <p className="absolute top-10 ">+91 78499 04966</p>
+              <p className="absolute top-10">+91 78499 04966</p>
               </a>
             </div>
           </div>
-          <div className="flex space-x-10 items-center">
+          <div className="flex lg:space-x-10 space-x-4 items-center">
             <Image
               src="https://assets.nesscoindustries.com/public/assets/contact/email-icon.webp"
               alt="Email"
@@ -74,7 +74,7 @@ const Page1: React.FC<ServicesProps> = ({ servicesData }) => {
             </a>
           </div>
         </div>
-        <div className="lg:w-[50%] lg:px-0 px-8 flex lg:h-screen pt-14 h-full">
+        <div className="lg:w-[50%] flex h-screen pt-14 ">
           <iframe
             aria-label="𝐍𝐄𝐒𝐒𝐂𝐎 𝐂𝐔𝐒𝐓𝐎𝐌𝐄𝐑 𝐒𝐔𝐏𝐏𝐎𝐑𝐓"
             className="w-full"

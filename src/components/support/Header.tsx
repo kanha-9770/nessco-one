@@ -23,7 +23,6 @@ const Header: React.FC<CardsProps> = ({
   description,
   img,
   cards = [],
-  type,
 }) => {
   
 
@@ -56,13 +55,7 @@ const Header: React.FC<CardsProps> = ({
         </div>
       </div>
       <div
-        className={`grid font-poppins ${
-          type === "support" || type === "knowyourproduct"
-            ? "lg:grid-cols-4"
-            : type === "knowyourbussiness" || type === "knowyourmachine"
-            ? "lg:grid-cols-2"
-            : "lg:grid-cols-3"
-        } gap-10 lg:px-14 px-8 py-8`}
+        className={`grid font-poppins lg:grid-cols-4 gap-10 lg:px-14 px-8 py-8`}
       >
         {cards?.map((item, idx) => (
           <LinkUrl key={idx} href={`/support/${item?.link}`} >

@@ -35,7 +35,7 @@ const SustainableD:React.FC<AboutLayoutProps>= ({companyData}) => {
         </div>
        
 
-        <div className="relative  flex flex-col items-center justify-center text-center text-white min-h-screen lg:top-0 top-5">
+        <div className="relative  flex flex-col items-center justify-center text-center text-white lg:min-h-screen lg:top-0 top-5">
           <h2 className="lg:text-4xl text-2xl font-poppins font-medium">
             {homecompanyData?.heading} <span className="text-green-500">{homecompanyData?.highlight}</span>
           </h2>

@@ -90,37 +90,35 @@ export default function LocaleSwitcher({
         type === "footer" ? "footer-switcher" : ""
       }`}
     >
-      <Button
-        type="button"
-        className={`inline-flex w-full  rounded-full border text-sm font-medium invert-0 focus:outline-none ${
-          type === "footer" ? "footer-dropdown" : ""
-        } ${isPending ? "opacity-50" : ""}`}
-        // onClick={() => setIsOpen(!isOpen)}
-        disabled={isPending}
-        aria-expanded={isOpen}
-        aria-haspopup="true"
-      >
-        <div className="h-[1.25rem] w-[1.25rem] flex items-center rounded-full justify-center overflow-hidden">
-          <Image
-            width={100}
-            height={100}
-            src={`https://flagcdn.com/${countryCode}.svg`}
-            alt={`${countryCode} flag`}
-            className="h-full w-full object-cover"
-          />
-        </div>
-        <div className="flex ml-2 font-light flex-col space-y-0">
-          <p className="font-poppins invert-0 hidden lg:flex text-16 m-0 p-0 leading-tight">
-            {languageCode?.toUpperCase()}
-          </p>
-          <p className="flex lg:hidden font-poppins invert-0 text-xs m-0 p-0 leading-tight">
-            {getFullLanguageName(languageCode)}
-          </p>
-          <p className="flex lg:hidden font-poppins invert-0 text-sm m-0 p-0 leading-tight">
-            {languageCode}
-          </p>
-        </div>
-      </Button>
+      <div className="flex items-center gap-2">
+        <Button
+          type="button"
+          className={`inline-flex w-full rounded-full border text-sm font-medium invert-0 focus:outline-none ${
+            type === "footer" ? "footer-dropdown" : ""
+          } ${isPending ? "opacity-50" : ""}`}
+          disabled={isPending}
+          aria-expanded={isOpen}
+          aria-haspopup="true"
+        >
+          <div className="h-[1.25rem] w-[1.25rem] flex items-center rounded-full justify-center overflow-hidden">
+            <Image
+              width={100}
+              height={100}
+              src={`https://flagcdn.com/${countryCode}.svg`}
+              alt={`${countryCode} flag`}
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <div className="flex ml-2 font-light flex-col space-y-0">
+            <p className="font-poppins invert-0 hidden lg:flex text-16 m-0 p-0 leading-tight">
+              {languageCode?.toUpperCase()}
+            </p>
+            <span className="flex font-poppins lg:hidden invert-0 text-xs m-0 p-0 leading-tight">
+              {getFullLanguageName(languageCode)}
+            </span>
+          </div>
+        </Button>
+      </div>
 
       {isOpen && (
         <div

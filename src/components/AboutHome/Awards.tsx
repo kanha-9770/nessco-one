@@ -25,7 +25,7 @@ const Awards:React.FC<HomeLayoutProps>=({aboutData})=> {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 p-10">
           {homeawardData?.map((award, index) => (
-            <Card key={index} className="overflow-hidden transition-shadow hover:shadow-lg hover:border-indigo-300  border lg:h-[17rem] rounded-xl ">
+            <Card key={index} className="overflow-hidden transition-shadow hover:shadow-lg hover:border-indigo-300  border lg:h-[17rem] rounded-xl h-[17rem]">
               <CardContent className=" flex flex-col items-center text-center">
                 <div className=" ">
                  <Image

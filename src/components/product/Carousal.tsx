@@ -104,7 +104,7 @@ const Carousal: React.FC<ProductProps> = ({ productData }) => {
               width={400}
               height={400}
               priority
-              className="lg:w-[14rem] md:w-[12rem] h-max w-[20rem] lg:-mt-10 md:-mt-[2rem] mt-[5rem]"
+              className="lg:w-[14rem] md:w-[12rem] h-max w-[10rem] lg:-mt-10 md:-mt-[2rem] mt-0 lg:ml-0 ml-4"
             />
           </div>
 
@@ -113,11 +113,11 @@ const Carousal: React.FC<ProductProps> = ({ productData }) => {
             alt={Header?.products[currentIndex]?.machineName}
             width={400}
             height={400}
-            className="lg:w-[4rem] h-max w-[4rem] lg:ml-0 md:ml-2 -ml-[4rem]"
+            className="lg:w-[4rem] h-max w-[2.5rem] lg:ml-0 md:ml-2 -ml-[2rem]"
           />
         </div>
       </div>
-      <div className="flex lg:pl-[1rem] lg:pt-0 pt-4 space-x-2 absolute bottom-3 right-8">
+      <div className="flex lg:pl-[1rem] lg:pt-0 pt-4 space-x-2 absolute lg:bottom-3 bottom-1 right-8">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 64 64"

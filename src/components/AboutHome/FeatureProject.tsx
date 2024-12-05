@@ -136,33 +136,33 @@ const FeatureProject: React.FC<HomeLayoutProps> = ({ aboutData }) => {
           {homemachineData?.map((machine) => (
             <div
               key={machine?.id}
-              className="flex flex-col items-center mb-8 border h-[15rem] bg-[#ededed] rounded-2xl w-full relative justify-center"
+              className="flex flex-col items-center mb-8 border p-4 bg-[#ededed] rounded-2xl w-full relative"
             >
-              <div className="flex flex-row items-center -mt-8">
-                <div className="w-[40%]  h-full ">
+              
+                <div className="h-[10rem]">
                   <Image
                     src={machine?.mobileimg}
                     alt={machine?.title}
                     width={300}
                     height={300}
                     priority
-                    className="object-contain h-full w-full md:h-[13rem] md:w-[18rem]"
+                    className="object-contain h-[12rem] -mt-6"
                   />
                 </div>
-                <div className="h-[70%] w-[60%]  ">
-                  <h3 className="text-xl md:text-2xl font-bold relative w-[10rem] text-[#483d73] mx-3 font-poppins">
+                <div className="h-full w-full">
+                  <h3 className="text-xl font-bold relative text-[#483d73] text-center font-poppins">
                     {machine?.title}
                   </h3>
-                  <p className="text-xs md:text-sm font-regular text-black mt-2   mx-3 font-poppins">
+                  <p className="text-sm text-black mt-1 text-center font-poppins">
                     {isMobile
                       ? truncateText(selectedMachine?.description, wordLimit)
                       : selectedMachine?.description}
                   </p>
                 </div>
-              </div>
+              
               <LinkUrl href={`${machine?.link}`}>
-              <div className="flex absolute bottom-2 flex-row border border-[#6f6f6f] rounded-md bg-black  group p-1  cursor-pointer ">
-                <p className="text-white font-regular font-poppins text-xs   ">
+              <div className="mt-4 bg-black rounded-full group py-2 px-4 cursor-pointer ">
+                <p className="text-white font-medium font-poppins text-sm">
                   {homeheadingData?.viewmachine}
                 </p>
               </div>
@@ -263,7 +263,7 @@ const FeatureProject: React.FC<HomeLayoutProps> = ({ aboutData }) => {
       </div>
       <LinkUrl href="/about/projects">
         <div className="flex justify-center ">
-          <button className="lg:mt-[20rem] mt-[10rem] mb-3 w-[8rem] h-[2rem] items-center justify-center text-center border lg:border-[#6f6f6f] lg:hover:bg-black lg:bg-white lg:text-[#6f6f6f] lg:hover:text-white bg-black text-white lg:bg-white rounded-[0.26rem] z-10  cursor-pointer">
+          <button className="lg:mt-[20rem] mt-[10rem] mb-3 w-[8rem] h-[2rem] items-center justify-center text-center border lg:border-[#6f6f6f] lg:hover:bg-black lg:text-[#6f6f6f] lg:hover:text-white bg-black text-white lg:bg-white rounded-[0.26rem] z-10  cursor-pointer">
             {homemisionData?.button}
           </button>
         </div>

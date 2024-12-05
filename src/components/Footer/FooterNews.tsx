@@ -72,9 +72,9 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
         <div className={`${styles.bgimagefooter}`}>
           {isDarkBackground && <div className={`${styles.overlay} `}></div>}
         </div>
-        <div className="w-full relative m-auto mt-6 lg:p-0 p-3 md:p-5 z-20  ">
+        <div className="w-full relative lg:m-auto mt-6 lg:p-0  md:p-5 z-20  ">
           <div className="flex flex-col-reverse  lg:flex-row  justify-evenly items-start w-[100%] lg:px-5  mb-[-0.10rem] ">
-            <div className="flex flex-col-reverse lg:flex-row  lg:mt-0">
+            <div className="flex flex-col-reverse lg:flex-row  lg:mt-0 ">
               <div
                 className={`${styles.footerlistabout} lg:order-none lg:ml-[3rem]  lg:mt-0 -mt-[10rem] `}
               >
@@ -116,7 +116,7 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                   <LocaleSwitcher type="footer" />
                 </div>
                 <h4
-                  className={`${styles.footerdesctitle} font-semibold font-poppins invert-0 text-sm md:text-xl lg:text-sm mt-6 lg:w-[14rem] md:w-[20rem] w-[15rem] `}
+                  className={`${styles.footerdesctitle} font-semibold font-poppins invert-0 text-sm md:text-xl lg:text-sm mt-6 lg:w-[14rem] md:w-[20rem] w-[15rem] ${textColor} `}
                 >
                   {footerData?.awarTitle}
                 </h4>
@@ -134,7 +134,7 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                   ))}
                 </div>
               </div>
-              <div className="flex flex-col  w-[11%] relative left-[10rem] lg:-left-14 md:left-[18rem] lg:top-0 top-[0.50rem] md:top-16">
+              <div className="flex flex-col  w-[11%] relative left-[10rem] lg:-left-14 md:left-[18rem] lg:top-0  md:top-16">
                 <h4
                   className={`font-semibold font-poppins text-sm md:text-xl lg:text-sm ${textColor}`}
                 >
@@ -165,7 +165,7 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                 </div>
               </div>
 
-              <div className="flex-row  flex lg:flex-none  lg:mt-0 mt-[2rem] lg:-ml-12 -ml-[0]">
+              <div className="flex-row  flex lg:flex-none  lg:mt-0 mt-[2rem] lg:-ml-12 -ml-[0] px-3">
                 <div className="w-[27%]">
                   <h4
                     className={`font-semibold text-sm md:text-xl lg:text-sm font-poppins lg:w-full w-[7rem]  ${textColor}`}
@@ -206,7 +206,7 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                   >
                     {footerData?.serviceTitle}
                   </h4>
-                  <div className="font-poppins hover:text-red-600 font-light text-xs lg:text-xs md:text-lg w-[7rem] lg:w-[9rem] md:w-[13rem]  cursor-pointer">
+                  <div className="font-poppins hover:text-red-600 font-light text-xs lg:text-xs md:text-lg break-normal w-[6rem] lg:w-[9rem] md:w-[13rem]  cursor-pointer">
                     {footerData?.services?.map((service, index) => (
                       <LinkUrl key={index} href={`${service.ref}`} passHref>
                         <p className={`${styles.footeratags}  ${textColor}`}>
@@ -220,7 +220,7 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
 
               <div className="lg:w-[20%] lg:pl-14 order-last lg:order-none">
                 <h4
-                  className={`${styles.footerdesctitle} font-poppins invert-0 text-sm md:text-xl lg:text-sm font-semibold text-center lg:text-left  ${textColor}`}
+                  className={` pl-[6rem] lg:pl-0 font-poppins invert-0 text-sm md:text-xl lg:text-sm font-semibold  bg-red-100 lg:text-left w-full ${textColor}`}
                 >
                   {footerData?.subscribeTitle}
                 </h4>
@@ -233,9 +233,9 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                     <Image
                     src="https://assets.nesscoindustries.com/public/assets/footer/send-button.svg"
                     alt="send Button"
-                    width={25}
-                    height={25}
-                    className="-ml-[2.5rem] mt-2"
+                    width={22}
+                    height={22}
+                    className="-ml-[2.5rem] mt-2 "
                     />
                    
                 </div>

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { NavbarData } from "../types/constant";
 import Link from "next/link";
 import { countryCODE, languageCODE } from "../nav-menue";
+import { ScrollArea } from "@/components/ui/ScrollArea";
 
 interface Product {
   id: string;
@@ -48,57 +49,58 @@ export default function ApplicationLayout({
   }
 
   return (
-    <div className="flex flex-col md:flex-row w-full h-full  lg:h-[24rem]">
-      <div className="md:w-[70%] px-4 pt-4 relative">
-        <div className="w-full grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-4 mb-4 md:mb-0 md:mr-4">
-          <Link
-            className="flex flex-col lg:hidden items-center justify-center  invert-0 cursor-pointer"
-            href={`/${countryCODE}/${languageCODE}/application`}
-            onClick={() => setActive(null)}
-          >
-            <div className="h-24 w-24 bg-[#f2f2f2] rounded-xl flex items-center justify-center">
-              <Image
-                src="https://res.cloudinary.com/dfryvystt/image/upload/v1731481264/49_vtvq7r.svg"
-                className="h-16 w-auto hover:scale-90 transition-all duration-300"
-                width={100}
-                height={100}
-              
-                alt={"application link"}
-              />
-            </div>
-            <span className="text-md font-medium text-center invert-0">
-              Applications
-            </span>
-          </Link>
-          {applicationData.map((product, index) => (
+    <div className="flex flex-col  md:flex-row w-full h-full lg:mb-8 lg:h-[26rem]">
+      <div className="md:w-[70%] px-4 lg:pt-4 relative">
+        <ScrollArea className="h-[calc(100vh)] md:h-auto">
+          <div className="w-full flex  flex-col sm:grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 space-y-2 lg:gap-4 lg:mb-4 md:mb-0 md:mr-4">
             <Link
-              key={product.id}
-              className="flex flex-col items-center justify-center p-2 invert-0 cursor-pointer"
-              onMouseEnter={() => setActiveProduct(product)}
-              href={`/${countryCODE}/${languageCODE}/application${product.link}`}
+              className="flex lg:hidden  sm:flex-col  sm:pt-0 sm:items-center justify-start sm:justify-center invert-0 cursor-pointer p-2 border-b sm:border-none"
+              href={`/${countryCODE}/${languageCODE}/application`}
               onClick={() => setActive(null)}
             >
-              <div className="h-24 w-24 bg-[#f2f2f2] rounded-xl flex items-center justify-center">
+              <div className="h-6 w-6 sm:h-24 sm:w-24  rounded-xl flex items-center justify-center">
                 <Image
-                  className="h-16 w-auto hover:scale-90 transition-all duration-300"
+                  src="https://res.cloudinary.com/dfryvystt/image/upload/v1731481264/49_vtvq7r.svg"
+                  className="h-8 w-auto sm:h-16 md:hover:scale-90 transition-all duration-300"
                   width={100}
                   height={100}
-                  src={componentList[index]}
-                  alt={product.name}
+                  alt={"application link"}
                 />
               </div>
-              <span className="text-md font-medium text-center invert-0">
-                {product.name}
+              <span className="text-lg font-regular ml-4 sm:ml-0 sm:mt-2 sm:text-center invert-0">
+                 All Applications
               </span>
             </Link>
-          ))}
-        </div>
+            {applicationData.map((product, index) => (
+              <Link
+                key={product.id}
+                className="flex items-center sm:flex-col p-1 sm:items-center justify-start sm:justify-center  invert-0 cursor-pointer border-b sm:border-none"
+                onMouseEnter={() => setActiveProduct(product)}
+                href={`/${countryCODE}/${languageCODE}/application${product.link}`}
+                onClick={() => setActive(null)}
+              >
+                <div className="h-6 w-6 sm:h-24 sm:w-24 lg:bg-[#f2f2f2] rounded-xl flex items-center justify-center">
+                  <Image
+                    className="h-6 w-auto sm:h-16 md:hover:scale-90 transition-all duration-300"
+                    width={100}
+                    height={100}
+                    src={componentList[index]}
+                    alt={product.name}
+                  />
+                </div>
+                <span className="text-lg font-regular ml-4 sm:ml-0 sm:mt-2 sm:text-center invert-0">
+                  {product.name}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </ScrollArea>
         <Link
           onClick={() => setActive(null)}
           className="flex lg:justify-end justify-center items-center pt-6 lg:pr-10"
           href={`/${countryCODE}/${languageCODE}/application`}
         >
-          <div className="">
+          <div className="hidden lg:flex">
             <Button
               className="rounded-full flex items-center lg:justify-center justify-start bg-primary text-primary-foreground lg:hover:bg-white bg-red-700 border-2 group border-red-700 lg:w-[12rem] w-[8rem] space-x-4 py-1 text-base font-medium transition-all duration-300 ease-in-out group relative"
               aria-label="View all items"
@@ -127,7 +129,7 @@ export default function ApplicationLayout({
         </Link>
       </div>
 
-      <div className="md:w-[30%] hidden  border-l p-6 lg:flex flex-col relative">
+      <div className="md:w-[30%] hidden border-l p-6 lg:flex flex-col relative">
         <div className="absolute inset-0 px-8 h-[20rem] w-auto opacity-5 pointer-events-none">
           {activeProduct && (
             <Image

@@ -4,7 +4,7 @@ export const blogPosts: BlogPost[] = [
     {
       id: "1",
       title: "Nessco Unveils Advanced Servo Paper Cup Machine and Two Compartment Rectangular Bowl-Making Technology: A Bold Step Towards Sustainability",
-      slug: "Nessco Unveils Advanced Servo Paper Cup Machine and Two Compartment Rectangular Bowl-Making Technology: A Bold Step Towards Sustainability",
+      slug: "nessco-unveils-advanced-servo-paper-cup-machine-and-two-compartment-rectangular-bowl-making-technology-a-bold-step-towards-sustainability",
       date: "2023-06-15",
       author: {
         name: "Nessco Press",
@@ -170,7 +170,7 @@ export const blogPosts: BlogPost[] = [
     {
         id: "3",
         title: "Nessco Revolutionizes Dome Lid Manufacturing with Advanced Technology for the Japanese Market",
-        slug: "nessco-unveils-advanced-servo-paper-cup-machine-and-two-compartment-rectangular-bowl-making-technology-a-bold-step-towards-sustainability",
+        slug: "nessco-revolutionizes-dome-lid-manufacturing-with-advanced-technology-for-the-japanese-market",
         date: "2024-11-29",
         author: {
           id: "author-1",
@@ -244,7 +244,7 @@ export const blogPosts: BlogPost[] = [
       {
         id: "4",
         title: "Nessco Expands Presence in Japan with Servo Paper Packaging Solutions",
-        slug: "nessco-expands-presence-in-japan",
+        slug: "nessco-expands-presence-in-japan-with-servo-paper-packaging-solutions",
         date: "2024-11-27",
         author: {
           id: "author1",
@@ -314,7 +314,7 @@ export const blogPosts: BlogPost[] = [
       {
         id: "5",
         title: "Nessco Shines at Drupa Germany with Sustainable Packaging Innovations",
-        slug: "nessco-creates-waves-at-drupa-germany-with-cutting-edge-packaging-solutions",
+        slug: "nessco-highlights-sustainability-solutions-at-drupa-exhibition",
         date: "2024-12-04",
         author: {
           name: "Nessco India",
@@ -615,6 +615,709 @@ export const blogPosts: BlogPost[] = [
           subheading: "Innovative Paper-Based Food Packaging Solutions for the Middle East",
         },
       },      
+      
+      {
+        id: "9",
+        title: "Nessco Highlights Sustainable Packaging at Interpack",
+        slug: "nessco-drives-sustainability-awareness-at-interpack-with-focus-on-paper-based-food-packaging",
+        date: "2024-12-04",
+        author: {
+          id: "author-1",
+          name: "Nessco India",
+          avatar: "https://example.com/avatar.png", // Replace with actual URL if available
+        },
+        tags: [
+          { id: "1", name: "Sustainability" },
+          { id: "2", name: "Packaging Innovation" },
+          { id: "3", name: "Interpack" },
+        ],
+        excerpt: "At Interpack, Nessco showcased paper-based packaging innovations, inspiring a global shift towards sustainable food packaging solutions.",
+        content: [
+          {
+            type: "section",
+            content: {
+              intro: "At Interpack, the world’s leading packaging trade fair, Nessco took center stage to highlight the future of food packaging with an emphasis on the scope and potential of paper-based products in the global packaging industry. The event served as a platform for Nessco to raise awareness about the critical need for sustainable alternatives, particularly among traditional plastic suppliers and manufacturers.",
+              blocks: [
+                {
+                  type: "text",
+                  heading: "Promoting the Shift Towards Sustainability",
+                  content:
+                    "Nessco delivered powerful insights into how paper-based food packaging solutions are becoming essential in addressing global environmental challenges. Through live presentations and interactive discussions, the team showcased:",
+                },
+                {
+                  type: "list",
+                  content: {
+                    format: "disc",
+                    items: [
+                      {
+                        text: "The scope of paper food packaging as a sustainable replacement for single-use plastics.",
+                      },
+                      {
+                        text: "The economic and environmental advantages of transitioning to paper-based solutions for the food and beverage industry.",
+                      },
+                      {
+                        text: "Innovative solutions and machinery designed to meet the growing demand for biodegradable and recyclable food packaging.",
+                      },
+                    ],
+                  },
+                },
+                {
+                  type: "text",
+                  heading: "Engaging Plastic Suppliers for a Sustainable Future",
+                  content:
+                    "A key highlight of Nessco's participation was the focused efforts to engage with plastic suppliers, creating awareness about the opportunities and benefits of sustainable alternatives. Nessco shared actionable strategies and technological solutions that enable businesses to shift from plastic to eco-friendly packaging materials, fostering a global movement toward greener practices.",
+                },
+                {
+                  type: "text",
+                  heading: "A Clear Vision for the Packaging Industry",
+                  content:
+                    "With the demand for sustainable food packaging growing exponentially, Nessco is positioning itself as a leader in driving the industry's transformation. From paper cups and lids to bowl and tray solutions, Nessco’s innovative product lineup demonstrates its dedication to empowering manufacturers to adopt sustainable practices.",
+                },
+                {
+                  type: "text",
+                  heading: "Paving the Way for a Sustainable Future",
+                  content:
+                    "Nessco’s presence at Interpack not only highlighted the importance of sustainable food packaging but also inspired businesses worldwide to embrace eco-conscious alternatives. By fostering dialogue and providing industry-leading solutions, Nessco is driving the transition to a circular economy, ensuring a greener and more sustainable future for the packaging sector.",
+                },
+              ],
+            },
+          },
+        ],
+        readingTime: 6,
+        header: {
+          id: "header-7",
+          heading: "Nessco at Interpack",
+          headingImage: "https://example.com/interpack-showcase.jpg", // Replace with actual URL if available
+          subheading: "Leading the Way in Paper-Based Food Packaging Innovations",
+        },
+      }, 
+      
+      {
+        id: "10",
+        title: "Nessco Showcases Advanced Packaging Solutions at Saudi Print & Pack",
+        slug: "nessco-makes-a-statement-at-saudi-pp-with-live-demos",
+        date: "2024-12-04",
+        author: {
+          id: "author-1",
+          name: "Nessco India",
+          avatar: "https://example.com/avatar.png", // Replace with actual URL if available
+        },
+        tags: [
+          { id: "1", name: "Packaging Innovation" },
+          { id: "2", name: "Sustainability" },
+          { id: "3", name: "Saudi Print & Pack" },
+        ],
+        excerpt: "At Saudi Print & Pack, Nessco unveiled its Salad Bowl Machine and Servo-Driven Paper Cup Machine, setting new standards for sustainable packaging solutions.",
+        content: [
+          {
+            type: "section",
+            content: {
+              intro: "At the highly anticipated Saudi Print & Pack (Saudi P&P) exhibition, Nessco unveiled two of its most advanced packaging solutions: the Salad Bowl Machine and the Servo-Driven Paper Cup Machine. The live demonstrations drew a massive crowd, showcasing the unmatched quality and efficiency of Nessco’s machinery while addressing the growing market demand for salad bowls, paper bowls, and premium paper cups.",
+              blocks: [
+                {
+                  type: "text",
+                  heading: "Setting the Standard with Live Demonstrations",
+                  content:
+                    "The live demonstrations highlighted:",
+                },
+                {
+                  type: "list",
+                  content: {
+                    format: "disc",
+                    items: [
+                      {
+                        text: "High-Quality Production: From sturdy salad bowls to perfectly finished paper cups, Nessco’s machines delivered products that exceeded industry expectations.",
+                      },
+                      {
+                        text: "Advanced Servo Technology: The Servo-Driven Paper Cup Machine showcased its ability to produce precision-engineered paper cups at high speeds, setting new benchmarks in quality and efficiency.",
+                      },
+                    ],
+                  },
+                },
+                {
+                  type: "text",
+                  heading: "Overwhelming Market Response",
+                  content:
+                    "The demand for Nessco’s machines reached unprecedented levels, resulting in an instant sell-out of all machines displayed at the exhibition. The enthusiastic response is a testament to the rising demand for sustainable and high-quality packaging products in the region.",
+                },
+                {
+                  type: "text",
+                  heading: "Commitment to Excellence",
+                  content:
+                    "Nessco’s success at Saudi P&P underlines its commitment to providing:",
+                },
+                {
+                  type: "list",
+                  content: {
+                    format: "disc",
+                    items: [
+                      {
+                        text: "On-Time Deliveries: Ensuring timely fulfillment of current orders to meet customer expectations.",
+                      },
+                      {
+                        text: "Future Orders: Expanding capacity to cater to the growing demand for sustainable packaging solutions across the Middle East.",
+                      },
+                    ],
+                  },
+                },
+                {
+                  type: "text",
+                  heading: "Driving Sustainable Innovation",
+                  content:
+                    "With its Salad Bowl Machine and Servo-Driven Paper Cup Machine, Nessco is revolutionizing the food packaging industry in Saudi Arabia. These machines are tailor-made for businesses looking to adopt eco-friendly, paper-based packaging solutions while maintaining superior quality and performance.",
+                },
+                {
+                  type: "text",
+                  heading: "A Milestone for Saudi Arabia's Packaging Industry",
+                  content:
+                    "Nessco’s participation in Saudi P&P marks a significant milestone, further cementing its reputation as a global leader in packaging machinery. By addressing the needs of a rapidly growing market, Nessco is empowering businesses to embrace sustainability while staying ahead of industry trends.",
+                },
+              ],
+            },
+          },
+        ],
+        readingTime: 6,
+        header: {
+          id: "header-6",
+          heading: "Nessco at Saudi Print & Pack",
+          headingImage: "https://example.com/saudi-pp-launch.jpg", // Replace with actual URL if available
+          subheading: "Showcasing Advanced Salad Bowl and Paper Cup Machines",
+        },
+      },   
+      
+      {
+        id: "11",
+        title: "Nessco Lauches Innovative Paper Cup Machine at Drupa Exhibition",
+        slug: "nessco-launches-innovative-paper-cup-machine-at-drupa-exhibition",
+        date: "2024-12-04",
+        author: {
+          id: "author-1",
+          name: "Nessco India",
+          avatar: "https://example.com/avatar.png", // Replace with actual URL if available
+        },
+        tags: [
+          { id: "1", name: "Sustainability" },
+          { id: "2", name: "Paper Cup Machine" },
+          { id: "3", name: "Drupa Exhibition" },
+        ],
+        excerpt: "Nessco launched its eco-friendly Servo Driven Paper Cup Machine at Drupa, setting new standards for efficiency and environmental responsibility.",
+        content: [
+          {
+            type: "section",
+            content: {
+              intro: "As a top provider of sustainable solutions for the HORECA industry, Nessco was excited to introduce its newest Servo Driven Paper Cup Machine at the famous Drupa Exhibition. This new machine set a high standard in the industry with its advanced technology, efficiency, and eco-friendly features.",
+              blocks: [
+                {
+                  type: "text",
+                  heading: "Revolutionary Features and Benefits",
+                  content:
+                    "Nessco’s new Servo Driven Paper Cup Machine has many advanced features that improve productivity and help the environment:",
+                },
+                {
+                  type: "list",
+                  content: {
+                    format: "disc",
+                    items: [
+                      { text: "High-Speed Production: It can make up to 180 cups per minute, greatly increasing output to meet the rising demand for paper cups." },
+                      { text: "Energy Efficiency: The machine uses less power without reducing performance, supporting Nessco’s goal of sustainable manufacturing." },
+                      { text: "User-Friendly Interface: With a modern touchscreen interface, operators can easily control and monitor the production process, reducing downtime and improving efficiency." },
+                      { text: "Versatility: The machine can produce a wide range of cup sizes and types, from small espresso cups to large beverage containers, meeting various market needs." },
+                      { text: "Durability and Reliability: Using strong and high-quality materials, the machine lasts a long time and needs very little maintenance." },
+                    ],
+                  },
+                },
+                {
+                  type: "text",
+                  heading: "Commitment to Sustainability",
+                  content:
+                    "To help reduce plastic waste, Nessco’s new Servo Driven Paper Cup Machine focuses on eco-friendly production. By using biodegradable materials and saving energy, the machine helps create a greener future.",
+                },
+                {
+                  type: "text",
+                  heading: "Live Demonstration at Drupa Exhibition",
+                  content:
+                    "Visitors to the Drupa Exhibition saw a live demonstration of the new Servo Driven Paper Cup Machine. Nessco’s team of experts was there to show how the machine worked and answer any questions. The Drupa Exhibition was well-known for featuring the newest technology in manufacturing. It was the perfect spot for Nessco to introduce their new machine. The event brought together industry leaders, business owners, and professionals from around the world, offering a great chance to connect and see new products.",
+                },
+                {
+                  type: "text",
+                  heading: "Customer Satisfaction",
+                  content:
+                    "Many customers have already purchased Nessco’s Servo Driven Paper Cup Machine and are very pleased with its performance. To date, over 50 units have been sold, and the feedback has been overwhelmingly positive.",
+                },
+                {
+                  type: "list",
+                  heading: "Customer Testimonials",
+                  content: {
+                    format: "disc",
+                    items: [
+                      {
+                        text: 'Mr. Danie from USA shared, “The Servo Driven Paper Cup Machine has transformed our production line. It’s fast, reliable, and efficient. We’ve seen a significant increase in our output and a decrease in production costs. We’re very happy with our purchase.”',
+                      },
+                      {
+                        text: 'Ms. Salma from Dubai added, “We chose Nessco’s machine for its eco-friendly features, and it has lived up to our expectations. The machine runs smoothly, and its energy efficiency helps us stay green while meeting high demand. Our customers also appreciate the quality of the cups we produce.”',
+                      },
+                      {
+                        text: 'Mr. Albert from Germany noted, “The Servo Driven Paper Cup Machine has been a great addition to our operations. It’s easy to use and maintain, and it delivers excellent results. The investment has been well worth it, and we look forward to seeing even more benefits in the future.”',
+                      },
+                    ],
+                  },
+                },
+                {
+                  type: "text",
+                  heading: "About Nessco",
+                  content:
+                    "Nessco is a top choice in the paper cup industry, known for its focus on innovation, quality, and being eco-friendly. They are always working on new and better solutions to meet their customers' needs. For more information and to see their products, visit https://www.nesscoindia.com.",
+                },
+              ],
+            },
+          },
+        ],
+        readingTime: 7,
+        header: {
+          id: "header-9",
+          heading: "Nessco at Drupa Exhibition",
+          headingImage: "https://example.com/drupa-launch.jpg", // Replace with actual URL if available
+          subheading: "Introducing the Servo Driven Paper Cup Machine",
+        },
+      }, 
+      
+      {
+        id: "12",
+        title: "Nessco Honored in Kuwait for Quality and Excellence",
+        slug: "nessco-honored-in-kuwait-for-outstanding-quality-and-excellence",
+        date: "2024-12-04",
+        author: {
+          id: "author-1",
+          name: "Nessco India",
+          avatar: "https://example.com/avatar.png", // Replace with actual URL if available
+        },
+        tags: [
+          { id: "1", name: "Quality" },
+          { id: "2", name: "Excellence" },
+          { id: "3", name: "Kuwait Market" },
+        ],
+        excerpt: "Nessco, a leading paper cup machine manufacturer, is recognized in Kuwait for its strong commitment to quality and excellence.",
+        content: [
+          {
+            type: "section",
+            content: {
+              intro: "Nessco, a leading paper cup machine manufacturer and global provider, has been honored in Kuwait for its strong focus on quality and excellence. This honor shows the company’s ongoing promise to provide the best products and services that meet the industry's highest standards.",
+              blocks: [
+                {
+                  type: "text",
+                  heading: "Leadership Comments on the Recognition",
+                  content:
+                    'Mr. Harshit Agarwal, the Managing Director of Nessco, shared his thanks for the recognition by saying, "We are very thankful to receive this honor. Our team\'s ongoing focus on quality and doing things well is key to our success. This award shows the hard work and commitment of everyone on our team."',
+                },
+                {
+                  type: "text",
+                  heading: "Commitment to Excellence and Future Vision",
+                  content:
+                    "Nessco has been supplying important machines like the Carton Erecting Machine, Octagonal Paper Box Machine, and Rectangle Bottom Bowl Machine to various industries for over 40 years. The company aims to be not just reliable and efficient, but also to ensure that every customer is completely satisfied. They work hard to understand and meet all the specific needs of their clients, providing solutions with great attention to detail.",
+                },
+                {
+                  type: "text",
+                  content:
+                    "The company's award shows how much effort it puts into meeting and often going beyond what is expected in different areas. Nessco has strong quality checks to ensure everything they make is very good. They also use new and smart methods, which help them give customers what they need. This way, they always provide results that match or even exceed what customers and the industry want.",
+                },
+                {
+                  type: "text",
+                  content:
+                    '“Our success in Kuwait is not just about reaching business targets but about building lasting relationships based on trust and good performance,” said Mr. Yogesh Agarwal, Managing Director of Nessco. “This award inspires us to keep working hard and aiming higher. We are dedicated to giving the best solutions to our clients in Kuwait and everywhere else.”',
+                },
+                {
+                  type: "text",
+                  heading: "Plans For Expansion and Continuous Improvement",
+                  content:
+                    "Nessco has already expanded its presence in the global market and is now looking to introduce even more products and services worldwide. Building on the success of this recent award, the company is eager to explore new opportunities and continue raising its standards for quality and excellence. By offering top-quality solutions, Nessco aims to meet the changing needs of customers everywhere and further strengthen its position in the industry.",
+                },
+              ],
+            },
+          },
+        ],
+        readingTime: 6,
+        header: {
+          id: "header-10",
+          heading: "Nessco Recognized for Excellence",
+          headingImage: "https://example.com/kuwait-award.jpg", // Replace with actual URL if available
+          subheading: "Honored in Kuwait for Quality and Excellence",
+        },
+      },
+
+      {
+        id: "13",
+        title: "Nessco: Pioneering Sustainability in the Paper Machine Industry",
+        slug: "how-nessco-focus-on-sustainability-in-thier-innovation",
+        date: "2024-12-04",
+        author: {
+          id: "author-1",
+          name: "Nessco India",
+          avatar: "https://example.com/avatar.png", // Replace with actual URL if available
+        },
+        tags: [
+          { id: "1", name: "Sustainability" },
+          { id: "2", name: "Paper Machines" },
+          { id: "3", name: "Innovation" },
+        ],
+        excerpt: "Nessco leads the way in sustainability by using eco-friendly practices and advanced technologies to protect the environment and meet the rising demand for green products.",
+        content: [
+          {
+            type: "section",
+            content: {
+              intro: "Nowadays, sustainability is no longer a choice but a necessity for every business. Businesses understand the need to use sustainable methods to stay successful. Many companies, including Nessco, focus on sustainability to protect the environment and meet customer demands for eco-friendly products.",
+              blocks: [
+                {
+                  type: "text",
+                  heading: "Nessco's Commitment to Sustainability",
+                  content:
+                    "Nessco is known for manufacturing paper cup machines, paper bowl machines, paper dome lid machines, and more, which create eco-friendly products such as paper cups, bowls, and lids. Nessco promotes sustainability by using eco-friendly materials and advanced technologies in their machines, setting new industry standards.",
+                },
+                {
+                  type: "list",
+                  heading: "Benefits of Nessco’s Sustainable Practices",
+                  content: {
+                    format: "disc",
+                    items: [
+                      { text: "Helping the Environment: Eco-friendly materials and processes reduce waste and pollution, creating a cleaner, healthier future." },
+                      { text: "Saving Money: Sustainable practices improve efficiency and reduce waste, saving money while helping the planet." },
+                      { text: "Staying Competitive: Eco-friendly products give Nessco an edge in a market where consumers prioritize sustainability." },
+                      { text: "Driving Innovation: Commitment to sustainability drives Nessco to invest in research and development for advanced technologies." },
+                    ],
+                  },
+                },
+                {
+                  type: "text",
+                  heading: "Creating a Future: Impact on Future Generations",
+                  content:
+                    "Nessco maximizes resources and reduces waste. Their machines develop products that can be recycled or naturally break down, protecting the planet. These efforts show Nessco's dedication to positively impacting the environment and society.",
+                },
+                {
+                  type: "text",
+                  content:
+                    'Mr. Yogesh Agarwal, Managing Director at Nessco, says, "Sustainability is at the heart of everything we do at Nessco. It is not only about making products that are good for the environment but also about encouraging responsibility and innovation in our culture."',
+                },
+                {
+                  type: "text",
+                  heading: "Conclusion",
+                  content:
+                    "Nessco is leading sustainable innovation by focusing on eco-friendly practices and advanced technologies in their machines. By prioritizing sustainability, Nessco ensures a cleaner, healthier future for the environment and the communities they serve. Under the leadership of Mr. Gopal Agarwal, Chief Executive Officer, Nessco promotes a culture of responsibility and innovation.",
+                },
+                {
+                  type: "text",
+                  heading: "Contact Information",
+                  content:
+                    "For more information, visit: [https://www.nesscoindia.com](https://www.nesscoindia.com)\nEmail: info@nesscoindia.com\nAddress: E-186, Apparel Park, RIICO Industrial Area, Mahal Road, Jagatpura, Jaipur (Rajasthan) - 302022, INDIA",
+                },
+                {
+                  type: "text",
+                  heading: "About Nessco",
+                  content:
+                    "Nessco India is a renowned paper cup machine manufacturer with a trusted brand name since 1978. They provide a wide range of machines including paper bowl machines, paper lid machines, flexo printing machines, roll die cutting machines, PE coating machines, paper bag machines, paper straw machines, paper plate making machines, and other disposable paper range machines for Indian, global, and Asia Pacific markets.",
+                },
+              ],
+            },
+          },
+        ],
+        readingTime: 7,
+        header: {
+          id: "header-11",
+          heading: "Nessco’s Sustainability Commitment",
+          headingImage: "https://example.com/sustainability.jpg", // Replace with actual URL if available
+          subheading: "Pioneering Eco-Friendly Practices in Paper Machines",
+        },
+      },
+      {
+        id: "14",
+        title: "Nessco Showcases Sustainable Packaging Solutions in Libya",
+        slug: "nesscos-presence-strengthens-in-libya-with-successful-food-packaging-exhibition",
+        date: "2024-12-04",
+        author: {
+          id: "author-1",
+          name: "Nessco India",
+          avatar: "https://example.com/avatar.png", // Replace with actual URL if available
+        },
+        tags: [
+          { id: "1", name: "Sustainability" },
+          { id: "2", name: "Packaging Solutions" },
+          { id: "3", name: "Libya Market" },
+        ],
+        excerpt: "Nessco demonstrated its commitment to sustainability by showcasing innovative packaging solutions at a successful exhibition in Libya.",
+        content: [
+          {
+            type: "section",
+            content: {
+              intro: "Nessco, a global leader in sustainable packaging solutions, proudly announces the successful representation of its innovative product line at an exhibition in Libya. Organized by one of Nessco’s trusted worldwide agents, the event focused on raising awareness about the scope of paper-based food packaging products and their role in driving sustainability in the industry.",
+              blocks: [
+                {
+                  type: "text",
+                  heading: "A Global Network of Trusted Partners",
+                  content:
+                    "With a strong network of agents worldwide, Nessco is committed to reaching every corner of the globe to promote its eco-friendly food packaging solutions. In Libya, one of Nessco’s business partners led the event, showcasing advanced machinery and engaging the audience in meaningful discussions about the transition to paper-based packaging.",
+                },
+                {
+                  type: "text",
+                  heading: "A Stronghold in Libya",
+                  content:
+                    "Nessco’s presence in Libya is already well-established, with over 100 machines currently operational across the country. These machines, including those for manufacturing paper cups, paper bowls, and other eco-friendly packaging products, are setting a new standard in sustainable food packaging.",
+                },
+                {
+                  type: "list",
+                  heading: "Leading the Shift to Sustainable Packaging",
+                  content: {
+                    format: "disc",
+                    items: [
+                      { text: "High-Speed Paper Cup Machines: Delivering premium-quality cups with unmatched efficiency." },
+                      { text: "Paper Bowl Machines: Designed to meet the growing demand for versatile and biodegradable food packaging." },
+                      { text: "Customizable Solutions: Tailored to meet the unique needs of the Libyan market." },
+                    ],
+                  },
+                },
+                {
+                  type: "text",
+                  heading: "Building Momentum in Developing Markets",
+                  content:
+                    "With its strong foothold in Libya, Nessco is demonstrating its ability to thrive in developing markets. The event not only solidified its position as a trusted provider of sustainable packaging solutions but also reinforced its vision of enabling businesses to transition seamlessly from plastic to paper-based alternatives.",
+                },
+                {
+                  type: "text",
+                  heading: "A Commitment to Global Sustainability",
+                  content:
+                    "By partnering with local agents and showcasing its advanced product lineup, Nessco continues to champion the shift toward sustainable packaging practices worldwide. With events like this, Nessco is proving that its mission to deliver world-class eco-friendly packaging machinery is not limited by borders.",
+                },
+              ],
+            },
+          },
+        ],
+        readingTime: 6,
+        header: {
+          id: "header-12",
+          heading: "Nessco in Libya",
+          headingImage: "https://example.com/libya-exhibition.jpg", // Replace with actual URL if available
+          subheading: "Showcasing Sustainable Packaging Innovations",
+        },
+      },
+      {
+        id: "15",
+        title: "Nessco Highlights Eco-Friendly Packaging at PlastIndia",
+        slug: "nessco-india-x-plastindia---leadership-in-sustainable-packaging-at-plastindia",
+        date: "2024-12-04",
+        author: {
+          id: "author-1",
+          name: "Nessco India",
+          avatar: "https://example.com/avatar.png", // Replace with actual URL if available
+        },
+        tags: [
+          { id: "1", name: "Sustainability" },
+          { id: "2", name: "Packaging Solutions" },
+          { id: "3", name: "PlastIndia" },
+        ],
+        excerpt: "At PlastIndia, Nessco showcased its leadership in the paper-based packaging sector, highlighting innovative solutions for sustainable packaging.",
+        content: [
+          {
+            type: "section",
+            content: {
+              intro: "At PlastIndia, one of the largest exhibitions for the plastics and packaging industry, Nessco India took the stage to highlight its leadership in the paper-based packaging sector. As the industry transitions toward sustainable solutions, Nessco showcased its advanced paper products and coating technologies, reinforcing its position as the leader in the Indian market for eco-friendly packaging solutions.",
+              blocks: [
+                {
+                  type: "text",
+                  heading: "Driving Awareness About Paper-Based Products",
+                  content:
+                    "Nessco utilized the platform to raise awareness about the benefits of paper products as sustainable alternatives to traditional plastics. The company shared insights into its advanced coating technologies, which enhance the durability and functionality of paper-based packaging, making them an ideal choice for a variety of industries, including food and beverage, retail, and hospitality.",
+                },
+                {
+                  type: "list",
+                  heading: "Leading the Indian Market with Innovation",
+                  content: {
+                    format: "disc",
+                    items: [
+                      { text: "Paper Cups and Lids: Precision-manufactured for high-quality performance." },
+                      { text: "Paper Bowls and Trays: Designed to meet the needs of modern food packaging." },
+                      { text: "Advanced Coating Solutions: Ensuring superior quality, strength, and moisture resistance." },
+                    ],
+                  },
+                },
+                {
+                  type: "text",
+                  heading: "Shaping the Future of Packaging",
+                  content:
+                    "As PlastIndia showcased the latest advancements in the plastics and packaging industry, Nessco stood out as a pioneer in promoting biodegradable and recyclable packaging products. By leveraging cutting-edge technologies and offering diverse, high-quality solutions, Nessco is not just meeting but exceeding the demands of the growing eco-conscious market.",
+                },
+                {
+                  type: "text",
+                  heading: "A Vision for Sustainability",
+                  content:
+                    "Nessco’s participation at PlastIndia reinforces its vision of creating a sustainable future through innovation and leadership. With its extensive product range and commitment to quality, Nessco is empowering businesses to make the shift from plastic to paper-based packaging, driving both environmental and economic benefits.",
+                },
+              ],
+            },
+          },
+        ],
+        readingTime: 5,
+        header: {
+          id: "header-13",
+          heading: "Nessco at PlastIndia",
+          headingImage: "https://example.com/plastindia-event.jpg", // Replace with actual URL if available
+          subheading: "Showcasing Leadership in Sustainable Packaging",
+        },
+      },
+      {
+        id: "16",
+        title: "Nessco Showcases Paper Straw Machine at Print Pack Noida",
+        slug: "nessco-showcases-paper-straw-machine-and-sustainable-packaging-solutions-at-print-pack-noida",
+        date: "2024-12-04",
+        author: {
+          id: "author-1",
+          name: "Nessco India",
+          avatar: "https://example.com/avatar.png", // Replace with actual URL if available
+        },
+        tags: [
+          { id: "1", name: "Sustainability" },
+          { id: "2", name: "Paper Straw Machine" },
+          { id: "3", name: "Print Pack Noida" },
+        ],
+        excerpt: "At Print Pack Noida, Nessco unveiled its Paper Straw Machine and showcased a comprehensive range of sustainable packaging solutions.",
+        content: [
+          {
+            type: "section",
+            content: {
+              intro: "At the prestigious Print Pack Noida exhibition, Nessco unveiled its latest innovation, the Paper Straw Machine, along with a comprehensive range of sustainable packaging solutions. With a focus on promoting eco-friendly alternatives in the packaging industry, Nessco’s showcase drew significant attention from manufacturers, suppliers, and industry leaders.",
+              blocks: [
+                {
+                  type: "text",
+                  heading: "The Paper Straw Machine: A Step Towards Sustainability",
+                  content:
+                    "Nessco’s Paper Straw Machine is designed to address the growing demand for biodegradable straws, offering a high-speed, efficient, and reliable solution for replacing plastic straws.",
+                },
+                {
+                  type: "list",
+                  content: {
+                    format: "disc",
+                    items: [
+                      { text: "High-Precision Production: Ensures consistent quality and durability of paper straws." },
+                      { text: "Eco-Friendly Design: Tailored to meet global sustainability standards." },
+                      { text: "Versatile Applications: Ideal for industries ranging from food service to retail." },
+                    ],
+                  },
+                },
+                {
+                  type: "text",
+                  heading: "Leading the Sustainable Solutions Industry",
+                  content:
+                    "In addition to the Paper Straw Machine, Nessco showcased its portfolio of sustainable machine solutions for the food packaging industry, including:",
+                },
+                {
+                  type: "list",
+                  content: {
+                    format: "disc",
+                    items: [
+                      { text: "Paper Cup Machines: Designed for high-speed and eco-friendly production." },
+                      { text: "Paper Bowl and Tray Machines: Meeting the rising demand for biodegradable food packaging." },
+                      { text: "Coating and Customization Technologies: Offering enhanced durability and versatility for paper-based products." },
+                    ],
+                  },
+                },
+                {
+                  type: "text",
+                  heading: "Advancing India’s Packaging Industry",
+                  content:
+                    "As one of the leading manufacturers of sustainable packaging machinery, Nessco is playing a pivotal role in shaping the future of India’s packaging sector. The company’s presence at Print Pack Noida underscored its commitment to delivering innovative, high-quality, and eco-conscious solutions that meet the evolving needs of the market.",
+                },
+                {
+                  type: "text",
+                  content:
+                    "With the successful showcase at Print Pack Noida, Nessco has reaffirmed its position as a leader in driving the transition to sustainable packaging practices. By introducing cutting-edge technologies and versatile machinery, Nessco is empowering businesses to adopt eco-friendly solutions that align with global environmental goals.",
+                },
+              ],
+            },
+          },
+        ],
+        readingTime: 6,
+        header: {
+          id: "header-14",
+          heading: "Nessco at Print Pack Noida",
+          headingImage: "https://example.com/print-pack-noida.jpg", // Replace with actual URL if available
+          subheading: "Showcasing the Paper Straw Machine and Sustainable Solutions",
+        },
+      },
+      {
+        id: "17",
+        title: "Paperex Expands Global Reach with Sustainable Projects",
+        slug: "paperex-driving-innovation-exports-and-sustainability-in-the-paper-industry",
+        date: "2024-12-04",
+        author: {
+          id: "author-2",
+          name: "Paperex",
+          avatar: "https://example.com/avatar.png", // Replace with actual URL if available
+        },
+        tags: [
+          { id: "1", name: "Sustainability" },
+          { id: "2", name: "Paper Industry" },
+          { id: "3", name: "Eco-Friendly Solutions" },
+        ],
+        excerpt: "Paperex is leading the charge in sustainable paper trading with innovative projects, global expansion, and a commitment to eco-friendly practices.",
+        content: [
+          {
+            type: "section",
+            content: {
+              intro: "Paperex, a leader in the global paper trading industry, continues to make waves with its ambitious new projects centered around paper-based products. With a vision to align with global sustainability goals, Paperex is expanding its reach and portfolio to meet the growing demand for eco-friendly solutions across industries.",
+              blocks: [
+                {
+                  type: "list",
+                  heading: "New Projects for a Sustainable Future",
+                  content: {
+                    format: "disc",
+                    items: [
+                      { text: "Custom Paper Solutions: Developing specialized paper products for the food packaging, printing, and retail industries." },
+                      { text: "Eco-Friendly Coatings: Introducing paper materials with advanced coatings for enhanced durability and versatility." },
+                      { text: "Industry-Specific Offerings: Expanding into niche markets, providing tailored solutions that meet unique client needs." },
+                    ],
+                  },
+                },
+                {
+                  type: "text",
+                  heading: "A Growing Export Footprint",
+                  content:
+                    "Paperex has solidified its presence in international markets with consistent export growth, delivering premium paper products to regions worldwide. Its ability to meet global quality standards while offering competitive pricing has made Paperex a trusted partner for businesses looking to transition to sustainable paper solutions.",
+                },
+                {
+                  type: "list",
+                  heading: "Championing Sustainability",
+                  content: {
+                    format: "disc",
+                    items: [
+                      { text: "Supporting industries in adopting plastic-free alternatives." },
+                      { text: "Partnering with manufacturers to develop eco-conscious packaging solutions." },
+                      { text: "Advocating for responsible production practices that prioritize sustainability." },
+                    ],
+                  },
+                },
+                {
+                  type: "text",
+                  heading: "A Leader in the Paper Industry",
+                  content:
+                    "With its robust export network, innovative product development, and focus on sustainability, Paperex is setting a new standard in the paper trading sector. The company’s dedication to meeting the demands of an evolving market while championing eco-friendly practices solidifies its reputation as a forward-thinking industry leader.",
+                },
+                {
+                  type: "text",
+                  content:
+                    "As Paperex continues to expand its projects and global reach, it remains committed to delivering high-quality, sustainable paper products that meet the needs of a greener future. Stay connected for updates on Paperex’s ongoing projects and initiatives as it leads the charge in shaping a sustainable paper industry.",
+                },
+              ],
+            },
+          },
+        ],
+        readingTime: 6,
+        header: {
+          id: "header-15",
+          heading: "Paperex: Sustainability in Action",
+          headingImage: "https://example.com/paperex-sustainability.jpg", // Replace with actual URL if available
+          subheading: "Driving Global Change with Paper-Based Solutions",
+        },
+      }      
+      
+      
+      
+
       
       
 

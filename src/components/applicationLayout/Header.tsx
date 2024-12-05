@@ -228,7 +228,7 @@ const Page1: React.FC<CombinedProps> = ({
               className="flex justify-center items-center overflow-auto w-full scrollbar-hide"
               ref={carouselRef}
             >
-              <div className="w-max lg:mt-[2rem] mt-[0.5rem] flex justify-center lg:pl-0 pl-[18rem]">
+              <div className="w-max lg:mt-[2rem] mt-[0.5rem] flex justify-center lg:pl-0 pl-[29rem]">
                 {Header?.icons?.map((item, idx) => (
                   <div
                     key={idx}

@@ -45,26 +45,26 @@ const HeroSection: React.FC<KnowledgeCenterProps> = ({
 
   return (
     <div className="flex pt-24 bg-black h-screen w-full flex-col font-regular font-poppins">
-      <div className="h-[10%]">
-        <p className="text-5xl px-10 font-poppins font-semibold  text-white">
+      <div className="lg:h-[10%]">
+        <p className="lg:text-5xl text-4xl px-10 font-poppins font-semibold w-full lg:text-left text-center text-white">
           {Hero?.title}
         </p>
       </div>
-      <div className="h-[90%] flex w-full">
-        <div className="w-1/2 ">
+      <div className="lg:h-[90%] flex lg:flex-row flex-col w-full">
+        <div className="lg:w-1/2 flex justify-center items-center">
           <Image
             src="https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/knowledge-center-hero-gif.webp"
-            className="h-full w-full object-contain"
+            className="lg:h-full lg:w-full object-contain h-[16rem] w-auto"
             height={600}
             width={600}
             priority
             alt={"knowldege-hero"}
           />
         </div>
-        <div className="w-1/2 pr-4">
+        <div className="lg:w-1/2 lg:pr-4">
           {/* start */}
-          <div className="text-white py-20 w-[95%]">
-            <p className="text-left text-3xl font-medium mb-10">
+          <div className="text-white lg:py-20 lg:w-[95%] px-4">
+            <p className="lg:text-left text-center lg:text-3xl text-2xl font-medium mb-10">
               {Hero?.subtitle.split(" ").slice(0, -1).join(" ")}{" "}
               <span className="text-[#8c52ff]">
                 {Hero?.subtitle?.split(" ").slice(-1)}
@@ -73,14 +73,14 @@ const HeroSection: React.FC<KnowledgeCenterProps> = ({
             <div className="flex justify-center gap-10">
               {Hero?.section?.map((item, idx) => (
                 <div key={idx} className="text-center">
-                  <div className="relative  flex flex-col items-center justify-center">
+                  <div className="relative flex flex-col items-center justify-center">
                     {/* SVG Bulb Icon with Glow */}
                     <div className="">
                       <Image
                         src="https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/knowledge-center-bulb-image.webp"
                         width={400}
                         height={400}
-                        className="h-24 light-bulb w-auto glow z-30 -mt-10"
+                        className="lg:h-24 h-16 light-bulb w-auto glow z-30 -mt-10"
                         alt={""}
                       />
                     </div>
@@ -91,18 +91,18 @@ const HeroSection: React.FC<KnowledgeCenterProps> = ({
                       src="https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/knowledge-center-light-gif.webp"
                       width={400}
                       height={400}
-                      className="absolute -top-[1.8rem] h-full w-full"
+                      className="absolute -top-[1.8rem] h-40 w-auto"
                       alt={""}
                     />
-                    <div className="flex flex-col items-center justify-center mt-20 gap-2 z-20">
+                    <div className="flex flex-col items-center justify-center lg:mt-20 gap-2 z-20">
                       <Image
                         src={item?.img}
-                        className="w-16"
+                        className="lg:w-16 w-12"
                         alt={""}
                         width={400}
                         height={400}
                       />
-                      <h2 className="text-2xl font-normal">{item?.title}</h2>
+                      <h2 className="lg:text-2xl text-md font-normal">{item?.title}</h2>
                     </div>
                   </div>
                 </div>

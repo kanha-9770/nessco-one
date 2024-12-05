@@ -28,13 +28,18 @@ const KnowledgeCenterGeneric: React.FC<CardsProps> = ({
 }) => {
   function formatToSlug(input) {
     return input
-        .toLowerCase()            // Convert to lowercase
-        .replace(/\s+/g, '-')     // Replace spaces with hyphens
-        .replace(/[^a-z0-9\-]/g, '') // Remove special characters except hyphens
-        .trim();                  // Remove leading/trailing whitespace
-}
+      .toLowerCase() // Convert to lowercase
+      .replace(/\s+/g, "-") // Replace spaces with hyphens
+      .replace(/[^a-z0-9\-]/g, "") // Remove special characters except hyphens
+      .replace(/-+/g, "-") // Collapse multiple hyphens into one
+      .trim(); // Remove leading/trailing whitespace
+  }
   const pathname = usePathname() || "";
-  const componentCode =  pathname.split('/').filter(Boolean).pop()?.toLowerCase();
+  const componentCode = pathname
+    .split("/")
+    .filter(Boolean)
+    .pop()
+    ?.toLowerCase();
   return (
     <>
       <div className="w-full h-full bg-white mt-14 py-4 px-12 flex justify-center font-poppins">
@@ -65,9 +70,12 @@ const KnowledgeCenterGeneric: React.FC<CardsProps> = ({
         } gap-10 lg:px-14 px-8 py-8`}
       >
         {cards?.map((item, idx) => (
-          <Link key={idx} href={`${componentCode}/${formatToSlug(item?.title)}`}>
+          <Link
+            key={idx}
+            href={`${componentCode}/${formatToSlug(item?.title)}`}
+          >
             <div className="relative flex flex-col justify-center items-center bg-white rounded-xl py-10 px-10 lg:px-4 space-y-16 lg:hover:shadow-2xl shadow-xl lg:hover:scale-80 transition-all duration-300 group">
-              <h2 className="lg:group-hover:text-[#483d73] lg:text-black text-[#483d73] lg:text-2xl text-2xl font-medium text-center">
+              <h2 className="lg:group-hover:text-[#483d73] lg:text-black text-[#483d73] lg:text-2xl text-2xl font-medium text-center h-[4rem]">
                 {item?.title}
               </h2>
               <Image

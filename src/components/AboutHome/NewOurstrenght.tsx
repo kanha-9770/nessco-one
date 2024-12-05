@@ -197,13 +197,13 @@ const ExpandableCardDemo: React.FC<HomeLayoutProps> = ({ aboutData }) => {
               layoutId={`card-${card?.title}-${id}`}
               key={`card-${card?.title}-${id}`}
               onClick={() => setActive(card)}
-              className=" lg:flex flex  flex-col-reverse lg:flex-row justify-between items-center bg-[#f7f7f7]  dark:hover:bg-neutral-800 rounded-2xl cursor-pointer group lg:w-full lg:h-full h-[18rem] md:h-[20rem] relative p-3 lg:p-0"
+              className=" lg:flex flex  flex-col-reverse lg:flex-row justify-between items-center bg-[#f7f7f7] dark:hover:bg-neutral-800 rounded-2xl cursor-pointer group lg:w-full lg:h-full h-[18rem] md:h-[20rem] relative p-3 lg:p-0"
             >
               <div className="md:flex md:flex-row gap-4 flex-col lg:flex-row lg:p-6 grid grid-cols-1  ">
                 <div className=" col-span-1">
                   <motion.p
                     layoutId={`description-${card?.description}-${id}`}
-                    className="text-black font-poppins text-center  lg:text-left lg:w-[70vw] lg:text-sm font-regular text-xs  lg:px-0 px-2  lg:ml-0"
+                    className="text-black font-poppins text-center lg:text-left lg:w-[70vw] lg:text-sm font-regular text-xs  lg:px-0 px-2  lg:ml-0"
                   >
                     {/* Title */}
                     <span className="text-center  lg:left-0 lg:text-left lg:text-md text-sm lg:-mt-0 relative lg:-top-0  font-medium lg:text-[#3a2a79] text-black font-poppins block h-[3rem]  mb-2 lg:mb-0 lg:h-5 ">
@@ -251,7 +251,7 @@ const ExpandableCardDemo: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                   key={index}
                   className=" lg:p-6 md:p-16 h-[10rem] w-[10rem] lg:w-[9rem] lg:h-[8rem] md:h-[15rem] md:w-[15rem] flex items-center justify-center  lg:bg-[#483d73] lg:rounded-tr-2xl lg:rounded-br-2xl transition-colors duration-300 p-7 group "
                 >
-                  <Icons className=" invert " />
+                  <Icons className="lg:bg-transparent bg-[#483d73] rounded-[1rem] " />
                 </div>
               </div>
             </motion.div>
@@ -263,7 +263,7 @@ const ExpandableCardDemo: React.FC<HomeLayoutProps> = ({ aboutData }) => {
           aria-label="read-more"
           className="flex justify-center bg-slate-50 "
         >
-        <button className=" absolute bottom-3  w-[8rem] text-base hover:font-medium font-normal font-poppins h-[2rem] items-center justify-center text-center border lg:border-[#6f6f6f] lg:hover:bg-black lg:text-[#6f6f6f] lg:hover:text-white bg-black text-white lg:bg-white rounded-[0.26rem] z-10 ">
+        <button className=" absolute bottom-3  w-[8rem] text-base hover:font-medium font-normal font-poppins h-[2rem] items-center justify-center text-center border lg:border-[#6f6f6f] lg:hover:bg-black lg:text-[#6f6f6f] lg:hover:text-white bg-black text-white lg:bg-white rounded-[0.3rem] z-10 ">
         {homemisionData?.button}
           </button>
         </div>

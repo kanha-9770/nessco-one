@@ -25,7 +25,7 @@ const Resources: React.FC <AboutLayoutProps>= ({resourceData}) => {
             <h1 className="bg-gradient-to-r from-[#483d73] from-2% via-red-700 via-20% to-red-700 bg-clip-text text-transparent font-medium font-poppins relative lg:text-5xl text-2xl top-[4rem] ">
               {homeresourceData.mainTitle} <span className="block">{homeresourceData.highlightTitle}</span>
             </h1>
-            <p className="text-gray-600 font-poppins text-sm  font-regular relative lg:top-[5rem] lg:w-[30rem] w-[13rem] top-[5rem]">
+            <p className="text-gray-600 font-poppins lg:text-sm text-xs  font-regular relative lg:top-[4rem] lg:w-[30rem] w-[13rem] top-[5rem]">
               {homeresourceData.description}
             </p>
           </div>

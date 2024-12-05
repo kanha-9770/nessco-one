@@ -129,7 +129,7 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData, setActive }) => {
       <div className="w-full lg:hidden">
         <div className="flex flex-col space-y-0 px-4 py-2">
           <Link
-            href={`/${countryCODE}/${languageCODE}/about`}
+            href={`/${countryCODE}/${languageCODE}/resources`}
             onClick={() => setActive(null)}
             className="flex items-center border-b py-1 space-x-2 cursor-pointer pl-2"
           >
@@ -150,7 +150,7 @@ const ResourceGrid: React.FC<ResourceGridProps> = ({ navData, setActive }) => {
                 <path d="M15 3h6v6" />
               </svg>
             </div>
-            <p className="text-xl font-poppins pl-4 font-medium">All Resources</p>
+            <p className="text-xl font-poppins pl-4 font-medium">Resources</p>
           </Link>
           {DataBankItem?.map((item, index) => (
             <Link
