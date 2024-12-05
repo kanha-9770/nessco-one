@@ -16,8 +16,8 @@ const LandingPage:React.FC <AboutLayoutProps>= ({pinkcityData}) => {
         <Image
           src="https://assets.nesscoindustries.com/public/assets/about/pinkcity/pinkcity-banner.webp"
           alt="Jaipur"
-          height={600}
-          width={600}
+          height={1000}
+          width={1000}
           priority
           objectPosition="right center"
           className="object-cover w-full h-full rounded-xl lg:rounded-2xl "

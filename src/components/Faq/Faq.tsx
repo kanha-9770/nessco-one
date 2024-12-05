@@ -148,11 +148,11 @@ const FAQ: React.FC<MainLayoutProps> = ({ faqData }) => {
 
       {/* Main Content */}
       <main className="flex-1 overflow-hidden p-4 lg:p-0 mt-16 lg:mt-0">
-        <ScrollArea className="h-[calc(100vh-80px)] lg:h-[calc(100vh-10px)]">
+        <ScrollArea className="h-[calc(100vh)] lg:h-[calc(100vh-10px)]">
           <div className="space-y-6">
             {filteredFAQs.map((category) => (
               <Card
-                className="bg-white p-4 lg:p-8 lg:h-[30rem] rounded-xl"
+                className="bg-white p-4 lg:p-8 h-auto  rounded-xl"
                 key={category.name}
               >
                 <CardHeader>
@@ -166,11 +166,11 @@ const FAQ: React.FC<MainLayoutProps> = ({ faqData }) => {
                     <div className="lg:border-t-[0.2rem] border-t-2 border-solid border-red-700 lg:w-[8vw] w-[18vw] mt-[0.6rem]"></div>
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent >
                   <Accordion
                     type="single"
                     collapsible
-                    className="w-full space-y-4"
+                    className="w-full space-y-2 lg:space-y-4"
                   >
                     {category.faqs.map((faq, index) => (
                       <AccordionItem
