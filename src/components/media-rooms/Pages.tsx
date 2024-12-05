@@ -577,7 +577,7 @@ const LatestNews: React.FC<NewsProps> = ({
                   )}
                   <button
                     aria-label="Open"
-                    onClick={() => openModal(item)}
+                    
                     className="flex items-center text-[#483d73] text-sm group bg-[#E6E7E6] hover:bg-black hover:text-white rounded-full pl-2 pr-1"
                   >
                     {item?.continueReading}

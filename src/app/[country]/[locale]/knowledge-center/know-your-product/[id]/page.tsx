@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import { cookies } from "next/headers";
 import { KnowYourProduct } from "@/components/types";
 import AnimatedBlogPost from "@/components/StaticBlogs/AnimatedBllog";
+import { getBaseUrl } from "@/app/api/environment";
 
 const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
 const countryUrl = "https://countryjson.nesscoindustries.com/";
@@ -18,7 +19,9 @@ type Props = {
 
 export const revalidate = 60;
 
-async function fetchKnowYourProductData(locale: string): Promise<KnowYourProduct | null> {
+async function fetchKnowYourProductData(
+  locale: string
+): Promise<KnowYourProduct | null> {
   try {
     const res = await fetch(`${apiUrl}${locale}/knowyourproduct.json`);
     const data: KnowYourProduct = await res.json();
@@ -51,7 +54,7 @@ async function fetchCountryData(locale: string): Promise<string> {
 }
 
 export async function generateMetadata({
-  params: { locale},
+  params: { locale },
 }: Props): Promise<Metadata> {
   if (!locales.includes(locale as any)) {
     locale = "en";
@@ -91,7 +94,7 @@ export async function generateMetadata({
       images: seoData.openGraph.images,
     },
     alternates: {
-      canonical: seoData.alternates.canonical,
+      canonical:`${getBaseUrl}`,
     },
     twitter: {
       card: "summary_large_image",
@@ -107,14 +110,16 @@ export async function generateMetadata({
   };
 }
 
-export default async function KnowYourProductPage({ params: { locale,id} }: Props) {
+export default async function KnowYourProductPage({
+  params: { locale, id },
+}: Props) {
   if (!locales.includes(locale as any)) {
     locale = "en";
   }
 
   unstable_setRequestLocale(locale);
-  
-  console.log(id)
 
-  return <AnimatedBlogPost id={id}/>;
+  console.log(id);
+
+  return <AnimatedBlogPost id={id} />;
 }

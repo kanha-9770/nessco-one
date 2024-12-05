@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import { cookies } from "next/headers";
 import { KnowYourMachine } from "@/components/types";
 import AnimatedBlogPost from "@/components/StaticBlogs/AnimatedBllog";
+import { getBaseUrl } from "@/app/api/environment";
 
 const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
 const countryUrl = "https://countryjson.nesscoindustries.com/";
@@ -91,7 +92,7 @@ export async function generateMetadata({
       images: seoData.openGraph.images,
     },
     alternates: {
-      canonical: seoData.alternates.canonical,
+      canonical:`${getBaseUrl}`,
     },
     twitter: {
       card: "summary_large_image",

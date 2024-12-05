@@ -526,7 +526,7 @@ export const blogPosts: BlogPost[] = [
       {
         id: "8",
         title: "Nessco Highlights Sustainable Food Packaging at Gulf Food Dubai",
-        slug: "nessco-highlights-sustainable-food-packaging-at-gulf-food-dubai",
+        slug: "nessco-showcases-sustainable-packaging-solutions-at-gulf-food-dubai",
         date: "2024-12-04",
         author: {
           id: "author-1",

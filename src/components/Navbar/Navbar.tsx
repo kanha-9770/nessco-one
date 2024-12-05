@@ -161,7 +161,7 @@ function Navbar({ className, navData }: NavbarProps) {
         <div className="lg:hidden w-full flex justify-between items-center p-4">
           <Link
             href={`${languageCODE}`}
-            className="h-14 w-14  flex items-center"
+            className="h-20 w-20  flex items-center"
           >
             <SVGComponent />
           </Link>
@@ -170,7 +170,7 @@ function Navbar({ className, navData }: NavbarProps) {
             onClick={toggleMenu}
           >
             <svg
-              className="w-6 h-6"
+              className="w-8 h-8"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"

@@ -1,4 +1,3 @@
-import Header from "@/components/support/Header";
 import { KnowYourMachineItem } from "@/components/support/types/constantMachine";
 import { Metadata } from "next";
 import { cookies } from "next/headers"; // Server-side (Next.js app directory)
@@ -6,6 +5,7 @@ import { cookies } from "next/headers"; // Server-side (Next.js app directory)
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import React from "react";
 import { getBaseUrl } from "@/app/api/environment";
+import KnowledgeCenterGeneric from "@/components/knowledge-center/knowledgeGeneric";
 
 const apiUrl = "https://jsondatafromhostingertosheet.nesscoindustries.com/";
 const locales = ["en", "fr", "nl", "de", "es", "hi", "ta"] as const;
@@ -157,7 +157,7 @@ export default async function about({ params: { locale } }: Props) {
 
   return (
     <main>
-      <Header
+      <KnowledgeCenterGeneric
         title={headerData.title}
         description={headerData.description}
         img={headerData.img}

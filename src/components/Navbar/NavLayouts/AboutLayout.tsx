@@ -122,7 +122,7 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
                   height={224}
                   loading="lazy"
                 />
-                <p className=" flex items-center justify-center text-xl  text-center font-poppins invert-0 lg:hover:text-[#483d78] lg:hover:font-bold font-normal md:text-base transform lg:hover:scale-80 transition-transform duration-300">
+                <p className="pt-2 flex items-center justify-center text-xl  text-center font-poppins invert-0 lg:hover:text-[#483d78] lg:hover:font-bold font-normal md:text-base transform lg:hover:scale-80 transition-transform duration-300">
                   <span>{item?.title}</span>
                 </p>
               </div>
