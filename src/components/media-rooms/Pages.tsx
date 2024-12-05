@@ -469,6 +469,10 @@ const LatestNews: React.FC<NewsProps> = ({
     dialogDescription: "",
   });
 
+  const openModal = (content: NewsItem) => {
+    setModalContent(content);
+    setModalOpen(true);
+  };
 
   const closeModal = () => setModalOpen(false);
 
@@ -573,7 +577,7 @@ const LatestNews: React.FC<NewsProps> = ({
                   )}
                   <button
                     aria-label="Open"
-                    
+                    onClick={() => openModal(item)}
                     className="flex items-center text-[#483d73] text-sm group bg-[#E6E7E6] hover:bg-black hover:text-white rounded-full pl-2 pr-1"
                   >
                     {item?.continueReading}
@@ -640,7 +644,10 @@ const MostRead: React.FC<NewsProps> = ({
     dialogDescription: "",
   });
 
-
+  const openModal = (content: NewsItem) => {
+    setModalContent(content);
+    setModalOpen(true);
+  };
 
   function formatString(input) {
     return input
@@ -697,7 +704,7 @@ const MostRead: React.FC<NewsProps> = ({
                   <h3 className="font-medium text-sm">{item?.title}</h3>
                   <button
                     aria-label="Open"
-                    // onClick={() => openModal(item)}
+                    onClick={() => openModal(item)}
                     className="flex items-center text-[#483d73] text-sm group bg-[#E6E7E6] hover:bg-black hover:text-white rounded-full pl-2 pr-1"
                   >
                     {item?.continueReading}
