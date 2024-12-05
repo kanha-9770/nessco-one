@@ -86,7 +86,7 @@ export const blogPosts: BlogPost[] = [
     {
       id: "2",
       title: "Nessco and Mitsubishi Discuss the Future of Sustainable Packaging in Japan",
-      slug: "nessco-mitsubishi-sustainable-packaging-japan",
+      slug: "nessco-and-mitsubishi-discuss-the-future-of-sustainable-packaging-in-japan",
       date: "2023-06-20",
       author: {
         name: "Nessco Press",
