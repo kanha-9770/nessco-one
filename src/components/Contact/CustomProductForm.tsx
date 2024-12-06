@@ -113,7 +113,7 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
             <div className="w-[20%] font-poppins flex items-center justify-center">
               <Button
                 onClick={() => setIsDialogOpen(true)}
-                className="bg-transparent hover:bg-transparent"
+                
               >
                 <svg
                   viewBox="-0.4 0 24 24"

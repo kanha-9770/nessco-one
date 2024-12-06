@@ -225,7 +225,7 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
         {isModalOpen && componentData && (
           <div className="fixed inset-0 flex justify-center bg-black bg-opacity-50 z-50 lg:px-10 px-4 pt-20 overflow-y-scroll">
             <div className="flex flex-col items-center justify-center h-max w-full p-4 relative bg-[#f5f5f5] rounded-3xl">
-              <div className="relative h-[16rem] lg:w-[60rem] w-[22rem] flex justify-center items-center mt-10">
+              <div className="relative h-[16rem] lg:w-[60rem] w-[22rem] flex justify-center items-center lg:mt-10">
                 <div className="overflow-hidden lg:w-[30rem] w-[25rem] -mt-5">
                   <Swiper
                     effect="coverflow"
@@ -270,7 +270,7 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
                 </div>
                 <div
                   ref={prevRef}
-                  className="absolute left-[10rem] cursor-pointer z-10"
+                  className="absolute left-[10rem] cursor-pointer z-10 lg:visible invisible"
                 >
                   <svg
                     viewBox="0 0 24 24"
@@ -297,7 +297,7 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
                 </div>
                 <div
                   ref={nextRef}
-                  className="absolute right-[10rem] cursor-pointer z-10"
+                  className="absolute right-[10rem] cursor-pointer z-10 lg:visible invisible"
                 >
                   <svg
                     viewBox="0 0 24 24"

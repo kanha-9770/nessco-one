@@ -400,6 +400,7 @@ const Page2: React.FC<Page2Props> = ({
                     </div>
                   </div>
                 ) : (
+                  <LinkUrl href={`/products/${paramsthing}/${item.link}`} className="w-full flex justify-center" >
                   <button
                     aria-label="View Machine"
                     className={`mt-[0.2rem] w-[70%] h-[2.5rem] border-[0.1rem] border-solid  ${
@@ -410,20 +411,23 @@ const Page2: React.FC<Page2Props> = ({
                     onMouseEnter={() => setHoveredButtonIndex(idx)}
                     onMouseLeave={() => setHoveredButtonIndex(null)}
                   >
-                    <LinkUrl href={`/products/${paramsthing}/${item.link}`}>
+                    
                       {ProductsGrid?.viewMachine}
-                    </LinkUrl>
+                    
                   </button>
+                  </LinkUrl>
                 )}
                 <div className="flex items-center justify-center lg:hidden w-full">
+                <LinkUrl href={`/products/${paramsthing}/${item?.link}`} className="w-full flex justify-center">
                   <button
                     aria-label="View Machine"
                     className={`mt-[1rem] w-[70%] h-[2rem] border-[0.1rem] border-solid font-medium rounded-[0.5rem] transition-colors duration-300 border-[#9c9c9c] hover:border-black hover:bg-black hover:text-white`}
                   >
-                    <LinkUrl href={`/products/${paramsthing}/${item?.link}`}>
+                    
                       {ProductsGrid?.viewMachine}
-                    </LinkUrl>
-                  </button>
+                    
+                    </button>
+                  </LinkUrl>
                 </div>
               </div>
 

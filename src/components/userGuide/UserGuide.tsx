@@ -553,7 +553,7 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
                   <div className="flex justify-center mt-5">
                     <button
                       type="submit"
-                      className="text-lg font-medium bg-gradient-to-t from-[#483d73] to-black lg:hover:to-[#483d73] lg:hover:from-black text-white w-full p-2 rounded-[0.5rem]"
+                      className="text-lg font-medium bg-gradient-to-t from-[#483d73] to-black lg:hover:from-black lg:hover:to-[#483d73] text-white w-full p-2 rounded-[0.8rem]"
                       onClick={handleCloseDownloadModal}
                     >
                       {data?.submit}
@@ -561,7 +561,7 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
                   </div>
                   <div
                     onClick={handleCloseDownloadModal}
-                    className="absolute top-2 right-3 text-lg cursor-pointer"
+                    className="absolute top-1 right-2 text-lg cursor-pointer"
                   >
                     ✖
                   </div>

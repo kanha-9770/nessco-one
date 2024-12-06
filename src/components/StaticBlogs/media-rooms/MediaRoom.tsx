@@ -11,6 +11,7 @@ import { blogPosts } from "../data/mediaData";
 import ListBlock from "../ListBlock";
 import { ContentBlock, ListContent, SectionContent } from "../types/blogs";
 import TagList from "../TagList";
+import VideoBlock from "../Videoblock";
 
 interface MediaRoomProps {
   id?: string;
@@ -18,7 +19,7 @@ interface MediaRoomProps {
 
 const MediaRoom: React.FC<MediaRoomProps> = ({ id }) => {
   const decodedSlug = decodeURIComponent(id); // Decodes the URL-encoded string
-//   alert(decodedSlug)
+  //   alert(decodedSlug)
   // Now you can search for the post with the decoded slug
   const post = blogPosts.find((p) => p?.slug === decodedSlug);
   console.log(id);
@@ -96,6 +97,8 @@ const MediaRoom: React.FC<MediaRoomProps> = ({ id }) => {
         return <ListBlock content={block.content as ListContent} />;
       case "section":
         const sectionContent = block.content as SectionContent;
+      case "video":
+        <VideoBlock content={block.content as { src: string }} />;
         return (
           <div>
             {sectionContent.intro && <p>{sectionContent.intro}</p>}
@@ -136,14 +139,29 @@ const MediaRoom: React.FC<MediaRoomProps> = ({ id }) => {
         transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
         className="lg:px-[10%] px-[8%] -mt-52 mb-8 relative z-10"
       >
-        <Image
-          className="object-cover z-50 lg:h-[25rem] h-[12rem] w-full rounded-3xl shadow-2xl"
-          width={1200}
-          height={600}
-          priority
-          src={post?.header?.headingImage}
-          alt={post?.slug || "Blog post header image"}
-        />
+        {post?.header?.headingImage &&
+          (/\.(mp4|webm|ogg)$/i.test(post?.header?.headingImage) ? (
+            <video
+              className="object-cover z-50 lg:h-[25rem] h-[12rem] w-full rounded-3xl shadow-2xl"
+              width={1200}
+              height={600}
+              autoPlay
+              loop
+              muted
+            >
+              <source src={post?.header?.headingImage} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          ) : (
+            <Image
+              className="object-cover z-50 lg:h-[25rem] h-[12rem] w-full rounded-3xl shadow-2xl"
+              width={1200}
+              height={600}
+              priority
+              src={post?.header?.headingImage}
+              alt={post?.slug || "Blog post header image"}
+            />
+          ))}
       </motion.div>
 
       <div className="bg-white rounded-3xl min-h-screen w-full px-[4%] lg:py-20 py-12 font-light relative">

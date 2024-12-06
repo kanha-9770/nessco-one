@@ -2,6 +2,7 @@
 
 import React, { memo, useCallback, useRef, useState, useEffect } from "react";
 import Link from "next/link";
+import { Button } from "../ui/button";
 
 interface NavLinkProps {
   text: string;
@@ -85,7 +86,7 @@ const NavLinksDemo: React.FC<NavLinksDemoProps> = ({ type, navItems }) => {
     const observerOptions = {
       root: null,
       rootMargin: "-20% 0px -20% 0px",
-      threshold: 0,
+      threshold: 0.5,
     };
 
     const observer = new IntersectionObserver(
@@ -122,24 +123,30 @@ const NavLinksDemo: React.FC<NavLinksDemoProps> = ({ type, navItems }) => {
   }, []);
 
   useEffect(() => {
-    if (activeLink !== -1 && mobileNavRef.current && navItemRefs.current[activeLink]) {
+    if (
+      activeLink !== -1 &&
+      mobileNavRef.current &&
+      navItemRefs.current[activeLink]
+    ) {
       const container = mobileNavRef.current;
       const activeItem = navItemRefs.current[activeLink];
-      
+
       if (activeItem) {
         const containerRect = container.getBoundingClientRect();
         const activeItemRect = activeItem.getBoundingClientRect();
 
-        const isItemVisible = (
+        const isItemVisible =
           activeItemRect.left >= containerRect.left &&
-          activeItemRect.right <= containerRect.right
-        );
+          activeItemRect.right <= containerRect.right;
 
         if (!isItemVisible) {
-          const scrollLeft = activeItemRect.left - containerRect.left - (containerRect.width - activeItemRect.width) / 2;
+          const scrollLeft =
+            activeItemRect.left -
+            containerRect.left -
+            (containerRect.width - activeItemRect.width) / 2;
           container.scrollTo({
             left: container.scrollLeft + scrollLeft,
-            behavior: 'smooth'
+            behavior: "smooth",
           });
         }
       }
@@ -149,7 +156,7 @@ const NavLinksDemo: React.FC<NavLinksDemoProps> = ({ type, navItems }) => {
   return (
     <div
       ref={navRef}
-      className={`sticky  lg:mt-0 mt-10 top-[3.3rem] z-40 transition-all duration-300 ${
+      className={`sticky lg:mt-0 mt-10 top-[3.3rem] z-40 transition-all duration-300 ${
         scrolling
           ? "bg-white"
           : type === "product"
@@ -158,18 +165,21 @@ const NavLinksDemo: React.FC<NavLinksDemoProps> = ({ type, navItems }) => {
       }`}
     >
       {/* Mobile Navigation */}
-      <div ref={mobileNavRef} className="md:hidden overflow-x-auto px-4 py-1 scrollbar-hide">
-        <nav className="w-full">
-          <ul className="flex space-x-4 pb-2 min-w-max">
+      <div
+        ref={mobileNavRef}
+        className="md:hidden overflow-x-auto z-50 scrollbar-hide pl-4"
+      >
+        <nav className="w-full flex items-center h-14">
+          <ul className="flex items-center">
             {navItems.map((item, index) => (
-              <li 
+              <li
                 key={index}
                 ref={(el) => {
                   navItemRefs.current[index] = el;
                 }}
               >
-                <button
-                  className={`flex items-center justify-center w-auto h-auto px-2 py-[0.15rem] rounded-full text-sm font-medium ${
+                <Button
+                  className={`flex mr-4 items-center z-[9999] justify-center w-auto h-auto px-2  py-[0.15rem] rounded-full text-sm font-medium ${
                     activeLink === index
                       ? "bg-black text-white"
                       : "bg-white text-black"
@@ -180,7 +190,7 @@ const NavLinksDemo: React.FC<NavLinksDemoProps> = ({ type, navItems }) => {
                   }}
                 >
                   {item.text}
-                </button>
+                </Button>
               </li>
             ))}
           </ul>
@@ -210,4 +220,3 @@ const NavLinksDemo: React.FC<NavLinksDemoProps> = ({ type, navItems }) => {
 };
 
 export default NavLinksDemo;
-

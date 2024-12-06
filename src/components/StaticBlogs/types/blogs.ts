@@ -29,14 +29,15 @@ export type ListContent = {
 };
 
 export type ContentBlock = {
-  type?: "text" | "image" | "table" | "list" | "section" | "code";
+  type?: "text" | "image" | "table" | "list" | "section" | "code" | "video";
   content?:
     | string
     | { src: string; alt: string }
     | string[][]
     | ListContent
     | SectionContent
-    | { language: string; code: string };
+    | { language: string; code: string } 
+    | {src?:string};
   heading?: string;
   subheading?: string;
   image?: string;

@@ -327,9 +327,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                 <path d="m21 3-9 9" />
                 <path d="M15 3h6v6" />
               </svg>
-              <span className="text-black pl-2 text-lg">
-                All Products
-              </span>
+              <span className="text-black pl-2 text-lg">All Products</span>
             </Link>
 
             {navRightData.map((link, index) => (
@@ -350,10 +348,27 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                       height={24}
                       loading="lazy"
                     />
-                   <span> {link?.name}</span>
+                    <span> {link?.name}</span>
                   </div>
                   <span className="text-gray-500 text-2xl">
-                    {expandedItem === link?.name ? "-" : "+"}
+                    {expandedItem === link?.name ? (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        className="lucide lucide-minus"
+                      >
+                        <path d="M5 12h14" />
+                      </svg>
+                    ) : (
+                      "+"
+                    )}
                   </span>
                 </div>
 
@@ -385,7 +400,7 @@ const ProductLayout: React.FC<ProductLayoutProps> = ({
                             </svg>
                           </div>
                           <h4 className="text-sm font-bold mt-2 text-center">
-                          {link?.name}s
+                            {link?.name}s
                           </h4>
                         </Link>
                       </>

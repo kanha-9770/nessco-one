@@ -22,7 +22,7 @@ const Page4: React.FC<BlogsProps> = ({ blogsData }) => {
   return (
     <>
       <div className="lg:mr-[3vw] lg:ml-0 mr-[4vw] ml-[4vw] font-regular font-poppins">
-        <div className="bg-white w-full lg:h-[30.5rem] h-[14rem] mt-[2rem] rounded-[1rem] overflow-hidden">
+        <div className="bg-white w-full lg:h-[30.5rem] h-max mt-[2rem] rounded-[1rem] overflow-hidden">
           <div className="mt-[1.4rem] mb-[0.5rem] mx-[1.2rem] text-[1.5rem] font-poppins text-[#3a2a79] flex">
             <h1>{ForYou?.title}</h1>
             <p className="mt-[0.3rem]">
@@ -63,7 +63,7 @@ const Page4: React.FC<BlogsProps> = ({ blogsData }) => {
                         <circle cx="12" cy="19" r="2" />
                       </svg>
                     </div>
-                    <h2 className="text-black mb-[0.2rem] lg:w-[94%] font-semibold text-lg font-poppins">
+                    <h2 className="text-black mb-[0.2rem] lg:w-[94%] w-[90%] font-semibold text-lg font-poppins">
                       {item?.title}
                     </h2>
                     <p className="text-black font-normal lg:text-sm text-[0.8rem] w-full font-poppins">

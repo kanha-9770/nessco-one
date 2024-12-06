@@ -39,16 +39,16 @@ const Page1: React.FC<CombinedProps> = ({ blogsData, onCategorySelect }) => {
     ];
   };
 
-  const categoryTitles = Filter?.categories?.map((category) => category?.title);
+  // const categoryTitles = Filter?.categories?.map((category) => category?.title);
 
-  const displayCategories = showCategories
-    ? filterCategories(categoryTitles, searchTerm)
-    : filterCategories(categoryTitles, searchTerm).slice(0, 6);
+  // const displayCategories = showCategories
+  //   ? filterCategories(categoryTitles, searchTerm)
+  //   : filterCategories(categoryTitles, searchTerm).slice(0, 6);
 
-  // Call onCategorySelect when selectedCategories change
-  React?.useEffect(() => {
-    onCategorySelect(selectedCategories);
-  }, [selectedCategories]);
+  // // Call onCategorySelect when selectedCategories change
+  // React?.useEffect(() => {
+  //   onCategorySelect(selectedCategories);
+  // }, [selectedCategories]);
 
   return (
     <div className="lg:mt-[5.2rem] mt-[1rem] lg:ml-[3vw] lg:mr-[3vw] font-regular font-poppins">
@@ -88,28 +88,22 @@ const Page1: React.FC<CombinedProps> = ({ blogsData, onCategorySelect }) => {
 
         {/* By Category */}
         <div className="mt-3 lg:h-full h-[14rem] lg:overflow-auto overflow-y-scroll scrollbar-custom scrollbar">
-          {displayCategories?.map((item, index) => (
+          {Filter?.categories?.map((item, index) => (
             <div key={index} className="flex justify-between items-center">
-              <label className="font-poppins my-[0.2rem]" htmlFor={item}>
-                {item}
+              <label className="font-poppins my-[0.2rem]" htmlFor={item?.title}>
+                {item?.title}
               </label>
               <input
                 type="checkbox"
-                id={item}
-                name={item}
-                value={item}
+                id={item?.title}
+                name={item?.title}
+                value={item?.title}
                 className="mr-1"
-                checked={selectedCategories.includes(item)}
-                onChange={() => handleCategoryChange(item)}
+                checked={selectedCategories.includes(item?.title)}
+                onChange={() => handleCategoryChange(item?.title)}
               />
             </div>
           ))}
-          <button
-            onClick={() => setShowCategories(!showCategories)}
-            className="text-[#dc0e2a] font-poppins mt-1"
-          >
-            {showCategories ? "Less" : "Expand"}
-          </button>
         </div>
       </div>
     </div>

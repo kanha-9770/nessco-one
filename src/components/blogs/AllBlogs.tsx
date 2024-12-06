@@ -178,19 +178,19 @@ const Page2: React.FC<CombinedProps> = ({ blogsData, selectedCategories }) => {
 
           {/* Render Page1 component as a modal only if isPage1Visible is true and only on mobile */}
           {isPage1Visible && (
-            <div className="fixed inset-0 bg-[#f2f2f2] bg-opacity-50 backdrop-blur z-50 flex items-center justify-center lg:hidden mt-14">
-              <div className="bg-white w-full h-[28rem] mx-[1rem] py-[1rem] px-[1rem] rounded-lg shadow-lg">
+            <div className="fixed inset-0 bg-[#f2f2f2] bg-opacity-50 backdrop-blur z-50 flex items-center justify-center lg:hidden">
+              <div className="bg-white w-full h-[28rem] mx-[1rem] py-[1rem] px-[1rem] rounded-[0.8rem] shadow-lg">
                 <div className="w-full h-[3rem] flex items-center border-b-2 border-solid border-[#E6E7E6]">
-                  <div className="flex justify-center items-center h-full w-[50%] border-r-2 border-solid border-[#E6E7E6] mb-[0.5rem] font-poppins font-medium">
+                  <div className="flex justify-center items-center h-full w-[50%] border-r-2 border-solid border-[#E6E7E6] mb-[0.5rem] font-poppins font-medium" onClick={() => setPage1Visible(false)}>
                     <button
-                      onClick={() => setPage1Visible(false)}
+                      
                       className="text-[#838282]"
                     >
                       {AllBlogs?.cancel}
                     </button>
                   </div>
-                  <div className="flex justify-center items-center w-[50%] mb-[0.5rem] font-poppins font-medium">
-                    <button className="text-[#dc0e2a]">
+                  <div className="flex justify-center items-center w-[50%] mb-[0.5rem] font-poppins font-medium" onClick={() => setPage1Visible(false)}>
+                    <button className="text-red-700">
                       {AllBlogs?.apply}
                     </button>
                   </div>

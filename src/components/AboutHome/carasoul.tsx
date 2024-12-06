@@ -96,8 +96,8 @@ const Page4:React.FC<HomeLayoutProps> = ({aboutData}) => {
                 >
                   <Image
                     className="w-[20rem] h-[20rem] object-cover"
-                    width={200}
-                    height={200}
+                    width={500}
+                    height={500}
                     src={item?.img}
                     priority
                     alt="image"

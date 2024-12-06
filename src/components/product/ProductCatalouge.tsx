@@ -184,6 +184,10 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
       .toLowerCase(); // Convert the string to lowercase
   }
 
+  function formatString(input) {
+    return input.toLowerCase().replace(/\s+/g, "-");
+  }
+
   return (
     <>
       <div className="w-full bgLines font-poppins bg-grid-black/[0.2] lg:px-[2rem] px-[1rem] pt-[3.5rem] pb-[4rem] flex items-center justify-center relative font-regular">
@@ -330,7 +334,7 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
                                           y2="8"
                                         ></line>
                                       </svg>
-                                      <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-md shadow-md p-3 h-max w-max z-20">
+                                      <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-[0.3rem] shadow-md p-3 h-max w-max z-20">
                                         <p className="text-sm text-black">
                                           {containerItem?.information}
                                         </p>
@@ -338,8 +342,8 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
                                     </div> */}
                                     <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center font-medium cursor-pointer relative group hover:text-red-700 text-xl">
                                       {containerItem?.s}
-                                      <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-md shadow-md px-2 py-1 h-max w-max z-20">
-                                        <p className="lg:text-[0.8rem] text-[0.7rem] text-black font-normal">
+                                      <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-[0.3rem] shadow-md px-2 py-1 h-max w-max z-20">
+                                        <p className="lg:text-sm text-xs text-black font-normal">
                                           {containerItem?.sInformation}
                                         </p>
                                       </div>
@@ -351,8 +355,8 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
                                         width={400}
                                         height={400}
                                       />
-                                      <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-md shadow-md px-2 py-1 h-max w-max z-20">
-                                        <p className="lg:text-[0.8rem] text-[0.7rem] text-black">
+                                      <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-[0.3rem] shadow-md px-2 py-1 h-max w-max z-20">
+                                        <p className="lg:text-sm text-xs text-black font-normal">
                                           {containerItem?.imageInformation}
                                         </p>
                                       </div>
@@ -375,26 +379,30 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
                                     </p>
                                   </div>
 
-                                  <div className="flex justify-center items-center h-[14rem] overflow-hidden">
-                                    <div className="p-2 flex justify-center items-center">
-                                      <Image
-                                        src={containerItem?.img}
-                                        alt=""
-                                        width={400}
-                                        height={400}
-                                      />
+                                  <Link
+                                    href={`/${countryCODE}/${languageCODE}/${lastParameter}/${containerItem?.link}`}
+                                  >
+                                    <div className="flex justify-center items-center h-[14rem] overflow-hidden">
+                                      <div className="p-2 flex justify-center items-center">
+                                        <Image
+                                          src={containerItem?.img}
+                                          alt="Machine Image"
+                                          width={400}
+                                          height={400}
+                                        />
+                                      </div>
                                     </div>
-                                  </div>
+                                  </Link>
 
-                                  <div className="my-[0.5rem] flex lg:flex-rows flex-col items-center justify-center lg:h-[2.5rem]">
-                                    <button className="lg:text-[0.9rem] text-[0.8rem] w-[65%] h-[2rem] border-[0.1rem] border-solid font-medium rounded-[0.5rem] transition-colors duration-300 border-[#9c9c9c] hover:border-black hover:bg-black hover:text-white">
-                                      <Link
-                                        href={`/${countryCODE}/${languageCODE}/${lastParameter}/${containerItem?.link}`}
-                                      >
+                                  <Link
+                                    href={`/${countryCODE}/${languageCODE}/${lastParameter}/${containerItem?.link}`}
+                                  >
+                                    <div className="my-[0.5rem] flex lg:flex-rows flex-col items-center justify-center lg:h-[2.5rem]">
+                                      <button className="lg:text-[0.9rem] text-[0.8rem] w-[65%] h-[2rem] border-[0.1rem] border-solid font-medium rounded-[0.5rem] transition-colors duration-300 border-[#9c9c9c] hover:border-black hover:bg-black hover:text-white">
                                         {ProductCatalouge?.viewMachine}
-                                      </Link>
-                                    </button>
-                                  </div>
+                                      </button>
+                                    </div>
+                                  </Link>
 
                                   <div className="w-full h-px bg-[#9c9c9c]"></div>
 
@@ -468,27 +476,33 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
                     </div>
                   </div>
                   <div className="flex items-center justify-center w-full">
-                    <div className="group flex items-center justify-center w-max pl-3 pr-1 mb-4 bg-black rounded-full  text-white hover:text-black hover:bg-white border border-black space-x-2">
-                      <button className="lg:text-[0.9rem] py-1 text-[0.8rem] font-medium ">
-                        {ProductCatalouge?.viewAllMachines}
-                      </button>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 64 64"
-                        className="lg:w-6 w-5 lg:h-6 h-5"
-                      >
-                        <circle
-                          cx="32"
-                          cy="32"
-                          r="32"
-                          className="fill-white group-hover:fill-black"
-                        />
-                        <path
-                          d="M25 20 L37 32 L25 44"
-                          className="stroke-black stroke-[4px] fill-none stroke-linecap-round stroke-linejoin-round group-hover:stroke-white"
-                        />
-                      </svg>
-                    </div>
+                    <Link
+                      href={`/${countryCODE}/${languageCODE}/products/${formatString(
+                        item?.title
+                      )}`}
+                    >
+                      <div className="group flex items-center justify-center w-max pl-3 pr-1 mb-4 bg-black rounded-full  text-white hover:text-black hover:bg-white border border-black space-x-2">
+                        <button className="lg:text-[0.9rem] py-1 text-[0.8rem] font-medium ">
+                          {ProductCatalouge?.viewAllMachines}
+                        </button>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 64 64"
+                          className="lg:w-6 w-5 lg:h-6 h-5"
+                        >
+                          <circle
+                            cx="32"
+                            cy="32"
+                            r="32"
+                            className="fill-white group-hover:fill-black"
+                          />
+                          <path
+                            d="M25 20 L37 32 L25 44"
+                            className="stroke-black stroke-[4px] fill-none stroke-linecap-round stroke-linejoin-round group-hover:stroke-white"
+                          />
+                        </svg>
+                      </div>
+                    </Link>
                   </div>
                 </div>
               )}

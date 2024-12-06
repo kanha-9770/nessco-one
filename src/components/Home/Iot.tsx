@@ -242,13 +242,18 @@ export default function IOT({ heroData }: KnowMoreLayoutProps) {
           </div>
         </div>
         <div className="w-full lg:w-1/2 relative">
-          <Image
+          <video
             className="absolute -top-20 opacity-30 -right-56 -z-10 h-[40rem] w-auto"
-            src={IotData?.globeVideo}
-            alt={"globe"}
-            width={400}
-            height={400}
-          />
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            poster={IotData?.globeVideo}
+          >
+            <source src={IotData?.globeVideo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
 
           <h3 className="text-transparent bg-clip-text bg-gradient-to-r from-[#d08ceb] to-[#483d73] text-4xl md:text-5xl lg:text-[5.5rem] font-semibold pt-4 md:pt-8 text-center lg:text-left">
             {IotData?.subTitle}

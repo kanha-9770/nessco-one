@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ReusableForm from "../Contact/ReuseableForm";
 import {
   Dialog,
   DialogContent,
@@ -42,7 +43,6 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
     // Replace hyphens with spaces and then replace the word 'machine' with 'icon'
     return input.replace(/-/g, " ").replace(/\bmachine\b/, "icon");
   }
-
   const breadcrumbItems = [
     { label: "Home", href: "/" },
     { label: "Products", href: "/products" },
@@ -313,7 +313,9 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
                         <g strokeLinecap="round" strokeLinejoin="round" />
                         <path d="M236 139.313 139.313 236a16.02 16.02 0 0 1-22.627 0L20 139.313a16.02 16.02 0 0 1 0-22.627L116.687 20a16.02 16.02 0 0 1 22.627 0L236 116.687a16.02 16.02 0 0 1 0 22.626Z" />
                       </svg>
-                      <span className="text-sm font-medium text-start">{item?.text}</span>
+                      <span className="text-sm font-medium text-start">
+                        {item?.text}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -322,11 +324,10 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
                     className="ml-1"
                     href={`/${countryCODE}/${languageCODE}/contact`}
                   >
-                    <Button
+                    <div
                       className="rounded-full flex items-center justify-center bg-gradient-to-r from-[#483d73] to-red-700 pl-4 py-1 text-base font-medium transition-all duration-300 ease-in-out group bg-clip-border custom-gradient-border"
-                      aria-label="View all items"
                     >
-                      <span className="text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#483d73] group-hover:to-red-700">
+                      {/* <span className="text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#483d73] group-hover:to-red-700">
                         Get a Quote
                       </span>
                       <span className="bg-white group-hover:bg-gradient-to-r group-hover:from-[#483d73] group-hover:to-red-700 p-1 rounded-full">
@@ -344,8 +345,18 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
                             d="M9 5l7 7-7 7"
                           />
                         </svg>
-                      </span>
-                    </Button>
+                      </span> */}
+                      <ReusableForm
+                        formId="homePage"
+                        buttonText="Get a Quote"
+                        dialogTitle="Get in Touch"
+                        dialogSubtitle="We'd love to hear from you!"
+                        imageUrl="https://www.nesscoindia.com/Assets/images/resource/popup.webp"
+                        showButton={true}
+                        secodaryButton={true}
+                        normalButton={false}
+                      />
+                    </div>
                   </Link>
                 </div>
               </div>
@@ -358,4 +369,3 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
 };
 
 export default Card;
-

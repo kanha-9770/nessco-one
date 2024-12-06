@@ -120,7 +120,7 @@ const Page2: React.FC<VisionProps> = ({ visionData }) => {
             <div
               className={`lg:text-[2.2rem] text-[1.5rem]  font-poppins font-extrabold text-[#483d73] absolute lg:top-[3rem] ${
                 expanded === index
-                  ? "lg:left-[4vw] lg:top-[6vh] top-[1vh] text-center"
+                  ? "lg:left-[4vw] lg:top-[6vh] top-[1vh] text-center w-[90%]"
                   : " lg:left-[5vw] left-[5vw] lg:text-center lg:w-[12vw] "
               } transition-all duration-300 ease-in-out`}
             >

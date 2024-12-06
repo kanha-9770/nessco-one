@@ -11,7 +11,7 @@ export const LampContainer = ({
 }) => {
   return (
     <div
-      className={`relative flex h-full lg:px-0 px-4 lg:my-[7rem] lg:mb-0 mb-12 lg:-mt-0 -mt-20 flex-col items-center justify-center w-full rounded-[0.5rem] z-0 ${className}`}
+      className={`relative flex h-full lg:px-0 px-4 lg:mb-20 mb-12 lg:mt-20 -mt-20 flex-col items-center justify-center w-full rounded-[0.5rem] z-0 ${className}`}
     >
       <div className="relative flex w-full flex-1 items-center justify-center isolate z-0">
         <motion.div

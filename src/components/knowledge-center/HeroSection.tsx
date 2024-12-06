@@ -91,7 +91,7 @@ const HeroSection: React.FC<KnowledgeCenterProps> = ({
                       src="https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/knowledge-center-light-gif.webp"
                       width={400}
                       height={400}
-                      className="absolute -top-[1.8rem] h-40 w-auto"
+                      className="absolute -top-[1.8rem] lg:h-[18rem] h-40 w-auto"
                       alt={""}
                     />
                     <div className="flex flex-col items-center justify-center lg:mt-20 gap-2 z-20">

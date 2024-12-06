@@ -73,10 +73,10 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
           {isDarkBackground && <div className={`${styles.overlay} `}></div>}
         </div>
         <div className="w-full relative lg:m-auto mt-6 lg:p-0  md:p-5 z-20  ">
-          <div className="flex flex-col-reverse  lg:flex-row  justify-evenly items-start w-[100%] lg:px-5  mb-[-0.10rem] ">
-            <div className="flex flex-col-reverse lg:flex-row  lg:mt-0 ">
+          <div className="flex flex-col-reverse  lg:flex-row lg:p-5 justify-evenly items-start w-[100%] lg:px-5  mb-[-0.10rem] ">
+            <div className="flex flex-col-reverse lg:flex-row  lg:mt-0">
               <div
-                className={`${styles.footerlistabout} lg:order-none lg:ml-[3rem]  lg:mt-0 -mt-[10rem] `}
+                className={`${styles.footerlistabout} lg:order-none lg:ml-[3rem]  lg:mt-0 -mt-[10rem]  px-4 lg:px-0`}
               >
                 <h4
                   className={`font-poppins text-sm md:text-xl lg:text-sm font-semibold md:w-[10rem] w-[7rem]  ${textColor}`}
@@ -134,7 +134,7 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                   ))}
                 </div>
               </div>
-              <div className="flex flex-col  w-[11%] relative left-[10rem] lg:-left-14 md:left-[18rem] lg:top-0  md:top-16">
+              <div className="flex flex-col  w-[11%]  relative left-[12rem] lg:-left-14 md:left-[18rem] lg:top-0  md:top-16">
                 <h4
                   className={`font-semibold font-poppins text-sm md:text-xl lg:text-sm ${textColor}`}
                 >
@@ -220,14 +220,14 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
 
               <div className="lg:w-[20%] lg:pl-14 order-last lg:order-none">
                 <h4
-                  className={` pl-[6rem] lg:pl-0 font-poppins invert-0 text-sm md:text-xl lg:text-sm font-semibold  bg-red-100 lg:text-left w-full ${textColor}`}
+                  className={` pl-[6.2rem] lg:pl-0 font-poppins invert-0 text-sm md:text-xl lg:text-sm font-semibold  lg:text-left w-full ${textColor}`}
                 >
                   {footerData?.subscribeTitle}
                 </h4>
-                <div className="flex p-1 ">
+                <div className="flex lg:p-1 pl-3">
                   <input
                     placeholder="Enter your email address"
-                    className=" lg:w-[24rem] w-[22rem] md:w-[47rem]  mt-2 h-[2.3rem] rounded-xl border p-2 border-black font-poppins font-light text-xs"
+                    className=" lg:w-[24rem] w-[44vh] md:w-[47rem]  mt-2 h-[2.3rem] rounded-xl border p-2 border-black font-poppins font-light text-xs"
                   />
                  
                     <Image
@@ -240,7 +240,7 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                    
                 </div>
 
-                <div className="flex lg:flex-col ">
+                <div className="flex lg:flex-col px-4 lg:px-0">
                   <div className="  ">
                     <h4
                       className={`${styles.footerdesctitle} font-semibold   text-sm md:text-xl lg:text-sm font-poppins mt-[1.6rem]  ${textColor}`}

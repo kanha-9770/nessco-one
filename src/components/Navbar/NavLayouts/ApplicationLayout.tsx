@@ -68,7 +68,7 @@ export default function ApplicationLayout({
                 />
               </div>
               <span className="text-lg font-regular ml-4 sm:ml-0 sm:mt-2 sm:text-center invert-0">
-                 All Applications
+                Applications
               </span>
             </Link>
             {applicationData.map((product, index) => (
@@ -157,7 +157,7 @@ export default function ApplicationLayout({
           <p className="pt-6 invert-0 mb-8">{activeProduct?.description}</p>
         </div>
         <Link
-          href={`/${countryCODE}/${languageCODE}/application/${activeProduct?.name}`}
+          href={`/${countryCODE}/${languageCODE}/application/${activeProduct?.link}`}
           onClick={() => setActive(null)}
         >
           <div className="absolute bottom-4 right-4 bg-white z-20 rounded-full hover:bg-black hover:text-white">

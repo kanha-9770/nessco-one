@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { OurCompanyItem } from "./types/constant";
 import React from "react";
+import ReusableForm from "../Contact/ReuseableForm";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -54,7 +55,7 @@ const Home: React.FC<AboutLayoutProps> = ({ companyData }) => {
               {homecompanyData?.description}
             </p>
           </div>
-          <button className="bg-white w-[8rem] h-[2rem] rounded-[1rem] flex items-center absolute bottom-40 lg:hidden">
+          {/* <button className="bg-white w-[8rem] h-[2rem] rounded-[1rem] flex items-center absolute bottom-40 lg:hidden">
             <p className="text-black text-[0.8rem] text-center w-full">
               {homecompanyData?.getaQuote}
             </p>
@@ -71,7 +72,19 @@ const Home: React.FC<AboutLayoutProps> = ({ companyData }) => {
                 />
               </svg>
             </div>
-          </button>
+          </button> */}
+          <div className="bg-white w-[9.5rem] h-[2.5rem] rounded-full flex items-center absolute bottom-40 lg:hidden">
+          <ReusableForm
+            formId="aboutPage"
+            buttonText={homecompanyData?.getaQuote}
+            dialogTitle="Get in Touch"
+            dialogSubtitle="We'd love to hear from you!"
+            imageUrl="https://www.nesscoindia.com/Assets/images/resource/popup.webp"
+            showButton={true}
+            secodaryButton={false}
+            normalButton={true}
+          />
+          </div>
           <div className="absolute bottom-10 flex justify-center w-full  lg:space-x-1 space-x-1">
             {homecompanyData?.images?.map((item, index) => (
               <div

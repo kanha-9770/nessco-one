@@ -5,6 +5,7 @@ import { HomeData } from "./types/constant";
 import FeatureProjects from "./FeatureProjects";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ReusableForm from "../Contact/ReuseableForm";
 const VideoCarousel = dynamic(() => import("../ui/HomeCaorusel"));
 
 interface HeroLayoutProps {
@@ -43,32 +44,17 @@ const Home: React.FC<HeroLayoutProps> = ({ heroData }) => {
             </svg>
           </div>
           <div className="w-full mt-4 ml-8 flex justify-start">
-            <Link
-              className="absolute bottom-1 left-5 w-[10rem] lg:w-[15rem]"
-              href={`/${countryCode}/${languageCode}/contact`}
-            >
-              <Button className="rounded-full flex items-center justify-between text-primary-foreground border-2 border-white h-[3.5rem] w-40 sm:h-16 sm:w-60 md:h-16 md:w-60 lg:h-16 lg:w-60 text-xs sm:text-sm md:text-base lg:text-lg bg-clip-border relative group custom-gradient-border transition-all duration-300 overflow-hidden">
-                <span className="font-medium text-white group-hover:bg-gradient-to-r group-hover:from-[#483d73] group-hover:to-red-700 group-hover:text-transparent group-hover:bg-clip-text pl-2 sm:pl-4 md:pl-6 lg:pl-8 truncate flex-grow text-left transition-all duration-300">
-                  {heroData?.home[1]?.data?.buttonText}
-                </span>
-                <span className="h-8 w-8 sm:h-10 sm:w-10 group custom-gradient-border-icon border-[0.5px] md:h-12 md:w-12 bg-white rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-gradient-to-r group-hover:from-[#483d73] group-hover:to-red-700 transition-all duration-300">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={3}
-                    stroke="currentColor"
-                    className="w-6 h-6 sm:w-8 sm:h-8 md:w-16 scale-150 md:h-16 stroke-[#483d73] group-hover:stroke-white transition-all duration-300"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </span>
-              </Button>
-            </Link>
+            <div className="absolute bottom-1 left-5 w-[10rem] lg:w-[15rem]">
+              <ReusableForm
+                formId="homePage"
+                buttonText={heroData?.home[1]?.data?.buttonText}
+                dialogTitle="Get in Touch"
+                dialogSubtitle="We'd love to hear from you!"
+                imageUrl="https://www.nesscoindia.com/Assets/images/resource/popup.webp"
+                showButton={true}
+                secodaryButton={true}
+              />
+            </div>
           </div>
 
           <div className="z-50 mt-[2.6rem]">

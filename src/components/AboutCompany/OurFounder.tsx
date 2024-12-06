@@ -21,7 +21,7 @@ const FounderCard: React.FC<{
     {/* Image container */}
     <div className="lg:w-full lg:h-[70%] h-full w-[50%] lg:p-4">
       <Image
-        className="transform 0.3 ease-in-out lg:rounded-t-xl rounded-lg  h-full w-full  object-cover object-[center_10%]"
+        className="transform 0.3 ease-in-out lg:rounded-t-xl rounded-xl  h-full w-full  object-cover object-[center_10%]"
         
         
         src={imageSrc}

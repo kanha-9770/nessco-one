@@ -54,6 +54,14 @@ const Filter: React.FC<FilterProps> = ({
   mediaRoomData,
 }) => {
   const Header = mediaRoomData?.MediaRoom[0]?.Header;
+  const [isPage1Visible, setPage1Visible] = useState(false);
+
+  const togglePage1Visibility = () => {
+    if (window.innerWidth < 1024) {
+      setPage1Visible(!isPage1Visible);
+    }
+  };
+
   const handleCategoryChange = (category: string) => {
     const updatedCategories = selectedCategories?.includes(category)
       ? selectedCategories?.filter((c) => c !== category)
@@ -67,13 +75,37 @@ const Filter: React.FC<FilterProps> = ({
 
   return (
     <div className="font-regular font-poppins">
-      <div className="w-full h-[57rem] bg-white p-5 rounded-[1rem]">
-        <p className="mb-2 font-poppins invisible lg:visible">
-          {Header?.filter}
+      <div className="w-full lg:h-[57rem] bg-white lg:p-5 p-4 rounded-[1rem] lg:mb-0 mb-4">
+        <div
+          className="relative flex items-center lg:mb-2"
+          onClick={togglePage1Visibility}
+        >
+          <p className="font-poppins lg:font-normal font-medium lg:text-md text-lg">
+            {Header?.filter}
+          </p>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="w-6 h-6 stroke-black absolute right-0 lg:hidden"
+          >
+            <line x1="4" y1="6" x2="16" y2="6" />
+            <line x1="8" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="18" x2="16" y2="18" />
+            <circle cx="18" cy="6" r="2" />
+            <circle cx="6" cy="12" r="2" />
+            <circle cx="18" cy="18" r="2" />
+          </svg>
+        </div>
+        <p className="mb-2 font-poppins hidden lg:block">
+          {Header?.byCategory}
         </p>
-        <p className="mb-2 font-poppins">{Header?.byCategory}</p>
 
-        <div className="flex rounded-[1rem] bg-[#f2f2f2] overflow-hidden mb-4">
+        <div className="lg:flex rounded-[1rem] bg-[#f2f2f2] overflow-hidden mb-4 hidden">
           <input
             aria-label="Search categories"
             type="search"
@@ -104,7 +136,7 @@ const Filter: React.FC<FilterProps> = ({
           </button>
         </div>
 
-        <div className="mt-3 lg:h-full h-[14rem] lg:overflow-auto overflow-y-scroll scrollbar-custom scrollbar">
+        <div className="mt-3 lg:h-full h-[14rem] lg:overflow-auto overflow-y-scroll scrollbar-custom scrollbar hidden lg:block">
           {filteredCategories?.map((item, index) => (
             <div key={index} className="flex justify-between items-center">
               <label className="font-poppins my-[0.2rem]" htmlFor={item?.title}>
@@ -123,6 +155,51 @@ const Filter: React.FC<FilterProps> = ({
             </div>
           ))}
         </div>
+
+        {isPage1Visible && (
+          <div className="fixed inset-0 bg-[#f2f2f2] bg-opacity-50 backdrop-blur z-50 flex items-center justify-center lg:hidden">
+            <div className="bg-white w-full mx-[1rem] py-[1rem] px-[1rem] rounded-[0.8rem] shadow-lg">
+              <div className="w-full h-[3rem] flex items-center border-b-2 border-solid border-[#E6E7E6]">
+                <div className="flex justify-center items-center h-full w-[50%] border-r-2 border-solid border-[#E6E7E6] mb-[0.5rem] font-poppins font-medium">
+                  <button
+                    onClick={() => setPage1Visible(false)}
+                    className="text-[#838282]"
+                  >
+                    Cancel
+                  </button>
+                </div>
+                <div className="flex justify-center items-center w-[50%] mb-[0.5rem] font-poppins font-medium" onClick={() => setPage1Visible(false)} >
+                  <button className="text-red-700">Apply</button>
+                </div>
+              </div>
+              <div className="mt-4 bg-[#f2f2f2] rounded-[0.5rem] h-[16rem] overflow-y-auto scrollbar-custom scrollbar px-6 py-2">
+                {filteredCategories?.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex justify-between items-center"
+                  >
+                    <label
+                      className="font-poppins my-[0.2rem]"
+                      htmlFor={item?.title}
+                    >
+                      {item?.title}
+                    </label>
+                    <input
+                      aria-label="Checkbox"
+                      type="checkbox"
+                      id={item?.title}
+                      name={item?.title}
+                      value={item?.title}
+                      className="accent-red-700"
+                      checked={selectedCategories?.includes(item?.title)}
+                      onChange={() => handleCategoryChange(item?.title)}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -177,7 +254,7 @@ const Header: React.FC<HeaderProps> = ({
         <h2 className="w-[6rem] text-center lg:text-sm text-xs lg:mr-[2rem] mr-[1rem] font-normal">
           {currentDate}
         </h2>
-        <div className="lg:mt-0 lg:mr-8 mt-4 bg-[#f2f2f2] rounded-full">
+        <div className="lg:mr-8 mr-4 bg-[#f2f2f2] rounded-full">
           <input
             type="text"
             value={searchQuery}
@@ -187,7 +264,7 @@ const Header: React.FC<HeaderProps> = ({
           />
         </div>
 
-        <div className="flex lg:space-x-8 space-x-4 lg:mr-[2rem] mr-[1rem] w-[62%] overflow-x-scroll scrollbar-hide">
+        <div className="lg:flex hidden lg:space-x-8 space-x-4 lg:mr-[2rem] mr-[1rem] w-[62%] overflow-x-scroll scrollbar-hide">
           {Header?.filters?.map((item, index) => (
             <div key={index} className="">
               <button
@@ -203,7 +280,7 @@ const Header: React.FC<HeaderProps> = ({
             </div>
           ))}
         </div>
-        <div className="bg-black w-8 h-8 rounded-full flex items-center justify-center">
+        <div className="bg-black w-8 h-8 px-1 rounded-full flex items-center justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -347,7 +424,7 @@ const TrendingNews: React.FC<NewsProps> = ({
   return (
     <>
       <div className="bg-white h-full w-full rounded-2xl font-poppins px-[1.5rem] pb-2">
-        <h2 className="text-[#483d73] text-2xl py-4">{TrendingNews?.title}</h2>
+        <h2 className="text-[#483d73] text-2xl py-4">Trending News</h2>
 
         <div
           ref={carouselRef}
@@ -384,13 +461,11 @@ const TrendingNews: React.FC<NewsProps> = ({
                 <p className="border border-black rounded-[0.3rem] text-center w-max px-2 lg:text-md text-sm">
                   {item?.header}
                 </p>
-                <h3 className="font-medium text-sm">
-                  {item?.title}
-                </h3>
+                <h3 className="font-medium text-sm">{item?.title}</h3>
 
                 <Link
                   aria-label="Open"
-                  className="flex w-48 h-6 items-center justify-center text-[#483d73] text-sm group bg-[#E6E7E6] hover:bg-black hover:text-white rounded-full "
+                  className="flex w-max h-6 items-center px-2 text-[#483d73] text-sm group bg-[#E6E7E6] hover:bg-black hover:text-white rounded-full "
                   href={`media-room/${formatString(item?.title)}`}
                 >
                   {item?.continueReading}
@@ -402,7 +477,7 @@ const TrendingNews: React.FC<NewsProps> = ({
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="w-4 h-4 stroke-black group-hover:stroke-white"
+                    className="w-4 h-4 stroke-black group-hover:stroke-white ml-4"
                   >
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
@@ -577,7 +652,7 @@ const LatestNews: React.FC<NewsProps> = ({
                   )}
                   <button
                     aria-label="Open"
-                    onClick={() => openModal(item)}
+                  
                     className="flex items-center text-[#483d73] text-sm group bg-[#E6E7E6] hover:bg-black hover:text-white rounded-full pl-2 pr-1"
                   >
                     {item?.continueReading}
@@ -704,7 +779,7 @@ const MostRead: React.FC<NewsProps> = ({
                   <h3 className="font-medium text-sm">{item?.title}</h3>
                   <button
                     aria-label="Open"
-                    onClick={() => openModal(item)}
+            
                     className="flex items-center text-[#483d73] text-sm group bg-[#E6E7E6] hover:bg-black hover:text-white rounded-full pl-2 pr-1"
                   >
                     {item?.continueReading}
@@ -798,8 +873,8 @@ const Pages: React.FC<MediaRoomProps> = ({ mediaRoomData }) => {
         selectedFilter={selectedFilter}
         mediaRoomData={mediaRoomData}
       />
-      <div className="flex lg:px-0 px-[1rem]">
-        <div className="w-[20%] pl-[2rem] pr-[1.5rem] lg:block hidden">
+      <div className="flex lg:flex-row flex-col lg:px-0 px-[1rem]">
+        <div className="lg:w-[20%] lg:pl-[2rem] lg:pr-[1.5rem]">
           <Filter
             onSearch={handleSearch}
             onCategoryChange={handleCategoryChange}

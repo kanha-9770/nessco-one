@@ -60,8 +60,8 @@ const VideoGrid: React.FC<VideoLayoutGridProps> = ({ navData }) => {
         <div className="relative flex-shrink-0 cursor-grab w-full h-32 bg-[#f2f2f2] rounded-3xl flex flex-col justify-center items-center">
           <div className="relative w-full h-full flex justify-center items-center cursor-pointer">
             <Image
-              src={item?.image}
-              alt={item.title}
+              src={item?.bgPic}
+              alt={item?.title}
               fill
               className="absolute inset-0 h-full w-full rounded-xl opacity-80"
             />
@@ -108,9 +108,9 @@ const VideoGrid: React.FC<VideoLayoutGridProps> = ({ navData }) => {
         {showLeftArrow && (
           <button
             onClick={() => scroll('left')}
-            className="absolute -left-10 top-1/2 transform -translate-y-1/2 bg-[#9e9c9c] hidden md:flex hover:bg-black rounded-full p-2 shadow-md z-50"
+            className="absolute -left-10 top-1/2 transform -translate-y-1/2 bg-[#dbdada] hidden md:flex hover:bg-[#9e9c9c] group rounded-full p-2 shadow-md z-50"
           >
-            <ChevronLeft className="text-black hover:text-white" size={24} />
+            <ChevronLeft className="text-white" size={24} />
           </button>
         )}
         <div
@@ -125,8 +125,8 @@ const VideoGrid: React.FC<VideoLayoutGridProps> = ({ navData }) => {
                   <div className="relative flex-shrink-0 cursor-grab w-80 h-48 bg-[#f2f2f2] rounded-3xl flex flex-col justify-center items-center">
                     <div className="relative w-full h-full flex justify-center items-center cursor-pointer">
                       <Image
-                        src={item.bgPic}
-                        alt={item.title}
+                        src={item?.bgPic}
+                        alt={item?.title}
                         fill
                         className="absolute inset-0 h-full w-full rounded-xl opacity-80"
                       />
@@ -173,9 +173,9 @@ const VideoGrid: React.FC<VideoLayoutGridProps> = ({ navData }) => {
         {showRightArrow && (
           <button
             onClick={() => scroll('right')}
-            className="absolute -right-10 top-1/2 transform -translate-y-1/2 bg-[#9e9c9c] hidden md:flex hover:bg-black rounded-full p-2 shadow-md z-10"
+            className="absolute -right-10 top-1/2 transform -translate-y-1/2 bg-[#dbdada] hidden md:flex hover:bg-[#9e9c9c] rounded-full p-2 shadow-md z-10 group "
           >
-            <ChevronRight size={24} />
+            <ChevronRight size={24} className="text-white" />
           </button>
         )}
       </div>
@@ -210,7 +210,7 @@ const VideoGrid: React.FC<VideoLayoutGridProps> = ({ navData }) => {
           <div className="grid grid-cols-2 gap-4 p-4">
             {videoDataItem?.map((item, index) => (
               <div key={index} className="w-full">
-                {renderVideoCard(item, index)}
+                {renderVideoCard(item?.bgPic, index)}
               </div>
             ))}
           </div>

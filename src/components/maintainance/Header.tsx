@@ -1,7 +1,12 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
 import { MaintainanceItem } from "./types/constant";
 import Image from "next/image";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import FormFields, { FormValues } from "@/components/Contact/FormFileds";
+import { usePathname } from "next/navigation";
+import { useForm } from "@/app/[country]/[locale]/context/FormContext";
 
 interface Category {
   title: string;
@@ -32,12 +37,23 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
   );
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
+  const pathname = usePathname();
+
+  const { formData: formContextData, setFormData: setFormContextData, submitForm, visitData } = useForm();
+
+  const [formData, setFormData] = useState<FormValues>({
+    fullname: "",
+    email: "",
+    mobilenumber: "",
+  });
+
+
   useEffect(() => {
     const filtered = Header.categories.filter((category) =>
       category.title.toLowerCase().includes(categorySearch.toLowerCase())
     );
     setFilteredCategories(filtered || []);
-  }, [categorySearch]);
+  }, [categorySearch, Header.categories]);
 
   useEffect(() => {
     const filtered = Header.cards.filter(
@@ -49,7 +65,7 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
             .some((cat) => selectedCategories?.includes(cat?.trim())))
     );
     setFilteredCards(filtered || []);
-  }, [mainSearch, selectedCategories]);
+  }, [mainSearch, selectedCategories, Header.cards]);
 
   const handleCategoryToggle = (category: string) => {
     setSelectedCategories((prev) =>
@@ -75,6 +91,21 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
     setIsModalOpen(true);
   };
 
+  const handleFormChange = (values: FormValues) => {
+    setFormData(values);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      await submitForm(formData);
+      console.log("Form submitted successfully");
+      handleCloseModal();
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+  };
+
   return (
     <>
       <div className="w-full h-full mt-14 py-8 px-10 flex justify-center font-poppins">
@@ -97,9 +128,9 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
       </div>
       <div className="w-full h-full bg-[linear-gradient(to_bottom,rgba(0,0,0,0.05)_1px,transparent_1.5px),linear-gradient(to_right,rgba(0,0,0,0.05)_1px,transparent_1.5px)] bg-[length:100%_0.8rem,0.8rem_100%] bg-white pb-4 font-poppins">
         <div>
-          <div className="w-full h-full px-6 py-4 flex items-center space-x-4 bg-white">
+          <div className="w-full h-full pl-12 pr-4 py-4 flex items-center space-x-4 bg-white">
             <Image
-              src="https://res.cloudinary.com/dfryvystt/image/upload/v1731482643/MaintainanceSvg_ncrozw.svg"
+              src="https://assets.nesscoindustries.com/public/assets/support/maintainance/maintenance-main-icon.svg"
               alt={"SVG"}
               width={400}
               height={400}
@@ -110,7 +141,7 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
               <div className="flex lg:grid lg:grid-cols-6 lg:gap-5 lg:space-x-0 space-x-6 w-max">
                 {Header?.points?.map((item, idx) => (
                   <div key={idx} className="flex space-x-2 w-max">
-                    <p className="text-lg font-medium">{item?.number}</p>
+                    <p className="text-lg font-medium">{item?.number}.</p>
                     <h3 className="text-lg font-medium text-center lg:w-[10rem]">
                       {item?.title}
                     </h3>
@@ -121,12 +152,12 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
           </div>
 
           <div className="flex px-4 md:space-x-4">
-            <div className="md:w-[18%] p-4 md:block hidden mt-4 bg-white rounded-2xl shadow-2xl">
+            <div className="md:w-[18%] ml-4 p-4 md:block hidden mt-4 bg-white rounded-2xl shadow-2xl">
               <p className="mb-4 font-poppins invisible md:visible text-lg font-medium">
                 {Header?.filter}
               </p>
 
-              <div className="flex rounded-lg text-sm border border-black overflow-hidden">
+              <div className="flex rounded-[0.5rem] text-sm border border-black overflow-hidden">
                 <input
                   type="search"
                   placeholder="Search categories..."
@@ -186,7 +217,7 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
                 </h3>
                 <div className="flex items-center space-x-3">
                   <div
-                    className="lg:hidden flex items-center bg-black rounded-lg px-2 py-1"
+                    className="lg:hidden flex items-center bg-black rounded-[0.5rem] px-2 py-1"
                     onClick={handleOpenFilter}
                   >
                     <h3 className="font-medium mr-2 text-white">
@@ -210,7 +241,7 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
                       <circle cx="18" cy="16" r="2" />
                     </svg>
                   </div>
-                  <div className="flex rounded-lg text-sm border border-black overflow-hidden lg:absolute right-4">
+                  <div className="flex rounded-[0.5rem] text-sm border border-black overflow-hidden lg:absolute right-4">
                     <button className="ml-2" aria-label="Search">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -304,7 +335,7 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
         </div>
         {isFilterModalOpen && (
           <div className="fixed inset-0 bg-[#f5f5f5] bg-opacity-50 backdrop-blur z-50 flex items-center justify-center lg:mt-14">
-            <div className="bg-white lg:w-[30%] w-full h-[28rem] mx-[1rem] p-[1rem] rounded-lg shadow-lg">
+            <div className="bg-white lg:w-[30%] w-full h-[28rem] mx-[1rem] p-[1rem] rounded-[0.5rem] shadow-lg">
               <div className="w-full h-[3rem] flex items-center border-b-2 border-solid border-[#E6E7E6]">
                 <div className="flex justify-center items-center h-full w-[50%] border-r-2 border-solid border-[#E6E7E6] mb-[0.5rem] font-poppins font-medium">
                   <button
@@ -321,12 +352,12 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
                 </div>
               </div>
 
-              <div className="h-[22rem] mt-4 p-[1rem] bg-[#f5f5f5] rounded-lg">
+              <div className="h-[22rem] mt-4 p-[1rem] bg-[#f5f5f5] rounded-[0.5rem]">
                 <div className="mb-4">
                   <input
                     type="search"
                     placeholder="Search categories..."
-                    className="w-full py-2 px-3 rounded-md border border-gray-300"
+                    className="w-full py-2 px-3 rounded-[0.3rem] border border-gray-300"
                     value={categorySearch}
                     onChange={(e) => setCategorySearch(e.target.value)}
                   />
@@ -360,11 +391,11 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
           </div>
         )}
       </div>
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-80 backdrop-blur flex justify-center items-center z-50 lg:px-0 px-4 ">
-          <div className="bg-white relative rounded-lg lg:w-[50rem] lg:h-[28rem] shadow-xl font-poppins font-regular flex  items-center justify-center">
-            <div className="w-1/2 bg-[#f5f5f5] overflow-hidden rounded-l-lg h-[28rem] lg:flex flex-col hidden relative">
-              <div className="bg-[#483d73] w-full  px-4 py-2 relative">
+      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <DialogContent className="sm:max-w-[50rem] sm:h-[28rem] p-0 bg-white overflow-hidden">
+          <div className="flex h-full font-poppins">
+            <div className="w-1/2 bg-[#f5f5f5] overflow-hidden  h-full hidden lg:flex flex-col relative">
+              <div className="bg-[#483d73] w-full px-4 py-2 relative">
                 <Image
                   src="https://res.cloudinary.com/dfryvystt/image/upload/v1731482648/WhiteLOGO_h90whl.png"
                   alt="Logo"
@@ -386,7 +417,7 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
                   className="w-16 absolute -right-2 top-3"
                 />
               </div>
-              <div className="flex items-center justify-center">
+              <div className="flex items-center justify-center flex-grow">
                 <Image
                   src="https://res.cloudinary.com/dfryvystt/image/upload/v1731482658/MaintainanceCheckList_uglieb.png"
                   alt="SVG"
@@ -395,75 +426,39 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
                   className="w-[22rem] -mt-1"
                 />
               </div>
-              <div className="bg-[#483d73] w-full absolute bottom-0 py-1">
+              <div className="bg-[#483d73] w-full py-1 -mt-3">
                 <h3 className="text-white text-xs text-center">
                   {Header?.footer}
                 </h3>
               </div>
             </div>
-            <div className="lg:w-1/2 flex flex-col items-center justify-center px-8 lg:py-0 py-8">
+            <div className="lg:w-1/2 w-full flex flex-col items-center justify-center px-8 py-6">
               <h2 className="text-2xl font-bold mb-3 text-center w-full">
                 {Header?.formTitle}
               </h2>
               <p className="text-center w-full mb-4 font-regular text-sm">
                 {Header?.formDescription}
               </p>
-              <form className="w-full">
-                <div className="mb-2 space-y-1">
-                  <label htmlFor="name" className="text-lg font-medium">
-                    {Header?.name}
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="Your Full Name"
-                    className="bg-[#f5f5f5] rounded-md w-full text-lg p-2 outline-none"
-                  />
-                </div>
-                <div className="mb-2 space-y-1">
-                  <label htmlFor="email" className="text-lg font-medium">
-                    {Header?.email}
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    placeholder="Your Email"
-                    className="bg-[#f5f5f5] rounded-md w-full text-lg p-2 outline-none"
-                  />
-                </div>
-                <div className="mb-2 space-y-1">
-                  <label htmlFor="phone" className="text-lg font-medium">
-                    {Header?.phone}
-                  </label>
-                  <input
-                    type="number"
-                    required
-                    placeholder="Your Phone Number"
-                    className="bg-[#f5f5f5] rounded-md w-full text-lg p-2 outline-none"
-                  />
-                </div>
-                <div className="flex justify-center mt-5">
-                  <button
-                    type="submit"
-                    className="text-lg font-medium bg-black lg:hover:bg-[#483d73] text-white w-full p-2 rounded-md"
-                    onClick={handleCloseModal}
-                  >
-                    {Header?.submit}
-                  </button>
-                </div>
-                <div
-                  onClick={handleCloseModal}
-                  className="absolute top-1 right-2 text-2xl cursor-pointer"
+              <form onSubmit={handleSubmit} className="w-full">
+                <FormFields
+                  onChange={handleFormChange}
+                  values={formData}
+                  inline={false}
+                />
+                <button
+                  type="submit"
+                  className="w-full mt-4 text-lg font-medium bg-gradient-to-t from-[#483d73] to-black lg:hover:from-black lg:hover:to-[#483d73] text-white py-2 rounded-[0.8rem] transition-all duration-300"
                 >
-                  ✖
-                </div>
+                  {Header?.submit}
+                </button>
               </form>
             </div>
           </div>
-        </div>
-      )}
+        </DialogContent>
+      </Dialog>
     </>
   );
 };
 
 export default Header;
+

@@ -1,15 +1,9 @@
-
-
-
 import { gsap } from "gsap";
-// import { IoIosArrowDroprightCircle } from "react-icons/io";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect } from "react";
 import { AboutItem } from "./types/constant";
 import Image from "next/image";
-
-
-
+import ReusableForm from "../Contact/ReuseableForm";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -28,20 +22,18 @@ const imagebottoms = [
   "justify-end lg:mb-3 mb-2",
 ];
 
-interface HomeLayoutProps{
-  aboutData:AboutItem;
+interface HomeLayoutProps {
+  aboutData: AboutItem;
 }
 
-const Home:React.FC<HomeLayoutProps> = ({aboutData}) => {
-  console.log('Running custom Webpack config');
-  const homeaboutData=aboutData?.About[0]?.Page1Data;
-  const homeimgData=aboutData?.About[0]?.Page1Data?.image;
+const Home: React.FC<HomeLayoutProps> = ({ aboutData }) => {
+  console.log("Running custom Webpack config");
+  const homeaboutData = aboutData?.About[0]?.Page1Data;
+  const homeimgData = aboutData?.About[0]?.Page1Data?.image;
 
-  useEffect(()=>{
-   console.log('i am in aboutHome',homeimgData);
-   
-  },[])
-
+  useEffect(() => {
+    console.log("i am in aboutHome", homeimgData);
+  }, []);
 
   return (
     <>
@@ -55,7 +47,7 @@ const Home:React.FC<HomeLayoutProps> = ({aboutData}) => {
             muted
             playsInline
             preload="metadata"
-            poster ={homeaboutData?.video}
+            poster={homeaboutData?.video}
           >
             <source src={homeaboutData?.video} type="video/mp4" />
           </video>
@@ -68,7 +60,7 @@ const Home:React.FC<HomeLayoutProps> = ({aboutData}) => {
               {homeaboutData?.description}
             </p>
           </div>
-          <button className="bg-white w-[8rem] h-[2rem] rounded-[1rem] flex items-center absolute bottom-40 lg:hidden">
+          {/* <button className="bg-white w-[8rem] h-[2rem] rounded-[1rem] flex items-center absolute bottom-40 lg:hidden">
             <p className="text-black text-[0.8rem] text-center w-full">
               {homeaboutData?.getaQuote}
             </p>
@@ -85,9 +77,21 @@ const Home:React.FC<HomeLayoutProps> = ({aboutData}) => {
               />
             </svg>
             </div>
-          </button>
-        <div className="absolute bottom-10 flex justify-center w-full lg:space-x-0 -space-x-3 ">
-          {homeimgData?.map((item, index) => (
+          </button> */}
+          <div className="bg-white w-[9.5rem] h-[2.5rem] rounded-full flex items-center absolute bottom-40 lg:hidden">
+          <ReusableForm
+            formId="aboutPage"
+            buttonText={homeaboutData?.getaQuote}
+            dialogTitle="Get in Touch"
+            dialogSubtitle="We'd love to hear from you!"
+            imageUrl="https://www.nesscoindia.com/Assets/images/resource/popup.webp"
+            showButton={true}
+            secodaryButton={false}
+            normalButton={true}
+          />
+          </div>
+          <div className="absolute bottom-10 flex justify-center w-full lg:space-x-0 -space-x-3 ">
+            {homeimgData?.map((item, index) => (
               <div
                 key={index}
                 className={`flex flex-col items-center ${imagebottoms[index]}`}
@@ -104,14 +108,11 @@ const Home:React.FC<HomeLayoutProps> = ({aboutData}) => {
                 </p>
               </div>
             ))}
-
-          
           </div>
         </div>
       </div>
     </>
   );
 };
-
 
 export default Home;

@@ -17,9 +17,9 @@ const Bluepage:React.FC <AboutLayoutProps>= () => {
           muted
           playsInline
           preload="metadata"
-          poster ="https://assets.nesscoindustries.com/public/assets/about/pinkcity/pinkhaveli.mp4"
+          poster ="https://assets.nesscoindustries.com/public/assets/about/pinkcity/pinkhaveli.webm"
         >
-          <source src="https://assets.nesscoindustries.com/public/assets/about/pinkcity/pinkhaveli.mp4" type="video/mp4" />
+          <source src="https://assets.nesscoindustries.com/public/assets/about/pinkcity/pinkhaveli.webm" type="video/mp4" />
         </video>
       </div>
     </div>

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { VisionItem } from "./types/constant";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import ReusableForm from "../Contact/ReuseableForm";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -53,11 +54,11 @@ const Page1: React.FC<VisionProps> = ({ visionData }) => {
               {Header?.description}
             </p>
           </div>
-          <button
-            className="bg-white w-[8rem] h-[2rem] rounded-[1rem] pr-1 flex items-center absolute bottom-40 lg:hidden"
+          <div
+            className="bg-white w-[9.5rem] h-[2.5rem] rounded-full flex items-center absolute bottom-40 lg:hidden"
             aria-label="Right"
           >
-            <p className="text-black text-[0.8rem] text-center w-full">
+            {/* <p className="text-black text-[0.8rem] text-center w-full">
               {Header?.getaQuote}
             </p>
             <svg
@@ -75,8 +76,18 @@ const Page1: React.FC<VisionProps> = ({ visionData }) => {
                 d="M25 20 L37 32 L25 44"
                 className="stroke-white stroke-[4px] fill-none stroke-linecap-round stroke-linejoin-round "
               />
-            </svg>
-          </button>
+            </svg> */}
+            <ReusableForm
+            formId="aboutPage"
+            buttonText={Header?.getaQuote}
+            dialogTitle="Get in Touch"
+            dialogSubtitle="We'd love to hear from you!"
+            imageUrl="https://www.nesscoindia.com/Assets/images/resource/popup.webp"
+            showButton={true}
+            secodaryButton={false}
+            normalButton={true}
+          />
+          </div>
           <div className="absolute bottom-10 flex justify-center w-full lg:space-x-6 space-x-2">
             {Header?.image?.map((item, index) => (
               <div

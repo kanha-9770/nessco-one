@@ -6,6 +6,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Label } from "@radix-ui/react-label";
 import { ApplicationLayoutItem } from "./types/constant";
 import EnquiryCart from "../ui/EnquiryCart";
+import Link from "next/link";
+import { countryCODE, languageCODE } from "../Navbar/nav-menue";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -69,6 +71,10 @@ const Page4: React.FC<CombinedProps> = ({
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize the first letter of each part
       .join(" "); // Join the parts with a space
   }
+
+  function formatStringForLink(input) {
+    return input.toLowerCase().replace(/\s+/g, '-');
+}
 
   useEffect(() => {
     if (borderRef.current) {
@@ -266,11 +272,15 @@ const Page4: React.FC<CombinedProps> = ({
                     </div>
 
                     {/* Key Points or View Machine Button */}
+                    <Link
+                    href={`/${countryCODE}/${languageCODE}/products/${formatStringForLink(item?.h1)}`}
+                    >
                     <div className="my-[1rem] flex lg:flex-rows flex-col items-center justify-center lg:h-[2rem]">
                       <button className="lg:text-[1rem] text-[0.9rem] w-[65%] lg:h-[2rem] h-[2rem] border-[0.1rem] border-solid font-medium rounded-[0.5rem] transition-colors duration-300 border-[#9c9c9c] hover:border-black hover:bg-black hover:text-white">
                         {RelatedMachines?.viewMachine}
                       </button>
                     </div>
+                    </Link>
 
                     {/* Separator */}
                     <div className="w-full h-px bg-[#9c9c9c]"></div>
