@@ -3,7 +3,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Clock, Calendar, List } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Clock,
+  Calendar,
+  List,
+  Facebook,
+  Twitter,
+  Linkedin,
+  Globe,
+} from "lucide-react";
 import { blogPosts } from "../data/data2";
 import { ContentBlock, ListContent, SectionContent } from "../types/blogs";
 import ImageBlock from "@/components/StaticBlogs/ImageBlock";
@@ -12,7 +22,6 @@ import TagList from "@/components/StaticBlogs/TagList";
 import TextBlock from "@/components/StaticBlogs/TextBlock";
 import ListBlock from "../ListBlock";
 import { Card, CardContent } from "@/components/ui/card";
-import { ScrollArea } from "@/components/ui/ScrollArea";
 
 interface BlogGenericProps {
   id?: string;
@@ -93,14 +102,14 @@ const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
   };
 
   return (
-    <div className="font-sans min-h-screen bg-gray-50">
+    <div className="font-sans min-h-screen ">
       {/* Header Image Section */}
-      <div className="relative mb-12">
+      <div className="relative ">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="w-full relative overflow-hidden h-[50vh] bg-gradient-to-r from-blue-600 to-purple-600 rounded-b-3xl"
+          className="w-full relative overflow-hidden h-[50vh] bg-black rounded-b-3xl"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -109,7 +118,7 @@ const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
             className="w-full pt-8 pb-6 shadow-2xl relative overflow-hidden"
           >
             <div className="absolute inset-0 bg-[url('/path/to/texture.png')] opacity-10 mix-blend-overlay"></div>
-            <h2 className="text-white lg:text-4xl text-2xl lg:px-12 px-8 font-bold relative z-10">
+            <h2 className="text-white lg:text-4xl absolute text-2xl lg:px-12 px-8 font-bold top-1/2 z-10">
               {post?.title}
             </h2>
           </motion.div>
@@ -152,51 +161,52 @@ const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
         <div className="flex flex-col md:flex-row gap-8">
           {/* Left Column - Table of Contents */}
           <div className="md:w-1/4">
-            <Card className={`${isSticky ? "md:sticky md:top-8" : ""}`}>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold text-gray-800 flex items-center mb-4">
-                  <List className="w-5 h-5 mr-2" />
+            <Card className={`${isSticky ? "md:sticky md:top-20" : ""}`}>
+              <CardContent className="p-4">
+                <h2 className="font-semibold text-lg mb-4">
                   Table of Contents
-                </h3>
-                <ScrollArea className="h-[calc(100vh-200px)]">
-                  <div className="space-y-3 pr-4">
-                    {post?.content?.map((block, idx) => (
-                      <motion.div
-                        key={idx}
-                        onClick={() => handleContentClick(idx)}
-                        className="flex items-start cursor-pointer transition-all duration-300 ease-in-out group"
-                        whileHover={{ x: 5 }}
+                </h2>
+                <div className="space-y-3">
+                  {post?.content?.map((block, idx) => (
+                    <div
+                      key={idx}
+                      onClick={() => handleContentClick(idx)}
+                      className={`pl-3 py-1 border-l cursor-pointer ${
+                        idx === activeIndex
+                          ? "bg-blue-50 border-l-2 border-blue-500"
+                          : ""
+                      }`}
+                    >
+                      <span
+                        className={`text-sm ${
+                          idx === activeIndex
+                            ? "text-blue-900"
+                            : "text-gray-600 hover:text-blue-500"
+                        }`}
                       >
-                        <motion.div
-                          className={`h-2 w-2 rounded-full mr-2 mt-1.5 flex-shrink-0 transition-all duration-300 ${
-                            activeIndex === idx
-                              ? "bg-blue-500 scale-150"
-                              : "bg-gray-300 group-hover:bg-blue-300"
-                          }`}
-                          initial={false}
-                          animate={
-                            activeIndex === idx
-                              ? { scale: 1.5, backgroundColor: "#3B82F6" }
-                              : { scale: 1, backgroundColor: "#D1D5DB" }
-                          }
-                          transition={{ duration: 0.3 }}
-                        />
-                        <span
-                          className={`text-sm transition-all duration-300 ${
-                            activeIndex === idx
-                              ? "text-blue-500 font-semibold"
-                              : "text-gray-600 group-hover:text-blue-400"
-                          }`}
-                        >
-                          {block.heading ||
-                            (block.type === "text"
-                              ? (block?.content as string).slice(0, 30) + "..."
-                              : block?.type)}
-                        </span>
-                      </motion.div>
+                        {block.heading ||
+                          (block.type === "text"
+                            ? (block?.content as string).slice(0, 30) + "..."
+                            : block?.type)}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Connect Section */}
+                <div className="mt-8 space-y-4">
+                  <h2 className="font-semibold text-lg">Connect</h2>
+                  <div className="flex gap-2">
+                    {[Facebook, Twitter, Linkedin, Globe].map((Icon, i) => (
+                      <button
+                        key={i}
+                        className="w-8 h-8 flex items-center justify-center rounded bg-gray-800 text-white hover:bg-gray-700 transition-colors"
+                      >
+                        <Icon className="w-4 h-4" />
+                      </button>
                     ))}
                   </div>
-                </ScrollArea>
+                </div>
               </CardContent>
             </Card>
           </div>

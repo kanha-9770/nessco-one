@@ -2,30 +2,28 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SustainabilityData,ThirdPageData } from "./types/constant";
+import { SustainabilityData, ThirdPageData } from "./types/constant";
 import Image from "next/image";
 
-interface MainLayoutProps{
-  sustainData:SustainabilityData;
+interface MainLayoutProps {
+  sustainData: SustainabilityData;
 }
 
 gsap.registerPlugin(ScrollTrigger);
 
 const getCategoryData = (sustainData: SustainabilityData, category: string) => {
-  const categoryItem = sustainData?.Sustainability?.find((item) => item?.category === category);
+  const categoryItem = sustainData?.Sustainability?.find(
+    (item) => item?.category === category
+  );
   return categoryItem?.Data as ThirdPageData | null;
 };
 
-
-const Page3:React.FC<MainLayoutProps> = ({sustainData}) => {
-
+const Page3: React.FC<MainLayoutProps> = ({ sustainData }) => {
   const data = getCategoryData(sustainData, "secondpage");
 
   const globeRef = useRef(null);
   const screen = useRef(null);
- 
 
-  
   useEffect(() => {
     gsap.fromTo(globeRef.current, { x: -120 }, { x: 0, duration: 3 });
     // Scroll animation
@@ -57,14 +55,14 @@ const Page3:React.FC<MainLayoutProps> = ({sustainData}) => {
             height={2000}
             width={2000}
             className="absolute lg:-top-[9.1rem] lg:-left-[5rem] -top-10 -left-5 z-[300]"
-          /> 
+          />
 
           <div className="flex absolute lg:left-[3.3rem] lg:top-[1.5rem] top-16 font-poppins">
             <h2 className="lg:text-[3.3rem] md:text-6xl font-medium text-white z-[301] text-4xl pl-16 lg:pl-0">
               Sustainable
             </h2>
             <h2 className="absolute top-[4.5rem] whitespace-nowrap lg:text-[3.3rem] md:text-3xl text-2xl lg:pl-0 pl-5 md:pl-16 font-medium text-black z-[301]">
-             Manufacturing practices
+              Manufacturing practices
             </h2>
           </div>
           <div className=" flex absolute top-[12rem] lg:left-[3.3rem] font-poppins text-center lg:text-left">
@@ -72,14 +70,21 @@ const Page3:React.FC<MainLayoutProps> = ({sustainData}) => {
               {data?.description}
             </p>
           </div>
-          <Image
-            src="https://assets.nesscoindustries.com/public/assets/about/sustainability/sustainability-globe-gif.gif"
-            alt="globe"
-            width={50}
-            height={50}
-            className="absolute bottom-[1rem] lg:-right-[2rem] -right-[5rem] lg:w-[10rem] w-[8rem] -rotate-45"
+          <video
+            className="absolute bottom-[1rem] lg:right-[2rem] -right-[5rem] lg:w-[10rem] w-[8rem] -rotate-45"
             ref={globeRef}
-          />
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            poster="https://assets.nesscoindustries.com/public/assets/about/sustainability/sustainability-globe-gif.webm"
+          >
+            <source
+              src="https://assets.nesscoindustries.com/public/assets/about/sustainability/sustainability-globe-gif.webm"
+              type="video/mp4"
+            />
+          </video>
         </div>
       </div>
     </>

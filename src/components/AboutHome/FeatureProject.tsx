@@ -183,8 +183,8 @@ const FeatureProject: React.FC<HomeLayoutProps> = ({ aboutData }) => {
             <Image
               src={selectedMachine?.mainImage}
               alt={selectedMachine?.title}
-              width={400}
-              height={400}
+              width={600}
+              height={600}
               priority
               className="object-cover z-20 h-[18rem] sm:h-[20rem] lg:h-[21rem] w-[22rem] sm:w-[24rem] lg:w-[25rem]"
             />
@@ -252,8 +252,8 @@ const FeatureProject: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                 <Image
                   src={machine?.mainImage}
                   alt={machine?.title}
-                  width={200}
-                  height={200}
+                  width={500}
+                  height={500}
                   className="object-cover h-[9rem] w-[9rem] -mt-2"
                 />
               </div>

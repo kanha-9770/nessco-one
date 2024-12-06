@@ -180,7 +180,7 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
               />
             </div>
             <div className="w-full lg:w-[70%] flex flex-col items-center">
-              <h5 className="text-xl text-center lg:text-left mb-2 text-[#483d73] font-medium font-poppins">
+              <h5 className="text-xl text-center lg:text-left mb-2 text-[#483d73] font-medium font-poppins pr-2">
                 {dialogContent?.title}
               </h5>
               <div className="h-48 lg:h-60 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">

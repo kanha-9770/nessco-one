@@ -141,13 +141,17 @@ const ExpandableCardDemo: React.FC<HomeLayoutProps> = ({ aboutData }) => {
               >
                 <div className="relative w-full h-52 lg:h-[20rem] md:h-[17rem] sm:rounded-tr-lg sm:rounded-tl-lg overflow-hidden ">
                   {/* Background video */}
-                  <Image
-                    src={active?.video}
-                    alt="gif"
-                    width={100}
-                    height={100}
+                  <video
                     className="absolute inset-0 w-full h-full object-cover bg-[#3a2a79]"
-                  />
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    poster={active?.video} 
+                  >
+                    <source src={active?.video}  type="video/mp4" />
+                  </video>
 
                   {/* Title */}
                   <h3 className="absolute font-poppins bottom-2 left-0 right-0 text-center font-bold text-lg md:text-xl text-white z-10">

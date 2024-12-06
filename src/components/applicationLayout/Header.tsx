@@ -225,10 +225,10 @@ const Page1: React.FC<CombinedProps> = ({
               </svg>
             </button>
             <div
-              className="flex justify-center items-center overflow-auto w-full scrollbar-hide"
+              className="flex items-center overflow-auto w-full scrollbar-hide"
               ref={carouselRef}
             >
-              <div className="w-max lg:mt-[2rem] mt-[0.5rem] flex justify-center lg:pl-0 pl-[29rem]">
+              <div className="w-max lg:mt-[2rem] mt-[0.5rem] flex">
                 {Header?.icons?.map((item, idx) => (
                   <div
                     key={idx}

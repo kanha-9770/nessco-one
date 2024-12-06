@@ -49,8 +49,8 @@ const PinkCity:React.FC <HomeLayoutProps> =({aboutData}) => {
                   <Image
                     src={item?.src}
                     alt={`Gallery image ${index + 1}`}
-                    height={200}
-                    width={200}
+                    height={500}
+                    width={500}
                     className="lg:rounded-2xl lg:object-cover h-full w-full "
                   />
 

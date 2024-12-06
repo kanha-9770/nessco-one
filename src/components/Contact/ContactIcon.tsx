@@ -4,7 +4,7 @@ export default function ContactIcons() {
       {/* Container for larger screens */}
       <div className="fixed left-0 top-[55%] -translate-y-1/2 z-[999] hidden md:block">
         <div className="bg-white rounded-xl shadow-lg p-[0.05rem] space-y-1">
-          <IconLink href="sms:+123456789" aria-label="phone">
+          <IconLink href="tel:'+91 95494 44484" aria-label="phone">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 50 50"
@@ -14,7 +14,7 @@ export default function ContactIcons() {
             </svg>
           </IconLink>
           <SeparationLine />
-          <IconLink href="mailto:info@example.com" aria-label="message">
+          <IconLink href="https://api.whatsapp.com/send?phone=919982200038" aria-label="message">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -24,7 +24,7 @@ export default function ContactIcons() {
             </svg>
           </IconLink>
           <SeparationLine />
-          <IconLink href="mailto:info@example.com" aria-label="newmessage">
+          <IconLink href="https://www.facebook.com/NesscoPaperCupMachine" aria-label="newmessage">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -34,7 +34,7 @@ export default function ContactIcons() {
             </svg>
           </IconLink>
           <SeparationLine />
-          <IconLink href="mailto:info@example.com" aria-label="iosmail">
+          <IconLink href="https://www.instagram.com/nesscoindia/" aria-label="iosmail">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
