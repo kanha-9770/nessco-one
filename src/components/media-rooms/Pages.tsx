@@ -168,7 +168,10 @@ const Filter: React.FC<FilterProps> = ({
                     Cancel
                   </button>
                 </div>
-                <div className="flex justify-center items-center w-[50%] mb-[0.5rem] font-poppins font-medium" onClick={() => setPage1Visible(false)} >
+                <div
+                  className="flex justify-center items-center w-[50%] mb-[0.5rem] font-poppins font-medium"
+                  onClick={() => setPage1Visible(false)}
+                >
                   <button className="text-red-700">Apply</button>
                 </div>
               </div>
@@ -548,6 +551,7 @@ const LatestNews: React.FC<NewsProps> = ({
   //   setModalContent(content);
   //   setModalOpen(true);
   // };
+  console.log(setModalContent);
 
   const closeModal = () => setModalOpen(false);
 
@@ -652,7 +656,6 @@ const LatestNews: React.FC<NewsProps> = ({
                   )}
                   <button
                     aria-label="Open"
-                  
                     className="flex items-center text-[#483d73] text-sm group bg-[#E6E7E6] hover:bg-black hover:text-white rounded-full pl-2 pr-1"
                   >
                     {item?.continueReading}
@@ -718,11 +721,12 @@ const MostRead: React.FC<NewsProps> = ({
     continueReading: "",
     dialogDescription: "",
   });
+  console.log(setModalContent);
 
-  const openModal = (content: NewsItem) => {
-    setModalContent(content);
-    setModalOpen(true);
-  };
+  // const openModal = (content: NewsItem) => {
+  //   setModalContent(content);
+  //   setModalOpen(true);
+  // };
 
   function formatString(input) {
     return input
@@ -779,7 +783,6 @@ const MostRead: React.FC<NewsProps> = ({
                   <h3 className="font-medium text-sm">{item?.title}</h3>
                   <button
                     aria-label="Open"
-            
                     className="flex items-center text-[#483d73] text-sm group bg-[#E6E7E6] hover:bg-black hover:text-white rounded-full pl-2 pr-1"
                   >
                     {item?.continueReading}

@@ -5,7 +5,6 @@ import { MaintainanceItem } from "./types/constant";
 import Image from "next/image";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import FormFields, { FormValues } from "@/components/Contact/FormFileds";
-import { usePathname } from "next/navigation";
 import { useForm } from "@/app/[country]/[locale]/context/FormContext";
 
 interface Category {

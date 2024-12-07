@@ -3,7 +3,6 @@ import React from "react";
 import dynamic from "next/dynamic";
 import { HomeData } from "./types/constant";
 import FeatureProjects from "./FeatureProjects";
-import { usePathname } from "next/navigation";
 import ReusableForm from "../Contact/ReuseableForm";
 const VideoCarousel = dynamic(() => import("../ui/HomeCaorusel"));
 
@@ -12,10 +11,8 @@ interface HeroLayoutProps {
 }
 
 const Home: React.FC<HeroLayoutProps> = ({ heroData }) => {
-  const pathname = usePathname();
 
   // Extract countryCode and languageCode from pathname
-  const pathSegments = pathname.split("/").filter(Boolean);
 
   return (
     <>
