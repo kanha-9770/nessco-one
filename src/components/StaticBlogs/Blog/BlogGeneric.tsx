@@ -100,41 +100,10 @@ const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="w-full relative overflow-hidden h-screen flex flex-col justify-center space-y-4 items-center  bg-black "
         >
-          <h1 className="flex text-white -mt-16 w-[60%] text-center text-6xl ">
+          <h1 className="flex text-white -mt-28 w-[60%] text-center text-6xl ">
             {post?.header?.heading}
           </h1>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
-            className="flex items-center space-x-6"
-          >
-            <Image
-              src={
-                post?.author?.avatar ||
-                "https://www.nesscoindia.com/Assets/images/logo.webp"
-              }
-              alt={post?.author?.name || "Author avatar"}
-              width={64}
-              height={64}
-              className="rounded-full h-16 w-16 shadow-lg border-2 border-white"
-            />
-            <div className="text-center">
-              <span className="text-gray-800 font-semibold text-xl">
-                {post?.author?.name}
-              </span>
-              <div className="flex items-center mt-2 space-x-4 text-sm text-gray-600">
-                <div className="flex items-center space-x-1">
-                  <Calendar className="w-4 h-4" />
-                  <span>{post?.date}</span>
-                </div>
-                <div className="flex items-center space-x-1">
-                  <Clock className="w-4 h-4" />
-                  <span>{post?.readingTime} min read</span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+         
         </motion.div>
 
         <motion.div
@@ -179,6 +148,38 @@ const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
               }`}
             >
               <CardContent className="p-4 ">
+              <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
+            className="flex items-center space-x-4"
+          >
+            <Image
+              src={
+                post?.author?.avatar ||
+                "https://www.nesscoindia.com/Assets/images/logo.webp"
+              }
+              alt={post?.author?.name || "Author avatar"}
+              width={64}
+              height={64}
+              className="rounded-full h-16 w-16 shadow-lg border-2 border-white"
+            />
+            <div className="text-center">
+              <span className="text-gray-800 font-semibold text-xl">
+                {post?.author?.name}
+              </span>
+              <div className="flex  items-center mt-2 space-x-4 text-xs text-gray-600">
+                <div className="flex items-center 1 bg-red-200">
+                  <Calendar className="w-7" />
+                  <span className="flex flex-wrap w-[4rem]">{post?.date}</span>
+                </div>
+                <div className="flex items-center bg-green-200">
+                  <Clock className="w-5" />
+                  <span className="flex flex-wrap w-[4rem]">{post?.readingTime} min read</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
                 <h2 className="font-semibold text-lg mb-4">
                   Table of Contents
                 </h2>
