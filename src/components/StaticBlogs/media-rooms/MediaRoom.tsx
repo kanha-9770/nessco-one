@@ -106,19 +106,24 @@ const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="w-full relative overflow-hidden h-[60vh] bg-black rounded-b-3xl"
-        ></motion.div>
+          className="w-full relative overflow-hidden h-screen flex flex-col justify-center space-y-2 items-center bg-[#483d73] "
+        >
+           <h1 className="flex text-white absolute  top-[7rem] item-center w-[50%] justify-center text-center text-4xl ">
+            {post?.header?.heading}
+          </h1>
+
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
-          className="lg:px-[10%] px-[8%] -mt-52 mb-8 relative z-10"
+          className="lg:px-[10%] px-[8%] -mt-[22rem] mb-8 relative z-10 "
         >
           {post?.header?.headingImage &&
             (/\.(mp4|webm|ogg)$/i.test(post?.header?.headingImage) ? (
               <video
-                className="object-contain z-50 lg:h-[25rem] h-[12rem] w-full rounded-3xl shadow-2xl"
+                className="object-cover z-50 lg:h-[25rem] h-[12rem] w-full rounded-3xl shadow-2xl"
                 autoPlay
                 loop
                 muted
@@ -141,7 +146,7 @@ const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl py-48 mx-auto px-4 sm:px-6 lg:px-8 ">
+      <div className="max-w-7xl py-48 mx-auto px-4 sm:px-6 lg:px-20 ">
         <div className="flex flex-col md:flex-row gap-8">
           {/* Left Column - Table of Contents */}
           <div className="md:w-1/4 ">
@@ -151,6 +156,38 @@ const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
               }`}
             >
               <CardContent className="p-4 ">
+              <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
+            className="flex items-center space-x-2 mb-16 "
+          >
+            <Image
+              src={
+                post?.author?.avatar ||
+                "https://www.nesscoindia.com/Assets/images/logo.webp"
+              }
+              alt={post?.author?.name || "Author avatar"}
+              width={64}
+              height={64}
+              className="rounded-full h-12 w-12 shadow-lg border-2 border-white"
+            />
+            <div className="text-center">
+              <span className="text-gray-800 font-semibold text-lg">
+                {post?.author?.name}
+              </span>
+              <div className="flex  items-center mt-2 space-x-2 text-xs text-gray-600">
+                <div className="flex items-center">
+                  <Calendar className="w-7" />
+                  <span className="flex flex-wrap w-[4rem]">{post?.date}</span>
+                </div>
+                <div className="flex items-center ">
+                  <Clock className="w-5" />
+                  <span className="flex flex-wrap w-[4rem]">{post?.readingTime} min read</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
                 <h2 className="font-semibold text-lg mb-4">
                   Table of Contents
                 </h2>
@@ -268,38 +305,7 @@ const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
 
           {/* Right Column - Main Content */}
           <div className="md:w-3/4">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
-              className="flex items-center space-x-6"
-            >
-              <Image
-                src={
-                  post?.author?.avatar ||
-                  "https://www.nesscoindia.com/Assets/images/logo.webp"
-                }
-                alt={post?.author?.name || "Author avatar"}
-                width={64}
-                height={64}
-                className="rounded-full h-16 w-16 shadow-lg border-2 border-white"
-              />
-              <div>
-                <span className="text-gray-800 font-semibold text-xl">
-                  {post?.author?.name}
-                </span>
-                <div className="flex items-center mt-2 space-x-4 text-sm text-gray-600">
-                  <div className="flex items-center space-x-1">
-                    <Calendar className="w-4 h-4" />
-                    <span>{post?.date}</span>
-                  </div>
-                  <div className="flex items-center space-x-1">
-                    <Clock className="w-4 h-4" />
-                    <span>{post?.readingTime} min read</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+           
 
             {/* <motion.div
               initial={{ opacity: 0, y: 20 }}

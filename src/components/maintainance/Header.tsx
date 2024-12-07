@@ -127,7 +127,7 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
       </div>
       <div className="w-full h-full bg-[linear-gradient(to_bottom,rgba(0,0,0,0.05)_1px,transparent_1.5px),linear-gradient(to_right,rgba(0,0,0,0.05)_1px,transparent_1.5px)] bg-[length:100%_0.8rem,0.8rem_100%] bg-white pb-4 font-poppins">
         <div>
-          <div className="w-full h-full pl-12 pr-4 py-4 flex items-center space-x-4 bg-white">
+          <div className="w-full h-full lg:pl-12 pl-4 pr-2 lg:pr-4 py-4 flex items-center space-x-4 bg-white">
             <Image
               src="https://assets.nesscoindustries.com/public/assets/support/maintainance/maintenance-main-icon.svg"
               alt={"SVG"}
@@ -282,7 +282,7 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
                       </div>
                     </div>
                     <div className="flex items-center justify-center min-h-[15rem] max-h-full mb-10">
-                      <h4 className="text-[#483d73] font-bold -rotate-90 text-sm">
+                      <h4 className="text-[#483d73] -ml-8 font-bold -rotate-90 text-sm">
                         {Header?.maintainance}
                       </h4>
                       <Image
@@ -291,7 +291,7 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
                         width={400}
                         height={400}
                         priority
-                        className="w-[10rem]"
+                        className="w-[14rem] lg:-ml-8 -ml-10"
                       />
                     </div>
                     <button

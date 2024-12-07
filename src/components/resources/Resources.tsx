@@ -20,7 +20,7 @@ const Resources: React.FC <AboutLayoutProps>= ({resourceData}) => {
     <>
       <div className="h-full w-full flex flex-col">
         {/* // First Div */}
-        <div className="bg-white w-full h-[15rem] flex px-6 lg:px-0">
+        <div className="bg-white w-full lg:h-[15rem] h-[16rem] flex px-4 lg:px-0">
           <div className="w-3/4 lg:pl-10 pl-3 ">
             <h1 className="bg-gradient-to-r from-[#483d73] from-2% via-red-700 via-20% to-red-700 bg-clip-text text-transparent font-medium font-poppins relative lg:text-5xl text-2xl top-[4rem] ">
               {homeresourceData.mainTitle} <span className="block">{homeresourceData.highlightTitle}</span>
@@ -29,14 +29,14 @@ const Resources: React.FC <AboutLayoutProps>= ({resourceData}) => {
               {homeresourceData.description}
             </p>
           </div>
-          <div className="w-1/4 mt-14 relative">
+          <div className="w-1/4 mt-14 relative ">
             <Image
               src={homeimgData.src}
               alt={homeimgData.alt}
               width={homeimgData.width}
               height={homeimgData.height}
               priority
-              className="w-[10rem] h-[10rem] absolute right-6 top-2"
+              className="lg:w-[10rem] lg:h-[10rem] absolute lg:right-6 right-2 lg:top-2 top-8"
             />
           </div>
         </div>

@@ -135,7 +135,7 @@ const Page2 = ({
 
   return (
     <>
-      <div className="w-full lg:mt-[12rem] px-[1rem] font-regular font-poppins flex lg:flex-row flex-col items-center justify-center overflow-hidden">
+      <div className="w-full lg:mt-[12rem] px-[1rem] font-poppins flex lg:flex-row flex-col items-center justify-center overflow-hidden">
         {/* Left-side product grid */}
         <div className="lg:w-[40%] lg:mx-[1rem] lg:pl-[4rem]">
           {/* Product Grid */}
@@ -265,9 +265,9 @@ const Page2 = ({
               ref={borderRef}
             ></div>
           </div>
-          <div className="lg:h-[17rem] h-[10rem] flex items-center justify-start py-4">
+          <div className="lg:h-[17rem] h-[12rem] flex items-center justify-start py-4">
             <Image
-              className="lg:h-[20rem] w-auto md:h-[8rem] h-[8rem]"
+              className="lg:h-[20rem] w-auto h-[10rem]"
               width={400}
               height={400}
               priority

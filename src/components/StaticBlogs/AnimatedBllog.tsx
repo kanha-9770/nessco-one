@@ -98,14 +98,19 @@ const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="w-full relative overflow-hidden h-[60vh] bg-black rounded-b-3xl"
-        ></motion.div>
+          className="w-full relative overflow-hidden h-screen bg-[#483d73] rounded-b-3xl"
+        >
+             <h1 className="flex text-white absolute  top-[7rem] item-center w-full justify-center text-center text-4xl ">
+            {post?.header?.heading}
+          </h1>
+
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
-          className="lg:px-[10%] px-[8%] -mt-52 mb-8 relative z-10"
+          className="lg:px-[10%] px-[8%] -mt-[24rem] mb-8 relative z-10"
         >
           {post?.header?.headingImage &&
             (/\.(mp4|webm|ogg)$/i.test(post?.header?.headingImage) ? (
@@ -267,10 +272,9 @@ const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
               className="flex items-center space-x-6"
             >
               <Image
-                src={
-                  post?.author?.avatar ||
-                  "https://www.nesscoindia.com/Assets/images/logo.webp"
-                }
+                src=
+                  "https://assets.nesscoindustries.com/public/assets/navbar-images/video-profile-icon.webp"
+                 
                 alt={post?.author?.name || "Author avatar"}
                 width={64}
                 height={64}

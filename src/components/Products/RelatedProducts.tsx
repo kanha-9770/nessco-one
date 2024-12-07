@@ -86,7 +86,7 @@ const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 64 64"
-                className="lg:w-6 w-5 lg:h-6 h-5"
+                className="w-6 h-6"
               >
                 <circle
                   cx="32"
@@ -101,14 +101,14 @@ const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
               </svg>
             </button>
             <button
-              className="absolute lg:right-8 right-4 lg:bottom-4 bottom-3"
+              className="absolute lg:right-8 right-6 lg:bottom-4 bottom-3"
               aria-label="Right"
               onClick={scrollbarRight}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 64 64"
-                className="lg:w-6 w-5 lg:h-6 h-5"
+                className="w-6 h-6"
               >
                 <circle
                   cx="32"

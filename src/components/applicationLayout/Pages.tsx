@@ -12,6 +12,7 @@ const Page5 = dynamic(() => import("@/components/applicationLayout/FAQ"));
 import dynamic from "next/dynamic";
 import { ApplicationLayoutItem } from "./types/constant";
 import { FaqItem, Category } from "../Faq/types/constant";
+
 interface ApplicationLayoutProps {
   applicationLayoutData: ApplicationLayoutItem;
   faqData: FaqItem;
@@ -54,7 +55,7 @@ const Pages: React.FC<ApplicationLayoutProps> = ({
   const normalizeTitle = (title: string) =>
     title.toLowerCase().replace(/\s+/g, "-").trim();
 
-  const normalizedProductname = normalizeTitle(productname);
+  let normalizedProductname = normalizeTitle(productname);
 
   const page1product = Header.icons.find(
     (m) => normalizeTitle(m.title) === normalizedProductname
@@ -72,19 +73,22 @@ const Pages: React.FC<ApplicationLayoutProps> = ({
   if (!page1product || !page2product || !page3product || !page4product) {
     return notFound();
   }
+  const originalProductName = normalizedProductname;
+  if (normalizedProductname === "insulating-cup") {
+    normalizedProductname = "paper-cup";
+  }
 
-  // Find the matching category in faqData
   const matchingCategory: Category | undefined =
     faqData.faq[0]?.searchbox?.categories?.find(
       (category) => normalizeTitle(category?.name) === normalizedProductname
     );
 
-  // If a matching category is found, use its FAQs, otherwise use all FAQs
   const filteredFaqs = matchingCategory
     ? matchingCategory?.faqs
     : faqData?.faq[0]?.searchbox.categories.flatMap(
         (category) => category?.faqs
       );
+
   return (
     <>
       <Page1
@@ -103,7 +107,13 @@ const Pages: React.FC<ApplicationLayoutProps> = ({
       />
       <Page5
         filteredFaqs={filteredFaqs}
-        categoryName={matchingCategory ? matchingCategory.name : id}
+        categoryName={
+          originalProductName === "insulating-cup"
+            ? "insulating-cup"
+            : matchingCategory
+            ? matchingCategory?.name
+            : id
+        }
         faqTitle={faqData.faq[0].searchbox.title}
         faqSubTitle={faqData.faq[0].searchbox.Questions}
         formTitle={FAQ.formTitle}

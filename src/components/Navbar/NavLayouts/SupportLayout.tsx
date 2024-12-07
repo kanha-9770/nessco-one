@@ -167,7 +167,7 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
                     <div className="flex justify-center items-center">
                       <LottieAnimation
                         className="h-12"
-                        animationData={item?.image}
+                        animationData={image[itemIndex % image.length]}
                       ></LottieAnimation>
                     </div>
                     <p className="font-poppins text-center text-lg font-regular pl-2 text-black">

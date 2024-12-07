@@ -25,18 +25,16 @@ import FormFields, { FormValues } from "./FormFileds";
 
 interface SignupFormDemoProductProps {
   related_product: RelatedProductType;
-  name?:string;
-  image?:string;
-  mimage?:string;
-  product_heading?:string
-
+  name?: string;
+  image?: string;
+  mimage?: string;
+  product_heading?: string;
 }
 
 const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
   related_product,
-  product_heading
+  product_heading,
 }) => {
-
   const [expanded, setExpanded] = useState(false);
   const { submitForm } = useForm();
 
@@ -110,16 +108,16 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
                 Catalogue
               </p>
             </div>
-            <div className="w-[20%] font-poppins flex items-center justify-center">
+            <div className="w-[20%] h-full font-poppins flex items-center justify-center">
               <Button
+                className="h-full bg-green-400 w-full"
                 onClick={() => setIsDialogOpen(true)}
-                
               >
                 <svg
                   viewBox="-0.4 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-16 h-16"
+                  className="w-24 h-24 bg-red-500"
                 >
                   <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                   <g
@@ -136,7 +134,7 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
                       strokeLinejoin="round"
                     ></path>
                   </g>
-                </svg>{" "}
+                </svg>
               </Button>
             </div>
           </div>

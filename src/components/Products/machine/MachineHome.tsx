@@ -155,8 +155,7 @@ const Machine: React.FC<MachineProps> = ({
 
   // Include the extra image (initially selected image) in the images array
   const images = [
-    image,
-    ...specification_image.flatMap((img) => Object.values(img)),
+    image
   ];
   const shouldShowArrows = images.length > 1;
 

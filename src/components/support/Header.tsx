@@ -37,21 +37,25 @@ const Header: React.FC<CardsProps> = ({
   return (
     <>
       <div className="w-full h-full bg-white mt-14 py-4 px-12 flex justify-center font-poppins">
-        <div className="lg:w-1/2 w-[80%]">
+        <div className="lg:w-1/2 hidden lg:block">
           <h1 className="bg-gradient-to-r from-[#483d73] to-red-700 bg-clip-text text-transparent lg:text-5xl text-3xl font-medium mb-2">
             {title}
           </h1>
-          <p className="">{description}</p>
+          <p className="text-sm">{description}</p>
         </div>
-        <div className="lg:w-1/2 w-[20%]">
+        <div className="lg:w-1/2 w-full flex-col flex items-center lg:items-end">
+        <h1 className="bg-gradient-to-r from-[#483d73] to-red-700 bg-clip-text text-transparent lg:text-5xl text-3xl font-medium mb-2 lg:hidden pb-2 text-center w-full">
+            {title}
+          </h1>
           <Image
             src={img}
             alt={"Parts"}
             width={400}
             height={400}
             priority
-            className={`float-right hue-rotate-90 brightness-50 contrast-100 lg:w-[8rem] w-[5rem]`}
+            className={`hue-rotate-90 brightness-50 contrast-100 w-[8rem]`}
           />
+          <p className="lg:hidden pt-2 text-justify text-sm">{description}</p>
         </div>
       </div>
       <div

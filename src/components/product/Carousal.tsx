@@ -117,18 +117,18 @@ const Carousal: React.FC<ProductProps> = ({ productData }) => {
           />
         </div>
       </div>
-      <div className="flex lg:pl-[1rem] lg:pt-0 pt-4 space-x-2 absolute lg:bottom-3 bottom-1 right-8">
+      <div className="flex lg:pl-[1rem] lg:pt-0 pt-4 space-x-2 absolute lg:bottom-3 bottom-0 right-8">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 64 64"
-          className="lg:w-6 w-5 lg:h-6 h-5"
+          className="lg:w-6 w-6 lg:h-6 h-6"
           onClick={prevSlide}
         >
           <circle
             cx="32"
             cy="32"
             r="32"
-            className="fill-[#9e9c9c] hover:fill-red-700 cursor-pointer"
+            className="fill-[#9e9c9c] lg:hover:fill-red-700 cursor-pointer"
           />
           <path
             d="M39 20 L27 32 L39 44"
@@ -139,14 +139,14 @@ const Carousal: React.FC<ProductProps> = ({ productData }) => {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 64 64"
-          className="lg:w-6 w-5 lg:h-6 h-5"
+          className="lg:w-6 w-6 lg:h-6 h-6"
           onClick={nextSlide}
         >
           <circle
             cx="32"
             cy="32"
             r="32"
-            className="fill-[#9e9c9c] hover:fill-red-700 cursor-pointer"
+            className="fill-[#9e9c9c] lg:hover:fill-red-700 cursor-pointer"
           />
           <path
             d="M25 20 L37 32 L25 44"

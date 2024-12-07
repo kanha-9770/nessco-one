@@ -121,7 +121,7 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
             /> */}
           </div>
           <div
-            className="absolute top-[10vh] lg:h-[32rem] h-[80rem] w-[0.15rem] lg:ml-0 ml-5"
+            className="absolute top-[10vh] lg:h-[32rem] h-[40rem] w-[0.15rem] lg:ml-0 ml-5"
             style={{
               background: `linear-gradient(to bottom, #483d73 ${scrollPercent}%, white ${scrollPercent}%)`,
             }}

@@ -177,12 +177,12 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
       };
     }
   }, [expandedIndex]);
-  function convertToKebabCase(input) {
-    return input
-      .trim() // Remove leading and trailing spaces
-      .replace(/\s+/g, "-") // Replace one or more spaces with a single hyphen
-      .toLowerCase(); // Convert the string to lowercase
-  }
+  // function convertToKebabCase(input) {
+  //   return input
+  //     .trim() // Remove leading and trailing spaces
+  //     .replace(/\s+/g, "-") // Replace one or more spaces with a single hyphen
+  //     .toLowerCase(); // Convert the string to lowercase
+  // }
 
   function formatString(input) {
     return input.toLowerCase().replace(/\s+/g, "-");
@@ -201,7 +201,7 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
               >
                 <Image
                   src={item?.img}
-                  alt={""}
+                  alt={item?.title?.replace(/machine/gi, "").trim()}
                   width={400}
                   height={400}
                   className={`${
@@ -217,11 +217,7 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
                       : "group-hover:border-red-700 lg:ml-[1rem] ml-[0.5rem]"
                   }`}
                 ></div>
-                <Link
-                  href={`/${countryCODE}/${languageCODE}/products/${convertToKebabCase(
-                    item?.title
-                  )}`}
-                >
+                <div>
                   <h2
                     className={` ${
                       expandedIndex === idx
@@ -231,7 +227,7 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
                   >
                     {item?.title}
                   </h2>
-                </Link>
+                </div>
                 {expandedIndex === idx ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -351,7 +347,7 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
                                     <div className="w-8 h-8 bg-white p-[0.2rem] border-solid border-[0.1rem] border-white hover:border-red-700 rounded-full flex items-center justify-center relative group">
                                       <Image
                                         src={containerItem?.image}
-                                        alt=""
+                                        alt={containerItem?.imageInformation}
                                         width={400}
                                         height={400}
                                       />
@@ -382,11 +378,11 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
                                   <Link
                                     href={`/${countryCODE}/${languageCODE}/${lastParameter}/${containerItem?.link}`}
                                   >
-                                    <div className="flex justify-center items-center h-[14rem] overflow-hidden">
+                                    <div className="flex justify-center items-center lg:h-[14rem] h-[10rem] overflow-hidden">
                                       <div className="p-2 flex justify-center items-center">
                                         <Image
                                           src={containerItem?.img}
-                                          alt="Machine Image"
+                                          alt={`${containerItem?.h2} ${containerItem?.h1}`}
                                           width={400}
                                           height={400}
                                         />

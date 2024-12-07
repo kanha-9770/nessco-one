@@ -21,10 +21,14 @@ const AboutUs: React.FC<AboutSectionLayoutProps> = ({ heroData }) => {
   const aboutData = heroData?.home[3]?.data;
   const [machinesSold, setMachinesSold] = useState(0);
   const [readyStockMachines, setReadyStockMachines] = useState(0);
+  const [machinesSoldComplete, setMachinesSoldComplete] = useState(false);
+  const [readyStockMachinesComplete, setReadyStockMachinesComplete] =
+    useState(false);
   const statsRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname() || "";
   const countryCode = pathname?.split("/")[1]?.toLowerCase();
   const languageCode = pathname?.split("/")[2]?.toLowerCase();
+
   useEffect(() => {
     if (!aboutData) return;
 
@@ -32,11 +36,22 @@ const AboutUs: React.FC<AboutSectionLayoutProps> = ({ heroData }) => {
       (entries) => {
         entries?.forEach((entry) => {
           if (entry?.isIntersecting) {
-            animateCount(setMachinesSold, aboutData?.stats?.machinesSold);
+            // Reset completion flags before starting animation
+            setMachinesSoldComplete(false);
+            setReadyStockMachinesComplete(false);
+
+            // Start counter animations
+            animateCount(
+              setMachinesSold,
+              aboutData?.stats?.machinesSold,
+              setMachinesSoldComplete
+            );
             animateCount(
               setReadyStockMachines,
-              aboutData?.stats?.readyStockMachines
+              aboutData?.stats?.readyStockMachines,
+              setReadyStockMachinesComplete
             );
+
             observer?.unobserve(entry?.target);
           }
         });
@@ -57,7 +72,8 @@ const AboutUs: React.FC<AboutSectionLayoutProps> = ({ heroData }) => {
 
   const animateCount = (
     setter: React.Dispatch<React.SetStateAction<number>>,
-    endValue: number
+    endValue: number,
+    completionSetter: React.Dispatch<React.SetStateAction<boolean>>
   ) => {
     let startTime: number;
     const duration = 1500; // 1.5 seconds
@@ -67,6 +83,8 @@ const AboutUs: React.FC<AboutSectionLayoutProps> = ({ heroData }) => {
       setter(Math?.floor(progress * endValue));
       if (progress < 1) {
         window?.requestAnimationFrame(step);
+      } else {
+        completionSetter(true); // Mark animation as complete
       }
     };
 
@@ -114,6 +132,7 @@ const AboutUs: React.FC<AboutSectionLayoutProps> = ({ heroData }) => {
           <div className="lg:text-center w-[50%] lg:w-1/5 md:mb-0">
             <h3 className="text-xl lg:text-3xl font-bold bg-gradient-to-r from-[#483d73]  to-red-700 to-90% bg-clip-text text-transparent ">
               {machinesSold}
+              {machinesSoldComplete && "+"}
             </h3>
             <p className="text-sm lg:text-base font-regular font-poppins">
               {aboutData?.leftstats}
@@ -125,6 +144,7 @@ const AboutUs: React.FC<AboutSectionLayoutProps> = ({ heroData }) => {
           <div className="lg:text-center flex flex-col justify-end w-[50%] lg:w-1/5 md:mt-0">
             <h3 className="text-xl lg:text-3xl font-bold bg-gradient-to-r from-[#483d73]  to-red-700 to-90% bg-clip-text text-transparent ">
               {readyStockMachines}
+              {readyStockMachinesComplete && "+"}
             </h3>
             <p className="lg:text-base font-regular text-sm font-poppins">
               {aboutData?.rightstats}

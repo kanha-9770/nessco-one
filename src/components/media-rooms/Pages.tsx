@@ -437,19 +437,30 @@ const TrendingNews: React.FC<NewsProps> = ({
             <Link
               href={`media-room/${formatString(item?.title)}`}
               key={index}
-              className="flex items-center space-x-4 border-r-2 pr-1"
+              className="flex lg:flex-row lg:px-0 px-4 flex-col items-center w-full lg:space-x-4 lg:space-y-0 space-y-4 lg:pr-1 bg-[#f2f2f2] lg:pl-4 rounded-[0.8rem] lg:pb-2 lg:py-0 py-4"
             >
-              <div className="lg:w-[8rem] w-[6rem]">
-                <Image
-                  className="rounded-xl"
-                  width={400}
-                  height={400}
-                  src={item?.img}
-                  alt={""}
-                />
+              <div className="lg:w-[8rem] w-[14rem]">
+                {item?.img &&
+                  (/\.(mp4|webm|ogg)$/i.test(item?.img) ? (
+                    <video className=" rounded-xl" autoPlay loop muted>
+                      <source
+                        src={item.img}
+                        type={`video/${item.img.split(".").pop()}`}
+                      />
+                      Your browser does not support the video tag.
+                    </video>
+                  ) : (
+                    <Image
+                      className="rounded-xl"
+                      width={400}
+                      height={400}
+                      src={item?.img}
+                      alt={""}
+                    />
+                  ))}
               </div>
-              <div className="lg:w-[18rem] w-[10rem] relative">
-                <div className="absolute top-0 right-0 text-lg hover:bg-[#E6E7E6] rounded-full p-1">
+              <div className="lg:w-[35rem] w-[15rem] relative space-y-2 flex flex-col lg:items-start items-center">
+                <div className="absolute top-0 right-0 text-lg lg:hover:bg-[#E6E7E6] rounded-full p-1">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -464,11 +475,13 @@ const TrendingNews: React.FC<NewsProps> = ({
                 <p className="border border-black rounded-[0.3rem] text-center w-max px-2 lg:text-md text-sm">
                   {item?.header}
                 </p>
-                <h3 className="font-medium text-sm">{item?.title}</h3>
+                <h3 className="font-medium text-sm lg:w-[96%] w-full text-center lg:text-left">
+                  {item?.title}
+                </h3>
 
                 <Link
                   aria-label="Open"
-                  className="flex w-max h-6 items-center px-2 text-[#483d73] text-sm group bg-[#E6E7E6] hover:bg-black hover:text-white rounded-full "
+                  className="flex w-max h-6 items-center pl-2 pr-1 text-[#483d73] lg:text-sm text-xs group bg-[#E6E7E6] hover:bg-black hover:text-white rounded-full lg:py-0.5 py-1"
                   href={`media-room/${formatString(item?.title)}`}
                 >
                   {item?.continueReading}
@@ -480,7 +493,7 @@ const TrendingNews: React.FC<NewsProps> = ({
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="w-4 h-4 stroke-black group-hover:stroke-white ml-4"
+                    className="w-4 h-4 stroke-black group-hover:stroke-white ml-2"
                   >
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
@@ -493,7 +506,7 @@ const TrendingNews: React.FC<NewsProps> = ({
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 64 64"
-            className="lg:w-6 w-5 lg:h-6 h-5 mr-2"
+            className="w-6 h-6 mr-2"
             onClick={scrollbarLeft}
           >
             <circle
@@ -510,7 +523,7 @@ const TrendingNews: React.FC<NewsProps> = ({
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 64 64"
-            className="lg:w-6 w-5 lg:h-6 h-5"
+            className="w-6 h-6"
             onClick={scrollbarRight}
           >
             <circle
@@ -537,23 +550,6 @@ const LatestNews: React.FC<NewsProps> = ({
   mediaRoomData,
 }) => {
   const LatestNews = mediaRoomData?.MediaRoom[0]?.LatestNews;
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState<NewsItem>({
-    img: "",
-    filter: "",
-    title: "",
-    header: "",
-    continueReading: "",
-    dialogDescription: "",
-  });
-
-  // const openModal = (content: NewsItem) => {
-  //   setModalContent(content);
-  //   setModalOpen(true);
-  // };
-  console.log(setModalContent);
-
-  const closeModal = () => setModalOpen(false);
 
   const filteredNews = [
     {
@@ -589,12 +585,12 @@ const LatestNews: React.FC<NewsProps> = ({
 
   return (
     <>
-      <div className="bg-white h-full lg:w-[70%] lg:mb-0 mb-6 rounded-2xl font-poppins px-[1.5rem]">
+      <div className="bg-white h-full lg:w-[70%] lg:mb-0 mb-6 rounded-2xl font-poppins lg:px-[1.5rem] pl-4 pr-2">
         <h2 className="text-[#483d73] text-2xl my-4">
           {LatestNews?.mainTitle}
         </h2>
         <div className="h-[37rem] overflow-hidden mb-4">
-          <div className="overflow-y-auto scrollbar h-full space-y-4 pr-1">
+          <div className="overflow-y-auto scrollbar h-full space-y-4 pr-2">
             {filteredNews?.map((item, index) => (
               <Link
                 href={`media-room/${formatString(item?.title)}`}
@@ -608,23 +604,35 @@ const LatestNews: React.FC<NewsProps> = ({
                 <div
                   className={
                     index === 0
-                      ? "lg:w-[40%] lg:mb-0 mb-4"
-                      : "lg:w-[20%] w-[30%]"
+                      ? "lg:w-[40%] lg:mb-0 mb-4 flex items-center"
+                      : "lg:w-[20%] w-[40%]"
                   }
                 >
-                  <Image
-                    className="rounded-xl"
-                    width={400}
-                    height={400}
-                    src={item?.img}
-                    alt={""}
-                  />
+                  {" "}
+                  {item?.img &&
+                    (/\.(mp4|webm|ogg)$/i.test(item?.img) ? (
+                      <video className=" rounded-xl" autoPlay loop muted>
+                        <source
+                          src={item.img}
+                          type={`video/${item.img.split(".").pop()}`}
+                        />
+                        Your browser does not support the video tag.
+                      </video>
+                    ) : (
+                      <Image
+                        className="rounded-xl"
+                        width={400}
+                        height={400}
+                        src={item?.img}
+                        alt={""}
+                      />
+                    ))}
                 </div>
                 <div
                   className={
                     index === 0
                       ? "lg:w-[60%] space-y-2 relative"
-                      : "lg:w-[80%] w-[70%] space-y-2 relative"
+                      : "lg:w-[80%] w-[60%] space-y-2 relative"
                   }
                 >
                   <div className="absolute top-0 right-0 text-lg hover:bg-[#E6E7E6] rounded-full p-1">
@@ -646,7 +654,7 @@ const LatestNews: React.FC<NewsProps> = ({
                     className={
                       index === 0
                         ? "font-medium text-md"
-                        : "font-medium text-md"
+                        : "font-medium lg:w-[96%] w-[94%] lg:text-md text-sm"
                     }
                   >
                     {item?.title}
@@ -656,7 +664,7 @@ const LatestNews: React.FC<NewsProps> = ({
                   )}
                   <button
                     aria-label="Open"
-                    className="flex items-center text-[#483d73] text-sm group bg-[#E6E7E6] hover:bg-black hover:text-white rounded-full pl-2 pr-1"
+                    className="flex items-center text-[#483d73] lg:text-sm text-xs group bg-[#E6E7E6] hover:bg-black hover:text-white rounded-full pl-2 pr-1 lg:py-0.5 py-1"
                   >
                     {item?.continueReading}
                     <svg
@@ -678,29 +686,6 @@ const LatestNews: React.FC<NewsProps> = ({
           </div>
         </div>
       </div>
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <div className="flex lg:flex-row flex-col items-center justify-center lg:space-x-4">
-          <Image
-            className="lg:w-[50%] rounded-3xl lg:mt-0 mt-6"
-            width={400}
-            height={400}
-            src={modalContent?.img}
-            alt={modalContent?.title}
-          />
-          <div className="lg:w-[50%] w-full">
-            <h2 className="text-xl lg:text-left text-center lg:mt-0 mt-[0.5rem] mb-[0.5rem] text-[#483d73] font-medium font-poppins">
-              {modalContent?.title}
-            </h2>
-            <div className="overflow-hidden lg:h-[12rem] lg:pr-4 w-full h-[11rem]">
-              <div className="overflow-auto h-full scrollbar-custom scrollbar">
-                <p className="font-poppins lg:text-left text-center text-sm">
-                  {modalContent?.dialogDescription}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Modal>
     </>
   );
 };
@@ -712,21 +697,6 @@ const MostRead: React.FC<NewsProps> = ({
   mediaRoomData,
 }) => {
   const MostRead = mediaRoomData?.MediaRoom[0]?.MostRead;
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState<NewsItem>({
-    img: "",
-    filter: "",
-    title: "",
-    header: "",
-    continueReading: "",
-    dialogDescription: "",
-  });
-  console.log(setModalContent);
-
-  // const openModal = (content: NewsItem) => {
-  //   setModalContent(content);
-  //   setModalOpen(true);
-  // };
 
   function formatString(input) {
     return input
@@ -735,8 +705,6 @@ const MostRead: React.FC<NewsProps> = ({
       .replace(/[^a-z0-9\s-]/g, "") // Remove special characters except spaces and hyphens
       .replace(/\s+/g, "-"); // Replace spaces with hyphens
   }
-
-  const closeModal = () => setModalOpen(false);
 
   const filteredNews = MostRead?.sections?.filter((item) => {
     const matchesSearch = item?.title
@@ -754,17 +722,17 @@ const MostRead: React.FC<NewsProps> = ({
 
   return (
     <>
-      <div className="bg-white h-full lg:w-[30%] rounded-2xl font-poppins px-[1rem]">
+      <div className="bg-white h-full lg:w-[30%] rounded-2xl font-poppins lg:px-[1rem] pl-4 pr-2">
         <h2 className="text-[#483d73] text-2xl my-4">{MostRead?.title}</h2>
         <div className="h-[37rem] overflow-hidden mb-4">
-          <div className="overflow-y-auto h-full scrollbar space-y-5 pr-1">
+          <div className="overflow-y-auto h-full scrollbar space-y-5 pr-2">
             {filteredNews?.map((item) => (
               <Link
                 href={`media-room/${formatString(item?.title)}`}
                 key={item?.title}
                 className="flex items-center border-b-2 pb-[1.1rem] space-x-1"
               >
-                <div className="w-[65%] relative">
+                <div className="w-[60%] relative space-y-2">
                   <div className="absolute top-0 right-0 text-md hover:bg-[#E6E7E6] rounded-full p-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -780,10 +748,12 @@ const MostRead: React.FC<NewsProps> = ({
                   <p className="border border-black rounded-[0.3rem] text-center text-sm w-max px-2">
                     {item?.header}
                   </p>
-                  <h3 className="font-medium text-sm">{item?.title}</h3>
+                  <h3 className="font-medium text-sm lg:w-[96%] w-[94%]">
+                    {item?.title}
+                  </h3>
                   <button
                     aria-label="Open"
-                    className="flex items-center text-[#483d73] text-sm group bg-[#E6E7E6] hover:bg-black hover:text-white rounded-full pl-2 pr-1"
+                    className="flex items-center text-[#483d73] lg:text-sm text-xs group bg-[#E6E7E6] hover:bg-black hover:text-white rounded-full pl-2 pr-1 lg:py-0.5 py-1"
                   >
                     {item?.continueReading}
                     <svg
@@ -800,43 +770,31 @@ const MostRead: React.FC<NewsProps> = ({
                     </svg>
                   </button>
                 </div>
-                <div className="w-[35%]">
-                  <Image
-                    className="rounded-xl"
-                    width={400}
-                    height={400}
-                    src={item?.img}
-                    alt={""}
-                  />
+                <div className="w-[40%]">
+                  {item?.img &&
+                    (/\.(mp4|webm|ogg)$/i.test(item?.img) ? (
+                      <video className=" rounded-xl" autoPlay loop muted>
+                        <source
+                          src={item.img}
+                          type={`video/${item.img.split(".").pop()}`}
+                        />
+                        Your browser does not support the video tag.
+                      </video>
+                    ) : (
+                      <Image
+                        className="rounded-xl"
+                        width={400}
+                        height={400}
+                        src={item?.img}
+                        alt={""}
+                      />
+                    ))}
                 </div>
               </Link>
             ))}
           </div>
         </div>
       </div>
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <div className="flex lg:flex-row flex-col items-center justify-center lg:space-x-4">
-          <Image
-            className="lg:w-[50%] rounded-3xl lg:mt-0 mt-6"
-            width={400}
-            height={400}
-            src={modalContent?.img}
-            alt={modalContent?.title}
-          />
-          <div className="lg:w-[50%] w-full">
-            <h2 className="text-xl lg:text-left text-center lg:mt-0 mt-[0.5rem] mb-[0.5rem] text-[#483d73] font-medium font-poppins">
-              {modalContent?.title}
-            </h2>
-            <div className="overflow-hidden lg:h-[12rem] lg:pr-4 w-full h-[11rem]">
-              <div className="overflow-auto h-full scrollbar-custom scrollbar">
-                <p className="font-poppins lg:text-left text-center text-sm">
-                  {modalContent?.dialogDescription}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Modal>
     </>
   );
 };

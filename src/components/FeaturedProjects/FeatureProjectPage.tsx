@@ -347,12 +347,12 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
             <div className="lg:w-1/2 w-full h-1/2 lg:h-full flex flex-col justify-between relative lg:p-0 p-3 ">
               <div className="p-4 ">
                 <Link href={`projects/${formatString(selectedGrid?.title)}`}>
-                  <h3 className="text-md mb-2 font-poppins font-semibold text-black w-[18rem]">
+                  <h3 className="text-md mb-2 font-poppins font-semibold text-black lg:w-[18rem] w-full">
                     {selectedGrid?.title}
                   </h3>
                 </Link>
-                <div className="w-[18rem] mt-2 h-[13rem] overflow-y-scroll scroll-wrapper style-1">
-                  <p className="font-poppins font-regular text-sm pl-2 text-justify">
+                <div className="lg:w-[18rem] w-full h-[10.5rem] mt-2 lg:h-[13rem] overflow-y-auto scroll-wrapper style-1">
+                  <p className="font-poppins font-regular text-sm pl-2 text-left">
                     {selectedGrid?.description}
                   </p>
                 </div>
@@ -380,7 +380,7 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
               </div>
 
               <Link href={`projects/${formatString(selectedGrid?.title)}`}>
-                <div className="absolute bottom-2 right-14 text-xs font-poppins font-medium lg:hover:text-black lg:hover:bg-white bg-black text-white py-[0.2rem] px-2 rounded-full border border-black flex items-center group transition-all duration-300">
+                <div className="absolute bottom-2 lg:right-14 right-6 text-xs font-poppins font-medium lg:hover:text-black lg:hover:bg-white bg-black text-white py-[0.2rem] px-2 rounded-full border border-black flex items-center group transition-all duration-300">
                   <p>Read More</p>
                   <Image
                     src="https://assets.nesscoindustries.com/public/assets/homepage/read-more-icon.webp"

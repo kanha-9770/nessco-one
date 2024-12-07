@@ -8,7 +8,7 @@ export const blogPosts: BlogPost[] = [
     date: "2024-11-29",
     author: {
       id: "1",
-      name: "Nessco Team",
+      name: "Nessco Editorial Team",
     },
     tags: [
       { id: "1", name: "Paper Cup Manufacturing" },
@@ -37,6 +37,7 @@ export const blogPosts: BlogPost[] = [
         content:
           "This guide will take you through the key steps to start and run a paper cup manufacturing business. We will cover everything from market research and raw materials to machinery and profitability. Additionally, we will include relevant numerical data in a tabular format to help you understand the costs and profits in this business better.",
       },
+      
       {
         type: "section",
         heading: "Demand Analysis for the Paper Cup Business",
@@ -66,7 +67,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "image",
         content: {
-          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-guide/paper-cup-guide-img1.webp",
+          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-guide/paper-cup-guide-img2.webp",
           alt: "Changing the mold in a paper cup machine is a crucial task that directly impacts production efficiency and cup quality. This blog provides a detailed step-by-step guide on the mold change process, checks to ensure proper alignment and compatibility, and tips for validating the mold's fit with the paper blank or fan.",
         },
       },
@@ -324,7 +325,7 @@ export const blogPosts: BlogPost[] = [
     date: "2024-11-29",
     author: {
       id: "1",
-      name: "Nessco Team",
+      name: "Nessco Editorial Team",
     },
     tags: [
       { id: "1", name: "Paper Making" },
@@ -503,7 +504,7 @@ export const blogPosts: BlogPost[] = [
     date: "2024-11-29",
     author: {
       id: "1",
-      name: "Nessco Team",
+      name: "Nessco Editorial Team",
     },
     tags: [
       { id: "1", name: "Paper Cup Manufacturing" },
@@ -906,7 +907,7 @@ export const blogPosts: BlogPost[] = [
     date: "2024-11-29",
     author: {
       id: "1",
-      name: "Nessco Team",
+      name: "Nessco Editorial Team",
     },
     tags: [
       { id: "1", name: "Paper Cup Manufacturing" },
@@ -1252,7 +1253,7 @@ export const blogPosts: BlogPost[] = [
     date: "2024-11-29",
     author: {
       id: "1",
-      name: "Nessco Team",
+      name: "Nessco Editorial Team",
     },
     tags: [
       { id: "1", name: "Paper Cup Manufacturing" },
@@ -1373,7 +1374,7 @@ export const blogPosts: BlogPost[] = [
       {
         type: "image",
         content: {
-          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-machine/mould-change-guide/mold2.webp",
+          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-machine/mould-change-guide/mold-2.webp",
           alt: "Mould change Guide",
         },
       },
@@ -1614,7 +1615,7 @@ export const blogPosts: BlogPost[] = [
     date: "2024-11-29",
     author: {
       id: "1",
-      name: "Nessco Team",
+      name: "Nessco Editorial Team",
     },
     tags: [
       { id: "1", name: "Paper Cup Machines" },
@@ -1918,7 +1919,7 @@ export const blogPosts: BlogPost[] = [
     date: "2024-11-29",
     author: {
       id: "1",
-      name: "Nessco Team",
+      name: "Nessco Editorial Team",
     },
     tags: [
       { id: "1", name: "Paper Cups" },
@@ -2284,7 +2285,7 @@ export const blogPosts: BlogPost[] = [
     date: "2024-11-29",
     author: {
       id: "1",
-      name: "Nessco Team",
+      name: "Nessco Editorial Team",
     },
     tags: [
       { id: "1", name: "Paper Cups" },
@@ -2828,7 +2829,7 @@ export const blogPosts: BlogPost[] = [
     date: "2024-11-29",
     author: {
       id: "1",
-      name: "Nessco Team",
+      name: "Nessco Editorial Team",
     },
     tags: [
       { id: "1", name: "Paper Cup Manufacturing" },

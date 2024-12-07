@@ -66,12 +66,12 @@ const Page3: React.FC<MainLayoutProps> = ({ sustainData }) => {
             </h2>
           </div>
           <div className=" flex absolute top-[12rem] lg:left-[3.3rem] font-poppins text-center lg:text-left">
-            <p className="w-full max-w-[50rem] text-white font-normal md:text-xl leading-[1.3rem] lg:text-[1rem] text-sm z-[301] md:px-4">
+            <p className="w-full max-w-[50rem] text-white font-normal md:text-xl leading-[1.3rem] lg:text-[1rem] text-sm z-[301] px-4">
               {data?.description}
             </p>
           </div>
           <video
-            className="absolute bottom-[1rem] lg:right-[2rem] -right-[5rem] lg:w-[10rem] w-[8rem] -rotate-45"
+            className="overflow-hidden absolute bottom-[1rem] lg:right-[2rem] -right-[5rem] lg:w-[10rem] w-[8rem] -rotate-45"
             ref={globeRef}
             autoPlay
             loop

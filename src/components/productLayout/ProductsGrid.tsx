@@ -241,7 +241,7 @@ const Page2: React.FC<Page2Props> = ({
                 aria-label="All"
                 onClick={() => handleCategoryChange("all")}
               >
-                <button>{ProductsGrid?.all.s}</button>
+                <button>{ProductsGrid?.all}</button>
               </div>
               <div
                 className={`lg:border-2 border-[0.1rem] border-solid lg:w-[12rem] w-[7rem] h-[1.5rem] lg:h-[2rem] lg:rounded-full rounded-[0.3rem] flex items-center lg:mx-[0.3rem] mx-[0.2rem] lg:text-[1rem] text-[0.7rem] font-medium ${
@@ -309,7 +309,7 @@ const Page2: React.FC<Page2Props> = ({
 
                   <input
                     type="search"
-                    placeholder={ProductsGrid?.placeholder}
+                    placeholder="Search..."
                     className="w-full text-[0.7rem] lg:text-[1rem] outline-none bg-transparent text-black font-poppins lg:mx-[0.4rem] mx-[0.2rem]"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}

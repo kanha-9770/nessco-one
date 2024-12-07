@@ -78,6 +78,7 @@ const ProcessFlow: React.FC<ProcessFlowProps> = ({ page4Data }) => {
       }
     });
   }, []);
+  const isVideo = (url: string) => /\.(mp4|webm|ogg)$/i.test(url)
 
   return (
     <div className="h-full w-full bg-white rounded-xl font-poppins">
@@ -119,6 +120,18 @@ const ProcessFlow: React.FC<ProcessFlowProps> = ({ page4Data }) => {
                     imageRefs.current[idx] = el;
                   }}
                 >
+                   {isVideo(item.img) ? (
+                <video
+                  className="h-full w-full object-cover"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                >
+                  <source src={item.img} type={`video/${item.img.split('.').pop()}`} />
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
                   <Image
                     className="h-full w-full"
                     width={400}
@@ -126,6 +139,7 @@ const ProcessFlow: React.FC<ProcessFlowProps> = ({ page4Data }) => {
                     src={item?.img}
                     alt={item?.title1}
                   />
+                )}
                 </div>
               </div>
 

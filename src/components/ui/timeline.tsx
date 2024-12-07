@@ -62,13 +62,27 @@ export const Timeline:React.FC<AboutLayoutProps> = ({companyData}) => {
                 </h3>
                 <div className="lg:flex lg:flex-row flex flex-col relative h-[25rem]">
                   <div className="lg:w-2/5 w-2/3 md:w-1/2 h-full absolute lg:left-0">
+
+                  {item?.image &&
+            (/\.(mp4|webm|ogg)$/i.test(item?.image) ? (
+              <video
+                className="object-contain rounded-xl"
+                autoPlay
+                loop
+                muted
+              >
+      <source src={item.image} type={`video/${item.image.split('.').pop()}`} />
+      Your browser does not support the video tag.
+              </video>
+            ) : (
                     <Image
                       src={item?.image}
-                      alt="banner"
+                      alt={item.title || "banner"}
                       height={290}
                       width={290}
                       className="object-contain rounded-xl"
                     />
+            ))}
                   </div>
                   <div className="lg:w-3/5 md:w-1/2 text-xs lg:text-sm text-justify md:text-xs md:p-0 md:px-7 absolute md:top-0 md:right-0 lg:right-0 bottom-0 lg:top-0 px-6 text-white font-regular font-poppins">
                     <p className="-ml-4">{item?.description}</p>

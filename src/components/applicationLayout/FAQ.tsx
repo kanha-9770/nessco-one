@@ -1,7 +1,9 @@
 "use client";
+
 import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import FormFields, { FormValues } from "../Contact/FormFileds";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,19 +37,18 @@ const Page5: React.FC<Page5Props> = ({
   faqSubTitle,
   formTitle,
   formPara,
-  firstName,
-  lastName,
-  emailAddress,
   password,
   twitterPassword,
   sendMessage,
-  tyler,
-  durden,
-  emailPlaceholder,
 }) => {
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const borderRef = useRef<HTMLDivElement | null>(null);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [formValues, setFormValues] = useState<FormValues>({
+    fullname: "",
+    email: "",
+    mobilenumber: "",
+  });
 
   const toggleExpansion = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index);
@@ -81,9 +82,6 @@ const Page5: React.FC<Page5Props> = ({
         ></div>
         <div className="flex lg:pt-[3rem] pt-[1.5rem] lg:pb-[2rem] pb-[1.6rem] lg:px-[2rem] px-[1rem]">
           <h1 className="font-poppins font-semibold lg:text-[2.2rem] text-[1.4rem]">
-            {/* <span className="text-[#483d73]">
-              {faqTitle.trim().replace(/\s+\S+$/, "")}
-            </span>{" "} */}
             <span className="text-red-700">
               {faqTitle.trim().match(/\S+$/)}
             </span>
@@ -166,70 +164,12 @@ const Page5: React.FC<Page5Props> = ({
                 <p className="text-[#727272] text-[0.9rem]">{formPara}</p>
               </div>
               <form className="font-poppins">
-                <div className="flex">
-                  <div className="flex flex-col w-[49%] mr-[0.5rem]">
-                    <label htmlFor="firstname" className="text-[0.9rem]">
-                      {firstName}
-                    </label>
-                    <input
-                      className="border-2 py-[0.4rem] px-[0.5rem] text-[0.8rem] rounded-[0.5rem] bg-[#f9fafb]"
-                      aria-label="First Name"
-                      type="text"
-                      name="firstname"
-                      id="firstname"
-                      placeholder={tyler}
-                    />
-                  </div>
-                  <div className="flex flex-col w-[49%]">
-                    <label htmlFor="lastname" className="text-[0.9rem]">
-                      {lastName}
-                    </label>
-                    <input
-                      className="border-2 py-[0.4rem] px-[0.5rem] text-[0.8rem] rounded-[0.5rem] bg-[#f9fafb]"
-                      aria-label="Last Name"
-                      type="text"
-                      name="lastname"
-                      id="lastname"
-                      placeholder={durden}
-                    />
-                  </div>
-                </div>
-                <div className="flex flex-col">
-                  <label htmlFor="email" className="text-[0.9rem]">
-                    {emailAddress}
-                  </label>
-                  <input
-                    className="border-2 py-[0.4rem] px-[0.5rem] text-[0.8rem] rounded-[0.5rem] bg-[#f9fafb]"
-                    aria-label="Email"
-                    type="email"
-                    name="email"
-                    id="email"
-                    placeholder={emailPlaceholder}
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <label htmlFor="password" className="text-[0.9rem]">
-                    {password}
-                  </label>
-                  <input
-                    className="border-2 py-[0.4rem] px-[0.5rem] text-[0.8rem] rounded-[0.5rem] bg-[#f9fafb]"
-                    aria-label="Password"
-                    type="password"
-                    name="password"
-                    id="password"
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <label htmlFor="twitterpassword" className="text-[0.9rem]">
-                    {twitterPassword}
-                  </label>
-                  <input
-                    className="border-2 py-[0.4rem] px-[0.5rem] text-[0.8rem] rounded-[0.5rem] bg-[#f9fafb]"
-                    aria-label="Twitter Password"
-                    type="password"
-                    name="twitterpassword"
-                  />
-                </div>
+                <FormFields
+                  onChange={setFormValues}
+                  values={formValues}
+                  inline={false}
+                />
+
                 <button
                   className="border-2 py-[0.5rem] px-[0.5rem] text-[0.8rem] rounded-[0.5rem] bg-[#483d73] text-white w-full mt-[1.8vh]"
                   aria-label="Send Message"

@@ -4,6 +4,7 @@ import Image from "next/image";
 import "./style.css";
 import { gsap } from "gsap";
 import { KnowledgeCenterItem } from "./types/constant";
+import LinkUrl from "../LinkUrl";
 
 interface KnowledgeCenterProps {
   knowledgeCenterData: KnowledgeCenterItem;
@@ -94,7 +95,7 @@ const HeroSection: React.FC<KnowledgeCenterProps> = ({
                       className="absolute -top-[1.8rem] lg:h-[18rem] h-40 w-auto"
                       alt={""}
                     />
-                    <div className="flex flex-col items-center justify-center lg:mt-20 gap-2 z-20">
+                    <div className="flex flex-col items-center justify-center lg:mt-20 gap-2 z-20 transition-transform duration-300 ease-in-out transform hover:scale-110">
                       <Image
                         src={item?.img}
                         className="lg:w-16 w-12"
@@ -102,7 +103,9 @@ const HeroSection: React.FC<KnowledgeCenterProps> = ({
                         width={400}
                         height={400}
                       />
+                      <LinkUrl href={item?.link}>
                       <h2 className="lg:text-2xl text-md font-normal">{item?.title}</h2>
+                      </LinkUrl>
                     </div>
                   </div>
                 </div>

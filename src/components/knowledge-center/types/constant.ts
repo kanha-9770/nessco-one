@@ -7,8 +7,10 @@ export interface KnowledgeCenterItem {
       title: string;
       description: string;
       img: string;
+      link:string;
       cards: Array<{
         title: string;
+        link:string;
         img: string;
         section?: Array<{
           que: string;

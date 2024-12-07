@@ -35,57 +35,57 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ machine }) => {
           </div>
         )}
 
-        {/* Lottie Animations */}
-        <div className="relative items-center p-4 flex flex-row justify-center">
+        
+        <div className="relative items-center p-4 flex space-x-2 justify-center">
           {machine?.descriptionSpeed && (
-            <div className="lg:h-48 h-40 flex flex-col w-64">
+            <div className="lg:h-48 h-40 flex flex-col lg:w-64 px-4">
               <Image
                 src="https://assets.nesscoindustries.com/public/assets/product/product-layout-speed-icon.webp"
                 alt="Speed"
                 width={80}
                 height={80}
-                className="lg:h-20 lg:w-20 h-16 w-16 object-contain mx-auto"
+                className="lg:h-20 lg:w-20 h-12 w-12 object-contain mx-auto"
               />
-              <p className="text-[#483d78] text-center lg:text-xl text-lg">
+              <p className="text-[#483d78] text-center lg:text-xl text-md">
                 {machine.descriptionSpeed}
               </p>
-              <p className="lg:text-base text-xs justify-center px-6 lg:mt-4 mt-2 text-center font-regular ">
+              <p className="lg:text-base text-xs justify-center  lg:mt-4 mt-2 text-center font-regular w-full">
                 {machine?.technicalSpecifications?.specifications[0]?.title ||
                   "N/A"}
               </p>
             </div>
           )}
           {machine?.descriptionSize && (
-            <div className="lg:h-48 h-40 w-64 flex flex-col border-l-2 border-gray-300 border-r-2">
+            <div className="lg:h-48 h-40 lg:w-64 px-4 flex flex-col border-l-2 border-gray-300 border-r-2">
               <Image
                 src="https://assets.nesscoindustries.com/public/assets/product/product-layout-specs-icon.webp"
                 alt="Speed"
                 width={80}
                 height={80}
-                className="lg:h-20 lg:w-20 h-16 w-16 object-contain mx-auto"
+                className="lg:h-20 lg:w-20 h-12 w-12 object-contain mx-auto"
               />
-              <p className="text-[#483d78] text-center lg:text-xl text-lg">
+              <p className="text-[#483d78] text-center lg:text-xl text-md">
                 {machine.descriptionSize}
               </p>
-              <p className="lg:text-base text-xs lg:mt-4 mt-2 px-6 text-center font-regular ">
+              <p className="lg:text-base text-xs lg:mt-4 mt-2  text-center font-regular w-full">
                 {machine?.technicalSpecifications?.specifications[2]?.title ||
                   "N/A"}
               </p>
             </div>
           )}
           {machine?.descriptionRange && (
-            <div className="lg:h-48 h-40 w-64 flex flex-col">
+            <div className="lg:h-48 h-40 lg:w-64 px-4 flex flex-col">
               <Image
                 src="https://assets.nesscoindustries.com/public/assets/product/product-layout-range-icon.webp"
                 alt="Speed"
                 width={80}
                 height={80}
-                className="lg:h-20 lg:w-20 h-16 w-16 object-contain mx-auto"
+                className="lg:h-20 lg:w-20 h-12 w-12 object-contain mx-auto"
               />
-              <p className="text-[#483d78] text-center lg:text-xl text-lg">
+              <p className="text-[#483d78] text-center lg:text-xl text-md">
                 {machine.descriptionRange}
               </p>
-              <p className="lg:text-base text-xs lg:mt-4 mt-2 px-6 text-center font-regular ">
+              <p className="lg:text-base text-xs lg:mt-4 mt-2 text-center font-regular w-full">
                 {machine?.technicalSpecifications?.specifications[1]?.title ||
                   "N/A"}
               </p>
