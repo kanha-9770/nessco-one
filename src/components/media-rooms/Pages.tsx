@@ -544,10 +544,10 @@ const LatestNews: React.FC<NewsProps> = ({
     dialogDescription: "",
   });
 
-  const openModal = (content: NewsItem) => {
-    setModalContent(content);
-    setModalOpen(true);
-  };
+  // const openModal = (content: NewsItem) => {
+  //   setModalContent(content);
+  //   setModalOpen(true);
+  // };
 
   const closeModal = () => setModalOpen(false);
 

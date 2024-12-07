@@ -124,11 +124,11 @@ const AboutLayout: React.FC<AboutDataProps> = ({ navData, setActive }) => {
                   <span>{item?.title}</span>
                 </p>
               </div>
-              <div className="flex lg:hidden flex-row lg:flex-col space-x-4 lg:space-x-0">
+              <div className="flex lg:hidden flex-row space-x-4">
                 <Image
                   src={mobileImage[index % mobileImage?.length]} // Removed unnecessary template literal                    alt={item?.alt || "Fallback alt text"}
                   alt={item?.alt || "Fallback alt text"}
-                  className="rounded-xl invert cursor-pointer h-6 w-6 lg:w-56 lg:h-56 object-cover transform lg:hover:scale-80 transition-transform duration-200"
+                  className="invert cursor-pointer h-6 w-6 lg:w-56 lg:h-56 object-cover transform lg:hover:scale-80 transition-transform duration-200"
                   width={224}
                   height={224}
                   loading="lazy"

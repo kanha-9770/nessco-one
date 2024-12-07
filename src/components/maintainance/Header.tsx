@@ -37,9 +37,9 @@ const Header: React.FC<MaintainanceProps> = ({ maintainanceData }) => {
   );
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
-  const pathname = usePathname();
+  
 
-  const { formData: formContextData, setFormData: setFormContextData, submitForm, visitData } = useForm();
+  const { submitForm } = useForm();
 
   const [formData, setFormData] = useState<FormValues>({
     fullname: "",

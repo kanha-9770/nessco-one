@@ -1,9 +1,8 @@
 import React from "react";
-import { Button } from "../ui/button";
+
 import dynamic from "next/dynamic";
 import { HomeData } from "./types/constant";
 import FeatureProjects from "./FeatureProjects";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ReusableForm from "../Contact/ReuseableForm";
 const VideoCarousel = dynamic(() => import("../ui/HomeCaorusel"));
@@ -17,8 +16,7 @@ const Home: React.FC<HeroLayoutProps> = ({ heroData }) => {
 
   // Extract countryCode and languageCode from pathname
   const pathSegments = pathname.split("/").filter(Boolean);
-  const countryCode = pathSegments[0] || "";
-  const languageCode = pathSegments[1] || "";
+
   return (
     <>
       <div className="relative max-w-screen-2xl mx-auto h-full w-full flex flex-col items-center overflow-hidden">

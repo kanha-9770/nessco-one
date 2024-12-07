@@ -4,6 +4,12 @@ import { countryCODE, languageCODE } from "../nav-menue";
 import Link from "next/link";
 import LottieAnimation from "@/components/ui/LottieAnimation";
 import Image from "next/image";
+import Maintenance from "../../../../public/assets/SupportNavbar/Maintenance.json";
+import UserGuide from "../../../../public/assets/SupportNavbar/help V2.json";
+import Services from "../../../../public/assets/SupportNavbar/Service.json";
+import GenuineParts from "../../../../public/assets/SupportNavbar/Shipping.json";
+
+const image = [Services, GenuineParts, UserGuide, Maintenance];
 
 type SupportItem = {
   title: string;
@@ -103,7 +109,7 @@ const SupportGrid: React.FC<SupportGridProps> = ({ navData, setActive }) => {
               <div className="flex-shrink-0 w-72 h-40 rounded-3xl p-4 flex flex-col justify-center items-center bg-cover bg-center bg-[#bbabf949]">
                 <LottieAnimation
                   className="h-28 w-28"
-                  animationData={item?.image}
+                  animationData={image[index % image.length]}
                 ></LottieAnimation>
               </div>
               <p className="relative font-poppins text-center mt-4 invert-0 font-normal hover:text-[#483d78] hover:font-semibold text-base">

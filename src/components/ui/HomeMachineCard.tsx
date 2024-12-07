@@ -320,13 +320,8 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
                   ))}
                 </ul>
                 <div className="flex w-full space-x-2 lg:space-x-8 lg:justify-end justify-center mt-2">
-                  <Link
-                    className="ml-1"
-                    href={`/${countryCODE}/${languageCODE}/contact`}
-                  >
-                    <div
-                      className="rounded-full flex items-center justify-center bg-gradient-to-r from-[#483d73] to-red-700 pl-4 py-1 text-base font-medium transition-all duration-300 ease-in-out group bg-clip-border custom-gradient-border"
-                    >
+                  <div className="ml-1">
+                    <div className="">
                       {/* <span className="text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#483d73] group-hover:to-red-700">
                         Get a Quote
                       </span>
@@ -347,7 +342,7 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
                         </svg>
                       </span> */}
                       <ReusableForm
-                        formId="homePage"
+                        formId="our product"
                         buttonText="Get a Quote"
                         dialogTitle="Get in Touch"
                         dialogSubtitle="We'd love to hear from you!"
@@ -357,7 +352,7 @@ const Card = ({ card, activeStep }: { card: Card; activeStep: string }) => {
                         normalButton={false}
                       />
                     </div>
-                  </Link>
+                  </div>
                 </div>
               </div>
             </div>

@@ -27,7 +27,7 @@ const ReusableForm: React.FC<ReusableFormProps> = ({
   dialogSubtitle = "We'd love to hear from you!",
   imageUrl,
   showButton = true,
-  secodaryButton= false,
+  secodaryButton = false,
   normalButton = false,
 }) => {
   const { submitForm } = useForm();
@@ -87,7 +87,7 @@ const ReusableForm: React.FC<ReusableFormProps> = ({
           {secodaryButton === true ? (
             <Button className="rounded-full flex items-center justify-between text-primary-foreground border-2 border-white h-[3.5rem] w-40 sm:h-16 sm:w-60 md:h-16 md:w-60 lg:h-16 lg:w-60 text-xs sm:text-sm md:text-base lg:text-lg bg-clip-border relative group custom-gradient-border transition-all duration-300 overflow-hidden">
               <span className="font-medium text-white group-hover:bg-gradient-to-r group-hover:from-[#483d73] group-hover:to-red-700 group-hover:text-transparent group-hover:bg-clip-text pl-2 sm:pl-4 md:pl-6 lg:pl-8 truncate flex-grow text-left transition-all duration-300">
-              {buttonText}
+                {buttonText}
               </span>
               <span className="h-8 w-8 sm:h-10 sm:w-10 group custom-gradient-border-icon border-[0.5px] md:h-12 md:w-12 bg-white rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-gradient-to-r group-hover:from-[#483d73] group-hover:to-red-700 transition-all duration-300">
                 <svg
@@ -108,22 +108,24 @@ const ReusableForm: React.FC<ReusableFormProps> = ({
             </Button>
           ) : normalButton === true ? (
             <Button className="bg-white text-black font-medium font-poppins py-2 px-6 rounded-full shadow-lg">
-              <span className="text-black">
-                {buttonText}
-              </span>
-              
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 64 64"
-              className="w-5 h-5"
-            >
-              <circle cx="32" cy="32" r="32" className="fill-[#483d73] ml-2" />
-              <path
-                d="M25 20l12 12-12 12"
-                className="stroke-white stroke-[4px] fill-none stroke-linecap-round stroke-linejoin-round"
-              />
-            </svg>
-            
+              <span className="text-black">{buttonText}</span>
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 64 64"
+                className="w-5 h-5"
+              >
+                <circle
+                  cx="32"
+                  cy="32"
+                  r="32"
+                  className="fill-[#483d73] ml-2"
+                />
+                <path
+                  d="M25 20l12 12-12 12"
+                  className="stroke-white stroke-[4px] fill-none stroke-linecap-round stroke-linejoin-round"
+                />
+              </svg>
             </Button>
           ) : (
             <Button className="bg-gradient-to-r from-[#483d73] to-red-700 text-white font-medium font-poppins py-2 px-6 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">

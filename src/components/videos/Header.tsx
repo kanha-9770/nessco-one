@@ -5,11 +5,12 @@ import { VideosItem } from "./types/constant";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search,Filter} from "lucide-react";
+import { Search, Filter } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ScrollArea } from "../ui/ScrollArea";
 import { Checkbox } from "../ui/CheckBox";
 import YouTube from "../Navbar/NavLayouts/YoutubeSvg";
+import Image from "next/image";
 
 interface VideosProps {
   videosData: VideosItem;
@@ -32,7 +33,6 @@ const VideoGallery: React.FC<VideosProps> = ({ videosData }) => {
     string[]
   >(["All Categories"]);
 
-
   const filteredVideos = Header?.VideosRef?.filter((video) => {
     const categoryMatch =
       selectedCategories?.includes("All Categories") ||
@@ -40,8 +40,8 @@ const VideoGallery: React.FC<VideosProps> = ({ videosData }) => {
     const applicationMatch =
       selectedApplications?.includes("All Categories") ||
       selectedApplications?.includes(video?.tag);
-   
-    return categoryMatch && applicationMatch ;
+
+    return categoryMatch && applicationMatch;
   });
 
   const handleSelectionChange = (
@@ -245,7 +245,9 @@ const VideoGallery: React.FC<VideosProps> = ({ videosData }) => {
                     <DialogTrigger asChild>
                       <div className="w-full h-[10rem] relative group cursor-pointer">
                         <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-60 transition-all duration-300 rounded-[1rem]" />
-                        <img
+                        <Image
+                          height={600}
+                          width={600}
                           src={`https://img.youtube.com/vi/${getYouTubeVideoId(
                             item.url
                           )}/0.jpg`}

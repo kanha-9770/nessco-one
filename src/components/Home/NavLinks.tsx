@@ -220,3 +220,4 @@ const NavLinksDemo: React.FC<NavLinksDemoProps> = ({ type, navItems }) => {
 };
 
 export default NavLinksDemo;
+

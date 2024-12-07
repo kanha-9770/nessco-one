@@ -17,7 +17,6 @@ import ResourceGrid from "@/components/Navbar/NavLayouts/ResourceLayout";
 import SupportGrid from "@/components/Navbar/NavLayouts/SupportLayout";
 import VideoGrid from "@/components/Navbar/NavLayouts/VideoLayout";
 import { NavbarData } from "./types/constant";
-import MinusSvg from "../ui/MinusSvg";
 import PlusSvg from "../ui/PlusSvg";
 
 interface NavbarItem {

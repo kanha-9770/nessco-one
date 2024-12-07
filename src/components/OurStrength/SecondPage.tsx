@@ -225,8 +225,8 @@ const SecondPage: React.FC<MainLayoutProps> = ({ strengthData }) => {
         {isModalOpen && componentData && (
           <div className="fixed inset-0 flex justify-center bg-black bg-opacity-50 z-50 lg:px-10 px-4 pt-20 overflow-y-scroll">
             <div className="flex flex-col items-center justify-center h-max w-full p-4 relative bg-[#f5f5f5] rounded-3xl">
-              <div className="relative h-[16rem] lg:w-[60rem] w-[22rem] flex justify-center items-center lg:mt-10">
-                <div className="overflow-hidden lg:w-[30rem] w-[25rem] -mt-5">
+              <div className="relative lg:h-[14rem] h-[9rem] lg:w-[60rem] w-[22rem] flex justify-center items-center lg:mt-10">
+                <div className="overflow-hidden lg:w-[30rem] w-[25rem] lg:-mt-5 mt-5">
                   <Swiper
                     effect="coverflow"
                     grabCursor={true}

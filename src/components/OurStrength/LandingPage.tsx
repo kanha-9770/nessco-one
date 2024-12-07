@@ -44,7 +44,7 @@ const Home:React.FC <MainLayoutProps>= ({strengthData}) => {
         <div className="w-full lg:h-screen h-[40rem] relative flex items-center justify-center">
           <video
             id="background-video"
-            className="w-full h-screen object-cover"
+            className="w-full h-screen object-cover object-[center_10%]"
             autoPlay
             loop
             muted

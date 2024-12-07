@@ -91,7 +91,7 @@ const Founders: React.FC<MainLayoutProps> = ({ companyData }) => {
 
   return (
     <div className="bg-black text-white py-16 h-full ">
-      <h2 className="text-center lg:text-3xl text-2xl font-poppins font-medium mb-8 lg:mt-28">
+      <h2 className="text-center lg:text-3xl text-2xl font-poppins font-medium mb-8 lg:mt-0">
         {ourfounderheading?.title} {" "}
         <span className="text-red-600">{ourfounderheading?.highlight}</span>
       </h2>

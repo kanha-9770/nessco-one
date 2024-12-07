@@ -12,10 +12,9 @@ interface Page1Props {
 
 type CombinedProps = BlogsProps & Page1Props;
 
-const Page1: React.FC<CombinedProps> = ({ blogsData, onCategorySelect }) => {
+const Page1: React.FC<CombinedProps> = ({ blogsData}) => {
   const Filter = blogsData.blogs[0]?.Filter;
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [showCategories, setShowCategories] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleCategoryChange = (category: string) => {
@@ -26,18 +25,18 @@ const Page1: React.FC<CombinedProps> = ({ blogsData, onCategorySelect }) => {
     );
   };
 
-  const filterCategories = (categories: string[], searchTerm: string) => {
-    if (!searchTerm) return categories;
-    const filteredCategories = categories?.filter((category) =>
-      category.toLowerCase().includes(searchTerm?.toLowerCase())
-    );
-    return [
-      ...filteredCategories,
-      ...categories?.filter(
-        (category) => !category?.toLowerCase().includes(searchTerm?.toLowerCase())
-      ),
-    ];
-  };
+  // const filterCategories = (categories: string[], searchTerm: string) => {
+  //   if (!searchTerm) return categories;
+  //   const filteredCategories = categories?.filter((category) =>
+  //     category.toLowerCase().includes(searchTerm?.toLowerCase())
+  //   );
+  //   return [
+  //     ...filteredCategories,
+  //     ...categories?.filter(
+  //       (category) => !category?.toLowerCase().includes(searchTerm?.toLowerCase())
+  //     ),
+  //   ];
+  // };
 
   // const categoryTitles = Filter?.categories?.map((category) => category?.title);
 

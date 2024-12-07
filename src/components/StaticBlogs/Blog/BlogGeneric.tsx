@@ -3,22 +3,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Clock,
-  Calendar,
-  List,
-  Facebook,
-  Twitter,
-  Linkedin,
-  Globe,
-} from "lucide-react";
+import { Clock, Calendar, Facebook, Twitter, Linkedin } from "lucide-react";
 import { blogPosts } from "../data/data2";
 import { ContentBlock, ListContent, SectionContent } from "../types/blogs";
 import ImageBlock from "@/components/StaticBlogs/ImageBlock";
 import TableBlock from "@/components/StaticBlogs/TableBlock";
-import TagList from "@/components/StaticBlogs/TagList";
 import TextBlock from "@/components/StaticBlogs/TextBlock";
 import ListBlock from "../ListBlock";
 import { Card, CardContent } from "@/components/ui/card";
@@ -90,8 +79,8 @@ const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
         const sectionContent = block.content as SectionContent;
         return (
           <div>
-            {sectionContent.intro && <p>{sectionContent.intro}</p>}
-            {sectionContent.blocks.map((subBlock, index) => (
+            {sectionContent?.intro && <p>{sectionContent.intro}</p>}
+            {sectionContent?.blocks?.map((subBlock, index) => (
               <div key={index}>{renderContent(subBlock)}</div>
             ))}
           </div>
@@ -104,23 +93,47 @@ const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
   return (
     <div className="font-sans min-h-screen ">
       {/* Header Image Section */}
-      <div className="relative ">
+      <div className="relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="w-full relative overflow-hidden h-[50vh] bg-black rounded-b-3xl"
+          className="w-full relative overflow-hidden h-screen flex flex-col justify-center space-y-4 items-center  bg-black "
         >
+          <h1 className="flex text-white -mt-16 w-[60%] text-center text-6xl ">
+            {post?.header?.heading}
+          </h1>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.5 }}
-            className="w-full pt-8 pb-6 shadow-2xl relative overflow-hidden"
+            transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
+            className="flex items-center space-x-6"
           >
-            <div className="absolute inset-0 bg-[url('/path/to/texture.png')] opacity-10 mix-blend-overlay"></div>
-            <h2 className="text-white lg:text-4xl absolute text-2xl lg:px-12 px-8 font-bold top-1/2 z-10">
-              {post?.title}
-            </h2>
+            <Image
+              src={
+                post?.author?.avatar ||
+                "https://www.nesscoindia.com/Assets/images/logo.webp"
+              }
+              alt={post?.author?.name || "Author avatar"}
+              width={64}
+              height={64}
+              className="rounded-full h-16 w-16 shadow-lg border-2 border-white"
+            />
+            <div className="text-center">
+              <span className="text-gray-800 font-semibold text-xl">
+                {post?.author?.name}
+              </span>
+              <div className="flex items-center mt-2 space-x-4 text-sm text-gray-600">
+                <div className="flex items-center space-x-1">
+                  <Calendar className="w-4 h-4" />
+                  <span>{post?.date}</span>
+                </div>
+                <div className="flex items-center space-x-1">
+                  <Clock className="w-4 h-4" />
+                  <span>{post?.readingTime} min read</span>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </motion.div>
 
@@ -133,9 +146,7 @@ const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
           {post?.header?.headingImage &&
             (/\.(mp4|webm|ogg)$/i.test(post?.header?.headingImage) ? (
               <video
-                className="object-cover z-50 lg:h-[25rem] h-[12rem] w-full rounded-3xl shadow-2xl"
-                width={1200}
-                height={600}
+                className="object-contain z-50 lg:h-[25rem] h-[12rem] w-full rounded-3xl shadow-2xl"
                 autoPlay
                 loop
                 muted
@@ -145,9 +156,10 @@ const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
               </video>
             ) : (
               <Image
-                className="object-cover z-50 lg:h-[25rem] h-[12rem] w-full rounded-3xl shadow-2xl"
-                width={1200}
-                height={600}
+                className="object-contain w-full z-50 lg:h-[25rem] h-[12rem] rounded-3xl shadow-2xl"
+                layout="responsive"
+                width={900}
+                height={500}
                 priority
                 src={post?.header?.headingImage}
                 alt={post?.slug || "Blog post header image"}
@@ -157,12 +169,16 @@ const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl py-48 mx-auto px-4 sm:px-6 lg:px-8 ">
         <div className="flex flex-col md:flex-row gap-8">
           {/* Left Column - Table of Contents */}
-          <div className="md:w-1/4">
-            <Card className={`${isSticky ? "md:sticky md:top-20" : ""}`}>
-              <CardContent className="p-4">
+          <div className="md:w-1/4 ">
+            <Card
+              className={`${
+                isSticky ? "md:sticky md:top-16 h-auto border-r rounded-lg" : ""
+              }`}
+            >
+              <CardContent className="p-4 ">
                 <h2 className="font-semibold text-lg mb-4">
                   Table of Contents
                 </h2>
@@ -195,16 +211,83 @@ const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
 
                 {/* Connect Section */}
                 <div className="mt-8 space-y-4">
-                  <h2 className="font-semibold text-lg">Connect</h2>
+                  <h2 className="font-semibold text-lg">Share</h2>
                   <div className="flex gap-2">
-                    {[Facebook, Twitter, Linkedin, Globe].map((Icon, i) => (
-                      <button
+                    {[
+                      {
+                        Icon: Facebook,
+                        url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+                          window.location.href
+                        )}`,
+                      },
+                      {
+                        Icon: Twitter,
+                        url: `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+                          window.location.href
+                        )}&text=${encodeURIComponent(post?.title || "")}`,
+                      },
+                      {
+                        Icon: Linkedin,
+                        url: `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
+                          window.location.href
+                        )}&title=${encodeURIComponent(post?.title || "")}`,
+                      },
+                      {
+                        Icon: () => (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="w-4 h-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M16.05 12.42a6 6 0 11-8.49 0M15.5 16a6.48 6.48 0 01-7-6c.8.6 2 1.2 3.5 1.5.63-.8 1.8-2 2.62-2.5a4.5 4.5 0 016.38 6.3z"
+                            />
+                          </svg>
+                        ),
+                        url: `https://wa.me/?text=${encodeURIComponent(
+                          `${post?.title || ""} - ${window.location.href}`
+                        )}`,
+                      },
+                    ].map(({ Icon, url }, i) => (
+                      <a
                         key={i}
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="w-8 h-8 flex items-center justify-center rounded bg-gray-800 text-white hover:bg-gray-700 transition-colors"
                       >
                         <Icon className="w-4 h-4" />
-                      </button>
+                      </a>
                     ))}
+                    {/* Copy Link Button */}
+                    <button
+                      onClick={() => {
+                        navigator.clipboard.writeText(window.location.href);
+                        alert("Link copied to clipboard!");
+                      }}
+                      className="w-8 h-8 flex items-center justify-center rounded bg-gray-800 text-white hover:bg-gray-700 transition-colors"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        className="lucide lucide-link"
+                      >
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                      </svg>
+                    </button>
                   </div>
                 </div>
               </CardContent>
@@ -213,11 +296,11 @@ const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
 
           {/* Right Column - Main Content */}
           <div className="md:w-3/4">
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
-              className="flex items-center mb-8 space-x-6"
+              className="flex items-center space-x-6"
             >
               <Image
                 src={
@@ -244,16 +327,16 @@ const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </motion.div> */}
 
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
               className="mb-8"
             >
               <TagList tags={post?.tags} />
-            </motion.div>
+            </motion.div> */}
 
             <div className="space-y-8">
               <AnimatePresence>
@@ -298,33 +381,6 @@ const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
           </div>
         </div>
       </div>
-
-      {/* Navigation Buttons */}
-      <motion.div
-        className="fixed bottom-8 right-8 flex space-x-4"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 1 }}
-      >
-        <button
-          onClick={() => handleContentClick(Math.max(0, activeIndex - 1))}
-          className="bg-white text-blue-500 p-3 rounded-full shadow-lg hover:bg-blue-50 transition-colors duration-300"
-          aria-label="Previous section"
-        >
-          <ChevronLeft className="w-6 h-6" />
-        </button>
-        <button
-          onClick={() =>
-            handleContentClick(
-              Math.min((post?.content?.length || 1) - 1, activeIndex + 1)
-            )
-          }
-          className="bg-white text-blue-500 p-3 rounded-full shadow-lg hover:bg-blue-50 transition-colors duration-300"
-          aria-label="Next section"
-        >
-          <ChevronRight className="w-6 h-6" />
-        </button>
-      </motion.div>
     </div>
   );
 };

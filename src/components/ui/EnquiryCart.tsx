@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { X, ShoppingCart, Trash2 } from "lucide-react";
 import Image from "next/image";
 import {
@@ -10,6 +10,13 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { useForm } from "@/app/[country]/[locale]/context/FormContext";
 import { toast } from "react-hot-toast";
 import { EnquiryItem } from "@/hooks/useEnquiryCart";
@@ -27,10 +34,7 @@ export default function EnquiryComponent({
   maxItems = 10,
 }: EnquiryComponentProps) {
   const [cartItems, setCartItems] = useState<EnquiryItem[]>([]);
-  const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const cartRef = useRef<HTMLDivElement>(null);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const { submitForm } = useForm();
 
   const [formValues, setFormValues] = useState<FormValues>({
@@ -60,46 +64,6 @@ export default function EnquiryComponent({
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
-
-  const toggleCart = () => {
-    setIsOpen(!isOpen);
-    if (!isOpen) {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-    } else {
-      startCloseTimer();
-    }
-  };
-
-  const startCloseTimer = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-    timeoutRef.current = setTimeout(() => {
-      setIsOpen(false);
-    }, 10000);
-  };
-
-  const handleMouseEnter = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (isOpen) {
-      startCloseTimer();
-    }
-  };
-
-  useEffect(() => {
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-    };
-  }, []);
 
   const handleRemoveItem = (id: string) => {
     const updatedItems = cartItems.filter((item) => item.id !== id);
@@ -150,29 +114,39 @@ export default function EnquiryComponent({
 
   return (
     <>
+      <style jsx global>{`
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 4px;
+          height: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: #f1f1f1;
+          border-radius: 2px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #888;
+          border-radius: 2px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #555;
+        }
+      `}</style>
       {cartItems.length > 0 && (
-        <div
-          ref={cartRef}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          className={`fixed left-4 z-50 transition-all duration-300 ${
-            isOpen ? "bottom-0 w-auto max-w-[90vw]" : "bottom-32 w-16 h-16"
-          }`}
-        >
-          {!isOpen ? (
-            <button
-              onClick={toggleCart}
-              className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center text-white shadow-lg hover:bg-red-700 transition-colors"
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button
+              className="fixed left-4 bottom-32 w-16 h-16 bg-red-600 rounded-full flex items-center justify-center text-white shadow-lg hover:bg-red-700 transition-colors z-50"
               aria-label="Open enquiry cart"
             >
               <ShoppingCart size={24} />
               <span className="absolute top-0 right-0 bg-white text-red-600 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
                 {cartItems.length}
               </span>
-            </button>
-          ) : (
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col">
-              <div className="bg-white border-b p-2 flex justify-between items-center">
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="bottom" className="h-[30vh] bg-white">
+            <SheetHeader>
+              <SheetTitle className="flex justify-between items-center">
                 <div className="flex items-center gap-2">
                   <h3 className="font-medium text-sm text-gray-700">
                     Enquiry Cart
@@ -181,66 +155,74 @@ export default function EnquiryComponent({
                     ({cartItems.length}/{maxItems})
                   </span>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 pr-20 -mt-4">
                   <Button
                     onClick={openModal}
-                    size="sm"
-                    variant="destructive"
-                    className="text-xs px-2 py-1 h-auto"
+                    className="relative flex items-center justify-center bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white font-medium font-poppins py-3 px-2 rounded-full shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
                   >
-                    Enquire Now
+                    <span className="mr-3">Enquire Now</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 64 64"
+                      className="w-6 h-6"
+                    >
+                      <circle
+                        cx="32"
+                        cy="32"
+                        r="32"
+                        className="fill-current text-purple-700"
+                      />
+                      <path
+                        d="M25 20l12 12-12 12"
+                        className="stroke-white stroke-[3] fill-none stroke-linecap-round stroke-linejoin-round"
+                      />
+                    </svg>
                   </Button>
-                  <button
+
+                  <Button
                     onClick={clearCart}
                     className="text-gray-400 hover:text-gray-600 p-1"
                     aria-label="Clear cart"
                   >
                     <Trash2 size={16} />
-                  </button>
-                  <button
-                    onClick={toggleCart}
-                    className="text-gray-400 hover:text-gray-600 p-1"
-                    aria-label="Close cart"
+                  </Button>
+                </div>
+              </SheetTitle>
+            </SheetHeader>
+            <div className="mt-4  overflow-x-auto custom-scrollbar">
+              <div className="flex gap-2 pb-4">
+                {cartItems.map((item) => (
+                  <div
+                    key={item.id}
+                    className="relative  flex items-center bg-white border rounded-md p-2 w-[260px] hover:bg-gray-50 transition-colors duration-200 flex-shrink-0"
                   >
-                    <X size={16} />
-                  </button>
-                </div>
-              </div>
-              <div className="p-2 overflow-x-auto">
-                <div className="flex gap-2">
-                  {cartItems.map((item) => (
-                    <div
-                      key={item.id}
-                      className="relative flex items-center bg-white border rounded-md p-2 w-[260px] hover:bg-gray-50 transition-colors duration-200"
-                    >
-                      <div className="absolute top-2 left-2 w-1.5 h-1.5 bg-red-500 rounded-full" />
-                      <div className="w-16 h-16 relative mr-3 flex-shrink-0">
-                        <Image
-                          src={item.image}
-                          alt={item.name}
-                          fill
-                          className="object-cover rounded-md"
-                        />
-                      </div>
-                      <div className="flex flex-col min-w-0 flex-grow pr-6">
-                        <h3 className="text-xs font-medium text-gray-900 line-clamp-2">
-                          {item.name}
-                        </h3>
-                      </div>
-                      <button
-                        onClick={() => handleRemoveItem(item.id)}
-                        className="absolute top-2 right-2 text-gray-400 hover:text-gray-600"
-                        aria-label="Remove item"
-                      >
-                        <X size={14} />
-                      </button>
+                    <div className="absolute top-2 left-2 w-1.5 h-1.5 bg-red-500 rounded-full" />
+                    <div className="w-16 h-16 relative mr-3 flex-shrink-0">
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        fill
+                        className="object-cover rounded-md"
+                      />
                     </div>
-                  ))}
-                </div>
+                    <div className="flex flex-col min-w-0 flex-grow pr-6">
+                      <h3 className="text-xs font-medium text-gray-900 line-clamp-2">
+                        {item.name}
+                      </h3>
+                    </div>
+                    <button
+                      onClick={() => handleRemoveItem(item.id)}
+                      className="absolute top-2 right-2 text-gray-400 hover:text-gray-600"
+                      aria-label="Remove item"
+                    >
+                      <X size={14} />
+                    </button>
+                  </div>
+                ))}
               </div>
             </div>
-          )}
-        </div>
+          </SheetContent>
+        </Sheet>
       )}
 
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
@@ -253,7 +235,7 @@ export default function EnquiryComponent({
             </DialogHeader>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
               <div className=" pr-4">
-                <div className="border-2 space-y-4 max-h-[50vh] overflow-y-auto rounded-xl p-4 custom-scrollbar-container">
+                <div className="border-2 space-y-4 max-h-[50vh] overflow-y-auto rounded-xl p-4 custom-scrollbar">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                     {cartItems.map((item) => (
                       <div

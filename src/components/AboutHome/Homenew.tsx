@@ -103,7 +103,7 @@ const Home: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                   height={100}
                   className={`${imageWidths[index]}`}
                 />
-                <p className="font-medium lg:text-sm text-[0.5rem] whitespace-normal text-white lg:w-[10rem] w-[5rem] text-center">
+                <p className="font-medium lg:text-sm text-[0.5rem] whitespace-normal text-white lg:w-[9rem] w-[5rem] text-center">
                   {item?.title}
                 </p>
               </div>

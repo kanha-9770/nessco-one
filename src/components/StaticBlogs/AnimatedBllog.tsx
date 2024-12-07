@@ -3,78 +3,63 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { Clock, Calendar, Facebook, Twitter, Linkedin } from "lucide-react";
+import { blogPosts } from "./data/data";
+import { ContentBlock, ListContent, SectionContent } from "./types/blogs";
 import ImageBlock from "@/components/StaticBlogs/ImageBlock";
 import TableBlock from "@/components/StaticBlogs/TableBlock";
 import TextBlock from "@/components/StaticBlogs/TextBlock";
-import { blogPosts } from "./data/data";
-import { ContentBlock, ListContent, SectionContent } from "./types/blogs";
 import ListBlock from "./ListBlock";
-import { ChevronLeft, ChevronRight, List } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
-interface AnimatedBlogPostProps {
+interface BlogGenericProps {
   id?: string;
 }
 
-const AnimatedBlogPost: React.FC<AnimatedBlogPostProps> = ({ id }) => {
-  const post = blogPosts.find((p) => p?.slug === id);
-  console.log(id);
+const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
+  const formatString = (input: string) => {
+    return input
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, "-")
+      .replace(/[^a-z0-9-]/g, "");
+  };
+
+  const post = blogPosts.find(
+    (p) => formatString(p?.slug) === formatString(id)
+  );
+
   const [activeIndex, setActiveIndex] = useState(0);
   const contentRefs = useRef<(HTMLElement | null)[]>([]);
-  const rightContainerRef = useRef<HTMLDivElement | null>(null);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
 
-  console.log(id);
-
-  const handleScroll = () => {
-    if (rightContainerRef.current) {
-      const { scrollTop } = rightContainerRef.current;
-      setIsScrolled(scrollTop > 0);
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsSticky(scrollPosition > 300);
 
       contentRefs.current.forEach((ref, idx) => {
         if (ref) {
           const rect = ref.getBoundingClientRect();
-          const containerRect =
-            rightContainerRef.current!.getBoundingClientRect();
-
-          if (
-            rect.top <= containerRect.top &&
-            rect.bottom >= containerRect.top
-          ) {
+          if (rect.top <= 100 && rect.bottom >= 100) {
             setActiveIndex(idx);
           }
         }
       });
-    }
-  };
-
-  useEffect(() => {
-    const container = rightContainerRef.current;
-    if (container) {
-      container.addEventListener("scroll", handleScroll);
-    }
-
-    return () => {
-      if (container) {
-        container.removeEventListener("scroll", handleScroll);
-      }
     };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleContentClick = (index: number) => {
     setActiveIndex(index);
-
-    if (contentRefs.current[index] && rightContainerRef.current) {
-      const selectedElement = contentRefs.current[index]!;
-      const rightContainerTop =
-        rightContainerRef.current.getBoundingClientRect().top;
-      const selectedElementTop = selectedElement.getBoundingClientRect().top;
-
-      const offset = selectedElementTop - rightContainerTop;
-
-      rightContainerRef.current.scrollBy({
-        top: offset,
-        behavior: "smooth",
-      });
+    const element = contentRefs.current[index];
+    if (element) {
+      const yOffset = -80;
+      const y =
+        element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
 
@@ -94,8 +79,8 @@ const AnimatedBlogPost: React.FC<AnimatedBlogPostProps> = ({ id }) => {
         const sectionContent = block.content as SectionContent;
         return (
           <div>
-            {sectionContent.intro && <p>{sectionContent.intro}</p>}
-            {sectionContent.blocks.map((subBlock, index) => (
+            {sectionContent?.intro && <p>{sectionContent.intro}</p>}
+            {sectionContent?.blocks?.map((subBlock, index) => (
               <div key={index}>{renderContent(subBlock)}</div>
             ))}
           </div>
@@ -105,215 +90,263 @@ const AnimatedBlogPost: React.FC<AnimatedBlogPostProps> = ({ id }) => {
     }
   };
 
-  console.log(id);
-
   return (
-    <div className="font-poppins px-10 py-14">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-        className="w-full relative overflow-hidden h-[20rem] mt-4 bg-black rounded-3xl"
-      >
+    <div className="font-sans min-h-screen ">
+      {/* Header Image Section */}
+      <div className="relative ">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut", delay: 0.5 }}
-          className="w-full pt-8 pb-6 shadow-2xl relative overflow-hidden"
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="w-full relative overflow-hidden h-[60vh] bg-black rounded-b-3xl"
+        ></motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
+          className="lg:px-[10%] px-[8%] -mt-52 mb-8 relative z-10"
         >
-          <div className="absolute inset-0 bg-[url('/path/to/texture.png')] opacity-10 mix-blend-overlay"></div>
-          <h2
-            className="text-white lg:text-3xl text-lg lg:px-12 px-8 relative z-10"
-            style={{ fontFamily: "Georgia, serif" }}
-          >
-            {post?.title}
-          </h2>
+          {post?.header?.headingImage &&
+            (/\.(mp4|webm|ogg)$/i.test(post?.header?.headingImage) ? (
+              <video
+                className="object-contain z-50 lg:h-[25rem] h-[12rem] w-full rounded-3xl shadow-2xl"
+                autoPlay
+                loop
+                muted
+              >
+                <source src={post?.header?.headingImage} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              <Image
+                className="object-contain w-full z-50 lg:h-[25rem] h-[12rem] rounded-3xl shadow-2xl"
+                layout="responsive"
+                width={900}
+                height={500}
+                priority
+                src={post?.header?.headingImage}
+                alt={post?.slug || "Blog post header image"}
+              />
+            ))}
         </motion.div>
-      </motion.div>
+      </div>
 
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
-        className="lg:px-[10%] px-[8%] -mt-52 mb-8 relative z-10"
-      >
-       
-          <Image
-            className="object-cover w-full rounded-3xl shadow-2xl z-50"
-            width={1200}
-            height={600}
-            priority
-            src={post?.header?.headingImage}
-            alt={post?.slug || "Blog post header image"}
-          />
-       
-      </motion.div>
+      {/* Main Content */}
+      <div className="max-w-7xl py-48 mx-auto px-4 sm:px-6 lg:px-8 ">
+        <div className="flex flex-col md:flex-row gap-8">
+          {/* Left Column - Table of Contents */}
+          <div className="md:w-1/4 ">
+            <Card
+              className={`${
+                isSticky ? "md:sticky md:top-16 h-auto border-r rounded-lg" : ""
+              }`}
+            >
+              <CardContent className="p-4 ">
+                <h2 className="font-semibold text-lg mb-4">
+                  Table of Contents
+                </h2>
+                <div className="space-y-3">
+                  {post?.content?.map((block, idx) => (
+                    <div
+                      key={idx}
+                      onClick={() => handleContentClick(idx)}
+                      className={`pl-3 py-1 border-l cursor-pointer ${
+                        idx === activeIndex
+                          ? "bg-blue-50 border-l-2 border-blue-500"
+                          : ""
+                      }`}
+                    >
+                      <span
+                        className={`text-sm ${
+                          idx === activeIndex
+                            ? "text-blue-900"
+                            : "text-gray-600 hover:text-blue-500"
+                        }`}
+                      >
+                        {block.heading ||
+                          (block.type === "text"
+                            ? (block?.content as string).slice(0, 30) + "..."
+                            : block?.type)}
+                      </span>
+                    </div>
+                  ))}
+                </div>
 
-      <div className="bg-white -mt-20 rounded-3xl min-h-screen w-full px-[4%] lg:py-20 py-12 font-light relative">
-        {/* <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
-          className="flex items-center mb-8 space-x-6"
-        >
-          <Image
-            src={post?.author?.avatar}
-            alt={post?.author?.name || "Author avatar"}
-            width={64}
-            height={64}
-            className="rounded-full shadow-lg border-2 border-gray-200"
-          />
-          <div>
-            <span className="text-gray-800 font-semibold text-xl">
-              {post?.author?.name}
-            </span>
-            <div className="flex items-center mt-2 space-x-4 text-sm text-gray-600">
-              <div className="flex items-center space-x-1">
-                <Calendar className="w-4 h-4" />
-                <span>{post?.date}</span>
+                {/* Connect Section */}
+                <div className="mt-8 space-y-4">
+                  <h2 className="font-semibold text-lg">Share</h2>
+                  <div className="flex gap-2">
+                    {[
+                      {
+                        Icon: Facebook,
+                        url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+                          window.location.href
+                        )}`,
+                      },
+                      {
+                        Icon: Twitter,
+                        url: `https://twitter.com/intent/tweet?url=${encodeURIComponent(
+                          window.location.href
+                        )}&text=${encodeURIComponent(post?.title || "")}`,
+                      },
+                      {
+                        Icon: Linkedin,
+                        url: `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
+                          window.location.href
+                        )}&title=${encodeURIComponent(post?.title || "")}`,
+                      },
+                      {
+                        Icon: () => (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="w-4 h-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M16.05 12.42a6 6 0 11-8.49 0M15.5 16a6.48 6.48 0 01-7-6c.8.6 2 1.2 3.5 1.5.63-.8 1.8-2 2.62-2.5a4.5 4.5 0 016.38 6.3z"
+                            />
+                          </svg>
+                        ),
+                        url: `https://wa.me/?text=${encodeURIComponent(
+                          `${post?.title || ""} - ${window.location.href}`
+                        )}`,
+                      },
+                    ].map(({ Icon, url }, i) => (
+                      <a
+                        key={i}
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-8 h-8 flex items-center justify-center rounded bg-gray-800 text-white hover:bg-gray-700 transition-colors"
+                      >
+                        <Icon className="w-4 h-4" />
+                      </a>
+                    ))}
+                    {/* Copy Link Button */}
+                    <button
+                      onClick={() => {
+                        navigator.clipboard.writeText(window.location.href);
+                        alert("Link copied to clipboard!");
+                      }}
+                      className="w-8 h-8 flex items-center justify-center rounded bg-gray-800 text-white hover:bg-gray-700 transition-colors"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        className="lucide lucide-link"
+                      >
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Right Column - Main Content */}
+          <div className="md:w-3/4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
+              className="flex items-center space-x-6"
+            >
+              <Image
+                src={
+                  post?.author?.avatar ||
+                  "https://www.nesscoindia.com/Assets/images/logo.webp"
+                }
+                alt={post?.author?.name || "Author avatar"}
+                width={64}
+                height={64}
+                className="rounded-full h-16 w-16 shadow-lg border-2 border-white"
+              />
+              <div>
+                <span className="text-gray-800 font-semibold text-xl">
+                  {post?.author?.name}
+                </span>
+                <div className="flex items-center mt-2 space-x-4 text-sm text-gray-600">
+                  <div className="flex items-center space-x-1">
+                    <Calendar className="w-4 h-4" />
+                    <span>{post?.date}</span>
+                  </div>
+                  <div className="flex items-center space-x-1">
+                    <Clock className="w-4 h-4" />
+                    <span>{post?.readingTime} min read</span>
+                  </div>
+                </div>
               </div>
-              <div className="flex items-center space-x-1">
-                <Clock className="w-4 h-4" />
-                <span>{post?.readingTime} min read</span>
-              </div>
+            </motion.div>
+
+            {/* <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
+              className="mb-8"
+            >
+              <TagList tags={post?.tags} />
+            </motion.div> */}
+
+            <div className="space-y-8">
+              <AnimatePresence>
+                {post?.content?.map((block, index) => (
+                  <motion.div
+                    key={index}
+                    ref={(el) => {
+                      contentRefs.current[index] = el;
+                    }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="space-y-6"
+                  >
+                    {block?.heading && (
+                      <h2 className="text-3xl font-bold text-gray-800 leading-tight">
+                        {block?.heading}
+                      </h2>
+                    )}
+                    {block?.image && (
+                      <div className="my-8">
+                        <Image
+                          src={block?.image}
+                          alt={block?.heading || ""}
+                          width={800}
+                          height={400}
+                          className="rounded-lg shadow-md"
+                        />
+                      </div>
+                    )}
+                    {block?.subheading && (
+                      <h3 className="text-xl font-semibold text-gray-700 leading-tight">
+                        {block?.subheading}
+                      </h3>
+                    )}
+                    {renderContent(block)}
+                  </motion.div>
+                ))}
+              </AnimatePresence>
             </div>
           </div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
-        >
-          <TagList tags={post?.tags} />
-        </motion.div> */}
-
-        <div className="w-full lg:h-[55rem] flex lg:space-x-12 mt-12 relative">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.7, ease: "easeOut" }}
-            className="w-[28%] border-r-2 border-gray-200 lg:block hidden sticky top-8 self-start pr-4"
-          >
-            <div className="mb-6">
-              <h3 className="text-2xl font-bold text-gray-800 flex items-center">
-                <List className="w-6 h-6 mr-2" />
-                Table of Contents
-              </h3>
-            </div>
-            <div className="space-y-4">
-              {post?.content?.map((block, idx) => (
-                <motion.div
-                  key={idx}
-                  onClick={() => handleContentClick(idx)}
-                  className="flex items-start cursor-pointer transition-all duration-300 ease-in-out group"
-                  whileHover={{ x: 5 }}
-                >
-                  <motion.div
-                    className={`h-2 w-2 rounded-full mr-2 mt-1.5 flex-shrink-0 transition-all duration-300 ${
-                      activeIndex === idx
-                        ? "bg-primary scale-150"
-                        : "bg-gray-300 group-hover:bg-primary/60"
-                    }`}
-                    initial={false}
-                    animate={
-                      activeIndex === idx
-                        ? { scale: 1.5, backgroundColor: "#3B82F6" }
-                        : { scale: 1, backgroundColor: "#D1D5DB" }
-                    }
-                    transition={{ duration: 0.3 }}
-                  />
-                  <motion.h4
-                    className={`text-sm transition-all duration-300 ${
-                      activeIndex === idx
-                        ? "text-primary font-semibold"
-                        : "text-gray-500 group-hover:text-primary/80"
-                    }`}
-                  >
-                    {block.heading ||
-                      (block.type === "text"
-                        ? (block?.content as string).slice(0, 30) + "..."
-                        : block?.type)}
-                  </motion.h4>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-          <motion.div
-            ref={rightContainerRef}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.8, ease: "easeOut" }}
-            className="lg:w-[72%] w-full space-y-10 lg:overflow-y-scroll scrollbar-hide lg:pr-8 lg:pb-[40rem] relative"
-          >
-            <AnimatePresence>
-              {post?.content?.map((block, index) => (
-                <motion.div
-                  key={index}
-                  ref={(el) => {
-                    contentRefs.current[index] = el;
-                  }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="space-y-6"
-                >
-                  {block?.heading && (
-                    <h2 className="text-4xl font-bold mb-6 text-gray-800 leading-tight">
-                      {block?.heading}
-                    </h2>
-                  )}
-                  {block?.image && (
-                    <div className="my-8">
-                      <Image
-                        src={block?.image}
-                        alt={block?.heading}
-                        width={800}
-                        height={400}
-                        className="rounded-lg shadow-md"
-                      />
-                    </div>
-                  )}
-                  {block?.subheading && (
-                    <h2 className="text-base font-regulars mb-6 text-gray-800 leading-tight">
-                      {block?.subheading}
-                    </h2>
-                  )}
-                  {renderContent(block)}
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </motion.div>
         </div>
-        <motion.div
-          className={`fixed bottom-8 right-8 flex space-x-4 transition-opacity duration-300 ${
-            isScrolled ? "opacity-100" : "opacity-0"
-          }`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isScrolled ? 1 : 0 }}
-        >
-          <button
-            onClick={() => handleContentClick(Math.max(0, activeIndex - 1))}
-            className="bg-primary text-white p-3 rounded-full shadow-lg hover:bg-primary/90 transition-colors duration-300"
-            aria-label="Previous section"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-          <button
-            onClick={() =>
-              handleContentClick(
-                Math.min((post?.content?.length || 1) - 1, activeIndex + 1)
-              )
-            }
-            className="bg-primary text-white p-3 rounded-full shadow-lg hover:bg-primary/90 transition-colors duration-300"
-            aria-label="Next section"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-        </motion.div>
       </div>
     </div>
   );
 };
 
-export default AnimatedBlogPost;
+export default BlogGeneric;

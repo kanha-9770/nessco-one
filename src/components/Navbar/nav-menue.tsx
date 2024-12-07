@@ -4,12 +4,18 @@ import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { MenuProvider } from "./context/MenuContext";
+
 export let countryCODE = "in";
 export let languageCODE = "en";
 
 export const Menu = ({ children }: { children: React.ReactNode }) => {
   const [active, setActive] = useState<string | null>(null);
   const [position, setPosition] = useState({ left: 500, width: 0, opacity: 0 });
+
+  // const handleMouseLeave = () => {
+  //   setActive(null);
+  //   setPosition({ left: 400, width: 0, opacity: 0 });
+  // };
 
   return (
     <MenuProvider>
@@ -53,6 +59,7 @@ const MenuItem = ({
   children?: React.ReactNode;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
+  // const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!ref.current) return;
@@ -86,6 +93,11 @@ const MenuItem = ({
   countryCODE = countryCode;
   languageCODE = languageCode;
 
+  const handleBlurAreaMouseEnter = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setActive(null);
+  };
+
   return (
     <div ref={ref} className="z-[9999] cursor-pointer px-3 font-poppins">
       <Link
@@ -95,21 +107,27 @@ const MenuItem = ({
       >
         {item}
       </Link>
-      {active === item && (
-        <motion.div className="absolute top-[calc(100%_-_1.0rem)] left-0 pt-4">
+      {active === item && item.toLowerCase() !== 'contact' && (
+        <motion.div 
+          className="absolute top-[calc(100%_-_1.0rem)] left-0 pt-4"
+        >
           <motion.div
             transition={{ duration: 0.3 }}
             layoutId="active"
-            className={`bg-white text-black overflow-hidden`}
+            className="bg-white text-black h-screen inset-0 bg-white/40 backdrop-blur-md z-10 overflow-hidden"
           >
             <motion.div
               layout
-              className="w-screen z-[99999] mx-auto h-full px-12"
+              className="w-screen z-[99999] mx-auto bg-white h-auto px-12"
             >
               {React.Children.map(children, (child) =>
                 React.cloneElement(child as React.ReactElement, { setActive })
               )}
             </motion.div>
+            <div 
+              className="absolute inset-0 z-[-1]" 
+              onMouseEnter={handleBlurAreaMouseEnter}
+            />
           </motion.div>
         </motion.div>
       )}
@@ -134,9 +152,10 @@ const Cursor = ({
         stiffness: 1000,
         damping: 50,
       }}
-      className={`bg-[#eaeaea] absolute z-0 h-6 rounded-full md:h-6`}
+      className="bg-[#eaeaea] absolute z-0 h-6 rounded-full md:h-6"
     />
   );
 };
 
 export default MenuItem;
+

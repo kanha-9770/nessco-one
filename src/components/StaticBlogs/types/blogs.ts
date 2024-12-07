@@ -36,8 +36,8 @@ export type ContentBlock = {
     | string[][]
     | ListContent
     | SectionContent
-    | { language: string; code: string } 
-    | {src?:string};
+    | { language: string; code: string }
+    | { src?: string };
   heading?: string;
   subheading?: string;
   image?: string;
