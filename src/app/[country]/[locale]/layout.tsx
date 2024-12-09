@@ -8,7 +8,7 @@ import {
   countryNames,
 } from "@/components/Constants/Navbar/config";
 import dynamic from "next/dynamic";
-import { locales } from "@/i18n";
+import { locales, validCountryISOs } from "@/i18n";
 import { FormProvider } from "./context/FormContext";
 import ContactIcons from "@/components/Contact/ContactIcon";
 import { getBaseUrl } from "@/app/api/environment";
@@ -56,29 +56,37 @@ export async function generateMetadata({
     description: `${metaDescription} (${countryName})`,
   };
 }
-// Generate hreflang links with absolute URLs
-const generateHreflangLinks = (country: CountryCode) => {
-  const supportedLocales = locales;
-
-  const hreflangLinks = supportedLocales.map((locale) => {
-    const url = `${getBaseUrl}/${country}/${locale}`;
+const generateHreflangLinks = (locale: string) => {
+  const supportedLocales = validCountryISOs; // Array of valid country codes
+  const baseUrl = getBaseUrl(); // Get the base URL dynamically
+  // Extract the parts of the URL to make the country dynamic
+  const urlParts = new URL(baseUrl);
+  const pathSegments = urlParts.pathname.split("/");
+  // Ensure "locale" and country segment exist in the URL structure
+  if (pathSegments.length >= 3) {
+    pathSegments[1] = "{country}"; // Replace the country code segment dynamically
+  }
+  const dynamicPath = pathSegments.join("/");
+  const baseDomain = `${urlParts.origin}${dynamicPath}`;
+  // Generate hreflang links
+  const hreflangLinks = supportedLocales.map((country) => {
+    const url = baseDomain.replace("{country}", country.toLowerCase());
     return (
       <link
-        key={locale}
+        key={country}
         rel="alternate"
         hrefLang={`${locale}-${country.toUpperCase()}`}
         href={url}
       />
     );
   });
-
   // Add the x-default link
   hreflangLinks.push(
     <link
       key="x-default"
       rel="alternate"
       hrefLang="x-default"
-      href={`${getBaseUrl}`}
+      href={baseUrl} // Use the original URL as the x-default
     />
   );
 
@@ -105,7 +113,7 @@ export default async function RootLayout({
 
   return (
     <html lang={`${locale}-${country.toUpperCase()}`}>
-      <head>{generateHreflangLinks(country)}</head>
+      <head>{generateHreflangLinks(locale)}</head>
       <body className={`${inter.variable} ${poppins.variable}`}>
         {/* NextIntlClientProvider wraps the children with messages and locale */}
         {/* Navbar with internationalization */}

@@ -27,7 +27,6 @@ type CountrySelectProps = {
 export default function CountrySelect({
   isoCode,
   onPhoneNumberChange,
-  error,
   className,
 }: CountrySelectProps) {
   const [countries] = useState<Country[]>(countriesData);

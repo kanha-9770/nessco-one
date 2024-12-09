@@ -22,7 +22,6 @@ interface FormFieldsProps {
 const FormFields: React.FC<FormFieldsProps> = ({
   onChange,
   values,
-  errors,
   inline = false,
 }) => {
   const pathname = usePathname();

@@ -101,15 +101,31 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
                 </DialogTrigger>
               </Dialog>
             </div>
-            <div className="lg:w-[99%] lg:m-1 lg:h-[55vh] h-[26vh] relative">
-              <Image
-                src={newsfData[0]?.image}
-                alt={newsfData[0]?.alt}
-                layout="fill"
-                objectFit="cover"
-                className="rounded-2xl p-0"
-              />
-            </div>
+            <div className="lg:w-[99%] lg:m-1 lg:h-[55vh] h-[26vh] relative rounded-2xl overflow-hidden">
+  {newsfData[0]?.type === "video" ? (
+    <video
+      className="absolute bottom-0 w-full h-full rounded-2xl opacity-50 object-cover"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="auto"
+      poster={newsfData[0]?.poster || ""}
+    >
+      <source src={newsfData[0]?.video || ""} type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  ) : (
+    <Image
+      src={newsfData[0]?.image || ""}
+      alt={newsfData[0]?.alt || "Image"}
+      layout="fill"
+      objectFit="cover"
+      className="rounded-2xl p-0"
+    />
+  )}
+</div>
+
           </article>
         </div>
         {/* Right side smaller articles in 2x2 grid for desktop, carousel for mobile */}

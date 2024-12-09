@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import BreadcrumbProduct from "@/components/ui/BreadCrumbProduct";
 import InfoCard from "@/components/Products/InfoCard";
 import ZigzagLine from "../ZigzagLine";
-import { Button } from "@/components/ui/button";
 import ReusableForm from "@/components/Contact/ReuseableForm";
 
 interface SpecificationImage {

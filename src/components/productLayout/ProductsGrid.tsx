@@ -360,6 +360,9 @@ const Page2: React.FC<Page2Props> = ({
                   <h3 className="text-lg text-[#483d73] font-semibold">
                     {item?.h2}
                   </h3>
+                  <p className="lg:text-sm text-[0.8rem] text-gray-600">
+                    {item?.h3}
+                  </p>
                 </Link>
               </div>
               <div className="flex justify-center items-center overflow-hidden">

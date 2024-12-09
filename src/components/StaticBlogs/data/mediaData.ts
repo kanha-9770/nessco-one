@@ -1195,19 +1195,25 @@ export const blogPosts: BlogPost[] = [
         type: "section",
         heading: "Introduction",
         content: {
-          intro:
-            "As a top provider of sustainable solutions for the HORECA industry, Nessco was excited to introduce its newest Servo Driven Paper Cup Machine at the famous Drupa Exhibition. This new machine set a high standard in the industry with its advanced technology, efficiency, and eco-friendly features.",
+          blocks:[
+            {
+            type:"text",
+            content:
+              "As a top provider of sustainable solutions for the HORECA industry, Nessco was excited to introduce its newest Servo Driven Paper Cup Machine at the famous Drupa Exhibition. This new machine set a high standard in the industry with its advanced technology, efficiency, and eco-friendly features.",
+            },
+            ],
+
+         
+        },
+      },
+      {
+        type: "section",
+        heading: "Revolutionary Features and Benefits",
+        content: {
           blocks: [
             {
               type: "text",
-              heading: " ",
-              content: " ",
-            },
-            {
-              type: "text",
-              heading: "Revolutionary Features and Benefits",
-              content:
-                "Nessco’s new Servo Driven Paper Cup Machine has many advanced features that improve productivity and help the environment:",
+              content: "Nessco’s new Servo Driven Paper Cup Machine has many advanced features that improve productivity and help the environment:"
             },
             {
               type: "list",
@@ -1228,25 +1234,46 @@ export const blogPosts: BlogPost[] = [
                   },
                   {
                     text: "Durability and Reliability: Using strong and high-quality materials, the machine lasts a long time and needs very little maintenance.",
-                  },
+                  }
                 ],
               },
-            },
+            },                      
+          ]
+        }
+      },
+      {
+        type: "section",
+        heading: "Commitment to Sustainability",
+        content: {
+          blocks: [
             {
               type: "text",
-              heading: "Commitment to Sustainability",
               content:
                 "To help reduce plastic waste, Nessco’s new Servo Driven Paper Cup Machine focuses on eco-friendly production. By using biodegradable materials and saving energy, the machine helps create a greener future.",
             },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Live Demonstration at Drupa Exhibition",
+        content: {
+          blocks: [
             {
               type: "text",
-              heading: "Live Demonstration at Drupa Exhibition",
               content:
                 "Visitors to the Drupa Exhibition saw a live demonstration of the new Servo Driven Paper Cup Machine. Nessco’s team of experts was there to show how the machine worked and answer any questions. The Drupa Exhibition was well-known for featuring the newest technology in manufacturing. It was the perfect spot for Nessco to introduce their new machine. The event brought together industry leaders, business owners, and professionals from around the world, offering a great chance to connect and see new products.",
             },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Customer Satisfaction",
+        content: {
+          blocks: [
             {
               type: "text",
-              heading: "Customer Satisfaction",
               content:
                 "Many customers have already purchased Nessco’s Servo Driven Paper Cup Machine and are very pleased with its performance. To date, over 50 units have been sold, and the feedback has been overwhelmingly positive.",
             },
@@ -1268,7 +1295,6 @@ export const blogPosts: BlogPost[] = [
                 ],
               },
             },
-
             {
               type: "image",
               content: {
@@ -1276,15 +1302,26 @@ export const blogPosts: BlogPost[] = [
                 alt: "",
               },
             },
+
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "About Nessco",
+        content: {
+          blocks: [
             {
               type: "text",
-              heading: "About Nessco",
               content:
                 "Nessco is a top choice in the paper cup industry, known for its focus on innovation, quality, and being eco-friendly. They are always working on new and better solutions to meet their customers' needs. For more information and to see their products, visit https://www.nesscoindia.com.",
             },
           ],
         },
       },
+      
+     
+    
     ],
     readingTime: 7,
     header: {
@@ -1319,50 +1356,58 @@ export const blogPosts: BlogPost[] = [
       {
         type: "section",
         heading: "Introduction",
+        
         content: {
-          intro:
+          blocks:[
+            {
+              type:"text",
+            content:
             "Nessco, a leading paper cup machine manufacturer and global provider, has been honored in Kuwait for its strong focus on quality and excellence. This honor shows the company’s ongoing promise to provide the best products and services that meet the industry's highest standards.",
+            },
+          ],
+          },
+      },
+      {
+        type: "section",
+        heading: "Nessco's Commitment to Sustainability",
+        content: {
           blocks: [
             {
               type: "text",
-              heading: " ",
-              content: " ",
-            },
-            {
-              type: "text",
-              heading: "Leadership Comments on the Recognition",
               content:
-                'Mr. Harshit Agarwal, the Managing Director of Nessco, shared his thanks for the recognition by saying, "We are very thankful to receive this honor. Our team\'s ongoing focus on quality and doing things well is key to our success. This award shows the hard work and commitment of everyone on our team."',
+                "Nessco is known for manufacturing paper cup machines, paper bowl machines, paper dome lid machines, and more, which create eco-friendly products such as paper cups, bowls, and lids. Nessco promotes sustainability by using eco-friendly materials and advanced technologies in their machines, setting new industry standards.",
             },
-            {
-              type: "text",
-              heading: "Commitment to Excellence and Future Vision",
-              content:
-                "Nessco has been supplying important machines like the Carton Erecting Machine, Octagonal Paper Box Machine, and Rectangle Bottom Bowl Machine to various industries for over 40 years. The company aims to be not just reliable and efficient, but also to ensure that every customer is completely satisfied. They work hard to understand and meet all the specific needs of their clients, providing solutions with great attention to detail.",
-            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Creating a Future: Impact on Future Generations",
+        content: {
+          blocks: [
             {
               type: "text",
               content:
-                "The company's award shows how much effort it puts into meeting and often going beyond what is expected in different areas. Nessco has strong quality checks to ensure everything they make is very good. They also use new and smart methods, which help them give customers what they need. This way, they always provide results that match or even exceed what customers and the industry want.",
+                "Nessco maximizes resources and reduces waste. Their machines develop products that can be recycled or naturally break down, protecting the planet. These efforts show Nessco's dedication to positively impacting the environment and society.",
             },
             {
               type: "text",
               content:
-                "“Our success in Kuwait is not just about reaching business targets but about building lasting relationships based on trust and good performance,” said Mr. Yogesh Agarwal, Managing Director of Nessco. “This award inspires us to keep working hard and aiming higher. We are dedicated to giving the best solutions to our clients in Kuwait and everywhere else.”",
-            },
-            {
-              type: "image",
-              content: {
-                src: "https://assets.nesscoindustries.com/public/assets/homepage/news/tokyo-2024-news.webp",
-                alt: "",
-              },
+                'Mr. Yogesh Agarwal, Managing Director at Nessco, says, "Sustainability is at the heart of everything we do at Nessco. It is not only about making products that are good for the environment but also about encouraging responsibility and innovation in our culture."',
             },
 
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Conclusion",
+        content: {
+          blocks: [
             {
               type: "text",
-              heading: "Plans For Expansion and Continuous Improvement",
               content:
-                "Nessco has already expanded its presence in the global market and is now looking to introduce even more products and services worldwide. Building on the success of this recent award, the company is eager to explore new opportunities and continue raising its standards for quality and excellence. By offering top-quality solutions, Nessco aims to meet the changing needs of customers everywhere and further strengthen its position in the industry.",
+                "Nessco is leading sustainable innovation by focusing on eco-friendly practices and advanced technologies in their machines. By prioritizing sustainability, Nessco ensures a cleaner, healthier future for the environment and the communities they serve. Under the leadership of Mr. Gopal Agarwal, Chief Executive Officer, Nessco promotes a culture of responsibility and innovation.",
             },
           ],
         },
@@ -1401,44 +1446,35 @@ export const blogPosts: BlogPost[] = [
         type: "section",
         heading: "Introduction",
         content: {
-          intro:
+          blocks:[
+            {
+              type:"text",
+          content:
             "Nowadays, sustainability is no longer a choice but a necessity for every business. Businesses understand the need to use sustainable methods to stay successful. Many companies, including Nessco, focus on sustainability to protect the environment and meet customer demands for eco-friendly products.",
+            },
+          ],
+          },
+      },
+      {
+        type: "section",
+        heading: "Nessco's Commitment to Sustainability",
+        content: {
           blocks: [
             {
               type: "text",
-              heading: "",
-              content: "",
-            },
-            {
-              type: "text",
-              heading: "Nessco's Commitment to Sustainability",
               content:
                 "Nessco is known for manufacturing paper cup machines, paper bowl machines, paper dome lid machines, and more, which create eco-friendly products such as paper cups, bowls, and lids. Nessco promotes sustainability by using eco-friendly materials and advanced technologies in their machines, setting new industry standards.",
             },
-            {
-              type: "list",
-              heading: "Benefits of Nessco’s Sustainable Practices",
-              content: {
-                format: "disc",
-                items: [
-                  {
-                    text: "Helping the Environment: Eco-friendly materials and processes reduce waste and pollution, creating a cleaner, healthier future.",
-                  },
-                  {
-                    text: "Saving Money: Sustainable practices improve efficiency and reduce waste, saving money while helping the planet.",
-                  },
-                  {
-                    text: "Staying Competitive: Eco-friendly products give Nessco an edge in a market where consumers prioritize sustainability.",
-                  },
-                  {
-                    text: "Driving Innovation: Commitment to sustainability drives Nessco to invest in research and development for advanced technologies.",
-                  },
-                ],
-              },
-            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Creating a Future: Impact on Future Generations",
+        content: {
+          blocks: [
             {
               type: "text",
-              heading: "Creating a Future: Impact on Future Generations",
               content:
                 "Nessco maximizes resources and reduces waste. Their machines develop products that can be recycled or naturally break down, protecting the planet. These efforts show Nessco's dedication to positively impacting the environment and society.",
             },
@@ -1447,14 +1483,22 @@ export const blogPosts: BlogPost[] = [
               content:
                 'Mr. Yogesh Agarwal, Managing Director at Nessco, says, "Sustainability is at the heart of everything we do at Nessco. It is not only about making products that are good for the environment but also about encouraging responsibility and innovation in our culture."',
             },
+
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Conclusion",
+        content: {
+          blocks: [
             {
               type: "text",
-              heading: "Conclusion",
               content:
                 "Nessco is leading sustainable innovation by focusing on eco-friendly practices and advanced technologies in their machines. By prioritizing sustainability, Nessco ensures a cleaner, healthier future for the environment and the communities they serve. Under the leadership of Mr. Gopal Agarwal, Chief Executive Officer, Nessco promotes a culture of responsibility and innovation.",
             },
           ],
-        },
+          },
       },
     ],
     readingTime: 7,

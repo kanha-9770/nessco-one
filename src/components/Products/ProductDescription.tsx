@@ -35,16 +35,15 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ machine }) => {
           </div>
         )}
 
-        
-        <div className="relative items-center p-4 flex lg:space-x-4 space-x-2 justify-center">
+        <div className="relative items-center p-4 flex space-x-2 justify-center">
           {machine?.descriptionSpeed && (
-            <div className="lg:h-48 h-40 flex flex-col lg:w-64 px-4">
+            <div className="lg:h-48 h-40 flex flex-col lg:w-64 px-4 lg:space-y-2">
               <Image
                 src="https://assets.nesscoindustries.com/public/assets/product/product-layout-speed-icon.webp"
                 alt="Speed"
                 width={80}
                 height={80}
-                className="lg:h-20 lg:w-20 h-12 w-12 object-contain mx-auto"
+                className="lg:h-16 lg:w-16 h-12 w-12 object-contain mx-auto"
               />
               <p className="text-[#483d78] text-center lg:text-xl text-md">
                 {machine.descriptionSpeed}
@@ -56,13 +55,13 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ machine }) => {
             </div>
           )}
           {machine?.descriptionSize && (
-            <div className="lg:h-48 h-40 lg:w-64 px-4 flex flex-col border-l-2 border-gray-300 border-r-2">
+            <div className="lg:h-48 h-40 lg:w-64 px-4 flex flex-col border-l-2 border-gray-300 border-r-2 lg:space-y-2">
               <Image
                 src="https://assets.nesscoindustries.com/public/assets/product/product-layout-specs-icon.webp"
                 alt="Paper Specification"
                 width={80}
                 height={80}
-                className="lg:h-20 lg:w-20 h-12 w-12 object-contain mx-auto"
+                className="lg:h-16 lg:w-16 h-12 w-12 object-contain mx-auto"
               />
               <p className="text-[#483d78] text-center lg:text-xl text-md">
                 {machine.descriptionSize}
@@ -74,13 +73,13 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ machine }) => {
             </div>
           )}
           {machine?.descriptionRange && (
-            <div className="lg:h-48 h-40 lg:w-64 px-4 flex flex-col">
+            <div className="lg:h-48 h-40 lg:w-64 px-4 flex flex-col lg:space-y-2">
               <Image
                 src="https://assets.nesscoindustries.com/public/assets/product/product-layout-range-icon.webp"
                 alt="size range"
                 width={80}
                 height={80}
-                className="lg:h-20 lg:w-20 h-12 w-12 object-contain mx-auto"
+                className="lg:h-16 lg:w-16 h-12 w-12 object-contain mx-auto"
               />
               <p className="text-[#483d78] text-center lg:text-xl text-md">
                 {machine.descriptionRange}

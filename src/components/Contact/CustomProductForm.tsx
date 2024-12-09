@@ -19,7 +19,7 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { X, ChevronDown, ChevronUp } from "lucide-react";
+import { X, ChevronDown, ChevronUp } from 'lucide-react';
 import FormFields, { FormValues } from "./FormFileds";
 import { z } from "zod";
 
@@ -101,27 +101,23 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
       >
         <div className="w-full lg:h-screen h-max gap-2 flex flex-col">
           {/* part-one-contact-page */}
-          <div className="w-full lg:h-[29.2vh] bg-gradient-to-r from-gray-200 via-[#c9d8f0] to-[#b2c4e2] p-4 border-white border-2 rounded-xl">
+          <div className="hover:border hover:border-[#483d73] relative w-full lg:h-[29.2vh] overflow-hidden z-10 bg-white p-4 rounded-xl shadow-md before:w-24 before:h-24 before:absolute before:bg-gray-500 before:rounded-full before:-z-10 before:blur-2xl after:w-32 after:h-32 after:absolute after:bg-[#483d73] after:opacity-40 after:rounded-full after:-z-10 after:blur-2xl after:top-24 after:-right-12">
             <FormFields
               onChange={setFormValues}
               values={formValues}
               inline={true}
               errors={{}}
             />
+
             <div className="w-full flex justify-center mt-4 ">
-              {/* <SubmitButton
-                
+              <SubmitButton
                 isSubmitting={isSubmitting}
                 onClick={() => handleSubmit("SignupFormDemoProduct")}
-              /> */}
-              <button className="bg-[#e8e8e8] shadow-neumorphism text-black w-full py-2 text-[0.9rem] rounded-[0.8rem]" isSubmitting={isSubmitting}
-                onClick={() => handleSubmit("SignupFormDemoProduct")}>
-                Send Message
-              </button>
+              />
             </div>
           </div>
 
-          <div className="w-full flex lg:h-[10vh] bg-white rounded-xl p-4 items-center font-poppins shadow-md">
+          <div className="w-full flex lg:h-[10vh] bg-white rounded-xl p-4 items-center font-poppins shadow-md border-[#483d73] border-2">
             <div className="w-[80%] flex flex-col items-start justify-center">
               <h2 className="font-semibold text-gray-700">
                 <span className="text-gray-400">Download</span> Brochure
@@ -242,35 +238,39 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
                 transition={{ duration: 0.3 }}
                 className="flex flex-col sm:flex-row"
               >
-                <div className="w-full sm:w-1/2 relative h-[200px] sm:h-auto overflow-hidden">
-                  <h1 className="absolute top-2 left-8 text-lg">
-                    {first_name}
-                  </h1>
-                  <h2 className="absolute text-base top-8 left-8">{name}</h2>
-                  <Image
-                    src={mimage}
-                    alt="Brochure preview"
-                    layout="fill"
-                    objectFit="cover"
-                    className="absolute top-14 h-16 w-16 right-14"
-                  />
+                <div className="w-full sm:w-1/2 bg-gray-50 relative h-[300px] sm:h-auto overflow-hidden ">
+                  <div className="absolute  inset-0 flex flex-col justify-between p-4">
+                    <div>
+                      <h1 className="text-2xl font-bold text-black mb-2">{first_name}</h1>
+                      <h2 className="text-xl text-black/80">{name}</h2>
+                    </div>
+                    <div className="flex items-end">
+                      <div className=" p-4 rounded-lg backdrop-blur-sm">
+                        <Image
+                          src={mimage}
+                          alt="Product icon"
+                          width={64}
+                          height={64}
+                          className="rounded-lg"
+                        />
+                      </div>
+                    </div>
+                  </div>
                   <Image
                     src={image}
                     alt="Brochure preview"
                     layout="fill"
                     objectFit="cover"
-                    className="rounded-t-2xl sm:rounded-l-2xl sm:rounded-tr-none"
+                    className="rounded-t-2xl sm:rounded-l-2xl "
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 </div>
                 <div className="w-full sm:w-1/2 p-6">
                   <DialogHeader>
-                    <DialogTitle className="text-2xl font-bold text-primary">
+                    <DialogTitle className="text-2xl font-bold text-[#483d73]">
                       Download Brochure
                     </DialogTitle>
                     <DialogDescription className="text-gray-500">
-                      Fill in your details to receive the Nessco Paper Cup
-                      Machine Catalogue.
+                      Fill in your details to receive the Nessco {product_heading} Catalogue.
                     </DialogDescription>
                   </DialogHeader>
                   <form
@@ -288,7 +288,7 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
                     />
                     <Button
                       type="submit"
-                      className="w-full bg-primary text-white hover:bg-primary-dark transition-colors duration-200"
+                      className="w-full bg-[#483d73] text-white hover:bg-[#2c2447] transition-colors duration-200"
                     >
                       {isSubmitting ? "Submitting..." : "Download Brochure"}
                     </Button>
@@ -313,3 +313,4 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
 };
 
 export { SignupFormDemoProduct };
+

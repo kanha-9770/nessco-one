@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import FormFields, { FormValues } from "../Contact/FormFileds";
+import { Button } from "@/components/ui/button";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -48,12 +49,15 @@ const Page5: React.FC<Page5Props> = ({
     mobilenumber: "",
   });
   const [formErrors, setFormErrors] = useState<Partial<FormValues>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(
+    null
+  );
 
   const toggleExpansion = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index);
   };
-  console.log(setFormErrors);
-  
+
   useEffect(() => {
     if (borderRef.current && carouselRef.current) {
       gsap.fromTo(
@@ -73,6 +77,54 @@ const Page5: React.FC<Page5Props> = ({
     }
   }, []);
 
+  const validateForm = (): boolean => {
+    const errors: Partial<FormValues> = {};
+    let isValid = true;
+
+    if (!formValues.fullname.trim()) {
+      errors.fullname = "Please enter your full name";
+      isValid = false;
+    }
+
+    if (!formValues.email.trim()) {
+      errors.email = "Please enter your email";
+      isValid = false;
+    } else if (!/\S+@\S+\.\S+/.test(formValues.email)) {
+      errors.email = "Please enter a valid email address";
+      isValid = false;
+    }
+
+    if (!formValues.mobilenumber.trim()) {
+      errors.mobilenumber = "Please enter your phone number";
+      isValid = false;
+    } else if (!/^\+?[1-9]\d{1,14}$/.test(formValues.mobilenumber)) {
+      errors.mobilenumber = "Please enter a valid phone number";
+      isValid = false;
+    }
+
+    setFormErrors(errors);
+    return isValid;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    if (validateForm()) {
+      try {
+        // Simulating an API call
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        setSubmitStatus("success");
+        setFormValues({ fullname: "", email: "", mobilenumber: "" });
+      } catch (error) {
+        setSubmitStatus("error");
+      }
+    }
+
+    setIsSubmitting(false);
+  };
+
   return (
     <div className="w-full h-max lg:mt-[2rem] mt-[5rem] mb-[3rem] font-poppins">
       <div
@@ -81,9 +133,7 @@ const Page5: React.FC<Page5Props> = ({
       ></div>
       <div className="flex lg:pt-[3rem] pt-[1.5rem] lg:pb-[2rem] pb-[1.6rem] lg:px-[2rem] px-[1rem]">
         <h1 className="font-poppins font-semibold lg:text-[2.2rem] text-[1.4rem]">
-          <span className="text-red-700">
-            {faqTitle.trim().match(/\S+$/)}
-          </span>
+          <span className="text-red-700">{faqTitle.trim().match(/\S+$/)}</span>
         </h1>
       </div>
       <div
@@ -162,20 +212,32 @@ const Page5: React.FC<Page5Props> = ({
               </div>
               <p className="text-[#727272] text-[0.9rem]">{formPara}</p>
             </div>
-            <form className="font-poppins">
+            <form onSubmit={handleSubmit} className="font-poppins">
               <FormFields
                 onChange={setFormValues}
                 values={formValues}
                 errors={formErrors}
                 inline={false}
               />
-
-              <button
-                className="border-2 py-[0.5rem] px-[0.5rem] text-[0.8rem] rounded-[0.5rem] bg-[#483d73] text-white w-full mt-[1.8vh]"
-                aria-label="Send Message"
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="bg-gradient-to-r w-full from-[#483d73] to-red-700 mt-4 text-white font-medium font-poppins py-2 px-6 rounded-xl shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl"
               >
-                {sendMessage}
-              </button>
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-100">
+                  {isSubmitting ? "Sending..." : sendMessage}
+                </span>
+              </Button>
+              {submitStatus === "success" && (
+                <p className="text-green-600 mt-2 text-sm">
+                  Message sent successfully!
+                </p>
+              )}
+              {submitStatus === "error" && (
+                <p className="text-red-600 mt-2 text-sm">
+                  Failed to send message. Please try again.
+                </p>
+              )}
             </form>
           </div>
         </div>
@@ -185,4 +247,3 @@ const Page5: React.FC<Page5Props> = ({
 };
 
 export default Page5;
-

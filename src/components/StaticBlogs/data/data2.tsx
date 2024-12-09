@@ -1777,7 +1777,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "text",
-        heading: "Step 1: Understanding the Importance of Sustainability",
+        heading: "",
         content:
           "Before starting your business, it’s important to understand why sustainability is driving the demand for paper straws. Knowing why people and companies are choosing paper straws will help you shape your business to match these values.",
       },
@@ -2196,7 +2196,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: "14",
     title: "Paper Plate Manufacturing Business Plan, Investment And Profit",
-    slug: "paper-plate-manufacturing-business-plan%2C-investment-and-profit",
+    slug: "paper-plate-manufacturing-business-plan-investment-and-profit",
     date: "2024-11-27",
     author: {
       id: "author-1",
