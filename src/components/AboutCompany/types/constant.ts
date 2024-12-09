@@ -84,7 +84,7 @@ type SeoData = {
     title: string;
     description: string;
     image: string;
-    video:string:
+    video:string;
   };
   
   type TeamPage = {

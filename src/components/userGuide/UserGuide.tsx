@@ -39,7 +39,6 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
     mobilenumber: "",
   });
 
-  const handleOpenFilter = () => setIsFilterModalOpen(true);
   const handleCloseFilter = () => setIsFilterModalOpen(false);
 
   const handleOpenCardDetail = (card: (typeof cards)[number]) => {
@@ -501,7 +500,7 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
                     {data?.formDescription}
                   </p>
                   <form onSubmit={handleFormSubmit} className="w-full">
-                    <FormFields onChange={setFormValues} values={formValues} />
+                    <FormFields onChange={setFormValues} values={formValues} errors={undefined} />
                     <div className="flex justify-center mt-5">
                       <Button
                         type="submit"
@@ -522,3 +521,5 @@ export const UserGuide: React.FC<UserGuideProps> = ({ userGuideData }) => {
 };
 
 export default UserGuide;
+
+

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { memo, useCallback, useRef, useState, useEffect } from "react";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 interface NavLinkProps {
@@ -14,7 +13,7 @@ interface NavLinkProps {
 const NavLink: React.FC<NavLinkProps> = memo(
   ({ text, index, activeLink, handleClick }) => (
     <div
-        className={`text-black text-base font-light flex flex-row py-1 transition-all duration-300 ${
+      className={`text-black text-base font-light flex flex-row py-1 transition-all duration-300 ${
         activeLink === index ? "border-b-2 border-red-600 text-red-600" : ""
       }`}
       onClick={handleClick}
@@ -35,21 +34,24 @@ const NavLinksDemo: React.FC<NavLinksDemoProps> = ({ type, navItems }) => {
   const [activeLink, setActiveLink] = useState<number>(-1);
   const [scrolling, setScrolling] = useState(false);
 
-  const navRef = useRef<HTMLDivElement | null>(null);
-  const mobileNavRef = useRef<HTMLDivElement | null>(null);
+  const navRef = useRef<HTMLDivElement>(null);
+  const mobileNavRef = useRef<HTMLDivElement>(null);
   const navItemRefs = useRef<(HTMLLIElement | null)[]>([]);
 
-  const handleClick = useCallback((index: number, ref: React.RefObject<HTMLDivElement>) => () => {
-    setActiveLink(index);
-    const yOffset = -100;
-    const element = ref.current;
+  const handleClick = useCallback(
+    (index: number, ref: React.RefObject<HTMLDivElement>) => () => {
+      setActiveLink(index);
+      const yOffset = -120; // Increased offset for better positioning
+      const element = ref.current;
 
-    if (element) {
-      const y =
-        element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    }
-  }, []);
+      if (element) {
+        const y =
+          element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    },
+    []
+  );
 
   useEffect(() => {
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
@@ -58,14 +60,16 @@ const NavLinksDemo: React.FC<NavLinksDemoProps> = ({ type, navItems }) => {
           const index = navItems.findIndex(
             (item) => item.ref.current === entry.target
           );
-          setActiveLink(index);
+          if (index !== -1) {
+            setActiveLink(index);
+          }
         }
       });
     };
 
     const observerOptions = {
       root: null,
-      rootMargin: "-20% 0px -20% 0px",
+      rootMargin: "-10% 0px -10% 0px",
       threshold: 0.5,
     };
 
@@ -73,6 +77,7 @@ const NavLinksDemo: React.FC<NavLinksDemoProps> = ({ type, navItems }) => {
       observerCallback,
       observerOptions
     );
+
     navItems.forEach((item) => {
       if (item.ref.current) {
         observer.observe(item.ref.current);
@@ -80,21 +85,15 @@ const NavLinksDemo: React.FC<NavLinksDemoProps> = ({ type, navItems }) => {
     });
 
     return () => {
-      navItems.forEach((item) => {
-        if (item.ref.current) {
-          observer.unobserve(item.ref.current);
-        }
-      });
+      observer.disconnect();
     };
   }, [navItems]);
 
   useEffect(() => {
     const handleScroll = () => {
-      const navTop = navRef.current?.getBoundingClientRect().top || 0;
-      if (navTop <= 56) {
-        setScrolling(true);
-      } else {
-        setScrolling(false);
+      if (navRef.current) {
+        const navTop = navRef.current.getBoundingClientRect().top;
+        setScrolling(navTop <= 56);
       }
     };
 

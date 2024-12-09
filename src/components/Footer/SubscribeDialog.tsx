@@ -37,7 +37,8 @@ const SubscribeDialog: React.FC<SubscribeDialogProps> = ({
       email: email
     }));
   }, [email]);
-
+ console.log(setErrors);
+ 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Here you would typically validate the form and send the data to your server

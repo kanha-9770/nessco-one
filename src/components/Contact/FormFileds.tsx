@@ -15,7 +15,7 @@ export interface FormValues extends FormSchemaType {
 interface FormFieldsProps {
   onChange: (values: FormValues) => void;
   values: FormValues;
-  errors: Partial<FormValues>;
+  errors?: Partial<FormValues>;
   inline?: boolean;
 }
 

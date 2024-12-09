@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect,useState } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import BreadcrumbProduct from "@/components/ui/BreadCrumbProduct";
@@ -38,7 +38,6 @@ const Machine: React.FC<MachineProps> = ({
   name,
   image,
   mimage,
-  product_heading,
   first_name,
   introduction,
   advantages,
@@ -47,6 +46,8 @@ const Machine: React.FC<MachineProps> = ({
 }) => {
   const [fontSize, setFontSize] = useState("16px");
   const [selectedImage, setSelectedImage] = useState<string>(image);
+  console.log(setSelectedImage);
+  
   const pathname = usePathname() || "";
   const fallBackLink = pathname.split("/")[4]?.toLocaleLowerCase();
 

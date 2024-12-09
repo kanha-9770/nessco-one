@@ -4,38 +4,6 @@ import Image from "next/image";
 import { MediaRoomItem } from "./types/constant";
 import Link from "next/link";
 
-interface ModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  children: React.ReactNode;
-}
-
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
-  if (!isOpen) return null;
-
-  return (
-    <div
-      className="bg-[#f2f2f2] bg-opacity-50 backdrop-blur fixed top-0 lg:top-14 bottom-0 right-0 left-0 flex items-center justify-center z-10 font-regular font-poppins"
-      onClick={onClose}
-      aria-modal="true"
-      role="dialog"
-    >
-      <div
-        className="bg-white drop-shadow-lg p-[1rem] rounded-3xl relative flex lg:w-[45rem] w-full lg:mx-0 mx-[1rem] justify-center items-center"
-        onClick={(e: React.MouseEvent) => e.stopPropagation()}
-      >
-        <button
-          aria-label="Close"
-          onClick={onClose}
-          className="absolute top-[0.5rem] right-[1rem]"
-        >
-          ✖
-        </button>
-        {children}
-      </div>
-    </div>
-  );
-};
 
 interface FilterProps {
   onSearch: (query: string) => void;
@@ -359,14 +327,6 @@ const Header: React.FC<HeaderProps> = ({
   );
 };
 
-interface NewsItem {
-  img: string;
-  filter: string;
-  title: string;
-  header?: string;
-  continueReading: string;
-  dialogDescription: string;
-}
 
 interface NewsProps {
   searchQuery: string;
