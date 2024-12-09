@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { X, ShoppingCart, Trash2 } from "lucide-react";
+import { X, ShoppingCart, Trash2 } from 'lucide-react';
 import Image from "next/image";
 import {
   Dialog,
@@ -18,9 +18,10 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { useForm } from "@/app/[country]/[locale]/context/FormContext";
-import { toast } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
 import { EnquiryItem } from "@/hooks/useEnquiryCart";
 import FormFields, { FormValues } from "../Contact/FormFileds";
+import { formSchema } from "@/lib/ValidationSchema";
 
 interface EnquiryComponentProps {
   items: EnquiryItem[];
@@ -42,6 +43,8 @@ export default function EnquiryComponent({
     email: "",
     mobilenumber: "",
   });
+  const [errors, setErrors] = useState<Partial<FormValues>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const savedItems = localStorage.getItem("cartItems");
@@ -51,19 +54,9 @@ export default function EnquiryComponent({
   }, []);
 
   useEffect(() => {
-    const newItems = [
-      ...cartItems,
-      ...items.filter(
-        (item) => !cartItems.some((cartItem) => cartItem.id === item.id)
-      ),
-    ];
-    setCartItems(newItems);
-    localStorage.setItem("cartItems", JSON.stringify(newItems));
+    setCartItems(items);
+    localStorage.setItem("cartItems", JSON.stringify(items));
   }, [items]);
-
-  useEffect(() => {
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-  }, [cartItems]);
 
   const handleRemoveItem = (id: string) => {
     const updatedItems = cartItems.filter((item) => item.id !== id);
@@ -79,10 +72,33 @@ export default function EnquiryComponent({
 
   const openModal = () => setIsModalOpen(true);
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const validateForm = () => {
+    try {
+      formSchema.parse(formValues);
+      setErrors({});
+      return true;
+    } catch (error) {
+      if (error instanceof Error) {
+        const zodError = JSON.parse(error.message);
+        const newErrors: Partial<FormValues> = {};
+        zodError.forEach((err: { path: string[]; message: string }) => {
+          newErrors[err.path[0] as keyof FormValues] = err.message;
+        });
+        setErrors(newErrors);
+      }
+      return false;
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!validateForm()) {
+      toast.error("Please fill all required fields correctly.", {
+        duration: 3000,
+        position: "top-center",
+      });
+      return;
+    }
     setIsSubmitting(true);
     try {
       await submitForm({
@@ -96,7 +112,7 @@ export default function EnquiryComponent({
       });
       toast.success("Enquiry submitted successfully!", {
         duration: 3000,
-        position: "top-right",
+        position: "top-center",
       });
       setIsModalOpen(false);
       clearCart();
@@ -105,7 +121,7 @@ export default function EnquiryComponent({
       console.error("Failed to submit the enquiry:", error);
       toast.error("Error submitting the enquiry. Please try again.", {
         duration: 3000,
-        position: "top-right",
+        position: "top-center",
       });
     } finally {
       setIsSubmitting(false);
@@ -131,6 +147,7 @@ export default function EnquiryComponent({
           background: #555;
         }
       `}</style>
+      <Toaster />
       {cartItems.length > 0 && (
         <Sheet>
           <SheetTrigger asChild>
@@ -158,25 +175,11 @@ export default function EnquiryComponent({
                 <div className="flex items-center gap-2 pr-20 -mt-4">
                   <Button
                     onClick={openModal}
-                    className="relative flex items-center justify-center bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white font-medium font-poppins py-3 px-2 rounded-full shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                    className="bg-gradient-to-r from-[#483d73] to-red-700 text-white font-medium font-poppins py-2 px-6 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl"
                   >
-                    <span className="mr-3">Enquire Now</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 64 64"
-                      className="w-6 h-6"
-                    >
-                      <circle
-                        cx="32"
-                        cy="32"
-                        r="32"
-                        className="fill-current text-purple-700"
-                      />
-                      <path
-                        d="M25 20l12 12-12 12"
-                        className="stroke-white stroke-[3] fill-none stroke-linecap-round stroke-linejoin-round"
-                      />
-                    </svg>
+                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-100">
+                      Enquire Now{" "}
+                    </span>
                   </Button>
 
                   <Button
@@ -189,12 +192,12 @@ export default function EnquiryComponent({
                 </div>
               </SheetTitle>
             </SheetHeader>
-            <div className="mt-4  overflow-x-auto custom-scrollbar">
+            <div className="mt-4 overflow-x-auto custom-scrollbar">
               <div className="flex gap-2 pb-4">
                 {cartItems.map((item) => (
                   <div
                     key={item.id}
-                    className="relative  flex items-center bg-white border rounded-md p-2 w-[260px] hover:bg-gray-50 transition-colors duration-200 flex-shrink-0"
+                    className="relative flex items-center bg-white border rounded-md p-2 w-[260px] hover:bg-gray-50 transition-colors duration-200 flex-shrink-0"
                   >
                     <div className="absolute top-2 left-2 w-1.5 h-1.5 bg-red-500 rounded-full" />
                     <div className="w-16 h-16 relative mr-3 flex-shrink-0">
@@ -226,15 +229,15 @@ export default function EnquiryComponent({
       )}
 
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="sm:max-w-[900px]">
-          <div className="bg-gray-50 rounded-2xl p-4">
+        <DialogContent className="sm:max-w-[900px] bg-gray-50">
+          <div className="rounded-2xl">
             <DialogHeader>
               <DialogTitle className="h-12 text-xl font-semibold w-full text-center">
                 Enquire Items
               </DialogTitle>
             </DialogHeader>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-              <div className=" pr-4">
+              <div className="pr-4">
                 <div className="border-2 space-y-4 max-h-[50vh] overflow-y-auto rounded-xl p-4 custom-scrollbar">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                     {cartItems.map((item) => (
@@ -260,12 +263,12 @@ export default function EnquiryComponent({
                 </div>
               </div>
               <form onSubmit={handleSubmit} className="space-y-4">
-                <FormFields onChange={setFormValues} values={formValues} />
+                <FormFields onChange={setFormValues} values={formValues} errors={errors} />
                 <Button
                   type="submit"
                   disabled={isSubmitting}
                   aria-label="send message"
-                  className="border-2 py-[0.5rem] px-[0.5rem] text-[0.8rem] rounded-[0.5rem] bg-[#483d73] text-white w-full mt-[1.8vh]"
+                  className="bg-gradient-to-r from-[#483d73] to-red-700 w-full text-white font-medium font-poppins py-2 px-6 rounded-xl shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl"
                 >
                   {isSubmitting ? "Submitting..." : "Submit"}
                 </Button>
@@ -277,3 +280,4 @@ export default function EnquiryComponent({
     </>
   );
 }
+

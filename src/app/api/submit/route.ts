@@ -129,10 +129,15 @@ import { sheets } from "@/lib/googlesheet";
 import { VisitData } from "@/hooks/useTrackUserSource";
 import axios from "axios";
 
-const SPREADSHEET_ID = process.env.SPREADSHEET_ID || "12jgmYS5nV1YlwusAGMA6hN6F-6CHOHdtqeIeU6T-ziI";
+const SPREADSHEET_ID =
+  process.env.SPREADSHEET_ID || "12jgmYS5nV1YlwusAGMA6hN6F-6CHOHdtqeIeU6T-ziI";
 const RANGE = "Sheet1!A1";
-const ZOHO_API_URL = process.env.ZOHO_API_URL || "https://www.zohoapis.com/crm/v2/functions/website_form/actions/execute";
-const ZOHO_API_KEY = process.env.ZOHO_API_KEY || "1003.54049d87e2be729c5864458c7468a3e9.32e930cd0544f7d0098b658853f82a78";
+const ZOHO_API_URL =
+  process.env.ZOHO_API_URL ||
+  "https://www.zohoapis.com/crm/v2/functions/website_form/actions/execute";
+const ZOHO_API_KEY =
+  process.env.ZOHO_API_KEY ||
+  "1003.54049d87e2be729c5864458c7468a3e9.32e930cd0544f7d0098b658853f82a78";
 const ZOHO_OAUTH_TOKEN = process.env.ZOHO_OAUTH_TOKEN || "YOUR_NEW_OAUTH_TOKEN";
 
 interface CartItem {
@@ -196,7 +201,7 @@ export async function POST(request: Request) {
             item.description,
             item.img,
             item.code,
-            item.information
+            item.information,
           ])
         : []),
       visitData.IP_Address || "",
@@ -285,4 +290,3 @@ export async function POST(request: Request) {
     );
   }
 }
-

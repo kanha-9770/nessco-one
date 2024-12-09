@@ -6,22 +6,23 @@ import { Input } from "@/components/ui/input";
 import CountrySelect from "@/components/ui/CountrySelect";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import { FormSchemaType } from "./schemas/schemas";
 
-export interface FormValues {
-  fullname: string;
-  email: string;
-  mobilenumber: string;
+export interface FormValues extends FormSchemaType {
+  // Extending from FormSchemaType to ensure type consistency
 }
 
 interface FormFieldsProps {
   onChange: (values: FormValues) => void;
   values: FormValues;
+  errors: Partial<FormValues>;
   inline?: boolean;
 }
 
 const FormFields: React.FC<FormFieldsProps> = ({
   onChange,
   values,
+  errors,
   inline = false,
 }) => {
   const pathname = usePathname();
@@ -31,7 +32,8 @@ const FormFields: React.FC<FormFieldsProps> = ({
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { id, value } = e.target;
-    onChange({ ...values, [id]: value });
+    const updatedValues = { ...values, [id]: value };
+    onChange(updatedValues);
   };
 
   return (
@@ -57,8 +59,14 @@ const FormFields: React.FC<FormFieldsProps> = ({
             value={values.fullname}
             onChange={handleChange}
             required
-            className="border py-[0.4rem] px-[0.5rem] text-[0.9rem] rounded-[0.3rem] bg-[#f9fafb] focus:ring-2 focus:ring-[#483d73] transition-all duration-200"
+            className={cn(
+              "border py-[0.4rem] px-[0.5rem] text-[0.9rem] rounded-[0.3rem] bg-[#f9fafb] focus:ring-2 focus:ring-[#483d73] transition-all duration-200",
+              errors?.fullname && "border-red-500"
+            )}
           />
+          {errors.fullname && (
+            <p className="text-red-500 text-xs mt-1">{errors?.fullname}</p>
+          )}
         </LabelInputContainer>
         <LabelInputContainer className={inline ? "lg:w-1/2" : "w-full"}>
           {!inline && (
@@ -76,8 +84,14 @@ const FormFields: React.FC<FormFieldsProps> = ({
             value={values.email}
             onChange={handleChange}
             required
-            className="border py-[0.4rem] px-[0.5rem] text-[0.9rem] rounded-[0.3rem] bg-[#f9fafb] focus:ring-2 focus:ring-[#483d73] transition-all duration-200"
+            className={cn(
+              "border py-[0.4rem] px-[0.5rem] text-[0.9rem] rounded-[0.3rem] bg-[#f9fafb] focus:ring-2 focus:ring-[#483d73] transition-all duration-200",
+              errors.email && "border-red-500"
+            )}
           />
+          {errors.email && (
+            <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+          )}
         </LabelInputContainer>
       </div>
       <LabelInputContainer className="w-full">
@@ -91,10 +105,15 @@ const FormFields: React.FC<FormFieldsProps> = ({
         )}
         <CountrySelect
           isoCode={countryCode}
-          onPhoneNumberChange={(phoneNumber) =>
-            onChange({ ...values, mobilenumber: phoneNumber })
-          }
+          onPhoneNumberChange={(phoneNumber) => {
+            const updatedValues = { ...values, mobilenumber: phoneNumber };
+            onChange(updatedValues);
+          }}
+          error={errors.mobilenumber}
         />
+        {errors.mobilenumber && (
+          <p className="text-red-500 text-xs mt-1">{errors.mobilenumber}</p>
+        )}
       </LabelInputContainer>
     </div>
   );
@@ -111,3 +130,4 @@ const LabelInputContainer = ({
 );
 
 export default FormFields;
+

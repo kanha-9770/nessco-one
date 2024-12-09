@@ -1,13 +1,14 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Label } from "@radix-ui/react-label";
 import { ApplicationLayoutItem } from "./types/constant";
-import EnquiryCart from "../ui/EnquiryCart";
 import Link from "next/link";
 import { countryCODE, languageCODE } from "../Navbar/nav-menue";
+import { useEnquiryCart } from "@/app/[country]/[locale]/context/EnquiryContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -43,9 +44,7 @@ const Page4: React.FC<CombinedProps> = ({
     applicationLayoutData?.ApplicationLayout[0]?.RelatedMachines;
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const borderRef = useRef<HTMLDivElement | null>(null);
-  const [enquiryItems, setEnquiryItems] = useState<
-    Array<{ id: string; name: string; image: string }>
-  >([]);
+  const { addToEnquiry, removeFromEnquiry, isInEnquiry } = useEnquiryCart();
 
   const scrollbarLeft = () => {
     if (carouselRef.current) {
@@ -67,14 +66,14 @@ const Page4: React.FC<CombinedProps> = ({
 
   function formatString(input) {
     return input
-      .split("-") // Split the string into parts by '-'
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize the first letter of each part
-      .join(" "); // Join the parts with a space
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
   }
 
   function formatStringForLink(input) {
-    return input.toLowerCase().replace(/\s+/g, '-');
-}
+    return input.toLowerCase().replace(/\s+/g, "-");
+  }
 
   useEffect(() => {
     if (borderRef.current) {
@@ -104,25 +103,13 @@ const Page4: React.FC<CombinedProps> = ({
     index: number
   ) => {
     const myItem = item.h1 + item.h2;
-    setEnquiryItems((prevItems) => {
-      const existingItemIndex = prevItems.findIndex(
-        (prevItem) => prevItem.id === `${index}`
-      );
-      if (existingItemIndex > -1) {
-        // Item exists, remove it
-        return prevItems.filter((prevItem) => prevItem.id !== `${index}`);
-      } else {
-        // Item doesn't exist, add it
-        return [
-          ...prevItems,
-          { id: `${index}`, name: myItem, image: item.img },
-        ];
-      }
-    });
-  };
+    const enquiryItem = { id: `${index}`, name: myItem, image: item.img };
 
-  const handleRemoveFromEnquiry = (id: string) => {
-    setEnquiryItems((prevItems) => prevItems.filter((item) => item.id !== id));
+    if (isInEnquiry(`${index}`)) {
+      removeFromEnquiry(`${index}`);
+    } else {
+      addToEnquiry(enquiryItem);
+    }
   };
 
   return (
@@ -221,29 +208,6 @@ const Page4: React.FC<CombinedProps> = ({
                           </p>
                         </div>
                       </div>
-                      {/* <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center cursor-pointer relative group hover:text-red-700 text-[1.1rem]">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="black"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="feather feather-info w-4 h-4 hover:stroke-red-700"
-                        >
-                          <circle cx="12" cy="12" r="10"></circle>
-                          <line x1="12" y1="16" x2="12" y2="12"></line>
-                          <line x1="12" y1="8" x2="12" y2="8"></line>
-                        </svg>
-                        <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-md shadow-md px-2 py-1 h-max w-max z-20">
-                          <p className="lg:text-[0.8rem] text-[0.7rem] text-black">
-                            {item?.information}
-                          </p>
-                        </div>
-                      </div> */}
                     </div>
 
                     {/* Title */}
@@ -273,13 +237,15 @@ const Page4: React.FC<CombinedProps> = ({
 
                     {/* Key Points or View Machine Button */}
                     <Link
-                    href={`/${countryCODE}/${languageCODE}/products/${formatStringForLink(item?.h1)}`}
+                      href={`/${countryCODE}/${languageCODE}/products/${formatStringForLink(
+                        item?.h1
+                      )}`}
                     >
-                    <div className="my-[1rem] flex lg:flex-rows flex-col items-center justify-center lg:h-[2rem]">
-                      <button className="lg:text-[1rem] text-[0.9rem] w-[65%] lg:h-[2rem] h-[2rem] border-[0.1rem] border-solid font-medium rounded-[0.5rem] transition-colors duration-300 border-[#9c9c9c] hover:border-black hover:bg-black hover:text-white">
-                        {RelatedMachines?.viewMachine}
-                      </button>
-                    </div>
+                      <div className="my-[1rem] flex lg:flex-rows flex-col items-center justify-center lg:h-[2rem]">
+                        <button className="lg:text-[1rem] text-[0.9rem] w-[65%] lg:h-[2rem] h-[2rem] border-[0.1rem] border-solid font-medium rounded-[0.5rem] transition-colors duration-300 border-[#9c9c9c] hover:border-black hover:bg-black hover:text-white">
+                          {RelatedMachines?.viewMachine}
+                        </button>
+                      </div>
                     </Link>
 
                     {/* Separator */}
@@ -292,9 +258,7 @@ const Page4: React.FC<CombinedProps> = ({
                           type="checkbox"
                           id={`addToEnquiry-${idx}`}
                           className="accent-red-700"
-                          checked={enquiryItems.some(
-                            (enquiryItem) => enquiryItem.id === `${idx}`
-                          )}
+                          checked={isInEnquiry(`${idx}`)}
                           onChange={() => handleToggleEnquiry(item, idx)}
                           aria-label={`Add ${item.h1} to enquiry`}
                         />
@@ -313,11 +277,6 @@ const Page4: React.FC<CombinedProps> = ({
           </div>
         </div>
       </div>
-      <EnquiryCart
-        items={enquiryItems}
-        onRemoveItem={handleRemoveFromEnquiry}
-        maxItems={10}
-      />
     </>
   );
 };

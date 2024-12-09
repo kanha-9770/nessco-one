@@ -20,8 +20,9 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { X, ChevronDown, ChevronUp } from "lucide-react";
+import { X, ChevronDown, ChevronUp } from 'lucide-react';
 import FormFields, { FormValues } from "./FormFileds";
+import { z } from "zod";
 
 interface SignupFormDemoProductProps {
   related_product: RelatedProductType;
@@ -30,6 +31,12 @@ interface SignupFormDemoProductProps {
   mimage?: string;
   product_heading?: string;
 }
+
+const formSchema = z.object({
+  fullname: z.string().min(1, "Full name is required"),
+  email: z.string().email("Invalid email address"),
+  mobilenumber: z.string().min(10, "Invalid phone number"),
+});
 
 const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
   related_product,
@@ -46,13 +53,33 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
+  const validateForm = () => {
+    const result = formSchema.safeParse(formValues);
+    if (!result.success) {
+      const errorMessage = result.error.issues
+        .map((issue) => issue.message)
+        .join(". ");
+      return errorMessage;
+    }
+    return null;
+  };
+
   const handleSubmit = async (formId: string) => {
+    const validationError = validateForm();
+    if (validationError) {
+      toast.error(validationError, {
+        duration: 3000,
+        position: "top-center",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
     try {
       await submitForm({ ...formValues, formId });
       toast.success("Form submitted successfully!", {
         duration: 3000,
-        position: "top-right",
+        position: "top-center",
       });
       setFormValues({ fullname: "", email: "", mobilenumber: "" });
       setIsDialogOpen(false);
@@ -60,8 +87,7 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
       console.error("Failed to submit the form:", error);
       toast.error("Error submitting the form. Please try again.", {
         duration: 3000,
-        position: "top-right",
-        style: { borderRadius: "10px", background: "#e63946", color: "#fff" },
+        position: "top-center",
       });
     } finally {
       setIsSubmitting(false);
@@ -79,7 +105,19 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
         className="flex w-full lg:sticky lg:top-[6.4rem] h-full mx-auto justify-center font-poppins"
         animate={{ y: 0, height: "33rem", opacity: 1 }}
       >
-        <Toaster />
+        <Toaster
+          toastOptions={{
+            duration: 3000,
+            position: "top-center",
+          }}
+          containerStyle={{
+            top: 20,
+            left: 20,
+            bottom: 20,
+            right: 20,
+          }}
+          gutter={8}
+        />
         <div className="w-full lg:h-screen h-max gap-2 flex flex-col">
           {/* part-one-contact-page */}
           <div className="w-full lg:h-[29.2vh] bg-white p-4 rounded-xl shadow-md">
@@ -87,6 +125,7 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
               onChange={setFormValues}
               values={formValues}
               inline={true}
+              errors={{}}
             />
             <div className="w-full flex justify-center mt-4">
               <SubmitButton
@@ -110,14 +149,14 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
             </div>
             <div className="w-[20%] h-full font-poppins flex items-center justify-center">
               <Button
-                className="h-full bg-green-400 w-full"
+                className="h-full w-full"
                 onClick={() => setIsDialogOpen(true)}
               >
                 <svg
-                  viewBox="-0.4 0 24 24"
+                  viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-24 h-24 bg-red-500"
+                  className="w-64 h-64"
                 >
                   <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                   <g
@@ -250,6 +289,7 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
                       onChange={setFormValues}
                       values={formValues}
                       inline={false}
+                      errors={{}}
                     />
                     <Button
                       type="submit"
@@ -278,3 +318,4 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
 };
 
 export { SignupFormDemoProduct };
+

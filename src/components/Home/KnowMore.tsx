@@ -60,10 +60,13 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
         isScrolled && index % 2 !== 0 ? "translate-y-20" : ""
       }`}
     >
-      <Dialog open={openModal === index} onOpenChange={(isOpen) => setOpenModal(isOpen ? index : null)}>
+      <Dialog
+        open={openModal === index}
+        onOpenChange={(isOpen) => setOpenModal(isOpen ? index : null)}
+      >
         <DialogTrigger asChild>
           {index % 2 !== 0 && (
-            <div className="group-hover:shadow-2xl bg-white max-w-[300px] mx-auto p-2 rounded-[1.2rem] shadow-lg transition-all duration-300">
+            <div className=" bg-white max-w-[300px] mx-auto p-2 rounded-[1.2rem] shadow-lg transition-all duration-300">
               <div className="flex justify-between items-center">
                 <h3 className="text-sm ml-4 w-[12.5rem]">{item?.title}</h3>
                 {item?.description?.split(" ").length > 20 && (
@@ -96,13 +99,16 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
         </DialogContent>
       </Dialog>
       <Card
-        className={`group-hover:shadow-2xl transition-all duration-300 rounded-3xl md:shadow-md w-full max-w-[300px] h-[320px] mx-auto relative bg-white ${
+        className={` transition-all duration-300 rounded-3xl md:shadow-md w-full max-w-[300px] h-[320px] mx-auto relative bg-white ${
           index % 2 !== 0 ? "mt-6" : ""
         }`}
       >
         <CardContent>
           {index % 2 === 0 ? (
-            <Dialog open={openModal === index} onOpenChange={(isOpen) => setOpenModal(isOpen ? index : null)}>
+            <Dialog
+              open={openModal === index}
+              onOpenChange={(isOpen) => setOpenModal(isOpen ? index : null)}
+            >
               <DialogTrigger asChild>
                 <div className="p-3 rounded-3xl bg-white h-full lg:mt-0 mt-28">
                   <Image
@@ -139,7 +145,10 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
               </DialogContent>
             </Dialog>
           ) : (
-            <Dialog open={openModal === index} onOpenChange={(isOpen) => setOpenModal(isOpen ? index : null)}>
+            <Dialog
+              open={openModal === index}
+              onOpenChange={(isOpen) => setOpenModal(isOpen ? index : null)}
+            >
               <DialogTrigger asChild>
                 <div className="p-3 rounded-3xl bg-white h-full">
                   <p className="text-sm text-gray-600 line-clamp-6 text-center lg:text-left">
@@ -186,8 +195,11 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
         </CardContent>
       </Card>
       {index % 2 === 0 && (
-        <div className="mt-6 group-hover:shadow-2xl max-w-[300px] mx-auto text-black rounded-[1.2rem] shadow-lg">
-          <Dialog open={openModal === index} onOpenChange={(isOpen) => setOpenModal(isOpen ? index : null)}>
+        <div className="mt-6  max-w-[300px] mx-auto text-black rounded-[1.2rem] shadow-lg">
+          <Dialog
+            open={openModal === index}
+            onOpenChange={(isOpen) => setOpenModal(isOpen ? index : null)}
+          >
             <DialogTrigger asChild>
               <div className="flex items-center justify-between p-2 bg-white rounded-[1.2rem] shadow-2xl">
                 <h3 className="text-sm w-[12.5rem] ml-4">{item?.title}</h3>
@@ -274,15 +286,46 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
           </div>
         </div>
         <div className="flex justify-between mt-4">
-          <Button onClick={scrollPrev} className="bg-[#483d73] text-white">
-            Previous
+          <Button
+            onClick={scrollPrev}
+            className="h-6 w-6 bg-[#9e9c9c] flex hover:bg-black rounded-full items-center justify-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={3}
+              stroke="currentColor"
+              className="w-4 h-4 stroke-white"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
           </Button>
-          <Button onClick={scrollNext} className="bg-[#483d73] text-white">
-            Next
+          <Button
+            onClick={scrollNext}
+            className="h-6 w-6 bg-[#9e9c9c] flex hover:bg-black rounded-full items-center justify-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={3}
+              stroke="currentColor"
+              className="w-4 h-4 stroke-white"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
           </Button>
         </div>
       </div>
     </div>
   );
 }
-

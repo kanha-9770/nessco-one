@@ -8,6 +8,7 @@ import { Key, useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import Link from "next/link";
 import { languageCODE } from "../Navbar/nav-menue";
+import useEmblaCarousel from "embla-carousel-react";
 
 interface FeatureNewsLayoutProps {
   heroData: HomeData;
@@ -21,6 +22,10 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
     title: "",
     description: "",
   });
+  const [emblaRef] = useEmblaCarousel({
+    dragFree: true,
+    containScroll: "trimSnaps",
+  });
 
   const openDialog = (content: {
     img: string;
@@ -33,10 +38,10 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
 
   function formatString(input) {
     return input
-      .trim() // Remove extra spaces
-      .toLowerCase() // Convert to lowercase
-      .replace(/[^a-z0-9\s-]/g, "") // Remove special characters except spaces and hyphens
-      .replace(/\s+/g, "-"); // Replace spaces with hyphens
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, "")
+      .replace(/\s+/g, "-");
   }
 
   return (
@@ -57,7 +62,7 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
       <div className="grid grid-cols-1 lg:py-14 lg:grid-cols-2 gap-4 sm:gap-6 relative z-10">
         {/* Left side large article */}
         <div className="lg:col-span-1 bg-white shadow-lg rounded-3xl lg:h-[32rem] h-full p-3">
-          <article className=" relative   h-full overflow-hidden flex flex-col">
+          <article className="relative h-full overflow-hidden flex flex-col">
             <div className="h-48 relative">
               <h3 className="text-lg md:text-xl font-medium mb-2 pr-10">
                 {newsfData[0]?.title}
@@ -107,15 +112,15 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
             </div>
           </article>
         </div>
-        {/* Right side smaller articles in 2x2 grid */}
-        <div className="lg:col-span-1 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
+        {/* Right side smaller articles in 2x2 grid for desktop, carousel for mobile */}
+        <div className="lg:col-span-1 lg:grid lg:grid-cols-2 lg:gap-8 hidden">
           {newsfData?.slice(1)?.map((news: NewsFeatureItem, index: Key) => (
             <article
               key={index}
               className="bg-white h-full z-20 shadow-lg rounded-2xl overflow-hidden flex flex-col"
             >
-              <div className="px-4 py-2  relative ">
-                <h4 className="text-sm font-medium line-clamp-2  pr-8">
+              <div className="px-4 py-2 relative">
+                <h4 className="text-sm font-medium line-clamp-2 pr-8">
                   {news?.title}
                 </h4>
                 <p className="text-xs text-gray-600 line-clamp-2">
@@ -166,6 +171,67 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
             </article>
           ))}
         </div>
+        {/* Embla Carousel for mobile */}
+        <div className="lg:hidden overflow-hidden" ref={emblaRef}>
+          <div className="flex">
+            {newsfData?.slice(1)?.map((news: NewsFeatureItem, index: Key) => (
+              <article
+                key={index}
+                className="bg-white h-full z-20 shadow-lg rounded-2xl overflow-hidden flex flex-col flex-[0_0_80%] mr-4"
+              >
+                <div className="px-4 py-2 relative">
+                  <h4 className="text-sm font-medium line-clamp-2 pr-8">
+                    {news?.title}
+                  </h4>
+                  <p className="text-xs text-gray-600 line-clamp-2">
+                    {news?.description}
+                  </p>
+                  <Dialog open={isDialogOpen} onOpenChange={setDialogOpen}>
+                    <DialogTrigger asChild>
+                      <button
+                        onClick={() =>
+                          openDialog({
+                            img: news?.image,
+                            title: news?.title,
+                            description: news?.description,
+                          })
+                        }
+                        className="absolute top-3 right-3 bg-black text-white w-6 h-6 rounded-full text-center leading-6 text-xs flex items-center justify-center hover:bg-gray-800 transition-colors"
+                        aria-label="Open article details"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={3}
+                          stroke="currentColor"
+                          className="w-4 h-4"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M12 4.5v15m7.5-7.5h-15"
+                          />
+                        </svg>
+                      </button>
+                    </DialogTrigger>
+                  </Dialog>
+                </div>
+                <div className="px-3 pb-2">
+                  <div className="relative h-[8.8rem] rounded-xl overflow-hidden">
+                    <Image
+                      src={news?.image}
+                      alt={news?.alt}
+                      layout="fill"
+                      objectFit="cover"
+                      className="rounded-xl"
+                    />
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
       </div>
       <Dialog open={isDialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent className="sm:max-w-[1000px] bg-white ">
@@ -188,7 +254,11 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
                   {dialogContent?.description}
                 </p>
               </div>
-              <Link href={`${languageCODE}/media-room/${formatString(dialogContent?.title)}`}>
+              <Link
+                href={`${languageCODE}/media-room/${formatString(
+                  dialogContent?.title
+                )}`}
+              >
                 <div className="w-max text-xs font-poppins font-medium lg:hover:text-black lg:hover:bg-white bg-black text-white py-[0.2rem] px-2 rounded-full border border-black flex items-center group transition-all duration-300">
                   <p>Read More</p>
                   <Image

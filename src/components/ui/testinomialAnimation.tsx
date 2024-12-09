@@ -22,9 +22,9 @@ export const TestiNomialAnimation = ({
 }) => {
   // Calculate the animation duration based on the speed
   const getAnimationDuration = () => {
-    if (speed === "fast") return "20s";
-    if (speed === "normal") return "30s";
-    return "40s"; // slow speed
+    if (speed === "fast") return "60s";
+    if (speed === "normal") return "100s";
+    return "110s"; // slow speed
   };
 
   // Duplicate the items to make the infinite loop
@@ -51,7 +51,7 @@ export const TestiNomialAnimation = ({
             // Applying dynamic animation speed
             style={
               {
-                '--animation-duration': getAnimationDuration(),
+                "--animation-duration": getAnimationDuration(),
               } as React.CSSProperties
             }
           >
@@ -82,13 +82,17 @@ export const TestiNomialAnimation = ({
                       </div>
                     </div>
                     <p className="text-center text-2xl lg:text-4xl">❝</p>
-                    <p className="text-gray-700 text-center text-xs lg:text-base mb-2">{el?.quote}</p>
+                    <p className="text-gray-700 text-center text-xs lg:text-base mb-2">
+                      {el?.quote}
+                    </p>
                   </div>
                   <div className="hidden lg:flex text-base pb-1 flex-row justify-start items-center">
                     <div className="h-10 w-1 bg-[#483d78]"></div>
                     <div className="flex ml-2 flex-col">
                       <h3 className="text-xs lg:text-sm">{el?.username}</h3>
-                      <p className="text-xs lg:text-sm text-gray-500">{el?.profile}</p>
+                      <p className="text-xs lg:text-sm text-gray-500">
+                        {el?.profile}
+                      </p>
                     </div>
                   </div>
                 </div>

@@ -402,12 +402,21 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
 
                                   <div className="w-full h-px bg-[#9c9c9c]"></div>
 
-                                  <div className="py-2 flex items-center justify-center">
-                                    <div className="flex items-center space-x-2">
+                                  <div
+                                    onClick={() =>
+                                      handleItemSelection(
+                                        `${idx}-${containerIdx}`,
+                                        containerItem?.h1,
+                                        containerItem?.img
+                                      )
+                                    }
+                                    className="py-2 flex items-center cursor-pointer justify-center"
+                                  >
+                                    <div className="flex cursor-pointer items-center space-x-2">
                                       <input
                                         type="checkbox"
                                         id={`addToEnquiry-${idx}-${containerIdx}`}
-                                        className="h-4 w-4 accent-red-700"
+                                        className="h-4 w-4 cursor-pointer accent-red-700"
                                         checked={selectedItems.has(
                                           `${idx}-${containerIdx}`
                                         )}
@@ -421,7 +430,7 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
                                       />
                                       <Label
                                         htmlFor={`addToEnquiry-${idx}-${containerIdx}`}
-                                        className="text-sm whitespace-nowrap"
+                                        className="text-sm cursor-pointer whitespace-nowrap"
                                       >
                                         {containerItem?.inquiry}
                                       </Label>

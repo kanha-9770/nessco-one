@@ -241,7 +241,7 @@ const Page2: React.FC<Page2Props> = ({
                 aria-label="All"
                 onClick={() => handleCategoryChange("all")}
               >
-                <button>{ProductsGrid?.all}</button>
+                <button>All</button>
               </div>
               <div
                 className={`lg:border-2 border-[0.1rem] border-solid lg:w-[12rem] w-[7rem] h-[1.5rem] lg:h-[2rem] lg:rounded-full rounded-[0.3rem] flex items-center lg:mx-[0.3rem] mx-[0.2rem] lg:text-[1rem] text-[0.7rem] font-medium ${
@@ -340,7 +340,12 @@ const Page2: React.FC<Page2Props> = ({
                   </div>
                 </div>
                 <div className="w-8 h-8 p-[0.2rem] bg-[#f5f5f5] border-solid border-[0.1rem] border-[#f5f5f5] hover:border-red-700 rounded-full flex items-center justify-center relative group">
-                  <Image src={item?.image} alt="" width={400} height={400} />
+                  <Image
+                    src={item?.image}
+                    alt={item?.imageInformation}
+                    width={400}
+                    height={400}
+                  />
                   <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-[0.3rem] shadow-md p-3 h-max w-max z-20">
                     <p className="text-sm text-black font-normal">
                       {item?.imageInformation}
@@ -352,7 +357,9 @@ const Page2: React.FC<Page2Props> = ({
               <div className="pt-6 pl-6">
                 <Link href={`${paramsthing}/${item?.link}`}>
                   <h3 className="text-xl font-semibold w-[65%]">{item?.h1}</h3>
-                  <h3 className="text-lg text-[#483d73] font-semibold">{item?.h2}</h3>
+                  <h3 className="text-lg text-[#483d73] font-semibold">
+                    {item?.h2}
+                  </h3>
                 </Link>
               </div>
               <div className="flex justify-center items-center overflow-hidden">
@@ -360,7 +367,7 @@ const Page2: React.FC<Page2Props> = ({
                   <Link href={`${paramsthing}/${item?.link}`}>
                     <Image
                       src={item?.img}
-                      alt=""
+                      alt={`${item?.h2} ${item?.h1}`}
                       priority
                       width={400}
                       height={400}
@@ -400,45 +407,52 @@ const Page2: React.FC<Page2Props> = ({
                     </div>
                   </div>
                 ) : (
-                  <LinkUrl href={`/products/${paramsthing}/${item.link}`} className="w-full flex justify-center" >
-                  <button
-                    aria-label="View Machine"
-                    className={`mt-[0.2rem] w-[70%] h-[2.5rem] border-[0.1rem] border-solid  ${
-                      hoveredButtonIndex === idx
-                        ? "border-black bg-black text-white"
-                        : "border-[#9c9c9c] bg-transparent text-black"
-                    } font-semibold rounded-[0.5rem] transition-colors duration-300`}
-                    onMouseEnter={() => setHoveredButtonIndex(idx)}
-                    onMouseLeave={() => setHoveredButtonIndex(null)}
+                  <LinkUrl
+                    href={`/products/${paramsthing}/${item.link}`}
+                    className="w-full flex justify-center"
                   >
-                    
+                    <button
+                      aria-label="View Machine"
+                      className={`mt-[0.2rem] w-[70%] h-[2.5rem] border-[0.1rem] border-solid  ${
+                        hoveredButtonIndex === idx
+                          ? "border-black bg-black text-white"
+                          : "border-[#9c9c9c] bg-transparent text-black"
+                      } font-semibold rounded-[0.5rem] transition-colors duration-300`}
+                      onMouseEnter={() => setHoveredButtonIndex(idx)}
+                      onMouseLeave={() => setHoveredButtonIndex(null)}
+                    >
                       {ProductsGrid?.viewMachine}
-                    
-                  </button>
+                    </button>
                   </LinkUrl>
                 )}
                 <div className="flex items-center justify-center lg:hidden w-full">
-                <LinkUrl href={`/products/${paramsthing}/${item?.link}`} className="w-full flex justify-center">
-                  <button
-                    aria-label="View Machine"
-                    className={`mt-[1rem] w-[70%] h-[2rem] border-[0.1rem] border-solid font-medium rounded-[0.5rem] transition-colors duration-300 border-[#9c9c9c] hover:border-black hover:bg-black hover:text-white`}
+                  <LinkUrl
+                    href={`/products/${paramsthing}/${item?.link}`}
+                    className="w-full flex justify-center"
                   >
-                    
+                    <button
+                      aria-label="View Machine"
+                      className={`mt-[1rem] w-[70%] h-[2rem] border-[0.1rem] border-solid font-medium rounded-[0.5rem] transition-colors duration-300 border-[#9c9c9c] hover:border-black hover:bg-black hover:text-white`}
+                    >
                       {ProductsGrid?.viewMachine}
-                    
                     </button>
                   </LinkUrl>
                 </div>
               </div>
 
-              <div className="w-full h-px bg-[#9c9c9c]"></div>
+              <div className="w-full cursor-pointer h-px bg-[#9c9c9c]"></div>
 
-              <div className="my-4 flex items-center justify-center">
-                <div className="flex items-center space-x-2">
+              <div
+                onClick={() =>
+                  handleItemSelection(`${idx}`, item?.h1, item?.img)
+                }
+                className="my-4 cursor-pointer flex items-center justify-center"
+              >
+                <div className="flex cursor-pointer items-center space-x-2">
                   <input
                     type="checkbox"
                     id={`addToEnquiry-${idx}`}
-                    className="h-4 w-4 accent-red-700"
+                    className="h-4 w-4 cursor-pointer accent-red-700"
                     checked={selectedItems?.has(`${idx}`)}
                     onChange={() =>
                       handleItemSelection(`${idx}`, item?.h1, item?.img)
@@ -446,7 +460,7 @@ const Page2: React.FC<Page2Props> = ({
                   />
                   <Label
                     htmlFor={`addToEnquiry-${idx}`}
-                    className="text-sm whitespace-nowrap"
+                    className="text-sm cursor-pointer whitespace-nowrap"
                   >
                     {ProductsGrid?.inquiry}
                   </Label>

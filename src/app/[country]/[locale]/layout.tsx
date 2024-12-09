@@ -12,6 +12,7 @@ import { locales } from "@/i18n";
 import { FormProvider } from "./context/FormContext";
 import ContactIcons from "@/components/Contact/ContactIcon";
 import { getBaseUrl } from "@/app/api/environment";
+import { EnquiryCartProvider } from "./context/EnquiryContext";
 const FooterLayout = dynamic(() => import("@/components/Footer/FooterLayout"));
 const inter = Inter({
   subsets: ["latin"],
@@ -109,13 +110,15 @@ export default async function RootLayout({
         {/* NextIntlClientProvider wraps the children with messages and locale */}
         {/* Navbar with internationalization */}
         <FormProvider>
-          <NavLayout params={{ locale }} />
-          {/* Page content */}
-          <ContactIcons />
-          {children}
-          <div>
-            <FooterLayout params={{ locale }} />
-          </div>
+          <EnquiryCartProvider>
+            <NavLayout params={{ locale }} />
+            {/* Page content */}
+            <ContactIcons />
+            {children}
+            <div>
+              <FooterLayout params={{ locale }} />
+            </div>
+          </EnquiryCartProvider>
         </FormProvider>
         <Script
           src="https://cdn.pagesense.io/js/nesscoindia/ff3c25fdacd845338fcb5edd343fcde6.js"

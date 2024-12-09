@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import styles from "./footer.module.css";
 import { usePathname } from "next/navigation";
@@ -14,10 +15,11 @@ import {
 } from "@/components/ui/dialog";
 import { ScrollArea } from "../ui/ScrollArea";
 import Link from "next/link";
+import SubscribeDialog from "./SubscribeDialog";
 
 interface FooterProps {
   footerData: {
-    stores: { address: string; link: string }[]; // Adjusting to match the structure
+    stores: { address: string; link: string }[];
     businessPartners: string;
     awards: { src: string; alt: string }[];
     clients: string;
@@ -49,7 +51,7 @@ interface FooterProps {
 
 const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
   const pathname = usePathname() || "";
-  const componentCode =  pathname.split('/').filter(Boolean).pop()?.toLowerCase();
+  const componentCode = pathname.split('/').filter(Boolean).pop()?.toLowerCase();
   const componentCodeourCompany = componentCode;
   const isDarkBackground =
     ["knowledge-center", "clientele", "our-company"].includes(componentCode) ||
@@ -60,6 +62,8 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
   const textColor = isDarkBackground ? "text-white" : "text-black";
   const image = isDarkBackground ? "invert" : "";
   const [isPrivacyPolicyOpen, setIsPrivacyPolicyOpen] = useState(false);
+  const [isSubscribeDialogOpen, setIsSubscribeDialogOpen] = useState(false);
+  const [email, setEmail] = useState("");
 
   return (
     <>
@@ -121,7 +125,6 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                   {footerData?.awarTitle}
                 </h4>
                 <div className="flex flex-row h-[3rem] w-[21rem] mb-4 -m-1 mt-3">
-                  {/* Mapping awards */}
                   {footerData?.awards?.map((award, index) => (
                     <Image
                       key={index}
@@ -228,16 +231,30 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                   <input
                     placeholder="Enter your email address"
                     className=" lg:w-[24rem] w-[44vh] md:w-[47rem]  mt-2 h-[2.3rem] rounded-xl border p-2 border-black font-poppins font-light text-xs"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    onKeyPress={(e) => {
+                      if (e.key === 'Enter' && email) {
+                        e.preventDefault();
+                        setIsSubscribeDialogOpen(true);
+                      }
+                    }}
                   />
-                 
-                    <Image
-                    src="https://assets.nesscoindustries.com/public/assets/footer/send-button.svg"
-                    alt="send Button"
-                    width={22}
-                    height={22}
+                  <button
+                    onClick={() => {
+                      if (email && /\S+@\S+\.\S+/.test(email)) {
+                        setIsSubscribeDialogOpen(true);
+                      }
+                    }}
                     className="-ml-[2.5rem] mt-2 "
+                  >
+                    <Image
+                      src="https://assets.nesscoindustries.com/public/assets/footer/send-button.svg"
+                      alt="send Button"
+                      width={22}
+                      height={22}
                     />
-                   
+                  </button>
                 </div>
 
                 <div className="flex lg:flex-col px-4 lg:px-0">
@@ -514,6 +531,12 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
           </ScrollArea>
         </DialogContent>
       </Dialog>
+
+      <SubscribeDialog
+        isOpen={isSubscribeDialogOpen}
+        onClose={() => setIsSubscribeDialogOpen(false)}
+        email={email}
+      />
     </>
   );
 };

@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -21,6 +21,13 @@ const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
   const [enquiryItems, setEnquiryItems] = useState<
     Array<{ id: string; name: string; image: string }>
   >([]);
+
+  useEffect(() => {
+    const savedItems = localStorage.getItem("cartItems");
+    if (savedItems) {
+      setEnquiryItems(JSON.parse(savedItems));
+    }
+  }, []);
 
   const scrollbarLeft = () => {
     if (carouselRef.current) {
@@ -50,19 +57,27 @@ const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
       );
       if (existingItemIndex > -1) {
         // Item exists, remove it
-        return prevItems.filter((prevItem) => prevItem.id !== `${index}`);
+        const updatedItems = prevItems.filter((prevItem) => prevItem.id !== `${index}`);
+        localStorage.setItem("cartItems", JSON.stringify(updatedItems));
+        return updatedItems;
       } else {
         // Item doesn't exist, add it
-        return [
+        const updatedItems = [
           ...prevItems,
           { id: `${index}`, name: item.h1, image: item.img },
         ];
+        localStorage.setItem("cartItems", JSON.stringify(updatedItems));
+        return updatedItems;
       }
     });
   };
 
   const handleRemoveFromEnquiry = (id: string) => {
-    setEnquiryItems((prevItems) => prevItems.filter((item) => item.id !== id));
+    setEnquiryItems((prevItems) => {
+      const updatedItems = prevItems.filter((item) => item.id !== id);
+      localStorage.setItem("cartItems", JSON.stringify(updatedItems));
+      return updatedItems;
+    });
   };
 
   return (
@@ -159,29 +174,6 @@ const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
                           </p>
                         </div>
                       </div>
-                      {/* <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center cursor-pointer relative group hover:text-red-700 text-[1.1rem]">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="black"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="feather feather-info w-4 h-4 hover:stroke-red-700"
-                        >
-                          <circle cx="12" cy="12" r="10"></circle>
-                          <line x1="12" y1="16" x2="12" y2="12"></line>
-                          <line x1="12" y1="8" x2="12" y2="8"></line>
-                        </svg>
-                        <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-md shadow-md px-2 py-1 h-max w-max z-20">
-                          <p className="lg:text-[0.8rem] text-[0.7rem] text-black">
-                            {item?.information}
-                          </p>
-                        </div>
-                      </div> */}
                     </div>
 
                     {/* Title */}
@@ -220,8 +212,11 @@ const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
                     <div className="w-full h-px bg-[#9c9c9c]"></div>
 
                     {/* Checkbox */}
-                    <div className="my-4 flex items-center justify-center">
-                      <div className="flex items-center space-x-2">
+                    <div
+                      onClick={() => handleToggleEnquiry(item, idx)}
+                      className="my-4 cursor-pointer flex items-center justify-center"
+                    >
+                      <div className="flex cursor-pointer items-center space-x-2">
                         <input
                           type="checkbox"
                           id={`addToEnquiry-${idx}`}
@@ -234,9 +229,11 @@ const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
                         />
                         <Label
                           htmlFor={`addToEnquiry-${idx}`}
-                          className="text-sm whitespace-nowrap"
+                          className="text-sm cursor-pointer whitespace-nowrap"
                         >
-                          Added to inquiry
+                          {enquiryItems.some((enquiryItem) => enquiryItem.id === `${idx}`)
+                            ? "Remove from inquiry"
+                            : "Add to inquiry"}
                         </Label>
                       </div>
                     </div>
@@ -257,3 +254,4 @@ const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
 };
 
 export default RelateProducts;
+

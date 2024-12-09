@@ -1,10 +1,11 @@
 "use client";
+
 import React, { useCallback, useEffect, useState } from "react";
-import { motion, useMotionValue } from "framer-motion";
+import { motion, useMotionValue, AnimatePresence } from "framer-motion";
 import { HomeData } from "../types/constant";
 import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { ExternalLink} from 'lucide-react';
+import { ExternalLink, Play } from 'lucide-react';
 
 const ONE_SECOND = 1000;
 const AUTO_DELAY = ONE_SECOND * 10;
@@ -72,6 +73,34 @@ export const SwipeCarousel: React.FC<ImageSliderLayoutProps> = ({
     setCurrentVideoLink(videoSrc);
   };
 
+  const RipplePlayButton = ({ onClick }: { onClick: () => void }) => (
+    <button
+      onClick={onClick}
+      className="ripple-block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 size-16 rounded-full overflow-hidden"
+    >
+      <Play className="absolute left-1/2 top-1/2 z-10 size-8 -translate-x-1/2 -translate-y-1/2 text-white transition-colors duration-300 group-hover:text-white/90" />
+      <AnimatePresence>
+        {[1, 2, 3].map((i) => (
+          <motion.div
+            key={i}
+            className="absolute left-0 top-0 size-full rounded-full bg-white/30"
+            initial={{ scale: 0.2, opacity: 0 }}
+            animate={{
+              scale: [0.2, 4],
+              opacity: [0, 0.9, 0],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              delay: (i - 1) * 0.4,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+      </AnimatePresence>
+    </button>
+  );
+
   return (
     <div className="relative h-full w-auto mt-6 overflow-hidden">
       <motion.div
@@ -97,6 +126,7 @@ export const SwipeCarousel: React.FC<ImageSliderLayoutProps> = ({
               muted
               className="w-full h-full object-cover rounded-xl"
             />
+            <RipplePlayButton onClick={() => openModal(video.src)} />
             <Button
               variant="outline"
               size="icon"
@@ -163,7 +193,7 @@ export const SwipeCarousel: React.FC<ImageSliderLayoutProps> = ({
             />
           </div>
           <DialogClose className="absolute top-2 right-2 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
-          <span className="sr-only">Close</span>
+            <span className="sr-only">Close</span>
           </DialogClose>
         </DialogContent>
       </Dialog>
