@@ -36,7 +36,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ machine }) => {
         )}
 
         
-        <div className="relative items-center p-4 flex space-x-2 justify-center">
+        <div className="relative items-center p-4 flex lg:space-x-4 space-x-2 justify-center">
           {machine?.descriptionSpeed && (
             <div className="lg:h-48 h-40 flex flex-col lg:w-64 px-4">
               <Image

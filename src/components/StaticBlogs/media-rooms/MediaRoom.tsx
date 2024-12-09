@@ -106,7 +106,7 @@ const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="w-full relative overflow-hidden h-screen flex flex-col justify-center space-y-2 items-center bg-[#483d73] "
+          className="w-full relative overflow-hidden h-screen flex flex-col justify-center space-y-2 items-center bg-black "
         >
            <h1 className="flex text-white absolute  top-[7rem] item-center w-[50%] justify-center text-center text-4xl ">
             {post?.header?.heading}
@@ -118,7 +118,7 @@ const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
-          className="lg:px-[10%] px-[8%] -mt-[22rem] mb-8 relative z-10 "
+          className="lg:px-[10%] px-[8%] -mt-[19rem] mb-8 relative z-10 "
         >
           {post?.header?.headingImage &&
             (/\.(mp4|webm|ogg)$/i.test(post?.header?.headingImage) ? (

@@ -101,6 +101,8 @@ const config: Config = {
       },
       boxShadow: {
         input: `0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08)`,
+        neumorphism:
+          "15px 15px 30px #c5c5c5, -15px -15px 30px #ffffff",
       },
       keyframes: {
         "accordion-down": {

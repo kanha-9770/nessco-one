@@ -111,7 +111,8 @@ export const blogPosts: BlogPost[] = [
     ],
     readingTime: 5,
     header: {
-      heading: "Nessco Unveils Advanced Servo Paper Cup Machine and Two Compartment Rectangular Bowl-Making Technology: A Bold Step Towards Sustainability",
+      heading:
+        "Nessco Unveils Advanced Servo Paper Cup Machine and Two Compartment Rectangular Bowl-Making Technology: A Bold Step Towards Sustainability",
       subheading: "Advancing the Industry with Innovative Machinery",
       headingImage:
         "https://assets.nesscoindustries.com/public/assets/resources/media-room/nessco-nippon-ogcups-japan24.webp",
@@ -222,7 +223,8 @@ export const blogPosts: BlogPost[] = [
     ],
     readingTime: 6,
     header: {
-      heading: "Nessco and Mitsubishi Discuss the Future of Sustainable Packaging in Japan",
+      heading:
+        "Nessco and Mitsubishi Discuss the Future of Sustainable Packaging in Japan",
       subheading: "Nessco and Mitsubishi Join Forces for a Greener Future",
       headingImage:
         "https://assets.nesscoindustries.com/public/assets/resources/media-room/nessco-mitsubishi-japan24-1.webp",
@@ -249,7 +251,8 @@ export const blogPosts: BlogPost[] = [
       "Nessco introduces its cutting-edge Dome Lid Machine, delivering leakage-free cups and sustainable solutions for the Japanese market, endorsed by 7-Eleven Japan.",
     header: {
       id: "header-1",
-      heading: "Nessco Revolutionizes Dome Lid Manufacturing with Advanced Technology for the Japanese Market",
+      heading:
+        "Nessco Revolutionizes Dome Lid Manufacturing with Advanced Technology for the Japanese Market",
       headingImage: "/images/nessco-dome-lid-machine.png",
       subheading:
         "Setting new standards in food packaging with sustainable innovation.",
@@ -262,7 +265,8 @@ export const blogPosts: BlogPost[] = [
           blocks: [
             {
               type: "text",
-              content: "Nessco has introduced its cutting-edge Dome Lid Machine, delivering leakage-free cups that are setting new standards in the food packaging industry. Designed for precision and durability, Nessco’s dome lids have passed the rigorous 60-second leakage test with samples from 20 production lots, ensuring unmatched reliability and performance.",
+              content:
+                "Nessco has introduced its cutting-edge Dome Lid Machine, delivering leakage-free cups that are setting new standards in the food packaging industry. Designed for precision and durability, Nessco’s dome lids have passed the rigorous 60-second leakage test with samples from 20 production lots, ensuring unmatched reliability and performance.",
             },
           ],
         },
@@ -274,7 +278,8 @@ export const blogPosts: BlogPost[] = [
           blocks: [
             {
               type: "text",
-              content: "In a significant milestone, 7-Eleven Japan has adopted Nessco’s dome lids, reflecting the brand's growing influence in the Japanese market. The dome lids, known for their rigid and snappy fitment, are engineered to meet the high standards of quick-service restaurants (QSRs) and food packaging industries, providing a superior consumer experience.",
+              content:
+                "In a significant milestone, 7-Eleven Japan has adopted Nessco’s dome lids, reflecting the brand's growing influence in the Japanese market. The dome lids, known for their rigid and snappy fitment, are engineered to meet the high standards of quick-service restaurants (QSRs) and food packaging industries, providing a superior consumer experience.",
             },
           ],
         },
@@ -301,7 +306,8 @@ export const blogPosts: BlogPost[] = [
           blocks: [
             {
               type: "text",
-              content: "Nessco’s mission to replace traditional plastic packaging with sustainable, paper-based alternatives is reshaping the global packaging landscape. With a focus on precision engineering, high-quality materials, and innovative designs, Nessco is empowering businesses to embrace environmentally friendly practices without compromising on performance.",
+              content:
+                "Nessco’s mission to replace traditional plastic packaging with sustainable, paper-based alternatives is reshaping the global packaging landscape. With a focus on precision engineering, high-quality materials, and innovative designs, Nessco is empowering businesses to embrace environmentally friendly practices without compromising on performance.",
             },
           ],
         },
@@ -435,7 +441,8 @@ export const blogPosts: BlogPost[] = [
     readingTime: 4,
     header: {
       id: "header1",
-      heading: "Nessco Expands Presence in Japan with Servo Paper Packaging Solutions",
+      heading:
+        "Nessco Expands Presence in Japan with Servo Paper Packaging Solutions",
       headingImage:
         "https://assets.nesscoindustries.com/public/assets/resources/media-room/nessco-expands-presence-in-japan.webm", // Replace with actual path to the header image
       subheading:
@@ -491,15 +498,21 @@ export const blogPosts: BlogPost[] = [
                 ],
               },
             },
+          ],
+        },
+      },
+      {
+        type: "text",
+        heading: " ",
+        content: "",
+      },
+      {
+        type: "section",
+        heading: "Revolutionizing the Packaging Industry",
+        content: {
+          blocks: [
             {
               type: "text",
-              heading: " ",
-              content:"",
-                        },
-
-            {
-              type: "text",
-              heading: "Revolutionizing the Packaging Industry",
               content:
                 "Nessco’s participation at Drupa Germany marks a milestone moment for the company and the packaging industry. By introducing innovative solutions tailored to the needs of the global market, Nessco continues to drive advancements in sustainable packaging technology. The overwhelming response at the event is a testament to Nessco’s ability to deliver cutting-edge machinery that aligns with the industry’s focus on precision, sustainability, and efficiency.",
             },
@@ -510,9 +523,17 @@ export const blogPosts: BlogPost[] = [
                 alt: "",
               },
             },
+          ],
+        },
+      },
+
+      {
+        type: "section",
+        heading: "A Commitment to Excellence",
+        content: {
+          blocks: [
             {
               type: "text",
-              heading: "A Commitment to Excellence",
               content:
                 "From carton erecting to vision inspection technology, Nessco’s solutions are designed to redefine the packaging process, ensuring high-quality output with every product. With its flat rectangular bowl machines, Nessco is catering to the growing demand for versatile and eco-conscious packaging, making a strong case for the future of sustainable manufacturing.",
             },
@@ -523,9 +544,17 @@ export const blogPosts: BlogPost[] = [
                 alt: "",
               },
             },
+          ],
+        },
+      },
+
+      {
+        type: "section",
+        heading: "Setting a Global Standard",
+        content: {
+          blocks: [
             {
               type: "text",
-              heading: "Setting a Global Standard",
               content:
                 "By receiving an enthusiastic response in Germany, Nessco has once again proven its ability to provide world-class packaging solutions. This milestone solidifies its reputation as a global leader in sustainable packaging machinery, ready to transform industries across the world.",
             },
@@ -892,7 +921,8 @@ export const blogPosts: BlogPost[] = [
     readingTime: 5,
     header: {
       id: "header-4",
-      heading: "Nessco Highlights Sustainable Food Packaging at Gulf Food Dubai",
+      heading:
+        "Nessco Highlights Sustainable Food Packaging at Gulf Food Dubai",
       headingImage:
         "https://assets.nesscoindustries.com/public/assets/resources/media-room/nessco-gulfood-visitor3.webp", // Replace with actual URL if available
       subheading:
@@ -1028,11 +1058,14 @@ export const blogPosts: BlogPost[] = [
                 alt: "",
               },
             },
-            {
-              type: "text",
-              heading: "Setting the Standard with Live Demonstrations",
-              content: "The live demonstrations highlighted:",
-            },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Setting the Standard with Live Demonstrations",
+        content: {
+          blocks: [
             {
               type: "list",
               content: {
@@ -1047,6 +1080,14 @@ export const blogPosts: BlogPost[] = [
                 ],
               },
             },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "The live demonstrations highlighted",
+        content: {
+          blocks: [
             {
               type: "image",
               content: {
@@ -1054,15 +1095,29 @@ export const blogPosts: BlogPost[] = [
                 alt: "",
               },
             },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Overwhelming Market Response",
+        content: {
+          blocks: [
             {
               type: "text",
-              heading: "Overwhelming Market Response",
               content:
                 "The demand for Nessco’s machines reached unprecedented levels, resulting in an instant sell-out of all machines displayed at the exhibition. The enthusiastic response is a testament to the rising demand for sustainable and high-quality packaging products in the region.",
             },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "Commitment to Excellence",
+        content: {
+          blocks: [
             {
               type: "text",
-              heading: "Commitment to Excellence",
               content:
                 "Nessco’s success at Saudi P&P underlines its commitment to providing:",
             },
@@ -1077,14 +1132,11 @@ export const blogPosts: BlogPost[] = [
                   {
                     text: "Future Orders: Expanding capacity to cater to the growing demand for sustainable packaging solutions across the Middle East.",
                   },
+                  {
+                    text: "The demand for Nessco’s machines reached unprecedented levels, resulting in an instant sell-out of all machines displayed at the exhibition. The enthusiastic response is a testament to the rising demand for sustainable and high-quality packaging products in the region.",
+                  },
                 ],
               },
-            },
-            {
-              type: "text",
-              heading: "Driving Sustainable Innovation",
-              content:
-                "With its Salad Bowl Machine and Servo-Driven Paper Cup Machine, Nessco is revolutionizing the food packaging industry in Saudi Arabia. These machines are tailor-made for businesses looking to adopt eco-friendly, paper-based packaging solutions while maintaining superior quality and performance.",
             },
             {
               type: "image",
@@ -1093,9 +1145,16 @@ export const blogPosts: BlogPost[] = [
                 alt: "",
               },
             },
+          ],
+        },
+      },
+      {
+        type: "section",
+        heading: "A Milestone for Saudi Arabia's Packaging Industry",
+        content: {
+          blocks: [
             {
               type: "text",
-              heading: "A Milestone for Saudi Arabia's Packaging Industry",
               content:
                 "Nessco’s participation in Saudi P&P marks a significant milestone, further cementing its reputation as a global leader in packaging machinery. By addressing the needs of a rapidly growing market, Nessco is empowering businesses to embrace sustainability while staying ahead of industry trends.",
             },
@@ -1134,7 +1193,7 @@ export const blogPosts: BlogPost[] = [
     content: [
       {
         type: "section",
-        heading:"Introduction",
+        heading: "Introduction",
         content: {
           intro:
             "As a top provider of sustainable solutions for the HORECA industry, Nessco was excited to introduce its newest Servo Driven Paper Cup Machine at the famous Drupa Exhibition. This new machine set a high standard in the industry with its advanced technology, efficiency, and eco-friendly features.",
@@ -1142,7 +1201,7 @@ export const blogPosts: BlogPost[] = [
             {
               type: "text",
               heading: " ",
-              content:" ",
+              content: " ",
             },
             {
               type: "text",
@@ -1230,7 +1289,8 @@ export const blogPosts: BlogPost[] = [
     readingTime: 7,
     header: {
       id: "header-9",
-      heading: "Nessco Lauches Innovative Paper Cup Machine at Drupa Exhibition",
+      heading:
+        "Nessco Lauches Innovative Paper Cup Machine at Drupa Exhibition",
       headingImage:
         "https://assets.nesscoindustries.com/public/assets/resources/media-room/drup24-nessco-video.webm", // Replace with actual URL if available
       subheading: "Introducing the Servo Driven Paper Cup Machine",
@@ -1266,7 +1326,7 @@ export const blogPosts: BlogPost[] = [
             {
               type: "text",
               heading: " ",
-              content:" ",
+              content: " ",
             },
             {
               type: "text",
@@ -1339,7 +1399,7 @@ export const blogPosts: BlogPost[] = [
     content: [
       {
         type: "section",
-        heading:"Introduction",
+        heading: "Introduction",
         content: {
           intro:
             "Nowadays, sustainability is no longer a choice but a necessity for every business. Businesses understand the need to use sustainable methods to stay successful. Many companies, including Nessco, focus on sustainability to protect the environment and meet customer demands for eco-friendly products.",
@@ -1347,7 +1407,7 @@ export const blogPosts: BlogPost[] = [
             {
               type: "text",
               heading: "",
-              content:"",
+              content: "",
             },
             {
               type: "text",
@@ -1400,7 +1460,8 @@ export const blogPosts: BlogPost[] = [
     readingTime: 7,
     header: {
       id: "header-11",
-      heading: "Nessco: Pioneering Sustainability in the Paper Machine Industry",
+      heading:
+        "Nessco: Pioneering Sustainability in the Paper Machine Industry",
       headingImage:
         "https://assets.nesscoindustries.com/public/assets/homepage/news/saudi-2024-news.webp", // Replace with actual URL if available
       subheading: "Pioneering Eco-Friendly Practices in Paper Machines",
@@ -1582,7 +1643,7 @@ export const blogPosts: BlogPost[] = [
             {
               type: "text",
               heading: "",
-              content:"",
+              content: "",
             },
             {
               type: "text",
@@ -1762,7 +1823,7 @@ export const blogPosts: BlogPost[] = [
     content: [
       {
         type: "section",
-        heading:"Introduction",
+        heading: "Introduction",
         content: {
           intro:
             "Paperex, a leader in the global paper trading industry, continues to make waves with its ambitious new projects centered around paper-based products. With a vision to align with global sustainability goals, Paperex is expanding its reach and portfolio to meet the growing demand for eco-friendly solutions across industries.",

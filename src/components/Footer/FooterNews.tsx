@@ -51,7 +51,11 @@ interface FooterProps {
 
 const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
   const pathname = usePathname() || "";
-  const componentCode = pathname.split('/').filter(Boolean).pop()?.toLowerCase();
+  const componentCode = pathname
+    .split("/")
+    .filter(Boolean)
+    .pop()
+    ?.toLowerCase();
   const componentCodeourCompany = componentCode;
   const isDarkBackground =
     ["knowledge-center", "clientele", "our-company"].includes(componentCode) ||
@@ -64,6 +68,24 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
   const [isPrivacyPolicyOpen, setIsPrivacyPolicyOpen] = useState(false);
   const [isSubscribeDialogOpen, setIsSubscribeDialogOpen] = useState(false);
   const [email, setEmail] = useState("");
+  const [isEmailValid, setIsEmailValid] = useState(true);
+
+  const validateEmail = (email: string) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newEmail = e.target.value;
+    setEmail(newEmail);
+    setIsEmailValid(validateEmail(newEmail));
+  };
+
+  const handleSubscribe = () => {
+    if (validateEmail(email)) {
+      setIsSubscribeDialogOpen(true);
+    }
+  };
 
   return (
     <>
@@ -227,26 +249,30 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                 >
                   {footerData?.subscribeTitle}
                 </h4>
-                <div className="flex lg:p-1 pl-3">
+                <div className="flex lg:p-1 pl-3 relative">
                   <input
                     placeholder="Enter your email address"
-                    className=" lg:w-[24rem] w-[44vh] md:w-[47rem]  mt-2 h-[2.3rem] rounded-xl border p-2 border-black font-poppins font-light text-xs"
+                    className={`lg:w-[24rem] w-[44vh] md:w-[47rem]  mt-2 h-[2.3rem] rounded-xl border p-2 ${
+                      isEmailValid ? "border-black" : "border-red-500"
+                    } font-poppins font-light text-xs`}
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={handleEmailChange}
                     onKeyPress={(e) => {
-                      if (e.key === 'Enter' && email) {
+                      if (e.key === "Enter") {
                         e.preventDefault();
-                        setIsSubscribeDialogOpen(true);
+                        handleSubscribe();
                       }
                     }}
                   />
+                  {!isEmailValid && (
+                    <span className="absolute bottom-[-1.2rem] left-3 text-red-500 text-xs">
+                      Please enter a valid email address
+                    </span>
+                  )}
                   <button
-                    onClick={() => {
-                      if (email && /\S+@\S+\.\S+/.test(email)) {
-                        setIsSubscribeDialogOpen(true);
-                      }
-                    }}
+                    onClick={handleSubscribe}
                     className="-ml-[2.5rem] mt-2 "
+                    disabled={!isEmailValid}
                   >
                     <Image
                       src="https://assets.nesscoindustries.com/public/assets/footer/send-button.svg"

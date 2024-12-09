@@ -9,6 +9,7 @@ import { Search, ChevronDown } from 'lucide-react';
 import { ScrollArea } from "@/components/ui/ScrollArea";
 import countriesData from "./constant/CountryData";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 type Country = {
   name: string;
@@ -81,9 +82,11 @@ export default function CountrySelect({
             >
               <div className="absolute left-2 top-1/2 transform -translate-y-1/2 h-4 w-6 overflow-hidden rounded-sm">
                 {selectedCountry && (
-                  <img
+                  <Image
                     src={`https://flagcdn.com/w40/${selectedCountry.code.toLowerCase()}.png`}
-                    width="24"
+                    width={200}
+                    height={200}
+                    
                     alt={`${selectedCountry.name} flag`}
                     className="h-full w-full object-cover"
                   />
@@ -167,16 +170,7 @@ export default function CountrySelect({
           />
         </div>
       </div>
-      {error && (
-        <motion.p
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          className="text-red-500 text-sm mt-1"
-        >
-          {error}
-        </motion.p>
-      )}
+     
     </div>
   );
 }

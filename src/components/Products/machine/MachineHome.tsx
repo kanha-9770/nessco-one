@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import BreadcrumbProduct from "@/components/ui/BreadCrumbProduct";
 import InfoCard from "@/components/Products/InfoCard";
 import ZigzagLine from "../ZigzagLine";
 import { Button } from "@/components/ui/button";
+import ReusableForm from "@/components/Contact/ReuseableForm";
 
 interface SpecificationImage {
   [key: string]: string;
@@ -47,7 +48,7 @@ const Machine: React.FC<MachineProps> = ({
   const [fontSize, setFontSize] = useState("16px");
   const [selectedImage, setSelectedImage] = useState<string>(image);
   console.log(setSelectedImage);
-  
+
   const pathname = usePathname() || "";
   const fallBackLink = pathname.split("/")[4]?.toLocaleLowerCase();
 
@@ -102,25 +103,14 @@ const Machine: React.FC<MachineProps> = ({
                     {name}
                   </h2>
                   <div className="w-max rounded-full group">
-                    <Button className="bg-[#483d73] rounded-full text-white py-1 pl-6 text-lg group-hover:bg-gradient-to-r transition-all duration-300 group-hover:from-[#483d73] group-hover:to-red-700 font-medium flex items-center">
-                      Book Now
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 64 64"
-                        className="lg:w-6 w-5 lg:h-6 h-5 mx-2"
-                      >
-                        <circle
-                          cx="32"
-                          cy="32"
-                          r="32"
-                          className="fill-[#ffffff] cursor-pointer"
-                        />
-                        <path
-                          d="M25 20 L37 32 L25 44"
-                          className="stroke-[#483d73] stroke-[4px] fill-none stroke-linecap-round stroke-linejoin-round"
-                        />
-                      </svg>
-                    </Button>
+                    <ReusableForm
+                      formId={name}
+                      buttonText="Book Now"
+                      dialogTitle="Book Now"
+                      dialogSubtitle="We'd love to hear from you!"
+                      imageUrl="https://www.nesscoindia.com/Assets/images/resource/popup.webp"
+                      showButton={true}
+                    />
                   </div>
                 </div>
               </div>
@@ -168,7 +158,7 @@ const Machine: React.FC<MachineProps> = ({
           </div>
         </div>
       </div>
-      <div className="relative h-auto lg:h-[32%] border-t-2 border-gray-300 flex flex-col-reverse lg:flex-row items-center">
+      <div className="relative h-auto lg:h-[32%] border-t-2 border-gray-300 flex flex-col-reverse lg:flex-row items-center ">
         <div className="text-left text-xs font-medium text-gray-500 uppercase lg:w-[55%] w-full mt-4 lg:mt-0">
           <InfoCard
             sizeRange={

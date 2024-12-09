@@ -8,7 +8,6 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import SubmitButton from "./Submit";
 import FormFields, { FormValues } from "./FormFileds";
-import { formSchema } from "@/lib/ValidationSchema";
 
 interface ReusableFormProps {
   formId: string;
@@ -42,29 +41,27 @@ const ReusableForm: React.FC<ReusableFormProps> = ({
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const validateForm = () => {
-    try {
-      formSchema.parse(formValues);
-      setErrors({});
-      return true;
-    } catch (error) {
-      if (error instanceof Error) {
-        const zodError = JSON.parse(error.message);
-        const newErrors: Partial<FormValues> = {};
-        zodError.forEach((err: { path: string[]; message: string }) => {
-          newErrors[err.path[0] as keyof FormValues] = err.message;
-        });
-        setErrors(newErrors);
-      }
-      return false;
+    const newErrors: Partial<FormValues> = {};
+    const nameRegex = /^[a-zA-Z\s]{2,50}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^\+?[0-9]{10,14}$/;
+
+    if (!nameRegex.test(formValues.fullname)) {
+      newErrors.fullname = "Invalid name";
     }
+    if (!emailRegex.test(formValues.email)) {
+      newErrors.email = "Invalid email";
+    }
+    if (!phoneRegex.test(formValues.mobilenumber)) {
+      newErrors.mobilenumber = "Invalid phone number";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async () => {
     if (!validateForm()) {
-      toast.error("Please fill all required fields correctly.", {
-        duration: 3000,
-        position: "top-right",
-      });
       return;
     }
 
@@ -98,7 +95,11 @@ const ReusableForm: React.FC<ReusableFormProps> = ({
         <p className="text-[#727272] text-[0.9rem]">{dialogSubtitle}</p>
       </div>
       <div className="font-poppins space-y-4">
-        <FormFields onChange={setFormValues} values={formValues} errors={errors} />
+        <FormFields
+          onChange={setFormValues}
+          values={formValues}
+          errors={errors}
+        />
         <SubmitButton isSubmitting={isSubmitting} onClick={handleSubmit} />
       </div>
     </>
@@ -191,3 +192,4 @@ const ReusableForm: React.FC<ReusableFormProps> = ({
 };
 
 export default ReusableForm;
+

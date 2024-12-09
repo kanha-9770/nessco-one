@@ -43,7 +43,7 @@ const Filter: React.FC<FilterProps> = ({
 
   return (
     <div className="font-regular font-poppins">
-      <div className="w-full lg:h-[57rem] bg-white lg:p-5 p-4 rounded-[1rem] lg:mb-0 mb-4">
+      <div className="w-full lg:h-[58rem] bg-white lg:p-5 p-4 rounded-[1rem] lg:mb-0 mb-4">
         <div
           className="relative flex items-center lg:mb-2"
           onClick={togglePage1Visibility}

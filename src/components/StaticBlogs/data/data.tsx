@@ -61,16 +61,17 @@ export const blogPosts: BlogPost[] = [
                 ],
               },
             },
+            {
+              type: "image",
+              content: {
+                src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-guide/paper-cup-guide-img2.webp",
+                alt: "Changing the mold in a paper cup machine is a crucial task that directly impacts production efficiency and cup quality. This blog provides a detailed step-by-step guide on the mold change process, checks to ensure proper alignment and compatibility, and tips for validating the mold's fit with the paper blank or fan.",
+              },
+            },
           ],
         },
       },
-      {
-        type: "image",
-        content: {
-          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-guide/paper-cup-guide-img2.webp",
-          alt: "Changing the mold in a paper cup machine is a crucial task that directly impacts production efficiency and cup quality. This blog provides a detailed step-by-step guide on the mold change process, checks to ensure proper alignment and compatibility, and tips for validating the mold's fit with the paper blank or fan.",
-        },
-      },
+     
       {
         type: "section",
         heading: "6 keys insights uncovered about paper cup manufacturing",
@@ -340,18 +341,19 @@ export const blogPosts: BlogPost[] = [
         content:
           "Paper is an indispensable product derived primarily from cellulose, a carbohydrate found in plant cell walls. Cellulose fibers are pressed and bonded to form thin, uniform sheets, which we know as paper. At Nessco, we excel in producing high-quality paper products using advanced processes and sustainable practices. Here's a detailed look at how we manufacture paper:",
       },
-      {
-        type: "image",
-        content: {
-          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-making-process/paper-chips-2.webp",
-          alt: "paper-making-process",
-        },
-      },
+     
       {
         type: "section",
         heading: "Step 1: From Logs to Chips",
         content: {
           blocks: [
+            {
+              type: "image",
+              content: {
+                src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-making-process/paper-chips-2.webp",
+                alt: "paper-making-process",
+              },
+            },
             {
               type: "text",
               content:
@@ -371,18 +373,19 @@ export const blogPosts: BlogPost[] = [
           ],
         },
       },
-      {
-        type: "image",
-        content: {
-          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-making-process/paper-pulp-2.webp",
-          alt: "from chips to pulp",
-        },
-      },
+      
       {
         type: "section",
         heading: "Step 2: From Chips to Pulp",
         content: {
           blocks: [
+            {
+              type: "image",
+              content: {
+                src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-making-process/paper-pulp-2.webp",
+                alt: "from chips to pulp",
+              },
+            },
             {
               type: "text",
               content:
@@ -402,18 +405,19 @@ export const blogPosts: BlogPost[] = [
           ],
         },
       },
-      {
-        type: "image",
-        content: {
-          src: "https://assets.nesscoindustries.com/public/assets/homepage/pe-coating-logo.webp",
-          alt: "",
-        },
-      },
+      
       {
         type: "section",
         heading: "Step 3: From Pulp to Paper",
         content: {
           blocks: [
+            {
+              type: "image",
+              content: {
+                src: "https://assets.nesscoindustries.com/public/assets/homepage/pe-coating-logo.webp",
+                alt: "",
+              },
+            },
             {
               type: "text",
               content:
@@ -999,23 +1003,19 @@ export const blogPosts: BlogPost[] = [
                 ],
               },
             },
+            {
+              type: "image",
+              content: {
+                src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/sidewall-formation.gif",
+                alt: "paper cup making process",
+              },
+            },
+            
           ],
         },
       },
-      {
-        type: "image",
-        content: {
-          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/sidewall-formation.gif",
-          alt: "paper cup making process",
-        },
-      },
-      {
-        type: "image",
-        content: {
-          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/sidewall-formation.gif",
-          alt: "paper cup making process",
-        },
-      },
+     
+     
       {
         type: "section",
         heading: "4. Sidewall Formation",
@@ -1040,19 +1040,20 @@ export const blogPosts: BlogPost[] = [
                       ],
                     },
                   },
+                  {
+                    type: "image",
+                    content: {
+                      src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/bottom-formation-and-insertion.gif",
+                      alt: "paper cup making process",
+                    },
+                  },
                 ],
               },
             },
           ],
         },
       },
-      {
-        type: "image",
-        content: {
-          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/bottom-formation-and-insertion.gif",
-          alt: "paper cup making process",
-        },
-      },
+    
       {
         type: "section",
         heading: "5. Bottom Formation and Insertion",
@@ -1063,16 +1064,17 @@ export const blogPosts: BlogPost[] = [
               content:
                 "The bottom reel is fed into the machine, pre-cut to the required diameter, and inserted into the cone at the cutter station.",
             },
+            {
+              type: "image",
+              content: {
+                src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/bottom-preheating-and-sealing.gif",
+                alt: "paper cup making process",
+              },
+            },
           ],
         },
       },
-      {
-        type: "image",
-        content: {
-          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/bottom-preheating-and-sealing.gif",
-          alt: "paper cup making process",
-        },
-      },
+     
       {
         type: "section",
         heading: "6. Bottom Preheating and Sealing",
@@ -1093,16 +1095,17 @@ export const blogPosts: BlogPost[] = [
                 ],
               },
             },
+            {
+              type: "image",
+              content: {
+                src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/top-curling.gif",
+                alt: "paper cup making process",
+              },
+            },
           ],
         },
       },
-      {
-        type: "image",
-        content: {
-          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/top-curling.gif",
-          alt: "paper cup making process",
-        },
-      },
+      
       {
         type: "section",
         heading: "7. Top Curling",
@@ -1124,16 +1127,17 @@ export const blogPosts: BlogPost[] = [
                 ],
               },
             },
+            {
+              type: "image",
+              content: {
+                src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/finished-cup-collection.gif",
+                alt: "paper cup making process",
+              },
+            },
           ],
         },
       },
-      {
-        type: "image",
-        content: {
-          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-product/paper-cup-making-process/finished-cup-collection.gif",
-          alt: "paper cup making process",
-        },
-      },
+     
       {
         type: "section",
         heading: "8. Finished Cup Collection",
@@ -1272,16 +1276,17 @@ export const blogPosts: BlogPost[] = [
               content:
                 "Changing the mold in a paper cup machine is a crucial task that directly impacts production efficiency and cup quality. This blog provides a detailed step-by-step guide on the mold change process, checks to ensure proper alignment and compatibility, and tips for validating the mold's fit with the paper blank or fan.",
             },
+            {
+              type: "image",
+              content: {
+                src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-machine/mould-change-guide/paper-mold.webp",
+                alt: "Mould change Guide",
+              },
+            },
           ],
         },
       },
-      {
-        type: "image",
-        content: {
-          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-machine/mould-change-guide/paper-mold.webp",
-          alt: "Mould change Guide",
-        },
-      },
+      
       {
         type: "section",
         heading: "Why Mold Changes Are Necessary",
@@ -1368,65 +1373,67 @@ export const blogPosts: BlogPost[] = [
                 ],
               },
             },
+            {
+              type: "image",
+              content: {
+                src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-machine/mould-change-guide/mold-2.webp",
+                alt: "Mould change Guide",
+              },
+            },
+            {
+              type: "list",
+              content: {
+                format: "disc",
+                items: [
+                  {
+                    text: "Confirm that the paper stand and blanks align with the required specifications.",
+                  },
+                  {
+                    text: "Mothermold and Butterfly Validation",
+                    subItems: {
+                      format: "disc",
+                      items: [
+                        "Verify the mothermold and butterfly are compatible with the blank’s size and design.",
+                      ],
+                    },
+                  },
+                  {
+                    text: "Sealing and Fitting Checks",
+                    subItems: {
+                      format: "disc",
+                      items: [
+                        "Wrap the paper blank on the mold cone and check for proper sealing (minimum 3 mm).",
+                        "Ensure paper fit on the mothermold and verify alignment with the T-rod.",
+                      ],
+                    },
+                  },
+                  {
+                    text: "Cone Shaft and Robot Inspection",
+                    subItems: {
+                      format: "disc",
+                      items: [
+                        "Validate the cone shaft dimensions, taper, and length as per the machine’s configuration.",
+                        "Test the robot with the paper cone to ensure smooth functionality.",
+                      ],
+                    },
+                  },
+                  {
+                    text: "Component Adjustments",
+                    subItems: {
+                      format: "disc",
+                      items: [
+                        "Align the curling cup, knurling tool, and other parts to match the paper blank dimensions and thickness.",
+                      ],
+                    },
+                  },
+                ],
+              },
+            },
           ],
         },
       },
-      {
-        type: "image",
-        content: {
-          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-machine/mould-change-guide/mold-2.webp",
-          alt: "Mould change Guide",
-        },
-      },
-      {
-        type: "list",
-        content: {
-          format: "disc",
-          items: [
-            {
-              text: "Confirm that the paper stand and blanks align with the required specifications.",
-            },
-            {
-              text: "Mothermold and Butterfly Validation",
-              subItems: {
-                format: "disc",
-                items: [
-                  "Verify the mothermold and butterfly are compatible with the blank’s size and design.",
-                ],
-              },
-            },
-            {
-              text: "Sealing and Fitting Checks",
-              subItems: {
-                format: "disc",
-                items: [
-                  "Wrap the paper blank on the mold cone and check for proper sealing (minimum 3 mm).",
-                  "Ensure paper fit on the mothermold and verify alignment with the T-rod.",
-                ],
-              },
-            },
-            {
-              text: "Cone Shaft and Robot Inspection",
-              subItems: {
-                format: "disc",
-                items: [
-                  "Validate the cone shaft dimensions, taper, and length as per the machine’s configuration.",
-                  "Test the robot with the paper cone to ensure smooth functionality.",
-                ],
-              },
-            },
-            {
-              text: "Component Adjustments",
-              subItems: {
-                format: "disc",
-                items: [
-                  "Align the curling cup, knurling tool, and other parts to match the paper blank dimensions and thickness.",
-                ],
-              },
-            },
-          ],
-        },
-      },
+      
+   
       {
         type: "section",
         heading: "Validating the Mold with Paper Blanks",
@@ -1957,17 +1964,18 @@ export const blogPosts: BlogPost[] = [
                 ],
               },
             },
+            {
+              type: "image",
+              content: {
+                src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-business/raw-material-sourcing/raw-material-sourcing-img1.webp",
+                alt: "raw material sourcing",
+              },
+            },
           ],
         },
       },
 
-      {
-        type: "image",
-        content: {
-          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-business/raw-material-sourcing/raw-material-sourcing-img1.webp",
-          alt: "raw material sourcing",
-        },
-      },
+     
 
       {
         type: "section",
@@ -2014,16 +2022,17 @@ export const blogPosts: BlogPost[] = [
                 ],
               ],
             },
+            {
+              type: "image",
+              content: {
+                src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-business/raw-material-sourcing/raw-material-sourcing-img2.webp",
+                alt: "raw material sourcing",
+              },
+            },
           ],
         },
       },
-      {
-        type: "image",
-        content: {
-          src: "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-business/raw-material-sourcing/raw-material-sourcing-img2.webp",
-          alt: "raw material sourcing",
-        },
-      },
+     
       {
         type: "section",
         heading: "Global and Indian Manufacturers",
@@ -2812,7 +2821,7 @@ export const blogPosts: BlogPost[] = [
     header: {
       id: "header-1",
       heading:
-        "How to Sell Paper Cups: A Comprehensive Guide to Building a Profitable Business",
+        "Selling Paper Cup",
       headingImage:
         "https://assets.nesscoindustries.com/public/assets/resources/knowledge-center/know-your-business/selling-paper-cup/banner-image.webp",
       subheading:

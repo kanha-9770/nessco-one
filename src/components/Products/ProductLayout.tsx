@@ -106,9 +106,10 @@ const ProductLayout: React.FC<IndividualProductsDataProps> = ({
             related_product={machine?.related_product}
             name={machine?.name}
             image={machine?.image}
+            first_name={machine?.first_name}
             mimage={machine?.mimage}
             product_heading={machine?.first_name}
-          />{" "}
+          />
         </div>
       </div>
 
@@ -116,6 +117,7 @@ const ProductLayout: React.FC<IndividualProductsDataProps> = ({
         <SignupFormDemoProduct
           related_product={machine?.related_product}
           name={machine?.name}
+          first_name={machine?.first_name}
           image={machine?.image}
           mimage={machine?.mimage}
           product_heading={machine?.first_name}

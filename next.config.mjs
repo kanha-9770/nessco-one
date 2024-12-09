@@ -54,6 +54,10 @@ const nextConfig = {
         hostname: "example.com",
       },
       {
+        protocol:"https",
+        hostname:"flagcdn.com",
+      },
+      {
         protocol: "https",
         hostname: "www.*", // Allows all 'www.' subdomains under 'https://'
       },

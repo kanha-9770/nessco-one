@@ -7,7 +7,6 @@ import {
   FormProvider,
   useForm,
 } from "@/app/[country]/[locale]/context/FormContext";
-import { toast, Toaster } from "react-hot-toast";
 import SubmitButton from "./Submit";
 import { RelatedProductType } from "../Products/types/constant";
 import { countryCODE, languageCODE } from "../Navbar/nav-menue";
@@ -20,7 +19,7 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { X, ChevronDown, ChevronUp } from 'lucide-react';
+import { X, ChevronDown, ChevronUp } from "lucide-react";
 import FormFields, { FormValues } from "./FormFileds";
 import { z } from "zod";
 
@@ -30,6 +29,7 @@ interface SignupFormDemoProductProps {
   image?: string;
   mimage?: string;
   product_heading?: string;
+  first_name: string;
 }
 
 const formSchema = z.object({
@@ -41,6 +41,10 @@ const formSchema = z.object({
 const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
   related_product,
   product_heading,
+  mimage,
+  image,
+  name,
+  first_name,
 }) => {
   const [expanded, setExpanded] = useState(false);
   const { submitForm } = useForm();
@@ -67,28 +71,18 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
   const handleSubmit = async (formId: string) => {
     const validationError = validateForm();
     if (validationError) {
-      toast.error(validationError, {
-        duration: 3000,
-        position: "top-center",
-      });
+      console.error(validationError);
       return;
     }
 
     setIsSubmitting(true);
     try {
       await submitForm({ ...formValues, formId });
-      toast.success("Form submitted successfully!", {
-        duration: 3000,
-        position: "top-center",
-      });
+      console.log("Form submitted successfully!");
       setFormValues({ fullname: "", email: "", mobilenumber: "" });
       setIsDialogOpen(false);
     } catch (error) {
       console.error("Failed to submit the form:", error);
-      toast.error("Error submitting the form. Please try again.", {
-        duration: 3000,
-        position: "top-center",
-      });
     } finally {
       setIsSubmitting(false);
     }
@@ -105,33 +99,25 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
         className="flex w-full lg:sticky lg:top-[6.4rem] h-full mx-auto justify-center font-poppins"
         animate={{ y: 0, height: "33rem", opacity: 1 }}
       >
-        <Toaster
-          toastOptions={{
-            duration: 3000,
-            position: "top-center",
-          }}
-          containerStyle={{
-            top: 20,
-            left: 20,
-            bottom: 20,
-            right: 20,
-          }}
-          gutter={8}
-        />
         <div className="w-full lg:h-screen h-max gap-2 flex flex-col">
           {/* part-one-contact-page */}
-          <div className="w-full lg:h-[29.2vh] bg-white p-4 rounded-xl shadow-md">
+          <div className="w-full lg:h-[29.2vh] bg-gradient-to-r from-gray-200 via-[#c9d8f0] to-[#b2c4e2] p-4 border-white border-2 rounded-xl">
             <FormFields
               onChange={setFormValues}
               values={formValues}
               inline={true}
               errors={{}}
             />
-            <div className="w-full flex justify-center mt-4">
-              <SubmitButton
+            <div className="w-full flex justify-center mt-4 ">
+              {/* <SubmitButton
+                
                 isSubmitting={isSubmitting}
                 onClick={() => handleSubmit("SignupFormDemoProduct")}
-              />
+              /> */}
+              <button className="bg-[#e8e8e8] shadow-neumorphism text-black w-full py-2 text-[0.9rem] rounded-[0.8rem]" isSubmitting={isSubmitting}
+                onClick={() => handleSubmit("SignupFormDemoProduct")}>
+                Send Message
+              </button>
             </div>
           </div>
 
@@ -147,34 +133,32 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
                 Catalogue
               </p>
             </div>
-            <div className="w-[20%] h-full font-poppins flex items-center justify-center">
-              <Button
-                className="h-full w-full"
-                onClick={() => setIsDialogOpen(true)}
+            <div
+              className="w-[20%] h-full font-poppins flex items-center justify-center cursor-pointer"
+              onClick={() => setIsDialogOpen(true)}
+            >
+              <svg
+                viewBox="-0.4 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-12 h-12"
               >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-64 h-64"
-                >
-                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                  <g
-                    id="SVGRepo_tracerCarrier"
+                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    d="M12 12V19M12 19L9.75 16.6667M12 19L14.25 16.6667M6.6 17.8333C4.61178 17.8333 3 16.1917 3 14.1667C3 12.498 4.09438 11.0897 5.59198 10.6457C5.65562 10.6268 5.7 10.5675 5.7 10.5C5.7 7.46243 8.11766 5 11.1 5C14.0823 5 16.5 7.46243 16.5 10.5C16.5 10.5582 16.5536 10.6014 16.6094 10.5887C16.8638 10.5306 17.1284 10.5 17.4 10.5C19.3882 10.5 21 12.1416 21 14.1667C21 16.1917 19.3882 17.8333 17.4 17.8333"
+                    stroke="currentColor"
+                    className="stroke-[#483d73] w-24 h-24"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                  ></g>
-                  <g id="SVGRepo_iconCarrier">
-                    <path
-                      d="M12 12V19M12 19L9.75 16.6667M12 19L14.25 16.6667M6.6 17.8333C4.61178 17.8333 3 16.1917 3 14.1667C3 12.498 4.09438 11.0897 5.59198 10.6457C5.65562 10.6268 5.7 10.5675 5.7 10.5C5.7 7.46243 8.11766 5 11.1 5C14.0823 5 16.5 7.46243 16.5 10.5C16.5 10.5582 16.5536 10.6014 16.6094 10.5887C16.8638 10.5306 17.1284 10.5 17.4 10.5C19.3882 10.5 21 12.1416 21 14.1667C21 16.1917 19.3882 17.8333 17.4 17.8333"
-                      stroke="currentColor"
-                      className="stroke-[#483d73]"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    ></path>
-                  </g>
-                </svg>
-              </Button>
+                  ></path>
+                </g>
+              </svg>
             </div>
           </div>
 
@@ -259,8 +243,19 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
                 className="flex flex-col sm:flex-row"
               >
                 <div className="w-full sm:w-1/2 relative h-[200px] sm:h-auto overflow-hidden">
+                  <h1 className="absolute top-2 left-8 text-lg">
+                    {first_name}
+                  </h1>
+                  <h2 className="absolute text-base top-8 left-8">{name}</h2>
                   <Image
-                    src="/placeholder.svg?height=400&width=400"
+                    src={mimage}
+                    alt="Brochure preview"
+                    layout="fill"
+                    objectFit="cover"
+                    className="absolute top-14 h-16 w-16 right-14"
+                  />
+                  <Image
+                    src={image}
                     alt="Brochure preview"
                     layout="fill"
                     objectFit="cover"
@@ -318,4 +313,3 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
 };
 
 export { SignupFormDemoProduct };
-

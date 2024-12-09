@@ -98,7 +98,7 @@ const BlogGeneric: React.FC<BlogGenericProps> = ({ id }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
-          className="w-full relative overflow-hidden h-screen flex flex-col justify-center space-y-4 items-center  bg-[#483d73] "
+          className="w-full relative overflow-hidden h-screen flex flex-col justify-center space-y-4 items-center  bg-black "
         >
           <h1 className="flex text-white absolute  top-[7rem] item-center w-full justify-center text-center text-4xl ">
             {post?.header?.heading}
