@@ -2,38 +2,25 @@
 
 import React, { memo, useCallback, useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 
 interface NavLinkProps {
   text: string;
   index: number;
   activeLink: number;
-  handleMouseEnter: (index: number) => void;
-  handleMouseLeave: () => void;
   handleClick: () => void;
 }
 
 const NavLink: React.FC<NavLinkProps> = memo(
-  ({
-    text,
-    index,
-    activeLink,
-    handleMouseEnter,
-    handleMouseLeave,
-    handleClick,
-  }) => (
-    <Link
-      href="#"
-      scroll={false}
-      className={`text-black text-base font-light flex-flex-row py-1 ${
-        activeLink === index ? "border-b-2 border-red-600 text-[#f2f2f2]" : ""
+  ({ text, index, activeLink, handleClick }) => (
+    <div
+        className={`text-black text-base font-light flex flex-row py-1 transition-all duration-300 ${
+        activeLink === index ? "border-b-2 border-red-600 text-red-600" : ""
       }`}
-      onMouseEnter={() => handleMouseEnter(index)}
-      onMouseLeave={handleMouseLeave}
       onClick={handleClick}
     >
       {text}
-    </Link>
+    </div>
   )
 );
 
@@ -52,15 +39,8 @@ const NavLinksDemo: React.FC<NavLinksDemoProps> = ({ type, navItems }) => {
   const mobileNavRef = useRef<HTMLDivElement | null>(null);
   const navItemRefs = useRef<(HTMLLIElement | null)[]>([]);
 
-  const handleMouseEnter = useCallback((index: number) => {
+  const handleClick = useCallback((index: number, ref: React.RefObject<HTMLDivElement>) => () => {
     setActiveLink(index);
-  }, []);
-
-  const handleMouseLeave = useCallback(() => {
-    setActiveLink(-1);
-  }, []);
-
-  const handleClick = (ref: React.RefObject<HTMLDivElement>) => () => {
     const yOffset = -100;
     const element = ref.current;
 
@@ -69,7 +49,7 @@ const NavLinksDemo: React.FC<NavLinksDemoProps> = ({ type, navItems }) => {
         element.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
     }
-  };
+  }, []);
 
   useEffect(() => {
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
@@ -158,7 +138,7 @@ const NavLinksDemo: React.FC<NavLinksDemoProps> = ({ type, navItems }) => {
       ref={navRef}
       className={`sticky lg:mt-0 mt-10 top-[3.3rem] z-40 transition-all duration-300 ${
         scrolling
-          ? "bg-white"
+          ? "bg-white shadow-md"
           : type === "product"
           ? "bg-white border-none"
           : "bg-[#f2f2f2] border-none"
@@ -179,15 +159,12 @@ const NavLinksDemo: React.FC<NavLinksDemoProps> = ({ type, navItems }) => {
                 }}
               >
                 <Button
-                  className={`flex mr-4 items-center z-[9999] justify-center w-auto h-auto px-2  py-[0.15rem] rounded-full text-sm font-medium ${
+                  className={`flex mr-4 items-center z-[9999] justify-center w-auto h-auto px-2 py-[0.15rem] rounded-full text-sm font-medium transition-all duration-300 ${
                     activeLink === index
-                      ? "bg-black text-white"
-                      : "bg-white text-black"
+                      ? "bg-red-600 text-white"
+                      : "bg-white text-black hover:bg-gray-100"
                   }`}
-                  onClick={() => {
-                    handleClick(item.ref)();
-                    setActiveLink(index);
-                  }}
+                  onClick={handleClick(index, item.ref)}
                 >
                   {item.text}
                 </Button>
@@ -200,7 +177,7 @@ const NavLinksDemo: React.FC<NavLinksDemoProps> = ({ type, navItems }) => {
       {/* Desktop Navigation */}
       <nav
         className={`hidden ${
-          scrolling ? "border-t-2" : "border-none"
+          scrolling ? "border-t-2 border-gray-200" : "border-none"
         } md:flex flex-row flex-wrap text-base z-[99] lg:h-10 font-light font-poppins px-12 lg:mt-0 sticky space-x-2 sm:space-x-6 text-black`}
       >
         {navItems.map((item, index) => (
@@ -209,9 +186,7 @@ const NavLinksDemo: React.FC<NavLinksDemoProps> = ({ type, navItems }) => {
             text={item.text}
             index={index}
             activeLink={activeLink}
-            handleMouseEnter={handleMouseEnter}
-            handleMouseLeave={handleMouseLeave}
-            handleClick={handleClick(item.ref)}
+            handleClick={handleClick(index, item.ref)}
           />
         ))}
       </nav>
@@ -220,4 +195,3 @@ const NavLinksDemo: React.FC<NavLinksDemoProps> = ({ type, navItems }) => {
 };
 
 export default NavLinksDemo;
-

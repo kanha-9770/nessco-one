@@ -59,7 +59,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ machine }) => {
             <div className="lg:h-48 h-40 lg:w-64 px-4 flex flex-col border-l-2 border-gray-300 border-r-2">
               <Image
                 src="https://assets.nesscoindustries.com/public/assets/product/product-layout-specs-icon.webp"
-                alt="Speed"
+                alt="Paper Specification"
                 width={80}
                 height={80}
                 className="lg:h-20 lg:w-20 h-12 w-12 object-contain mx-auto"
@@ -77,7 +77,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ machine }) => {
             <div className="lg:h-48 h-40 lg:w-64 px-4 flex flex-col">
               <Image
                 src="https://assets.nesscoindustries.com/public/assets/product/product-layout-range-icon.webp"
-                alt="Speed"
+                alt="size range"
                 width={80}
                 height={80}
                 className="lg:h-20 lg:w-20 h-12 w-12 object-contain mx-auto"
