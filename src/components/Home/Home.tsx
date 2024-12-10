@@ -11,7 +11,6 @@ interface HeroLayoutProps {
 }
 
 const Home: React.FC<HeroLayoutProps> = ({ heroData }) => {
-
   // Extract countryCode and languageCode from pathname
 
   return (

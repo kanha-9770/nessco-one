@@ -167,7 +167,7 @@ const ReusableForm: React.FC<ReusableFormProps> = ({
         <DialogContent className="sm:max-w-[800px] p-0 overflow-hidden rounded-[0.5rem]">
           <div className="flex flex-col sm:flex-row bg-white">
             {imageUrl && (
-              <div className="w-full sm:w-1/2 relative h-[200px] sm:h-auto overflow-hidden">
+              <div className="w-full lg:flex hidden sm:w-1/2 relative h-[200px] sm:h-auto overflow-hidden">
                 <Image
                   src={imageUrl}
                   alt="Decorative image"
@@ -192,4 +192,3 @@ const ReusableForm: React.FC<ReusableFormProps> = ({
 };
 
 export default ReusableForm;
-

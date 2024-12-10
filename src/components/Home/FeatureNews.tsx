@@ -102,29 +102,27 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
               </Dialog>
             </div>
             <div className="lg:w-[99%] lg:m-1 lg:h-[55vh] h-[26vh] relative rounded-2xl overflow-hidden">
-  {newsfData[0]?.type === "video" ? (
-    <video
-      className="absolute bottom-0 w-full h-full rounded-2xl opacity-50 object-cover"
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="auto"
-      poster={newsfData[0]?.poster || ""}
-    >
-      <source src={newsfData[0]?.video || ""} type="video/mp4" />
+            {newsfData[0]?.image &&
+            (/\.(mp4|webm|ogg)$/i.test(newsfData[0]?.image) ? (
+              <video
+                className="object-contain rounded-xl"
+                autoPlay
+                loop
+                muted
+              >
+      <source src={newsfData[0]?.image} type={`video/${newsfData[0]?.image.split('.').pop()}`} />
       Your browser does not support the video tag.
-    </video>
-  ) : (
-    <Image
-      src={newsfData[0]?.image || ""}
-      alt={newsfData[0]?.alt || "Image"}
-      layout="fill"
-      objectFit="cover"
-      className="rounded-2xl p-0"
-    />
-  )}
-</div>
+              </video>
+            ) : (
+            <Image
+                src={newsfData[0]?.image}
+                alt={newsfData[0]?.alt}
+                layout="fill"
+                objectFit="cover"
+                className="rounded-2xl p-0"
+              />
+            ))}
+           </div>
 
           </article>
         </div>
@@ -175,6 +173,18 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
               </div>
               <div className="px-3 pb-2">
                 <div className="relative h-[8.8rem] rounded-xl overflow-hidden">
+                {news?.image &&
+            (/\.(mp4|webm|ogg)$/i.test(news?.image) ? (
+              <video
+                className="object-contain rounded-xl"
+                autoPlay
+                loop
+                muted
+              >
+      <source src={news?.image} type={`video/${news?.image.split('.').pop()}`} />
+      Your browser does not support the video tag.
+              </video>
+            ) : (
                   <Image
                     src={news?.image}
                     alt={news?.alt}
@@ -182,6 +192,7 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
                     objectFit="cover"
                     className="rounded-xl"
                   />
+            ))}
                 </div>
               </div>
             </article>
@@ -235,6 +246,18 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
                 </div>
                 <div className="px-3 pb-2">
                   <div className="relative h-[8.8rem] rounded-xl overflow-hidden">
+                  {news?.image &&
+            (/\.(mp4|webm|ogg)$/i.test(news?.image) ? (
+              <video
+                className="object-contain rounded-xl"
+                autoPlay
+                loop
+                muted
+              >
+      <source src={news?.image} type={`video/${news?.image.split('.').pop()}`} />
+      Your browser does not support the video tag.
+              </video>
+            ) : (
                     <Image
                       src={news?.image}
                       alt={news?.alt}
@@ -242,6 +265,7 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
                       objectFit="cover"
                       className="rounded-xl"
                     />
+            ))}
                   </div>
                 </div>
               </article>
@@ -253,6 +277,18 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
         <DialogContent className="sm:max-w-[1000px] bg-white ">
           <div className="flex flex-col lg:flex-row items-center justify-center lg:space-x-4 space-y-4 lg:space-y-0">
             <div className="w-full h-full relative rounded-xl overflow-hidden">
+            {dialogContent?.img &&
+            (/\.(mp4|webm|ogg)$/i.test(dialogContent?.img) ? (
+              <video
+                className="object-contain rounded-xl"
+                autoPlay
+                loop
+                muted
+              >
+      <source src={dialogContent?.img} type={`video/${dialogContent?.img.split('.').pop()}`} />
+      Your browser does not support the video tag.
+              </video>
+            ) : (
               <Image
                 src={dialogContent?.img}
                 alt={dialogContent?.title}
@@ -260,6 +296,7 @@ export default function FeatureNews({ heroData }: FeatureNewsLayoutProps) {
                 objectFit="cover"
                 className="rounded-xl"
               />
+            ))}
             </div>
             <div className="w-full lg:w-[70%] flex flex-col items-center">
               <h5 className="text-xl text-center lg:text-left mb-2 text-[#483d73] font-medium font-poppins pr-2">

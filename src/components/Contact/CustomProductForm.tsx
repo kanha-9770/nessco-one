@@ -100,8 +100,10 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
         animate={{ y: 0, height: "33rem", opacity: 1 }}
       >
         <div className="w-full lg:h-screen h-max gap-2 flex flex-col">
+          
           {/* part-one-contact-page */}
-          <div className="hover:border hover:border-[#483d73] relative w-full lg:h-[29.2vh] overflow-hidden z-10 bg-white p-4 rounded-xl shadow-md before:w-24 before:h-24 before:absolute before:bg-gray-500 before:rounded-full before:-z-10 before:blur-2xl after:w-32 after:h-32 after:absolute after:bg-[#483d73] after:opacity-40 after:rounded-full after:-z-10 after:blur-2xl after:top-24 after:-right-12">
+          <div className="border-2 border-[#483d73] relative w-full lg:h-[32.2vh] overflow-hidden z-10 bg-white px-4 py-2 rounded-xl shadow-md before:w-24 before:opacity-40 before:h-24 before:absolute before:bg-gray-500 before:rounded-full before:-z-10 before:blur-3xl after:w-32 after:h-32 after:absolute after:bg-[#483d73] after:opacity-40 after:rounded-full after:-z-10 after:blur-3xl after:top-24 after:-right-12">
+          <p className="w-full text-left font-semibold pb-2"><span className="text-gray-500">Want to Know More?</span><span className="text-gray-800"> Enquire Now</span></p>
             <FormFields
               onChange={setFormValues}
               values={formValues}
@@ -117,13 +119,13 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
             </div>
           </div>
 
-          <div className="w-full flex lg:h-[10vh] bg-white rounded-xl p-4 items-center font-poppins shadow-md border-[#483d73] border-2">
+          <div className="w-full flex lg:h-[10vh] bg-white rounded-xl p-4 items-center font-poppins shadow-md border-[#483d73] border ">
             <div className="w-[80%] flex flex-col items-start justify-center">
               <h2 className="font-semibold text-gray-700">
-                <span className="text-gray-400">Download</span> Brochure
+                <span className="text-gray-500">Download</span> Brochure
               </h2>
               <p className="text-black font-semibold text-sm">
-                <span className="text-gray-700 font-regular">
+                <span className="text-gray-800 font-regular">
                   Nessco {product_heading}
                 </span>{" "}
                 Catalogue
@@ -158,9 +160,9 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
             </div>
           </div>
 
-          <div className="h-[41vh] bg-white p-4 font-regular rounded-xl hidden lg:block shadow-md">
-            <h2 className="font-semibold text-gray-700 mb-2">
-              <span className="text-gray-400">Related</span> Products
+          <div className="h-[38vh] bg-white p-4 font-regular rounded-xl hidden lg:block shadow-md">
+            <h2 className="font-semibold text-gray-800 mb-2">
+              <span className="text-gray-500">Related</span> Products
             </h2>
 
             <div
@@ -180,7 +182,7 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
                         product?.h1
                       )}`}
                       key={index}
-                      className="flex border-b-[2px] items-start mb-4 hover:bg-gray-50 transition-colors duration-200 p-2 rounded-md"
+                      className="flex border-b-[2px] items-start  hover:bg-gray-50 transition-colors duration-200 p-2 rounded-md"
                     >
                       <div className="w-16 h-16 rounded-md overflow-hidden">
                         <Image
@@ -198,31 +200,25 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
                           {product.information}
                         </p>
                       </div>
-
-                      <div className="ml-2">
-                        <Button variant="ghost" size="icon">
-                          <ChevronDown className="h-4 w-4" />
-                        </Button>
-                      </div>
                     </Link>
                   ))}
               </div>
             </div>
 
-            <div className="flex justify-center">
+            {/* <div className="flex justify-center">
               <Button
                 onClick={() => setExpanded(!expanded)}
                 variant="ghost"
                 size="sm"
-                className="-mt-4"
+                className="-mt-8"
               >
                 {expanded ? (
-                  <ChevronUp className="h-4 w-4" />
+                  <ChevronUp className="h-5 w-5 bg-gray-300 rounded-full" />
                 ) : (
-                  <ChevronDown className="h-4 w-4" />
+                  <ChevronDown className="h-5 w-5 bg-gray-300 rounded-full" />
                 )}
               </Button>
-            </div>
+            </div> */}
           </div>
         </div>
       </motion.div>

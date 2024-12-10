@@ -102,7 +102,7 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
           <div className="flex flex-col-reverse  lg:flex-row lg:p-5 justify-evenly items-start w-[100%] lg:px-5  mb-[-0.10rem] ">
             <div className="flex flex-col-reverse lg:flex-row  lg:mt-0">
               <div
-                className={`${styles.footerlistabout} lg:order-none lg:ml-[3rem]  lg:mt-0 -mt-[10rem]  px-4 lg:px-0`}
+                className={`${styles.footerlistabout} lg:order-none lg:ml-[3rem]  lg:mt-0 -mt-[20rem]  px-4 lg:px-0`}
               >
                 <h4
                   className={`font-poppins text-sm md:text-xl lg:text-sm font-semibold md:w-[10rem] w-[7rem]  ${textColor}`}
@@ -159,7 +159,23 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                   ))}
                 </div>
               </div>
-              <div className="flex flex-col  w-[11%]  relative left-[12rem] lg:-left-14 md:left-[18rem] lg:top-0  md:top-16">
+              <div className="flex flex-col  w-[11%]  relative left-[12.5rem] lg:-left-14 md:left-[18rem] lg:top-0  md:top-16">
+              <div className="w-[27%] lg:hidden block mt-5">
+                  <h4
+                    className={`font-semibold text-sm md:text-xl lg:text-sm font-poppins lg:w-full w-[7rem]  ${textColor}`}
+                  >
+                    {footerData?.linkTitle}
+                  </h4>
+                  <div className="font-poppins text-xs lg:text-xs md:text-lg font-light space-y-10 hover:text-red-600 lg:w-[6rem]  md:w-[5rem]  w-[6rem]">
+                    {footerData?.links?.map((link, index) => (
+                      <LinkUrl key={index} href={`${link.ref}`} passHref>
+                        <p className={`${styles?.footeratags}  ${textColor}`}>
+                          {link?.link}
+                        </p>
+                      </LinkUrl>
+                    ))}
+                  </div>
+                </div>
                 <h4
                   className={`font-semibold font-poppins text-sm md:text-xl lg:text-sm ${textColor}`}
                 >
@@ -190,8 +206,8 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                 </div>
               </div>
 
-              <div className="flex-row  flex lg:flex-none  lg:mt-0 mt-[2rem] lg:-ml-12 -ml-[0] px-3">
-                <div className="w-[27%]">
+              <div className="flex-row  flex lg:flex-none lg:mt-0 mt-[2rem] lg:-ml-12 -ml-[0] px-3">
+                <div className="w-[27%] lg:block hidden ">
                   <h4
                     className={`font-semibold text-sm md:text-xl lg:text-sm font-poppins lg:w-full w-[7rem]  ${textColor}`}
                   >
@@ -208,7 +224,7 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                   </div>
                 </div>
 
-                <div className="w-[20%]  lg:ml-16 md:ml-[13rem] ml-5 ">
+                <div className="w-[20%]  lg:ml-16 md:ml-[13rem] ml-3 ">
                   <h4
                     className={`font-semibold text-sm md:text-xl lg:text-sm font-poppins  ${textColor}`}
                   >
@@ -225,13 +241,13 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                   </div>
                 </div>
 
-                <div className="flex flex-col  w-[30%] lg:ml-20 md:ml-[8rem] ml-14 ">
+                <div className="flex flex-col  w-[30%] lg:ml-20 md:ml-[8rem] ml-[6rem] ">
                   <h4
                     className={`font-semibold font-poppins text-sm md:text-xl lg:text-sm   ${textColor}`}
                   >
                     {footerData?.serviceTitle}
                   </h4>
-                  <div className="font-poppins hover:text-red-600 font-light text-xs lg:text-xs md:text-lg break-normal w-[6rem] lg:w-[9rem] md:w-[13rem]  cursor-pointer">
+                  <div className="font-poppins hover:text-red-600 font-light text-xs lg:text-xs md:text-lg break-normal w-[10rem] lg:w-[9rem] md:w-[13rem]  cursor-pointer">
                     {footerData?.services?.map((service, index) => (
                       <LinkUrl key={index} href={`${service.ref}`} passHref>
                         <p className={`${styles.footeratags}  ${textColor}`}>
@@ -249,7 +265,7 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                 >
                   {footerData?.subscribeTitle}
                 </h4>
-                <div className="flex lg:p-1 pl-3 relative">
+                <div className="flex lg:p-1 pl-4 relative">
                   <input
                     placeholder="Enter your email address"
                     className={`lg:w-[24rem] w-[44vh] md:w-[47rem]  mt-2 h-[2.3rem] rounded-xl border p-2 ${
@@ -283,7 +299,7 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                   </button>
                 </div>
 
-                <div className="flex lg:flex-col px-4 lg:px-0">
+                <div className="flex lg:flex-col px-5 lg:px-0">
                   <div className="  ">
                     <h4
                       className={`${styles.footerdesctitle} font-semibold   text-sm md:text-xl lg:text-sm font-poppins mt-[1.6rem]  ${textColor}`}
@@ -411,9 +427,9 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                       </a>
                     </div>
                   </div>
-                  <div>
+                  <div className="lg:ml-0 -ml-5 ">
                     <h4
-                      className={`${styles.footerdesctitle} font-poppins  text-sm md:text-xl lg:text-sm md:ml-[20rem] lg:ml-0 font-semibold lg:mt-5 mt-7  ${textColor}`}
+                      className={`${styles.footerdesctitle} font-poppins  text-sm md:text-xl lg:text-sm md:ml-[19rem] lg:ml-0 font-semibold lg:mt-5 mt-7  ${textColor}`}
                     >
                       {footerData?.addressTitle}
                     </h4>

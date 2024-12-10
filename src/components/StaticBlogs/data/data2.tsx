@@ -255,252 +255,153 @@ export const blogPosts: BlogPost[] = [
   },
 
   {
-    id: "3",
-    title: "Paper Straws Vs Plastic Straws: Which Are More Eco-Friendly",
-    slug: "paper-straws-vs-plastic-straws-which-are-more-eco-friendly",
-    date: "2024-11-30",
-    author: {
-      id: "1",
-      name: "Nessco Team",
+    "id": "3",
+    "title": "Paper Straws Vs Plastic Straws: Which Are More Eco-Friendly",
+    "slug": "paper-straws-vs-plastic-straws-which-are-more-eco-friendly",
+    "date": "2024-11-30",
+    "author": {
+      "id": "1",
+      "name": "Nessco Editorial Team"
     },
-    tags: [
-      { id: "1", name: "Eco-Friendly" },
-      { id: "2", name: "Sustainability" },
-      { id: "3", name: "Straws" },
+    "tags": [
+      { "id": "1", "name": "Eco-Friendly" },
+      { "id": "2", "name": "Sustainability" },
+      { "id": "3", "name": "Straws" }
     ],
-    excerpt:
-      "A detailed comparison of paper and plastic straws to determine which option is more eco-friendly, considering their environmental impact, durability, and cost factors.",
-    content: [
+    "excerpt": "A detailed comparison of paper and plastic straws to determine which option is more eco-friendly, considering their environmental impact, durability, and cost factors.",
+    "content": [
       {
-        type: "section",
-        heading: "Introduction",
-        content: {
-          blocks: [
+        "type": "section",
+        "heading": "Introduction",
+        "content": {
+          "blocks": [
             {
-              type: "text",
-              content:
-                "In today’s world, sustainability is a major topic of discussion. As awareness grows around environmental issues, people are asking: which is more eco-friendly, paper straws or plastic straws? Let's take a look at the advantages and disadvantages of both types of straws to see which one is really better for the environment.",
-            },
-          ],
-        },
+              "type": "text",
+              "content": "In today’s world, sustainability is a major topic of discussion. As awareness grows around environmental issues, people are asking: which is more eco-friendly, paper straws or plastic straws? Let's take a look at the advantages and disadvantages of both types of straws to see which one is really better for the environment."
+            }
+          ]
+        }
       },
       {
-        type: "section",
-        heading: "The Environmental Impact of Plastic Straws",
-        content: {
-          blocks: [
+        "type": "section",
+        "heading": "The Environmental Impact of Plastic Straws",
+        "content": {
+          "blocks": [
             {
-              type: "text",
-              content:
-                "Plastic straws have been popular for many years because they are cheap, strong, and easy to find. However, even though they are handy, they cause a lot of harm to the environment.",
+              "type": "text",
+              "content": "Plastic straws have been popular for many years because they are cheap, strong, and easy to find. However, even though they are handy, they cause a lot of harm to the environment."
             },
             {
-              type: "list",
-              content: {
-                format: "disc",
-                items: [
-                  {
-                    text: "Plastic Production",
-                    subItems: {
-                      format: "disc",
-                      items: [
-                        "Plastic is made from oil, which is a limited resource and creates greenhouse gasses when it's made.",
-                        "Extracting and processing oil uses a lot of energy, which increases the carbon footprint of plastic straws.",
-                      ],
-                    },
-                  },
-                  {
-                    text: "Plastic Straws and Pollution",
-                    subItems: {
-                      format: "disc",
-                      items: [
-                        "Plastic doesn't break down easily, so it can last for hundreds of years.",
-                        "Most plastic straws are used just once and thrown away, often ending up in landfills or, even worse, in oceans and rivers.",
-                        "Plastic straws hurt animals like sea turtles and fish, who might mistake them for food.",
-                      ],
-                    },
-                  },
-                  {
-                    text: "Recycling Challenges",
-                    subItems: {
-                      format: "disc",
-                      items: [
-                        "Straws are too small and light for recycling machines to handle.",
-                        "Most plastic straws end up as trash, contributing to plastic waste.",
-                      ],
-                    },
-                  },
-                ],
-              },
+              "type": "text",
+              "content": "Plastic Production: Plastic is made from oil, which is a limited resource and creates greenhouse gasses when it's made. Extracting and processing oil uses a lot of energy, which increases the carbon footprint of plastic straws."
             },
-          ],
-        },
+            {
+              "type": "text",
+              "content": "Plastic Straws and Pollution: One of the main issues with plastic straws is that they cause a lot of pollution. Plastic doesn't break down easily, so it can last for hundreds of years. Most plastic straws are used just once and thrown away, often ending up in landfills or, even worse, in oceans and rivers."
+            },
+            {
+              "type": "text",
+              "content": "Plastic straws are often found during beach cleanups and add to the trash in the ocean. When they end up in the sea, they can hurt animals. Sea turtles and fish might think plastic straws are food, which can cause them harm or even kill them."
+            },
+            {
+              "type": "text",
+              "content": "Recycling Challenges: Some plastics can be recycled, but straws are usually too small and light for recycling machines to handle. Because of this, most plastic straws end up as trash, adding to the problem of plastic waste."
+            }
+          ]
+        }
       },
       {
-        type: "section",
-        heading: "The Case for Paper Straws",
-        content: {
-          blocks: [
+        "type": "section",
+        "heading": "The Case for Paper Straws",
+        "content": {
+          "blocks": [
             {
-              type: "list",
-              content: {
-                format: "disc",
-                items: [
-                  {
-                    text: "Paper Production",
-                    subItems: {
-                      format: "disc",
-                      items: [
-                        "Paper straws come from trees, which can grow back.",
-                        "Making paper uses a lot of water and energy, and it can release harmful chemicals.",
-                        "Recycled paper or trees grown in sustainable forests help reduce the impact.",
-                      ],
-                    },
-                  },
-                  {
-                    text: "Biodegradability",
-                    subItems: {
-                      format: "disc",
-                      items: [
-                        "Paper straws naturally break down over time, often within a few months.",
-                        "They don’t last for hundreds of years like plastic, so they are less harmful to animals.",
-                      ],
-                    },
-                  },
-                  {
-                    text: "Recycling and Composting",
-                    subItems: {
-                      format: "disc",
-                      items: [
-                        "Many paper straws can be composted and turned into rich soil.",
-                        "Some paper straws have a plastic or wax coating, making them harder to recycle or compost.",
-                      ],
-                    },
-                  },
-                ],
-              },
+              "type": "text",
+              "content": "In response to the bad environmental impact of plastic, many people now use paper straws instead. But are they really better for the environment?"
             },
-          ],
-        },
+            {
+              "type": "text",
+              "content": "Paper Production: Paper straws come from trees, which can grow back. But making paper still has its own problems. It means cutting down trees, and if this isn’t done carefully, it can lead to forests being destroyed. The making of paper also uses a lot of water and energy, and it can release harmful chemicals into the air and water."
+            },
+            {
+              "type": "text",
+              "content": "However, many paper straws are now made from recycled paper or from trees grown in sustainably managed forests, which helps reduce their overall environmental impact."
+            },
+            {
+              "type": "text",
+              "content": "Biodegradability: One of the biggest advantages of paper straws is that they are biodegradable. Unlike plastic, paper will naturally break down over time. This means that even if a paper straw ends up in a landfill or the ocean, it will decompose much faster than a plastic straw, often within a few months."
+            },
+            {
+              "type": "text",
+              "content": "The paper straws are good for the environment because they break down quickly, they are better for cutting down on ocean pollution. They don’t last for hundreds of years like plastic, so they are less harmful to animals."
+            },
+            {
+              "type": "text",
+              "content": "Recycling and Composting: Besides breaking down naturally, many paper straws can be composted. If a paper straw is made from natural materials and has no harmful chemicals, you can put it in compost piles where it will turn into useful soil."
+            },
+            {
+              "type": "text",
+              "content": "In addition to breaking down naturally, many paper straws can also be composted. If a paper straw is made from natural materials and doesn’t have any harmful chemicals, you can put it in your compost pile. There, it will break down and turn into rich soil that helps plants grow."
+            },
+            {
+              "type": "text",
+              "content": "However, not every paper straw can be composted. Some paper straws have a thin layer of plastic or wax on them to make them stronger. This coating can make it difficult to recycle or compost these straws properly."
+            }
+          ]
+        }
       },
       {
-        type: "section",
-        heading: "Comparing Durability and Functionality",
-        content: {
-          blocks: [
+        "type": "section",
+        "heading": "Comparing Durability and Functionality",
+        "content": {
+          "blocks": [
             {
-              type: "list",
-              content: {
-                format: "disc",
-                items: [
-                  {
-                    text: "Durability",
-                    subItems: {
-                      format: "disc",
-                      items: [
-                        "Plastic straws are very sturdy and can last a long time. They don’t break down quickly and stay in good shape even after being used for a while. This makes them perfect for drinks that you might take your time with or for thicker drinks like milkshakes.",
-                        "Paper straws break down faster, especially if they are in liquid for a long time. Many people notice that paper straws become soggy after just a few minutes, which can make them less practical for drinks that take longer to finish.",
-                      ],
-                    },
-                  },
-                  {
-                    text: "Cost Factor",
-                    subItems: {
-                      format: "disc",
-                      items: [
-                        "Another big difference between paper and plastic straws is their cost. Plastic straws are very cheap to make, so they are affordable for both businesses and people. This is one reason why plastic straws have been used for such a long time.",
-                        "Paper straws, on the other hand, are usually more expensive to make. The materials and the way they are produced cost more than for plastic straws. This makes paper straws more costly for businesses, and they might charge more to customers because of it.",
-                      ],
-                    },
-                  },
-                ],
-              },
+              "type": "text",
+              "content": "Durability: Plastic straws are very sturdy and can last a long time. They don’t break down quickly and stay in good shape even after being used for a while. This makes them perfect for drinks that you might take your time with or for thicker drinks like milkshakes."
             },
-          ],
-        },
+            {
+              "type": "text",
+              "content": "Paper straws break down faster, especially if they are in liquid for a long time. Many people notice that paper straws become soggy after just a few minutes, which can make them less practical for drinks that take longer to finish."
+            }
+          ]
+        }
       },
       {
-        type: "section",
-        heading: "Which Is More Eco-Friendly?",
-        content: {
-          blocks: [
+        "type": "section",
+        "heading": "The Cost Factor",
+        "content": {
+          "blocks": [
             {
-              type: "list",
-              content: {
-                format: "disc",
-                items: [
-                  {
-                    text: "The Short-Term vs. Long-Term Impact",
-                    subItems: {
-                      format: "disc",
-                      items: [
-                        "Plastic straws cost less and are durable but take hundreds of years to break down.",
-                        "Paper straws break down faster and are less likely to harm the environment in the long term.",
-                      ],
-                    },
-                  },
-                  {
-                    text: "Resource Use",
-                    subItems: {
-                      format: "disc",
-                      items: [
-                        "Paper straws come from renewable resources like trees.",
-                        "Many companies now use recycled materials to make paper straws, reducing their impact further.",
-                      ],
-                    },
-                  },
-                ],
-              },
+              "type": "text",
+              "content": "Plastic straws are very cheap to make, so they are affordable for both businesses and people. This is one reason why plastic straws have been used for such a long time."
             },
-          ],
-        },
+            {
+              "type": "text",
+              "content": "Paper straws, on the other hand, are usually more expensive to make. The materials and the way they are produced cost more than for plastic straws. This makes paper straws more costly for businesses, and they might charge more to customers because of it."
+            }
+          ]
+        }
       },
       {
-        type: "section",
-        heading: "The Ideal Solution: Reducing Straw Use Altogether",
-        content: {
-          blocks: [
+        "type": "section",
+        "heading": "Conclusion",
+        "content": {
+          "blocks": [
             {
-              type: "text",
-              content:
-                "Paper straws are better for the environment than plastic ones, but the best way to help is to use fewer straws. Many drinks don’t need a straw at all, so not using one can cut down on waste.",
-            },
-            {
-              type: "list",
-              content: {
-                format: "disc",
-                items: [
-                  "Use reusable straws made from stainless steel, bamboo, or silicone.",
-                  "Choose reusable options to reduce waste.",
-                ],
-              },
-            },
-          ],
-        },
-      },
-      {
-        type: "section",
-        heading: "Conclusion",
-        content: {
-          blocks: [
-            {
-              type: "text",
-              content:
-                "In conclusion, paper straws are generally better for the environment than plastic straws. They break down faster, are less harmful to animals, and can come from renewable resources. However, making both types of straws has some environmental costs. The best way to help the environment is to use fewer straws whenever you can. Choosing reusable straws or not using a straw at all is even better.",
-            },
-          ],
-        },
-      },
+              "type": "text",
+              "content": "In conclusion, paper straws are generally better for the environment than plastic straws. They break down faster, are less harmful to animals, and can come from renewable resources. However, making both types of straws has some environmental costs. The best way to help the environment is to use fewer straws whenever you can. Choosing reusable straws or not using a straw at all is even better. If you want to make paper straws yourself, using a paper straw making machine can help you create these eco-friendly options."
+            }
+          ]
+        }
+      }
     ],
-    header: {
-      id: "header-1",
-      heading: "Paper Straws Vs Plastic Straws: Which Are More Eco-Friendly",
-      headingImage:
-        "https://assets.nesscoindustries.com/public/assets/blogs/paper-straw-vs-plastic-straw-featured-image.webp",
-      subheading:
-        "A detailed analysis of the advantages and disadvantages of paper and plastic straws to determine which is more environmentally friendly.",
-    },
-  },
+    "header": {
+      "id": "header-1",
+      "heading": "Paper Straws Vs Plastic Straws: Which Are More Eco-Friendly",
+      "headingImage": "https://assets.nesscoindustries.com/public/assets/blogs/paper-straw-vs-plastic-straw-featured-image.webp",
+      "subheading": "A detailed analysis of the advantages and disadvantages of paper and plastic straws to determine which is more environmentally friendly."
+    }
+  },    
 
   {
     id: "6",
@@ -509,7 +410,7 @@ export const blogPosts: BlogPost[] = [
     date: "2024-11-30",
     author: {
       id: "1",
-      name: "Nessco Team",
+      name: "Nessco Editorial Team",
     },
     tags: [
       { id: "1", name: "Paper Cups" },
@@ -1192,7 +1093,7 @@ export const blogPosts: BlogPost[] = [
     date: "2024-11-30",
     author: {
       id: "1",
-      name: "Nessco Team",
+      name: "Nessco Editorial Team",
     },
     tags: [
       { id: "1", name: "Paper Bags" },
@@ -1758,7 +1659,7 @@ export const blogPosts: BlogPost[] = [
     date: "2024-11-27",
     author: {
       id: "author1",
-      name: "Nessco Team",
+      name: "Nessco Editorial Team",
       avatar: "/images/nessco-avatar.jpg", // replace with actual avatar image path
     },
     tags: [
@@ -1950,7 +1851,7 @@ export const blogPosts: BlogPost[] = [
     date: "2024-11-27",
     author: {
       id: "author1",
-      name: "Nessco Team",
+      name: "Nessco Editorial Team",
       avatar: "/images/authors/nessco-team.jpg",
     },
     tags: [

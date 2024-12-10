@@ -200,8 +200,8 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                       "https://www.nesscoindia.com/Assets/images/resource/fully-automatic-paper-cup-making-machine.webp"
                     }
                     alt={machine?.title}
-                    width={100}
-                    height={100}
+                    width={500}
+                    height={500}
                     priority
                     className="object-cover w-full h-full"
                   />
@@ -213,7 +213,7 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
           // Desktop view
           <div className="flex flex-col lg:flex-row items-center lg:items-start  h-[18rem] relative lg:space-x-8 ">
             {/* Left: Heading */}
-            <h3 className="text-4xl font-bold text-gray-600 lg:w-1/3 italic mb-6 lg:mb-0 relative pl-8">
+            <h3 className="text-2xl font-bold text-gray-600 lg:w-1/3 italic mb-6 lg:mb-0 relative pl-8">
               {selectedMachine?.title}
             </h3>
 
@@ -225,8 +225,8 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                   "https://www.nesscoindia.com/Assets/images/resource/fully-automatic-paper-cup-making-machine.webp"
                 }
                 alt={selectedMachine?.title}
-                width={300}
-                height={300}
+                width={1000}
+                height={1000}
                 priority
                 className="object-cover z-20 h-[18rem] sm:h-[20rem] lg:h-[15rem] w-[17rem] sm:w-[24rem] lg:w-[25rem]"
               />
@@ -260,7 +260,7 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                   ref={(el) => {
                     imagesRef.current[index] = el;
                   }}
-                  className={`border-2 border-x-gray-200 h-[7rem] rounded-2xl mt-${
+                  className={`border-2 border-x-gray-200 h-[8rem] w-[8rem] rounded-2xl mt-${
                     machine.id === 1
                       ? 28
                       : machine.id === 2
@@ -292,10 +292,10 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                   <Image
                     src={machine?.mainImage}
                     alt={machine?.title}
-                    width={300}
-                    height={300}
+                    width={1000}
+                    height={1000}
                     priority
-                    className="object-cover h-[7rem] w-[7rem] -mt-2"
+                    className="object-cover h-full w-full rounded-2xl"
                   />
                 </div>
               </div>
@@ -335,9 +335,9 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                       "https://www.nesscoindia.com/Assets/images/resource/fully-automatic-paper-cup-making-machine.webp"
                     } // Assuming selectedGrid contains an image source
                     alt={selectedGrid?.title}
-                    height={300}
-                    width={300}
-                    className="rounded-2xl h-[40rem] w-[30rem] -mt-24"
+                    height={1000}
+                    width={1000}
+                    className="rounded-2xl h-[40rem] w-[30rem] -mt-24 object-cover"
                   />
                 </Link>
               </div>
@@ -385,8 +385,8 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                   <Image
                     src="https://assets.nesscoindustries.com/public/assets/homepage/read-more-icon.webp"
                     alt={"ReDirection Arrow"}
-                    width={400}
-                    height={400}
+                    width={1000}
+                    height={1000}
                     className="w-4 h-4 lg:group-hover:invert ml-2 transition-all diration-300"
                   />
                 </div>
@@ -409,8 +409,8 @@ const FeatureProjectPage: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                 "https://www.nesscoindia.com/Assets/images/resource/fully-automatic-paper-cup-making-machine.webp"
               }
               alt={item?.title || "Image description"}
-              width={100}
-              height={100}
+              width={1000}
+              height={1000}
               className="w-full h-44 object-cover rounded-[0.8rem]"
             />
 

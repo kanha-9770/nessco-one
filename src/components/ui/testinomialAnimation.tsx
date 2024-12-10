@@ -1,7 +1,6 @@
 import React from "react";
 import { cn } from "../../lib/utils";
 import Image from "next/image";
-
 export const TestiNomialAnimation = ({
   items,
   speed = "normal",
@@ -26,10 +25,8 @@ export const TestiNomialAnimation = ({
     if (speed === "normal") return "100s";
     return "110s"; // slow speed
   };
-
   // Duplicate the items to make the infinite loop
   const duplicatedItems = [...items, ...items];
-
   return (
     <div
       className={cn(

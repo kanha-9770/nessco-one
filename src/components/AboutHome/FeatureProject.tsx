@@ -174,7 +174,7 @@ const FeatureProject: React.FC<HomeLayoutProps> = ({ aboutData }) => {
         // desktop view
         <div className="flex flex-col lg:flex-row items-center lg:items-start mt-12 relative lg:space-x-8">
           {/* Left: Heading */}
-          <h4 className="text-4xl sm:text-6xl lg:text-2xl font-semibold italic text-gray-600 lg:ml-0 lg:mr-auto lg:w-1/3 mb-6 lg:mb-0 relative top-24 pl-10">
+          <h4 className="text-4xl sm:text-6xl lg:text-4xl font-semibold italic text-gray-600 lg:ml-0 lg:mr-auto lg:w-1/3 mb-6 lg:mb-0 relative top-24 pl-10">
             {selectedMachine?.title}
           </h4>
 
@@ -192,7 +192,7 @@ const FeatureProject: React.FC<HomeLayoutProps> = ({ aboutData }) => {
 
           {/* Right: Description */}
           <div className="lg:w-1/3 z-10 lg:text-right font-poppins  justify-center text-center pr-5 ml top-20 relative">
-            <p className="text-sm font-regular  text-gray-600">
+            <p className="text-[0.800rem] font-regular  text-gray-600">
               {selectedMachine?.description}
             </p>
           </div>
@@ -232,7 +232,7 @@ const FeatureProject: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                       ? "20rem"
                       : "8rem",
                 }}
-                className={`border-2 border-x-gray-200 h-[9rem] rounded-2xl transform transition-transform duration-300 hover:scale-100 -ml-${
+                className={`border-2 border-x-gray-200 h-[9rem] w-[9rem] rounded-2xl transform transition-transform duration-300 hover:scale-100 -ml-${
                   machine.id === 1
                     ? 5
                     : machine.id === 2
@@ -252,9 +252,9 @@ const FeatureProject: React.FC<HomeLayoutProps> = ({ aboutData }) => {
                 <Image
                   src={machine?.mainImage}
                   alt={machine?.title}
-                  width={500}
-                  height={500}
-                  className="object-cover h-[9rem] w-[9rem] -mt-2"
+                  width={1000}
+                  height={1000}
+                  className="object-cover h-full w-full rounded-2xl"
                 />
               </div>
             </div>

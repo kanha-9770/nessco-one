@@ -195,13 +195,13 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
         </CardContent>
       </Card>
       {index % 2 === 0 && (
-        <div className="mt-6  max-w-[300px] mx-auto text-black rounded-[1.2rem] shadow-lg">
+        <div className="mt-6  max-w-[300px] mx-auto text-black rounded-[1.2rem] ">
           <Dialog
             open={openModal === index}
             onOpenChange={(isOpen) => setOpenModal(isOpen ? index : null)}
           >
             <DialogTrigger asChild>
-              <div className="flex items-center justify-between p-2 bg-white rounded-[1.2rem] shadow-2xl">
+              <div className="flex items-center justify-between p-2 bg-white rounded-[1.2rem] ">
                 <h3 className="text-sm w-[12.5rem] ml-4">{item?.title}</h3>
                 {item?.description?.split(" ").length > 40 && (
                   <svg
@@ -247,7 +247,7 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
   );
 
   return (
-    <div className="relative container h-full mb-60 mt-10 mx-auto py-8 px-14">
+    <div className="relative  h-full mb-60 mt-10 mx-auto py-8 md:px-14">
       <Image
         alt="Decorative Image"
         src={DecorativeImg1}
@@ -275,9 +275,9 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
       </div>
 
       {/* Mobile carousel */}
-      <div className="md:hidden">
+      <div className="md:hidden w-full">
         <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex">
+          <div className="flex w-full space-x-6">
             {knowMoreData?.map((item, index) => (
               <div key={index} className="flex-[0_0_100%] min-w-0">
                 {renderCard(item, index)}

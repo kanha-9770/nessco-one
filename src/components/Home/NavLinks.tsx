@@ -137,7 +137,7 @@ const NavLinksDemo: React.FC<NavLinksDemoProps> = ({ type, navItems }) => {
       ref={navRef}
       className={`sticky lg:mt-0 mt-10 top-[3.3rem] z-40 transition-all duration-300 ${
         scrolling
-          ? "bg-white shadow-md"
+          ? "bg-gray-50 shadow-md"
           : type === "product"
           ? "bg-white border-none"
           : "bg-[#f2f2f2] border-none"
