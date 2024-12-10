@@ -14,7 +14,7 @@ const NavLink: React.FC<NavLinkProps> = memo(
   ({ text, index, activeLink, handleClick }) => (
     <div
       className={`text-black text-base font-light flex flex-row py-1 transition-all duration-300 ${
-        activeLink === index ? "border-b-2 border-red-600 text-red-600" : ""
+        activeLink === index ? "border-b-2 border-red-700 text-red-700" : ""
       }`}
       onClick={handleClick}
     >

@@ -2,9 +2,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ProductItem } from "./types/constant";
 import Carousal from "@/components/product/Carousal";
+import ReusableForm from "../Contact/ReuseableForm";
 
 // Debounce function to limit the rate of invoking a function
-const debounce = <T extends (...args: unknown[]) => void>(func: T, delay: number) => {
+const debounce = <T extends (...args: unknown[]) => void>(
+  func: T,
+  delay: number
+) => {
   let timeoutId: NodeJS.Timeout;
   return (...args: Parameters<T>): void => {
     clearTimeout(timeoutId);
@@ -22,7 +26,6 @@ const Page1: React.FC<ProductProps> = ({ productData }) => {
   const slideRef = useRef<HTMLDivElement>(null);
   const totalSlides = Header?.products?.length;
 
-  
   // Function to scroll to a specific slide
   const scrollToSlide = (index: number) => {
     if (slideRef.current) {
@@ -81,16 +84,28 @@ const Page1: React.FC<ProductProps> = ({ productData }) => {
             {Header?.ourProduct?.trim().match(/\S+$/)}
           </span>
         </h1>
-        <p className="lg:w-[23rem] text-sm text-black line-clamp-3">
+        {/* <p className="lg:w-[23rem] text-sm text-black line-clamp-3">
           {Header?.description}
-        </p>
+        </p> */}
+        {/* Learn More Button */}
+        <ReusableForm
+          formId="product page"
+          buttonText="Learn More"
+          dialogTitle="Get in Touch"
+          dialogSubtitle="We'd love to hear from you!"
+          imageUrl="https://www.nesscoindia.com/Assets/images/resource/popup.webp"
+          showButton={true}
+          secodaryButton={false}
+          normalButton={false}
+          learnMore={true}
+        />
       </div>
       {/* Decorative Elements */}
       <div>
         <div className="lg:bg-gradient-to-t lg:from-white lg:to-[#e7e7e7] bg-gradient-to-r from-white via-[#e7e7e7] to-white lg:w-[0.12rem] mt-[1.3rem] lg:h-[10rem] h-[0.12rem] w-full"></div>
       </div>
       {/* Slides Container */}
-      <div className="lg:w-[60%] lg:my-0 my-[1rem] lg:px-0 px-[1.5rem]">
+      <div className="lg:w-[60%] lg:my-0 my-[1rem] lg:px-0 px-[1.5rem] lg:block hidden">
         <h2 className="lg:text-2xl text-[1.2rem] font-medium text-red-700 my-[0.4rem] lg:pl-[1rem]">
           {Header?.Featured}
         </h2>

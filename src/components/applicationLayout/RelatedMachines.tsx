@@ -218,9 +218,9 @@ const Page4: React.FC<CombinedProps> = ({
                       <h3 className="lg:text-lg text-[0.9rem] font-medium">
                         {item?.h2}
                       </h3>
-                      <p className="lg:text-sm text-[0.8rem] text-gray-600">
+                      {/* <p className="lg:text-sm text-[0.8rem] text-gray-600">
                         {item?.h3}
-                      </p>
+                      </p> */}
                     </div>
 
                     {/* Image */}

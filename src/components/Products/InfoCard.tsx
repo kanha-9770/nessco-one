@@ -55,21 +55,21 @@ const InfoCard: FC<InfoCardProps> = ({
 
       <div className="">
         {/* Max cups */}
-      <div className="flex border-b-2 h-14 px-4 gap-2 items-center">
-        <div className="flex items-center justify-center">
-          <Image
-            src={watch}
-            alt="Icon 1"
-            width={200}
-            height={200}
-            className="w-8 h-8"
-          />
+        <div className="flex border-b-2 h-14 px-4 gap-2 items-center">
+          <div className="flex items-center justify-center">
+            <Image
+              src={watch}
+              alt="Icon 1"
+              width={200}
+              height={200}
+              className="w-8 h-8"
+            />
+          </div>
+          <div className="text-4xl font-bold text-gray-500">{maxCups}</div>
         </div>
-        <div className="text-4xl font-bold text-gray-500">{maxCups}</div>
-      </div>
 
-      {/* Cup variants */}
-      {/* <div className="flex p-1 flex-row border-r-2">
+        {/* Cup variants */}
+        {/* <div className="flex p-1 flex-row border-r-2">
         <div className="flex flex-row items-center gap-2 pl-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -103,10 +103,12 @@ const InfoCard: FC<InfoCardProps> = ({
         </div>
       </div> */}
 
-      {/* Cups per minute */}
-      <div className="flex flex-col pl-4 h-14 items-center justify-center">
-        <div>up to {maxCups} cups per minute ({bmp100Super})</div>
-      </div>
+        {/* Cups per minute */}
+        <div className="flex flex-col pl-4 h-14 items-center justify-center">
+          <div>
+            up to {maxCups} cups per minute ({bmp100Super})
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -139,14 +139,14 @@ const FeatureProject: React.FC<HomeLayoutProps> = ({ aboutData }) => {
               className="flex flex-col items-center mb-8 border p-4 bg-[#ededed] rounded-2xl w-full relative"
             >
               
-                <div className="h-[10rem]">
+                <div className="h-[10rem] rounded-2xl">
                   <Image
                     src={machine?.mobileimg}
                     alt={machine?.title}
                     width={300}
                     height={300}
                     priority
-                    className="object-contain h-[12rem] -mt-6"
+                    className="object-contain h-[12rem] -mt-6 rounded-2xl"
                   />
                 </div>
                 <div className="h-full w-full">

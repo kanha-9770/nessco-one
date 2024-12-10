@@ -6,6 +6,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Label } from "@radix-ui/react-label";
 import EnquiryCart from "../ui/EnquiryCart";
 import { RelatedProductType } from "./types/constant";
+import Link from "next/link";
+import { countryCODE, languageCODE } from "../Navbar/nav-menue";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -57,7 +59,9 @@ const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
       );
       if (existingItemIndex > -1) {
         // Item exists, remove it
-        const updatedItems = prevItems.filter((prevItem) => prevItem.id !== `${index}`);
+        const updatedItems = prevItems.filter(
+          (prevItem) => prevItem.id !== `${index}`
+        );
         localStorage.setItem("cartItems", JSON.stringify(updatedItems));
         return updatedItems;
       } else {
@@ -79,10 +83,18 @@ const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
       return updatedItems;
     });
   };
+  // Function to convert a string to the desired format
+  function convertToSlug(input) {
+    return input
+      .toLowerCase() // Convert to lowercase
+      .replace(/s$/, "") // Remove trailing 's' if present
+      .replace(/[^a-z0-9]+/g, "-") // Replace non-alphanumeric characters with '-'
+      .replace(/^-+|-+$/g, ""); // Remove leading or trailing '-'
+  }
 
   return (
     <>
-      <div className="w-full lg:mt-[5rem] mt-[2rem] font-poppins">
+      <div className="w-full lg:mt-[5rem] mt-[4rem] font-poppins">
         <div className="flex flex-col lg:my-[3rem] my-[2rem] bg-white lg:px-[2rem] px-[1rem] relative">
           <div className="pt-[1.5rem]">
             <h2 className="lg:text-[2.2rem] text-[1.5rem] font-semibold">
@@ -151,63 +163,68 @@ const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
                     key={idx}
                     className="relative lg:mb-20 mb-16 lg:w-[20rem] w-[17rem] bg-gradient-to-b from-[#f5f5f5] to-[#f2f2f2] rounded-[0.5rem] shadow-lg hover:shadow-2xl transition-all duration-300"
                   >
-                    {/* Icons */}
-                    <div className="absolute top-6 right-4 flex space-x-2">
-                      <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center font-medium cursor-pointer relative group hover:text-red-700 text-xl">
-                        {item?.s}
-                        <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-md shadow-md px-2 py-1 h-max w-max z-20">
-                          <p className="lg:text-[0.8rem] text-[0.7rem] text-black font-normal">
-                            {item?.sInformation}
-                          </p>
+                    <Link
+                      href={`/${countryCODE}/${languageCODE}/products/${convertToSlug(
+                        item?.h1
+                      )}`}
+                    >
+                      {/* Icons */}
+                      <div className="absolute top-6 right-4 flex space-x-2">
+                        <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center font-medium cursor-pointer relative group hover:text-red-700 text-xl">
+                          {item?.s}
+                          <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-md shadow-md px-2 py-1 h-max w-max z-20">
+                            <p className="lg:text-[0.8rem] text-[0.7rem] text-black font-normal">
+                              {item?.sInformation}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="w-8 h-8 p-[0.2rem] bg-white border-solid border-[0.1rem] border-white hover:border-red-700 rounded-full flex items-center justify-center relative group">
+                          <Image
+                            src={item?.image}
+                            alt={item?.h2}
+                            width={400}
+                            height={400}
+                          />
+                          <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-md shadow-md px-2 py-1 h-max w-max z-20">
+                            <p className="lg:text-[0.8rem] text-[0.7rem] text-black">
+                              {item?.imageInformation}
+                            </p>
+                          </div>
                         </div>
                       </div>
-                      <div className="w-8 h-8 p-[0.2rem] bg-white border-solid border-[0.1rem] border-white hover:border-red-700 rounded-full flex items-center justify-center relative group">
-                        <Image
-                          src={item?.image}
-                          alt={item?.h2}
-                          width={400}
-                          height={400}
-                        />
-                        <div className="hidden group-hover:flex absolute bottom-7 right-0 bg-white border border-gray-300 rounded-md shadow-md px-2 py-1 h-max w-max z-20">
-                          <p className="lg:text-[0.8rem] text-[0.7rem] text-black">
-                            {item?.imageInformation}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
 
-                    {/* Title */}
-                    <div className="pt-6 pl-6">
-                      <h3 className="lg:text-[1.1rem] text-[1rem] font-semibold w-[65%]">
-                        {item?.h1}
-                      </h3>
-                      <h3 className="lg:text-lg text-[0.9rem] font-medium">
-                        {item?.h2}
-                      </h3>
-                      <p className="lg:text-sm text-[0.8rem] text-gray-600">
+                      {/* Title */}
+                      <div className="pt-6 pl-6">
+                        <h3 className="lg:text-[1.1rem] text-[1rem] font-semibold w-[65%] h-[3.2rem]">
+                          {item?.h1}
+                        </h3>
+                        <h3 className="lg:text-lg text-[0.9rem] font-medium">
+                          {item?.h2}
+                        </h3>
+                        {/* <p className="lg:text-sm text-[0.8rem] text-gray-600">
                         {item?.h3}
-                      </p>
-                    </div>
-
-                    {/* Image */}
-                    <div className="flex justify-center items-center">
-                      <div className="mt-[0.8rem] w-[70%] lg:h-[10rem] flex justify-center items-center">
-                        <Image
-                          src={item?.img}
-                          alt={item?.h2}
-                          width={400}
-                          height={400}
-                        />
+                      </p> */}
                       </div>
-                    </div>
 
-                    {/* Key Points or View Machine Button */}
-                    <div className="my-[1rem] flex lg:flex-rows flex-col items-center justify-center lg:h-[2rem]">
-                      <button className="lg:text-[1rem] text-[0.9rem] w-[65%] lg:h-[2rem] h-[2rem] border-[0.1rem] border-solid font-medium rounded-[0.5rem] transition-colors duration-300 border-[#9c9c9c] hover:border-black hover:bg-black hover:text-white">
-                        View Machine
-                      </button>
-                    </div>
+                      {/* Image */}
+                      <div className="flex justify-center items-center">
+                        <div className="mt-[0.8rem] w-[70%] lg:h-[10rem] flex justify-center items-center">
+                          <Image
+                            src={item?.img}
+                            alt={item?.h2}
+                            width={400}
+                            height={400}
+                          />
+                        </div>
+                      </div>
 
+                      {/* Key Points or View Machine Button */}
+                      <div className="my-[1rem] flex lg:flex-rows flex-col items-center justify-center lg:h-[2rem]">
+                        <button className="lg:text-[1rem] text-[0.9rem] w-[65%] lg:h-[2rem] h-[2rem] border-[0.1rem] border-solid font-medium rounded-[0.5rem] transition-colors duration-300 border-[#9c9c9c] hover:border-black hover:bg-black hover:text-white">
+                          View Machine
+                        </button>
+                      </div>
+                    </Link>
                     {/* Separator */}
                     <div className="w-full h-px bg-[#9c9c9c]"></div>
 
@@ -231,7 +248,9 @@ const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
                           htmlFor={`addToEnquiry-${idx}`}
                           className="text-sm cursor-pointer whitespace-nowrap"
                         >
-                          {enquiryItems.some((enquiryItem) => enquiryItem.id === `${idx}`)
+                          {enquiryItems.some(
+                            (enquiryItem) => enquiryItem.id === `${idx}`
+                          )
                             ? "Remove from inquiry"
                             : "Add to inquiry"}
                         </Label>
@@ -254,4 +273,3 @@ const RelateProducts: React.FC<CombinedProps> = ({ related_product }) => {
 };
 
 export default RelateProducts;
-

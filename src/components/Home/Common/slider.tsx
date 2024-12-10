@@ -5,7 +5,7 @@ import { motion, useMotionValue, AnimatePresence } from "framer-motion";
 import { HomeData } from "../types/constant";
 import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Play } from 'lucide-react';
+import { Play } from 'lucide-react';
 
 const ONE_SECOND = 1000;
 const AUTO_DELAY = ONE_SECOND * 10;
@@ -126,15 +126,9 @@ export const SwipeCarousel: React.FC<ImageSliderLayoutProps> = ({
               muted
               className="w-full h-full object-cover rounded-xl"
             />
+            <div className="absolute inset-0 rounded-xl bg-black bg-opacity-20"></div>
+            <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-black/30 to-transparent"></div>
             <RipplePlayButton onClick={() => openModal(video.src)} />
-            <Button
-              variant="outline"
-              size="icon"
-              className="absolute bottom-4 right-4 bg-white bg-opacity-50 hover:bg-opacity-100 transition-opacity rounded-full"
-              onClick={() => openModal(video.src)}
-            >
-              <ExternalLink className="h-4 w-4" />
-            </Button>
           </motion.div>
         ))}
       </motion.div>

@@ -167,13 +167,12 @@ const SignupFormDemoProduct: React.FC<SignupFormDemoProductProps> = ({
 
             <div
               id="scrollbar1"
-              className={`w-full space-y-2 flex flex-col transition-all duration-300 ease-in-out ${
-                expanded
-                  ? "h-[30vh] overflow-auto scrollbar-product-description"
-                  : "h-[30vh] overflow-hidden"
-              }`}
+              className={`w-full space-y-2 flex flex-col transition-all duration-300 ease-in-out
+               h-[30vh] overflow-auto scrollbar
+                  
+              `}
             >
-              <div className="p-4 w-full max-w-md">
+              <div className="w-full max-w-md">
                 {relatedProducts
                   .slice(0, expanded ? relatedProducts.length : 3)
                   .map((product, index) => (

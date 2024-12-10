@@ -15,10 +15,13 @@ interface ProductProps {
 
 const Page2: React.FC<ProductProps> = ({ productData }) => {
   const ProductCatalouge = productData?.Product[0]?.ProductCatalouge;
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
+  const Header = productData?.Product[0]?.Header;
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const leftBorderRef = useRef<HTMLDivElement | null>(null);
   const bottomBorderRef = useRef<HTMLDivElement | null>(null);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isDesktop, setIsDesktop] = useState<boolean>(true);
   const circleRef = useRef<HTMLDivElement | null>(null);
   const itemsRef = useRef<Array<HTMLDivElement | null>>([]);
   const [selectedItems, setSelectedItems] = useState<Set<string>>(new Set());
@@ -49,6 +52,23 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
       });
     }
   };
+
+  const toggleReadMore = () => {
+    setIsExpanded((prevState) => !prevState);
+  };
+
+  const truncateText = (text: string, wordLimit: number) => {
+    const words = text?.split(" ");
+    return words?.length > wordLimit
+      ? words?.slice(0, wordLimit).join(" ") + "..."
+      : text;
+  };
+
+  const wordLimit = isDesktop ? 80 : 20;
+
+  const displayedParagraph = isExpanded
+    ? Header?.description
+    : truncateText(Header?.description, wordLimit);
 
   const handleItemSelection = (
     itemId: string,
@@ -370,9 +390,9 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
                                         {containerItem?.h2}
                                       </h3>
                                     </Link>
-                                    <p className="lg:text-[0.8rem] text-[0.7rem] text-gray-600">
+                                    {/* <p className="lg:text-[0.8rem] text-[0.7rem] text-gray-600">
                                       {containerItem?.h3}
-                                    </p>
+                                    </p> */}
                                   </div>
 
                                   <Link
@@ -514,6 +534,16 @@ const Page2: React.FC<ProductProps> = ({ productData }) => {
             </div>
           ))}
         </div>
+      </div>
+      <div className="w-full text-black border-solid border-t-2 border-[#eeeded] bg-white px-[1rem] lg:px-[3rem] z-30">
+        <p className="text-xs font-thin mt-2">{displayedParagraph}</p>
+        <button
+          onClick={toggleReadMore}
+          aria-label="Read More"
+          className="underline italic text-xs hover:text-red-700 hover:not-italic my-[1rem]"
+        >
+          {isExpanded ? "Read Less" : "Read More"}
+        </button>
       </div>
       <EnquiryCart items={enquiryItems} onRemoveItem={removeEnquiryItem} />
     </>

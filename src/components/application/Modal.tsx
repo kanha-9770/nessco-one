@@ -103,12 +103,12 @@ const Modal: React.FC<{
                     <div
                       className={`bg-[#f2f2f2] border-2 border-solid h-[10vh] w-full rounded-[0.8rem] flex items-center justify-center ${
                         selectedInModal === item
-                          ? "bg-clip-padding custom-gradient-border"
+                          ? " border-[0.2rem] border-[#483d73] bg-white"
                           : "border-[#f2f2f2]"
                       }`}
                     >
                       <Image
-                        className="h-[8vh]"
+                        className="h-[8vh] w-auto"
                         width={100}
                         height={100}
                         src={item?.img}

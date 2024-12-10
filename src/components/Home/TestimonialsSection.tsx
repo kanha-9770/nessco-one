@@ -1,12 +1,12 @@
 import React from "react";
 import { SwipeCarousel } from "./Common/slider";
-import { TestiNomialAnimation } from "../ui/testinomialAnimation";
 import { HomeData } from "./types/constant";
-interface TestinomialLayoutProps{
-  heroData:HomeData;
+import { TestimonialAnimation } from "../ui/testinomialAnimation";
+interface TestinomialLayoutProps {
+  heroData: HomeData;
 }
-const HomeTestimonial: React.FC<TestinomialLayoutProps> = ({heroData}) => {
-  const testinomialData =heroData?.home[8]?.data;
+const HomeTestimonial: React.FC<TestinomialLayoutProps> = ({ heroData }) => {
+  const testinomialData = heroData?.home[8]?.data;
 
   // Provide a fallback value for `testinomialData?.testinomial`
   const testimonialItems = testinomialData?.testinomial || [];
@@ -32,7 +32,7 @@ const HomeTestimonial: React.FC<TestinomialLayoutProps> = ({heroData}) => {
       <div className="w-full h-[55%] mt-8 lg:mt-0 lg:w-2/3 relative lg:h-full">
         <div className="ml-0 lg:ml-14 h-screen mask-gradient rounded-md flex flex-col antialiased dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
           {/* Use testimonialItems instead of testinomialData?.testinomial */}
-          <TestiNomialAnimation items={testimonialItems} speed="normal" />
+          <TestimonialAnimation items={testimonialItems} speed="normal" />
         </div>
       </div>
     </div>

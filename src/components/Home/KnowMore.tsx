@@ -66,7 +66,7 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
       >
         <DialogTrigger asChild>
           {index % 2 !== 0 && (
-            <div className=" bg-white max-w-[300px] mx-auto p-2 rounded-[1.2rem] shadow-lg transition-all duration-300">
+            <div className=" bg-white max-w-[325px] md:max-w-[300px] mx-auto p-2 rounded-[1.2rem] shadow-lg transition-all duration-300">
               <div className="flex justify-between items-center">
                 <h3 className="text-sm ml-4 w-[12.5rem]">{item?.title}</h3>
                 {item?.description?.split(" ").length > 20 && (
@@ -99,7 +99,7 @@ export default function Component({ heroData }: KnowMoreLayoutProps) {
         </DialogContent>
       </Dialog>
       <Card
-        className={` transition-all duration-300 rounded-3xl md:shadow-md w-full max-w-[300px] h-[320px] mx-auto relative bg-white ${
+        className={` transition-all duration-300 rounded-3xl md:shadow-md w-full max-w-[325px] md:max-w-[300px] h-[320px] mx-auto relative bg-white ${
           index % 2 !== 0 ? "mt-6" : ""
         }`}
       >

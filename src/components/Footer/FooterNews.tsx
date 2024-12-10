@@ -102,7 +102,7 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
           <div className="flex flex-col-reverse  lg:flex-row lg:p-5 justify-evenly items-start w-[100%] lg:px-5  mb-[-0.10rem] ">
             <div className="flex flex-col-reverse lg:flex-row  lg:mt-0">
               <div
-                className={`${styles.footerlistabout} lg:order-none lg:ml-[3rem]  lg:mt-0 -mt-[20rem]  px-4 lg:px-0`}
+                className={`${styles.footerlistabout} lg:order-none lg:ml-[3rem]  lg:mt-0 -mt-[14.3rem]  px-5 lg:px-0`}
               >
                 <h4
                   className={`font-poppins text-sm md:text-xl lg:text-sm font-semibold md:w-[10rem] w-[7rem]  ${textColor}`}
@@ -119,7 +119,7 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                   ))}
                 </div>
 
-                <h4
+                {/* <h4
                   className={`font-poppins text-sm md:text-xl lg:text-sm font-semibold mt-4 lg:w-[10rem] w-[10rem] md:w-[13rem] ${textColor}`}
                 >
                   {footerData?.businessTitle}
@@ -129,7 +129,42 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                   className={`mt-3 font-light text-xs lg:text-xs md:text-lg lg:w-[9rem] md:w-[12rem] w-[10rem] font-poppins hover:text-red-600 cursor-pointer ${textColor}`}
                 >
                   {footerData?.businessPartners}
-                </p>
+                </p> */}
+
+                <div className=" flex flex-row lg:flex-col  w-full space-x-2 lg:space-x-0 lg:mt-0 mt-4 lg:hidden block">
+                <div className=" flex-col">
+                <h4
+                  className={`font-semibold font-poppins text-sm md:text-xl lg:text-sm ${textColor}`}
+                >
+                  {footerData?.clienteleTitle}
+                </h4>
+                <div className={styles.footerlistslink}>
+                  <LinkUrl href="/clientele">
+                    <p
+                      className={`font-poppins text-xs lg:text-xs md:text-lg font-light mt-4 w-[5rem] md:w-[7rem] hover:text-red-600 cursor-pointer ${textColor}`}
+                    >
+                      {footerData?.clients}
+                    </p>
+                  </LinkUrl>
+                </div>
+                </div>
+                <div className=" flex-col ">
+                {/* <h4
+                  className={`font-semibold text-sm lg:text-sm md:text-lg font-poppins lg:mt-5 ${textColor}`}
+                >
+                  {footerData?.carrersTitle}
+                </h4>
+                <div className="text-xs lg:text-xs md:text-lg font-light font-poppins -space-y-2 hover:text-red-600 cursor-pointer w-[3rem]">
+                  {footerData?.careers?.map((career, index) => (
+                    <div key={index}>
+                      <p className={`${styles.footeratags} ${textColor}`}>
+                        {career?.career}
+                      </p>
+                    </div>
+                  ))}
+                </div> */}
+                </div>
+             </div>
 
                 <h4
                   className={`font-poppins text-sm md:text-xl lg:text-sm font-semibold mt-4 lg:w-[10rem] md:w-[14rem] w-[10rem] ${textColor}`}
@@ -142,7 +177,7 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                   <LocaleSwitcher type="footer" />
                 </div>
                 <h4
-                  className={`${styles.footerdesctitle} font-semibold font-poppins invert-0 text-sm md:text-xl lg:text-sm mt-6 lg:w-[14rem] md:w-[20rem] w-[15rem] ${textColor} `}
+                  className={`${styles.footerdesctitle} font-semibold font-poppins invert-0 text-sm md:text-xl lg:text-sm lg:mt-6  lg:w-[14rem] md:w-[20rem] w-[15rem] ${textColor} `}
                 >
                   {footerData?.awarTitle}
                 </h4>
@@ -176,6 +211,8 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                     ))}
                   </div>
                 </div>
+              <div className=" flex lg:block hidden flex-row lg:flex-col  w-full space-x-3 lg:space-x-0 ">
+                <div className=" flex-col">
                 <h4
                   className={`font-semibold font-poppins text-sm md:text-xl lg:text-sm ${textColor}`}
                 >
@@ -190,12 +227,14 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                     </p>
                   </LinkUrl>
                 </div>
-                <h4
-                  className={`font-semibold text-sm lg:text-sm md:text-lg font-poppins mt-5 ${textColor}`}
+                </div>
+                <div className=" flex-col">
+                {/* <h4
+                  className={`font-semibold text-sm lg:text-sm md:text-lg font-poppins lg:mt-5 ${textColor}`}
                 >
                   {footerData?.carrersTitle}
-                </h4>
-                <div className="text-xs lg:text-xs md:text-lg font-light font-poppins -space-y-2 hover:text-red-600 cursor-pointer w-[3rem]">
+                </h4> */}
+                {/* <div className="text-xs lg:text-xs md:text-lg font-light font-poppins -space-y-2 hover:text-red-600 cursor-pointer w-[3rem]">
                   {footerData?.careers?.map((career, index) => (
                     <div key={index}>
                       <p className={`${styles.footeratags} ${textColor}`}>
@@ -203,7 +242,9 @@ const FooterNew: React.FC<FooterProps> = ({ footerData }) => {
                       </p>
                     </div>
                   ))}
+                </div> */}
                 </div>
+             </div>
               </div>
 
               <div className="flex-row  flex lg:flex-none lg:mt-0 mt-[2rem] lg:-ml-12 -ml-[0] px-3">

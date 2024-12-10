@@ -11,7 +11,7 @@ interface questions {
   ans: string;
 }
 interface FaqProductsData {
-  questions:questions[];
+  questions: questions[];
   title?: string;
   subTitle?: string;
 }
@@ -24,7 +24,6 @@ const FaqProducts: React.FC<FaqProductsProps> = ({ faqData }) => {
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
- 
   const toggleExpansion = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index);
   };
@@ -34,15 +33,17 @@ const FaqProducts: React.FC<FaqProductsProps> = ({ faqData }) => {
       <div className="flex p-8">
         <h2 className="font-poppins lg:text-3xl text-2xl">
           <span className="text-[#483d73] font-medium">
-            {(faqData?.title && faqData?.title?.split(" ").slice(0, -1).join(" ")) ||"Frequently Asked Questions"}
+            {(faqData?.title &&
+              faqData?.title?.split(" ").slice(0, -1).join(" ")) ||
+              "Frequently Asked Questions"}
           </span>{" "}
           <span className="text-red-700 font-semibold">
-            {(faqData?.title && faqData?.title?.split(" ").slice(-1) ||"FAQs")}
+            {(faqData?.title && faqData?.title?.split(" ").slice(-1)) || "FAQs"}
           </span>
         </h2>
       </div>
       <div
-        className="w-full flex justify-center items-center px-8"
+        className="w-full flex justify-center items-center px-3 lg:px-6"
         ref={carouselRef}
       >
         <div className="lg:w-full bg-white lg:p-0 p-4">

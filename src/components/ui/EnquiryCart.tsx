@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import { X, ShoppingCart, Trash2 } from 'lucide-react';
 import Image from "next/image";
@@ -32,7 +31,6 @@ interface EnquiryComponentProps {
 export default function EnquiryComponent({
   items,
   onRemoveItem,
-  maxItems = 10,
 }: EnquiryComponentProps) {
   const [cartItems, setCartItems] = useState<EnquiryItem[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -146,6 +144,39 @@ export default function EnquiryComponent({
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
           background: #555;
         }
+        @media (max-width: 640px) {
+          .enquiry-items {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding-bottom: 1rem;
+          }
+          .enquiry-items::-webkit-scrollbar {
+            display: none;
+          }
+          .enquiry-item {
+            flex: 0 0 auto;
+            width: 140px;
+            scroll-snap-align: start;
+          }
+          .sheet-content {
+            display: flex;
+            flex-direction: column;
+          }
+          .sheet-footer {
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+          }
+          .enquiry-item-image {
+            width: 60px;
+            height: 60px;
+          }
+        }
       `}</style>
       <Toaster />
       {cartItems.length > 0 && (
@@ -161,50 +192,24 @@ export default function EnquiryComponent({
               </span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="bottom" className="h-[30vh] bg-white">
-            <SheetHeader>
-              <SheetTitle className="flex justify-between items-center">
-                <div className="flex items-center gap-2">
-                  <h3 className="font-medium text-sm text-gray-700">
-                    Enquiry Cart
-                  </h3>
-                  <span className="text-sm text-gray-500">
-                    ({cartItems.length}/{maxItems})
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 pr-20 -mt-4">
-                  <Button
-                    onClick={openModal}
-                    className="bg-gradient-to-r from-[#483d73] to-red-700 text-white font-medium font-poppins py-2 px-6 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl"
-                  >
-                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-100">
-                      Enquire Now{" "}
-                    </span>
-                  </Button>
-
-                  <Button
-                    onClick={clearCart}
-                    className="text-gray-400 hover:text-gray-600 p-1"
-                    aria-label="Clear cart"
-                  >
-                    <Trash2 size={16} />
-                  </Button>
-                </div>
-              </SheetTitle>
-            </SheetHeader>
-            <div className="mt-4 overflow-x-auto custom-scrollbar">
-              <div className="flex gap-2 pb-4">
+          <SheetContent
+            side="bottom"
+            className="md:h-[20vh] bg-white sheet-content"
+          >
+            <div className="md:mt-4 overflow-x-auto custom-scrollbar flex-grow">
+              <div className="enquiry-items flex gap-2 lg:pb-4">
                 {cartItems.map((item) => (
                   <div
                     key={item.id}
-                    className="relative flex items-center bg-white border rounded-md p-2 w-[260px] hover:bg-gray-50 transition-colors duration-200 flex-shrink-0"
+                    className="enquiry-item relative flex items-center bg-white border rounded-md p-2 hover:bg-gray-50 transition-colors duration-200 flex-shrink-0"
                   >
                     <div className="absolute top-2 left-2 w-1.5 h-1.5 bg-red-500 rounded-full" />
-                    <div className="w-16 h-16 relative mr-3 flex-shrink-0">
+                    <div className="enquiry-item-image relative mr-3 flex-shrink-0">
                       <Image
                         src={item.image}
                         alt={item.name}
-                        fill
+                        width={60}
+                        height={60}
                         className="object-cover rounded-md"
                       />
                     </div>
@@ -224,18 +229,22 @@ export default function EnquiryComponent({
                 ))}
               </div>
             </div>
+            <div className="sheet-footer lg:absolute md:top-4 md:right-20">
+              <Button
+                onClick={openModal}
+                className="w-full md:w-44 bg-gradient-to-r from-[#483d73] to-red-700 text-white font-medium font-poppins py-2 px-6 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl"
+              >
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-100">
+                  Enquire Now
+                </span>
+              </Button>
+            </div>
           </SheetContent>
         </Sheet>
       )}
-
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
         <DialogContent className="sm:max-w-[900px] bg-gray-50">
           <div className="rounded-2xl">
-            <DialogHeader>
-              <DialogTitle className="h-12 text-xl font-semibold w-full text-center">
-                Enquire Items
-              </DialogTitle>
-            </DialogHeader>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
               <div className="pr-4">
                 <div className="border-2 space-y-4 max-h-[50vh] overflow-y-auto rounded-xl p-4 custom-scrollbar">
@@ -248,7 +257,7 @@ export default function EnquiryComponent({
                         <div className="text-sm font-semibold text-center mb-2">
                           {item.name}
                         </div>
-                        <div className="bg-white w-full rounded-[0.5rem] h-auto">
+                        <div className="bg-white w-full rounded-[0.5rem] h-auto enquiry-item-image">
                           <Image
                             src={item.image}
                             alt={item.name}
@@ -263,7 +272,11 @@ export default function EnquiryComponent({
                 </div>
               </div>
               <form onSubmit={handleSubmit} className="space-y-4">
-                <FormFields onChange={setFormValues} values={formValues} errors={errors} />
+                <FormFields
+                  onChange={setFormValues}
+                  values={formValues}
+                  errors={errors}
+                />
                 <Button
                   type="submit"
                   disabled={isSubmitting}

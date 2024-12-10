@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { cn } from "../../lib/utils";
 import Image from "next/image";
-export const TestiNomialAnimation = ({
+
+export const TestimonialAnimation = ({
   items,
   speed = "normal",
   pauseOnHover = true,
@@ -25,8 +26,30 @@ export const TestiNomialAnimation = ({
     if (speed === "normal") return "100s";
     return "110s"; // slow speed
   };
-  // Duplicate the items to make the infinite loop
-  const duplicatedItems = [...items, ...items];
+
+  // Fisher-Yates shuffle algorithm
+  const shuffleArray = (array: any[]) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
+
+  // Create three different shuffled arrays
+  const shuffledArrays = useMemo(() => {
+    const array1 = shuffleArray(items);
+    const array2 = shuffleArray(items);
+    const array3 = shuffleArray(items);
+    
+    return [
+      [...array1, ...shuffleArray(array1)],
+      [...array2, ...shuffleArray(array2)],
+      [...array3, ...shuffleArray(array3)]
+    ];
+  }, [items]);
+
   return (
     <div
       className={cn(
@@ -34,7 +57,7 @@ export const TestiNomialAnimation = ({
         className
       )}
     >
-      {[0, 1, 2]?.map((index) => (
+      {[0, 1, 2].map((index) => (
         <div
           key={index}
           className={cn("relative z-20 h-full overflow-hidden", className)}
@@ -45,18 +68,20 @@ export const TestiNomialAnimation = ({
               "animate-scroll-testimonial",
               pauseOnHover && "hover:[animation-play-state:paused]"
             )}
-            // Applying dynamic animation speed
             style={
               {
                 "--animation-duration": getAnimationDuration(),
               } as React.CSSProperties
             }
           >
-            {/* Loop through duplicated items to create infinite loop */}
-            {duplicatedItems?.map((el, idx) => (
+            {shuffledArrays[index].map((el, idx) => (
               <li
                 key={el.username + idx}
                 className="px-[0.2rem] rounded-3xl bg-[#483d73] border-[1px] mt-2 w-full lg:w-[15.5rem] md:w-[12rem] lg:h-[16rem] h-[9.8rem] sm:p-[0.1rem] mx-auto"
+                style={{
+                  transform: `scale(${0.95 + Math.random() * 0.1})`, // Random scaling between 0.95 and 1.05
+                  opacity: 0.9 + Math.random() * 0.1, // Random opacity between 0.9 and 1
+                }}
               >
                 <div className="p-1 lg:p-2 mt-[0.1rem] bg-white rounded-[1.3rem] flex flex-col justify-between h-[9rem] lg:h-[14.8rem] w-full lg:w-[15rem] md:h-[9rem] md:w-[11rem] sm:h-[8rem] sm:w-[10rem] mx-auto">
                   <div>
@@ -64,14 +89,14 @@ export const TestiNomialAnimation = ({
                       <Image
                         src={el?.src}
                         className="rounded-full h-6 w-6 lg:h-10 lg:w-10 object-cover"
-                        height="10"
-                        width="10"
+                        height={40}
+                        width={40}
                         alt={el?.username}
                       />
                       <div className="flex justify-end">
                         <Image
-                          height={100}
-                          width={100}
+                          height={32}
+                          width={32}
                           src={el?.flag}
                           alt={`${el?.country} flag`}
                           className="w-6 h-6 md:w-6 md:h-6 lg:h-8 lg:w-8 sm:w-5 sm:h-5"
@@ -101,3 +126,4 @@ export const TestiNomialAnimation = ({
     </div>
   );
 };
+

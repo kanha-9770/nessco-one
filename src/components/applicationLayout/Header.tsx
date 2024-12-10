@@ -158,7 +158,7 @@ const Page1: React.FC<CombinedProps> = ({
       <div className="w-full">
         <div className="w-full bg-white relative top-[3.5rem] flex flex-col items-center">
           <div
-            className="lg:h-[5rem] h-[3rem] w-full bg-white lg:fixed lg:text-[2.8rem] text-[1.8rem] z-20 shadow-xl shadow-[#f2f2f2] relative flex"
+            className="lg:h-[5rem] h-[3rem] w-full bg-white lg:fixed lg:text-[3rem] text-[1.8rem] z-20 shadow-xl shadow-[#f2f2f2] relative flex"
             ref={titleRef}
           >
             <h1 className="lg:ml-[0.8rem] ml-[0.8rem] font-bold whitespace-nowrap bg-gradient-to-r from-[#483d73] to-red-700  bg-clip-text text-transparent">

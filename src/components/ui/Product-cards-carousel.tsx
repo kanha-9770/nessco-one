@@ -243,7 +243,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
               onClick={scrollLeft}
               disabled={!canScrollLeft}
             >
-               <svg
+              <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -257,7 +257,6 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
                   d="M15 19l-7-7 7-7"
                 />
               </svg>
-             
             </button>
             <button
               className="relative z-20 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
@@ -298,9 +297,9 @@ export const Card = ({
     <>
       <motion.button
         layoutId={layout ? `card-${card?.title}` : undefined}
-        className="relative rounded-3xl bg-gray-100  h-52 w-48 md:h-[15rem] md:w-[12rem] overflow-hidden flex flex-col items-start justify-end z-10"
+        className="relative rounded-3xl bg-gray-100  h-36 w-32 md:h-[15rem] md:w-[12rem] overflow-hidden flex flex-col items-start justify-end z-10"
       >
-        <div className="absolute inset-0 cursor-pointer bg-gradient-to-t from-black/90 via-black/70 to-transparent z-30 " />
+        <div className="absolute inset-0 cursor-pointer bg-gradient-to-t from-black/20 via-black/30 to-transparent z-30 " />
         <BlurImage
           src={card?.src}
           alt={card?.title}

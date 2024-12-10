@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { ApplicationItem } from "./types/constant";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import ReusableForm from "../Contact/ReuseableForm";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -85,13 +86,27 @@ const Page1: React.FC<ApplicationProps> = ({ applicationData }) => {
   return (
     <>
       <div className="font-regular font-poppins">
-        <div className="lg:h-[8.5rem] h-[7rem] w-full bg-white lg:fixed relative z-10 page1-div font-bold">
-          <h1 className="absolute lg:bottom-0 -bottom-[0.3rem] left-3 lg:text-[4rem] text-[2.5rem] page1-h1 bg-gradient-to-r from-[#483d73] to-red-700  bg-clip-text text-transparent">
+        <div className="lg:h-[8.5rem] h-[7rem] w-full bg-white lg:fixed relative z-10 page1-div">
+          <h1 className="absolute lg:bottom-0 -bottom-[0.3rem] left-3 lg:text-[3rem] text-[2.5rem] page1-h1 bg-gradient-to-r from-[#483d73] to-red-700  bg-clip-text text-transparent font-semibold">
             {Header?.applicaion}
           </h1>
         </div>
+        {/* Learn More Button */} 
+        <div className="lg:pt-[9.5rem] pt-[1rem] pl-2 bg-white w-full pb-2 border-b-2">
+          <ReusableForm
+            formId="product page"
+            buttonText="Learn More"
+            dialogTitle="Get in Touch"
+            dialogSubtitle="We'd love to hear from you!"
+            imageUrl="https://www.nesscoindia.com/Assets/images/resource/popup.webp"
+            showButton={true}
+            secodaryButton={false}
+            normalButton={false}
+            learnMore={true}
+          />
+        </div>
         <div
-          className="w-full lg:py-[4rem] py-[4vh] relative lg:top-[10rem] flex flex-col items-center justify-center"
+          className="w-full lg:py-[2rem] py-[4vh] relative lg:top-[4rem] flex flex-col items-center justify-center"
           ref={carouselRef}
         >
           <div className="lg:mb-[2rem] mb-[1rem]">

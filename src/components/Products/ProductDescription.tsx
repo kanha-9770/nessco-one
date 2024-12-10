@@ -10,7 +10,7 @@ interface ProductDescriptionProps {
 }
 const ProductDescription: React.FC<ProductDescriptionProps> = ({ machine }) => {
   return (
-    <div className="h-full lg:-mt-0 -mt-40 bg-white rounded-xl font-poppins">
+    <div className="h-full lg:-mt-0 -mt-32 bg-white rounded-xl font-poppins">
       <div className="h-full p-8 rounded-xl flex flex-col">
         {/* Heading */}
         {(machine?.descriptionHeading ||
